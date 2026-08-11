@@ -25,6 +25,8 @@ targets and `wasm32-unknown-unknown`.
 - Loss-aware JSON interchange for
   [CyberChef 11.3.0 recipes](docs/compatibility/cyberchef-v11.3.0.md) whose
   operations have exact registered aliases.
+- Native `ferrosift` CLI with `operations`, `describe`, `validate`, and `run`
+  commands for bounded file or standard-stream processing.
 
 ## Compatibility and attribution
 

@@ -25,6 +25,32 @@ impl<'a> Executor<'a> {
         Self { registry }
     }
 
+    /// Validates a complete recipe without invoking any operation.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ExecutionError`] for the same model, budget, registry,
+    /// capability, argument, cancellation, and cross-step type failures checked
+    /// before [`Self::execute`].
+    pub fn validate(
+        &self,
+        recipe: &Recipe,
+        input: &Value,
+        budget: ExecutionBudget,
+        cancellation: &dyn Cancellation,
+        capabilities: &CapabilitySet,
+    ) -> Result<(), ExecutionError> {
+        preflight::prepare(
+            recipe,
+            self.registry,
+            input,
+            budget,
+            cancellation,
+            capabilities,
+        )
+        .map(drop)
+    }
+
     /// Validates the complete recipe, then executes enabled steps in order.
     ///
     /// # Errors

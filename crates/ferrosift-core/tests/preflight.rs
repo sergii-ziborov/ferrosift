@@ -15,6 +15,27 @@ mod executor_support;
 use executor_support::{AtomicCancellation, Behavior, budget, counter, operation, recipe, step};
 
 #[test]
+fn validation_performs_complete_preflight_without_invoking_operations() {
+    let calls = counter();
+    let mut registry = OperationRegistry::new();
+    registry
+        .register(operation("core.known@1", Behavior::Identity, calls.clone()))
+        .expect("valid operation");
+
+    Executor::new(&registry)
+        .validate(
+            &recipe(vec![step("known", "core.known@1")]),
+            &Value::Bytes(vec![1]),
+            budget(),
+            &NeverCancelled,
+            &CapabilitySet::new(),
+        )
+        .expect("valid recipe must pass preflight");
+
+    assert_eq!(calls.load(Ordering::SeqCst), 0);
+}
+
+#[test]
 fn deterministically_incompatible_later_input_fails_before_side_effects() {
     let first_calls = counter();
     let second_calls = counter();

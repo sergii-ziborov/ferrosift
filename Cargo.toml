@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "crates/ferrosift-cli",
     "crates/ferrosift-compat",
     "crates/ferrosift-core",
     "crates/ferrosift-model",
