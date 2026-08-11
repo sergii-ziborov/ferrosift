@@ -1,6 +1,6 @@
 //! Stable identifiers for operation contracts.
 
-use alloc::string::String;
+use alloc::{borrow::Cow, string::String};
 use core::fmt;
 
 use serde::{Deserialize, Deserializer, Serialize, de::Error as _};
@@ -10,7 +10,7 @@ use crate::ModelError;
 /// A versioned, cross-platform identifier for an operation contract.
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 #[serde(transparent)]
-pub struct OperationId(String);
+pub struct OperationId(Cow<'static, str>);
 
 impl OperationId {
     /// Creates an operation ID after validating its canonical grammar.
@@ -22,10 +22,24 @@ impl OperationId {
     pub fn new(value: impl Into<String>) -> Result<Self, ModelError> {
         let value = value.into();
         if is_valid_operation_id(&value) {
-            Ok(Self(value))
+            Ok(Self(Cow::Owned(value)))
         } else {
             Err(ModelError::InvalidOperationId)
         }
+    }
+
+    /// Creates an operation ID from a built-in static value.
+    ///
+    /// This constructor allows built-in operation catalogs to validate their
+    /// identifiers during constant evaluation without a runtime unwrap.
+    ///
+    /// # Panics
+    ///
+    /// Panics when `value` does not follow the canonical operation-ID grammar.
+    #[must_use]
+    pub const fn from_static(value: &'static str) -> Self {
+        assert!(is_valid_operation_id(value), "invalid static operation ID");
+        Self(Cow::Borrowed(value))
     }
 
     /// Borrows the canonical identifier.
@@ -73,28 +87,63 @@ impl<'de> Deserialize<'de> for OperationId {
     }
 }
 
-fn is_valid_operation_id(value: &str) -> bool {
-    let Some((path, major)) = value.rsplit_once('@') else {
+const fn is_valid_operation_id(value: &str) -> bool {
+    let bytes = value.as_bytes();
+    let mut separator = usize::MAX;
+    let mut index = 0;
+    while index < bytes.len() {
+        if bytes[index] == b'@' {
+            if separator != usize::MAX {
+                return false;
+            }
+            separator = index;
+        }
+        index += 1;
+    }
+    if separator == usize::MAX || separator == 0 || separator + 1 >= bytes.len() {
         return false;
-    };
+    }
 
-    !path.contains('@')
-        && path.split('.').all(is_valid_segment)
-        && is_canonical_major_version(major)
+    let mut segment_start = true;
+    index = 0;
+    while index < separator {
+        let byte = bytes[index];
+        if byte == b'.' {
+            if segment_start {
+                return false;
+            }
+            segment_start = true;
+        } else if segment_start {
+            if !is_lowercase_or_digit(byte) {
+                return false;
+            }
+            segment_start = false;
+        } else if !is_lowercase_or_digit(byte) && byte != b'_' && byte != b'-' {
+            return false;
+        }
+        index += 1;
+    }
+    if segment_start {
+        return false;
+    }
+
+    index = separator + 1;
+    if bytes[index] == b'0' && index + 1 < bytes.len() {
+        return false;
+    }
+    while index < bytes.len() {
+        if !is_digit(bytes[index]) {
+            return false;
+        }
+        index += 1;
+    }
+    true
 }
 
-fn is_valid_segment(segment: &str) -> bool {
-    let mut bytes = segment.bytes();
-    bytes.next().is_some_and(is_lowercase_or_digit)
-        && bytes.all(|byte| is_lowercase_or_digit(byte) || matches!(byte, b'_' | b'-'))
+const fn is_lowercase_or_digit(byte: u8) -> bool {
+    (byte >= b'a' && byte <= b'z') || is_digit(byte)
 }
 
-fn is_lowercase_or_digit(byte: u8) -> bool {
-    byte.is_ascii_lowercase() || byte.is_ascii_digit()
-}
-
-fn is_canonical_major_version(version: &str) -> bool {
-    !version.is_empty()
-        && version.bytes().all(|byte| byte.is_ascii_digit())
-        && (version == "0" || !version.starts_with('0'))
+const fn is_digit(byte: u8) -> bool {
+    byte >= b'0' && byte <= b'9'
 }

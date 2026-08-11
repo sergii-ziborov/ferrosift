@@ -167,9 +167,16 @@ fn operation_failure_codes_reject_ambiguous_or_unstable_values() {
 }
 
 #[test]
+fn static_failure_code_uses_the_same_validated_value() {
+    assert_eq!(STATIC_FAILURE_CODE.as_str(), "encoding.hex.invalid_digit");
+}
+
+#[test]
 fn value_constraints_remain_available_to_operation_implementations() {
     let spec = operation_spec();
 
     assert_eq!(spec.input, ValueConstraint::Any);
     assert_eq!(spec.output, ValueConstraint::Any);
 }
+const STATIC_FAILURE_CODE: ferrosift_core::OperationFailureCode =
+    ferrosift_core::OperationFailureCode::from_static("encoding.hex.invalid_digit");

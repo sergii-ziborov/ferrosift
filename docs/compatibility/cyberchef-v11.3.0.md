@@ -46,6 +46,20 @@ errors.
 
 `disabled` and `breakpoint` are emitted only when true.
 
+## Registered operations
+
+The built-in registry provides these exact CyberChef 11.3 aliases:
+
+| Alias | Input | Output | Arguments |
+|---|---|---|---|
+| `To Hex` | bytes | UTF-8 text | delimiter, bytes per line |
+| `From Hex` | text | bytes | delimiter or automatic detection |
+| `To Base64` | bytes | UTF-8 text | alphabet expression |
+| `From Base64` | text | bytes | alphabet, filtering, strict mode |
+
+Hex and Base64 decoding rejects malformed structure with stable errors. Unsafe
+malformed-input quirks are not an interoperability contract.
+
 ## Format boundaries
 
 This JSON format does not accept CyberChef URL/deep-link recipes or the

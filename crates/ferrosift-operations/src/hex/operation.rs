@@ -1,0 +1,163 @@
+use alloc::{string::String, vec};
+
+use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_model::{
+    ArgumentKind, ArgumentSpec, ArgumentValue, Arguments, OperationSpec, TextEncoding, TextValue,
+    Value, ValueConstraint, ValueKind,
+};
+
+use crate::spec::{SpecDefinition, build};
+
+use super::{codec, delimiter};
+
+/// Encodes bytes as lower-case hexadecimal text.
+pub struct ToHex {
+    spec: OperationSpec,
+}
+
+impl ToHex {
+    /// Creates the hexadecimal encoder.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "encoding.hex.encode@1",
+                display_name: "To Hex",
+                category: "Encoding",
+                description: "Encodes bytes as lower-case hexadecimal text.",
+                cyberchef_alias: Some("To Hex"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![
+                    text_argument("delimiter", "Hex byte delimiter.", "Space"),
+                    integer_argument("bytes_per_line", "Bytes emitted per line.", 0),
+                ],
+                inverse: Some("encoding.hex.decode@1"),
+            }),
+        }
+    }
+}
+
+impl Default for ToHex {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for ToHex {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let Value::Bytes(input) = input else {
+            return Err(OperationError::InvalidArguments);
+        };
+        let delimiter = delimiter::encode(text_value(arguments, "delimiter")?)?;
+        let line_size = nonnegative_usize(integer_value(arguments, "bytes_per_line")?)?;
+        let output = codec::encode(&input, delimiter, line_size, context)?;
+        Ok(Value::Text(TextValue {
+            text: output,
+            encoding: TextEncoding::Utf8,
+        }))
+    }
+}
+
+/// Decodes hexadecimal text into bytes.
+pub struct FromHex {
+    spec: OperationSpec,
+}
+
+impl FromHex {
+    /// Creates the hexadecimal decoder.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "encoding.hex.decode@1",
+                display_name: "From Hex",
+                category: "Encoding",
+                description: "Decodes validated hexadecimal text into bytes.",
+                cyberchef_alias: Some("From Hex"),
+                input: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Bytes),
+                arguments: vec![text_argument(
+                    "delimiter",
+                    "Hex byte delimiter or automatic detection.",
+                    "Auto",
+                )],
+                inverse: Some("encoding.hex.encode@1"),
+            }),
+        }
+    }
+}
+
+impl Default for FromHex {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for FromHex {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let Value::Text(input) = input else {
+            return Err(OperationError::InvalidArguments);
+        };
+        let delimiter = delimiter::decode(text_value(arguments, "delimiter")?)?;
+        codec::decode(&input.text, delimiter, context).map(Value::Bytes)
+    }
+}
+
+fn text_argument(name: &str, description: &str, default: &str) -> ArgumentSpec {
+    ArgumentSpec {
+        name: String::from(name),
+        description: String::from(description),
+        required: false,
+        kind: ArgumentKind::Text,
+        default: Some(ArgumentValue::Text(String::from(default))),
+    }
+}
+
+fn integer_argument(name: &str, description: &str, default: i128) -> ArgumentSpec {
+    ArgumentSpec {
+        name: String::from(name),
+        description: String::from(description),
+        required: false,
+        kind: ArgumentKind::Integer,
+        default: Some(ArgumentValue::Integer(default)),
+    }
+}
+
+fn text_value<'a>(arguments: &'a Arguments, name: &str) -> Result<&'a str, OperationError> {
+    match arguments.get(name) {
+        Some(ArgumentValue::Text(value)) => Ok(value),
+        _ => Err(OperationError::InvalidArguments),
+    }
+}
+
+fn integer_value(arguments: &Arguments, name: &str) -> Result<i128, OperationError> {
+    match arguments.get(name) {
+        Some(ArgumentValue::Integer(value)) => Ok(*value),
+        _ => Err(OperationError::InvalidArguments),
+    }
+}
+
+fn nonnegative_usize(value: i128) -> Result<usize, OperationError> {
+    usize::try_from(value).map_err(|_| delimiter::failed("encoding.hex.invalid_line_width"))
+}

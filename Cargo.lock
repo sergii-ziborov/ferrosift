@@ -28,6 +28,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "ferrosift-operations"
+version = "0.0.0"
+dependencies = [
+ "ferrosift-compat",
+ "ferrosift-core",
+ "ferrosift-model",
+]
+
+[[package]]
 name = "itoa"
 version = "1.0.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"

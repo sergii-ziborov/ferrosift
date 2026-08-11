@@ -1,6 +1,6 @@
 //! Portable operation execution contract.
 
-use alloc::string::String;
+use alloc::{borrow::Cow, string::String};
 use core::fmt;
 
 use ferrosift_model::{Arguments, OperationSpec, Value};
@@ -11,7 +11,7 @@ const MAX_FAILURE_CODE_BYTES: usize = 128;
 
 /// A validated namespaced code for an operation-specific failure.
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
-pub struct OperationFailureCode(String);
+pub struct OperationFailureCode(Cow<'static, str>);
 
 impl OperationFailureCode {
     /// Creates a lowercase namespaced code such as `encoding.invalid_padding`.
@@ -26,10 +26,21 @@ impl OperationFailureCode {
     pub fn new(value: impl Into<String>) -> Result<Self, InvalidOperationFailureCode> {
         let value = value.into();
         if is_valid_failure_code(&value) {
-            Ok(Self(value))
+            Ok(Self(Cow::Owned(value)))
         } else {
             Err(InvalidOperationFailureCode)
         }
+    }
+
+    /// Creates a failure code from a built-in static value.
+    ///
+    /// # Panics
+    ///
+    /// Panics when `value` does not follow the failure-code grammar.
+    #[must_use]
+    pub const fn from_static(value: &'static str) -> Self {
+        assert!(is_valid_failure_code(value), "invalid static failure code");
+        Self(Cow::Borrowed(value))
     }
 
     /// Borrows the validated code.
@@ -120,27 +131,39 @@ impl fmt::Display for OperationError {
 
 impl core::error::Error for OperationError {}
 
-fn is_valid_failure_code(value: &str) -> bool {
-    if value.len() > MAX_FAILURE_CODE_BYTES {
+const fn is_valid_failure_code(value: &str) -> bool {
+    let bytes = value.as_bytes();
+    if bytes.len() > MAX_FAILURE_CODE_BYTES || bytes.is_empty() {
         return false;
     }
-    let mut segments = value.split('.');
-    let Some(namespace) = segments.next() else {
-        return false;
-    };
-    let Some(name) = segments.next() else {
-        return false;
-    };
-
-    is_valid_code_segment(namespace)
-        && is_valid_code_segment(name)
-        && segments.all(is_valid_code_segment)
+    let mut segments = 1;
+    let mut segment_start = true;
+    let mut index = 0;
+    while index < bytes.len() {
+        let byte = bytes[index];
+        if byte == b'.' {
+            if segment_start {
+                return false;
+            }
+            segments += 1;
+            segment_start = true;
+        } else if segment_start {
+            if !is_lowercase(byte) {
+                return false;
+            }
+            segment_start = false;
+        } else if !is_lowercase(byte) && !is_digit(byte) && byte != b'_' && byte != b'-' {
+            return false;
+        }
+        index += 1;
+    }
+    segments >= 2 && !segment_start
 }
 
-fn is_valid_code_segment(segment: &str) -> bool {
-    let mut bytes = segment.bytes();
-    bytes.next().is_some_and(|byte| byte.is_ascii_lowercase())
-        && bytes.all(|byte| {
-            byte.is_ascii_lowercase() || byte.is_ascii_digit() || matches!(byte, b'_' | b'-')
-        })
+const fn is_lowercase(byte: u8) -> bool {
+    byte >= b'a' && byte <= b'z'
+}
+
+const fn is_digit(byte: u8) -> bool {
+    byte >= b'0' && byte <= b'9'
 }

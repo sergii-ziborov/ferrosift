@@ -13,6 +13,8 @@ targets and `wasm32-unknown-unknown`.
 - Validated operation contracts covering input/output values, defaults,
   execution targets, capabilities, aliases, and evidence records.
 - Deterministic operation registration and exact profile-scoped alias lookup.
+- Built-in pure-Rust Identity, Hex, and Base64 operations with explicit
+  delimiter and alphabet contracts.
 - Complete preflight before execution, preventing partial side effects when a
   later step is invalid.
 - Explicit input, output, and expansion budgets.

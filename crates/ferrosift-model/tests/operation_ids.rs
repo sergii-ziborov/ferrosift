@@ -15,6 +15,11 @@ fn canonical_operation_id_preserves_its_wire_value() {
 }
 
 #[test]
+fn static_operation_id_uses_the_same_canonical_value() {
+    assert_eq!(STATIC_OPERATION_ID.as_str(), "encoding.hex.encode@1");
+}
+
+#[test]
 fn ambiguous_operation_ids_are_rejected_with_a_stable_code() {
     for invalid in [
         "",
@@ -57,3 +62,5 @@ fn ambiguous_step_ids_are_rejected_with_a_stable_code() {
         assert_eq!(error.code(), "model.step_id.invalid", "{invalid}");
     }
 }
+const STATIC_OPERATION_ID: ferrosift_model::OperationId =
+    ferrosift_model::OperationId::from_static("encoding.hex.encode@1");

@@ -1,0 +1,18 @@
+[package]
+name = "ferrosift-operations"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Portable pure-Rust operations for FerroSift"
+
+[dependencies]
+ferrosift-core = { path = "../ferrosift-core" }
+ferrosift-model = { path = "../ferrosift-model" }
+
+[dev-dependencies]
+ferrosift-compat = { path = "../ferrosift-compat" }
+
+[lints]
+workspace = true
