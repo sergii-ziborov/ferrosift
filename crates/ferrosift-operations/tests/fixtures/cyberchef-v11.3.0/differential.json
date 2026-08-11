@@ -1,0 +1,269 @@
+{
+  "reference": {
+    "name": "CyberChef",
+    "version": "11.3.0",
+    "commit": "d24ba1afce2e3a080308b5df7db033332fe94a1a"
+  },
+  "cases": [
+    {
+      "name": "to_hex_ascii_space",
+      "input": {
+        "kind": "bytes",
+        "hex": "466572726f53696674"
+      },
+      "recipe": [
+        {
+          "op": "To Hex",
+          "args": [
+            "Space",
+            0
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "3436203635203732203732203666203533203639203636203734"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "to_hex_binary_colon_lines",
+      "input": {
+        "kind": "bytes",
+        "hex": "000f10ffaac3"
+      },
+      "recipe": [
+        {
+          "op": "To Hex",
+          "args": [
+            "Colon",
+            2
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "30303a30663a0a31303a66663a0a61613a6333"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "from_hex_auto_mixed",
+      "input": {
+        "kind": "text",
+        "value": "0x00, 0f:10\nff"
+      },
+      "recipe": [
+        {
+          "op": "From Hex",
+          "args": [
+            "Auto"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "000f10ff"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "hex_percent_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "00ff107f"
+      },
+      "recipe": [
+        {
+          "op": "To Hex",
+          "args": [
+            "Percent",
+            0
+          ]
+        },
+        {
+          "op": "From Hex",
+          "args": [
+            "Percent"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "253030256666253130253766",
+        "00ff107f"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "to_base64_utf8",
+      "input": {
+        "kind": "bytes",
+        "hex": "ce93ceb5ceb9ceac20cf83cebfcf85"
+      },
+      "recipe": [
+        {
+          "op": "To Base64",
+          "args": [
+            "A-Za-z0-9+/="
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "7a70504f746336357a7177677a34504f76382b46"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "to_base64_url_safe_unpadded",
+      "input": {
+        "kind": "bytes",
+        "hex": "fbff0001"
+      },
+      "recipe": [
+        {
+          "op": "To Base64",
+          "args": [
+            "A-Za-z0-9-_"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "2d5f38414151"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "from_base64_noise",
+      "input": {
+        "kind": "text",
+        "value": " Zm9v\n"
+      },
+      "recipe": [
+        {
+          "op": "From Base64",
+          "args": [
+            "A-Za-z0-9+/=",
+            true,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "666f6f"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "base64_standard_round_trip_all_bytes",
+      "input": {
+        "kind": "bytes",
+        "hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+      },
+      "recipe": [
+        {
+          "op": "To Base64",
+          "args": [
+            "A-Za-z0-9+/="
+          ]
+        },
+        {
+          "op": "From Base64",
+          "args": [
+            "A-Za-z0-9+/=",
+            true,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "41414543417751464267634943516f4c4441304f4478415245684d554652595847426b6147787764486838674953496a4a43556d4a7967704b6973734c5334764d4445794d7a51314e6a63344f546f375044302b50304242516b4e4552555a4853456c4b5330784e546b395155564a54564656575631685a576c746358563566594746695932526c5a6d646f615770726247317562334278636e4e3064585a3365486c3665337839666e2b4167594b44684957476834694a696f754d6a5936506b4a47536b3553566c7065596d5a71626e4a32656e3643686f714f6b7061616e714b6d717136797472712b7773624b7a744c573274376935757275387662362f774d484377385446787366497963724c7a4d334f7a3944523074505531646258324e6e6132397a6433742f6734654c6a354f586d352b6a70367576733765377638504879382f5431397666342b6672372f50332b2f773d3d",
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "base64_crypt_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "466572726f5369667420637573746f6d20616c706861626574"
+      },
+      "recipe": [
+        {
+          "op": "To Base64",
+          "args": [
+            "/128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC"
+          ]
+        },
+        {
+          "op": "From Base64",
+          "args": [
+            "/128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC",
+            true,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "417848736e7863664d694c4a5049546b6e6d41612b4431582b6f317a4b695136302f4343",
+        "466572726f5369667420637573746f6d20616c706861626574"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "base64_and_hex_composition",
+      "input": {
+        "kind": "bytes",
+        "hex": "00466572726f53696674ff"
+      },
+      "recipe": [
+        {
+          "op": "To Base64",
+          "args": [
+            "A-Za-z0-9+/="
+          ]
+        },
+        {
+          "op": "From Base64",
+          "args": [
+            "A-Za-z0-9+/=",
+            true,
+            false
+          ]
+        },
+        {
+          "op": "To Hex",
+          "args": [
+            "0x with comma",
+            0
+          ]
+        },
+        {
+          "op": "From Hex",
+          "args": [
+            "0x with comma"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "41455a6c636e4a7655326c6d6450383d",
+        "00466572726f53696674ff",
+        "307830302c307834362c307836352c307837322c307837322c307836662c307835332c307836392c307836362c307837342c30786666",
+        "00466572726f53696674ff"
+      ],
+      "stopped_after": 4
+    }
+  ],
+  "unsupported": {
+    "name": "url_encode_is_explicitly_unsupported",
+    "recipe": [
+      {
+        "op": "URL Encode",
+        "args": [
+          false
+        ]
+      }
+    ],
+    "finding": {
+      "code": "compat.cyberchef.unknown_operation",
+      "source_step": 0,
+      "original_operation": "URL Encode"
+    }
+  }
+}
