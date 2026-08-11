@@ -1,11 +1,11 @@
-use alloc::{string::String, vec};
+use alloc::vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{
-    ArgumentKind, ArgumentSpec, ArgumentValue, Arguments, OperationSpec, TextEncoding, TextValue,
-    Value, ValueConstraint, ValueKind,
+    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
 };
 
+use crate::args::{integer_argument, integer_value, text_argument, text_value};
 use crate::spec::{SpecDefinition, build};
 
 use super::{codec, delimiter};
@@ -121,40 +121,6 @@ impl Operation for FromHex {
         };
         let delimiter = delimiter::decode(text_value(arguments, "delimiter")?)?;
         codec::decode(&input.text, delimiter, context).map(Value::Bytes)
-    }
-}
-
-fn text_argument(name: &str, description: &str, default: &str) -> ArgumentSpec {
-    ArgumentSpec {
-        name: String::from(name),
-        description: String::from(description),
-        required: false,
-        kind: ArgumentKind::Text,
-        default: Some(ArgumentValue::Text(String::from(default))),
-    }
-}
-
-fn integer_argument(name: &str, description: &str, default: i128) -> ArgumentSpec {
-    ArgumentSpec {
-        name: String::from(name),
-        description: String::from(description),
-        required: false,
-        kind: ArgumentKind::Integer,
-        default: Some(ArgumentValue::Integer(default)),
-    }
-}
-
-fn text_value<'a>(arguments: &'a Arguments, name: &str) -> Result<&'a str, OperationError> {
-    match arguments.get(name) {
-        Some(ArgumentValue::Text(value)) => Ok(value),
-        _ => Err(OperationError::InvalidArguments),
-    }
-}
-
-fn integer_value(arguments: &Arguments, name: &str) -> Result<i128, OperationError> {
-    match arguments.get(name) {
-        Some(ArgumentValue::Integer(value)) => Ok(*value),
-        _ => Err(OperationError::InvalidArguments),
     }
 }
 

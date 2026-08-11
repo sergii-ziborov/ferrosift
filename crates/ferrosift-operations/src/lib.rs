@@ -5,7 +5,10 @@
 
 extern crate alloc;
 
+mod alphabet;
+mod args;
 mod base64;
+mod failure;
 mod hex;
 mod identity;
 mod spec;

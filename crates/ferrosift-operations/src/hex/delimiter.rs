@@ -1,4 +1,6 @@
-use ferrosift_core::{OperationError, OperationFailureCode};
+use ferrosift_core::OperationError;
+
+pub(super) use crate::failure::failed;
 
 #[derive(Clone, Copy)]
 pub(super) enum EncodeDelimiter {
@@ -49,11 +51,5 @@ pub(super) fn decode(value: &str) -> Result<DecodeDelimiter, OperationError> {
         "0x with comma" => Ok(DecodeDelimiter::PrefixedWithComma),
         "\\x" => Ok(DecodeDelimiter::Prefixed("\\x")),
         _ => Err(failed("encoding.hex.invalid_delimiter")),
-    }
-}
-
-pub(super) fn failed(value: &'static str) -> OperationError {
-    OperationError::Failed {
-        code: OperationFailureCode::from_static(value),
     }
 }

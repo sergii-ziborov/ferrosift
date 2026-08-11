@@ -1,6 +1,8 @@
 use alloc::{collections::BTreeSet, vec::Vec};
 
-use ferrosift_core::{OperationError, OperationFailureCode};
+use ferrosift_core::OperationError;
+
+pub(super) use crate::failure::failed;
 
 pub(super) struct Alphabet {
     symbols: Vec<char>,
@@ -9,7 +11,7 @@ pub(super) struct Alphabet {
 
 impl Alphabet {
     pub(super) fn parse(expression: &str) -> Result<Self, OperationError> {
-        let expanded = expand(expression)?;
+        let expanded = crate::alphabet::expand(expression, "encoding.base64.invalid_alphabet")?;
         if !matches!(expanded.len(), 64 | 65) || !expanded.iter().all(char::is_ascii) {
             return Err(failed("encoding.base64.invalid_alphabet"));
         }
@@ -41,37 +43,5 @@ impl Alphabet {
 
     pub(super) fn contains(&self, symbol: char) -> bool {
         self.value(symbol).is_some() || self.padding == Some(symbol)
-    }
-}
-
-fn expand(expression: &str) -> Result<Vec<char>, OperationError> {
-    let input: Vec<_> = expression.chars().collect();
-    let mut output = Vec::new();
-    let mut index = 0;
-    while index < input.len() {
-        if index + 2 < input.len() && input[index + 1] == '-' && input[index] != '\\' {
-            let start = u32::from(input[index]);
-            let end = u32::from(input[index + 2]);
-            for value in start..=end {
-                output.push(
-                    char::from_u32(value)
-                        .ok_or_else(|| failed("encoding.base64.invalid_alphabet"))?,
-                );
-            }
-            index += 3;
-        } else if index + 1 < input.len() && input[index] == '\\' && input[index + 1] == '-' {
-            output.push('-');
-            index += 2;
-        } else {
-            output.push(input[index]);
-            index += 1;
-        }
-    }
-    Ok(output)
-}
-
-pub(super) fn failed(value: &'static str) -> OperationError {
-    OperationError::Failed {
-        code: OperationFailureCode::from_static(value),
     }
 }
