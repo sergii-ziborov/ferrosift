@@ -1,0 +1,14 @@
+[package]
+name = "ferrosift-core"
+description = "Portable operation boundary and registry for FerroSift"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+ferrosift-model = { path = "../ferrosift-model" }
+
+[lints]
+workspace = true

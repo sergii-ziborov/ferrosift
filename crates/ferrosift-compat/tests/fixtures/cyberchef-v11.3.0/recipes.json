@@ -1,0 +1,10 @@
+[
+  {
+    "op": "Unknown Future Operation",
+    "args": ["alpha", 7, true, null, [1, 2], {"nested": "value"}],
+    "disabled": true,
+    "breakpoint": true,
+    "futureField": {"keep": [1, 2, 3]}
+  },
+  "invalid-but-preserved-step"
+]

@@ -1,0 +1,153 @@
+//! Deterministic, fail-closed operation discovery.
+
+use alloc::{boxed::Box, collections::BTreeMap, collections::BTreeSet, string::String, vec::Vec};
+
+use ferrosift_model::{Arguments, CompatibilityProfile, OperationId, OperationSpec, Value};
+
+use crate::{Operation, OperationContext, OperationError};
+
+mod error;
+
+pub use error::RegistryError;
+
+type ProfileAliases = BTreeMap<String, OperationId>;
+type AliasKey = (CompatibilityProfile, String);
+
+struct RegisteredOperation {
+    spec: OperationSpec,
+    implementation: Box<dyn Operation>,
+}
+
+impl Operation for RegisteredOperation {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        self.implementation.execute(input, arguments, context)
+    }
+}
+
+/// An in-memory catalog of validated portable operations.
+pub struct OperationRegistry {
+    operations: BTreeMap<OperationId, RegisteredOperation>,
+    aliases: BTreeMap<CompatibilityProfile, ProfileAliases>,
+}
+
+impl OperationRegistry {
+    /// Creates an empty operation registry.
+    #[must_use]
+    pub const fn new() -> Self {
+        Self {
+            operations: BTreeMap::new(),
+            aliases: BTreeMap::new(),
+        }
+    }
+
+    /// Validates and atomically registers one operation.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`RegistryError`] when the contract is invalid or any canonical ID
+    /// or profile-scoped alias is already registered. The registry is unchanged on
+    /// every failure path.
+    pub fn register<O>(&mut self, operation: O) -> Result<(), RegistryError>
+    where
+        O: Operation + 'static,
+    {
+        let spec = operation.spec();
+        spec.validate()?;
+
+        let id = spec.id.clone();
+        if self.operations.contains_key(&id) {
+            return Err(RegistryError::DuplicateOperation { id });
+        }
+
+        let alias_keys: Vec<_> = spec
+            .aliases
+            .iter()
+            .map(|alias| (alias.profile, alias.name.clone()))
+            .collect();
+        self.validate_aliases(&alias_keys)?;
+
+        self.operations.insert(
+            id.clone(),
+            RegisteredOperation {
+                spec: spec.clone(),
+                implementation: Box::new(operation),
+            },
+        );
+        for (profile, name) in alias_keys {
+            self.aliases
+                .entry(profile)
+                .or_default()
+                .insert(name, id.clone());
+        }
+        Ok(())
+    }
+
+    /// Returns an operation by canonical ID.
+    #[must_use]
+    pub fn get(&self, id: &OperationId) -> Option<&dyn Operation> {
+        self.operations
+            .get(id)
+            .map(|operation| operation as &dyn Operation)
+    }
+
+    /// Resolves an exact alias within one compatibility profile.
+    #[must_use]
+    pub fn resolve_alias(
+        &self,
+        profile: CompatibilityProfile,
+        name: &str,
+    ) -> Option<&dyn Operation> {
+        let id = self.aliases.get(&profile)?.get(name)?;
+        self.get(id)
+    }
+
+    /// Iterates over specifications in canonical operation-ID order.
+    #[must_use]
+    pub fn catalog(&self) -> impl ExactSizeIterator<Item = &OperationSpec> {
+        self.operations.values().map(|operation| &operation.spec)
+    }
+
+    /// Returns the number of registered operations.
+    #[must_use]
+    pub fn len(&self) -> usize {
+        self.operations.len()
+    }
+
+    /// Returns whether no operation is registered.
+    #[must_use]
+    pub fn is_empty(&self) -> bool {
+        self.operations.is_empty()
+    }
+
+    fn validate_aliases(&self, alias_keys: &[AliasKey]) -> Result<(), RegistryError> {
+        let mut pending = BTreeSet::new();
+        for (profile, name) in alias_keys {
+            let collides_with_registry = self
+                .aliases
+                .get(profile)
+                .is_some_and(|aliases| aliases.contains_key(name));
+            if collides_with_registry || !pending.insert((*profile, name.as_str())) {
+                return Err(RegistryError::DuplicateAlias {
+                    profile: *profile,
+                    name: name.clone(),
+                });
+            }
+        }
+        Ok(())
+    }
+}
+
+impl Default for OperationRegistry {
+    fn default() -> Self {
+        Self::new()
+    }
+}

@@ -1,0 +1,68 @@
+//! Bounded two-phase linear recipe execution.
+
+use ferrosift_model::{CapabilitySet, Recipe, RecipeStep, Value};
+
+use crate::{
+    Cancellation, ExecutionBudget, ExecutionResult, OperationRegistry, StepLocation, ValueSummary,
+};
+
+mod error;
+mod limits;
+mod preflight;
+mod runner;
+
+pub use error::{ExecutionError, ExecutionFailure};
+
+/// Portable executor for validated linear recipes.
+pub struct Executor<'a> {
+    registry: &'a OperationRegistry,
+}
+
+impl<'a> Executor<'a> {
+    /// Creates an executor backed by a validated operation registry.
+    #[must_use]
+    pub const fn new(registry: &'a OperationRegistry) -> Self {
+        Self { registry }
+    }
+
+    /// Validates the complete recipe, then executes enabled steps in order.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ExecutionError`] before any invocation when preflight fails, or
+    /// with the exact responsible step and bounded partial trace at runtime.
+    pub fn execute(
+        &self,
+        recipe: &Recipe,
+        input: Value,
+        budget: ExecutionBudget,
+        cancellation: &dyn Cancellation,
+        capabilities: CapabilitySet,
+    ) -> Result<ExecutionResult, ExecutionError> {
+        let initial_input_size = ValueSummary::from_value(&input).size_bytes;
+        let prepared = preflight::prepare(
+            recipe,
+            self.registry,
+            &input,
+            budget,
+            cancellation,
+            &capabilities,
+        )?;
+        runner::run(
+            &prepared,
+            input,
+            budget,
+            initial_input_size,
+            cancellation,
+            capabilities,
+        )
+    }
+}
+
+fn step_location(index: usize, step: &RecipeStep) -> StepLocation {
+    StepLocation {
+        index,
+        step_id: step.id.clone(),
+        operation: step.operation.clone(),
+    }
+}
