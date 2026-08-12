@@ -669,20 +669,250 @@
         "00466572726f53696674ff"
       ],
       "stopped_after": 6
+    },
+    {
+      "name": "xor_hex_standard",
+      "input": {
+        "kind": "bytes",
+        "hex": "48656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "XOR",
+          "args": [
+            {
+              "option": "Hex",
+              "string": "0f"
+            },
+            "Standard",
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "476a636360"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "xor_null_preserving",
+      "input": {
+        "kind": "bytes",
+        "hex": "00010002"
+      },
+      "recipe": [
+        {
+          "op": "XOR",
+          "args": [
+            {
+              "option": "Hex",
+              "string": "01"
+            },
+            "Standard",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "00010003"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "xor_cascade",
+      "input": {
+        "kind": "bytes",
+        "hex": "01020304"
+      },
+      "recipe": [
+        {
+          "op": "XOR",
+          "args": [
+            {
+              "option": "Hex",
+              "string": "ff"
+            },
+            "Cascade",
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "03010704"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "hexdump_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "466572726f53696674"
+      },
+      "recipe": [
+        {
+          "op": "To Hexdump",
+          "args": [
+            16,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "op": "From Hexdump",
+          "args": []
+        }
+      ],
+      "outputs_hex": [
+        "30303030303030302020343620363520373220373220366620353320363920363620373420202020202020202020202020202020202020202020207c466572726f536966747c",
+        "466572726f53696674"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "to_hexdump_upper_final",
+      "input": {
+        "kind": "bytes",
+        "hex": "4142"
+      },
+      "recipe": [
+        {
+          "op": "To Hexdump",
+          "args": [
+            8,
+            true,
+            true,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "30303030303030302020343120343220202020202020202020202020202020202020207c41427c0a3030303030303032"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "take_and_drop_bytes",
+      "input": {
+        "kind": "bytes",
+        "hex": "6162636465666768"
+      },
+      "recipe": [
+        {
+          "op": "Take bytes",
+          "args": [
+            2,
+            3,
+            false
+          ]
+        },
+        {
+          "op": "Drop bytes",
+          "args": [
+            1,
+            1,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "636465",
+        "6365"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "head_line_feed",
+      "input": {
+        "kind": "text",
+        "value": "a\nb\nc\nd"
+      },
+      "recipe": [
+        {
+          "op": "Head",
+          "args": [
+            "Line feed",
+            2
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "610a62"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "find_replace_simple_and_extended",
+      "input": {
+        "kind": "text",
+        "value": "foo\tbar foo"
+      },
+      "recipe": [
+        {
+          "op": "Find / Replace",
+          "args": [
+            {
+              "option": "Simple string",
+              "string": "foo"
+            },
+            "x",
+            true,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "op": "Find / Replace",
+          "args": [
+            {
+              "option": "Extended (\\n, \\t, \\x...)",
+              "string": "\\t"
+            },
+            "-",
+            true,
+            false,
+            true,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "78096261722078",
+        "782d6261722078"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "gunzip_hello",
+      "input": {
+        "kind": "bytes",
+        "hex": "1f8b080000000000000acb48cdc9c957484b2d2aca070084a9e47c0b000000"
+      },
+      "recipe": [
+        {
+          "op": "Gunzip",
+          "args": []
+        }
+      ],
+      "outputs_hex": [
+        "68656c6c6f20666572726f"
+      ],
+      "stopped_after": 1
     }
   ],
   "unsupported": {
-    "name": "gunzip_is_explicitly_unsupported",
+    "name": "magic_is_explicitly_unsupported",
     "recipe": [
       {
-        "op": "Gunzip",
+        "op": "Magic",
         "args": []
       }
     ],
     "finding": {
       "code": "compat.cyberchef.unknown_operation",
       "source_step": 0,
-      "original_operation": "Gunzip"
+      "original_operation": "Magic"
     }
   }
 }

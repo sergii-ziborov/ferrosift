@@ -9,12 +9,16 @@ use crate::failure::failed;
 pub(crate) fn char_rep(token: &str, code: &'static str) -> Result<&'static str, OperationError> {
     match token {
         "Space" => Ok(" "),
+        "Percent" => Ok("%"),
         "Comma" => Ok(","),
         "Semi-colon" => Ok(";"),
         "Colon" => Ok(":"),
+        "Tab" => Ok("\t"),
         "Line feed" => Ok("\n"),
         "CRLF" => Ok("\r\n"),
-        "None" => Ok(""),
+        "Forward slash" => Ok("/"),
+        "Backslash" => Ok("\\"),
+        "Nothing (separate chars)" | "None" => Ok(""),
         _ => Err(failed(code)),
     }
 }

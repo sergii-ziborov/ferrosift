@@ -15,7 +15,11 @@ fn builtin_catalog_is_complete_and_ordered() {
     assert_eq!(
         ids,
         [
+            "compression.gunzip@1",
             "core.identity@1",
+            "data.drop_bytes@1",
+            "data.head@1",
+            "data.take_bytes@1",
             "encoding.base32.decode@1",
             "encoding.base32.encode@1",
             "encoding.base45.decode@1",
@@ -32,13 +36,17 @@ fn builtin_catalog_is_complete_and_ordered() {
             "encoding.decimal.encode@1",
             "encoding.hex.decode@1",
             "encoding.hex.encode@1",
+            "encoding.hexdump.decode@1",
+            "encoding.hexdump.encode@1",
             "encoding.octal.decode@1",
             "encoding.octal.encode@1",
             "encoding.url.decode@1",
             "encoding.url.encode@1",
+            "logic.xor@1",
+            "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 21);
+    assert_eq!(registry.len(), 29);
 }
 
 #[test]
@@ -47,6 +55,8 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
     for (alias, id) in [
         ("To Hex", "encoding.hex.encode@1"),
         ("From Hex", "encoding.hex.decode@1"),
+        ("To Hexdump", "encoding.hexdump.encode@1"),
+        ("From Hexdump", "encoding.hexdump.decode@1"),
         ("To Base32", "encoding.base32.encode@1"),
         ("From Base32", "encoding.base32.decode@1"),
         ("To Base45", "encoding.base45.encode@1"),
@@ -65,6 +75,12 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
         ("From Octal", "encoding.octal.decode@1"),
         ("URL Encode", "encoding.url.encode@1"),
         ("URL Decode", "encoding.url.decode@1"),
+        ("XOR", "logic.xor@1"),
+        ("Gunzip", "compression.gunzip@1"),
+        ("Take bytes", "data.take_bytes@1"),
+        ("Drop bytes", "data.drop_bytes@1"),
+        ("Head", "data.head@1"),
+        ("Find / Replace", "text.find_replace@1"),
     ] {
         let operation = registry
             .resolve_alias(CompatibilityProfile::CyberChefV11_3, alias)

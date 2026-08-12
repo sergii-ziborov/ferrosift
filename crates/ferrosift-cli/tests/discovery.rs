@@ -10,7 +10,11 @@ fn operations_lists_canonical_ids_in_stable_order() {
     assert_eq!(
         support::stdout(&output),
         concat!(
+            "compression.gunzip@1\n",
             "core.identity@1\n",
+            "data.drop_bytes@1\n",
+            "data.head@1\n",
+            "data.take_bytes@1\n",
             "encoding.base32.decode@1\n",
             "encoding.base32.encode@1\n",
             "encoding.base45.decode@1\n",
@@ -27,10 +31,14 @@ fn operations_lists_canonical_ids_in_stable_order() {
             "encoding.decimal.encode@1\n",
             "encoding.hex.decode@1\n",
             "encoding.hex.encode@1\n",
+            "encoding.hexdump.decode@1\n",
+            "encoding.hexdump.encode@1\n",
             "encoding.octal.decode@1\n",
             "encoding.octal.encode@1\n",
             "encoding.url.decode@1\n",
             "encoding.url.encode@1\n",
+            "logic.xor@1\n",
+            "text.find_replace@1\n",
         )
     );
 }

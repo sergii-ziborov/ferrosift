@@ -72,6 +72,14 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `From Octal` | text | bytes | delimiter |
 | `URL Encode` | bytes | UTF-8 text | encode all special characters |
 | `URL Decode` | text | UTF-8 text | treat `+` as space |
+| `To Hexdump` | bytes | UTF-8 text | width, case, final length, UNIX format |
+| `From Hexdump` | text | bytes | none |
+| `XOR` | bytes | bytes | toggleString key, scheme, null preserving |
+| `Gunzip` | bytes | bytes | none |
+| `Take bytes` | bytes | bytes | start, length, per-line |
+| `Drop bytes` | bytes | bytes | start, length, per-line |
+| `Head` | text | UTF-8 text | delimiter token, count |
+| `Find / Replace` | text | UTF-8 text | toggleString find, replace, flags |
 
 ## Conformance profile
 
@@ -97,13 +105,20 @@ reference processes into valid bytes, including its observable quirks:
 - `URL Decode` never fails: strict UTF-8 percent decoding falls back to the
   legacy `unescape` algorithm (`%XX` and `%uXXXX` code units), matching the
   reference's error handling exactly.
+- `XOR` reproduces Standard, Input/Output differential, Cascade, and null
+  preserving schemes against the same key encodings as the reference.
+- `Find / Replace` applies `binaryString` escape parsing to the replacement
+  text; Simple and Extended modes escape the pattern before matching.
+  Regex mode uses a Rust automata engine and may diverge from XRegExp for
+  exotic Unicode property classes.
 
 Where the reference produces values outside the byte range (which its node
-API also rejects), decoding fails with a stable `encoding.*` code instead:
-invalid characters without filtering, Base45 triplets above 65535, binary,
-decimal, or octal tokens outside `0..=255`, and alphabets of the wrong size.
-These stable rejections are the only intentional divergences, and none of
-them occur for inputs CyberChef 11.3.0 processes successfully.
+API also rejects), decoding fails with a stable `encoding.*` /
+`compression.*` / `logic.*` / `text.*` code instead: invalid characters
+without filtering, Base45 triplets above 65535, binary, decimal, or octal
+tokens outside `0..=255`, alphabets of the wrong size, and corrupt gzip
+streams. These stable rejections are the only intentional divergences, and
+none of them occur for inputs CyberChef 11.3.0 processes successfully.
 
 ## Format boundaries
 

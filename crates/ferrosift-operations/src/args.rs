@@ -1,4 +1,4 @@
-use alloc::string::String;
+use alloc::{collections::BTreeMap, string::String};
 
 use ferrosift_core::OperationError;
 use ferrosift_model::{ArgumentKind, ArgumentSpec, ArgumentValue, Arguments};
@@ -55,4 +55,53 @@ pub(crate) fn boolean_value(arguments: &Arguments, name: &str) -> Result<bool, O
         Some(ArgumentValue::Boolean(value)) => Ok(*value),
         _ => Err(OperationError::InvalidArguments),
     }
+}
+
+pub(crate) fn map_argument(
+    name: &str,
+    description: &str,
+    default: BTreeMap<String, ArgumentValue>,
+) -> ArgumentSpec {
+    ArgumentSpec {
+        name: String::from(name),
+        description: String::from(description),
+        required: false,
+        kind: ArgumentKind::Map,
+        default: Some(ArgumentValue::Map(default)),
+    }
+}
+
+pub(crate) fn map_value<'a>(
+    arguments: &'a Arguments,
+    name: &str,
+) -> Result<&'a Arguments, OperationError> {
+    match arguments.get(name) {
+        Some(ArgumentValue::Map(value)) => Ok(value),
+        _ => Err(OperationError::InvalidArguments),
+    }
+}
+
+pub(crate) fn toggle_string_default(option: &str, string: &str) -> BTreeMap<String, ArgumentValue> {
+    BTreeMap::from([
+        (
+            String::from("option"),
+            ArgumentValue::Text(String::from(option)),
+        ),
+        (
+            String::from("string"),
+            ArgumentValue::Text(String::from(string)),
+        ),
+    ])
+}
+
+pub(crate) fn toggle_string_parts(value: &Arguments) -> Result<(&str, &str), OperationError> {
+    let option = match value.get("option") {
+        Some(ArgumentValue::Text(value)) => value.as_str(),
+        _ => return Err(OperationError::InvalidArguments),
+    };
+    let string = match value.get("string") {
+        Some(ArgumentValue::Text(value)) => value.as_str(),
+        _ => return Err(OperationError::InvalidArguments),
+    };
+    Ok((option, string))
 }

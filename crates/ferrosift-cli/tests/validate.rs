@@ -45,7 +45,7 @@ fn validate_accepts_native_and_cyberchef_recipes_after_full_preflight() {
 #[test]
 fn validate_reports_unsupported_operations_and_input_kinds() {
     let directory = support::TempDir::new("validate-incompatible");
-    let unsupported = directory.write("unsupported.json", r#"[{"op":"Gunzip","args":[]}]"#);
+    let unsupported = directory.write("unsupported.json", r#"[{"op":"Magic","args":[]}]"#);
     let mismatch = directory.write("mismatch.json", NATIVE_TO_HEX);
 
     let output = validate("cyberchef-v11.3", "bytes", &unsupported);
