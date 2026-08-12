@@ -106,6 +106,8 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Extract file paths` | text | UTF-8 text | Windows/UNIX, total/sort/unique |
 | `Strings` | text | UTF-8 text | encoding, min length, match class, total/sort/unique |
 | *(native)* `Suggest recipe` | text/bytes | UTF-8 text | depth, max results, intensive, crib |
+| `Fork` | text/bytes | UTF-8 text | split delimiter, merge delimiter, ignore errors |
+| `Merge` | any | any | merge_all |
 | `Defang IP Addresses` | text | UTF-8 text | none |
 | `Defang URL` | text | UTF-8 text | dots/http/slashes, process mode |
 | `Fang URL` | text | UTF-8 text | restore dots/hxxp/slashes |
@@ -193,6 +195,17 @@ streams. These stable rejections are the only intentional divergences, and
 none of them occur for inputs CyberChef 11.3.0 processes successfully.
 
 ## Format boundaries
+
+### Flow control: Fork / Merge
+
+`Fork` / `Merge` are first-class map/join control in the linear executor (not
+jump soup). The runner splits the input on the Fork delimiter, executes the
+body steps until the matching Merge on each branch (nested Fork depth is
+counted), joins with the merge delimiter, and continues. Missing Merge means
+the body runs to the end of the recipe. `ignore_errors` replaces a failing
+branch with an empty string. Node CyberChef excludes Fork, so differential
+fixtures do not bake Fork recipes against the pinned oracle; conformance is
+native.
 
 ### Magic-as-advisor (native only)
 

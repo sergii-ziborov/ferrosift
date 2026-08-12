@@ -68,6 +68,8 @@ fn operations_lists_canonical_ids_in_stable_order() {
             "extract.mac@1\n",
             "extract.strings@1\n",
             "extract.url@1\n",
+            "flow.fork@1\n",
+            "flow.merge@1\n",
             "hash.hmac@1\n",
             "hash.md5@1\n",
             "hash.sha1@1\n",

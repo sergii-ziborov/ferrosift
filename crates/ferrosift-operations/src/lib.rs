@@ -27,6 +27,7 @@ mod escape;
 mod extract;
 mod failure;
 mod find;
+mod flow;
 mod hash;
 mod head;
 mod hex;
@@ -68,6 +69,7 @@ pub use extract::{
 };
 use ferrosift_core::{OperationRegistry, RegistryError};
 pub use find::FindReplace;
+pub use flow::{Fork, Merge};
 pub use hash::{Md5, Sha1, Sha2, Sha3};
 pub use head::Head;
 pub use hex::{FromHex, ToHex};
@@ -94,6 +96,8 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     let mut registry = OperationRegistry::new();
     registry.register(Identity::new())?;
     registry.register(SuggestRecipe::new())?;
+    registry.register(Fork::new())?;
+    registry.register(Merge::new())?;
     registry.register(FromBase32::new())?;
     registry.register(ToBase32::new())?;
     registry.register(FromBase45::new())?;

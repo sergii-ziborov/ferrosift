@@ -17,7 +17,7 @@ mod value_size;
 pub use budget::ExecutionBudget;
 pub use cancellation::{Cancellation, NeverCancelled};
 pub use context::OperationContext;
-pub use executor::{ExecutionError, ExecutionFailure, Executor};
+pub use executor::{ExecutionError, ExecutionFailure, Executor, FORK_ID, MERGE_ID};
 pub use operation::{InvalidOperationFailureCode, Operation, OperationError, OperationFailureCode};
 pub use registry::{OperationRegistry, RegistryError};
 pub use trace::{

@@ -7,11 +7,14 @@ use crate::{
 };
 
 mod error;
+mod flow;
 mod limits;
 mod preflight;
 mod runner;
 
 pub use error::{ExecutionError, ExecutionFailure};
+/// Flow-control operation identifiers used by the executor.
+pub use flow::{FORK_ID, MERGE_ID};
 
 /// Portable executor for validated linear recipes.
 pub struct Executor<'a> {

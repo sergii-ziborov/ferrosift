@@ -73,6 +73,8 @@ fn builtin_catalog_is_complete_and_ordered() {
             "extract.mac@1",
             "extract.strings@1",
             "extract.url@1",
+            "flow.fork@1",
+            "flow.merge@1",
             "hash.hmac@1",
             "hash.md5@1",
             "hash.sha1@1",
@@ -83,7 +85,7 @@ fn builtin_catalog_is_complete_and_ordered() {
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 66);
+    assert_eq!(registry.len(), 68);
 }
 
 #[test]
@@ -109,6 +111,8 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
         ("Extract MAC addresses", "extract.mac@1"),
         ("Extract hashes", "extract.hashes@1"),
         ("Extract file paths", "extract.file_paths@1"),
+        ("Fork", "flow.fork@1"),
+        ("Merge", "flow.merge@1"),
     ] {
         let operation = registry
             .resolve_alias(CompatibilityProfile::CyberChefV11_3, alias)
