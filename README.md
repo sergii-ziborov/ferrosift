@@ -13,10 +13,10 @@ targets and `wasm32-unknown-unknown`.
 - Validated operation contracts covering input/output values, defaults,
   execution targets, capabilities, aliases, and evidence records.
 - Deterministic operation registration and exact profile-scoped alias lookup.
-- Forty-one built-in pure-Rust operations spanning encoding, hashing (MD5,
-  SHA-1/2, HMAC), compression (Gzip/Gunzip, Zlib), logic (XOR), data
-  slicing, HTML entities, ROT13, charcodes, and Find / Replace, each pinned
-  to its CyberChef 11.3.0 counterpart where aliases exist.
+- Forty-nine built-in pure-Rust operations spanning encoding, hashing,
+  compression, extractors (IP/URL/domain/email/strings), defang/fang, logic
+  (XOR), data slicing, HTML entities, ROT13, charcodes, and Find / Replace,
+  each pinned to its CyberChef 11.3.0 counterpart where aliases exist.
 - Complete preflight before execution, preventing partial side effects when a
   later step is invalid.
 - Explicit input, output, and expansion budgets.

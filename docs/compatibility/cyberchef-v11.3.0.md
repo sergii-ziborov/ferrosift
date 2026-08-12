@@ -92,6 +92,14 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `ROT13` | bytes | bytes | lower/upper/numbers, amount |
 | `To Charcode` | text | UTF-8 text | delimiter, base |
 | `From Charcode` | text | bytes | delimiter, base |
+| `Extract IP addresses` | text | UTF-8 text | IPv4/IPv6, local filter, total/sort/unique |
+| `Extract URLs` | text | UTF-8 text | total/sort/unique |
+| `Extract domains` | text | UTF-8 text | total/sort/unique, underscore labels |
+| `Extract email addresses` | text | UTF-8 text | total/sort/unique |
+| `Strings` | text | UTF-8 text | encoding, min length, match class, total/sort/unique |
+| `Defang IP Addresses` | text | UTF-8 text | none |
+| `Defang URL` | text | UTF-8 text | dots/http/slashes, process mode |
+| `Fang URL` | text | UTF-8 text | restore dots/hxxp/slashes |
 
 ## Conformance profile
 
@@ -130,6 +138,12 @@ reference processes into valid bytes, including its observable quirks:
   compressed bytes need not match zlibjs bit-for-bit (mtime/OS/strategy).
 - Named HTML entities cover a common subset; numeric and hex entities are
   complete for valid code points.
+- Extractors join matches with newlines and optionally prefix
+  `Total found: N`. Domain/email patterns are ASCII-centric portable ports of
+  the CyberChef regular expressions; IPv6 extraction uses a conservative
+  scanner rather than the full browser regex.
+- `Defang URL` / `Fang URL` follow the same substitution order as CyberChef
+  (`http`→`hxxp`, `.`→`[.]`, `://`→`[://]` and the reverse).
 
 Where the reference produces values outside the byte range (which its node
 API also rejects), decoding fails with a stable `encoding.*` /

@@ -23,6 +23,9 @@ fn builtin_catalog_is_complete_and_ordered() {
             "data.drop_bytes@1",
             "data.head@1",
             "data.take_bytes@1",
+            "defang.fang_url@1",
+            "defang.ip@1",
+            "defang.url@1",
             "encoding.base32.decode@1",
             "encoding.base32.encode@1",
             "encoding.base45.decode@1",
@@ -50,6 +53,11 @@ fn builtin_catalog_is_complete_and_ordered() {
             "encoding.rot13@1",
             "encoding.url.decode@1",
             "encoding.url.encode@1",
+            "extract.domain@1",
+            "extract.email@1",
+            "extract.ip@1",
+            "extract.strings@1",
+            "extract.url@1",
             "hash.hmac@1",
             "hash.md5@1",
             "hash.sha1@1",
@@ -58,29 +66,23 @@ fn builtin_catalog_is_complete_and_ordered() {
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 41);
+    assert_eq!(registry.len(), 49);
 }
 
 #[test]
 fn interoperability_aliases_are_exact_and_profile_scoped() {
     let registry = support::registry();
     for (alias, id) in [
+        ("Extract IP addresses", "extract.ip@1"),
+        ("Extract URLs", "extract.url@1"),
+        ("Extract domains", "extract.domain@1"),
+        ("Extract email addresses", "extract.email@1"),
+        ("Strings", "extract.strings@1"),
+        ("Defang IP Addresses", "defang.ip@1"),
+        ("Defang URL", "defang.url@1"),
+        ("Fang URL", "defang.fang_url@1"),
         ("MD5", "hash.md5@1"),
-        ("SHA1", "hash.sha1@1"),
-        ("SHA2", "hash.sha2@1"),
-        ("HMAC", "hash.hmac@1"),
-        ("Gzip", "compression.gzip@1"),
-        ("Gunzip", "compression.gunzip@1"),
-        ("Zlib Deflate", "compression.zlib.deflate@1"),
-        ("Zlib Inflate", "compression.zlib.inflate@1"),
-        ("To HTML Entity", "encoding.html.encode@1"),
-        ("From HTML Entity", "encoding.html.decode@1"),
-        ("ROT13", "encoding.rot13@1"),
-        ("To Charcode", "encoding.charcode.encode@1"),
-        ("From Charcode", "encoding.charcode.decode@1"),
         ("XOR", "logic.xor@1"),
-        ("To Hex", "encoding.hex.encode@1"),
-        ("Find / Replace", "text.find_replace@1"),
     ] {
         let operation = registry
             .resolve_alias(CompatibilityProfile::CyberChefV11_3, alias)

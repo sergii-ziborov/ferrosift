@@ -18,8 +18,10 @@ mod charcode;
 mod compress;
 mod crc32;
 mod decimal;
+mod defang;
 mod delim;
 mod escape;
+mod extract;
 mod failure;
 mod find;
 mod hash;
@@ -48,6 +50,10 @@ pub use bytes::{DropBytes, TakeBytes};
 pub use charcode::{FromCharcode, ToCharcode};
 pub use compress::{Gunzip, Gzip, ZlibDeflate, ZlibInflate};
 pub use decimal::{FromDecimal, ToDecimal};
+pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
+pub use extract::{
+    ExtractDomains, ExtractEmailAddresses, ExtractIpAddresses, ExtractUrls, Strings,
+};
 use ferrosift_core::{OperationRegistry, RegistryError};
 pub use find::FindReplace;
 pub use hash::{Md5, Sha1, Sha2};
@@ -92,8 +98,16 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     registry.register(DropBytes::new())?;
     registry.register(Head::new())?;
     registry.register(TakeBytes::new())?;
+    registry.register(DefangIpAddresses::new())?;
+    registry.register(DefangUrl::new())?;
+    registry.register(FangUrl::new())?;
     registry.register(FromDecimal::new())?;
     registry.register(ToDecimal::new())?;
+    registry.register(ExtractDomains::new())?;
+    registry.register(ExtractEmailAddresses::new())?;
+    registry.register(ExtractIpAddresses::new())?;
+    registry.register(ExtractUrls::new())?;
+    registry.register(Strings::new())?;
     registry.register(Md5::new())?;
     registry.register(Sha1::new())?;
     registry.register(Sha2::new())?;
