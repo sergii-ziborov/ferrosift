@@ -4,6 +4,9 @@ FerroSift is a pure-Rust runtime for deterministic, local-first data
 transformation recipes. Its portable model and execution engine run on native
 targets and `wasm32-unknown-unknown`.
 
+The built-in registry currently exposes **53 operations** with exact
+CyberChef 11.3.0 aliases where interoperability is declared.
+
 ## Capabilities
 
 - Representation-preserving values for bytes, encoded text, booleans,
@@ -11,13 +14,8 @@ targets and `wasm32-unknown-unknown`.
 - Versioned recipes with stable operation and step identifiers, typed named
   arguments, metadata, disabled steps, and breakpoints.
 - Validated operation contracts covering input/output values, defaults,
-  execution targets, capabilities, aliases, and evidence records.
+  execution targets, capabilities, aliases, classifications, and evidence.
 - Deterministic operation registration and exact profile-scoped alias lookup.
-- Fifty-three built-in pure-Rust operations spanning encoding, hashing,
-  compression, extractors, defang/fang, ciphers (AES CBC/ECB/GCM, RC4),
-  logic (XOR and XOR brute force), data slicing, HTML entities, ROT13,
-  charcodes, and Find / Replace, each pinned to its CyberChef 11.3.0
-  counterpart where aliases exist.
 - Complete preflight before execution, preventing partial side effects when a
   later step is invalid.
 - Explicit input, output, and expansion budgets.
@@ -30,6 +28,60 @@ targets and `wasm32-unknown-unknown`.
   operations have exact registered aliases.
 - Native `ferrosift` CLI with `operations`, `describe`, `validate`, and `run`
   commands for bounded file or standard-stream processing.
+
+## Workspace
+
+| Crate | Role |
+|---|---|
+| `ferrosift-model` | Portable recipe IR, values, specs, schema version |
+| `ferrosift-core` | Operation trait, registry, executor, budgets, traces |
+| `ferrosift-operations` | Built-in pure-Rust operations and default registry |
+| `ferrosift-compat` | CyberChef 11.3 JSON import/export |
+| `ferrosift-cli` | Native CLI binary `ferrosift` |
+
+Library crates are `no_std` + `alloc` and forbid `unsafe`.
+
+## Built-in operations
+
+| Family | Operations |
+|---|---|
+| Core | Identity |
+| Encoding | Hex, Hexdump, Base32/45/58/64/85, Binary, Decimal, Octal, URL, HTML entities, ROT13, Charcode |
+| Compression | Gzip, Gunzip, Zlib Deflate, Zlib Inflate |
+| Hashing | MD5, SHA1, SHA2, HMAC |
+| Logic | XOR, XOR Brute Force |
+| Ciphers | AES Encrypt/Decrypt (CBC, ECB, GCM), RC4 |
+| Data | Take bytes, Drop bytes, Head |
+| Text | Find / Replace |
+| Extractors | IP addresses, URLs, domains, emails, Strings |
+| Defang | Defang IP, Defang URL, Fang URL |
+
+Full alias tables, argument shapes, and intentional divergences from the
+reference are documented in
+[docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md).
+
+## CLI
+
+```bash
+cargo run -p ferrosift-cli -- operations
+cargo run -p ferrosift-cli -- describe encoding.hex.encode@1
+cargo run -p ferrosift-cli -- validate --format cyberchef-v11.3 --input-kind bytes recipe.json
+cargo run -p ferrosift-cli -- run --format cyberchef-v11.3 --input-kind bytes --recipe recipe.json
+```
+
+Recipes may be native FerroSift JSON or CyberChef 11.3 compact JSON. Unknown
+CyberChef operations fail closed with stable finding codes.
+
+## Development
+
+```bash
+cargo fmt --all -- --check
+cargo clippy --workspace --all-targets --all-features -- -D warnings
+cargo test --workspace --all-features
+cargo check --workspace --target wasm32-unknown-unknown
+```
+
+Pinned toolchain: see `rust-toolchain.toml` (Rust 1.97).
 
 ## Compatibility and attribution
 
