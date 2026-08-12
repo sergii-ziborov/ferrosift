@@ -54,6 +54,10 @@ pub const fn budget() -> ExecutionBudget {
         max_output_bytes: 2_097_152,
         // XOR brute force (key length 1) emits hundreds of sample lines.
         max_expansion_ratio: 4_096,
+        max_branches: 65_536,
+        max_flow_depth: 32,
+        max_operation_invocations: 1_000_000,
+        max_total_bytes_processed: 64 * 1_048_576,
     }
 }
 

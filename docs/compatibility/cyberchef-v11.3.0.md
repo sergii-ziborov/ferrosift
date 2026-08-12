@@ -198,14 +198,23 @@ none of them occur for inputs CyberChef 11.3.0 processes successfully.
 
 ### Flow control: Fork / Merge
 
-`Fork` / `Merge` are first-class map/join control in the linear executor (not
-jump soup). The runner splits the input on the Fork delimiter, executes the
-body steps until the matching Merge on each branch (nested Fork depth is
-counted), joins with the merge delimiter, and continues. Missing Merge means
-the body runs to the end of the recipe. `ignore_errors` replaces a failing
-branch with an empty string. Node CyberChef excludes Fork, so differential
+`Fork` / `Merge` are first-class map/join control (not jump soup). The executor
+uses a single recursive region interpreter (`execute_region`) so nested Fork
+bodies are real nested regions, not plain `operation.execute` calls. Each
+region understands normal ops and Fork (future conditionals/subsections share
+the same entry point). Missing Merge means the body runs to the end of the
+enclosing region. `ignore_errors` replaces a failing branch with an empty
+string.
+
+Flow work is bounded beyond plain output size via `ExecutionBudget`:
+`max_branches`, `max_flow_depth`, `max_operation_invocations`, and
+`max_total_bytes_processed`. Node CyberChef excludes Fork, so differential
 fixtures do not bake Fork recipes against the pinned oracle; conformance is
 native.
+
+Note: current Fork is still CyberChef-shaped (text split/join). A future
+native `flow.map` / `flow.join` over `Value::List` is the intended pure
+dataflow primitive without Unicode re-encoding.
 
 ### Magic-as-advisor (native only)
 

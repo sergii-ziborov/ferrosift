@@ -31,6 +31,14 @@ pub enum ExecutionFailure {
     OutputLimitExceeded,
     /// A produced value exceeds the configured per-step or total expansion ratio.
     ExpansionRatioExceeded,
+    /// A Fork produced more branches than the configured ceiling.
+    BranchLimitExceeded,
+    /// Nested flow depth exceeded the configured ceiling.
+    FlowDepthExceeded,
+    /// Total operation invocations exceeded the configured ceiling.
+    InvocationLimitExceeded,
+    /// Total bytes processed across branches/ops exceeded the configured ceiling.
+    WorkLimitExceeded,
     /// Validation or execution failed through the portable operation boundary.
     Operation(OperationError),
 }
@@ -47,6 +55,10 @@ impl ExecutionFailure {
             Self::OutputKindMismatch => "core.executor.output_kind_mismatch",
             Self::OutputLimitExceeded => "core.executor.output_limit_exceeded",
             Self::ExpansionRatioExceeded => "core.executor.expansion_ratio_exceeded",
+            Self::BranchLimitExceeded => "core.executor.branch_limit_exceeded",
+            Self::FlowDepthExceeded => "core.executor.flow_depth_exceeded",
+            Self::InvocationLimitExceeded => "core.executor.invocation_limit_exceeded",
+            Self::WorkLimitExceeded => "core.executor.work_limit_exceeded",
             Self::Operation(error) => error.code(),
         }
     }

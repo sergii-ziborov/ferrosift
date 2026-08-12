@@ -13,5 +13,9 @@ pub const fn budget() -> ExecutionBudget {
         max_input_bytes: INPUT_BYTES,
         max_output_bytes: OUTPUT_BYTES,
         max_expansion_ratio: 64,
+        max_branches: 1_048_576,
+        max_flow_depth: 64,
+        max_operation_invocations: 10_000_000,
+        max_total_bytes_processed: 256 * 1024 * 1024,
     }
 }

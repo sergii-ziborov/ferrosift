@@ -146,6 +146,10 @@ pub fn recipe(steps: Vec<RecipeStep>) -> Recipe {
 
 pub const fn budget() -> ExecutionBudget {
     ExecutionBudget {
+        max_branches: 1_024,
+        max_flow_depth: 16,
+        max_operation_invocations: 10_000,
+        max_total_bytes_processed: 1_048_576,
         max_steps: 16,
         max_input_bytes: 1_024,
         max_output_bytes: 1_024,

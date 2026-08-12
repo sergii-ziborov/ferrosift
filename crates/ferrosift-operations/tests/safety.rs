@@ -117,6 +117,10 @@ fn encoders_reject_outputs_above_the_operation_budget() {
         max_input_bytes: 16,
         max_output_bytes: 3,
         max_expansion_ratio: 16,
+        max_branches: 64,
+        max_flow_depth: 8,
+        max_operation_invocations: 1_000,
+        max_total_bytes_processed: 1_048_576,
     };
     let error = support::run_with_budget(
         "encoding.hex.encode@1",
@@ -141,6 +145,10 @@ fn encoders_reject_outputs_above_the_operation_budget() {
         max_input_bytes: 16,
         max_output_bytes: 2,
         max_expansion_ratio: 16,
+        max_branches: 64,
+        max_flow_depth: 8,
+        max_operation_invocations: 1_000,
+        max_total_bytes_processed: 1_048_576,
     };
     for encoder in [
         "encoding.base32.encode@1",

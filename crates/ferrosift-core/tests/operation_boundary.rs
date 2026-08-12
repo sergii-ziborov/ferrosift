@@ -85,6 +85,10 @@ fn budget() -> ExecutionBudget {
         max_input_bytes: 1_024,
         max_output_bytes: 2_048,
         max_expansion_ratio: 8,
+        max_branches: 1_024,
+        max_flow_depth: 16,
+        max_operation_invocations: 10_000,
+        max_total_bytes_processed: 1_048_576,
     }
 }
 
