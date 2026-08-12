@@ -135,6 +135,36 @@ fn encoders_reject_outputs_above_the_operation_budget() {
     )
     .expect_err("Base64 output needs four bytes");
     assert_eq!(error.code(), "core.operation.output_limit_exceeded");
+
+    let tight = ExecutionBudget {
+        max_steps: 1,
+        max_input_bytes: 16,
+        max_output_bytes: 2,
+        max_expansion_ratio: 16,
+    };
+    for encoder in [
+        "encoding.base32.encode@1",
+        "encoding.base45.encode@1",
+        "encoding.base58.encode@1",
+        "encoding.base85.encode@1",
+        "encoding.binary.encode@1",
+        "encoding.decimal.encode@1",
+        "encoding.octal.encode@1",
+        "encoding.url.encode@1",
+    ] {
+        let error = support::run_with_budget(
+            encoder,
+            Arguments::new(),
+            Value::Bytes(vec![0xaa, 0xbb]),
+            tight,
+        )
+        .expect_err("two input bytes cannot encode into two output bytes");
+        assert_eq!(
+            error.code(),
+            "core.operation.output_limit_exceeded",
+            "{encoder}"
+        );
+    }
 }
 
 #[test]
@@ -148,17 +178,25 @@ fn operation_entry_points_honor_cancellation() {
     }
 
     let registry = support::registry();
-    let operation = registry
-        .get(&ferrosift_model::OperationId::new("encoding.base64.encode@1").expect("valid ID"))
-        .expect("operation must exist");
-    let arguments = support::argument("alphabet", ArgumentValue::Text("A-Za-z0-9+/=".into()));
-    let mut context = OperationContext::new(
-        support::budget(),
-        &Cancelled,
-        ferrosift_model::CapabilitySet::new(),
-    );
-    let error = operation
-        .execute(Value::Bytes(vec![1, 2, 3]), &arguments, &mut context)
-        .expect_err("cancelled operation must stop");
-    assert_eq!(error.code(), "core.operation.cancelled");
+    let identifiers: Vec<_> = registry
+        .catalog()
+        .map(|specification| specification.id.clone())
+        .collect();
+    for identifier in identifiers {
+        let operation = registry.get(&identifier).expect("operation must exist");
+        let mut context = OperationContext::new(
+            support::budget(),
+            &Cancelled,
+            ferrosift_model::CapabilitySet::new(),
+        );
+        let error = operation
+            .execute(Value::Bytes(vec![1, 2, 3]), &Arguments::new(), &mut context)
+            .expect_err("cancelled operation must stop");
+        assert_eq!(
+            error.code(),
+            "core.operation.cancelled",
+            "{}",
+            identifier.as_str()
+        );
+    }
 }

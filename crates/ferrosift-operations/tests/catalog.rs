@@ -16,13 +16,29 @@ fn builtin_catalog_is_complete_and_ordered() {
         ids,
         [
             "core.identity@1",
+            "encoding.base32.decode@1",
+            "encoding.base32.encode@1",
+            "encoding.base45.decode@1",
+            "encoding.base45.encode@1",
+            "encoding.base58.decode@1",
+            "encoding.base58.encode@1",
             "encoding.base64.decode@1",
             "encoding.base64.encode@1",
+            "encoding.base85.decode@1",
+            "encoding.base85.encode@1",
+            "encoding.binary.decode@1",
+            "encoding.binary.encode@1",
+            "encoding.decimal.decode@1",
+            "encoding.decimal.encode@1",
             "encoding.hex.decode@1",
             "encoding.hex.encode@1",
+            "encoding.octal.decode@1",
+            "encoding.octal.encode@1",
+            "encoding.url.decode@1",
+            "encoding.url.encode@1",
         ]
     );
-    assert_eq!(registry.len(), 5);
+    assert_eq!(registry.len(), 21);
 }
 
 #[test]
@@ -31,8 +47,24 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
     for (alias, id) in [
         ("To Hex", "encoding.hex.encode@1"),
         ("From Hex", "encoding.hex.decode@1"),
+        ("To Base32", "encoding.base32.encode@1"),
+        ("From Base32", "encoding.base32.decode@1"),
+        ("To Base45", "encoding.base45.encode@1"),
+        ("From Base45", "encoding.base45.decode@1"),
+        ("To Base58", "encoding.base58.encode@1"),
+        ("From Base58", "encoding.base58.decode@1"),
         ("To Base64", "encoding.base64.encode@1"),
         ("From Base64", "encoding.base64.decode@1"),
+        ("To Base85", "encoding.base85.encode@1"),
+        ("From Base85", "encoding.base85.decode@1"),
+        ("To Binary", "encoding.binary.encode@1"),
+        ("From Binary", "encoding.binary.decode@1"),
+        ("To Decimal", "encoding.decimal.encode@1"),
+        ("From Decimal", "encoding.decimal.decode@1"),
+        ("To Octal", "encoding.octal.encode@1"),
+        ("From Octal", "encoding.octal.decode@1"),
+        ("URL Encode", "encoding.url.encode@1"),
+        ("URL Decode", "encoding.url.decode@1"),
     ] {
         let operation = registry
             .resolve_alias(CompatibilityProfile::CyberChefV11_3, alias)

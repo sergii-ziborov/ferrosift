@@ -52,7 +52,7 @@ pub const fn budget() -> ExecutionBudget {
         max_steps: 16,
         max_input_bytes: 1_048_576,
         max_output_bytes: 2_097_152,
-        max_expansion_ratio: 8,
+        max_expansion_ratio: 16,
     }
 }
 

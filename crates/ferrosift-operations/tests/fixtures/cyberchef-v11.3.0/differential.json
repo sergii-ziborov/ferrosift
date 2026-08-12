@@ -248,22 +248,441 @@
         "00466572726f53696674ff"
       ],
       "stopped_after": 4
+    },
+    {
+      "name": "base32_standard_round_trip_all_bytes",
+      "input": {
+        "kind": "bytes",
+        "hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+      },
+      "recipe": [
+        {
+          "op": "To Base32",
+          "args": [
+            "A-Z2-7="
+          ]
+        },
+        {
+          "op": "From Base32",
+          "args": [
+            "A-Z2-7=",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "4141415145415945415544414f43414a424946515944494f423449424345515443514b524d46595944454e42574841354459505341494a43454d53434b4a524846415553554b5a4d46555843364d425247495a54494e4a5747343444534f523348513654345032414946424547524346495a445551534b4b4a4e4745325453504b424956455532554b564c464f57435a4c4a4e5659584b364c355147435954444d5253574d5a33494e4656475733444e4e5a585841344c534f4e32484b35545850423458553633345056374837414542514b42594a424d47513645495443554c525347593544345153474a4a4846455653324c5a52474d32544f4f4a3348553755435132464935455557544b504b464a564b56325a4c4e4f5636594c444d5654575332334e4e35595847354c585046355832373442514f435950434d4c5257485a4445345653364d5a58484d37554752324c4a354a564f5732374d4e5457573333544f35355837413448524f485a4846343354365232504b3550574f333358503644593746343755365833505036485a374c35375a37503637343d3d3d3d3d3d",
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "base32_unpadded_alphabet_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "466572726f5369667421"
+      },
+      "recipe": [
+        {
+          "op": "To Base32",
+          "args": [
+            "A-Z2-7"
+          ]
+        },
+        {
+          "op": "From Base32",
+          "args": [
+            "A-Z2-7",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "495a5358453454504b4e55574d354242",
+        "466572726f5369667421"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "from_base32_hex_extended_noise",
+      "input": {
+        "kind": "text",
+        "value": "CPNMU===\n"
+      },
+      "recipe": [
+        {
+          "op": "From Base32",
+          "args": [
+            "0-9A-V=",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "666f6f"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "base45_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "466572726f536966742100"
+      },
+      "recipe": [
+        {
+          "op": "To Base45",
+          "args": [
+            "0-9A-Z $%*+\\-./:"
+          ]
+        },
+        {
+          "op": "From Base45",
+          "args": [
+            "0-9A-Z $%*+\\-./:",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "4c2b38334c454533455245445455453030",
+        "466572726f536966742100"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "base58_round_trip_leading_zeros",
+      "input": {
+        "kind": "bytes",
+        "hex": "000001ff"
+      },
+      "recipe": [
+        {
+          "op": "To Base58",
+          "args": [
+            "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+          ]
+        },
+        {
+          "op": "From Base58",
+          "args": [
+            "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "31313970",
+        "000001ff"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "base85_delimited_zero_groups_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "0000000048656c6c6f00"
+      },
+      "recipe": [
+        {
+          "op": "To Base85",
+          "args": [
+            "!-u",
+            true
+          ]
+        },
+        {
+          "op": "From Base85",
+          "args": [
+            "!-u",
+            true,
+            "z"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "3c7e7a3837635552445a427e3e",
+        "0000000048656c6c6f00"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "to_base85_z85_alphabet",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f20776f726c64"
+      },
+      "recipe": [
+        {
+          "op": "To Base85",
+          "args": [
+            "0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#",
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "784b2330407a593c6d78412b5d6d"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "url_percent_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f20776f726c642f3f235b5dff00"
+      },
+      "recipe": [
+        {
+          "op": "URL Encode",
+          "args": [
+            false
+          ]
+        },
+        {
+          "op": "URL Decode",
+          "args": [
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "68656c6c6f253230776f726c642f3f235b5d254646253030",
+        "68656c6c6f20776f726c642f3f235b5dff00"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "url_decode_fallback_path",
+      "input": {
+        "kind": "text",
+        "value": "%E0%A4%A"
+      },
+      "recipe": [
+        {
+          "op": "URL Decode",
+          "args": [
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "e0a42541"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "url_decode_multibyte_utf8",
+      "input": {
+        "kind": "text",
+        "value": "%CE%93%CE%B5%CE%B9%CE%AC+%u0414"
+      },
+      "recipe": [
+        {
+          "op": "URL Decode",
+          "args": [
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "c38ec293c38ec2b5c38ec2b9c38ec2ac20d094"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "binary_colon_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "00ff0a80"
+      },
+      "recipe": [
+        {
+          "op": "To Binary",
+          "args": [
+            "Colon",
+            8
+          ]
+        },
+        {
+          "op": "From Binary",
+          "args": [
+            "Colon",
+            8
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "30303030303030303a31313131313131313a30303030313031303a3130303030303030",
+        "00ff0a80"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "from_binary_mixed_whitespace",
+      "input": {
+        "kind": "text",
+        "value": "00001010\t00010100\n00011110"
+      },
+      "recipe": [
+        {
+          "op": "From Binary",
+          "args": [
+            "Space",
+            8
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "0a141e"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "decimal_signed_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "80ff007f"
+      },
+      "recipe": [
+        {
+          "op": "To Decimal",
+          "args": [
+            "Space",
+            true
+          ]
+        },
+        {
+          "op": "From Decimal",
+          "args": [
+            "Space",
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "2d313238202d31203020313237",
+        "80ff007f"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "from_decimal_auto_delimiters",
+      "input": {
+        "kind": "text",
+        "value": "72, 101; 108\n111"
+      },
+      "recipe": [
+        {
+          "op": "From Decimal",
+          "args": [
+            "Auto",
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "48656c6f"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "octal_comma_round_trip",
+      "input": {
+        "kind": "bytes",
+        "hex": "00ff07c3"
+      },
+      "recipe": [
+        {
+          "op": "To Octal",
+          "args": [
+            "Comma"
+          ]
+        },
+        {
+          "op": "From Octal",
+          "args": [
+            "Comma"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "302c3337372c372c333033",
+        "00ff07c3"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "encoding_families_compose",
+      "input": {
+        "kind": "bytes",
+        "hex": "00466572726f53696674ff"
+      },
+      "recipe": [
+        {
+          "op": "To Base32",
+          "args": [
+            "A-Z2-7="
+          ]
+        },
+        {
+          "op": "From Base32",
+          "args": [
+            "A-Z2-7=",
+            true
+          ]
+        },
+        {
+          "op": "To Base85",
+          "args": [
+            "!-u",
+            false
+          ]
+        },
+        {
+          "op": "From Base85",
+          "args": [
+            "!-u",
+            true,
+            "z"
+          ]
+        },
+        {
+          "op": "To Octal",
+          "args": [
+            "Space"
+          ]
+        },
+        {
+          "op": "From Octal",
+          "args": [
+            "Space"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "414244474b3454534e354a57535a545537343d3d3d3d3d3d",
+        "00466572726f53696674ff",
+        "21284c4f3f4563346c6a41702225",
+        "00466572726f53696674ff",
+        "3020313036203134352031363220313632203135372031323320313531203134362031363420333737",
+        "00466572726f53696674ff"
+      ],
+      "stopped_after": 6
     }
   ],
   "unsupported": {
-    "name": "url_encode_is_explicitly_unsupported",
+    "name": "gunzip_is_explicitly_unsupported",
     "recipe": [
       {
-        "op": "URL Encode",
-        "args": [
-          false
-        ]
+        "op": "Gunzip",
+        "args": []
       }
     ],
     "finding": {
       "code": "compat.cyberchef.unknown_operation",
       "source_step": 0,
-      "original_operation": "URL Encode"
+      "original_operation": "Gunzip"
     }
   }
 }

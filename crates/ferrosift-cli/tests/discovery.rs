@@ -11,10 +11,26 @@ fn operations_lists_canonical_ids_in_stable_order() {
         support::stdout(&output),
         concat!(
             "core.identity@1\n",
+            "encoding.base32.decode@1\n",
+            "encoding.base32.encode@1\n",
+            "encoding.base45.decode@1\n",
+            "encoding.base45.encode@1\n",
+            "encoding.base58.decode@1\n",
+            "encoding.base58.encode@1\n",
             "encoding.base64.decode@1\n",
             "encoding.base64.encode@1\n",
+            "encoding.base85.decode@1\n",
+            "encoding.base85.encode@1\n",
+            "encoding.binary.decode@1\n",
+            "encoding.binary.encode@1\n",
+            "encoding.decimal.decode@1\n",
+            "encoding.decimal.encode@1\n",
             "encoding.hex.decode@1\n",
             "encoding.hex.encode@1\n",
+            "encoding.octal.decode@1\n",
+            "encoding.octal.encode@1\n",
+            "encoding.url.decode@1\n",
+            "encoding.url.encode@1\n",
         )
     );
 }

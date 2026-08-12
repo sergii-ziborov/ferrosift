@@ -103,10 +103,25 @@ fn completed_steps(events: &[ferrosift_core::TraceEvent]) -> usize {
 fn normalize(value: Value) -> Vec<u8> {
     match value {
         Value::Bytes(bytes) => bytes,
-        Value::Text(text) if text.encoding == TextEncoding::Utf8 => text.text.into_bytes(),
+        Value::Text(text) if text.encoding == TextEncoding::Utf8 => {
+            encode_text_like_reference(&text.text)
+        }
         other => panic!(
             "reference normalization does not support {:?}",
             other.kind()
         ),
     }
+}
+
+/// The reference's `Utils.strToByteArray`: a string whose UTF-16 code units
+/// all fit in one byte is observed as Latin-1, anything else as UTF-8.
+fn encode_text_like_reference(text: &str) -> Vec<u8> {
+    let mut bytes = Vec::with_capacity(text.len());
+    for unit in text.encode_utf16() {
+        match u8::try_from(unit) {
+            Ok(byte) => bytes.push(byte),
+            Err(_) => return text.as_bytes().to_vec(),
+        }
+    }
+    bytes
 }
