@@ -46,6 +46,7 @@ Library crates are `no_std` + `alloc` and forbid `unsafe`.
 | Family | Operations |
 |---|---|
 | Core | Identity |
+| Analysis | Suggest recipe (Magic-as-advisor; no CyberChef Magic alias) |
 | Encoding | Hex, Hexdump, Base32/45/58/64/85, Binary, Decimal, Octal, URL, HTML entities, ROT13, Charcode |
 | Compression | Gzip, Gunzip, Zlib Deflate/Inflate, Raw Deflate/Inflate, Bzip2 Compress/Decompress |
 | Hashing | MD5, SHA1, SHA2, SHA3, HMAC |

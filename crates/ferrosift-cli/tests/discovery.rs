@@ -10,6 +10,7 @@ fn operations_lists_canonical_ids_in_stable_order() {
     assert_eq!(
         support::stdout(&output),
         concat!(
+            "analysis.suggest@1\n",
             "compression.bzip2.compress@1\n",
             "compression.bzip2.decompress@1\n",
             "compression.gunzip@1\n",

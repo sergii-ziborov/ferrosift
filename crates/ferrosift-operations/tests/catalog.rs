@@ -15,6 +15,7 @@ fn builtin_catalog_is_complete_and_ordered() {
     assert_eq!(
         ids,
         [
+            "analysis.suggest@1",
             "compression.bzip2.compress@1",
             "compression.bzip2.decompress@1",
             "compression.gunzip@1",
@@ -82,7 +83,7 @@ fn builtin_catalog_is_complete_and_ordered() {
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 65);
+    assert_eq!(registry.len(), 66);
 }
 
 #[test]

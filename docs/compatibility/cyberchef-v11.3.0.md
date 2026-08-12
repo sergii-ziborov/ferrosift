@@ -105,6 +105,7 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Extract hashes` | text | UTF-8 text | char length or all common sizes, total |
 | `Extract file paths` | text | UTF-8 text | Windows/UNIX, total/sort/unique |
 | `Strings` | text | UTF-8 text | encoding, min length, match class, total/sort/unique |
+| *(native)* `Suggest recipe` | text/bytes | UTF-8 text | depth, max results, intensive, crib |
 | `Defang IP Addresses` | text | UTF-8 text | none |
 | `Defang URL` | text | UTF-8 text | dots/http/slashes, process mode |
 | `Fang URL` | text | UTF-8 text | restore dots/hxxp/slashes |
@@ -192,6 +193,23 @@ streams. These stable rejections are the only intentional divergences, and
 none of them occur for inputs CyberChef 11.3.0 processes successfully.
 
 ## Format boundaries
+
+### Magic-as-advisor (native only)
+
+CyberChef `Magic` remains an **unsupported** interchange operation (flow-control
+black box). FerroSift instead ships native `analysis.suggest@1` / **Suggest
+recipe**, which:
+
+- never rewrites the input into a guessed decode result;
+- ranks portable catalog ops (hex/base64/base32/url/html/fang/gzip/bzip2/zlib/raw
+  inflate, optional ROT13 in intensive mode);
+- emits a deterministic text report with scores, previews, and CyberChef-shaped
+  `recipe: [...]` fragments for copy/paste;
+- accepts `depth` (1–3), `max_results`, `intensive`, and a literal `crib`
+  substring filter.
+
+There is intentionally **no** `Magic` CyberChef alias, so imported `Magic`
+recipes still fail closed with `compat.cyberchef.unknown_operation`.
 
 This JSON format does not accept CyberChef URL/deep-link recipes or the
 human-readable Chef format. Operations without an exact registered CyberChef
