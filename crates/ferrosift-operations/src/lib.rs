@@ -62,7 +62,8 @@ pub use compress::{
 pub use decimal::{FromDecimal, ToDecimal};
 pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
 pub use extract::{
-    ExtractDomains, ExtractEmailAddresses, ExtractIpAddresses, ExtractUrls, Strings,
+    ExtractDomains, ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,
+    ExtractMacAddresses, ExtractUrls, Strings,
 };
 use ferrosift_core::{OperationRegistry, RegistryError};
 pub use find::FindReplace;
@@ -122,7 +123,10 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     registry.register(ToDecimal::new())?;
     registry.register(ExtractDomains::new())?;
     registry.register(ExtractEmailAddresses::new())?;
+    registry.register(ExtractFilePaths::new())?;
+    registry.register(ExtractHashes::new())?;
     registry.register(ExtractIpAddresses::new())?;
+    registry.register(ExtractMacAddresses::new())?;
     registry.register(ExtractUrls::new())?;
     registry.register(Strings::new())?;
     registry.register(Md5::new())?;

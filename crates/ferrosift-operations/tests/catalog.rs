@@ -66,7 +66,10 @@ fn builtin_catalog_is_complete_and_ordered() {
             "encoding.url.encode@1",
             "extract.domain@1",
             "extract.email@1",
+            "extract.file_paths@1",
+            "extract.hashes@1",
             "extract.ip@1",
+            "extract.mac@1",
             "extract.strings@1",
             "extract.url@1",
             "hash.hmac@1",
@@ -79,7 +82,7 @@ fn builtin_catalog_is_complete_and_ordered() {
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 62);
+    assert_eq!(registry.len(), 65);
 }
 
 #[test]
@@ -102,6 +105,9 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
         ("XOR", "logic.xor@1"),
         ("MD5", "hash.md5@1"),
         ("Extract IP addresses", "extract.ip@1"),
+        ("Extract MAC addresses", "extract.mac@1"),
+        ("Extract hashes", "extract.hashes@1"),
+        ("Extract file paths", "extract.file_paths@1"),
     ] {
         let operation = registry
             .resolve_alias(CompatibilityProfile::CyberChefV11_3, alias)

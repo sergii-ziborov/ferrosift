@@ -101,6 +101,9 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Extract URLs` | text | UTF-8 text | total/sort/unique |
 | `Extract domains` | text | UTF-8 text | total/sort/unique, underscore labels |
 | `Extract email addresses` | text | UTF-8 text | total/sort/unique |
+| `Extract MAC addresses` | text | UTF-8 text | total/sort/unique (hex sort, exact unique) |
+| `Extract hashes` | text | UTF-8 text | char length or all common sizes, total |
+| `Extract file paths` | text | UTF-8 text | Windows/UNIX, total/sort/unique |
 | `Strings` | text | UTF-8 text | encoding, min length, match class, total/sort/unique |
 | `Defang IP Addresses` | text | UTF-8 text | none |
 | `Defang URL` | text | UTF-8 text | dots/http/slashes, process mode |
@@ -159,9 +162,12 @@ reference processes into valid bytes, including its observable quirks:
 - Named HTML entities cover a common subset; numeric and hex entities are
   complete for valid code points.
 - Extractors join matches with newlines and optionally prefix
-  `Total found: N`. Domain/email patterns are ASCII-centric portable ports of
-  the CyberChef regular expressions; IPv6 extraction uses a conservative
-  scanner rather than the full browser regex.
+  `Total found: N` (`Extract hashes` uses `Total Results: N`). Domain/email
+  patterns are ASCII-centric portable ports of the CyberChef regular
+  expressions; IPv6 extraction uses a conservative scanner rather than the full
+  browser regex. MAC extraction uses colon/dash forms with hexadecimal sort and
+  exact (case-sensitive) unique. Hash extraction matches **lowercase** hex only,
+  like the reference.
 - `Defang URL` / `Fang URL` follow the same substitution order as CyberChef
   (`http`→`hxxp`, `.`→`[.]`, `://`→`[://]` and the reverse).
 - AES supports CBC/CFB/OFB/CTR/ECB (PKCS#7 and NoPadding for CBC/ECB) and GCM.

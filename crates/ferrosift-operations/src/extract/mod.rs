@@ -5,5 +5,6 @@ mod regexes;
 mod strings;
 
 pub use operation::{
-    ExtractDomains, ExtractEmailAddresses, ExtractIpAddresses, ExtractUrls, Strings,
+    ExtractDomains, ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,
+    ExtractMacAddresses, ExtractUrls, Strings,
 };

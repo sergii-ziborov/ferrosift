@@ -54,7 +54,7 @@ Library crates are `no_std` + `alloc` and forbid `unsafe`.
 | KDF | Derive PBKDF2 key, Scrypt |
 | Data | Take bytes, Drop bytes, Head |
 | Text | Find / Replace |
-| Extractors | IP addresses, URLs, domains, emails, Strings |
+| Extractors | IP addresses, URLs, domains, emails, MAC, hashes, file paths, Strings |
 | Defang | Defang IP, Defang URL, Fang URL |
 
 Full alias tables, argument shapes, and intentional divergences from the

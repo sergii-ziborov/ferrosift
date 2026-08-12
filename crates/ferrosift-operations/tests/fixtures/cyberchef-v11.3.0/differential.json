@@ -1606,6 +1606,71 @@
         "466572726f5369667420636f6d7072657373696f6e"
       ],
       "stopped_after": 1
+    },
+    {
+      "name": "extract_mac_addresses_sorted_unique",
+      "input": {
+        "kind": "text",
+        "value": "Hosts aa:bb:cc:dd:ee:ff and AA-BB-CC-DD-EE-FF and aa:bb:cc:dd:ee:ff and 11:22:33:44:55:66"
+      },
+      "recipe": [
+        {
+          "op": "Extract MAC addresses",
+          "args": [
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "546f74616c20666f756e643a20330a0a31313a32323a33333a34343a35353a36360a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a6666"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "extract_hashes_sha1_length",
+      "input": {
+        "kind": "text",
+        "value": "md5 deadbeefcafebabe0123456789abcdef and sha1 0123456789abcdef0123456789abcdef01234567 and again 0123456789abcdef0123456789abcdef01234567"
+      },
+      "recipe": [
+        {
+          "op": "Extract hashes",
+          "args": [
+            40,
+            false,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "303132333435363738396162636465663031323334353637383961626364656630313233343536370a30313233343536373839616263646566303132333435363738396162636465663031323334353637"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "extract_file_paths_win_unix",
+      "input": {
+        "kind": "text",
+        "value": "See C:\\Windows\\System32\\cmd.exe and /usr/bin/python3.11 and C:\\Temp\\file.txt"
+      },
+      "recipe": [
+        {
+          "op": "Extract file paths",
+          "args": [
+            true,
+            true,
+            false,
+            false,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "433a5c57696e646f77735c53797374656d33325c636d642e6578650a2f7573722f62696e2f707974686f6e332e31310a433a5c54656d705c66696c652e747874"
+      ],
+      "stopped_after": 1
     }
   ],
   "unsupported": {

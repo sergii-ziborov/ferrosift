@@ -302,6 +302,192 @@ impl Operation for ExtractEmailAddresses {
     }
 }
 
+/// Extracts Media Access Control addresses.
+pub struct ExtractMacAddresses {
+    spec: OperationSpec,
+}
+
+impl ExtractMacAddresses {
+    /// Creates the MAC extract operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "extract.mac@1",
+                display_name: "Extract MAC addresses",
+                category: "Extractors",
+                description: "Extracts MAC addresses from text.",
+                cyberchef_alias: Some("Extract MAC addresses"),
+                input: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: extract_flags!(),
+                inverse: None,
+                classifications: None,
+            }),
+        }
+    }
+}
+
+impl Default for ExtractMacAddresses {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for ExtractMacAddresses {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let input = require_text(input)?;
+        Ok(text_out(regexes::extract_mac(
+            &input,
+            present_flags(arguments)?,
+            context,
+        )?))
+    }
+}
+
+/// Extracts Windows and UNIX file paths.
+pub struct ExtractFilePaths {
+    spec: OperationSpec,
+}
+
+impl ExtractFilePaths {
+    /// Creates the file path extract operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "extract.file_paths@1",
+                display_name: "Extract file paths",
+                category: "Extractors",
+                description: "Extracts Windows and UNIX file paths from text.",
+                cyberchef_alias: Some("Extract file paths"),
+                input: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: {
+                    let mut args = vec![
+                        boolean_argument("windows", "Include Windows paths.", true),
+                        boolean_argument("unix", "Include UNIX paths.", true),
+                    ];
+                    args.extend(extract_flags!());
+                    args
+                },
+                inverse: None,
+                classifications: None,
+            }),
+        }
+    }
+}
+
+impl Default for ExtractFilePaths {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for ExtractFilePaths {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let input = require_text(input)?;
+        Ok(text_out(regexes::extract_file_paths(
+            &input,
+            boolean_value(arguments, "windows")?,
+            boolean_value(arguments, "unix")?,
+            present_flags(arguments)?,
+            context,
+        )?))
+    }
+}
+
+/// Extracts fixed-length lowercase hex hash candidates.
+pub struct ExtractHashes {
+    spec: OperationSpec,
+}
+
+impl ExtractHashes {
+    /// Creates the hash extract operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "extract.hashes@1",
+                display_name: "Extract hashes",
+                category: "Extractors",
+                description: "Extracts potential hashes by fixed hex character length.",
+                cyberchef_alias: Some("Extract hashes"),
+                input: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![
+                    integer_argument(
+                        "hash_character_length",
+                        "Hex character length (for example 32 or 40).",
+                        40,
+                    ),
+                    boolean_argument(
+                        "all_hashes",
+                        "Search a fixed set of common hash bit lengths instead.",
+                        false,
+                    ),
+                    boolean_argument(
+                        "display_total",
+                        "Prefix the result with a total count.",
+                        false,
+                    ),
+                ],
+                inverse: None,
+                classifications: None,
+            }),
+        }
+    }
+}
+
+impl Default for ExtractHashes {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for ExtractHashes {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let input = require_text(input)?;
+        Ok(text_out(regexes::extract_hashes(
+            &input,
+            integer_value(arguments, "hash_character_length")?,
+            boolean_value(arguments, "all_hashes")?,
+            boolean_value(arguments, "display_total")?,
+            context,
+        )?))
+    }
+}
+
 /// Extracts printable strings from the input.
 pub struct Strings {
     spec: OperationSpec,
