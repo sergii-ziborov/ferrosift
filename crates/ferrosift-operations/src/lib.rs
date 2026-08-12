@@ -56,7 +56,9 @@ pub use base85::{FromBase85, ToBase85};
 pub use binary::{FromBinary, ToBinary};
 pub use bytes::{DropBytes, TakeBytes};
 pub use charcode::{FromCharcode, ToCharcode};
-pub use compress::{Gunzip, Gzip, ZlibDeflate, ZlibInflate};
+pub use compress::{
+    Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
+};
 pub use decimal::{FromDecimal, ToDecimal};
 pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
 pub use extract::{
@@ -102,8 +104,12 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     registry.register(ToBinary::new())?;
     registry.register(FromCharcode::new())?;
     registry.register(ToCharcode::new())?;
+    registry.register(Bzip2Compress::new())?;
+    registry.register(Bzip2Decompress::new())?;
     registry.register(Gunzip::new())?;
     registry.register(Gzip::new())?;
+    registry.register(RawDeflate::new())?;
+    registry.register(RawInflate::new())?;
     registry.register(ZlibDeflate::new())?;
     registry.register(ZlibInflate::new())?;
     registry.register(DropBytes::new())?;

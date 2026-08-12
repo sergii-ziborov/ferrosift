@@ -88,6 +88,10 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Gzip` | bytes | bytes | compression type, filename, comment, header CRC |
 | `Zlib Deflate` | bytes | bytes | compression type |
 | `Zlib Inflate` | bytes | bytes | start index (+ ignored buffer knobs) |
+| `Raw Deflate` | bytes | bytes | compression type |
+| `Raw Inflate` | bytes | bytes | start index (+ ignored buffer knobs) |
+| `Bzip2 Compress` | bytes | bytes | block size 1-9, work factor (ignored) |
+| `Bzip2 Decompress` | bytes | bytes | low-memory flag (ignored) |
 | `To HTML Entity` | text | UTF-8 text | convert-all, named/numeric/hex |
 | `From HTML Entity` | text | UTF-8 text | none |
 | `ROT13` | bytes | bytes | lower/upper/numbers, amount |
@@ -143,8 +147,15 @@ reference processes into valid bytes, including its observable quirks:
 - Hash digests (`MD5`, `SHA1`, `SHA2`, `SHA3`, `HMAC`) emit lower-case hex. Reduced
   SHA round counts are rejected with stable `hash.unsupported_rounds` codes;
   only the full CyberChef defaults are implemented.
-- `Gzip` / `Zlib Deflate` produce interoperable streams that inflate correctly;
-  compressed bytes need not match zlibjs bit-for-bit (mtime/OS/strategy).
+- `Gzip` / `Zlib Deflate` / `Raw Deflate` produce interoperable streams that
+  inflate correctly; compressed bytes need not match zlibjs bit-for-bit
+  (mtime/OS/strategy).
+- `Raw Inflate` accepts a start index like `Zlib Inflate` and ignores CyberChef
+  buffer knobs.
+- `Bzip2 Compress` / `Bzip2 Decompress` interoperate with libbzip2 / CyberChef
+  streams. Compressed bytes need not match the reference encoder bit-for-bit;
+  empty input is rejected with `compression.bzip2.empty_input`. The work-factor
+  and low-memory arguments are accepted for interchange and ignored.
 - Named HTML entities cover a common subset; numeric and hex entities are
   complete for valid code points.
 - Extractors join matches with newlines and optionally prefix

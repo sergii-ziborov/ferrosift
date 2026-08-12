@@ -9,7 +9,11 @@ use crate::failure::failed;
 
 const INVALID_GZIP: &str = "compression.gzip.invalid";
 const INVALID_ZLIB: &str = "compression.zlib.invalid";
+const INVALID_RAW: &str = "compression.raw.invalid";
+const INVALID_BZIP2: &str = "compression.bzip2.invalid";
+const EMPTY_BZIP2: &str = "compression.bzip2.empty_input";
 const INVALID_LEVEL: &str = "compression.invalid_level";
+const INVALID_BLOCK: &str = "compression.bzip2.invalid_block_size";
 
 pub(super) fn gunzip(
     input: &[u8],
@@ -93,6 +97,73 @@ pub(super) fn zlib_inflate(
     let start = usize::try_from(start_index).map_err(|_| failed(INVALID_ZLIB))?;
     let slice = input.get(start..).ok_or_else(|| failed(INVALID_ZLIB))?;
     let output = decompress_to_vec_zlib(slice).map_err(|_| failed(INVALID_ZLIB))?;
+    ensure_fits(&output, context)?;
+    context.ensure_active()?;
+    Ok(output)
+}
+
+pub(super) fn raw_deflate(
+    input: &[u8],
+    compression_type: &str,
+    context: &OperationContext<'_>,
+) -> Result<Vec<u8>, OperationError> {
+    context.ensure_active()?;
+    let level = compression_level(compression_type)?;
+    let output = compress_to_vec(input, level);
+    ensure_fits(&output, context)?;
+    context.ensure_active()?;
+    Ok(output)
+}
+
+pub(super) fn raw_inflate(
+    input: &[u8],
+    start_index: i128,
+    context: &OperationContext<'_>,
+) -> Result<Vec<u8>, OperationError> {
+    context.ensure_active()?;
+    if start_index < 0 {
+        return Err(failed(INVALID_RAW));
+    }
+    let start = usize::try_from(start_index).map_err(|_| failed(INVALID_RAW))?;
+    let slice = input.get(start..).ok_or_else(|| failed(INVALID_RAW))?;
+    let output = decompress_to_vec(slice).map_err(|_| failed(INVALID_RAW))?;
+    ensure_fits(&output, context)?;
+    context.ensure_active()?;
+    Ok(output)
+}
+
+pub(super) fn bzip2_compress(
+    input: &[u8],
+    block_size: i128,
+    _work_factor: i128,
+    context: &OperationContext<'_>,
+) -> Result<Vec<u8>, OperationError> {
+    context.ensure_active()?;
+    if input.is_empty() {
+        return Err(failed(EMPTY_BZIP2));
+    }
+    if !(1..=9).contains(&block_size) {
+        return Err(failed(INVALID_BLOCK));
+    }
+    let level = oxiarc_bzip2::CompressionLevel::new(u8::try_from(block_size).unwrap_or(9));
+    let output = oxiarc_bzip2::compress(input, level).map_err(|_| failed(INVALID_BZIP2))?;
+    ensure_fits(&output, context)?;
+    context.ensure_active()?;
+    Ok(output)
+}
+
+pub(super) fn bzip2_decompress(
+    input: &[u8],
+    _low_memory: bool,
+    context: &OperationContext<'_>,
+) -> Result<Vec<u8>, OperationError> {
+    context.ensure_active()?;
+    if input.is_empty() {
+        return Err(failed(EMPTY_BZIP2));
+    }
+    let max_out = usize::try_from(context.budget().max_output_bytes).unwrap_or(usize::MAX);
+    let output =
+        oxiarc_bzip2::decompress_with_limit(input, max_out).map_err(|_| failed(INVALID_BZIP2))?;
     ensure_fits(&output, context)?;
     context.ensure_active()?;
     Ok(output)

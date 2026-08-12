@@ -47,7 +47,7 @@ Library crates are `no_std` + `alloc` and forbid `unsafe`.
 |---|---|
 | Core | Identity |
 | Encoding | Hex, Hexdump, Base32/45/58/64/85, Binary, Decimal, Octal, URL, HTML entities, ROT13, Charcode |
-| Compression | Gzip, Gunzip, Zlib Deflate, Zlib Inflate |
+| Compression | Gzip, Gunzip, Zlib Deflate/Inflate, Raw Deflate/Inflate, Bzip2 Compress/Decompress |
 | Hashing | MD5, SHA1, SHA2, SHA3, HMAC |
 | Logic | XOR, XOR Brute Force |
 | Ciphers | AES Encrypt/Decrypt (CBC, CFB, OFB, CTR, ECB, GCM), AES Key Wrap/Unwrap, RC4 |

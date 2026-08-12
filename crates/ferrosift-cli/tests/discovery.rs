@@ -10,8 +10,12 @@ fn operations_lists_canonical_ids_in_stable_order() {
     assert_eq!(
         support::stdout(&output),
         concat!(
+            "compression.bzip2.compress@1\n",
+            "compression.bzip2.decompress@1\n",
             "compression.gunzip@1\n",
             "compression.gzip@1\n",
+            "compression.raw.deflate@1\n",
+            "compression.raw.inflate@1\n",
             "compression.zlib.deflate@1\n",
             "compression.zlib.inflate@1\n",
             "core.identity@1\n",

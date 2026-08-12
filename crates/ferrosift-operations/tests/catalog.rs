@@ -15,8 +15,12 @@ fn builtin_catalog_is_complete_and_ordered() {
     assert_eq!(
         ids,
         [
+            "compression.bzip2.compress@1",
+            "compression.bzip2.decompress@1",
             "compression.gunzip@1",
             "compression.gzip@1",
+            "compression.raw.deflate@1",
+            "compression.raw.inflate@1",
             "compression.zlib.deflate@1",
             "compression.zlib.inflate@1",
             "core.identity@1",
@@ -75,7 +79,7 @@ fn builtin_catalog_is_complete_and_ordered() {
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 58);
+    assert_eq!(registry.len(), 62);
 }
 
 #[test]
@@ -86,6 +90,10 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
         ("AES Decrypt", "crypto.aes.decrypt@1"),
         ("AES Key Wrap", "crypto.aes_kw.wrap@1"),
         ("AES Key Unwrap", "crypto.aes_kw.unwrap@1"),
+        ("Bzip2 Compress", "compression.bzip2.compress@1"),
+        ("Bzip2 Decompress", "compression.bzip2.decompress@1"),
+        ("Raw Deflate", "compression.raw.deflate@1"),
+        ("Raw Inflate", "compression.raw.inflate@1"),
         ("Derive PBKDF2 key", "crypto.pbkdf2@1"),
         ("Scrypt", "crypto.scrypt@1"),
         ("SHA3", "hash.sha3@1"),
