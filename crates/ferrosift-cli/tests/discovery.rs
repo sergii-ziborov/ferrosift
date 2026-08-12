@@ -15,6 +15,9 @@ fn operations_lists_canonical_ids_in_stable_order() {
             "compression.zlib.deflate@1\n",
             "compression.zlib.inflate@1\n",
             "core.identity@1\n",
+            "crypto.aes.decrypt@1\n",
+            "crypto.aes.encrypt@1\n",
+            "crypto.rc4@1\n",
             "data.drop_bytes@1\n",
             "data.head@1\n",
             "data.take_bytes@1\n",
@@ -58,6 +61,7 @@ fn operations_lists_canonical_ids_in_stable_order() {
             "hash.sha1@1\n",
             "hash.sha2@1\n",
             "logic.xor@1\n",
+            "logic.xor_brute@1\n",
             "text.find_replace@1\n",
         )
     );

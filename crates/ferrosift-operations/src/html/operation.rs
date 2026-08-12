@@ -41,6 +41,7 @@ impl ToHtmlEntity {
                     ),
                 ],
                 inverse: Some("encoding.html.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -99,6 +100,7 @@ impl FromHtmlEntity {
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![],
                 inverse: Some("encoding.html.encode@1"),
+                classifications: None,
             }),
         }
     }

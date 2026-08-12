@@ -44,6 +44,7 @@ impl ToBase85 {
                     ),
                 ],
                 inverse: Some("encoding.base85.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -126,6 +127,7 @@ impl FromBase85 {
                     ),
                 ],
                 inverse: Some("encoding.base85.encode@1"),
+                classifications: None,
             }),
         }
     }

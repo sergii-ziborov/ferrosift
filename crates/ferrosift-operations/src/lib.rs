@@ -5,6 +5,7 @@
 
 extern crate alloc;
 
+mod aes_op;
 mod alphabet;
 mod args;
 mod base32;
@@ -15,6 +16,7 @@ mod base85;
 mod binary;
 mod bytes;
 mod charcode;
+mod codec_bytes;
 mod compress;
 mod crc32;
 mod decimal;
@@ -35,11 +37,14 @@ mod identity;
 mod jsint;
 mod key;
 mod octal;
+mod rc4_op;
 mod rot13;
 mod spec;
 mod url;
 mod xor;
+mod xor_brute;
 
+pub use aes_op::{AesDecrypt, AesEncrypt};
 pub use base32::{FromBase32, ToBase32};
 pub use base45::{FromBase45, ToBase45};
 pub use base58::{FromBase58, ToBase58};
@@ -64,9 +69,11 @@ pub use hmac_op::Hmac;
 pub use html::{FromHtmlEntity, ToHtmlEntity};
 pub use identity::Identity;
 pub use octal::{FromOctal, ToOctal};
+pub use rc4_op::Rc4;
 pub use rot13::Rot13;
 pub use url::{UrlDecode, UrlEncode};
 pub use xor::Xor;
+pub use xor_brute::XorBruteForce;
 
 /// Creates a validated registry containing all built-in operations.
 ///
@@ -119,6 +126,10 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     registry.register(FromHtmlEntity::new())?;
     registry.register(ToHtmlEntity::new())?;
     registry.register(Xor::new())?;
+    registry.register(XorBruteForce::new())?;
+    registry.register(AesDecrypt::new())?;
+    registry.register(AesEncrypt::new())?;
+    registry.register(Rc4::new())?;
     registry.register(FromOctal::new())?;
     registry.register(ToOctal::new())?;
     registry.register(Rot13::new())?;

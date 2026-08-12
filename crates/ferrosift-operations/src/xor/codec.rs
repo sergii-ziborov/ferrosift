@@ -6,7 +6,7 @@ use crate::failure::failed;
 
 const INVALID_SCHEME: &str = "logic.xor.invalid_scheme";
 
-pub(super) fn apply(
+pub(crate) fn apply(
     input: &[u8],
     key: &[u8],
     scheme: &str,

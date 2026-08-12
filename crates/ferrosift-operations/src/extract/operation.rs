@@ -90,6 +90,7 @@ impl ExtractIpAddresses {
                     boolean_argument("unique", "Deduplicate matches.", false),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -153,6 +154,7 @@ impl ExtractUrls {
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: extract_flags!(),
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -213,6 +215,7 @@ impl ExtractDomains {
                     args
                 },
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -266,6 +269,7 @@ impl ExtractEmailAddresses {
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: extract_flags!(),
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -337,6 +341,7 @@ impl Strings {
                     boolean_argument("unique", "Deduplicate matches.", false),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }

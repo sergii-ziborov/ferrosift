@@ -48,6 +48,7 @@ impl FindReplace {
                     boolean_argument("dot_matches_all", "Allow '.' to match newlines.", false),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }

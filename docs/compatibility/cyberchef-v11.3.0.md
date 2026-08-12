@@ -100,6 +100,10 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Defang IP Addresses` | text | UTF-8 text | none |
 | `Defang URL` | text | UTF-8 text | dots/http/slashes, process mode |
 | `Fang URL` | text | UTF-8 text | restore dots/hxxp/slashes |
+| `AES Encrypt` | text/bytes | text/bytes | key, IV, mode, I/O formats, AAD, include IV |
+| `AES Decrypt` | text/bytes | text/bytes | key, IV, mode, tag, AAD, IV-from-input |
+| `RC4` | text/bytes | text/bytes | passphrase, I/O formats |
+| `XOR Brute Force` | bytes | UTF-8 text | key length, sample, scheme, crib |
 
 ## Conformance profile
 
@@ -144,6 +148,12 @@ reference processes into valid bytes, including its observable quirks:
   scanner rather than the full browser regex.
 - `Defang URL` / `Fang URL` follow the same substitution order as CyberChef
   (`http`→`hxxp`, `.`→`[.]`, `://`→`[://]` and the reverse).
+- AES supports CBC/ECB (PKCS#7 and NoPadding) and GCM. CFB/OFB/CTR are rejected
+  with `crypto.aes.invalid_mode`. Empty IV becomes 16 null bytes. GCM Hex
+  output appends `\n\nTag: <hex>` like the reference.
+- RC4 and AES carry `legacy` / `unsafe` classifications where appropriate.
+- `XOR Brute Force` enumerates keys `1..256^n-1` (never the zero key), matching
+  the reference; key length is limited to 1..=2.
 
 Where the reference produces values outside the byte range (which its node
 API also rejects), decoding fails with a stable `encoding.*` /

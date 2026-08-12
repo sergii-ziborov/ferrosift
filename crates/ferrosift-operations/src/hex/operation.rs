@@ -33,6 +33,7 @@ impl ToHex {
                     integer_argument("bytes_per_line", "Bytes emitted per line.", 0),
                 ],
                 inverse: Some("encoding.hex.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -93,6 +94,7 @@ impl FromHex {
                     "Auto",
                 )],
                 inverse: Some("encoding.hex.encode@1"),
+                classifications: None,
             }),
         }
     }

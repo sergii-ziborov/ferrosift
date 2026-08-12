@@ -38,6 +38,7 @@ impl ToBase45 {
                     STANDARD_ALPHABET,
                 )],
                 inverse: Some("encoding.base45.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -107,6 +108,7 @@ impl FromBase45 {
                     ),
                 ],
                 inverse: Some("encoding.base45.encode@1"),
+                classifications: None,
             }),
         }
     }

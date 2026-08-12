@@ -37,6 +37,7 @@ impl ToBase32 {
                     STANDARD_ALPHABET,
                 )],
                 inverse: Some("encoding.base32.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -109,6 +110,7 @@ impl FromBase32 {
                     ),
                 ],
                 inverse: Some("encoding.base32.encode@1"),
+                classifications: None,
             }),
         }
     }

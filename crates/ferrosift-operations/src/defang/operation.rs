@@ -44,6 +44,7 @@ impl DefangIpAddresses {
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![],
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -100,6 +101,7 @@ impl DefangUrl {
                     ),
                 ],
                 inverse: Some("defang.fang_url@1"),
+                classifications: None,
             }),
         }
     }
@@ -158,6 +160,7 @@ impl FangUrl {
                     boolean_argument("restore_slashes", "Restore '[://]' to '://'.", true),
                 ],
                 inverse: Some("defang.url@1"),
+                classifications: None,
             }),
         }
     }

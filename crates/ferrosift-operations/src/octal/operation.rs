@@ -31,6 +31,7 @@ impl ToOctal {
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![text_argument("delimiter", "Ordinal delimiter.", "Space")],
                 inverse: Some("encoding.octal.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -85,6 +86,7 @@ impl FromOctal {
                 output: ValueConstraint::Exact(ValueKind::Bytes),
                 arguments: vec![text_argument("delimiter", "Ordinal delimiter.", "Space")],
                 inverse: Some("encoding.octal.encode@1"),
+                classifications: None,
             }),
         }
     }

@@ -37,6 +37,7 @@ impl Head {
                     ),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }

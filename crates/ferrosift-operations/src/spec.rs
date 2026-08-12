@@ -1,9 +1,9 @@
 use alloc::{collections::BTreeMap, string::String, vec, vec::Vec};
 
 use ferrosift_model::{
-    ArgumentSpec, CapabilitySet, ClassificationSet, CompatibilityAlias, CompatibilityProfile,
-    EvidenceRecord, EvidenceState, EvidenceSummary, OperationId, OperationSpec, StreamingSupport,
-    Target, TargetSet, ValueConstraint,
+    ArgumentSpec, CapabilitySet, CompatibilityAlias, CompatibilityProfile, EvidenceRecord,
+    EvidenceState, EvidenceSummary, OperationClassification, OperationId, OperationSpec,
+    StreamingSupport, Target, TargetSet, ValueConstraint,
 };
 
 pub(crate) struct SpecDefinition {
@@ -16,6 +16,8 @@ pub(crate) struct SpecDefinition {
     pub output: ValueConstraint,
     pub arguments: Vec<ArgumentSpec>,
     pub inverse: Option<&'static str>,
+    /// Optional review classifications; omit with `None` for ordinary ops.
+    pub classifications: Option<&'static [OperationClassification]>,
 }
 
 pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
@@ -28,6 +30,12 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
             }]
         })
         .unwrap_or_default();
+    let classifications = definition
+        .classifications
+        .unwrap_or(&[])
+        .iter()
+        .copied()
+        .collect();
 
     OperationSpec {
         id: operation_id(definition.id),
@@ -40,7 +48,7 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
         arguments: definition.arguments,
         targets: TargetSet::from([Target::Native, Target::Wasm32UnknownUnknown]),
         capabilities: CapabilitySet::new(),
-        classifications: ClassificationSet::new(),
+        classifications,
         deterministic: true,
         streaming: StreamingSupport::Buffered,
         inverse: definition.inverse.map(operation_id),

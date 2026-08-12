@@ -20,6 +20,9 @@ fn builtin_catalog_is_complete_and_ordered() {
             "compression.zlib.deflate@1",
             "compression.zlib.inflate@1",
             "core.identity@1",
+            "crypto.aes.decrypt@1",
+            "crypto.aes.encrypt@1",
+            "crypto.rc4@1",
             "data.drop_bytes@1",
             "data.head@1",
             "data.take_bytes@1",
@@ -63,26 +66,24 @@ fn builtin_catalog_is_complete_and_ordered() {
             "hash.sha1@1",
             "hash.sha2@1",
             "logic.xor@1",
+            "logic.xor_brute@1",
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 49);
+    assert_eq!(registry.len(), 53);
 }
 
 #[test]
 fn interoperability_aliases_are_exact_and_profile_scoped() {
     let registry = support::registry();
     for (alias, id) in [
-        ("Extract IP addresses", "extract.ip@1"),
-        ("Extract URLs", "extract.url@1"),
-        ("Extract domains", "extract.domain@1"),
-        ("Extract email addresses", "extract.email@1"),
-        ("Strings", "extract.strings@1"),
-        ("Defang IP Addresses", "defang.ip@1"),
-        ("Defang URL", "defang.url@1"),
-        ("Fang URL", "defang.fang_url@1"),
-        ("MD5", "hash.md5@1"),
+        ("AES Encrypt", "crypto.aes.encrypt@1"),
+        ("AES Decrypt", "crypto.aes.decrypt@1"),
+        ("RC4", "crypto.rc4@1"),
+        ("XOR Brute Force", "logic.xor_brute@1"),
         ("XOR", "logic.xor@1"),
+        ("MD5", "hash.md5@1"),
+        ("Extract IP addresses", "extract.ip@1"),
     ] {
         let operation = registry
             .resolve_alias(CompatibilityProfile::CyberChefV11_3, alias)

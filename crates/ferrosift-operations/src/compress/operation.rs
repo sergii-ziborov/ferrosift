@@ -30,6 +30,7 @@ impl Gunzip {
                 output: ValueConstraint::Exact(ValueKind::Bytes),
                 arguments: vec![],
                 inverse: Some("compression.gzip@1"),
+                classifications: None,
             }),
         }
     }
@@ -93,6 +94,7 @@ impl Gzip {
                     ),
                 ],
                 inverse: Some("compression.gunzip@1"),
+                classifications: None,
             }),
         }
     }
@@ -154,6 +156,7 @@ impl ZlibDeflate {
                     "Dynamic Huffman Coding",
                 )],
                 inverse: Some("compression.zlib.inflate@1"),
+                classifications: None,
             }),
         }
     }
@@ -230,6 +233,7 @@ impl ZlibInflate {
                     ),
                 ],
                 inverse: Some("compression.zlib.deflate@1"),
+                classifications: None,
             }),
         }
     }

@@ -37,6 +37,7 @@ impl ToDecimal {
                     ),
                 ],
                 inverse: Some("encoding.decimal.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -103,6 +104,7 @@ impl FromDecimal {
                     ),
                 ],
                 inverse: Some("encoding.decimal.encode@1"),
+                classifications: None,
             }),
         }
     }

@@ -44,6 +44,7 @@ impl TakeBytes {
                     ),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -116,6 +117,7 @@ impl DropBytes {
                     ),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }

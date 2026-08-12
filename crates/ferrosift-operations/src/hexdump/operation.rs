@@ -47,6 +47,7 @@ impl ToHexdump {
                     ),
                 ],
                 inverse: Some("encoding.hexdump.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -108,6 +109,7 @@ impl FromHexdump {
                 output: ValueConstraint::Exact(ValueKind::Bytes),
                 arguments: vec![],
                 inverse: Some("encoding.hexdump.encode@1"),
+                classifications: None,
             }),
         }
     }

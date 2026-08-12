@@ -44,6 +44,7 @@ impl Hmac {
                     ),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }

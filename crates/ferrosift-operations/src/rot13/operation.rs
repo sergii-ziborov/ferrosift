@@ -33,6 +33,7 @@ impl Rot13 {
                     integer_argument("amount", "Rotation amount.", 13),
                 ],
                 inverse: Some("encoding.rot13@1"),
+                classifications: None,
             }),
         }
     }

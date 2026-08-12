@@ -23,6 +23,7 @@ impl Identity {
                 output: ValueConstraint::Any,
                 arguments: alloc::vec::Vec::new(),
                 inverse: Some("core.identity@1"),
+                classifications: None,
             }),
         }
     }

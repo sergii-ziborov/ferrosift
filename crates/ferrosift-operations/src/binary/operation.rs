@@ -34,6 +34,7 @@ impl ToBinary {
                     integer_argument("byte_length", "Digits emitted per byte.", 8),
                 ],
                 inverse: Some("encoding.binary.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -92,6 +93,7 @@ impl FromBinary {
                     integer_argument("byte_length", "Digits consumed per byte.", 8),
                 ],
                 inverse: Some("encoding.binary.encode@1"),
+                classifications: None,
             }),
         }
     }

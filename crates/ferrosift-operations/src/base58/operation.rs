@@ -38,6 +38,7 @@ impl ToBase58 {
                     BITCOIN_ALPHABET,
                 )],
                 inverse: Some("encoding.base58.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -110,6 +111,7 @@ impl FromBase58 {
                     ),
                 ],
                 inverse: Some("encoding.base58.encode@1"),
+                classifications: None,
             }),
         }
     }

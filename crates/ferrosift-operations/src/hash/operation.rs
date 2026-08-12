@@ -30,6 +30,7 @@ impl Md5 {
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![],
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -84,6 +85,7 @@ impl Sha1 {
                     80,
                 )],
                 inverse: None,
+                classifications: None,
             }),
         }
     }
@@ -154,6 +156,7 @@ impl Sha2 {
                     ),
                 ],
                 inverse: None,
+                classifications: None,
             }),
         }
     }

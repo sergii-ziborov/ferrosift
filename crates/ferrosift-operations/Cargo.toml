@@ -8,6 +8,11 @@ repository.workspace = true
 description = "Portable pure-Rust operations for FerroSift"
 
 [dependencies]
+aes = { version = "0.8.4", default-features = false }
+aes-gcm = { version = "0.10.3", default-features = false, features = ["aes", "alloc"] }
+cbc = { version = "0.1.2", default-features = false, features = ["alloc"] }
+cipher = { version = "0.4.4", default-features = false, features = ["alloc", "block-padding"] }
+ecb = { version = "0.1.2", default-features = false, features = ["alloc"] }
 ferrosift-core = { path = "../ferrosift-core" }
 ferrosift-model = { path = "../ferrosift-model" }
 hmac = { version = "0.12.1", default-features = false }

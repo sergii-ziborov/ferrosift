@@ -33,6 +33,7 @@ impl ToCharcode {
                     integer_argument("base", "Numeric base for codes (2..=36).", 16),
                 ],
                 inverse: Some("encoding.charcode.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -94,6 +95,7 @@ impl FromCharcode {
                     integer_argument("base", "Numeric base for codes (2..=36).", 16),
                 ],
                 inverse: Some("encoding.charcode.encode@1"),
+                classifications: None,
             }),
         }
     }

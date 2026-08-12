@@ -44,6 +44,7 @@ impl Xor {
                     ),
                 ],
                 inverse: Some("logic.xor@1"),
+                classifications: None,
             }),
         }
     }

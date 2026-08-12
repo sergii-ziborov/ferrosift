@@ -36,6 +36,7 @@ impl ToBase64 {
                     STANDARD_ALPHABET,
                 )],
                 inverse: Some("encoding.base64.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -103,6 +104,7 @@ impl FromBase64 {
                     boolean_argument("strict", "Apply strict shape validation.", false),
                 ],
                 inverse: Some("encoding.base64.encode@1"),
+                classifications: None,
             }),
         }
     }

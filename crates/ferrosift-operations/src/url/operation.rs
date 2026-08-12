@@ -34,6 +34,7 @@ impl UrlEncode {
                     false,
                 )],
                 inverse: Some("encoding.url.decode@1"),
+                classifications: None,
             }),
         }
     }
@@ -96,6 +97,7 @@ impl UrlDecode {
                     true,
                 )],
                 inverse: Some("encoding.url.encode@1"),
+                classifications: None,
             }),
         }
     }
