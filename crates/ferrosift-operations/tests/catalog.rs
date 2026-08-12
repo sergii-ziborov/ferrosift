@@ -22,7 +22,11 @@ fn builtin_catalog_is_complete_and_ordered() {
             "core.identity@1",
             "crypto.aes.decrypt@1",
             "crypto.aes.encrypt@1",
+            "crypto.aes_kw.unwrap@1",
+            "crypto.aes_kw.wrap@1",
+            "crypto.pbkdf2@1",
             "crypto.rc4@1",
+            "crypto.scrypt@1",
             "data.drop_bytes@1",
             "data.head@1",
             "data.take_bytes@1",
@@ -65,12 +69,13 @@ fn builtin_catalog_is_complete_and_ordered() {
             "hash.md5@1",
             "hash.sha1@1",
             "hash.sha2@1",
+            "hash.sha3@1",
             "logic.xor@1",
             "logic.xor_brute@1",
             "text.find_replace@1",
         ]
     );
-    assert_eq!(registry.len(), 53);
+    assert_eq!(registry.len(), 58);
 }
 
 #[test]
@@ -79,6 +84,11 @@ fn interoperability_aliases_are_exact_and_profile_scoped() {
     for (alias, id) in [
         ("AES Encrypt", "crypto.aes.encrypt@1"),
         ("AES Decrypt", "crypto.aes.decrypt@1"),
+        ("AES Key Wrap", "crypto.aes_kw.wrap@1"),
+        ("AES Key Unwrap", "crypto.aes_kw.unwrap@1"),
+        ("Derive PBKDF2 key", "crypto.pbkdf2@1"),
+        ("Scrypt", "crypto.scrypt@1"),
+        ("SHA3", "hash.sha3@1"),
         ("RC4", "crypto.rc4@1"),
         ("XOR Brute Force", "logic.xor_brute@1"),
         ("XOR", "logic.xor@1"),

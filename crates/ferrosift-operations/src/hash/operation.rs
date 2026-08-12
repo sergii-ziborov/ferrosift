@@ -10,6 +10,65 @@ use crate::spec::{SpecDefinition, build};
 
 use super::codec;
 
+/// SHA-3 message digest (FIPS 202).
+pub struct Sha3 {
+    spec: OperationSpec,
+}
+
+impl Sha3 {
+    /// Creates the SHA-3 operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "hash.sha3@1",
+                display_name: "SHA3",
+                category: "Hashing",
+                description: "Computes a SHA-3 digest as lower-case hex.",
+                cyberchef_alias: Some("SHA3"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![text_argument(
+                    "size",
+                    "Digest size: 224, 256, 384, or 512.",
+                    "512",
+                )],
+                inverse: None,
+                classifications: None,
+            }),
+        }
+    }
+}
+
+impl Default for Sha3 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Sha3 {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let Value::Bytes(input) = input else {
+            return Err(OperationError::InvalidArguments);
+        };
+        Ok(text(codec::sha3(
+            &input,
+            text_value(arguments, "size")?,
+            context,
+        )?))
+    }
+}
+
 /// MD5 message digest (hex lower-case).
 pub struct Md5 {
     spec: OperationSpec,

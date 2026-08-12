@@ -5,6 +5,7 @@
 
 extern crate alloc;
 
+mod aes_kw;
 mod aes_op;
 mod alphabet;
 mod args;
@@ -35,6 +36,7 @@ mod hmac_op;
 mod html;
 mod identity;
 mod jsint;
+mod kdf;
 mod key;
 mod octal;
 mod rc4_op;
@@ -44,6 +46,7 @@ mod url;
 mod xor;
 mod xor_brute;
 
+pub use aes_kw::{AesKeyUnwrap, AesKeyWrap};
 pub use aes_op::{AesDecrypt, AesEncrypt};
 pub use base32::{FromBase32, ToBase32};
 pub use base45::{FromBase45, ToBase45};
@@ -61,13 +64,14 @@ pub use extract::{
 };
 use ferrosift_core::{OperationRegistry, RegistryError};
 pub use find::FindReplace;
-pub use hash::{Md5, Sha1, Sha2};
+pub use hash::{Md5, Sha1, Sha2, Sha3};
 pub use head::Head;
 pub use hex::{FromHex, ToHex};
 pub use hexdump::{FromHexdump, ToHexdump};
 pub use hmac_op::Hmac;
 pub use html::{FromHtmlEntity, ToHtmlEntity};
 pub use identity::Identity;
+pub use kdf::{DerivePbkdf2Key, Scrypt};
 pub use octal::{FromOctal, ToOctal};
 pub use rc4_op::Rc4;
 pub use rot13::Rot13;
@@ -118,6 +122,7 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     registry.register(Md5::new())?;
     registry.register(Sha1::new())?;
     registry.register(Sha2::new())?;
+    registry.register(Sha3::new())?;
     registry.register(Hmac::new())?;
     registry.register(FromHex::new())?;
     registry.register(ToHex::new())?;
@@ -129,7 +134,11 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     registry.register(XorBruteForce::new())?;
     registry.register(AesDecrypt::new())?;
     registry.register(AesEncrypt::new())?;
+    registry.register(AesKeyUnwrap::new())?;
+    registry.register(AesKeyWrap::new())?;
+    registry.register(DerivePbkdf2Key::new())?;
     registry.register(Rc4::new())?;
+    registry.register(Scrypt::new())?;
     registry.register(FromOctal::new())?;
     registry.register(ToOctal::new())?;
     registry.register(Rot13::new())?;

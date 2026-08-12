@@ -1,4 +1,4 @@
-//! AES-CBC / AES-ECB / AES-GCM for `CyberChef` 11.3 modes.
+//! AES-CBC / CFB / OFB / CTR / ECB / GCM for `CyberChef` 11.3 modes.
 
 use alloc::string::String;
 use alloc::vec::Vec;
@@ -11,6 +11,8 @@ use aes_gcm::aead::{Aead, KeyInit, Payload};
 use aes_gcm::{AesGcm, Nonce};
 use cbc::cipher::{BlockDecryptMut, BlockEncryptMut, KeyIvInit};
 use cipher::block_padding::{NoPadding, Pkcs7};
+use cipher::{AsyncStreamCipher, StreamCipher};
+use ctr::Ctr128BE;
 use ferrosift_core::{OperationContext, OperationError};
 
 use crate::failure::failed;
@@ -34,6 +36,18 @@ type Aes256EcbEnc = ecb::Encryptor<Aes256>;
 type Aes128EcbDec = ecb::Decryptor<Aes128>;
 type Aes192EcbDec = ecb::Decryptor<Aes192>;
 type Aes256EcbDec = ecb::Decryptor<Aes256>;
+type Aes128CfbEnc = cfb_mode::Encryptor<Aes128>;
+type Aes192CfbEnc = cfb_mode::Encryptor<Aes192>;
+type Aes256CfbEnc = cfb_mode::Encryptor<Aes256>;
+type Aes128CfbDec = cfb_mode::Decryptor<Aes128>;
+type Aes192CfbDec = cfb_mode::Decryptor<Aes192>;
+type Aes256CfbDec = cfb_mode::Decryptor<Aes256>;
+type Aes128Ofb = ofb::Ofb<Aes128>;
+type Aes192Ofb = ofb::Ofb<Aes192>;
+type Aes256Ofb = ofb::Ofb<Aes256>;
+type Aes128Ctr = Ctr128BE<Aes128>;
+type Aes192Ctr = Ctr128BE<Aes192>;
+type Aes256Ctr = Ctr128BE<Aes256>;
 type Aes128Gcm12 = AesGcm<Aes128, U12>;
 type Aes192Gcm12 = AesGcm<Aes192, U12>;
 type Aes256Gcm12 = AesGcm<Aes256, U12>;
@@ -71,6 +85,9 @@ pub(super) fn encrypt(
     }
     let (mut body, tag) = match mode {
         "CBC" => (encrypt_cbc(input, params.key, &iv, no_padding)?, None),
+        "CFB" => (encrypt_cfb(input, params.key, &iv)?, None),
+        "OFB" => (crypt_ofb(input, params.key, &iv)?, None),
+        "CTR" => (crypt_ctr(input, params.key, &iv)?, None),
         "ECB" => (encrypt_ecb(input, params.key, no_padding)?, None),
         "GCM" => {
             let (cipher, tag) = encrypt_gcm(input, params.key, &iv, params.aad)?;
@@ -104,6 +121,9 @@ pub(super) fn decrypt(
     let iv = normalize_iv(params.iv, mode)?;
     let plain = match mode {
         "CBC" => decrypt_cbc(input, params.key, &iv, no_padding)?,
+        "CFB" => decrypt_cfb(input, params.key, &iv)?,
+        "OFB" => crypt_ofb(input, params.key, &iv)?,
+        "CTR" => crypt_ctr(input, params.key, &iv)?,
         "ECB" => decrypt_ecb(input, params.key, no_padding)?,
         "GCM" => decrypt_gcm(input, params.key, &iv, params.tag, params.aad)?,
         _ => return Err(failed(INVALID_MODE)),
@@ -142,8 +162,12 @@ fn latin1(bytes: &[u8]) -> String {
 
 fn parse_mode(mode: &str) -> Result<(&str, bool), OperationError> {
     if let Some(base) = mode.strip_suffix("/NoPadding") {
-        Ok((base, true))
-    } else if matches!(mode, "CBC" | "ECB" | "GCM") {
+        if matches!(base, "CBC" | "ECB") {
+            Ok((base, true))
+        } else {
+            Err(failed(INVALID_MODE))
+        }
+    } else if matches!(mode, "CBC" | "CFB" | "OFB" | "CTR" | "ECB" | "GCM") {
         Ok((mode, false))
     } else {
         Err(failed(INVALID_MODE))
@@ -340,6 +364,50 @@ fn decrypt_ecb(input: &[u8], key: &[u8], no_padding: bool) -> Result<Vec<u8>, Op
         _ => return Err(failed(INVALID_KEY)),
     };
     Ok(out)
+}
+
+fn encrypt_cfb(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
+    let mut buffer = input.to_vec();
+    match key.len() {
+        16 => Aes128CfbEnc::new(key.into(), iv.into()).encrypt(&mut buffer),
+        24 => Aes192CfbEnc::new(key.into(), iv.into()).encrypt(&mut buffer),
+        32 => Aes256CfbEnc::new(key.into(), iv.into()).encrypt(&mut buffer),
+        _ => return Err(failed(INVALID_KEY)),
+    }
+    Ok(buffer)
+}
+
+fn decrypt_cfb(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
+    let mut buffer = input.to_vec();
+    match key.len() {
+        16 => Aes128CfbDec::new(key.into(), iv.into()).decrypt(&mut buffer),
+        24 => Aes192CfbDec::new(key.into(), iv.into()).decrypt(&mut buffer),
+        32 => Aes256CfbDec::new(key.into(), iv.into()).decrypt(&mut buffer),
+        _ => return Err(failed(INVALID_KEY)),
+    }
+    Ok(buffer)
+}
+
+fn crypt_ofb(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
+    let mut buffer = input.to_vec();
+    match key.len() {
+        16 => Aes128Ofb::new(key.into(), iv.into()).apply_keystream(&mut buffer),
+        24 => Aes192Ofb::new(key.into(), iv.into()).apply_keystream(&mut buffer),
+        32 => Aes256Ofb::new(key.into(), iv.into()).apply_keystream(&mut buffer),
+        _ => return Err(failed(INVALID_KEY)),
+    }
+    Ok(buffer)
+}
+
+fn crypt_ctr(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
+    let mut buffer = input.to_vec();
+    match key.len() {
+        16 => Aes128Ctr::new(key.into(), iv.into()).apply_keystream(&mut buffer),
+        24 => Aes192Ctr::new(key.into(), iv.into()).apply_keystream(&mut buffer),
+        32 => Aes256Ctr::new(key.into(), iv.into()).apply_keystream(&mut buffer),
+        _ => return Err(failed(INVALID_KEY)),
+    }
+    Ok(buffer)
 }
 
 fn encrypt_gcm(

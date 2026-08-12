@@ -18,7 +18,7 @@ fn text_kinds() -> ValueConstraint {
     ValueConstraint::OneOf(BTreeSet::from([ValueKind::Bytes, ValueKind::Text]))
 }
 
-/// AES encryption (CBC / ECB / GCM).
+/// AES encryption (CBC / CFB / OFB / CTR / ECB / GCM).
 pub struct AesEncrypt {
     spec: OperationSpec,
 }
@@ -32,7 +32,7 @@ impl AesEncrypt {
                 id: "crypto.aes.encrypt@1",
                 display_name: "AES Encrypt",
                 category: "Ciphers",
-                description: "Encrypts data with AES-CBC, AES-ECB, or AES-GCM.",
+                description: "Encrypts data with AES-CBC, CFB, OFB, CTR, ECB, or GCM.",
                 cyberchef_alias: Some("AES Encrypt"),
                 input: text_kinds(),
                 output: text_kinds(),
@@ -49,7 +49,7 @@ impl AesEncrypt {
                     ),
                     text_argument(
                         "mode",
-                        "CBC, ECB, GCM, CBC/NoPadding, or ECB/NoPadding.",
+                        "CBC, CFB, OFB, CTR, ECB, GCM, CBC/NoPadding, or ECB/NoPadding.",
                         "CBC",
                     ),
                     text_argument("input", "Input encoding: Raw or Hex.", "Raw"),
@@ -129,7 +129,7 @@ impl Operation for AesEncrypt {
     }
 }
 
-/// AES decryption (CBC / ECB / GCM).
+/// AES decryption (CBC / CFB / OFB / CTR / ECB / GCM).
 pub struct AesDecrypt {
     spec: OperationSpec,
 }
@@ -143,7 +143,7 @@ impl AesDecrypt {
                 id: "crypto.aes.decrypt@1",
                 display_name: "AES Decrypt",
                 category: "Ciphers",
-                description: "Decrypts data with AES-CBC, AES-ECB, or AES-GCM.",
+                description: "Decrypts data with AES-CBC, CFB, OFB, CTR, ECB, or GCM.",
                 cyberchef_alias: Some("AES Decrypt"),
                 input: text_kinds(),
                 output: text_kinds(),
@@ -165,7 +165,7 @@ impl AesDecrypt {
                     ),
                     text_argument(
                         "mode",
-                        "CBC, ECB, GCM, CBC/NoPadding, or ECB/NoPadding.",
+                        "CBC, CFB, OFB, CTR, ECB, GCM, CBC/NoPadding, or ECB/NoPadding.",
                         "CBC",
                     ),
                     text_argument("input", "Input encoding: Hex or Raw.", "Hex"),

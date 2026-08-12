@@ -83,6 +83,7 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `MD5` | bytes | UTF-8 text | none |
 | `SHA1` | bytes | UTF-8 text | rounds (full 80 only) |
 | `SHA2` | bytes | UTF-8 text | size, rounds (full defaults only) |
+| `SHA3` | bytes | UTF-8 text | size 224/256/384/512 |
 | `HMAC` | bytes | UTF-8 text | toggleString key, hash function |
 | `Gzip` | bytes | bytes | compression type, filename, comment, header CRC |
 | `Zlib Deflate` | bytes | bytes | compression type |
@@ -102,6 +103,10 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Fang URL` | text | UTF-8 text | restore dots/hxxp/slashes |
 | `AES Encrypt` | text/bytes | text/bytes | key, IV, mode, I/O formats, AAD, include IV |
 | `AES Decrypt` | text/bytes | text/bytes | key, IV, mode, tag, AAD, IV-from-input |
+| `AES Key Wrap` | text/bytes | text/bytes | KEK, 8-byte IV, I/O formats |
+| `AES Key Unwrap` | text/bytes | text/bytes | KEK, 8-byte IV, I/O formats |
+| `Derive PBKDF2 key` | ignored | UTF-8 hex text | passphrase, key size bits, iterations, hash, salt |
+| `Scrypt` | text/bytes | UTF-8 hex text | salt, N, r, p, key length |
 | `RC4` | text/bytes | text/bytes | passphrase, I/O formats |
 | `XOR Brute Force` | bytes | UTF-8 text | key length, sample, scheme, crib |
 
@@ -135,7 +140,7 @@ reference processes into valid bytes, including its observable quirks:
   text; Simple and Extended modes escape the pattern before matching.
   Regex mode uses a Rust automata engine and may diverge from XRegExp for
   exotic Unicode property classes.
-- Hash digests (`MD5`, `SHA1`, `SHA2`, `HMAC`) emit lower-case hex. Reduced
+- Hash digests (`MD5`, `SHA1`, `SHA2`, `SHA3`, `HMAC`) emit lower-case hex. Reduced
   SHA round counts are rejected with stable `hash.unsupported_rounds` codes;
   only the full CyberChef defaults are implemented.
 - `Gzip` / `Zlib Deflate` produce interoperable streams that inflate correctly;
@@ -148,9 +153,15 @@ reference processes into valid bytes, including its observable quirks:
   scanner rather than the full browser regex.
 - `Defang URL` / `Fang URL` follow the same substitution order as CyberChef
   (`http`→`hxxp`, `.`→`[.]`, `://`→`[://]` and the reverse).
-- AES supports CBC/ECB (PKCS#7 and NoPadding) and GCM. CFB/OFB/CTR are rejected
-  with `crypto.aes.invalid_mode`. Empty IV becomes 16 null bytes. GCM Hex
-  output appends `\n\nTag: <hex>` like the reference.
+- AES supports CBC/CFB/OFB/CTR/ECB (PKCS#7 and NoPadding for CBC/ECB) and GCM.
+  Empty IV becomes 16 null bytes. GCM Hex output appends `\n\nTag: <hex>` like
+  the reference. Stream modes use 128-bit feedback / big-endian CTR.
+- `AES Key Wrap` / `AES Key Unwrap` implement RFC 3394 with a configurable
+  8-byte IV (default `a6a6a6a6a6a6a6a6`).
+- `Derive PBKDF2 key` is deterministic only: empty salt is rejected with
+  `crypto.pbkdf2.empty_salt` (CyberChef would generate a random salt). Key size
+  is in bits and must be a positive multiple of 8.
+- `Scrypt` accepts empty salt (deterministic). `N` must be a power of two ≥ 2.
 - RC4 and AES carry `legacy` / `unsafe` classifications where appropriate.
 - `XOR Brute Force` enumerates keys `1..256^n-1` (never the zero key), matching
   the reference; key length is limited to 1..=2.

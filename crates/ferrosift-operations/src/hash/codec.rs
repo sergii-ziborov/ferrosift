@@ -4,11 +4,13 @@ use ferrosift_core::{OperationContext, OperationError};
 use md5::{Digest as _, Md5};
 use sha1::Sha1;
 use sha2::{Sha224, Sha256, Sha384, Sha512, Sha512_224, Sha512_256};
+use sha3::{Sha3_224, Sha3_256, Sha3_384, Sha3_512};
 
 use crate::failure::failed;
 use crate::hex_util::to_hex_lower;
 
 const INVALID_SIZE: &str = "hash.sha2.invalid_size";
+const INVALID_SHA3_SIZE: &str = "hash.sha3.invalid_size";
 const UNSUPPORTED_ROUNDS: &str = "hash.unsupported_rounds";
 
 pub(super) fn md5(input: &[u8], context: &OperationContext<'_>) -> Result<String, OperationError> {
@@ -54,6 +56,23 @@ pub(super) fn sha2(
             return Err(failed(UNSUPPORTED_ROUNDS));
         }
         _ => return Err(failed(INVALID_SIZE)),
+    };
+    context.ensure_active()?;
+    Ok(hex)
+}
+
+pub(super) fn sha3(
+    input: &[u8],
+    size: &str,
+    context: &OperationContext<'_>,
+) -> Result<String, OperationError> {
+    context.ensure_active()?;
+    let hex = match size {
+        "224" => to_hex_lower(&Sha3_224::digest(input)),
+        "256" => to_hex_lower(&Sha3_256::digest(input)),
+        "384" => to_hex_lower(&Sha3_384::digest(input)),
+        "512" => to_hex_lower(&Sha3_512::digest(input)),
+        _ => return Err(failed(INVALID_SHA3_SIZE)),
     };
     context.ensure_active()?;
     Ok(hex)
