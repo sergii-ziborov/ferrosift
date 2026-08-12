@@ -899,6 +899,184 @@
         "68656c6c6f20666572726f"
       ],
       "stopped_after": 1
+    },
+    {
+      "name": "md5_hello",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "MD5",
+          "args": []
+        }
+      ],
+      "outputs_hex": [
+        "3564343134303261626334623261373662393731396439313130313763353932"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "sha1_hello",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "SHA1",
+          "args": [
+            80
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "61616634633631646463633565386132646162656465306633623438326364396165613934333464"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "sha2_256_hello",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "SHA2",
+          "args": [
+            "256",
+            64,
+            160
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "32636632346462613566623061333065323665383362326163356239653239653162313631653563316661373432356537333034333336323933386239383234"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "hmac_sha256_utf8_key",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "HMAC",
+          "args": [
+            {
+              "option": "UTF8",
+              "string": "key"
+            },
+            "SHA256"
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "39333037623362393135656662353137316666313464386362353566626363373938633663306566313435366436366465643161366161373233613538623762"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "zlib_inflate_hello",
+      "input": {
+        "kind": "bytes",
+        "hex": "789c0580b105000000c3ae2d1d42fedfe20303062c0215"
+      },
+      "recipe": [
+        {
+          "op": "Zlib Inflate",
+          "args": [
+            0,
+            0,
+            "Adaptive",
+            false,
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "68656c6c6f"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "html_entity_round_trip",
+      "input": {
+        "kind": "text",
+        "value": "a & b <c>"
+      },
+      "recipe": [
+        {
+          "op": "To HTML Entity",
+          "args": [
+            false,
+            "Named entities"
+          ]
+        },
+        {
+          "op": "From HTML Entity",
+          "args": []
+        }
+      ],
+      "outputs_hex": [
+        "612026616d703b206220266c743b632667743b",
+        "6120262062203c633e"
+      ],
+      "stopped_after": 2
+    },
+    {
+      "name": "rot13_hello_world",
+      "input": {
+        "kind": "bytes",
+        "hex": "48656c6c6f2c20576f726c6421"
+      },
+      "recipe": [
+        {
+          "op": "ROT13",
+          "args": [
+            true,
+            true,
+            false,
+            13
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "55727979622c204a6265797121"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "charcode_round_trip",
+      "input": {
+        "kind": "text",
+        "value": "Hi"
+      },
+      "recipe": [
+        {
+          "op": "To Charcode",
+          "args": [
+            "Space",
+            16
+          ]
+        },
+        {
+          "op": "From Charcode",
+          "args": [
+            "Space",
+            16
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "3438203639",
+        "4869"
+      ],
+      "stopped_after": 2
     }
   ],
   "unsupported": {

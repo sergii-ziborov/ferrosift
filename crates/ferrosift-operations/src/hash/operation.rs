@@ -1,0 +1,198 @@
+use alloc::vec;
+
+use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_model::{
+    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
+};
+
+use crate::args::{integer_argument, integer_value, text_argument, text_value};
+use crate::spec::{SpecDefinition, build};
+
+use super::codec;
+
+/// MD5 message digest (hex lower-case).
+pub struct Md5 {
+    spec: OperationSpec,
+}
+
+impl Md5 {
+    /// Creates the MD5 operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "hash.md5@1",
+                display_name: "MD5",
+                category: "Hashing",
+                description: "Computes the MD5 digest as lower-case hex.",
+                cyberchef_alias: Some("MD5"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![],
+                inverse: None,
+            }),
+        }
+    }
+}
+
+impl Default for Md5 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Md5 {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        _arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let Value::Bytes(input) = input else {
+            return Err(OperationError::InvalidArguments);
+        };
+        Ok(text(codec::md5(&input, context)?))
+    }
+}
+
+/// SHA-1 message digest (full 80 rounds).
+pub struct Sha1 {
+    spec: OperationSpec,
+}
+
+impl Sha1 {
+    /// Creates the SHA-1 operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "hash.sha1@1",
+                display_name: "SHA1",
+                category: "Hashing",
+                description: "Computes the SHA-1 digest as lower-case hex.",
+                cyberchef_alias: Some("SHA1"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![integer_argument(
+                    "rounds",
+                    "Number of SHA-1 rounds (only the full 80 is supported).",
+                    80,
+                )],
+                inverse: None,
+            }),
+        }
+    }
+}
+
+impl Default for Sha1 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Sha1 {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let Value::Bytes(input) = input else {
+            return Err(OperationError::InvalidArguments);
+        };
+        Ok(text(codec::sha1(
+            &input,
+            integer_value(arguments, "rounds")?,
+            context,
+        )?))
+    }
+}
+
+/// SHA-2 family digests.
+pub struct Sha2 {
+    spec: OperationSpec,
+}
+
+impl Sha2 {
+    /// Creates the SHA-2 operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "hash.sha2@1",
+                display_name: "SHA2",
+                category: "Hashing",
+                description: "Computes a SHA-2 family digest as lower-case hex.",
+                cyberchef_alias: Some("SHA2"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![
+                    text_argument(
+                        "size",
+                        "Digest size: 224, 256, 384, 512, 512/224, 512/256.",
+                        "256",
+                    ),
+                    integer_argument(
+                        "rounds_256",
+                        "Rounds for SHA-224/256 (only the full 64 is supported).",
+                        64,
+                    ),
+                    integer_argument(
+                        "rounds_512",
+                        "Rounds for SHA-384/512 (only the full 160 is supported).",
+                        160,
+                    ),
+                ],
+                inverse: None,
+            }),
+        }
+    }
+}
+
+impl Default for Sha2 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Sha2 {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let Value::Bytes(input) = input else {
+            return Err(OperationError::InvalidArguments);
+        };
+        Ok(text(codec::sha2(
+            &input,
+            text_value(arguments, "size")?,
+            integer_value(arguments, "rounds_256")?,
+            integer_value(arguments, "rounds_512")?,
+            context,
+        )?))
+    }
+}
+
+fn text(value: alloc::string::String) -> Value {
+    Value::Text(TextValue {
+        text: value,
+        encoding: TextEncoding::Utf8,
+    })
+}

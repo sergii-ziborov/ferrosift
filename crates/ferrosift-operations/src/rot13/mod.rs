@@ -1,4 +1,4 @@
 mod codec;
 mod operation;
 
-pub use operation::Gunzip;
+pub use operation::Rot13;

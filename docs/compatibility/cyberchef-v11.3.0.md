@@ -80,6 +80,18 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `Drop bytes` | bytes | bytes | start, length, per-line |
 | `Head` | text | UTF-8 text | delimiter token, count |
 | `Find / Replace` | text | UTF-8 text | toggleString find, replace, flags |
+| `MD5` | bytes | UTF-8 text | none |
+| `SHA1` | bytes | UTF-8 text | rounds (full 80 only) |
+| `SHA2` | bytes | UTF-8 text | size, rounds (full defaults only) |
+| `HMAC` | bytes | UTF-8 text | toggleString key, hash function |
+| `Gzip` | bytes | bytes | compression type, filename, comment, header CRC |
+| `Zlib Deflate` | bytes | bytes | compression type |
+| `Zlib Inflate` | bytes | bytes | start index (+ ignored buffer knobs) |
+| `To HTML Entity` | text | UTF-8 text | convert-all, named/numeric/hex |
+| `From HTML Entity` | text | UTF-8 text | none |
+| `ROT13` | bytes | bytes | lower/upper/numbers, amount |
+| `To Charcode` | text | UTF-8 text | delimiter, base |
+| `From Charcode` | text | bytes | delimiter, base |
 
 ## Conformance profile
 
@@ -111,6 +123,13 @@ reference processes into valid bytes, including its observable quirks:
   text; Simple and Extended modes escape the pattern before matching.
   Regex mode uses a Rust automata engine and may diverge from XRegExp for
   exotic Unicode property classes.
+- Hash digests (`MD5`, `SHA1`, `SHA2`, `HMAC`) emit lower-case hex. Reduced
+  SHA round counts are rejected with stable `hash.unsupported_rounds` codes;
+  only the full CyberChef defaults are implemented.
+- `Gzip` / `Zlib Deflate` produce interoperable streams that inflate correctly;
+  compressed bytes need not match zlibjs bit-for-bit (mtime/OS/strategy).
+- Named HTML entities cover a common subset; numeric and hex entities are
+  complete for valid code points.
 
 Where the reference produces values outside the byte range (which its node
 API also rejects), decoding fails with a stable `encoding.*` /
