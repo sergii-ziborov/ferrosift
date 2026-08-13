@@ -4,8 +4,32 @@ FerroSift is a pure-Rust runtime for deterministic, local-first data
 transformation recipes. Its portable model and execution engine run on native
 targets and `wasm32-unknown-unknown`.
 
-The built-in registry currently exposes **53 operations** with exact
-CyberChef 11.3.0 aliases where interoperability is declared.
+The built-in **operation registry** currently exposes **53 operations** with
+exact CyberChef 11.3.0 aliases where interoperability is declared.
+
+### Ecosystem place (transform runtime — not lost)
+
+```text
+Weavatrix — code facts
+Weavatrix Loom — capability Registry + compose + compile → Rust
+FerroSift (this) — deterministic ops / recipes
+Realforge — package / deploy artifacts
+```
+
+| FerroSift **is** | FerroSift **is not** |
+| --- | --- |
+| Portable recipe IR + executor + op specs | A **capability interchange Registry** (that is Loom) |
+| Local-first / Wasm transform runtime | A repository indexer (that is Weavatrix) |
+| Optional **source of Implementations** for Loom after conformance | A second WVX project graph |
+| Something Realforge may package into larger products | Agent orchestration (Cortex) |
+
+**Link to Loom:** a FerroSift op or recipe profile may back a Loom
+`Implementation` of a `Capability` once contracts and evidence pass. Do not
+merge FerroSift’s op registry into WVX IR.
+
+Normative Loom boundaries:
+[ADR-0012](https://github.com/sergii-ziborov/weavatrix-loom/blob/main/docs/adr/0012-ecosystem-boundaries.md) ·
+[ecosystem distribution](https://github.com/sergii-ziborov/weavatrix-loom/blob/main/docs/ecosystem-distribution.md).
 
 ## Capabilities
 
