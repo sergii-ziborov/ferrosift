@@ -1,0 +1,7 @@
+# Pinned separately from the workspace root so the benchmarks stay
+# reproducible if this directory is ever split into its own repository.
+# A number measured on a different compiler is a different number.
+[toolchain]
+channel = "1.97.1"
+components = ["clippy", "rustfmt"]
+profile = "minimal"

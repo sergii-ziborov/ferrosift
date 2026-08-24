@@ -33,6 +33,10 @@ function measurements() {
                     arm,
                     size: Number(size),
                     nanoseconds: parsed.median.point_estimate,
+                    // Criterion's own interval, carried through so a reader
+                    // can see the spread rather than trusting one number.
+                    low: parsed.median.confidence_interval.lower_bound,
+                    high: parsed.median.confidence_interval.upper_bound,
                 });
             }
         }
@@ -60,19 +64,36 @@ function tabulate(results) {
         if (!groups.has(result.group)) groups.set(result.group, new Map());
         const sizes = groups.get(result.group);
         if (!sizes.has(result.size)) sizes.set(result.size, new Map());
-        sizes.get(result.size).set(result.arm, result.nanoseconds);
+        sizes.get(result.size).set(result.arm, result);
     }
     return groups;
 }
 
-/** The arm a group is measured against, if it has one. */
-function baselineArm(arms) {
-    return (
-        arms.find(arm => arm.endsWith("-crate")) ??
-        arms.find(arm => arm === "primitive-direct") ??
-        arms.find(arm => arm === "execute-each-call") ??
-        null
+/**
+ * The arm a group is measured against.
+ *
+ * Where several comparison crates implement the same thing, the *fastest* one
+ * is the baseline. Comparing against the slowest available would be choosing
+ * the opponent, and a win chosen that way is not a win.
+ */
+function baselineArm(arms, sizes) {
+    const candidates = arms.filter(
+        arm =>
+            arm.endsWith("-crate") ||
+            arm === "primitive-direct" ||
+            arm === "execute-each-call",
     );
+    if (candidates.length === 0) return null;
+    if (candidates.length === 1) return candidates[0];
+    // Total time across the sweep decides which comparison crate is quicker.
+    const totals = candidates.map(arm => ({
+        arm,
+        total: [...sizes.values()].reduce(
+            (sum, row) => sum + (row.get(arm)?.nanoseconds ?? 0),
+            0,
+        ),
+    }));
+    return totals.reduce((a, b) => (a.total <= b.total ? a : b)).arm;
 }
 
 /** The FerroSift arm in a group. */
@@ -88,33 +109,48 @@ function subjectArm(arms) {
 function renderGroup(name, sizes) {
     const arms = [...new Set([...sizes.values()].flatMap(row => [...row.keys()]))].sort();
     const subject = subjectArm(arms);
-    const baseline = baselineArm(arms);
+    const baseline = baselineArm(arms, sizes);
 
-    const header = ["| Size |", ...arms.map(arm => ` \`${arm}\` |`)].join("");
-    const divider = ["|---:|", ...arms.map(() => "---:|")].join("");
+    const header = ["| Size |", ...arms.map(arm => ` \`${arm}\` |`), " verdict |"].join("");
+    const divider = ["|---:|", ...arms.map(() => "---:|"), "---|"].join("");
     const lines = [`### ${name.replace(/_/g, " / ")}`, "", header, divider];
 
-    const ratios = [];
+    // Every size in the sweep gets a row and a verdict, so a loss is as
+    // visible as a win. Summarising only the favourable end is what makes a
+    // benchmark look chosen.
     for (const size of [...sizes.keys()].sort((a, b) => a - b)) {
         const row = sizes.get(size);
-        const cells = arms.map(arm => (row.has(arm) ? ` ${duration(row.get(arm))} |` : " — |"));
-        lines.push([`| ${bytes(size)} |`, ...cells].join(""));
+        const cells = arms.map(arm =>
+            row.has(arm) ? ` ${duration(row.get(arm).nanoseconds)} |` : " — |",
+        );
+        let verdict = " — |";
         if (subject && baseline && row.has(subject) && row.has(baseline)) {
-            ratios.push({size, ratio: row.get(subject) / row.get(baseline)});
+            verdict = ` ${describe(row.get(subject).nanoseconds / row.get(baseline).nanoseconds)} |`;
         }
+        lines.push([`| ${bytes(size)} |`, ...cells, verdict].join(""));
     }
     lines.push("");
 
-    if (ratios.length > 0) {
-        const worst = ratios.reduce((a, b) => (a.ratio > b.ratio ? a : b));
-        const best = ratios.reduce((a, b) => (a.ratio < b.ratio ? a : b));
+    if (subject && baseline) {
         lines.push(
-            `\`${subject}\` against \`${baseline}\`: ` +
-                `${describe(best.ratio)} at ${bytes(best.size)}, ` +
-                `${describe(worst.ratio)} at ${bytes(worst.size)}.`,
+            `Verdict compares \`${subject}\` against \`${baseline}\`, the fastest`,
+            "comparison arm in this group.",
             "",
         );
     }
+    lines.push("<details><summary>Confidence intervals</summary>", "");
+    lines.push("| Size | Arm | Median | 95% interval |", "|---:|---|---:|---|");
+    for (const size of [...sizes.keys()].sort((a, b) => a - b)) {
+        for (const arm of arms) {
+            const cell = sizes.get(size).get(arm);
+            if (!cell) continue;
+            lines.push(
+                `| ${bytes(size)} | \`${arm}\` | ${duration(cell.nanoseconds)} | ` +
+                    `${duration(cell.low)} – ${duration(cell.high)} |`,
+            );
+        }
+    }
+    lines.push("", "</details>", "");
     return lines;
 }
 
@@ -125,7 +161,7 @@ function describe(ratio) {
     return "even";
 }
 
-export function render(results) {
+export function render(results, environment) {
     const groups = tabulate(results);
     const lines = [
         "# Benchmarks",
@@ -133,6 +169,58 @@ export function render(results) {
         "Generated by `cargo xtask bench report` from Criterion's own estimates.",
         "Every figure is a median; nothing here is selected, and a result that",
         "goes against FerroSift is printed the same way as one that does not.",
+        "",
+        "## Why you should believe this",
+        "",
+        "A benchmark published by the project it flatters is worth nothing",
+        "unless it is arranged so that rigging it would be visible. Six things",
+        "make that true here.",
+        "",
+        "**Every size is printed, with a verdict on each row.** There is no",
+        "summary that quotes the favourable end of a sweep. If FerroSift loses",
+        "at 16 bytes and wins at 1 MiB, both rows say so in the same column.",
+        "",
+        "**The baseline is the fastest available competitor, not a convenient",
+        "one.** Where two crates do the same job — `hex` and `faster-hex` —",
+        "both are measured and the quicker one is what the verdict compares",
+        "against. This rule was added after an earlier run reported a win over",
+        "`hex` while `faster-hex` existed and had not been tried.",
+        "",
+        "**Competitors are called through their documented fast path**, at",
+        "exactly pinned versions, with no settings changed to slow them down.",
+        "",
+        "**FerroSift is handicapped, not helped.** It runs through its full",
+        "public surface — registry lookup, argument resolution, budget checks —",
+        "and additionally copies its input on every iteration. Reaching past",
+        "that to the raw codec would compare two different amounts of work.",
+        "",
+        "**The inputs are deterministic and the generator is in this",
+        "repository**, so anyone can produce the same bytes and check.",
+        "",
+        "**The raw estimates are committed** next to this file as",
+        "`benchmarks.json`, and the machine and compiler are recorded below. A",
+        "reader who does not trust the prose can recompute every ratio from the",
+        "data, or re-run the whole thing with one command.",
+        "",
+        environment ? "## Measured on" : "",
+        environment ? "" : "",
+        environment ? "| | |" : "",
+        environment ? "|---|---|" : "",
+        environment ? `| Compiler | ${environment.rustc.split("\\n")[0]} |` : "",
+        environment ? `| Platform | ${environment.os} / ${environment.arch} |` : "",
+        environment ? `| CPU | ${environment.cpu} |` : "",
+        environment ? "" : "",
+        "## Reproducing",
+        "",
+        "```bash",
+        "cargo xtask bench all",
+        "```",
+        "",
+        "The toolchain is pinned in `bench/rust-toolchain.toml`, every",
+        "comparison crate is pinned to an exact version, `bench/Cargo.lock` is",
+        "committed, and the optimisation settings are written out in",
+        "`bench/Cargo.toml` rather than inherited. Timings will differ between",
+        "machines; ratios should not.",
         "",
         "## What is being compared",
         "",
@@ -195,11 +283,27 @@ export function render(results) {
     for (const [name, sizes] of [...groups].sort()) {
         lines.push(...renderGroup(name, sizes));
     }
-    return `${lines.join("\n")}\n`;
+    // The blank strings above come from the optional environment block.
+    return `${lines.filter((line, index) => line !== "" || lines[index - 1] !== "").join("\n")}\n`;
+}
+
+/** Reads the environment the run recorded, if there is one. */
+function environment() {
+    const path_ = path.join(repoRoot, "bench/target/environment.json");
+    if (!existsSync(path_)) return null;
+    return JSON.parse(readFileSync(path_, "utf8"));
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const results = measurements();
-    writeFileSync(reportPath, render(results), "utf8");
+    const recorded = environment();
+    writeFileSync(reportPath, render(results, recorded), "utf8");
+    // The raw estimates travel with the report so a reader can recompute
+    // every ratio in it rather than taking the prose on trust.
+    writeFileSync(
+        path.join(repoRoot, "docs/benchmarks.json"),
+        `${JSON.stringify({environment: recorded, measurements: results}, null, 1)}\n`,
+        "utf8",
+    );
     process.stdout.write(`wrote ${results.length} measurements to ${reportPath}\n`);
 }

@@ -96,8 +96,9 @@ fn base64_decode(criterion: &mut Criterion) {
 
 fn hex_encode(criterion: &mut Criterion) {
     let engine = engine().expect("engine");
-    // The `hex` crate emits contiguous lower-case hex, so FerroSift is asked
-    // for the same shape: no delimiter and no line wrapping.
+    // Both crates emit contiguous lower-case hex, so FerroSift is asked for
+    // the same shape: no delimiter and no line wrapping. Anything else would
+    // be comparing two different amounts of work.
     let recipe = recipe(
         "encoding.hex.encode@1",
         &[("delimiter", text("None")), ("bytes_per_line", integer(0))],
@@ -118,6 +119,16 @@ fn hex_encode(criterion: &mut Criterion) {
         group.bench_with_input(BenchmarkId::new("hex-crate", size), &input, |bencher, input| {
             bencher.iter(|| black_box(hex::encode(black_box(input))));
         });
+        // `faster-hex` is the SIMD implementation of the same thing. It is
+        // here because reporting a win over `hex` while a quicker crate exists
+        // would be choosing the opponent.
+        group.bench_with_input(
+            BenchmarkId::new("faster-hex-crate", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| black_box(faster_hex::hex_string(black_box(input))));
+            },
+        );
     }
     group.finish();
 }

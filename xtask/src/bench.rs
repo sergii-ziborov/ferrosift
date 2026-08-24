@@ -52,7 +52,60 @@ fn measure() -> ExitCode {
             return ExitCode::FAILURE;
         }
     }
-    ExitCode::SUCCESS
+    record_environment(&directory)
+}
+
+/// Records what the numbers were measured on.
+///
+/// A timing without a machine behind it is not evidence of anything, and a
+/// reader cannot tell a real win from a lucky one without knowing the
+/// compiler and the CPU. This is written beside the raw results so the report
+/// can state both.
+fn record_environment(directory: &str) -> ExitCode {
+    let Some(rustc) = capture("rustc", &["-vV"]) else {
+        eprintln!("could not read the compiler version");
+        return ExitCode::FAILURE;
+    };
+    let cpu = std::env::var("PROCESSOR_IDENTIFIER")
+        .ok()
+        .or_else(read_proc_cpuinfo)
+        .unwrap_or_else(|| String::from("unknown"));
+
+    let escape = |value: &str| value.replace('\\', "\\\\").replace('"', "\\\"");
+    let document = format!(
+        "{{\n  \"rustc\": \"{}\",\n  \"os\": \"{}\",\n  \"arch\": \"{}\",\n  \"cpu\": \"{}\"\n}}\n",
+        escape(rustc.trim()).replace('\n', "\\n"),
+        std::env::consts::OS,
+        std::env::consts::ARCH,
+        escape(cpu.trim()),
+    );
+    let path = Path::new(directory).join("target").join("environment.json");
+    match std::fs::write(&path, document) {
+        Ok(()) => ExitCode::SUCCESS,
+        Err(error) => {
+            eprintln!("could not write {}: {error}", path.display());
+            ExitCode::FAILURE
+        }
+    }
+}
+
+fn capture(program: &str, arguments: &[&str]) -> Option<String> {
+    let output = std::process::Command::new(program)
+        .args(arguments)
+        .output()
+        .ok()?;
+    output
+        .status
+        .success()
+        .then(|| String::from_utf8_lossy(&output.stdout).into_owned())
+}
+
+fn read_proc_cpuinfo() -> Option<String> {
+    let text = std::fs::read_to_string("/proc/cpuinfo").ok()?;
+    text.lines()
+        .find(|line| line.starts_with("model name"))
+        .and_then(|line| line.split_once(':'))
+        .map(|(_, value)| value.trim().to_owned())
 }
 
 fn report() -> ExitCode {

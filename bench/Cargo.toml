@@ -24,17 +24,31 @@ ferrosift-model = { path = "../crates/ferrosift-model" }
 ferrosift-operations = { path = "../crates/ferrosift-operations" }
 
 [dev-dependencies]
-criterion = { version = "0.5.1", default-features = false, features = ["cargo_bench_support"] }
+criterion = { version = "=0.5.1", default-features = false, features = ["cargo_bench_support"] }
 
-# Comparison targets. Each is a single-algorithm crate — a complement, not an
-# alternative to this library — chosen because it is the fastest widely used
-# Rust implementation of that one thing.
-base64 = "0.22.1"
-crc32fast = "1.4.2"
-hex = "0.4.3"
-md-5 = "0.10.6"
-sha2 = "0.10.9"
-strsim = "0.11.1"
+# Comparison targets, pinned exactly rather than by range: a benchmark that
+# silently changes what it measured is not a benchmark.
+#
+# Where more than one crate implements the same thing, the faster one is
+# included too. Beating the slower of two available crates and reporting that
+# as a win is the thing this file exists to make impossible — so `hex` and
+# `faster-hex` are both here, and whichever beats FerroSift is printed.
+base64 = "=0.22.1"
+crc32fast = "=1.4.2"
+faster-hex = "=0.10.0"
+hex = "=0.4.3"
+md-5 = "=0.10.6"
+sha2 = "=0.10.9"
+strsim = "=0.11.1"
+
+# Fixed rather than inherited, so the numbers do not move when a cargo
+# default does. Optimisation settings are part of a measurement.
+[profile.bench]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+debug = false
+panic = "unwind"
 
 [[bench]]
 name = "encoding"
