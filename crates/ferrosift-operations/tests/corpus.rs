@@ -17,30 +17,29 @@ mod support;
 
 /// Aliased operations deliberately absent from the byte-for-byte corpus, each
 /// with a reason that keeps the absence honest rather than silent.
-const CORPUS_EXEMPTIONS: &[(&str, &str)] = &[
-    (
-        "Gzip",
-        "compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned",
-    ),
-    (
-        "Zlib Deflate",
-        "compressor output is interoperable; Zlib Inflate is corpus-pinned",
-    ),
-    (
-        "Raw Deflate",
-        "compressor output is interoperable; Raw Inflate is corpus-pinned",
-    ),
-    (
-        "Bzip2 Compress",
-        "compressor output is interoperable; Bzip2 Decompress is differential-pinned",
-    ),
-    (
-        "Bzip2 Decompress",
-        "no Node bzip2 compressor to sample fresh inputs; pinned in differential.json",
-    ),
-    ("Fork", "flow-control map; pinned in conformance_fork.rs"),
-    ("Merge", "flow-control join; pinned in conformance_fork.rs"),
-];
+///
+/// The list lives in `docs/compatibility/exemptions.json` so that this gate and
+/// the published compatibility ledger cannot disagree about what is exempt.
+const EXEMPTIONS_JSON: &str = include_str!("../../../docs/compatibility/exemptions.json");
+
+#[derive(serde::Deserialize)]
+struct ExemptionFile {
+    exemptions: Vec<Exemption>,
+}
+
+#[derive(serde::Deserialize)]
+struct Exemption {
+    alias: String,
+}
+
+fn corpus_exemptions() -> BTreeSet<String> {
+    let file: ExemptionFile =
+        serde_json::from_str(EXEMPTIONS_JSON).expect("exemptions.json must be valid JSON");
+    file.exemptions
+        .into_iter()
+        .map(|exemption| exemption.alias)
+        .collect()
+}
 
 #[test]
 fn corpus_matches_reference_bytes_at_every_prefix() {
@@ -72,7 +71,7 @@ fn every_cyberchef_alias_is_covered_or_explicitly_exempt() {
         }
     }
 
-    let exemptions: BTreeMap<&str, &str> = CORPUS_EXEMPTIONS.iter().copied().collect();
+    let exemptions = corpus_exemptions();
     let registry = support::registry();
     let mut aliases: BTreeSet<String> = BTreeSet::new();
     for specification in registry.catalog() {
@@ -85,7 +84,7 @@ fn every_cyberchef_alias_is_covered_or_explicitly_exempt() {
 
     for alias in &aliases {
         let covered = coverage.contains_key(alias.as_str());
-        let exempt = exemptions.contains_key(alias.as_str());
+        let exempt = exemptions.contains(alias.as_str());
         assert!(
             covered || exempt,
             "CyberChef alias `{alias}` has no corpus coverage and no documented exemption"
@@ -96,9 +95,9 @@ fn every_cyberchef_alias_is_covered_or_explicitly_exempt() {
         );
     }
 
-    for exempt in exemptions.keys() {
+    for exempt in &exemptions {
         assert!(
-            aliases.contains(*exempt),
+            aliases.contains(exempt),
             "exemption `{exempt}` names an operation that is no longer registered"
         );
     }

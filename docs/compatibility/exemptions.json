@@ -1,0 +1,52 @@
+{
+  "comment": [
+    "Aliased operations that the automatic corpus deliberately does not cover.",
+    "This is the single source of truth: the corpus coverage gate in",
+    "crates/ferrosift-operations/tests/corpus.rs reads it to decide what may be",
+    "absent, and tools/ledger/generate.mjs reads it to label the ledger. Both",
+    "reject an entry that names an unregistered operation or one the corpus now",
+    "covers, so an exemption cannot outlive its reason.",
+    "",
+    "scope 'elsewhere' means the operation is byte-pinned, just not by the",
+    "automatic corpus. scope 'interoperable' means it is deliberately not",
+    "byte-pinned at all, because the reference output is one valid encoding",
+    "among several rather than the only one."
+  ],
+  "exemptions": [
+    {
+      "alias": "Gzip",
+      "scope": "interoperable",
+      "reason": "compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned"
+    },
+    {
+      "alias": "Zlib Deflate",
+      "scope": "interoperable",
+      "reason": "compressor output is interoperable; Zlib Inflate is corpus-pinned"
+    },
+    {
+      "alias": "Raw Deflate",
+      "scope": "interoperable",
+      "reason": "compressor output is interoperable; Raw Inflate is corpus-pinned"
+    },
+    {
+      "alias": "Bzip2 Compress",
+      "scope": "interoperable",
+      "reason": "compressor output is interoperable; Bzip2 Decompress is differential-pinned"
+    },
+    {
+      "alias": "Bzip2 Decompress",
+      "scope": "elsewhere",
+      "reason": "no Node bzip2 compressor to sample fresh inputs; pinned in differential.json"
+    },
+    {
+      "alias": "Fork",
+      "scope": "elsewhere",
+      "reason": "flow-control map; pinned in conformance_fork.rs"
+    },
+    {
+      "alias": "Merge",
+      "scope": "elsewhere",
+      "reason": "flow-control join; pinned in conformance_fork.rs"
+    }
+  ]
+}

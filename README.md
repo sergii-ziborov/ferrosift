@@ -8,18 +8,26 @@ The design principle is precision over breadth: **if FerroSift says an
 operation is compatible, it is compatible.** Compatibility is measured against
 a pinned CyberChef v11.3.0 checkout, not asserted.
 
+<!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 68 | 66 | **60** | **583** |
+| 68 | 66 | **62** | **616** |
+<!-- ledger:end -->
 
-The six aliased operations that are not byte-pinned are structurally exempt,
-never silently skipped: four compressors, whose output is interoperable rather
-than bit-identical (their inverse direction *is* byte-pinned), and the
-`Fork` / `Merge` flow-control pair, covered by dedicated tests. A coverage gate
-fails the build if any aliased operation lacks both corpus cases and a
-documented exemption. See
+These numbers are generated, not typed: `cargo xtask ledger check` regenerates
+them from the catalog and the committed fixtures on every CI run and fails if
+this table disagrees.
+
+The four aliased operations that are not byte-pinned are structurally exempt,
+never silently skipped: they are compressors whose output is interoperable
+rather than bit-identical, and their inverse direction *is* byte-pinned. A
+coverage gate fails the build if any aliased operation lacks both corpus cases
+and a documented exemption, reading the same
+[exemption list](docs/compatibility/exemptions.json) the ledger does. See the
+[compatibility ledger](docs/compatibility/ledger.md) for the per-operation
+table, and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
-for the alias tables and every intentional divergence.
+for every intentional divergence.
 
 ### Ecosystem place (transform runtime — not lost)
 

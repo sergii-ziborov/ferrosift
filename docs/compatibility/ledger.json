@@ -1,0 +1,908 @@
+{
+  "reference": {
+    "name": "CyberChef",
+    "version": "11.3.0"
+  },
+  "totals": {
+    "operations": 68,
+    "aliased": 66,
+    "exact": 62,
+    "interoperable": 4,
+    "unverified": 0,
+    "native": 2,
+    "pinned_cases": 616
+  },
+  "operations": [
+    {
+      "id": "analysis.suggest@1",
+      "display_name": "Suggest recipe",
+      "category": "Analysis",
+      "reference_alias": null,
+      "feature": "analysis",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "native"
+    },
+    {
+      "id": "compression.bzip2.compress@1",
+      "display_name": "Bzip2 Compress",
+      "category": "Compression",
+      "reference_alias": "Bzip2 Compress",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "interoperable",
+      "note": "compressor output is interoperable; Bzip2 Decompress is differential-pinned"
+    },
+    {
+      "id": "compression.bzip2.decompress@1",
+      "display_name": "Bzip2 Decompress",
+      "category": "Compression",
+      "reference_alias": "Bzip2 Decompress",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 1,
+      "status": "exact",
+      "note": "no Node bzip2 compressor to sample fresh inputs; pinned in differential.json"
+    },
+    {
+      "id": "compression.gunzip@1",
+      "display_name": "Gunzip",
+      "category": "Compression",
+      "reference_alias": "Gunzip",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "compression.gzip@1",
+      "display_name": "Gzip",
+      "category": "Compression",
+      "reference_alias": "Gzip",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "interoperable",
+      "note": "compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned"
+    },
+    {
+      "id": "compression.raw.deflate@1",
+      "display_name": "Raw Deflate",
+      "category": "Compression",
+      "reference_alias": "Raw Deflate",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "interoperable",
+      "note": "compressor output is interoperable; Raw Inflate is corpus-pinned"
+    },
+    {
+      "id": "compression.raw.inflate@1",
+      "display_name": "Raw Inflate",
+      "category": "Compression",
+      "reference_alias": "Raw Inflate",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "compression.zlib.deflate@1",
+      "display_name": "Zlib Deflate",
+      "category": "Compression",
+      "reference_alias": "Zlib Deflate",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "interoperable",
+      "note": "compressor output is interoperable; Zlib Inflate is corpus-pinned"
+    },
+    {
+      "id": "compression.zlib.inflate@1",
+      "display_name": "Zlib Inflate",
+      "category": "Compression",
+      "reference_alias": "Zlib Inflate",
+      "feature": "compression",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "core.identity@1",
+      "display_name": "Identity",
+      "category": "Core",
+      "reference_alias": null,
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "native"
+    },
+    {
+      "id": "crypto.aes.decrypt@1",
+      "display_name": "AES Decrypt",
+      "category": "Ciphers",
+      "reference_alias": "AES Decrypt",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.aes.encrypt@1",
+      "display_name": "AES Encrypt",
+      "category": "Ciphers",
+      "reference_alias": "AES Encrypt",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.aes_kw.unwrap@1",
+      "display_name": "AES Key Unwrap",
+      "category": "Ciphers",
+      "reference_alias": "AES Key Unwrap",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 1,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.aes_kw.wrap@1",
+      "display_name": "AES Key Wrap",
+      "category": "Ciphers",
+      "reference_alias": "AES Key Wrap",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.pbkdf2@1",
+      "display_name": "Derive PBKDF2 key",
+      "category": "Ciphers",
+      "reference_alias": "Derive PBKDF2 key",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.rc4@1",
+      "display_name": "RC4",
+      "category": "Ciphers",
+      "reference_alias": "RC4",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.scrypt@1",
+      "display_name": "Scrypt",
+      "category": "Crypto",
+      "reference_alias": "Scrypt",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "data.drop_bytes@1",
+      "display_name": "Drop bytes",
+      "category": "Data",
+      "reference_alias": "Drop bytes",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "data.head@1",
+      "display_name": "Head",
+      "category": "Data",
+      "reference_alias": "Head",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "data.take_bytes@1",
+      "display_name": "Take bytes",
+      "category": "Data",
+      "reference_alias": "Take bytes",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "defang.fang_url@1",
+      "display_name": "Fang URL",
+      "category": "Defang",
+      "reference_alias": "Fang URL",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "defang.ip@1",
+      "display_name": "Defang IP Addresses",
+      "category": "Defang",
+      "reference_alias": "Defang IP Addresses",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "defang.url@1",
+      "display_name": "Defang URL",
+      "category": "Defang",
+      "reference_alias": "Defang URL",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 3,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base32.decode@1",
+      "display_name": "From Base32",
+      "category": "Encoding",
+      "reference_alias": "From Base32",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 28,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base32.encode@1",
+      "display_name": "To Base32",
+      "category": "Encoding",
+      "reference_alias": "To Base32",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 27,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base45.decode@1",
+      "display_name": "From Base45",
+      "category": "Encoding",
+      "reference_alias": "From Base45",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base45.encode@1",
+      "display_name": "To Base45",
+      "category": "Encoding",
+      "reference_alias": "To Base45",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base58.decode@1",
+      "display_name": "From Base58",
+      "category": "Encoding",
+      "reference_alias": "From Base58",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 25,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base58.encode@1",
+      "display_name": "To Base58",
+      "category": "Encoding",
+      "reference_alias": "To Base58",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 25,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base64.decode@1",
+      "display_name": "From Base64",
+      "category": "Encoding",
+      "reference_alias": "From Base64",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 28,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base64.encode@1",
+      "display_name": "To Base64",
+      "category": "Encoding",
+      "reference_alias": "To Base64",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 29,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base85.decode@1",
+      "display_name": "From Base85",
+      "category": "Encoding",
+      "reference_alias": "From Base85",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 26,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base85.encode@1",
+      "display_name": "To Base85",
+      "category": "Encoding",
+      "reference_alias": "To Base85",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 27,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.binary.decode@1",
+      "display_name": "From Binary",
+      "category": "Encoding",
+      "reference_alias": "From Binary",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.binary.encode@1",
+      "display_name": "To Binary",
+      "category": "Encoding",
+      "reference_alias": "To Binary",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.charcode.decode@1",
+      "display_name": "From Charcode",
+      "category": "Encoding",
+      "reference_alias": "From Charcode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.charcode.encode@1",
+      "display_name": "To Charcode",
+      "category": "Encoding",
+      "reference_alias": "To Charcode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.decimal.decode@1",
+      "display_name": "From Decimal",
+      "category": "Encoding",
+      "reference_alias": "From Decimal",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.decimal.encode@1",
+      "display_name": "To Decimal",
+      "category": "Encoding",
+      "reference_alias": "To Decimal",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.hex.decode@1",
+      "display_name": "From Hex",
+      "category": "Encoding",
+      "reference_alias": "From Hex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 27,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.hex.encode@1",
+      "display_name": "To Hex",
+      "category": "Encoding",
+      "reference_alias": "To Hex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 28,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.hexdump.decode@1",
+      "display_name": "From Hexdump",
+      "category": "Encoding",
+      "reference_alias": "From Hexdump",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 6,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.hexdump.encode@1",
+      "display_name": "To Hexdump",
+      "category": "Encoding",
+      "reference_alias": "To Hexdump",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.html.decode@1",
+      "display_name": "From HTML Entity",
+      "category": "Encoding",
+      "reference_alias": "From HTML Entity",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.html.encode@1",
+      "display_name": "To HTML Entity",
+      "category": "Encoding",
+      "reference_alias": "To HTML Entity",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.octal.decode@1",
+      "display_name": "From Octal",
+      "category": "Encoding",
+      "reference_alias": "From Octal",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.octal.encode@1",
+      "display_name": "To Octal",
+      "category": "Encoding",
+      "reference_alias": "To Octal",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.rot13@1",
+      "display_name": "ROT13",
+      "category": "Encoding",
+      "reference_alias": "ROT13",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.url.decode@1",
+      "display_name": "URL Decode",
+      "category": "Encoding",
+      "reference_alias": "URL Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 15,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.url.encode@1",
+      "display_name": "URL Encode",
+      "category": "Encoding",
+      "reference_alias": "URL Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "extract.domain@1",
+      "display_name": "Extract domains",
+      "category": "Extractors",
+      "reference_alias": "Extract domains",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 1,
+      "status": "exact"
+    },
+    {
+      "id": "extract.email@1",
+      "display_name": "Extract email addresses",
+      "category": "Extractors",
+      "reference_alias": "Extract email addresses",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "extract.file_paths@1",
+      "display_name": "Extract file paths",
+      "category": "Extractors",
+      "reference_alias": "Extract file paths",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "extract.hashes@1",
+      "display_name": "Extract hashes",
+      "category": "Extractors",
+      "reference_alias": "Extract hashes",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "extract.ip@1",
+      "display_name": "Extract IP addresses",
+      "category": "Extractors",
+      "reference_alias": "Extract IP addresses",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "extract.mac@1",
+      "display_name": "Extract MAC addresses",
+      "category": "Extractors",
+      "reference_alias": "Extract MAC addresses",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "extract.strings@1",
+      "display_name": "Strings",
+      "category": "Extractors",
+      "reference_alias": "Strings",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "extract.url@1",
+      "display_name": "Extract URLs",
+      "category": "Extractors",
+      "reference_alias": "Extract URLs",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "flow.fork@1",
+      "display_name": "Fork",
+      "category": "Flow control",
+      "reference_alias": "Fork",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "exact",
+      "note": "flow-control map; pinned in conformance_fork.rs"
+    },
+    {
+      "id": "flow.merge@1",
+      "display_name": "Merge",
+      "category": "Flow control",
+      "reference_alias": "Merge",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "exact",
+      "note": "flow-control join; pinned in conformance_fork.rs"
+    },
+    {
+      "id": "hash.hmac@1",
+      "display_name": "HMAC",
+      "category": "Hashing",
+      "reference_alias": "HMAC",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "hash.md5@1",
+      "display_name": "MD5",
+      "category": "Hashing",
+      "reference_alias": "MD5",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "hash.sha1@1",
+      "display_name": "SHA1",
+      "category": "Hashing",
+      "reference_alias": "SHA1",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "hash.sha2@1",
+      "display_name": "SHA2",
+      "category": "Hashing",
+      "reference_alias": "SHA2",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "hash.sha3@1",
+      "display_name": "SHA3",
+      "category": "Hashing",
+      "reference_alias": "SHA3",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "logic.xor@1",
+      "display_name": "XOR",
+      "category": "Logic",
+      "reference_alias": "XOR",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 23,
+      "status": "exact"
+    },
+    {
+      "id": "logic.xor_brute@1",
+      "display_name": "XOR Brute Force",
+      "category": "Logic",
+      "reference_alias": "XOR Brute Force",
+      "feature": "analysis",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 3,
+      "status": "exact"
+    },
+    {
+      "id": "text.find_replace@1",
+      "display_name": "Find / Replace",
+      "category": "Text",
+      "reference_alias": "Find / Replace",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 4,
+      "status": "exact"
+    }
+  ]
+}

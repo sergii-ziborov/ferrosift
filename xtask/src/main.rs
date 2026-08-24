@@ -8,6 +8,7 @@
 use std::process::{Command, ExitCode};
 
 mod cyberchef;
+mod ledger;
 
 const USAGE: &str = "\
 FerroSift development tasks
@@ -17,6 +18,8 @@ Usage:
   cargo xtask cyberchef generate   Regenerate the pinned fixtures
   cargo xtask cyberchef verify     Check the pin, then replay the fixtures
   cargo xtask cyberchef gap        List reference operations not yet implemented
+  cargo xtask ledger generate      Rewrite the derived compatibility ledger
+  cargo xtask ledger check         Fail when the committed ledger is stale
 
 The reference checkout defaults to tools/cyberchef-oracle/vendor and can be
 pointed elsewhere with FERROSIFT_CYBERCHEF_DIR.
@@ -27,6 +30,7 @@ fn main() -> ExitCode {
     let parts: Vec<&str> = arguments.iter().map(String::as_str).collect();
     match parts.as_slice() {
         ["cyberchef", rest @ ..] => cyberchef::run(rest),
+        ["ledger", rest @ ..] => ledger::run(rest),
         ["--help" | "-h"] | [] => {
             print!("{USAGE}");
             ExitCode::SUCCESS
