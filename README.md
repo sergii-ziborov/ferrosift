@@ -78,14 +78,18 @@ patterns:
 | Layer | Crate | Status |
 |---|---|---|
 | Verified CyberChef-compatible operation catalog | `ferrosift-operations` | Shipping |
-| ImHex Pattern Language compatibility (`.hexpat` → parsed structure) | `ferrosift-pattern` | **Planned — not yet implemented** |
+| Hex-pattern front end (source → checked declaration tree) | `ferrosift-pattern` | Parsing a [documented subset](docs/pattern-language-subset.md); evaluation next |
 | Facade: direct Rust calls and a pipeline builder | `ferrosift` | **Planned — not yet implemented** |
 
 The intent is that transform-then-parse becomes one operation: decode,
 decompress, or decrypt a buffer and then apply a binary pattern to the result.
 Recipes remain one surface among several, never the only way into the library.
-Planned rows describe direction only; nothing above claims a capability that
-is not in the workspace today.
+
+`ferrosift-pattern` deliberately claims **no** compatibility with any upstream
+pattern-language runtime yet: that claim requires a pinned differential
+corpus, exactly like the CyberChef one, and none exists in this repository
+today. Planned rows describe direction only; nothing above claims a capability
+the workspace does not have.
 
 ## Workspace
 
@@ -95,6 +99,7 @@ is not in the workspace today.
 | `ferrosift-core` | Operation trait, registry, executor, budgets, traces |
 | `ferrosift-operations` | Built-in pure-Rust operations and default registry |
 | `ferrosift-compat` | CyberChef 11.3 JSON import/export |
+| `ferrosift-pattern` | Hex-pattern lexer, AST, and parser |
 | `ferrosift-cli` | Native CLI binary `ferrosift` |
 
 Library crates are `no_std` + `alloc` and forbid `unsafe`.

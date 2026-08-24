@@ -5,6 +5,7 @@ members = [
     "crates/ferrosift-core",
     "crates/ferrosift-model",
     "crates/ferrosift-operations",
+    "crates/ferrosift-pattern",
 ]
 resolver = "3"
 
