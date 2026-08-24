@@ -44,7 +44,9 @@ pub use error::Error;
 pub use pipeline::{Pipeline, default_budget, pipeline, registry};
 
 pub use ferrosift_core::{ExecutionBudget, ExecutionError, Operation, OperationRegistry};
-pub use ferrosift_model::{ArgumentValue, Arguments, Recipe, TextEncoding, TextValue, Value};
+pub use ferrosift_model::{
+    ArgumentValue, Arguments, Recipe, StructuredValue, TextEncoding, TextValue, Value,
+};
 pub use ferrosift_pattern::{EvalOptions, Node, NodeValue, PatternError};
 
 /// The names most callers want in scope.

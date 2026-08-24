@@ -1,3 +1,5 @@
 .ferrosift-private/
 .worktrees/
 /target/
+
+lcov.info
