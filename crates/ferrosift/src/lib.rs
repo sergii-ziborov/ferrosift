@@ -36,10 +36,14 @@
 extern crate alloc;
 
 mod adapt;
+mod compiled;
+mod engine;
 mod error;
 mod pipeline;
 mod steps;
 
+pub use compiled::CompiledPipeline;
+pub use engine::Engine;
 pub use error::Error;
 pub use pipeline::{Pipeline, default_budget, pipeline, registry};
 
@@ -47,9 +51,13 @@ pub use ferrosift_core::{ExecutionBudget, ExecutionError, Operation, OperationRe
 pub use ferrosift_model::{
     ArgumentValue, Arguments, Recipe, StructuredValue, TextEncoding, TextValue, Value,
 };
+#[cfg(feature = "pattern")]
 pub use ferrosift_pattern::{EvalOptions, Node, NodeValue, PatternError};
 
 /// The names most callers want in scope.
 pub mod prelude {
-    pub use crate::{Arguments, Error, EvalOptions, Node, NodeValue, Pipeline, Value, pipeline};
+    pub use crate::{Arguments, Engine, Error, Pipeline, Value, pipeline};
+
+    #[cfg(feature = "pattern")]
+    pub use crate::{EvalOptions, Node, NodeValue};
 }

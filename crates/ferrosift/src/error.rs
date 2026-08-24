@@ -2,6 +2,7 @@ use alloc::string::String;
 use core::fmt;
 
 use ferrosift_core::{ExecutionError, RegistryError};
+#[cfg(feature = "pattern")]
 use ferrosift_pattern::PatternError;
 
 /// Every way a `FerroSift` pipeline can fail, behind one stable code space.
@@ -22,6 +23,7 @@ pub enum Error {
     /// The pipeline produced a value the requested output cannot represent.
     UnexpectedOutput,
     /// A pattern failed to lex, parse, or evaluate.
+    #[cfg(feature = "pattern")]
     Pattern(PatternError),
 }
 
@@ -38,6 +40,7 @@ impl Error {
             Self::InvalidRecipe => "ferrosift.recipe.invalid",
             Self::Execution(error) => error.code(),
             Self::UnexpectedOutput => "ferrosift.output.unexpected_kind",
+            #[cfg(feature = "pattern")]
             Self::Pattern(error) => error.code(),
         }
     }
@@ -55,6 +58,7 @@ impl fmt::Display for Error {
             Self::UnexpectedOutput => {
                 formatter.write_str("pipeline output is not of the requested kind")
             }
+            #[cfg(feature = "pattern")]
             Self::Pattern(error) => write!(formatter, "{error}"),
         }
     }
@@ -72,6 +76,7 @@ impl From<ExecutionError> for Error {
     }
 }
 
+#[cfg(feature = "pattern")]
 impl From<PatternError> for Error {
     fn from(error: PatternError) -> Self {
         Self::Pattern(error)

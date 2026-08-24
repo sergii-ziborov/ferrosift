@@ -66,30 +66,35 @@ impl Pipeline {
     }
 
     /// Decompresses a gzip stream.
+    #[cfg(feature = "compression")]
     #[must_use]
     pub fn gunzip(self) -> Self {
         self.step("compression.gunzip@1", Arguments::new())
     }
 
     /// Compresses bytes into a gzip stream.
+    #[cfg(feature = "compression")]
     #[must_use]
     pub fn gzip(self) -> Self {
         self.step("compression.gzip@1", Arguments::new())
     }
 
     /// Decompresses a zlib stream.
+    #[cfg(feature = "compression")]
     #[must_use]
     pub fn zlib_inflate(self) -> Self {
         self.step("compression.zlib.inflate@1", Arguments::new())
     }
 
     /// Decompresses a raw DEFLATE stream.
+    #[cfg(feature = "compression")]
     #[must_use]
     pub fn raw_inflate(self) -> Self {
         self.step("compression.raw.inflate@1", Arguments::new())
     }
 
     /// Decompresses a bzip2 stream.
+    #[cfg(feature = "compression")]
     #[must_use]
     pub fn bzip2_decompress(self) -> Self {
         self.step("compression.bzip2.decompress@1", Arguments::new())
@@ -109,18 +114,21 @@ impl Pipeline {
     }
 
     /// Hashes the input with MD5, producing lower-case hexadecimal text.
+    #[cfg(feature = "hash")]
     #[must_use]
     pub fn md5(self) -> Self {
         self.step("hash.md5@1", Arguments::new())
     }
 
     /// Hashes the input with SHA-1, producing lower-case hexadecimal text.
+    #[cfg(feature = "hash")]
     #[must_use]
     pub fn sha1(self) -> Self {
         self.step("hash.sha1@1", Arguments::new())
     }
 
     /// Hashes the input with SHA-2, producing lower-case hexadecimal text.
+    #[cfg(feature = "hash")]
     #[must_use]
     pub fn sha2(self) -> Self {
         self.step("hash.sha2@1", Arguments::new())

@@ -7,29 +7,61 @@ license.workspace = true
 repository.workspace = true
 description = "Portable pure-Rust operations for FerroSift"
 
+[features]
+# Everything portable. The default, and what the conformance corpus pins.
+default = ["portable-full"]
+portable-full = ["analysis", "compression", "crypto", "hash", "text"]
+
+# Digests and HMAC.
+hash = ["dep:hmac", "dep:md5", "dep:sha1", "dep:sha2", "dep:sha3"]
+# Ciphers and key derivation. PBKDF2 and scrypt build on the hash pack.
+crypto = [
+    "hash",
+    "dep:aes",
+    "dep:aes-gcm",
+    "dep:cbc",
+    "dep:cfb-mode",
+    "dep:cipher",
+    "dep:ctr",
+    "dep:ecb",
+    "dep:ofb",
+    "dep:pbkdf2",
+    "dep:scrypt",
+]
+# Deflate, gzip, zlib, and bzip2.
+compression = ["dep:miniz_oxide", "dep:oxiarc-bzip2"]
+# Indicator extraction and defanging.
+text = ["dep:regex-automata"]
+# Recipe suggestion, which probes the compression and text packs.
+analysis = ["compression", "text"]
+
+# Operations outside these packs — identity, flow control, every encoding,
+# byte slicing, find/replace, and XOR — carry no external dependency and are
+# always compiled.
+
 [dependencies]
-aes = { version = "0.8.4", default-features = false }
-aes-gcm = { version = "0.10.3", default-features = false, features = ["aes", "alloc"] }
-cbc = { version = "0.1.2", default-features = false, features = ["alloc"] }
-cfb-mode = { version = "0.8.2", default-features = false }
-cipher = { version = "0.4.4", default-features = false, features = ["alloc", "block-padding"] }
-ctr = { version = "0.9.2", default-features = false }
-ecb = { version = "0.1.2", default-features = false, features = ["alloc"] }
+aes = { version = "0.8.4", default-features = false, optional = true }
+aes-gcm = { version = "0.10.3", default-features = false, features = ["aes", "alloc"], optional = true }
+cbc = { version = "0.1.2", default-features = false, features = ["alloc"], optional = true }
+cfb-mode = { version = "0.8.2", default-features = false, optional = true }
+cipher = { version = "0.4.4", default-features = false, features = ["alloc", "block-padding"], optional = true }
+ctr = { version = "0.9.2", default-features = false, optional = true }
+ecb = { version = "0.1.2", default-features = false, features = ["alloc"], optional = true }
 ferrosift-core = { path = "../ferrosift-core" }
 ferrosift-model = { path = "../ferrosift-model" }
-hmac = { version = "0.12.1", default-features = false }
+hmac = { version = "0.12.1", default-features = false, optional = true }
 # Declared under the name the code imports, so the manifest and the `use`
 # statements agree; the published crate is `md-5`.
-md5 = { package = "md-5", version = "0.10.6", default-features = false }
-miniz_oxide = { version = "0.8.9", default-features = false, features = ["with-alloc"] }
-ofb = { version = "0.6.1", default-features = false }
-oxiarc-bzip2 = "0.4.1"
-pbkdf2 = { version = "0.12.2", default-features = false, features = ["hmac"] }
-regex-automata = { version = "0.4.13", default-features = false, features = ["alloc", "meta", "syntax", "unicode"] }
-scrypt = { version = "0.11.0", default-features = false }
-sha1 = { version = "0.10.6", default-features = false }
-sha2 = { version = "0.10.9", default-features = false }
-sha3 = { version = "0.10.8", default-features = false }
+md5 = { package = "md-5", version = "0.10.6", default-features = false, optional = true }
+miniz_oxide = { version = "0.8.9", default-features = false, features = ["with-alloc"], optional = true }
+ofb = { version = "0.6.1", default-features = false, optional = true }
+oxiarc-bzip2 = { version = "0.4.1", optional = true }
+pbkdf2 = { version = "0.12.2", default-features = false, features = ["hmac"], optional = true }
+regex-automata = { version = "0.4.13", default-features = false, features = ["alloc", "meta", "syntax", "unicode"], optional = true }
+scrypt = { version = "0.11.0", default-features = false, optional = true }
+sha1 = { version = "0.10.6", default-features = false, optional = true }
+sha2 = { version = "0.10.9", default-features = false, optional = true }
+sha3 = { version = "0.10.8", default-features = false, optional = true }
 
 [dev-dependencies]
 ferrosift-compat = { path = "../ferrosift-compat" }

@@ -79,17 +79,51 @@ patterns:
 |---|---|---|
 | Verified CyberChef-compatible operation catalog | `ferrosift-operations` | Shipping |
 | Hex patterns: source → declaration tree → values with offsets | `ferrosift-pattern` | Parsing and evaluating a [documented subset](docs/pattern-language-subset.md) |
-| Facade: direct Rust calls and a pipeline builder | `ferrosift` | **Planned — not yet implemented** |
+| Facade: one pipeline builder, one error type, one code space | `ferrosift` | Shipping |
 
-The intent is that transform-then-parse becomes one operation: decode,
-decompress, or decrypt a buffer and then apply a binary pattern to the result.
-Recipes remain one surface among several, never the only way into the library.
+Transform-then-parse is one call: decode, decompress, or decrypt a buffer and
+describe the bytes that come out.
+
+```rust
+let engine = ferrosift::Engine::portable()?;
+let pipeline = engine.pipeline().from_base64().gunzip().compile(&engine)?;
+
+for packet in packets {
+    let fields = pipeline.run_pattern(FIRMWARE_HEADER, packet)?;
+}
+```
+
+Compiling resolves every operation once, so a repeated pipeline never rebuilds
+the registry or the recipe.
 
 `ferrosift-pattern` deliberately claims **no** compatibility with any upstream
 pattern-language runtime yet: that claim requires a pinned differential
 corpus, exactly like the CyberChef one, and none exists in this repository
-today. Planned rows describe direction only; nothing above claims a capability
-the workspace does not have.
+today.
+
+## Feature packs
+
+Only what you select is compiled. Identity, flow control, every encoding,
+byte slicing, and XOR carry no external dependency and are always present;
+the packs below are the only ones that pull third-party crates.
+
+| Feature | Adds | Pulls |
+|---|---|---|
+| `hash` | MD5, SHA-1/2/3, HMAC | RustCrypto digests |
+| `crypto` | AES, key wrap, RC4, PBKDF2, scrypt | RustCrypto ciphers, KDFs |
+| `compression` | gzip, zlib, raw DEFLATE, bzip2 | `miniz_oxide`, `oxiarc-bzip2` |
+| `text` | extractors, defang, Find / Replace | `regex-automata` |
+| `analysis` | Suggest recipe, XOR brute force | via `compression` + `text` |
+| `pattern` | the hex-pattern engine | nothing |
+| `portable-full` | every pack above | — |
+
+`default = ["portable-full", "pattern"]`. A build that wants only binary
+structure parsing costs **12 crates against the default 52**, with no cipher,
+digest, compression, or regex dependency compiled at all:
+
+```toml
+ferrosift = { version = "...", default-features = false, features = ["pattern"] }
+```
 
 ## Workspace
 
@@ -100,6 +134,7 @@ the workspace does not have.
 | `ferrosift-operations` | Built-in pure-Rust operations and default registry |
 | `ferrosift-compat` | CyberChef 11.3 JSON import/export |
 | `ferrosift-pattern` | Hex-pattern lexer, parser, and bounded evaluator |
+| `ferrosift` | Facade: engine, pipeline builder, unified error |
 | `ferrosift-cli` | Native CLI binary `ferrosift` |
 
 Library crates are `no_std` + `alloc` and forbid `unsafe`.

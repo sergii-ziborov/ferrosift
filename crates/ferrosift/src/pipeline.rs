@@ -2,13 +2,16 @@ use alloc::format;
 use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 
-use ferrosift_core::{ExecutionBudget, Executor, NeverCancelled, OperationRegistry};
+use ferrosift_core::{ExecutionBudget, OperationRegistry};
 use ferrosift_model::{
-    Arguments, CapabilitySet, OperationId, Recipe, RecipeMetadata, RecipeStep, StepId,
-    TextEncoding, TextValue, Value,
+    Arguments, OperationId, Recipe, RecipeMetadata, RecipeStep, StepId, TextEncoding, TextValue,
+    Value, ValueConstraint,
 };
+#[cfg(feature = "pattern")]
 use ferrosift_pattern::{EvalOptions, Node};
 
+use crate::compiled::CompiledPipeline;
+use crate::engine::Engine;
 use crate::error::Error;
 
 /// The default execution budget: 16 MiB in, 64 MiB out, 256 steps.
@@ -84,38 +87,50 @@ impl Pipeline {
         self.steps.iter().map(|(id, _)| id.as_str()).collect()
     }
 
+    /// Resolves this pipeline against an engine, once.
+    ///
+    /// Compiling does every lookup and validation up front, so the returned
+    /// [`CompiledPipeline`] can be run repeatedly without rebuilding the
+    /// registry or the recipe. Prefer this whenever the same pipeline runs
+    /// more than once.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`Error`] when an operation is unknown or the steps do not form
+    /// a valid recipe.
+    pub fn compile<'a>(&self, engine: &'a Engine) -> Result<CompiledPipeline<'a>, Error> {
+        let registry = engine.registry();
+        let recipe = self.recipe(registry)?;
+        Ok(CompiledPipeline::new(
+            registry,
+            recipe,
+            self.budget,
+            self.first_input(registry),
+        ))
+    }
+
     /// Runs the pipeline and returns the final value.
+    ///
+    /// This is the one-shot convenience path: it builds a whole engine for
+    /// this single call. For repeated execution use [`Pipeline::compile`]
+    /// against a reused [`Engine`] instead.
     ///
     /// # Errors
     ///
     /// Returns [`Error`] when an operation is unknown, the recipe is not
     /// valid, or execution fails or exceeds a budget.
     pub fn run(&self, input: Value) -> Result<Value, Error> {
-        let registry = registry()?;
-        let recipe = self.recipe(&registry)?;
-        let input = self.adapt_input(&registry, input);
-        let result = Executor::new(&registry).execute(
-            &recipe,
-            input,
-            self.budget,
-            &NeverCancelled,
-            CapabilitySet::new(),
-        )?;
-        Ok(result.value)
+        let engine = Engine::portable()?;
+        self.compile(&engine)?.run(input)
     }
 
-    /// Converts the caller's value once, if the first step needs the other
-    /// representation. See [`crate::adapt::to_accepted`].
-    fn adapt_input(&self, registry: &OperationRegistry, input: Value) -> Value {
-        let Some((operation, _)) = self.steps.first() else {
-            return input;
-        };
-        let Ok(id) = OperationId::new(operation.as_str()) else {
-            return input;
-        };
-        registry.get(&id).map_or(input.clone(), |operation| {
-            crate::adapt::to_accepted(input, &operation.spec().input)
-        })
+    /// The input representation the first step accepts, if it has one.
+    fn first_input(&self, registry: &OperationRegistry) -> Option<ValueConstraint> {
+        let (operation, _) = self.steps.first()?;
+        let id = OperationId::new(operation.as_str()).ok()?;
+        registry
+            .get(&id)
+            .map(|operation| operation.spec().input.clone())
     }
 
     /// Runs the pipeline over bytes and returns bytes.
@@ -153,6 +168,7 @@ impl Pipeline {
     }
 
     /// Runs the pipeline, then evaluates a hex pattern over the result.
+    #[cfg(feature = "pattern")]
     ///
     /// This is the transform-then-parse path: decode, decompress, or decrypt
     /// a buffer and describe the bytes that come out, in one call.
@@ -166,6 +182,7 @@ impl Pipeline {
     }
 
     /// [`Pipeline::run_pattern`] with explicit evaluation bounds.
+    #[cfg(feature = "pattern")]
     ///
     /// # Errors
     ///

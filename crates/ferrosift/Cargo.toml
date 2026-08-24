@@ -7,11 +7,28 @@ rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
 
+[features]
+# The whole portable catalog plus the hex-pattern engine.
+default = ["portable-full", "pattern"]
+
+# Operation packs, forwarded to ferrosift-operations. Identity, flow control,
+# every encoding, byte slicing, and XOR need no pack and are always present.
+portable-full = ["ferrosift-operations/portable-full"]
+analysis = ["ferrosift-operations/analysis"]
+compression = ["ferrosift-operations/compression"]
+crypto = ["ferrosift-operations/crypto"]
+hash = ["ferrosift-operations/hash"]
+text = ["ferrosift-operations/text"]
+
+# The binary pattern engine, independent of every operation pack. Selecting
+# only this gives a parser and evaluator with no third-party dependency.
+pattern = ["dep:ferrosift-pattern"]
+
 [dependencies]
 ferrosift-core = { path = "../ferrosift-core" }
 ferrosift-model = { path = "../ferrosift-model" }
-ferrosift-operations = { path = "../ferrosift-operations" }
-ferrosift-pattern = { path = "../ferrosift-pattern" }
+ferrosift-operations = { path = "../ferrosift-operations", default-features = false }
+ferrosift-pattern = { path = "../ferrosift-pattern", optional = true }
 
 [lints]
 workspace = true
