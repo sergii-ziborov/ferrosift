@@ -10,6 +10,11 @@ repository.workspace = true
 [[bin]]
 name = "ferrosift"
 path = "src/main.rs"
+# The command keeps the product name, which collides with the `ferrosift`
+# facade library in rustdoc's output directory (rust-lang/cargo#6313). The
+# binary exposes no API to document — its interface is `--help` — so it is
+# excluded from rustdoc rather than renaming either target.
+doc = false
 
 [dependencies]
 clap = { version = "4.6.6", default-features = false, features = ["derive", "error-context", "help", "std", "suggestions", "usage"] }
