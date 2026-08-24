@@ -9,11 +9,12 @@ use ferrosift_core::{OperationRegistry, RegistryError};
 use crate::{
     AddLineNumbers, BitShift, Bitwise, Checksum, ClassicalCipher, DropBytes, DropNthBytes, Fork,
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
-    FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal, Head,
-    Identity, LuhnChecksum, Merge, PadLines, RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace,
-    Reverse, Ror13, Rot13, Rot47, Rotate, SwapEndianness, Tail, TakeBytes, TakeNthBytes, ToBase32,
-    ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToDecimal, ToHex, ToHexdump,
-    ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
+    FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
+    HammingDistance, Head, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines,
+    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot47, Rotate,
+    SetOperation, SwapEndianness, Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58,
+    ToBase64, ToBase85, ToBinary, ToCharcode, ToDecimal, ToHex, ToHexdump, ToHtmlEntity, ToModhex,
+    ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -45,12 +46,25 @@ use crate::{SuggestRecipe, XorBruteForce};
 pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     let mut registry = OperationRegistry::new();
     register_checksums(&mut registry)?;
+    register_sets(&mut registry)?;
     register_core(&mut registry)?;
     register_text(&mut registry)?;
     register_classical(&mut registry)?;
     register_encoding(&mut registry)?;
     register_packs(&mut registry)?;
     Ok(registry)
+}
+
+/// Set operations and edit distances, all dependency-free.
+fn register_sets(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(SetOperation::cartesian_product())?;
+    registry.register(SetOperation::difference())?;
+    registry.register(SetOperation::intersection())?;
+    registry.register(SetOperation::symmetric_difference())?;
+    registry.register(SetOperation::union())?;
+    registry.register(HammingDistance::new())?;
+    registry.register(LevenshteinDistance::new())?;
+    Ok(())
 }
 
 /// Checksums, all dependency-free.

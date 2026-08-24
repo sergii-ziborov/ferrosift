@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 116,
-    "aliased": 114,
-    "exact": 110,
+    "operations": 123,
+    "aliased": 121,
+    "exact": 117,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 1960
+    "pinned_cases": 2043
   },
   "operations": [
     {
@@ -679,6 +679,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 3,
+      "status": "exact"
+    },
+    {
+      "id": "distance.hamming@1",
+      "display_name": "Hamming Distance",
+      "category": "Distance",
+      "reference_alias": "Hamming Distance",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "distance.levenshtein@1",
+      "display_name": "Levenshtein Distance",
+      "category": "Distance",
+      "reference_alias": "Levenshtein Distance",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 25,
       "status": "exact"
     },
     {
@@ -1435,6 +1461,71 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 3,
+      "status": "exact"
+    },
+    {
+      "id": "sets.cartesian_product@1",
+      "display_name": "Cartesian Product",
+      "category": "Sets",
+      "reference_alias": "Cartesian Product",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "sets.difference@1",
+      "display_name": "Set Difference",
+      "category": "Sets",
+      "reference_alias": "Set Difference",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "sets.intersection@1",
+      "display_name": "Set Intersection",
+      "category": "Sets",
+      "reference_alias": "Set Intersection",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "sets.symmetric_difference@1",
+      "display_name": "Symmetric Difference",
+      "category": "Sets",
+      "reference_alias": "Symmetric Difference",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "sets.union@1",
+      "display_name": "Set Union",
+      "category": "Sets",
+      "reference_alias": "Set Union",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
       "status": "exact"
     },
     {

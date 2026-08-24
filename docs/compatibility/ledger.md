@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 116 |
-| Reference-aliased | 114 |
-| Byte-pinned (`exact`) | 110 |
+| Registered operations | 123 |
+| Reference-aliased | 121 |
+| Byte-pinned (`exact`) | 117 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 1960 |
+| Pinned cases | 2043 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -80,6 +80,8 @@ does.
 | `defang.fang_url@1` | Fang URL | text | exact | 2 |
 | `defang.ip@1` | Defang IP Addresses | text | exact | 2 |
 | `defang.url@1` | Defang URL | text | exact | 3 |
+| `distance.hamming@1` | Hamming Distance | core | exact | 10 |
+| `distance.levenshtein@1` | Levenshtein Distance | core | exact | 25 |
 | `encoding.base32.decode@1` | From Base32 | core | exact | 28 |
 | `encoding.base32.encode@1` | To Base32 | core | exact | 27 |
 | `encoding.base45.decode@1` | From Base45 | core | exact | 13 |
@@ -138,6 +140,11 @@ does.
 | `logic.sub@1` | SUB | core | exact | 31 |
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
+| `sets.cartesian_product@1` | Cartesian Product | core | exact | 10 |
+| `sets.difference@1` | Set Difference | core | exact | 9 |
+| `sets.intersection@1` | Set Intersection | core | exact | 10 |
+| `sets.symmetric_difference@1` | Symmetric Difference | core | exact | 9 |
+| `sets.union@1` | Set Union | core | exact | 10 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |
 | `text.leet@1` | Convert Leet Speak | core | exact | 28 |
 | `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |

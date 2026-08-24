@@ -233,6 +233,41 @@ none of them occur for inputs CyberChef 11.3.0 processes successfully.
 
 ## Format boundaries
 
+### Delimiter arguments are values, not spellings
+
+CyberChef's `binaryString` arguments carry an escaped spelling in its
+interface — `\n\n` written as a backslash, an `n`, a backslash, an `n` — which
+`Ingredient.prepare` unescapes before the operation runs. Its recipe API does
+not unescape: an operation baked through `chef.bake` receives whatever string
+it was given.
+
+FerroSift's arguments are typed, and a `Text` argument carries a value rather
+than a spelling of one. `\n` in a FerroSift recipe is a newline. This matches
+the reference's API path exactly, which is what the corpus pins; a recipe
+copied out of the CyberChef interface will carry the escaped form and must be
+unescaped by whatever produces it, not by the operation.
+
+This was found by baking, not by reading: every set and distance case with an
+escaped delimiter failed against the reference until the delimiters were
+passed literally.
+
+### Power Set is not implemented
+
+`Power Set` is registered by the reference but does not compute one. For every
+input tested it returns exactly two lines — the empty subset and the full set
+— because its subset enumeration builds a list of numbers and then calls a
+string method on each of them.
+
+There are two ways to be compatible with that and neither is worth shipping.
+Reproducing it exactly would put an operation in the catalog that does not do
+what its name says, under a claim of verified compatibility. Computing a real
+power set would be a silent divergence from the reference in an operation
+claiming to match it.
+
+So it is absent, and this note is the record of why. If the reference fixes
+it, FerroSift can implement the fixed behaviour and pin it like everything
+else.
+
 ### Flow control: Fork / Merge
 
 `Fork` / `Merge` are first-class map/join control (not jump soup). The executor

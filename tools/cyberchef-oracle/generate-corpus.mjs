@@ -33,6 +33,7 @@ import * as crypto from "./corpus/crypto.mjs";
 import * as digest from "./corpus/digest.mjs";
 import * as encoding from "./corpus/encoding.mjs";
 import * as extract from "./corpus/extract.mjs";
+import * as sets from "./corpus/sets.mjs";
 import * as shape from "./corpus/shape.mjs";
 import * as text from "./corpus/text.mjs";
 
@@ -44,7 +45,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets]) {
     await family.add(builder);
 }
 

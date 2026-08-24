@@ -34229,6 +34229,1726 @@
     "53"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "set_union_0",
+   "input": {
+    "kind": "text",
+    "value": "1,2,3\n\n3,4,5"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c322c332c342c35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_0",
+   "input": {
+    "kind": "text",
+    "value": "1,2,3\n\n3,4,5"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_0",
+   "input": {
+    "kind": "text",
+    "value": "1,2,3\n\n3,4,5"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_0",
+   "input": {
+    "kind": "text",
+    "value": "1,2,3\n\n3,4,5"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c322c342c35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_0",
+   "input": {
+    "kind": "text",
+    "value": "1,2,3\n\n3,4,5"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28312c33292c28312c34292c28312c35292c28322c33292c28322c34292c28322c35292c28332c33292c28332c34292c28332c3529"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\n\nc,d,e"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c632c642c65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\n\nc,d,e"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\n\nc,d,e"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\n\nc,d,e"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c642c65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\n\nc,d,e"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28612c63292c28612c64292c28612c65292c28622c63292c28622c64292c28622c65292c28632c63292c28632c64292c28632c6529"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_2",
+   "input": {
+    "kind": "text",
+    "value": "a,a,b,b\n\nb,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_2",
+   "input": {
+    "kind": "text",
+    "value": "a,a,b,b\n\nb,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_2",
+   "input": {
+    "kind": "text",
+    "value": "a,a,b,b\n\nb,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_2",
+   "input": {
+    "kind": "text",
+    "value": "a,a,b,b\n\nb,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c612c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_2",
+   "input": {
+    "kind": "text",
+    "value": "a,a,b,b\n\nb,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28612c62292c28612c62292c28612c63292c28612c62292c28612c62292c28612c63292c28622c62292c28622c62292c28622c63292c28622c62292c28622c62292c28622c6329"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_3",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_3",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_3",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_3",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_3",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "282c29"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b\n\n,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c2c622c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b\n\n,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2c62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b\n\n,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b\n\n,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b\n\n,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28612c292c28612c62292c28612c63292c282c292c282c62292c282c63292c28622c292c28622c62292c28622c6329"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_5",
+   "input": {
+    "kind": "text",
+    "value": "10,9,2,1\n\n2,20"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c322c392c31302c3230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_5",
+   "input": {
+    "kind": "text",
+    "value": "10,9,2,1\n\n2,20"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_5",
+   "input": {
+    "kind": "text",
+    "value": "10,9,2,1\n\n2,20"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31302c392c31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_5",
+   "input": {
+    "kind": "text",
+    "value": "10,9,2,1\n\n2,20"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31302c392c312c3230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_5",
+   "input": {
+    "kind": "text",
+    "value": "10,9,2,1\n\n2,20"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2831302c32292c2831302c3230292c28392c32292c28392c3230292c28322c32292c28322c3230292c28312c32292c28312c323029"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_6",
+   "input": {
+    "kind": "text",
+    "value": "toString,valueOf,a\n\na,constructor"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_6",
+   "input": {
+    "kind": "text",
+    "value": "toString,valueOf,a\n\na,constructor"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_6",
+   "input": {
+    "kind": "text",
+    "value": "toString,valueOf,a\n\na,constructor"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "746f537472696e672c76616c75654f66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_6",
+   "input": {
+    "kind": "text",
+    "value": "toString,valueOf,a\n\na,constructor"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "746f537472696e672c76616c75654f662c636f6e7374727563746f72"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_6",
+   "input": {
+    "kind": "text",
+    "value": "toString,valueOf,a\n\na,constructor"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28746f537472696e672c61292c28746f537472696e672c636f6e7374727563746f72292c2876616c75654f662c61292c2876616c75654f662c636f6e7374727563746f72292c28612c61292c28612c636f6e7374727563746f7229"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_7",
+   "input": {
+    "kind": "text",
+    "value": "x\n\nx"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "78"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_7",
+   "input": {
+    "kind": "text",
+    "value": "x\n\nx"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "78"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_7",
+   "input": {
+    "kind": "text",
+    "value": "x\n\nx"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_7",
+   "input": {
+    "kind": "text",
+    "value": "x\n\nx"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_7",
+   "input": {
+    "kind": "text",
+    "value": "x\n\nx"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28782c7829"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_8",
+   "input": {
+    "kind": "text",
+    "value": "1,a,2,b\n\nb,3,c,1"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c322c332c612c622c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersection_8",
+   "input": {
+    "kind": "text",
+    "value": "1,a,2,b\n\nb,3,c,1"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_difference_8",
+   "input": {
+    "kind": "text",
+    "value": "1,a,2,b\n\nb,3,c,1"
+   },
+   "recipe": [
+    {
+     "op": "Set Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "symmetric_difference_8",
+   "input": {
+    "kind": "text",
+    "value": "1,a,2,b\n\nb,3,c,1"
+   },
+   "recipe": [
+    {
+     "op": "Symmetric Difference",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c322c332c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_8",
+   "input": {
+    "kind": "text",
+    "value": "1,a,2,b\n\nb,3,c,1"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28312c62292c28312c33292c28312c63292c28312c31292c28612c62292c28612c33292c28612c63292c28612c31292c28322c62292c28322c33292c28322c63292c28322c31292c28622c62292c28622c33292c28622c63292c28622c3129"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_union_semicolon",
+   "input": {
+    "kind": "text",
+    "value": "a;b;c\n\nc;d"
+   },
+   "recipe": [
+    {
+     "op": "Set Union",
+     "args": [
+      "\n\n",
+      ";"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "613b623b633b64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "set_intersect_space",
+   "input": {
+    "kind": "text",
+    "value": "a b c\n\nb c d"
+   },
+   "recipe": [
+    {
+     "op": "Set Intersection",
+     "args": [
+      "\n\n",
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "622063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cartesian_three",
+   "input": {
+    "kind": "text",
+    "value": "1,2\n\na,b\n\nx,y"
+   },
+   "recipe": [
+    {
+     "op": "Cartesian Product",
+     "args": [
+      "\n\n",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28312c612c78292c28312c612c79292c28312c622c78292c28312c622c79292c28322c612c78292c28322c612c79292c28322c622c78292c28322c622c7929"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_byte_0",
+   "input": {
+    "kind": "text",
+    "value": "abc\n\nabd"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Byte",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_bit_0",
+   "input": {
+    "kind": "text",
+    "value": "abc\n\nabd"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Bit",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_byte_1",
+   "input": {
+    "kind": "text",
+    "value": "abcd\n\nabcd"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Byte",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_bit_1",
+   "input": {
+    "kind": "text",
+    "value": "abcd\n\nabcd"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Bit",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_byte_2",
+   "input": {
+    "kind": "text",
+    "value": "ÿ\u0000\n\n\u0000ÿ"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Byte",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_bit_2",
+   "input": {
+    "kind": "text",
+    "value": "ÿ\u0000\n\n\u0000ÿ"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Bit",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_byte_3",
+   "input": {
+    "kind": "text",
+    "value": "0a1b\n\n0a2c"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Byte",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_raw_bit_3",
+   "input": {
+    "kind": "text",
+    "value": "0a1b\n\n0a2c"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Bit",
+      "Raw string"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_hex_byte",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c\n\n0a1b2d"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Byte",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "hamming_hex_bit",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c\n\n0a1b2d"
+   },
+   "recipe": [
+    {
+     "op": "Hamming Distance",
+     "args": [
+      "\n\n",
+      "Bit",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_0_111",
+   "input": {
+    "kind": "text",
+    "value": "kitten\nsitting"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_0_211",
+   "input": {
+    "kind": "text",
+    "value": "kitten\nsitting"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      2,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_0_131",
+   "input": {
+    "kind": "text",
+    "value": "kitten\nsitting"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_0_115",
+   "input": {
+    "kind": "text",
+    "value": "kitten\nsitting"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_0_001",
+   "input": {
+    "kind": "text",
+    "value": "kitten\nsitting"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      0,
+      0,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_1_111",
+   "input": {
+    "kind": "text",
+    "value": "\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_1_211",
+   "input": {
+    "kind": "text",
+    "value": "\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      2,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_1_131",
+   "input": {
+    "kind": "text",
+    "value": "\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_1_115",
+   "input": {
+    "kind": "text",
+    "value": "\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_1_001",
+   "input": {
+    "kind": "text",
+    "value": "\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      0,
+      0,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_2_111",
+   "input": {
+    "kind": "text",
+    "value": "abc\n"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_2_211",
+   "input": {
+    "kind": "text",
+    "value": "abc\n"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      2,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_2_131",
+   "input": {
+    "kind": "text",
+    "value": "abc\n"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_2_115",
+   "input": {
+    "kind": "text",
+    "value": "abc\n"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_2_001",
+   "input": {
+    "kind": "text",
+    "value": "abc\n"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      0,
+      0,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_3_111",
+   "input": {
+    "kind": "text",
+    "value": "same\nsame"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_3_211",
+   "input": {
+    "kind": "text",
+    "value": "same\nsame"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      2,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_3_131",
+   "input": {
+    "kind": "text",
+    "value": "same\nsame"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_3_115",
+   "input": {
+    "kind": "text",
+    "value": "same\nsame"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_3_001",
+   "input": {
+    "kind": "text",
+    "value": "same\nsame"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      0,
+      0,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_4_111",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nhello"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_4_211",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nhello"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      2,
+      1,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_4_131",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nhello"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_4_115",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nhello"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      1,
+      1,
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "levenshtein_4_001",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nhello"
+   },
+   "recipe": [
+    {
+     "op": "Levenshtein Distance",
+     "args": [
+      "\n",
+      0,
+      0,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
   }
  ]
 }
