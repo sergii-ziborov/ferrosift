@@ -1,0 +1,17 @@
+[package]
+name = "ferrosift"
+description = "One API for FerroSift data transformations and binary patterns"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+ferrosift-core = { path = "../ferrosift-core" }
+ferrosift-model = { path = "../ferrosift-model" }
+ferrosift-operations = { path = "../ferrosift-operations" }
+ferrosift-pattern = { path = "../ferrosift-pattern" }
+
+[lints]
+workspace = true

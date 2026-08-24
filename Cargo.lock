@@ -189,6 +189,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "ferrosift"
+version = "0.0.0"
+dependencies = [
+ "ferrosift-core",
+ "ferrosift-model",
+ "ferrosift-operations",
+ "ferrosift-pattern",
+]
+
+[[package]]
 name = "ferrosift-cli"
 version = "0.0.0"
 dependencies = [
