@@ -9,7 +9,7 @@ use crate::{OperationError, StepLocation, TraceEvent, TraceEventKind, ValueSumma
 
 use super::preflight::PreparedStep;
 use super::runner::{Runner, StepControl};
-use super::{ExecutionError, ExecutionFailure, flow, limits, step_location};
+use super::{ExecutionError, ExecutionFailure, flow, limits};
 
 impl Runner<'_> {
     pub(super) fn run_fork(
@@ -17,17 +17,17 @@ impl Runner<'_> {
         fork_index: usize,
         merge_index: usize,
         region_end: usize,
-        prepared: &[PreparedStep<'_, '_>],
+        prepared: &[PreparedStep<'_>],
     ) -> Result<StepControl, ExecutionError> {
         let fork = &prepared[fork_index];
-        let location = step_location(fork_index, fork.step);
+        let location = fork.location(fork_index);
         if self.cancellation.is_cancelled() {
             return Err(self.fail(
                 ExecutionFailure::Operation(OperationError::Cancelled),
                 location,
             ));
         }
-        if fork.step.breakpoint {
+        if fork.breakpoint {
             self.trace.events.push(TraceEvent {
                 location,
                 kind: TraceEventKind::BreakpointReached {
@@ -106,7 +106,7 @@ impl Runner<'_> {
         body_start: usize,
         body_end: usize,
         ignore_errors: bool,
-        prepared: &[PreparedStep<'_, '_>],
+        prepared: &[PreparedStep<'_>],
         location: &StepLocation,
     ) -> Result<BranchMap, ExecutionError> {
         let mut outputs = Vec::with_capacity(branches.len());
@@ -152,7 +152,7 @@ impl Runner<'_> {
         input_size: u64,
         merge_index: usize,
         region_end: usize,
-        prepared: &[PreparedStep<'_, '_>],
+        prepared: &[PreparedStep<'_>],
         location: StepLocation,
     ) -> Result<StepControl, ExecutionError> {
         let output_summary = ValueSummary::from_value(&output);
@@ -179,15 +179,15 @@ impl Runner<'_> {
         &mut self,
         merge_index: usize,
         region_end: usize,
-        prepared: &[PreparedStep<'_, '_>],
+        prepared: &[PreparedStep<'_>],
         output: &Value,
     ) -> Result<(), ExecutionError> {
         if merge_index < region_end
             && merge_index < prepared.len()
-            && !prepared[merge_index].step.disabled
-            && flow::is_merge(&prepared[merge_index].step.operation)
+            && !prepared[merge_index].disabled
+            && flow::is_merge(&prepared[merge_index].operation_id)
         {
-            let merge_location = step_location(merge_index, prepared[merge_index].step);
+            let merge_location = prepared[merge_index].location(merge_index);
             self.count_invocation(&merge_location)?;
             let summary = ValueSummary::from_value(output);
             self.trace.events.push(TraceEvent {

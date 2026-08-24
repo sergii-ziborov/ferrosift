@@ -1,66 +1,106 @@
 //! Complete fail-closed recipe preparation before the first invocation.
+//!
+//! Preparation splits in two. [`resolve`] does the work that depends only on
+//! the recipe, the registry, and the granted capabilities: structural
+//! validation, operation lookup, capability checks, and argument resolution.
+//! [`check_runtime`] does what genuinely depends on the call: the input size
+//! and representation, the budget, and cancellation.
+//!
+//! That split is what lets a prepared recipe be reused: the per-step lookups
+//! and argument work happen once, not on every run.
 
 use alloc::vec::Vec;
 
 use ferrosift_model::{
-    ArgumentValue, Arguments, CapabilitySet, Recipe, RecipeStep, Value, ValueConstraint, ValueKind,
+    ArgumentValue, Arguments, CapabilitySet, OperationId, Recipe, RecipeStep, StepId, Value,
+    ValueConstraint, ValueKind,
 };
 
 use crate::{Cancellation, ExecutionBudget, Operation, OperationError, OperationRegistry};
 
-use super::{ExecutionError, ExecutionFailure, flow, limits, step_location};
+use super::{ExecutionError, ExecutionFailure, StepLocation, flow, limits};
 
-pub(super) struct PreparedStep<'recipe, 'registry> {
-    pub(super) step: &'recipe RecipeStep,
+/// One recipe step with everything resolvable already resolved.
+///
+/// The step's own identity is owned rather than borrowed so a prepared recipe
+/// outlives the [`Recipe`] it came from and can be stored alongside it.
+pub(super) struct PreparedStep<'registry> {
+    pub(super) id: StepId,
+    pub(super) operation_id: OperationId,
+    pub(super) disabled: bool,
+    pub(super) breakpoint: bool,
     pub(super) operation: Option<&'registry dyn Operation>,
     pub(super) arguments: Arguments,
 }
 
-pub(super) fn prepare<'recipe, 'registry>(
-    recipe: &'recipe Recipe,
+impl PreparedStep<'_> {
+    pub(super) fn location(&self, index: usize) -> StepLocation {
+        StepLocation {
+            index,
+            step_id: self.id.clone(),
+            operation: self.operation_id.clone(),
+        }
+    }
+}
+
+/// Validates the recipe and resolves every step against the registry.
+///
+/// # Errors
+///
+/// Returns [`ExecutionError`] when the recipe is structurally invalid, names
+/// an unknown operation, requires an ungranted capability, or carries
+/// arguments the operation does not accept.
+pub(super) fn resolve<'registry>(
+    recipe: &Recipe,
     registry: &'registry OperationRegistry,
-    input: &Value,
-    budget: ExecutionBudget,
-    cancellation: &dyn Cancellation,
     capabilities: &CapabilitySet,
-) -> Result<Vec<PreparedStep<'recipe, 'registry>>, ExecutionError> {
+) -> Result<Vec<PreparedStep<'registry>>, ExecutionError> {
     recipe
         .validate()
         .map_err(|error| ExecutionError::global(ExecutionFailure::InvalidRecipe(error)))?;
+    resolve_steps(recipe, registry, capabilities)
+}
+
+/// Applies every check that depends on this particular call.
+///
+/// # Errors
+///
+/// Returns [`ExecutionError`] when the recipe or input exceeds the budget, the
+/// input representation does not flow through the steps, or the run was
+/// cancelled before the first invocation.
+pub(super) fn check_runtime(
+    prepared: &[PreparedStep<'_>],
+    input: &Value,
+    budget: ExecutionBudget,
+    cancellation: &dyn Cancellation,
+) -> Result<(), ExecutionError> {
     limits::check_initial(
-        recipe.steps.len(),
+        prepared.len(),
         crate::ValueSummary::from_value(input).size_bytes,
         budget,
     )
     .map_err(ExecutionError::global)?;
-
-    let prepared = resolve_steps(recipe, registry, capabilities)?;
-    check_type_flow(&prepared, input.kind())?;
-
+    check_type_flow(prepared, input.kind())?;
     if cancellation.is_cancelled() {
         return Err(ExecutionError::global(ExecutionFailure::Operation(
             OperationError::Cancelled,
         )));
     }
-    Ok(prepared)
+    Ok(())
 }
 
-fn resolve_steps<'recipe, 'registry>(
-    recipe: &'recipe Recipe,
+fn resolve_steps<'registry>(
+    recipe: &Recipe,
     registry: &'registry OperationRegistry,
     capabilities: &CapabilitySet,
-) -> Result<Vec<PreparedStep<'recipe, 'registry>>, ExecutionError> {
+) -> Result<Vec<PreparedStep<'registry>>, ExecutionError> {
     let mut prepared = Vec::with_capacity(recipe.steps.len());
     for (index, step) in recipe.steps.iter().enumerate() {
         if step.disabled {
-            prepared.push(PreparedStep {
-                step,
-                operation: None,
-                arguments: Arguments::new(),
-            });
+            prepared.push(skeleton(step, None, Arguments::new()));
             continue;
         }
-        let location = step_location(index, step);
+        let location = super::step_location(index, step);
         let Some(operation) = registry.get(&step.operation) else {
             return Err(ExecutionError::at_step(
                 ExecutionFailure::UnknownOperation,
@@ -85,38 +125,45 @@ fn resolve_steps<'recipe, 'registry>(
         let arguments = resolve_arguments(step, operation).map_err(|failure| {
             ExecutionError::at_step(failure, location, crate::ExecutionTrace::default())
         })?;
-        prepared.push(PreparedStep {
-            step,
-            operation: Some(operation),
-            arguments,
-        });
+        prepared.push(skeleton(step, Some(operation), arguments));
     }
     Ok(prepared)
 }
 
+fn skeleton<'registry>(
+    step: &RecipeStep,
+    operation: Option<&'registry dyn Operation>,
+    arguments: Arguments,
+) -> PreparedStep<'registry> {
+    PreparedStep {
+        id: step.id.clone(),
+        operation_id: step.operation.clone(),
+        disabled: step.disabled,
+        breakpoint: step.breakpoint,
+        operation,
+        arguments,
+    }
+}
+
 fn check_type_flow(
-    prepared: &[PreparedStep<'_, '_>],
+    prepared: &[PreparedStep<'_>],
     input_kind: ValueKind,
 ) -> Result<(), ExecutionError> {
     let mut previous_output = ValueConstraint::Exact(input_kind);
     let mut index = 0;
     while index < prepared.len() {
-        if prepared[index].step.disabled {
+        if prepared[index].disabled {
             index += 1;
             continue;
         }
         let operation = prepared[index]
             .operation
             .expect("enabled steps are resolved");
-        let location = step_location(index, prepared[index].step);
+        let location = prepared[index].location(index);
 
-        if flow::is_fork(&prepared[index].step.operation) {
+        if flow::is_fork(&prepared[index].operation_id) {
             if !output_satisfies_input(&previous_output, &operation.spec().input) {
-                return Err(ExecutionError::at_step(
-                    ExecutionFailure::InputKindMismatch,
-                    location,
-                    crate::ExecutionTrace::default(),
-                ));
+                return Err(mismatch(location));
             }
             let merge_index = find_merge_for_prepared(index, prepared).unwrap_or(prepared.len());
             validate_fork_body(prepared, index + 1, merge_index)?;
@@ -129,17 +176,13 @@ fn check_type_flow(
             continue;
         }
 
-        if flow::is_merge(&prepared[index].step.operation) {
+        if flow::is_merge(&prepared[index].operation_id) {
             index += 1;
             continue;
         }
 
         if !output_satisfies_input(&previous_output, &operation.spec().input) {
-            return Err(ExecutionError::at_step(
-                ExecutionFailure::InputKindMismatch,
-                location,
-                crate::ExecutionTrace::default(),
-            ));
+            return Err(mismatch(location));
         }
         previous_output = operation.spec().output.clone();
         index += 1;
@@ -148,7 +191,7 @@ fn check_type_flow(
 }
 
 fn validate_fork_body(
-    prepared: &[PreparedStep<'_, '_>],
+    prepared: &[PreparedStep<'_>],
     body_start: usize,
     merge_index: usize,
 ) -> Result<(), ExecutionError> {
@@ -159,26 +202,30 @@ fn validate_fork_body(
         .take(merge_index)
         .skip(body_start)
     {
-        if step.step.disabled {
+        if step.disabled {
             continue;
         }
         let body_op = step.operation.expect("enabled body steps are resolved");
         if !output_satisfies_input(&body_prev, &body_op.spec().input) {
-            return Err(ExecutionError::at_step(
-                ExecutionFailure::InputKindMismatch,
-                step_location(body_index, step.step),
-                crate::ExecutionTrace::default(),
-            ));
+            return Err(mismatch(step.location(body_index)));
         }
         body_prev = body_op.spec().output.clone();
     }
     Ok(())
 }
 
-fn find_merge_for_prepared(fork_index: usize, prepared: &[PreparedStep<'_, '_>]) -> Option<usize> {
+fn mismatch(location: StepLocation) -> ExecutionError {
+    ExecutionError::at_step(
+        ExecutionFailure::InputKindMismatch,
+        location,
+        crate::ExecutionTrace::default(),
+    )
+}
+
+fn find_merge_for_prepared(fork_index: usize, prepared: &[PreparedStep<'_>]) -> Option<usize> {
     let ids: Vec<_> = prepared
         .iter()
-        .map(|step| step.step.operation.clone())
+        .map(|step| step.operation_id.clone())
         .collect();
     let merge_all: Vec<bool> = prepared
         .iter()
@@ -187,7 +234,7 @@ fn find_merge_for_prepared(fork_index: usize, prepared: &[PreparedStep<'_, '_>])
             _ => true,
         })
         .collect();
-    let disabled: Vec<bool> = prepared.iter().map(|step| step.step.disabled).collect();
+    let disabled: Vec<bool> = prepared.iter().map(|step| step.disabled).collect();
     flow::find_merge_index(fork_index, &ids, &merge_all, &disabled)
 }
 

@@ -45,3 +45,68 @@ jobs:
         run: cargo check --workspace --target wasm32-unknown-unknown
         env:
           RUSTFLAGS: -D warnings
+
+  # Feature packs are a public contract, so every pack is built on its own.
+  # An --all-features build hides a pack that forgets to declare what it needs.
+  features:
+    name: Feature pack (${{ matrix.features }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        features:
+          - ""
+          - pattern
+          - hash
+          - crypto
+          - compression
+          - text
+          - analysis
+          - portable-full
+          - portable-full,pattern
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check the facade
+        run: >
+          cargo check -p ferrosift --no-default-features
+          ${{ matrix.features && format('--features {0}', matrix.features) || '' }}
+        env:
+          RUSTFLAGS: -D warnings
+      - name: Check the operation catalog
+        if: matrix.features != 'pattern'
+        run: >
+          cargo check -p ferrosift-operations --no-default-features
+          ${{ matrix.features && matrix.features != 'portable-full,pattern' && format('--features {0}', matrix.features) || '' }}
+        env:
+          RUSTFLAGS: -D warnings
+
+  # The packs must also hold on the portable target, not only natively.
+  wasm-features:
+    name: WASM feature pack (${{ matrix.features }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        features: ["", pattern, "portable-full,pattern"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Add the portable target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Check the facade
+        run: >
+          cargo check -p ferrosift --target wasm32-unknown-unknown --no-default-features
+          ${{ matrix.features && format('--features {0}', matrix.features) || '' }}
+        env:
+          RUSTFLAGS: -D warnings
+
+  # `cargo xtask` is deliberately outside the workspace, so the gates above
+  # never see it. Lint it on its own rather than leaving it unchecked.
+  xtask:
+    name: Task runner
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check formatting
+        run: cargo fmt --manifest-path xtask/Cargo.toml -- --check
+      - name: Run Clippy
+        run: cargo clippy --manifest-path xtask/Cargo.toml --all-targets -- -D warnings

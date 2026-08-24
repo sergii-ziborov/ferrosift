@@ -1,5 +1,7 @@
 //! Bounded two-phase linear recipe execution.
 
+use alloc::vec::Vec;
+
 use ferrosift_model::{CapabilitySet, Recipe, RecipeStep, Value};
 
 use crate::{
@@ -44,18 +46,39 @@ impl<'a> Executor<'a> {
         cancellation: &dyn Cancellation,
         capabilities: &CapabilitySet,
     ) -> Result<(), ExecutionError> {
-        preflight::prepare(
-            recipe,
-            self.registry,
-            input,
-            budget,
-            cancellation,
+        let steps = preflight::resolve(recipe, self.registry, capabilities)?;
+        preflight::check_runtime(&steps, input, budget, cancellation)
+    }
+
+    /// Resolves a recipe against the registry once, for repeated execution.
+    ///
+    /// Every check that depends only on the recipe, the registry, and the
+    /// granted capabilities happens here: structural validation, operation
+    /// lookup, capability checks, and argument resolution. The returned
+    /// [`PreparedRecipe`] can then be executed many times without repeating
+    /// any of it.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ExecutionError`] when the recipe is invalid, names an unknown
+    /// operation, requires an ungranted capability, or carries arguments the
+    /// operation does not accept.
+    pub fn prepare(
+        &self,
+        recipe: &Recipe,
+        capabilities: CapabilitySet,
+    ) -> Result<PreparedRecipe<'a>, ExecutionError> {
+        let steps = preflight::resolve(recipe, self.registry, &capabilities)?;
+        Ok(PreparedRecipe {
+            steps,
             capabilities,
-        )
-        .map(drop)
+        })
     }
 
     /// Validates the complete recipe, then executes enabled steps in order.
+    ///
+    /// This is the one-shot path. For repeated execution use
+    /// [`Executor::prepare`] once and run the result many times.
     ///
     /// # Errors
     ///
@@ -69,22 +92,56 @@ impl<'a> Executor<'a> {
         cancellation: &dyn Cancellation,
         capabilities: CapabilitySet,
     ) -> Result<ExecutionResult, ExecutionError> {
+        self.prepare(recipe, capabilities)?
+            .execute(input, budget, cancellation)
+    }
+}
+
+/// A recipe already resolved against a registry.
+///
+/// Holding one costs the per-step registry lookups and argument resolution
+/// exactly once. Each execution then applies only what genuinely depends on
+/// the call: input size and representation, the budget, and cancellation.
+pub struct PreparedRecipe<'a> {
+    steps: Vec<preflight::PreparedStep<'a>>,
+    capabilities: CapabilitySet,
+}
+
+impl PreparedRecipe<'_> {
+    /// Number of steps, including disabled ones.
+    #[must_use]
+    pub fn len(&self) -> usize {
+        self.steps.len()
+    }
+
+    /// Whether the recipe has no steps at all.
+    #[must_use]
+    pub fn is_empty(&self) -> bool {
+        self.steps.is_empty()
+    }
+
+    /// Executes the prepared steps against one input.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ExecutionError`] when the input exceeds the budget, its
+    /// representation does not flow through the steps, the run is cancelled,
+    /// or a step fails.
+    pub fn execute(
+        &self,
+        input: Value,
+        budget: ExecutionBudget,
+        cancellation: &dyn Cancellation,
+    ) -> Result<ExecutionResult, ExecutionError> {
+        preflight::check_runtime(&self.steps, &input, budget, cancellation)?;
         let initial_input_size = ValueSummary::from_value(&input).size_bytes;
-        let prepared = preflight::prepare(
-            recipe,
-            self.registry,
-            &input,
-            budget,
-            cancellation,
-            &capabilities,
-        )?;
         runner::run(
-            &prepared,
+            &self.steps,
             input,
             budget,
             initial_input_size,
             cancellation,
-            capabilities,
+            self.capabilities.clone(),
         )
     }
 }

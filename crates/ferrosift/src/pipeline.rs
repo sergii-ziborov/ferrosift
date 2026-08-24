@@ -2,10 +2,10 @@ use alloc::format;
 use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 
-use ferrosift_core::{ExecutionBudget, OperationRegistry};
+use ferrosift_core::{ExecutionBudget, Executor, OperationRegistry};
 use ferrosift_model::{
-    Arguments, OperationId, Recipe, RecipeMetadata, RecipeStep, StepId, TextEncoding, TextValue,
-    Value, ValueConstraint,
+    Arguments, CapabilitySet, OperationId, Recipe, RecipeMetadata, RecipeStep, StepId,
+    TextEncoding, TextValue, Value, ValueConstraint,
 };
 #[cfg(feature = "pattern")]
 use ferrosift_pattern::{EvalOptions, Node};
@@ -101,12 +101,9 @@ impl Pipeline {
     pub fn compile<'a>(&self, engine: &'a Engine) -> Result<CompiledPipeline<'a>, Error> {
         let registry = engine.registry();
         let recipe = self.recipe(registry)?;
-        Ok(CompiledPipeline::new(
-            registry,
-            recipe,
-            self.budget,
-            self.first_input(registry),
-        ))
+        let first_input = self.first_input(registry);
+        let prepared = Executor::new(registry).prepare(&recipe, CapabilitySet::new())?;
+        Ok(CompiledPipeline::new(prepared, self.budget, first_input))
     }
 
     /// Runs the pipeline and returns the final value.
@@ -167,8 +164,8 @@ impl Pipeline {
         }
     }
 
-    /// Runs the pipeline, then evaluates a hex pattern over the result.
     #[cfg(feature = "pattern")]
+    /// Runs the pipeline, then evaluates a hex pattern over the result.
     ///
     /// This is the transform-then-parse path: decode, decompress, or decrypt
     /// a buffer and describe the bytes that come out, in one call.

@@ -183,6 +183,22 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
 }
 
 /// Operations gated behind the opt-in packs.
+///
+/// With no pack selected there is nothing to register, so the registry is
+/// untouched; every arm below is compiled in only with its feature.
+#[cfg_attr(
+    not(any(
+        feature = "analysis",
+        feature = "compression",
+        feature = "crypto",
+        feature = "hash",
+        feature = "text"
+    )),
+    expect(
+        unused_variables,
+        reason = "no pack is enabled, so nothing is registered"
+    )
+)]
 fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "analysis")]
     {

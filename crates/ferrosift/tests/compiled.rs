@@ -125,7 +125,7 @@ fn the_budget_is_captured_at_compile_time() {
 }
 
 #[test]
-fn a_compiled_pipeline_exposes_its_resolved_recipe() {
+fn a_compiled_pipeline_reports_its_resolved_steps() {
     let engine = engine();
     let compiled = engine
         .pipeline()
@@ -133,10 +133,12 @@ fn a_compiled_pipeline_exposes_its_resolved_recipe() {
         .to_hex()
         .compile(&engine)
         .expect("compiles");
-    let steps = &compiled.recipe().steps;
-    assert_eq!(steps.len(), 2);
-    assert_eq!(steps[0].operation.as_str(), "encoding.base64.decode@1");
-    assert_eq!(steps[1].operation.as_str(), "encoding.hex.encode@1");
+    assert_eq!(compiled.len(), 2);
+    assert!(!compiled.is_empty());
+    assert_eq!(compiled.prepared().len(), 2);
+
+    let empty = engine.pipeline().compile(&engine).expect("compiles");
+    assert!(empty.is_empty());
 }
 
 #[test]

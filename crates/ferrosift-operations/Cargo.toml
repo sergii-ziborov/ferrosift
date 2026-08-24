@@ -36,8 +36,9 @@ text = ["dep:regex-automata"]
 analysis = ["compression", "text"]
 
 # Operations outside these packs — identity, flow control, every encoding,
-# byte slicing, find/replace, and XOR — carry no external dependency and are
-# always compiled.
+# byte slicing, and XOR — carry no external dependency and are always
+# compiled. Find / Replace is not among them: its Regex mode needs the regex
+# engine, so it belongs to `text`.
 
 [dependencies]
 aes = { version = "0.8.4", default-features = false, optional = true }

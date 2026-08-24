@@ -10,9 +10,7 @@ use crate::{
     OperationContext, OperationError, StepLocation, TraceEvent, TraceEventKind, ValueSummary,
 };
 
-use super::{
-    ExecutionError, ExecutionFailure, flow, limits, preflight::PreparedStep, step_location,
-};
+use super::{ExecutionError, ExecutionFailure, flow, limits, preflight::PreparedStep};
 
 pub(super) enum StepControl {
     Continue,
@@ -35,7 +33,7 @@ pub(super) struct Runner<'a> {
 }
 
 pub(super) fn run(
-    prepared: &[PreparedStep<'_, '_>],
+    prepared: &[PreparedStep<'_>],
     input: Value,
     budget: ExecutionBudget,
     initial_input_size: u64,
@@ -61,10 +59,10 @@ pub(super) fn run(
     }
 }
 
-fn find_merge(fork_index: usize, prepared: &[PreparedStep<'_, '_>]) -> Option<usize> {
+fn find_merge(fork_index: usize, prepared: &[PreparedStep<'_>]) -> Option<usize> {
     let ids: Vec<_> = prepared
         .iter()
-        .map(|step| step.step.operation.clone())
+        .map(|step| step.operation_id.clone())
         .collect();
     let merge_all: Vec<bool> = prepared
         .iter()
@@ -73,7 +71,7 @@ fn find_merge(fork_index: usize, prepared: &[PreparedStep<'_, '_>]) -> Option<us
             _ => true,
         })
         .collect();
-    let disabled: Vec<bool> = prepared.iter().map(|step| step.step.disabled).collect();
+    let disabled: Vec<bool> = prepared.iter().map(|step| step.disabled).collect();
     flow::find_merge_index(fork_index, &ids, &merge_all, &disabled)
 }
 
@@ -87,12 +85,12 @@ impl Runner<'_> {
         &mut self,
         start: usize,
         end: usize,
-        prepared: &[PreparedStep<'_, '_>],
+        prepared: &[PreparedStep<'_>],
     ) -> Result<StepControl, ExecutionError> {
         let mut index = start;
         while index < end {
-            if !prepared[index].step.disabled
-                && flow::is_fork(&prepared[index].step.operation)
+            if !prepared[index].disabled
+                && flow::is_fork(&prepared[index].operation_id)
                 && prepared[index].operation.is_some()
             {
                 let merge_index = find_merge(index, prepared).unwrap_or(end).min(end);
@@ -102,8 +100,8 @@ impl Runner<'_> {
                     return Ok(StepControl::Pause { step_index });
                 }
                 index = if merge_index < end
-                    && !prepared[merge_index].step.disabled
-                    && flow::is_merge(&prepared[merge_index].step.operation)
+                    && !prepared[merge_index].disabled
+                    && flow::is_merge(&prepared[merge_index].operation_id)
                 {
                     merge_index + 1
                 } else {
@@ -125,16 +123,16 @@ impl Runner<'_> {
     fn run_step(
         &mut self,
         index: usize,
-        prepared: &PreparedStep<'_, '_>,
+        prepared: &PreparedStep<'_>,
     ) -> Result<StepControl, ExecutionError> {
-        let location = step_location(index, prepared.step);
+        let location = prepared.location(index);
         if self.cancellation.is_cancelled() {
             return Err(self.fail(
                 ExecutionFailure::Operation(OperationError::Cancelled),
                 location,
             ));
         }
-        if prepared.step.disabled {
+        if prepared.disabled {
             self.trace.events.push(TraceEvent {
                 location,
                 kind: TraceEventKind::StepSkipped {
@@ -143,7 +141,7 @@ impl Runner<'_> {
             });
             return Ok(StepControl::Continue);
         }
-        if prepared.step.breakpoint {
+        if prepared.breakpoint {
             self.trace.events.push(TraceEvent {
                 location,
                 kind: TraceEventKind::BreakpointReached {
@@ -154,7 +152,7 @@ impl Runner<'_> {
         }
 
         // Stray Merge is identity (join already happened in run_fork).
-        if flow::is_merge(&prepared.step.operation) {
+        if flow::is_merge(&prepared.operation_id) {
             self.count_invocation(&location)?;
             let summary = ValueSummary::from_value(&self.value);
             self.trace.events.push(TraceEvent {
@@ -170,7 +168,7 @@ impl Runner<'_> {
 
         // Nested Fork is never handled here: execute_region intercepts it.
         // Standalone Fork (empty body) is still an operation.execute path only
-        // when not detected as a region â€” but execute_region always detects it.
+        // when not detected as a region Ã¢â‚¬â€ but execute_region always detects it.
 
         let Some(operation) = prepared.operation else {
             return Err(self.fail(ExecutionFailure::UnknownOperation, location));
