@@ -42,14 +42,8 @@ fn fork_maps_from_base64_per_line_and_merges() {
                 "fork",
                 "flow.fork@1",
                 Arguments::from([
-                    (
-                        "split_delimiter".into(),
-                        ArgumentValue::Text("\\n".into()),
-                    ),
-                    (
-                        "merge_delimiter".into(),
-                        ArgumentValue::Text("\\n".into()),
-                    ),
+                    ("split_delimiter".into(), ArgumentValue::Text("\\n".into())),
+                    ("merge_delimiter".into(), ArgumentValue::Text("\\n".into())),
                     ("ignore_errors".into(), ArgumentValue::Boolean(false)),
                 ]),
             ),
@@ -88,14 +82,8 @@ fn fork_without_body_rejoins_splits() {
                 "fork",
                 "flow.fork@1",
                 Arguments::from([
-                    (
-                        "split_delimiter".into(),
-                        ArgumentValue::Text("|".into()),
-                    ),
-                    (
-                        "merge_delimiter".into(),
-                        ArgumentValue::Text(",".into()),
-                    ),
+                    ("split_delimiter".into(), ArgumentValue::Text("|".into())),
+                    ("merge_delimiter".into(), ArgumentValue::Text(",".into())),
                     ("ignore_errors".into(), ArgumentValue::Boolean(false)),
                 ]),
             ),
@@ -121,14 +109,8 @@ fn fork_ignore_errors_keeps_empty_branch_slot() {
                 "fork",
                 "flow.fork@1",
                 Arguments::from([
-                    (
-                        "split_delimiter".into(),
-                        ArgumentValue::Text("\\n".into()),
-                    ),
-                    (
-                        "merge_delimiter".into(),
-                        ArgumentValue::Text("\\n".into()),
-                    ),
+                    ("split_delimiter".into(), ArgumentValue::Text("\\n".into())),
+                    ("merge_delimiter".into(), ArgumentValue::Text("\\n".into())),
                     ("ignore_errors".into(), ArgumentValue::Boolean(true)),
                 ]),
             ),
@@ -198,7 +180,7 @@ fn hex_decode_args() -> Arguments {
 #[test]
 fn nested_fork_executes_inner_body_per_outer_branch() {
     // Outer splits on ';', inner splits on ',' and From Hex each cell.
-    // "41,42;43,44" → "A\nB\nC\nD" with merge "\n" on both levels? 
+    // "41,42;43,44" → "A\nB\nC\nD" with merge "\n" on both levels?
     // Outer merge "|", inner merge "+":
     // branch "41,42" → hex 41, hex 42 → "A+B"
     // branch "43,44" → "C+D"

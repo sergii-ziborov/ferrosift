@@ -32,8 +32,7 @@ impl DerivePbkdf2Key {
                 id: "crypto.pbkdf2@1",
                 display_name: "Derive PBKDF2 key",
                 category: "Ciphers",
-                description:
-                    "Derives a key with PBKDF2-HMAC. Empty salt is rejected for determinism.",
+                description: "Derives a key with PBKDF2-HMAC. Empty salt is rejected for determinism.",
                 cyberchef_alias: Some("Derive PBKDF2 key"),
                 input: text_kinds(),
                 output: ValueConstraint::Exact(ValueKind::Text),
@@ -121,7 +120,11 @@ impl Scrypt {
                         "Salt as CyberChef toggleString.",
                         toggle_string_default("Hex", ""),
                     ),
-                    integer_argument("iterations", "CPU/memory cost parameter N (power of two).", 16384),
+                    integer_argument(
+                        "iterations",
+                        "CPU/memory cost parameter N (power of two).",
+                        16384,
+                    ),
                     integer_argument("memory_factor", "Block size parameter r.", 8),
                     integer_argument("parallelization_factor", "Parallelization parameter p.", 1),
                     integer_argument("key_length", "Derived key length in bytes.", 64),

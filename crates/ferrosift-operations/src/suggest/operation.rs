@@ -30,13 +30,9 @@ impl SuggestRecipe {
                 id: "analysis.suggest@1",
                 display_name: "Suggest recipe",
                 category: "Analysis",
-                description:
-                    "Ranks portable decode recipes for the input without applying them (Magic-as-advisor).",
+                description: "Ranks portable decode recipes for the input without applying them (Magic-as-advisor).",
                 cyberchef_alias: None,
-                input: ValueConstraint::OneOf(BTreeSet::from([
-                    ValueKind::Bytes,
-                    ValueKind::Text,
-                ])),
+                input: ValueConstraint::OneOf(BTreeSet::from([ValueKind::Bytes, ValueKind::Text])),
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![
                     integer_argument(

@@ -1,59 +1,22 @@
 //! AES-CBC / CFB / OFB / CTR / ECB / GCM for `CyberChef` 11.3 modes.
+//!
+//! This module owns argument validation and mode dispatch only; the cipher
+//! implementations live in [`super::padded`], [`super::stream`], and
+//! [`super::gcm`].
 
 use alloc::string::String;
 use alloc::vec::Vec;
 
-use aes::Aes128;
-use aes::Aes192;
-use aes::Aes256;
-use aes_gcm::aead::generic_array::typenum::{U12, U16};
-use aes_gcm::aead::{Aead, KeyInit, Payload};
-use aes_gcm::{AesGcm, Nonce};
-use cbc::cipher::{BlockDecryptMut, BlockEncryptMut, KeyIvInit};
-use cipher::block_padding::{NoPadding, Pkcs7};
-use cipher::{AsyncStreamCipher, StreamCipher};
-use ctr::Ctr128BE;
 use ferrosift_core::{OperationContext, OperationError};
 
+use super::failure::{INVALID_IV, INVALID_KEY, INVALID_LENGTH, INVALID_MODE};
+use super::gcm::{decrypt_gcm, encrypt_gcm};
+use super::padded::{decrypt_cbc, decrypt_ecb, encrypt_cbc, encrypt_ecb};
+use super::stream::{crypt_ctr, crypt_ofb, decrypt_cfb, encrypt_cfb};
 use crate::failure::failed;
 use crate::hex_util::to_hex_lower;
 
-const INVALID_KEY: &str = "crypto.aes.invalid_key_length";
-const INVALID_MODE: &str = "crypto.aes.invalid_mode";
-const INVALID_LENGTH: &str = "crypto.aes.invalid_length";
-const DECRYPT_FAILED: &str = "crypto.aes.decrypt_failed";
-const INVALID_IV: &str = "crypto.aes.invalid_iv";
-
-type Aes128CbcEnc = cbc::Encryptor<Aes128>;
-type Aes192CbcEnc = cbc::Encryptor<Aes192>;
-type Aes256CbcEnc = cbc::Encryptor<Aes256>;
-type Aes128CbcDec = cbc::Decryptor<Aes128>;
-type Aes192CbcDec = cbc::Decryptor<Aes192>;
-type Aes256CbcDec = cbc::Decryptor<Aes256>;
-type Aes128EcbEnc = ecb::Encryptor<Aes128>;
-type Aes192EcbEnc = ecb::Encryptor<Aes192>;
-type Aes256EcbEnc = ecb::Encryptor<Aes256>;
-type Aes128EcbDec = ecb::Decryptor<Aes128>;
-type Aes192EcbDec = ecb::Decryptor<Aes192>;
-type Aes256EcbDec = ecb::Decryptor<Aes256>;
-type Aes128CfbEnc = cfb_mode::Encryptor<Aes128>;
-type Aes192CfbEnc = cfb_mode::Encryptor<Aes192>;
-type Aes256CfbEnc = cfb_mode::Encryptor<Aes256>;
-type Aes128CfbDec = cfb_mode::Decryptor<Aes128>;
-type Aes192CfbDec = cfb_mode::Decryptor<Aes192>;
-type Aes256CfbDec = cfb_mode::Decryptor<Aes256>;
-type Aes128Ofb = ofb::Ofb<Aes128>;
-type Aes192Ofb = ofb::Ofb<Aes192>;
-type Aes256Ofb = ofb::Ofb<Aes256>;
-type Aes128Ctr = Ctr128BE<Aes128>;
-type Aes192Ctr = Ctr128BE<Aes192>;
-type Aes256Ctr = Ctr128BE<Aes256>;
-type Aes128Gcm12 = AesGcm<Aes128, U12>;
-type Aes192Gcm12 = AesGcm<Aes192, U12>;
-type Aes256Gcm12 = AesGcm<Aes256, U12>;
-type Aes128Gcm16 = AesGcm<Aes128, U16>;
-type Aes192Gcm16 = AesGcm<Aes192, U16>;
-type Aes256Gcm16 = AesGcm<Aes256, U16>;
+const BLOCK_BYTES: usize = 16;
 
 pub(super) struct EncryptParams<'a> {
     pub key: &'a [u8],
@@ -80,7 +43,7 @@ pub(super) fn encrypt(
     validate_key(params.key)?;
     let (mode, no_padding) = parse_mode(params.mode)?;
     let iv = normalize_iv(params.iv, mode)?;
-    if no_padding && !input.len().is_multiple_of(16) {
+    if no_padding && !input.len().is_multiple_of(BLOCK_BYTES) {
         return Err(failed(INVALID_LENGTH));
     }
     let (mut body, tag) = match mode {
@@ -95,16 +58,7 @@ pub(super) fn encrypt(
         }
         _ => return Err(failed(INVALID_MODE)),
     };
-    match params.include_iv {
-        "Prepend" => {
-            let mut out = iv;
-            out.extend_from_slice(&body);
-            body = out;
-        }
-        "Append" => body.extend_from_slice(&iv),
-        "Off" => {}
-        _ => return Err(failed(INVALID_MODE)),
-    }
+    body = attach_iv(body, iv, params.include_iv)?;
     ensure_budget(body.len(), context)?;
     context.ensure_active()?;
     Ok((body, tag))
@@ -139,19 +93,34 @@ pub(super) fn format_encrypt_output(
     output_format: &str,
 ) -> Result<String, OperationError> {
     match (output_format, tag) {
-        ("Hex", Some(tag)) => {
-            let mut text = to_hex_lower(body);
-            text.push_str("\n\nTag: ");
-            text.push_str(&to_hex_lower(tag));
-            Ok(text)
-        }
+        ("Hex", Some(tag)) => Ok(with_tag(to_hex_lower(body), &to_hex_lower(tag))),
         ("Hex", None) => Ok(to_hex_lower(body)),
-        ("Raw", Some(tag)) => {
-            let mut out = latin1(body);
-            out.push_str("\n\nTag: ");
-            out.push_str(&latin1(tag));
+        ("Raw", Some(tag)) => Ok(with_tag(latin1(body), &latin1(tag))),
+        _ => Err(failed(INVALID_MODE)),
+    }
+}
+
+/// Appends the reference's `\n\nTag: <value>` trailer.
+fn with_tag(mut body: String, tag: &str) -> String {
+    body.push_str("\n\nTag: ");
+    body.push_str(tag);
+    body
+}
+
+/// Places the IV before or after the ciphertext, or leaves it out.
+fn attach_iv(body: Vec<u8>, iv: Vec<u8>, include_iv: &str) -> Result<Vec<u8>, OperationError> {
+    match include_iv {
+        "Prepend" => {
+            let mut out = iv;
+            out.extend_from_slice(&body);
             Ok(out)
         }
+        "Append" => {
+            let mut out = body;
+            out.extend_from_slice(&iv);
+            Ok(out)
+        }
+        "Off" => Ok(body),
         _ => Err(failed(INVALID_MODE)),
     }
 }
@@ -182,16 +151,18 @@ fn validate_key(key: &[u8]) -> Result<(), OperationError> {
     }
 }
 
+/// An empty IV becomes sixteen null bytes, matching the reference; GCM also
+/// accepts a twelve-byte nonce.
 fn normalize_iv(iv: &[u8], mode: &str) -> Result<Vec<u8>, OperationError> {
     if iv.is_empty() {
-        return Ok(alloc::vec![0; 16]);
+        return Ok(alloc::vec![0; BLOCK_BYTES]);
     }
-    let ok = if mode == "GCM" {
+    let accepted = if mode == "GCM" {
         matches!(iv.len(), 12 | 16)
     } else {
-        iv.len() == 16
+        iv.len() == BLOCK_BYTES
     };
-    if ok {
+    if accepted {
         Ok(iv.to_vec())
     } else {
         Err(failed(INVALID_IV))
@@ -203,280 +174,5 @@ fn ensure_budget(len: usize, context: &OperationContext<'_>) -> Result<(), Opera
         Err(OperationError::OutputLimitExceeded)
     } else {
         Ok(())
-    }
-}
-
-fn fail_len<E>(_: E) -> OperationError {
-    failed(INVALID_LENGTH)
-}
-
-fn fail_dec<E>(_: E) -> OperationError {
-    failed(DECRYPT_FAILED)
-}
-
-fn encrypt_cbc(
-    input: &[u8],
-    key: &[u8],
-    iv: &[u8],
-    no_padding: bool,
-) -> Result<Vec<u8>, OperationError> {
-    let mut buffer = if no_padding {
-        input.to_vec()
-    } else {
-        let mut buf = input.to_vec();
-        buf.resize(input.len() + 16, 0);
-        buf
-    };
-    let out = match (key.len(), no_padding) {
-        (16, true) => Aes128CbcEnc::new(key.into(), iv.into())
-            .encrypt_padded_mut::<NoPadding>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (24, true) => Aes192CbcEnc::new(key.into(), iv.into())
-            .encrypt_padded_mut::<NoPadding>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (32, true) => Aes256CbcEnc::new(key.into(), iv.into())
-            .encrypt_padded_mut::<NoPadding>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (16, false) => Aes128CbcEnc::new(key.into(), iv.into())
-            .encrypt_padded_mut::<Pkcs7>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (24, false) => Aes192CbcEnc::new(key.into(), iv.into())
-            .encrypt_padded_mut::<Pkcs7>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (32, false) => Aes256CbcEnc::new(key.into(), iv.into())
-            .encrypt_padded_mut::<Pkcs7>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        _ => return Err(failed(INVALID_KEY)),
-    };
-    Ok(out)
-}
-
-fn decrypt_cbc(
-    input: &[u8],
-    key: &[u8],
-    iv: &[u8],
-    no_padding: bool,
-) -> Result<Vec<u8>, OperationError> {
-    let mut buffer = input.to_vec();
-    let out = match (key.len(), no_padding) {
-        (16, true) => Aes128CbcDec::new(key.into(), iv.into())
-            .decrypt_padded_mut::<NoPadding>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (24, true) => Aes192CbcDec::new(key.into(), iv.into())
-            .decrypt_padded_mut::<NoPadding>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (32, true) => Aes256CbcDec::new(key.into(), iv.into())
-            .decrypt_padded_mut::<NoPadding>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (16, false) => Aes128CbcDec::new(key.into(), iv.into())
-            .decrypt_padded_mut::<Pkcs7>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (24, false) => Aes192CbcDec::new(key.into(), iv.into())
-            .decrypt_padded_mut::<Pkcs7>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (32, false) => Aes256CbcDec::new(key.into(), iv.into())
-            .decrypt_padded_mut::<Pkcs7>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        _ => return Err(failed(INVALID_KEY)),
-    };
-    Ok(out)
-}
-
-fn encrypt_ecb(input: &[u8], key: &[u8], no_padding: bool) -> Result<Vec<u8>, OperationError> {
-    use cipher::KeyInit;
-    let mut buffer = if no_padding {
-        input.to_vec()
-    } else {
-        let mut buf = input.to_vec();
-        buf.resize(input.len() + 16, 0);
-        buf
-    };
-    let out = match (key.len(), no_padding) {
-        (16, true) => Aes128EcbEnc::new(key.into())
-            .encrypt_padded_mut::<NoPadding>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (24, true) => Aes192EcbEnc::new(key.into())
-            .encrypt_padded_mut::<NoPadding>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (32, true) => Aes256EcbEnc::new(key.into())
-            .encrypt_padded_mut::<NoPadding>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (16, false) => Aes128EcbEnc::new(key.into())
-            .encrypt_padded_mut::<Pkcs7>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (24, false) => Aes192EcbEnc::new(key.into())
-            .encrypt_padded_mut::<Pkcs7>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        (32, false) => Aes256EcbEnc::new(key.into())
-            .encrypt_padded_mut::<Pkcs7>(&mut buffer, input.len())
-            .map_err(fail_len)?
-            .to_vec(),
-        _ => return Err(failed(INVALID_KEY)),
-    };
-    Ok(out)
-}
-
-fn decrypt_ecb(input: &[u8], key: &[u8], no_padding: bool) -> Result<Vec<u8>, OperationError> {
-    use cipher::KeyInit;
-    let mut buffer = input.to_vec();
-    let out = match (key.len(), no_padding) {
-        (16, true) => Aes128EcbDec::new(key.into())
-            .decrypt_padded_mut::<NoPadding>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (24, true) => Aes192EcbDec::new(key.into())
-            .decrypt_padded_mut::<NoPadding>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (32, true) => Aes256EcbDec::new(key.into())
-            .decrypt_padded_mut::<NoPadding>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (16, false) => Aes128EcbDec::new(key.into())
-            .decrypt_padded_mut::<Pkcs7>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (24, false) => Aes192EcbDec::new(key.into())
-            .decrypt_padded_mut::<Pkcs7>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        (32, false) => Aes256EcbDec::new(key.into())
-            .decrypt_padded_mut::<Pkcs7>(&mut buffer)
-            .map_err(fail_dec)?
-            .to_vec(),
-        _ => return Err(failed(INVALID_KEY)),
-    };
-    Ok(out)
-}
-
-fn encrypt_cfb(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
-    let mut buffer = input.to_vec();
-    match key.len() {
-        16 => Aes128CfbEnc::new(key.into(), iv.into()).encrypt(&mut buffer),
-        24 => Aes192CfbEnc::new(key.into(), iv.into()).encrypt(&mut buffer),
-        32 => Aes256CfbEnc::new(key.into(), iv.into()).encrypt(&mut buffer),
-        _ => return Err(failed(INVALID_KEY)),
-    }
-    Ok(buffer)
-}
-
-fn decrypt_cfb(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
-    let mut buffer = input.to_vec();
-    match key.len() {
-        16 => Aes128CfbDec::new(key.into(), iv.into()).decrypt(&mut buffer),
-        24 => Aes192CfbDec::new(key.into(), iv.into()).decrypt(&mut buffer),
-        32 => Aes256CfbDec::new(key.into(), iv.into()).decrypt(&mut buffer),
-        _ => return Err(failed(INVALID_KEY)),
-    }
-    Ok(buffer)
-}
-
-fn crypt_ofb(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
-    let mut buffer = input.to_vec();
-    match key.len() {
-        16 => Aes128Ofb::new(key.into(), iv.into()).apply_keystream(&mut buffer),
-        24 => Aes192Ofb::new(key.into(), iv.into()).apply_keystream(&mut buffer),
-        32 => Aes256Ofb::new(key.into(), iv.into()).apply_keystream(&mut buffer),
-        _ => return Err(failed(INVALID_KEY)),
-    }
-    Ok(buffer)
-}
-
-fn crypt_ctr(input: &[u8], key: &[u8], iv: &[u8]) -> Result<Vec<u8>, OperationError> {
-    let mut buffer = input.to_vec();
-    match key.len() {
-        16 => Aes128Ctr::new(key.into(), iv.into()).apply_keystream(&mut buffer),
-        24 => Aes192Ctr::new(key.into(), iv.into()).apply_keystream(&mut buffer),
-        32 => Aes256Ctr::new(key.into(), iv.into()).apply_keystream(&mut buffer),
-        _ => return Err(failed(INVALID_KEY)),
-    }
-    Ok(buffer)
-}
-
-fn encrypt_gcm(
-    input: &[u8],
-    key: &[u8],
-    iv: &[u8],
-    aad: &[u8],
-) -> Result<(Vec<u8>, Vec<u8>), OperationError> {
-    let payload = Payload { msg: input, aad };
-    let sealed = match (key.len(), iv.len()) {
-        (16, 12) => Aes128Gcm12::new(key.into())
-            .encrypt(Nonce::<U12>::from_slice(iv), payload)
-            .map_err(fail_len)?,
-        (16, 16) => Aes128Gcm16::new(key.into())
-            .encrypt(Nonce::<U16>::from_slice(iv), payload)
-            .map_err(fail_len)?,
-        (24, 12) => Aes192Gcm12::new(key.into())
-            .encrypt(Nonce::<U12>::from_slice(iv), payload)
-            .map_err(fail_len)?,
-        (24, 16) => Aes192Gcm16::new(key.into())
-            .encrypt(Nonce::<U16>::from_slice(iv), payload)
-            .map_err(fail_len)?,
-        (32, 12) => Aes256Gcm12::new(key.into())
-            .encrypt(Nonce::<U12>::from_slice(iv), payload)
-            .map_err(fail_len)?,
-        (32, 16) => Aes256Gcm16::new(key.into())
-            .encrypt(Nonce::<U16>::from_slice(iv), payload)
-            .map_err(fail_len)?,
-        _ => return Err(failed(INVALID_KEY)),
-    };
-    if sealed.len() < 16 {
-        return Err(failed(INVALID_LENGTH));
-    }
-    let split = sealed.len() - 16;
-    Ok((sealed[..split].to_vec(), sealed[split..].to_vec()))
-}
-
-fn decrypt_gcm(
-    input: &[u8],
-    key: &[u8],
-    iv: &[u8],
-    tag: &[u8],
-    aad: &[u8],
-) -> Result<Vec<u8>, OperationError> {
-    if tag.len() != 16 {
-        return Err(failed(DECRYPT_FAILED));
-    }
-    let mut sealed = input.to_vec();
-    sealed.extend_from_slice(tag);
-    let payload = Payload { msg: &sealed, aad };
-    match (key.len(), iv.len()) {
-        (16, 12) => Aes128Gcm12::new(key.into())
-            .decrypt(Nonce::<U12>::from_slice(iv), payload)
-            .map_err(fail_dec),
-        (16, 16) => Aes128Gcm16::new(key.into())
-            .decrypt(Nonce::<U16>::from_slice(iv), payload)
-            .map_err(fail_dec),
-        (24, 12) => Aes192Gcm12::new(key.into())
-            .decrypt(Nonce::<U12>::from_slice(iv), payload)
-            .map_err(fail_dec),
-        (24, 16) => Aes192Gcm16::new(key.into())
-            .decrypt(Nonce::<U16>::from_slice(iv), payload)
-            .map_err(fail_dec),
-        (32, 12) => Aes256Gcm12::new(key.into())
-            .decrypt(Nonce::<U12>::from_slice(iv), payload)
-            .map_err(fail_dec),
-        (32, 16) => Aes256Gcm16::new(key.into())
-            .decrypt(Nonce::<U16>::from_slice(iv), payload)
-            .map_err(fail_dec),
-        _ => Err(failed(INVALID_KEY)),
     }
 }

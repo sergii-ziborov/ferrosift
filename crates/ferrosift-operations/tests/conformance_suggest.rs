@@ -21,10 +21,7 @@ fn suggest_ranks_from_hex_for_hex_payload() {
         suggest_args(1, 8, false, ""),
         support::text("466572726f53696674"),
     ));
-    assert!(
-        report.starts_with("FerroSift Suggest recipe\n"),
-        "{report}"
-    );
+    assert!(report.starts_with("FerroSift Suggest recipe\n"), "{report}");
     assert!(report.contains("From Hex"), "{report}");
     assert!(report.contains("encoding.hex.decode@1"), "{report}");
     assert!(report.contains("preview: FerroSift"), "{report}");

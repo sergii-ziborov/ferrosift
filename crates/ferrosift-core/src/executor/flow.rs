@@ -91,14 +91,8 @@ mod tests {
         ];
         let merge_all = [false; 6];
         let disabled = [false; 6];
-        assert_eq!(
-            find_merge_index(0, &ids, &merge_all, &disabled),
-            Some(5)
-        );
-        assert_eq!(
-            find_merge_index(2, &ids, &merge_all, &disabled),
-            Some(4)
-        );
+        assert_eq!(find_merge_index(0, &ids, &merge_all, &disabled), Some(5));
+        assert_eq!(find_merge_index(2, &ids, &merge_all, &disabled), Some(4));
     }
 
     #[test]

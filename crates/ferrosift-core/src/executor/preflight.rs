@@ -8,9 +8,7 @@ use ferrosift_model::{
 
 use crate::{Cancellation, ExecutionBudget, Operation, OperationError, OperationRegistry};
 
-use super::{
-    ExecutionError, ExecutionFailure, flow, limits, step_location,
-};
+use super::{ExecutionError, ExecutionFailure, flow, limits, step_location};
 
 pub(super) struct PreparedStep<'recipe, 'registry> {
     pub(super) step: &'recipe RecipeStep,
@@ -120,8 +118,7 @@ fn check_type_flow(
                     crate::ExecutionTrace::default(),
                 ));
             }
-            let merge_index =
-                find_merge_for_prepared(index, prepared).unwrap_or(prepared.len());
+            let merge_index = find_merge_for_prepared(index, prepared).unwrap_or(prepared.len());
             validate_fork_body(prepared, index + 1, merge_index)?;
             previous_output = ValueConstraint::Exact(ValueKind::Text);
             index = if merge_index < prepared.len() {

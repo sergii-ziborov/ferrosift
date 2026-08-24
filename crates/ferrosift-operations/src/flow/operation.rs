@@ -26,13 +26,9 @@ impl Fork {
                 id: "flow.fork@1",
                 display_name: "Fork",
                 category: "Flow control",
-                description:
-                    "Splits the input and maps subsequent operations onto each branch until Merge.",
+                description: "Splits the input and maps subsequent operations onto each branch until Merge.",
                 cyberchef_alias: Some("Fork"),
-                input: ValueConstraint::OneOf(BTreeSet::from([
-                    ValueKind::Text,
-                    ValueKind::Bytes,
-                ])),
+                input: ValueConstraint::OneOf(BTreeSet::from([ValueKind::Text, ValueKind::Bytes])),
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![
                     text_argument(
@@ -90,7 +86,9 @@ impl Operation for Fork {
         let joined = if text.is_empty() {
             String::new()
         } else {
-            text.split(split.as_str()).collect::<alloc::vec::Vec<_>>().join(merge.as_str())
+            text.split(split.as_str())
+                .collect::<alloc::vec::Vec<_>>()
+                .join(merge.as_str())
         };
         if u64::try_from(joined.len()).map_or(true, |size| size > context.budget().max_output_bytes)
         {
@@ -163,11 +161,7 @@ fn value_as_text(input: Value) -> Result<alloc::string::String, OperationError> 
         Value::Text(text) => Ok(text.text),
         Value::Bytes(bytes) => Ok(match alloc::string::String::from_utf8(bytes) {
             Ok(text) => text,
-            Err(error) => error
-                .into_bytes()
-                .into_iter()
-                .map(char::from)
-                .collect(),
+            Err(error) => error.into_bytes().into_iter().map(char::from).collect(),
         }),
         _ => Err(OperationError::InvalidArguments),
     }

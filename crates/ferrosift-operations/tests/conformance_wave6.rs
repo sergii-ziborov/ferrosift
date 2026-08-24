@@ -101,10 +101,7 @@ fn aes_key_wrap_rfc3394_vector() {
         ]),
         support::text("00112233445566778899aabbccddeeff"),
     ));
-    assert_eq!(
-        wrapped,
-        "1fa68b0a8112b447aef34bd8fb5a7b829d3e862371d2cfe5"
-    );
+    assert_eq!(wrapped, "1fa68b0a8112b447aef34bd8fb5a7b829d3e862371d2cfe5");
 
     let unwrapped = support::output_text(support::run(
         "crypto.aes_kw.unwrap@1",

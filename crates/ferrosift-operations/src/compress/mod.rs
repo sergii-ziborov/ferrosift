@@ -1,6 +1,6 @@
 mod codec;
-mod operation;
+mod container;
+mod deflate;
 
-pub use operation::{
-    Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
-};
+pub use container::{Bzip2Compress, Bzip2Decompress, Gunzip, Gzip};
+pub use deflate::{RawDeflate, RawInflate, ZlibDeflate, ZlibInflate};
