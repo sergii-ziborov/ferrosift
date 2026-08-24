@@ -12,29 +12,51 @@ pub(super) fn encode(
     let capacity = encoded_len(input.len(), alphabet.padding().is_some())
         .ok_or(OperationError::OutputLimitExceeded)?;
     ensure_output_fits(capacity, context)?;
-    let mut output = String::with_capacity(capacity);
-    for (index, chunk) in input.chunks(3).enumerate() {
-        if index % 1366 == 0 {
-            context.ensure_active()?;
+    let mut output = Vec::with_capacity(capacity);
+    // Whole triples first. Splitting the tail off means this loop never
+    // bounds-checks a partial chunk and never consults the padding, which is
+    // what the previous single loop paid for on every group of three.
+    let whole = input.len() - input.len() % 3;
+    let (body, tail) = input.split_at(whole);
+    for block in body.chunks(3 * 1366) {
+        context.ensure_active()?;
+        for triple in block.chunks_exact(3) {
+            let packed =
+                u32::from(triple[0]) << 16 | u32::from(triple[1]) << 8 | u32::from(triple[2]);
+            output.extend_from_slice(&[
+                alphabet.symbol_byte((packed >> 18) as usize & 0x3f),
+                alphabet.symbol_byte((packed >> 12) as usize & 0x3f),
+                alphabet.symbol_byte((packed >> 6) as usize & 0x3f),
+                alphabet.symbol_byte(packed as usize & 0x3f),
+            ]);
         }
-        let first = chunk[0];
-        output.push(alphabet.symbol(usize::from(first >> 2)));
-        let second_index = (first & 0x03) << 4 | chunk.get(1).copied().unwrap_or(0) >> 4;
-        output.push(alphabet.symbol(usize::from(second_index)));
-        if let Some(second) = chunk.get(1).copied() {
-            let third_index = (second & 0x0f) << 2 | chunk.get(2).copied().unwrap_or(0) >> 6;
-            output.push(alphabet.symbol(usize::from(third_index)));
-        } else if let Some(padding) = alphabet.padding() {
-            output.push(padding);
+    }
+
+    if !tail.is_empty() {
+        let first = tail[0];
+        output.push(alphabet.symbol_byte(usize::from(first >> 2)));
+        let second = tail.get(1).copied();
+        output.push(
+            alphabet.symbol_byte(usize::from((first & 0x03) << 4 | second.unwrap_or(0) >> 4)),
+        );
+        match second {
+            Some(second) => output.push(alphabet.symbol_byte(usize::from((second & 0x0f) << 2))),
+            None => {
+                if let Some(padding) = alphabet.padding_byte() {
+                    output.push(padding);
+                }
+            }
         }
-        if let Some(third) = chunk.get(2).copied() {
-            output.push(alphabet.symbol(usize::from(third & 0x3f)));
-        } else if let Some(padding) = alphabet.padding() {
+        if let Some(padding) = alphabet.padding_byte() {
             output.push(padding);
         }
     }
+
     context.ensure_active()?;
-    Ok(output)
+    // Every byte came from the alphabet, which parsing validated as ASCII, so
+    // this scan cannot fail. It is here rather than an unchecked conversion
+    // because the crate forbids unsafe.
+    String::from_utf8(output).map_err(|_| failed("encoding.base64.invalid_alphabet"))
 }
 
 pub(super) fn decode(

@@ -13,22 +13,21 @@
 //! different things and calling one of them faster.
 
 use criterion::{BenchmarkId, Criterion, Throughput, criterion_group, criterion_main};
-use ferrosift_bench::{SIZES, engine, integer, recipe, run, sample, text};
+use ferrosift_bench::{SIZES, compiled, engine, integer, recipe, run, sample, text};
 use ferrosift_model::Value;
 use std::hint::black_box;
 
 fn base64_encode(criterion: &mut Criterion) {
     let engine = engine().expect("engine");
-    let recipe = recipe(
-        "encoding.base64.encode@1",
-        &[("alphabet", text("A-Za-z0-9+/="))],
-    );
+    let arguments = [("alphabet", text("A-Za-z0-9+/="))];
+    let recipe = recipe("encoding.base64.encode@1", &arguments);
+    let pipeline = compiled(&engine, "encoding.base64.encode@1", &arguments);
     let mut group = criterion.benchmark_group("base64/encode");
     for size in SIZES {
         let input = sample(size);
         group.throughput(Throughput::Bytes(size as u64));
         group.bench_with_input(
-            BenchmarkId::new("ferrosift", size),
+            BenchmarkId::new("ferrosift-per-call", size),
             &input,
             |bencher, input| {
                 bencher.iter(|| {
@@ -38,6 +37,13 @@ fn base64_encode(criterion: &mut Criterion) {
                         Value::Bytes(black_box(input).clone()),
                     ))
                 });
+            },
+        );
+        group.bench_with_input(
+            BenchmarkId::new("ferrosift", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| black_box(pipeline.run_bytes(black_box(input))));
             },
         );
         group.bench_with_input(
@@ -58,19 +64,18 @@ fn base64_decode(criterion: &mut Criterion) {
     use base64::Engine as _;
 
     let engine = engine().expect("engine");
-    let recipe = recipe(
-        "encoding.base64.decode@1",
-        &[
-            ("alphabet", text("A-Za-z0-9+/=")),
-            ("remove_non_alphabet", ferrosift_bench::boolean(true)),
-        ],
-    );
+    let arguments = [
+        ("alphabet", text("A-Za-z0-9+/=")),
+        ("remove_non_alphabet", ferrosift_bench::boolean(true)),
+    ];
+    let recipe = recipe("encoding.base64.decode@1", &arguments);
+    let pipeline = compiled(&engine, "encoding.base64.decode@1", &arguments);
     let mut group = criterion.benchmark_group("base64/decode");
     for size in SIZES {
         let encoded = base64::engine::general_purpose::STANDARD.encode(sample(size));
         group.throughput(Throughput::Bytes(size as u64));
         group.bench_with_input(
-            BenchmarkId::new("ferrosift", size),
+            BenchmarkId::new("ferrosift-per-call", size),
             &encoded,
             |bencher, encoded| {
                 bencher.iter(|| {
@@ -83,6 +88,13 @@ fn base64_decode(criterion: &mut Criterion) {
                         }),
                     ))
                 });
+            },
+        );
+        group.bench_with_input(
+            BenchmarkId::new("ferrosift", size),
+            &encoded,
+            |bencher, encoded| {
+                bencher.iter(|| black_box(pipeline.run_text(black_box(encoded))));
             },
         );
         group.bench_with_input(
@@ -107,16 +119,15 @@ fn hex_encode(criterion: &mut Criterion) {
     // Both crates emit contiguous lower-case hex, so FerroSift is asked for
     // the same shape: no delimiter and no line wrapping. Anything else would
     // be comparing two different amounts of work.
-    let recipe = recipe(
-        "encoding.hex.encode@1",
-        &[("delimiter", text("None")), ("bytes_per_line", integer(0))],
-    );
+    let arguments = [("delimiter", text("None")), ("bytes_per_line", integer(0))];
+    let recipe = recipe("encoding.hex.encode@1", &arguments);
+    let pipeline = compiled(&engine, "encoding.hex.encode@1", &arguments);
     let mut group = criterion.benchmark_group("hex/encode");
     for size in SIZES {
         let input = sample(size);
         group.throughput(Throughput::Bytes(size as u64));
         group.bench_with_input(
-            BenchmarkId::new("ferrosift", size),
+            BenchmarkId::new("ferrosift-per-call", size),
             &input,
             |bencher, input| {
                 bencher.iter(|| {
@@ -126,6 +137,13 @@ fn hex_encode(criterion: &mut Criterion) {
                         Value::Bytes(black_box(input).clone()),
                     ))
                 });
+            },
+        );
+        group.bench_with_input(
+            BenchmarkId::new("ferrosift", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| black_box(pipeline.run_bytes(black_box(input))));
             },
         );
         group.bench_with_input(

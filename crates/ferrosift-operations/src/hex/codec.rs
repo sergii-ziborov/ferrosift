@@ -6,12 +6,64 @@ use super::delimiter::{DecodeDelimiter, EncodeDelimiter, failed};
 
 const HEX: &[u8; 16] = b"0123456789abcdef";
 
+/// Both hex digits for every byte value, resolved at compile time.
+///
+/// One indexed read per byte instead of two shifts, two masks, and two
+/// indexed reads. The table is 512 bytes and stays in L1.
+const HEX_PAIRS: [[u8; 2]; 256] = {
+    let mut pairs = [[0u8; 2]; 256];
+    let mut value = 0usize;
+    while value < 256 {
+        pairs[value] = [HEX[value >> 4], HEX[value & 0x0f]];
+        value += 1;
+    }
+    pairs
+};
+
+/// Contiguous lower-case hex, with no delimiter and no line breaks.
+///
+/// This is the shape a caller asking for "None" wants, and the shape the
+/// specialist crates emit. The general loop below re-decides the delimiter
+/// and the line break on every single byte; here there is nothing to decide,
+/// so the whole per-byte branch disappears and the bytes go out two at a
+/// time.
+fn encode_contiguous(
+    input: &[u8],
+    context: &OperationContext<'_>,
+) -> Result<String, OperationError> {
+    let capacity = input
+        .len()
+        .checked_mul(2)
+        .ok_or(OperationError::OutputLimitExceeded)?;
+    ensure_output_fits(capacity, context)?;
+
+    let mut output = Vec::with_capacity(capacity);
+    // Cancellation is checked per block rather than per byte: the budget it
+    // protects is measured in bytes, and a 4 KiB block is well inside any
+    // interval a caller could notice.
+    for block in input.chunks(4096) {
+        context.ensure_active()?;
+        for byte in block.iter().copied() {
+            output.extend_from_slice(&HEX_PAIRS[usize::from(byte)]);
+        }
+    }
+    context.ensure_active()?;
+    // Every byte written came from HEX_PAIRS, which holds only ASCII, so this
+    // cannot fail. It is a validating scan rather than an assertion because
+    // the crate forbids unsafe, and the scan is a small fraction of the work
+    // it replaces.
+    String::from_utf8(output).map_err(|_| failed("encoding.hex.invalid_output"))
+}
+
 pub(super) fn encode(
     input: &[u8],
     delimiter: EncodeDelimiter,
     line_size: usize,
     context: &OperationContext<'_>,
 ) -> Result<String, OperationError> {
+    if line_size == 0 && matches!(delimiter, EncodeDelimiter::Suffix("")) {
+        return encode_contiguous(input, context);
+    }
     let capacity = encoded_len(input.len(), delimiter, line_size)
         .ok_or(OperationError::OutputLimitExceeded)?;
     ensure_output_fits(capacity, context)?;

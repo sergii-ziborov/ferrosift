@@ -107,6 +107,34 @@ pub fn run(engine: &Engine, recipe: &Recipe, input: Value) -> Value {
         .value
 }
 
+/// Compiles a single-step pipeline against an engine.
+///
+/// This is the path the crate's own documentation points a caller at, and it
+/// resolves the operation and its arguments once instead of on every run.
+/// Comparing a specialist crate's fast path against `FerroSift`'s slow one
+/// would be asymmetric in the other direction — flattering the competitor —
+/// so both `FerroSift` entry points are measured and labelled.
+///
+/// # Panics
+///
+/// Panics if the pipeline does not compile, which is a benchmark bug.
+#[must_use]
+pub fn compiled<'a>(
+    engine: &'a Engine,
+    operation: &str,
+    arguments: &[(&str, ArgumentValue)],
+) -> ferrosift::CompiledPipeline<'a> {
+    let arguments: Arguments = arguments
+        .iter()
+        .map(|(name, value)| ((*name).to_owned(), value.clone()))
+        .collect();
+    ferrosift::pipeline()
+        .budget(budget())
+        .step(operation, arguments)
+        .compile(engine)
+        .expect("benchmark pipeline must compile")
+}
+
 /// A text argument.
 #[must_use]
 pub fn text(value: &str) -> ArgumentValue {

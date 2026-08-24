@@ -10,7 +10,11 @@ use crate::failure::failed;
 /// hyphen. Invalid range endpoints report the caller's stable failure code.
 pub(crate) fn expand(expression: &str, code: &'static str) -> Result<Vec<char>, OperationError> {
     let input: Vec<_> = expression.chars().collect();
-    let mut output = Vec::new();
+    // Alphabets are written as ranges, so the output is normally several
+    // times the expression length. Starting at 64 covers the usual 64- and
+    // 65-symbol cases in one allocation instead of growing through seven.
+    // This runs on every call, so the reallocations were not free.
+    let mut output = Vec::with_capacity(64);
     let mut index = 0;
     while index < input.len() {
         if index + 2 < input.len() && input[index + 1] == '-' && input[index] != '\\' {
