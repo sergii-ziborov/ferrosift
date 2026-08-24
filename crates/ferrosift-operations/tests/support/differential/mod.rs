@@ -1,6 +1,7 @@
 // Both the `differential` and `corpus` test binaries include this module via
-// `#[path]`, and each uses a different subset of the loaders.
-#![allow(dead_code)]
+// `#[path]`, and each uses a different subset of the loaders, so the unused
+// half is expected in either binary.
+#![allow(dead_code, unused_imports)]
 
 mod fixture;
 mod runner;

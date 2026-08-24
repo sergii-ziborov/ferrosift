@@ -1,7 +1,5 @@
 //! Identity extractors: email and MAC addresses.
 
-use alloc::vec;
-
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
