@@ -103,7 +103,9 @@ for packet in packets {
 ```
 
 Compiling resolves every operation once, so a repeated pipeline never rebuilds
-the registry or the recipe.
+the registry or the recipe — worth 1.7× on a 4 KiB call, measured in
+[docs/benchmarks.md](docs/benchmarks.md), which also records where FerroSift
+is still behind the specialist crate for a given algorithm.
 
 `ferrosift-pattern` deliberately claims **no** compatibility with any upstream
 pattern-language runtime yet: that claim requires a pinned differential

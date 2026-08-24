@@ -10,7 +10,7 @@ members = [
 ]
 # The development task runner is not part of the shipped workspace: it uses
 # std and processes, so it must not reach the wasm check or the library graph.
-exclude = ["xtask"]
+exclude = ["bench", "xtask"]
 resolver = "3"
 
 [workspace.package]

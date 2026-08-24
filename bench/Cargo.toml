@@ -1,0 +1,59 @@
+[package]
+name = "ferrosift-bench"
+description = "Benchmarks for FerroSift against specialist crates and the reference"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.97"
+license = "Apache-2.0"
+repository = "https://github.com/sergii-ziborov/ferrosift"
+publish = false
+
+# This crate is outside the workspace on purpose. Its dependencies are
+# comparison targets, and none of them may reach the shipped library graph,
+# the WASM check, or the bare-metal builds. Keeping it excluded is what makes
+# "FerroSift pulls no dependency you did not ask for" checkable rather than
+# stated.
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+ferrosift = { path = "../crates/ferrosift" }
+ferrosift-core = { path = "../crates/ferrosift-core" }
+ferrosift-model = { path = "../crates/ferrosift-model" }
+ferrosift-operations = { path = "../crates/ferrosift-operations" }
+
+[dev-dependencies]
+criterion = { version = "0.5.1", default-features = false, features = ["cargo_bench_support"] }
+
+# Comparison targets. Each is a single-algorithm crate — a complement, not an
+# alternative to this library — chosen because it is the fastest widely used
+# Rust implementation of that one thing.
+base64 = "0.22.1"
+crc32fast = "1.4.2"
+hex = "0.4.3"
+md-5 = "0.10.6"
+sha2 = "0.10.9"
+strsim = "0.11.1"
+
+[[bench]]
+name = "encoding"
+harness = false
+
+[[bench]]
+name = "digest"
+harness = false
+
+[[bench]]
+name = "dispatch"
+harness = false
+
+# An excluded crate cannot inherit workspace lints, so the same rules the
+# shipped crates hold to are repeated rather than quietly dropped.
+[lints.rust]
+missing_docs = "warn"
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }

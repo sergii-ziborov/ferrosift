@@ -8,3 +8,4 @@ target/
 tools/cyberchef-oracle/vendor/
 
 lcov.info
+bench/target/

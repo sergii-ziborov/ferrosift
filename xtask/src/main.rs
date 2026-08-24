@@ -7,6 +7,7 @@
 
 use std::process::{Command, ExitCode};
 
+mod bench;
 mod cyberchef;
 mod ledger;
 
@@ -29,6 +30,7 @@ fn main() -> ExitCode {
     let arguments: Vec<String> = std::env::args().skip(1).collect();
     let parts: Vec<&str> = arguments.iter().map(String::as_str).collect();
     match parts.as_slice() {
+        ["bench", rest @ ..] => bench::run(rest),
         ["cyberchef", rest @ ..] => cyberchef::run(rest),
         ["ledger", rest @ ..] => ledger::run(rest),
         ["--help" | "-h"] | [] => {
