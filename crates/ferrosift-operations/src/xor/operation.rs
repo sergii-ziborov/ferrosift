@@ -7,7 +7,7 @@ use crate::args::{
     boolean_argument, boolean_value, map_argument, map_value, text_argument, text_value,
     toggle_string_default, toggle_string_parts,
 };
-use crate::key::convert_to_byte_array;
+use crate::key::{XOR_INVALID_KEY, convert_to_byte_array};
 use crate::spec::{SpecDefinition, build};
 
 use super::codec;
@@ -72,7 +72,7 @@ impl Operation for Xor {
             return Err(OperationError::InvalidArguments);
         };
         let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
-        let key = convert_to_byte_array(string, option)?;
+        let key = convert_to_byte_array(string, option, XOR_INVALID_KEY)?;
         let scheme = text_value(arguments, "scheme")?;
         let null_preserving = boolean_value(arguments, "null_preserving")?;
         let output = codec::apply(&input, &key, scheme, null_preserving, context)?;

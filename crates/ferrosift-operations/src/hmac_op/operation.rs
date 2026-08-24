@@ -8,7 +8,7 @@ use ferrosift_model::{
 use crate::args::{
     map_argument, map_value, text_argument, text_value, toggle_string_default, toggle_string_parts,
 };
-use crate::key::convert_to_byte_array;
+use crate::key::{XOR_INVALID_KEY, convert_to_byte_array};
 use crate::spec::{SpecDefinition, build};
 
 use super::codec;
@@ -72,7 +72,7 @@ impl Operation for Hmac {
             return Err(OperationError::InvalidArguments);
         };
         let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
-        let key = convert_to_byte_array(string, option)?;
+        let key = convert_to_byte_array(string, option, XOR_INVALID_KEY)?;
         let digest = codec::hmac(
             &input,
             &key,

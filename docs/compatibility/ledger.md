@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 77 |
-| Reference-aliased | 75 |
-| Byte-pinned (`exact`) | 71 |
+| Registered operations | 88 |
+| Reference-aliased | 86 |
+| Byte-pinned (`exact`) | 82 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 752 |
+| Pinned cases | 1138 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -52,6 +52,7 @@ does.
 | `data.nth_bytes.take@1` | Take nth bytes | core | exact | 17 |
 | `data.remove_null_bytes@1` | Remove null bytes | core | exact | 4 |
 | `data.reverse@1` | Reverse | core | exact | 14 |
+| `data.swap_endianness@1` | Swap endianness | core | exact | 38 |
 | `data.tail@1` | Tail | core | exact | 18 |
 | `data.take_bytes@1` | Take bytes | core | exact | 4 |
 | `defang.fang_url@1` | Fang URL | text | exact | 2 |
@@ -99,6 +100,16 @@ does.
 | `hash.sha1@1` | SHA1 | hash | exact | 7 |
 | `hash.sha2@1` | SHA2 | hash | exact | 13 |
 | `hash.sha3@1` | SHA3 | hash | exact | 13 |
+| `logic.add@1` | ADD | core | exact | 31 |
+| `logic.and@1` | AND | core | exact | 30 |
+| `logic.not@1` | NOT | core | exact | 7 |
+| `logic.or@1` | OR | core | exact | 30 |
+| `logic.ror13@1` | ROR13 | core | exact | 5 |
+| `logic.rotate.left@1` | Rotate left | core | exact | 62 |
+| `logic.rotate.right@1` | Rotate right | core | exact | 62 |
+| `logic.shift.left@1` | Bit shift left | core | exact | 20 |
+| `logic.shift.right@1` | Bit shift right | core | exact | 70 |
+| `logic.sub@1` | SUB | core | exact | 31 |
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |

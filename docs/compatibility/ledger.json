@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 77,
-    "aliased": 75,
-    "exact": 71,
+    "operations": 88,
+    "aliased": 86,
+    "exact": 82,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 752
+    "pinned_cases": 1138
   },
   "operations": [
     {
@@ -315,6 +315,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "data.swap_endianness@1",
+      "display_name": "Swap endianness",
+      "category": "Data",
+      "reference_alias": "Swap endianness",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 38,
       "status": "exact"
     },
     {
@@ -928,6 +941,136 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "logic.add@1",
+      "display_name": "ADD",
+      "category": "Logic",
+      "reference_alias": "ADD",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 31,
+      "status": "exact"
+    },
+    {
+      "id": "logic.and@1",
+      "display_name": "AND",
+      "category": "Logic",
+      "reference_alias": "AND",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 30,
+      "status": "exact"
+    },
+    {
+      "id": "logic.not@1",
+      "display_name": "NOT",
+      "category": "Logic",
+      "reference_alias": "NOT",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "logic.or@1",
+      "display_name": "OR",
+      "category": "Logic",
+      "reference_alias": "OR",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 30,
+      "status": "exact"
+    },
+    {
+      "id": "logic.ror13@1",
+      "display_name": "ROR13",
+      "category": "Logic",
+      "reference_alias": "ROR13",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "logic.rotate.left@1",
+      "display_name": "Rotate left",
+      "category": "Logic",
+      "reference_alias": "Rotate left",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 62,
+      "status": "exact"
+    },
+    {
+      "id": "logic.rotate.right@1",
+      "display_name": "Rotate right",
+      "category": "Logic",
+      "reference_alias": "Rotate right",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 62,
+      "status": "exact"
+    },
+    {
+      "id": "logic.shift.left@1",
+      "display_name": "Bit shift left",
+      "category": "Logic",
+      "reference_alias": "Bit shift left",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 20,
+      "status": "exact"
+    },
+    {
+      "id": "logic.shift.right@1",
+      "display_name": "Bit shift right",
+      "category": "Logic",
+      "reference_alias": "Bit shift right",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 70,
+      "status": "exact"
+    },
+    {
+      "id": "logic.sub@1",
+      "display_name": "SUB",
+      "category": "Logic",
+      "reference_alias": "SUB",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 31,
       "status": "exact"
     },
     {

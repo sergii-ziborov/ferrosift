@@ -8,14 +8,14 @@ use ferrosift_model::{TextEncoding, TextValue, Value};
 
 use crate::failure::failed;
 use crate::hex_util::to_hex_lower;
-use crate::key::convert_to_byte_array;
+use crate::key::{XOR_INVALID_KEY, convert_to_byte_array};
 
 const INVALID_FORMAT: &str = "crypto.invalid_format";
 const INVALID_HEX: &str = "crypto.invalid_hex";
 
 /// Parses a toggleString field into raw key/IV/tag bytes.
 pub(crate) fn toggle_bytes(option: &str, string: &str) -> Result<Vec<u8>, OperationError> {
-    convert_to_byte_array(string, option).map_err(|_| failed(INVALID_FORMAT))
+    convert_to_byte_array(string, option, XOR_INVALID_KEY).map_err(|_| failed(INVALID_FORMAT))
 }
 
 /// Interprets an operation input as cipher bytes.
@@ -31,6 +31,7 @@ pub(crate) fn decode_input(input: Value, format: &str) -> Result<Vec<u8>, Operat
         "Base64" => convert_to_byte_array(
             core::str::from_utf8(&raw).map_err(|_| failed(INVALID_FORMAT))?,
             "Base64",
+            INVALID_FORMAT,
         )
         .map_err(|_| failed(INVALID_FORMAT)),
         _ => Err(failed(INVALID_FORMAT)),

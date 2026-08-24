@@ -13215,6 +13215,7664 @@
     ""
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "not_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "NOT",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_0_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_0_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_0_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_0_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_compose_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    },
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "or_0_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_0_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_0_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_0_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_compose_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    },
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "add_0_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_0_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_0_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_0_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_compose_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    },
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "sub_0_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_0_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_0_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_0_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_compose_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    },
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "shift_left_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_31",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_31",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_0_32",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_0_32",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_0_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_0_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_0_9",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_0_9",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_0_9",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_0_9",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ror13_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "ROR13",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30783030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "not_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "NOT",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "df"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_1_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_1_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_1_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_1_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_compose_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    },
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20",
+    "3f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "or_1_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_1_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_1_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_1_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_compose_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    },
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20",
+    "5f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "add_1_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_1_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_1_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_1_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_compose_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    },
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b",
+    "4c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "sub_1_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e1"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_1_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_1_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_1_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_compose_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    },
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20",
+    "20"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "shift_left_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "04"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "04"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_1_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_1_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "04"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "04"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_1_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_1_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_1_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_1_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ror13_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "ROR13",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30783030303030303230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "not_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "NOT",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "238834678f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_5_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1c370b1830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_5_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0077009800"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_5_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4865490860"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_5_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_compose_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    },
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1c370b1830",
+    "3f3f3f3f3f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "or_5_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ff7fffbf7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_5_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dcffcbff70"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_5_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ff77fbfb75"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_5_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_compose_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    },
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dcffcbff70",
+    "1b3e0a3eaf"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "add_5_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1bb60ad7af"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_5_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc76cb9770"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_5_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47dc4403d5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_5_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_compose_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    },
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47dc4403d5",
+    "089d05c496"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "sub_5_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9d388c5931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_5_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc78cb9970"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_5_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7112522d0b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_5_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_compose_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    },
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870",
+    "1c370b1830"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "shift_left_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b8ee9630e0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e0b858c080"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0080800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5c774b1870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6e3b654c38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ee3be5cc38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1b0e19130e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9b0e99930e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0100010100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8100818100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8000808000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8000808000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_5_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_5_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5c774b1870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_5_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b9ee9731e0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6ebbe54c38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b8ef9730e1"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6e3be5cc38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e6bb5ec483"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9bee79130e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e3be5cc386"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_5_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1b8ef9730e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6ebbe54c38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b9ee9731e0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3be5cc386e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e1b8ef9730"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dc77cb9870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_5_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b9ee9731e0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_5_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6ebbe54c38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_5_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b8ef9730e1"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_5_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6e3be5cc38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ror13_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "dc77cb9870"
+   },
+   "recipe": [
+    {
+     "op": "ROR13",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30784632434446333330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "not_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "NOT",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2523b53229f537eecad8bc6c15ed1eb7"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_16_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1a1c0a0d160a0811352703132a122108"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_16_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00dc00cd000a00110027009300120048"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_16_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a44484944084801312341116a006148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_16_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_compose_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    },
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1a1c0a0d160a0811352703132a122108",
+    "3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "or_16_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ffff7fffff3fff3f3f3f7fbfff3fff7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_16_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "daff4affd6ffc8ff35ff43ffeaffe1ff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_16_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "fbfd7beff77beb757d6f67fbeb77f96b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_16_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_compose_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    },
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "daff4affd6ffc8ff35ff43ffeaffe1ff",
+    "193e893e153e073e743e823e293e203e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "add_16_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "191b890c15490750746682d229512087"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_16_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadb4accd609c81035264392ea11e147"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_16_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4541c3383b833376ae92a80c55775ab3"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_16_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_compose_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    },
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4541c3383b833376ae92a80c55775ab3",
+    "060284f9fc44f4376f5369cd16381b74"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "sub_16_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9b9d0b8e97cb89d2f6e80454abd3a209"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_16_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadd4aced60bc81235284394ea13e149"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_16_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f77d16271915dacbcbcde1a7fad68dd"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_16_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_compose_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    },
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148",
+    "1a1c0a0d160a0811352703132a122108"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "shift_left_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b4b8949aac1490226a4e8626d424c290"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d0e05068b0504088a838189850900840"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000080000000808080808000008000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a5c4a4d560a4811352743136a126148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e25666b0564081a13214975097024"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "edee25e6eb05e4081a1321c9f509f024"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1b1b09191a011902060408121d021c09"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9b9b09999a019902060408929d029c09"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01010001010001000000000101000100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "81810081810081000000008181008100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "80800080800080000000008080008000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "80800080800080000000008080008000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_16_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_16_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a5c4a4d560a4811352743136a126148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b5b9949bad1491226a4e8627d524c390"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e25e66b0564889a93a1c97509f024"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b5b8959bac1590226a4e8727d425c291"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e2566eb0564089a93a1c9f50970a4"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d6e6526eb6504688a9391a9c57900f42"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5b9b49b9da411922a6e468725d423c09"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d6e2566eb0564089a93a1c9f50970a46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1b5b8959bac1590226a4e8727d425c29"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e25e66b0564889a93a1c97509f024"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b5b9949bad1491226a4e8627d524c390"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6e2566eb0564089a93a1c9f50970a46d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "91b5b8959bac1590226a4e8727d425c2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "dadc4acdd60ac81135274393ea12e148"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_16_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b5b9949bad1491226a4e8627d524c390"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_16_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e25e66b0564889a93a1c97509f024"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_16_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b5b8959bac1590226a4e8727d425c291"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_16_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e2566eb0564089a93a1c9f50970a4"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ror13_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "dadc4acdd60ac81135274393ea12e148"
+   },
+   "recipe": [
+    {
+     "op": "ROR13",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30783533363246383739"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "not_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "NOT",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "86cabd79eb25de910f5f1865efef98df5c6b58f979ed18438c56ceee9017d2fae11229462ee83c42a99dd95e497dbc367e97c8ea92d5ba64e39e42a9372e88dc"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_64_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39350206141a212e3020271a10102720231427060612273c332931112f282d051e2d16391117033d1622262136020309012837152d2a051b1c213d1608113723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_64_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0035008600da006e00a0009a0010002000940006001200bc00a9001100e8000500ed00b9001700bd006200a1008200c900680015002a009b0061005600d10023"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_64_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "69254002045821647020651800006120211023040002653863213101656829051869443941054129446022213002414901603101652841011861255048417123"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_64_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "and_compose_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    },
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39350206141a212e3020271a10102720231427060612273c332931112f282d051e2d16391117033d1622262136020309012837152d2a051b1c213d1608113723",
+    "3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "or_64_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f3f7fbf3fff3f7fffbfffbf3f3f7f3fbfbfbf3fbf3fffbf7fbf3f3f7fff3f3f3fffffbfff3fffbf7f7f3fbfbfbf7fffbf7f3f3f7f3f7fbf3f7fbf7fffff7f3f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_64_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "79ff42ff14ff21fff0ffe7ff10ff67ffa3ffa7ff86ffe7ff73ff31ff6fff2dff1effd6ffd1ffc3ff56ff26ffb6ff43ff81ff37ff6dff45ff1cffbdffc8ff77ff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_64_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b757bef75fb6b6ff9ebe7fb7b757f6be7fdef67ff7be7fd7bed797b6ff96f657feff7f9fb77fbff777b6fe5ffeb67f9eb6d7f7f6d7b6fff7d6bfd7febf57f6b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_64_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "or_compose_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "OR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    },
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "79ff42ff14ff21fff0ffe7ff10ff67ffa3ffa7ff86ffe7ff73ff31ff6fff2dff1effd6ffd1ffc3ff56ff26ffb6ff43ff81ff37ff6dff45ff1cffbdffc8ff77ff",
+    "b83e813e533e603e2f3e263e4f3ea63ee23ee63ec53e263eb23e703eae3e6c3e5d3e153e103e023e953e653ef53e823ec03e763eac3e843e5b3efc3e073eb63e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "add_64_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b87481c5531960ad2fdf26d94f4fa65fe2d3e645c55126fbb2e87050ae276c445d2c15f8105602fc95a165e0f5c18208c0a77654ac6984da5ba0fc950710b662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_64_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7934428514d9216df09fe799100f671fa393a7058611e7bb73a831106fe72d041eecd6b8d116c3bc566126a0b68143c8816737146d29459a1c60bd55c8d07722"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_64_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e49abbf179538cd3690b4c137b75e08b080d126bff7d4c35de0eaa7cd461986a97583b323c7c3c28bbdb91062feda842eccdb080d2a3b00095cc22cf3336f08e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_64_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_compose_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    },
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e49abbf179538cd3690b4c137b75e08b080d126bff7d4c35de0eaa7cd461986a97583b323c7c3c28bbdb91062feda842eccdb080d2a3b00095cc22cf3336f08e",
+    "a55b7cb23a144d942acc0dd43c36a14cc9ced32cc03e0df69fcf6b3d9522592b5819fcf3fd3dfde97c9c52c7f0ae6903ad8e7141936471c1568de390f4f7b14f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "sub_64_Hex2",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3af60347d59be22fb161a85bd1d128e1645568c747d3a87d346af2d230a9eec6dfae977a92d8847e1723e7627743048a4229f8d62eeb065cdd227e17899238e4"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_64_Hex4",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00ff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7936428714db216ff0a1e79b10116721a395a7078613e7bd73aa31126fe92d061eeed6bad118c3be566326a2b68343ca816937166d2b459c1c62bd57c8d27724"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_64_UTF83",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0ed0c91baf61b60977358221a5abeeb53e1b3ca10da782430844b8a60a6fc2a0a582714066b24a52f1e9bb3c3d17de501603beaa08b1da36a3f658dd5d6cfeb8"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_64_Hex0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sub_compose_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": ""
+      }
+     ]
+    },
+    {
+     "op": "AND",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "3f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723",
+    "39350206141a212e3020271a10102720231427060612273c332931112f282d051e2d16391117033d1622262136020309012837152d2a051b1c213d1608113723"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "shift_left_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f26a840c28b442dce040ce342020ce4046284e0c0c24ce78e6526222ded05a0a3cdaac72a22e867aacc44c426c04869202d06e2ada548a3638c27aac90a2ee46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c8a81030a0d00870800038d08080380018a03830309038e09848888878406828f068b0c888b818e8b0103008b01018480840b8a8685028d8e008e8b04088b818"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_left_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift left",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "80800000000080000000800000008000800080000000800080808080800080800080008080808080000000800000808080008080800080800080800000808080"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      0,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "79354206145a216e7020671a10106720231427060612673c732931116f682d051e6d56395117433d5662262136024349016837156d2a451b1c613d5648517723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c1a21430a6d10377850734d08083310514a53034309735e39541808377416020f766b5c680b615e2b3113505b41216440341b0a3615224d0e305e2b64683b11"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      1,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c1a21c30aed1037f8d0f3cd08083310d1cad303c309f3de39d4180837f416020ff6ebdce80be1de2b3113d0dbc121e4c0341b0a361522cd0e30de2be4e83b11"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0f060810021b040d1e141c1302020c041412140010021c170e1506020d1d0500031d1a171a0218170a0c041416100819100d06020d050813030c170a191a0e04"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      3,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0f060890029b040d9e949c9302020c049492940090029c970e9506020d9d0500039d9a979a0298970a0c049496900899900d06020d050893030c970a999a0e04"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000001000100000101010100000000010101000100010100010000000100000001010101000101000000010101000101000000000000010000010001010000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      7,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000081008100008181818100000000818181008100818100810000008100000081818181008181000000818181008181000000000000810000810081810000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      8,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000080008000008080808000000000808080008000808000800000008000000080808080008080000000808080008080000000000000800000800080800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      31,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000080008000008080808000000000808080008000808000800000008000000080808080008080000000808080008080000000000000800000800080800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_logical_64_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Logical shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "shift_right_arith_64_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Bit shift right",
+     "args": [
+      32,
+      "Arithmetic shift"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "79354206145a216e7020671a10106720231427060612673c732931116f682d051e6d56395117433d5662262136024349016837156d2a451b1c613d5648517723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f26a840d28b542dce141cf352020ce4047294f0c0d24cf79e6536222ded15a0a3cdbad73a32e877bacc44c436d05869303d06e2ada548a3738c27bac91a3ee46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bc9a21430a6d90377850f34d0808b310d14ad3034309f35eb9d49888b77496820ff66bdce88be1de2b3113d05b41a1e4c0349b8ab615a2cd0eb0de2b64e8bb91"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f26a850c29b442dde141cf342020ce4147294e0d0c25cf78e7526222dfd05a0a3ddbad73a22f877aacc44d436d04879302d06e2ada548b3638c37aad91a2ee46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bc9aa1430a6d10b7785073cd0808339051ca5383430973de39d49888b7f416828f76eb5ce88be1deab311350db4121e4c0b41b8ab69522cd8e30deab6468bb91"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "cba91234a0d6097387053fd480803b011da43d3034903fe59b4d89887b476928f06fb6cd8eb81eedb213310db5141a4e0c43b9a86b512adce00bedb2468ebb19"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2fa648d0825b24cd1e14fc530202ec047492f4c0d042fc976e352622ed1da5a0c3bdda373ae278b7ca4cc434d6506839300de6a2ad45a873832cb7ca193aee64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c9aa1430a6d10b7785073cd0808339051ca5383430973de39d49888b7f416828f76eb5ce88be1deab311350db4121e4c0b41b8ab69522cd8e30deab6468bb91b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f26a850c29b442dde141cf342020ce4147294e0d0c25cf78e7526222dfd05a0a3ddbad73a22f877aacc44d436d04879302d06e2ada548b3638c37aad91a2ee4"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bc9a21430a6d90377850f34d0808b310d14ad3034309f35eb9d49888b77496820ff66bdce88be1de2b3113d05b41a1e4c0349b8ab615a2cd0eb0de2b64e8bb91"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f26a840d28b542dce141cf352020ce4047294f0c0d24cf79e6536222ded15a0a3cdbad73a32e877bacc44c436d05869303d06e2ada548a3738c27bac91a3ee46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9aa1430a6d10b7785073cd0808339051ca5383430973de39d49888b7f416828f76eb5ce88be1deab311350db4121e4c0b41b8ab69522cd8e30deab6468bb91bc"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      7,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "46f26a850c29b442dde141cf342020ce4147294e0d0c25cf78e7526222dfd05a0a3ddbad73a22f877aacc44d436d04879302d06e2ada548b3638c37aad91a2ee"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      8,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_plain_64_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f26a840d28b542dce141cf352020ce4047294f0c0d24cf79e6536222ded15a0a3cdbad73a32e877bacc44c436d05869303d06e2ada548a3738c27bac91a3ee46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_plain_64_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bc9a21430a6d90377850f34d0808b310d14ad3034309f35eb9d49888b77496820ff66bdce88be1de2b3113d05b41a1e4c0349b8ab615a2cd0eb0de2b64e8bb91"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_left_carry_64_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f26a850c29b442dde141cf342020ce4147294e0d0c25cf78e7526222dfd05a0a3ddbad73a22f877aacc44d436d04879302d06e2ada548b3638c37aad91a2ee46"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rotate_right_carry_64_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "Rotate right",
+     "args": [
+      9,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bc9aa1430a6d10b7785073cd0808339051ca5383430973de39d49888b7f416828f76eb5ce88be1deab311350db4121e4c0b41b8ab69522cd8e30deab6468bb91"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ror13_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "7935428614da216ef0a0e79a10106720a394a7068612e7bc73a931116fe82d051eedd6b9d117c3bd566226a1b68243c9816837156d2a459b1c61bd56c8d17723"
+   },
+   "recipe": [
+    {
+     "op": "ROR13",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30783741333433304538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "not_round_trip",
+   "input": {
+    "kind": "bytes",
+    "hex": "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   },
+   "recipe": [
+    {
+     "op": "NOT",
+     "args": []
+    },
+    {
+     "op": "NOT",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "c7e1bb48216c0970cf612bf21c85a5adaee2271d499ee47c",
+    "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "add_sub_round_trip",
+   "input": {
+    "kind": "bytes",
+    "hex": "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   },
+   "recipe": [
+    {
+     "op": "ADD",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "7f"
+      }
+     ]
+    },
+    {
+     "op": "SUB",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "7f"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b79dc3365d12750eaf1d538c62f9d9d1d09c576135e09a02",
+    "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rotate_round_trip",
+   "input": {
+    "kind": "bytes",
+    "hex": "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      false
+     ]
+    },
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c1f022bdf69cb77c81f4a6681fd3d2928ae8c617b50bd81c",
+    "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rotate_carry_round_trip",
+   "input": {
+    "kind": "bytes",
+    "hex": "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   },
+   "recipe": [
+    {
+     "op": "Rotate left",
+     "args": [
+      3,
+      true
+     ]
+    },
+    {
+     "op": "Rotate right",
+     "args": [
+      3,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c0f225bef49fb47984f6a06f1bd2d29288eec715b308dc19",
+    "381e44b7de93f68f309ed40de37a5a52511dd8e2b6611b83"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "swap_hex_0_4_true",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_0_4_false",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_0_2_true",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      2,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_0_1_true",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_0_8_false",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_1_4_true",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_1_4_false",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_1_2_true",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      2,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3162203061203364203263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_1_1_true",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3061203162203263203364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_1_8_false",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_2_4_true",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0x1b 0x2c 0x3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_2_4_false",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0x1b 0x2c 0x3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_2_2_true",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0x1b 0x2c 0x3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      2,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3162203061203364203263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_2_1_true",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0x1b 0x2c 0x3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3061203162203263203364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_2_8_false",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0x1b 0x2c 0x3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_3_4_true",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d4e"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061203030203030203030203465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_3_4_false",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d4e"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061203465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_3_2_true",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d4e"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      2,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3162203061203364203263203030203465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_3_1_true",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d4e"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3061203162203263203364203465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_3_8_false",
+   "input": {
+    "kind": "text",
+    "value": "0a1b2c3d4e"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3465203364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_4_4_true",
+   "input": {
+    "kind": "text",
+    "value": "0a,1b;2c:3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_4_4_false",
+   "input": {
+    "kind": "text",
+    "value": "0a,1b;2c:3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_4_2_true",
+   "input": {
+    "kind": "text",
+    "value": "0a,1b;2c:3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      2,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3162203061203364203263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_4_1_true",
+   "input": {
+    "kind": "text",
+    "value": "0a,1b;2c:3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3061203162203263203364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_4_8_false",
+   "input": {
+    "kind": "text",
+    "value": "0a,1b;2c:3d"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3364203263203162203061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_5_4_true",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030203030203063206162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_5_4_false",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      4,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3063206162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_5_2_true",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      2,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3063206162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_5_1_true",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162203063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_hex_5_8_false",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Hex",
+      8,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3063206162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_ascii",
+   "input": {
+    "kind": "text",
+    "value": "abcdefgh"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6463626168676665"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_nopad_ascii",
+   "input": {
+    "kind": "text",
+    "value": "abcdefgh"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6362616665646867"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_short",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00636261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_nopad_short",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_empty",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_nopad_empty",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_latin",
+   "input": {
+    "kind": "text",
+    "value": "éèêë"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      4,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ebeae8e9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "swap_raw_nopad_latin",
+   "input": {
+    "kind": "text",
+    "value": "éèêë"
+   },
+   "recipe": [
+    {
+     "op": "Swap endianness",
+     "args": [
+      "Raw",
+      3,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "eae8e9eb"
+   ],
+   "stopped_after": 1
   }
  ]
 }

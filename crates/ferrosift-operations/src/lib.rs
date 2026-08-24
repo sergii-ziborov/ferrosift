@@ -20,6 +20,7 @@ mod base58;
 mod base64;
 mod base85;
 mod binary;
+mod bitwise;
 mod bytes;
 mod charcode;
 mod decimal;
@@ -34,6 +35,7 @@ mod hexdump;
 mod html;
 mod identity;
 mod jsint;
+mod jsstr;
 mod key;
 mod lines;
 mod octal;
@@ -79,6 +81,7 @@ pub use base58::{FromBase58, ToBase58};
 pub use base64::{FromBase64, ToBase64};
 pub use base85::{FromBase85, ToBase85};
 pub use binary::{FromBinary, ToBinary};
+pub use bitwise::{BitShift, Bitwise, Ror13, Rotate, SwapEndianness};
 pub use bytes::{DropBytes, TakeBytes};
 pub use charcode::{FromCharcode, ToCharcode};
 pub use decimal::{FromDecimal, ToDecimal};
@@ -154,10 +157,27 @@ fn register_core(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(Head::new())?;
     registry.register(RemoveNullBytes::new())?;
     registry.register(Reverse::new())?;
+    registry.register(Ror13::new())?;
+    registry.register(SwapEndianness::new())?;
     registry.register(TakeBytes::new())?;
     registry.register(TakeNthBytes::new())?;
     registry.register(Tail::new())?;
     registry.register(Xor::new())?;
+    register_bitwise(registry)?;
+    Ok(())
+}
+
+/// Bit-level logic, arithmetic, shifts, and rotations.
+fn register_bitwise(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Bitwise::add())?;
+    registry.register(Bitwise::and())?;
+    registry.register(Bitwise::not())?;
+    registry.register(Bitwise::or())?;
+    registry.register(Bitwise::sub())?;
+    registry.register(BitShift::left())?;
+    registry.register(BitShift::right())?;
+    registry.register(Rotate::left())?;
+    registry.register(Rotate::right())?;
     Ok(())
 }
 

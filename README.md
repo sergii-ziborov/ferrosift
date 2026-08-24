@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 77 | 75 | **71** | **752** |
+| 88 | 86 | **82** | **1138** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -161,14 +161,14 @@ has a `std`. One pack does not yet reach bare metal;
 | Ciphers | AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, RC4 |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
-| Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Take bytes, Take nth bytes |
+| Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
 | Defang | Defang IP Addresses, Defang URL, Fang URL |
 | Encoding | From Base32, From Base45, From Base58, From Base64, From Base85, From Binary, From Charcode, From Decimal, From HTML Entity, From Hex, From Hexdump, From Octal, ROT13, To Base32, To Base45, To Base58, To Base64, To Base85, To Binary, To Charcode, To Decimal, To HTML Entity, To Hex, To Hexdump, To Octal, URL Decode, URL Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
 | Flow control | Fork, Merge |
 | Hashing | HMAC, MD5, SHA1, SHA2, SHA3 |
 | KDF | Derive PBKDF2 key, Scrypt |
-| Logic | XOR, XOR Brute Force |
+| Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Text | Add line numbers, Find / Replace, Pad lines, Remove line numbers, Remove whitespace, Tail |
 <!-- catalog:end -->
 
