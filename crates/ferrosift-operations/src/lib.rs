@@ -23,6 +23,7 @@ mod binary;
 mod bitwise;
 mod bytes;
 mod charcode;
+mod classical;
 mod decimal;
 mod delim;
 mod escape;
@@ -39,6 +40,7 @@ mod jsstr;
 mod key;
 mod lines;
 mod octal;
+mod registry;
 mod rot13;
 mod sift;
 mod spec;
@@ -84,8 +86,8 @@ pub use binary::{FromBinary, ToBinary};
 pub use bitwise::{BitShift, Bitwise, Ror13, Rotate, SwapEndianness};
 pub use bytes::{DropBytes, TakeBytes};
 pub use charcode::{FromCharcode, ToCharcode};
+pub use classical::{ClassicalCipher, Rot47};
 pub use decimal::{FromDecimal, ToDecimal};
-use ferrosift_core::{OperationRegistry, RegistryError};
 pub use flow::{Fork, Merge};
 pub use head::Head;
 pub use hex::{FromHex, ToHex};
@@ -129,165 +131,4 @@ pub use suggest::SuggestRecipe;
 #[cfg(feature = "analysis")]
 pub use xor_brute::XorBruteForce;
 
-/// Creates a validated registry containing every enabled built-in operation.
-///
-/// Which operations are present depends on the selected feature packs; with
-/// the default `portable-full` this is the whole portable catalog.
-///
-/// # Errors
-///
-/// Returns [`RegistryError`] if an internal operation contract or alias is not
-/// valid. The returned registry is never partially initialized.
-pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
-    let mut registry = OperationRegistry::new();
-    register_core(&mut registry)?;
-    register_text(&mut registry)?;
-    register_encoding(&mut registry)?;
-    register_packs(&mut registry)?;
-    Ok(registry)
-}
-
-/// Operations that carry no external dependency and no pack gate.
-fn register_core(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(Identity::new())?;
-    registry.register(Fork::new())?;
-    registry.register(Merge::new())?;
-    registry.register(DropBytes::new())?;
-    registry.register(DropNthBytes::new())?;
-    registry.register(Head::new())?;
-    registry.register(RemoveNullBytes::new())?;
-    registry.register(Reverse::new())?;
-    registry.register(Ror13::new())?;
-    registry.register(SwapEndianness::new())?;
-    registry.register(TakeBytes::new())?;
-    registry.register(TakeNthBytes::new())?;
-    registry.register(Tail::new())?;
-    registry.register(Xor::new())?;
-    register_bitwise(registry)?;
-    Ok(())
-}
-
-/// Bit-level logic, arithmetic, shifts, and rotations.
-fn register_bitwise(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(Bitwise::add())?;
-    registry.register(Bitwise::and())?;
-    registry.register(Bitwise::not())?;
-    registry.register(Bitwise::or())?;
-    registry.register(Bitwise::sub())?;
-    registry.register(BitShift::left())?;
-    registry.register(BitShift::right())?;
-    registry.register(Rotate::left())?;
-    registry.register(Rotate::right())?;
-    Ok(())
-}
-
-/// Dependency-free text shaping: line numbering, padding, and whitespace.
-fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(AddLineNumbers::new())?;
-    registry.register(PadLines::new())?;
-    registry.register(RemoveLineNumbers::new())?;
-    registry.register(RemoveWhitespace::new())?;
-    Ok(())
-}
-
-/// Every representation codec, all dependency-free.
-fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(FromBase32::new())?;
-    registry.register(ToBase32::new())?;
-    registry.register(FromBase45::new())?;
-    registry.register(ToBase45::new())?;
-    registry.register(FromBase58::new())?;
-    registry.register(ToBase58::new())?;
-    registry.register(FromBase64::new())?;
-    registry.register(ToBase64::new())?;
-    registry.register(FromBase85::new())?;
-    registry.register(ToBase85::new())?;
-    registry.register(FromBinary::new())?;
-    registry.register(ToBinary::new())?;
-    registry.register(FromCharcode::new())?;
-    registry.register(ToCharcode::new())?;
-    registry.register(FromDecimal::new())?;
-    registry.register(ToDecimal::new())?;
-    registry.register(FromHex::new())?;
-    registry.register(ToHex::new())?;
-    registry.register(FromHexdump::new())?;
-    registry.register(ToHexdump::new())?;
-    registry.register(FromHtmlEntity::new())?;
-    registry.register(ToHtmlEntity::new())?;
-    registry.register(FromOctal::new())?;
-    registry.register(ToOctal::new())?;
-    registry.register(Rot13::new())?;
-    registry.register(UrlDecode::new())?;
-    registry.register(UrlEncode::new())?;
-    Ok(())
-}
-
-/// Operations gated behind the opt-in packs.
-///
-/// With no pack selected there is nothing to register, so the registry is
-/// untouched; every arm below is compiled in only with its feature.
-#[cfg_attr(
-    not(any(
-        feature = "analysis",
-        feature = "compression",
-        feature = "crypto",
-        feature = "hash",
-        feature = "text"
-    )),
-    expect(
-        unused_variables,
-        reason = "no pack is enabled, so nothing is registered"
-    )
-)]
-fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    #[cfg(feature = "analysis")]
-    {
-        registry.register(SuggestRecipe::new())?;
-        registry.register(XorBruteForce::new())?;
-    }
-    #[cfg(feature = "compression")]
-    {
-        registry.register(Bzip2Compress::new())?;
-        registry.register(Bzip2Decompress::new())?;
-        registry.register(Gunzip::new())?;
-        registry.register(Gzip::new())?;
-        registry.register(RawDeflate::new())?;
-        registry.register(RawInflate::new())?;
-        registry.register(ZlibDeflate::new())?;
-        registry.register(ZlibInflate::new())?;
-    }
-    #[cfg(feature = "text")]
-    {
-        registry.register(FindReplace::new())?;
-        registry.register(DefangIpAddresses::new())?;
-        registry.register(DefangUrl::new())?;
-        registry.register(FangUrl::new())?;
-        registry.register(ExtractDomains::new())?;
-        registry.register(ExtractEmailAddresses::new())?;
-        registry.register(ExtractFilePaths::new())?;
-        registry.register(ExtractHashes::new())?;
-        registry.register(ExtractIpAddresses::new())?;
-        registry.register(ExtractMacAddresses::new())?;
-        registry.register(ExtractUrls::new())?;
-        registry.register(Strings::new())?;
-    }
-    #[cfg(feature = "hash")]
-    {
-        registry.register(Md5::new())?;
-        registry.register(Sha1::new())?;
-        registry.register(Sha2::new())?;
-        registry.register(Sha3::new())?;
-        registry.register(Hmac::new())?;
-    }
-    #[cfg(feature = "crypto")]
-    {
-        registry.register(AesDecrypt::new())?;
-        registry.register(AesEncrypt::new())?;
-        registry.register(AesKeyUnwrap::new())?;
-        registry.register(AesKeyWrap::new())?;
-        registry.register(DerivePbkdf2Key::new())?;
-        registry.register(Rc4::new())?;
-        registry.register(Scrypt::new())?;
-    }
-    Ok(())
-}
+pub use registry::default_registry;

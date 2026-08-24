@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 88,
-    "aliased": 86,
-    "exact": 82,
+    "operations": 104,
+    "aliased": 102,
+    "exact": 98,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 1138
+    "pinned_cases": 1531
   },
   "operations": [
     {
@@ -25,6 +25,188 @@
       ],
       "conformance_cases": 0,
       "status": "native"
+    },
+    {
+      "id": "cipher.a1z26.decode@1",
+      "display_name": "A1Z26 Cipher Decode",
+      "category": "Ciphers",
+      "reference_alias": "A1Z26 Cipher Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 24,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.a1z26.encode@1",
+      "display_name": "A1Z26 Cipher Encode",
+      "category": "Ciphers",
+      "reference_alias": "A1Z26 Cipher Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 42,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.affine.decode@1",
+      "display_name": "Affine Cipher Decode",
+      "category": "Ciphers",
+      "reference_alias": "Affine Cipher Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 35,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.affine.encode@1",
+      "display_name": "Affine Cipher Encode",
+      "category": "Ciphers",
+      "reference_alias": "Affine Cipher Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 70,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.atbash@1",
+      "display_name": "Atbash Cipher",
+      "category": "Ciphers",
+      "reference_alias": "Atbash Cipher",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.caesar_box@1",
+      "display_name": "Caesar Box Cipher",
+      "category": "Ciphers",
+      "reference_alias": "Caesar Box Cipher",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.cetacean.decode@1",
+      "display_name": "Cetacean Cipher Decode",
+      "category": "Ciphers",
+      "reference_alias": "Cetacean Cipher Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.cetacean.encode@1",
+      "display_name": "Cetacean Cipher Encode",
+      "category": "Ciphers",
+      "reference_alias": "Cetacean Cipher Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.rail_fence.decode@1",
+      "display_name": "Rail Fence Cipher Decode",
+      "category": "Ciphers",
+      "reference_alias": "Rail Fence Cipher Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.rail_fence.encode@1",
+      "display_name": "Rail Fence Cipher Encode",
+      "category": "Ciphers",
+      "reference_alias": "Rail Fence Cipher Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 24,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.rot47@1",
+      "display_name": "ROT47",
+      "category": "Ciphers",
+      "reference_alias": "ROT47",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 8,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.rot8000@1",
+      "display_name": "ROT8000",
+      "category": "Ciphers",
+      "reference_alias": "ROT8000",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 21,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.vigenere.decode@1",
+      "display_name": "Vigenère Decode",
+      "category": "Ciphers",
+      "reference_alias": "Vigenère Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 28,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.vigenere.encode@1",
+      "display_name": "Vigenère Encode",
+      "category": "Ciphers",
+      "reference_alias": "Vigenère Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 56,
+      "status": "exact"
     },
     {
       "id": "compression.bzip2.compress@1",
@@ -1113,6 +1295,19 @@
       "status": "exact"
     },
     {
+      "id": "text.leet@1",
+      "display_name": "Convert Leet Speak",
+      "category": "Ciphers",
+      "reference_alias": "Convert Leet Speak",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 28,
+      "status": "exact"
+    },
+    {
       "id": "text.line_numbers.add@1",
       "display_name": "Add line numbers",
       "category": "Text",
@@ -1136,6 +1331,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
+      "status": "exact"
+    },
+    {
+      "id": "text.nato@1",
+      "display_name": "Convert to NATO alphabet",
+      "category": "Ciphers",
+      "reference_alias": "Convert to NATO alphabet",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
       "status": "exact"
     },
     {

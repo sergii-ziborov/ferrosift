@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 88 |
-| Reference-aliased | 86 |
-| Byte-pinned (`exact`) | 82 |
+| Registered operations | 104 |
+| Reference-aliased | 102 |
+| Byte-pinned (`exact`) | 98 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 1138 |
+| Pinned cases | 1531 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -30,6 +30,20 @@ does.
 | Operation | Alias | Pack | Status | Cases |
 |---|---|---|---|---:|
 | `analysis.suggest@1` | — | analysis | native | 0 |
+| `cipher.a1z26.decode@1` | A1Z26 Cipher Decode | core | exact | 24 |
+| `cipher.a1z26.encode@1` | A1Z26 Cipher Encode | core | exact | 42 |
+| `cipher.affine.decode@1` | Affine Cipher Decode | core | exact | 35 |
+| `cipher.affine.encode@1` | Affine Cipher Encode | core | exact | 70 |
+| `cipher.atbash@1` | Atbash Cipher | core | exact | 7 |
+| `cipher.caesar_box@1` | Caesar Box Cipher | core | exact | 10 |
+| `cipher.cetacean.decode@1` | Cetacean Cipher Decode | core | exact | 7 |
+| `cipher.cetacean.encode@1` | Cetacean Cipher Encode | core | exact | 14 |
+| `cipher.rail_fence.decode@1` | Rail Fence Cipher Decode | core | exact | 12 |
+| `cipher.rail_fence.encode@1` | Rail Fence Cipher Encode | core | exact | 24 |
+| `cipher.rot47@1` | ROT47 | core | exact | 8 |
+| `cipher.rot8000@1` | ROT8000 | core | exact | 21 |
+| `cipher.vigenere.decode@1` | Vigenère Decode | core | exact | 28 |
+| `cipher.vigenere.encode@1` | Vigenère Encode | core | exact | 56 |
 | `compression.bzip2.compress@1` | Bzip2 Compress | compression | interoperable (compressor output is interoperable; Bzip2 Decompress is differential-pinned) | 0 |
 | `compression.bzip2.decompress@1` | Bzip2 Decompress | compression | exact (no Node bzip2 compressor to sample fresh inputs; pinned in differential.json) | 1 |
 | `compression.gunzip@1` | Gunzip | compression | exact | 5 |
@@ -113,8 +127,10 @@ does.
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |
+| `text.leet@1` | Convert Leet Speak | core | exact | 28 |
 | `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |
 | `text.line_numbers.remove@1` | Remove line numbers | core | exact | 16 |
+| `text.nato@1` | Convert to NATO alphabet | core | exact | 7 |
 | `text.pad_lines@1` | Pad lines | core | exact | 20 |
 | `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
 

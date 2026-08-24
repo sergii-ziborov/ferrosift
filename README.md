@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 88 | 86 | **82** | **1138** |
+| 104 | 102 | **98** | **1531** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -158,7 +158,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Family | Operations |
 |---|---|
 | Analysis | Suggest recipe |
-| Ciphers | AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, RC4 |
+| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT47, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Vigenère Decode, Vigenère Encode |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |

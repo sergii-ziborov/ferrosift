@@ -20873,6 +20873,6086 @@
     "eae8e9eb"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "atbash_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_0_1_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_0_1_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_0_5_8",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_0_5_8",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_0_25_25",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_0_25_25",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_0_7_3",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_0_7_3",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_0_11_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_0_11_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_0_a",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_0_a",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_0_key",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_0_key",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_0_LEMON",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_0_LEMON",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_0_zz",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_0_zz",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_0_Space",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_0_Space",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_0_Comma",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_0_Comma",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_0_Line feed",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_0_Line feed",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "atbash_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "53766f6f6c2c20446c696f7721"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "486f74656c204563686f204c696d61204c696d61204f7363617220436f6d6d612020576869736b6579204f7363617220526f6d656f204c696d612044656c74612021"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48336c6c302c205730726c6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48336c6c302c205730726c6421",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b191e7b1aee7b1b5e7b1b5e7b1b8e7b0b520e7b1a0e7b1b8e7b1bbe7b1b5e7b1ade7b0aa"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b191e7b1aee7b1b5e7b1b5e7b1b8e7b0b520e7b1a0e7b1b8e7b1bbe7b1b5e7b1ade7b0aa",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "45454545454545454565454565454545454545454545454545656545456545654545454545454545456565456565454545454545454545454565654565654545454545454545454545656545656565654545454545454545454565456565454520454545454545454545654565456565654545454545454545456565456565656545454545454545454565656545456545454545454545454545656545656545454545454545454545456565454565454545454545454545454545654545454565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "45454545454545454565454565454545454545454545454545656545456545654545454545454545456565456565454545454545454545454565654565654545454545454545454545656545656565654545454545454545454565456565454520454545454545454545654565456565654545454545454545456565456565656545454545454545454565656545456545454545454545454545656545656545454545454545454545456565454565454545454545454545454545654545454565",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_1_1_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_1_1_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_1_5_8",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "52636c6c612c204f61706c7821"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_1_5_8",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "52636c6c612c204f61706c7821",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_1_25_25",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "53766f6f6c2c20446c696f7721"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_1_25_25",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "53766f6f6c2c20446c696f7721",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_1_7_3",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41666363782c20427873637921"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_1_7_3",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41666363782c20427873637921",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_1_11_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a737272792c20497966726821"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_1_11_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a737272792c20497966726821",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_1_a",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_1_a",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_1_key",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "52696a76732c205579766a6e21"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_1_key",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "52696a76732c205579766a6e21",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_1_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5369787a622c204873647a7121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_1_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5369787a622c204873647a7121",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_1_zz",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47646b6b6e2c20566e716b6321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_1_zz",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47646b6b6e2c20566e716b6321",
+    "48656c6c6f2c20576f726c6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_1_Space",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3820352031322031322031352032332031352031382031322034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_1_Space",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3820352031322031322031352032332031352031382031322034",
+    "68656c6c6f776f726c64"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_1_Comma",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "382c352c31322c31322c31352c32332c31352c31382c31322c34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_1_Comma",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "382c352c31322c31322c31352c32332c31352c31382c31322c34",
+    "68656c6c6f776f726c64"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_1_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "380a350a31320a31320a31350a32330a31350a31380a31320a34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_1_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "380a350a31320a31320a31350a32330a31350a31380a31320a34",
+    "68656c6c6f776f726c64"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "atbash_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7a67677a7870207a6720777a646d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "416c66612054616e676f2054616e676f20416c666120436861726c6965204b696c6f2020416c66612054616e676f202044656c746120416c666120576869736b6579204e6f76656d62657220"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34373734636b203437206434776e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34373734636b203437206434776e",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b1aae7b1bde7b1bde7b1aae7b1ace7b1b420e7b1aae7b1bd20e7b1ade7b1aae7b280e7b1b7"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b1aae7b1bde7b1bde7b1aae7b1ace7b1b420e7b1aae7b1bd20e7b1ade7b1aae7b280e7b1b7",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4545454545454545456565454545456545454545454545454565656545654545454545454545454545656565456545454545454545454545456565454545456545454545454545454565654545456565454545454545454545656545654565652045454545454545454565654545454565454545454545454545656565456545452045454545454545454565654545654545454545454545454545656545454545654545454545454545456565654565656545454545454545454565654565656545"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4545454545454545456565454545456545454545454545454565656545654545454545454545454545656565456545454545454545454545456565454545456545454545454545454565654545456565454545454545454545656545654565652045454545454545454565654545454565454545454545454545656565456545452045454545454545454565654545654545454545454545454545656545454545654545454545454545456565654565656545454545454545454565654565656545",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_2_1_0",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_2_1_0",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61747461636b206174206461776e",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_2_5_8",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "697a7a69736720697a2078696f76"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_2_5_8",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "697a7a69736720697a2078696f76",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_2_25_25",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a67677a7870207a6720777a646d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_2_25_25",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a67677a7870207a6720777a646d",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_2_7_3",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6467676472762064672079646271"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_2_7_3",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6467676472762064672079646271",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_2_11_0",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616262617767206162206861696e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_2_11_0",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616262617767206162206861696e",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_2_a",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_2_a",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61747461636b206174206461776e",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_2_key",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b78726b6769206b7820626b616c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_2_key",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b78726b6769206b7820626b616c",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_2_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c78666f707620656620726e6872"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_2_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c78666f707620656620726e6872",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_2_zz",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a73737a626a207a7320637a766d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_2_zz",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a73737a626a207a7320637a766d",
+    "61747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_2_Space",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120323020323020312033203131203120323020342031203233203134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_2_Space",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120323020323020312033203131203120323020342031203233203134",
+    "61747461636b61746461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_2_Comma",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c32302c32302c312c332c31312c312c32302c342c312c32332c3134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_2_Comma",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c32302c32302c312c332c31312c312c32302c342c312c32332c3134",
+    "61747461636b61746461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_2_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "310a32300a32300a310a330a31310a310a32300a340a310a32330a3134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_2_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "310a32300a32300a310a330a31310a310a32300a340a310a32330a3134",
+    "61747461636b61746461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "atbash_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4e7243765720587a487620313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4d696b6520496e64696120582d726179204563686f2044656c74612020436861726c696520416c666120536965727261204563686f20204f6e652054776f20546872656520"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d31583344204334353320313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d69586544204361536520693265"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d31583344204334353320313233",
+    "4d69586544204361736520693265"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b196e7b1b2e7b1a1e7b1aee7b18d20e7b18ce7b1aae7b19ce7b1ae20e7b0bae7b0bbe7b0bc"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b196e7b1b2e7b1a1e7b1aee7b18d20e7b18ce7b1aae7b19ce7b1ae20e7b0bae7b0bbe7b0bc",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4545454545454545456545456565456545454545454545454565654565454565454545454545454545654565654545454545454545454545456565454565456545454545454545454565454545654545204545454545454545456545454545656545454545454545454565654545454565454545454545454545654565454565654545454545454545456565454565456520454545454545454545456565454545654545454545454545454565654545654545454545454545454545656545456565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4545454545454545456545456565456545454545454545454565654565454565454545454545454545654565654545454545454545454545456565454565456545454545454545454565454545654545204545454545454545456545454545656545454545454545454565654545454565454545454545454545654565454565654545454545454545456565454565456520454545454545454545456565454545654545454545454545454565654545654545454545454545454545656545456565",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_3_1_0",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_3_1_0",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d69586544204361536520313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_3_5_8",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5177546358205369556320313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_3_5_8",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5177546358205369556320313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_3_25_25",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e7243765720587a487620313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_3_25_25",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e7243765720587a487620313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_3_7_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a684966592052645a6620313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_3_7_3",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a684966592052645a6620313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_3_11_0",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436b547348205761517320313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_3_11_0",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436b547348205761517320313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_3_a",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_3_a",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d69586544204361536520313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_3_key",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "576d566f4820416b576320313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_3_key",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "576d566f4820416b576320313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_3_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "586d4a7351204e65457320313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_3_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "586d4a7351204e65457320313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_3_zz",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4c6857644320427a526420313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_3_zz",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4c6857644320427a526420313233",
+    "4d69586544204361536520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_3_Space",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133203920323420352034203320312031392035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_3_Space",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133203920323420352034203320312031392035",
+    "6d6978656463617365"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_3_Comma",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31332c392c32342c352c342c332c312c31392c35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_3_Comma",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31332c392c32342c352c342c332c312c31392c35",
+    "6d6978656463617365"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_3_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31330a390a32340a350a340a330a310a31390a35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_3_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31330a390a32340a350a340a330a310a31390a35",
+    "6d6978656463617365"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "atbash_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6b666d7867667a67726c6d3a207a2d792c782e7721"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5061706120556e69666f726d204e6f76656d62657220436861726c69652054616e676f20556e69666f726d20416c66612054616e676f20496e646961204f73636172204e6f76656d626572203a20416c6661202d427261766f20436f6d6d6120436861726c69652046756c6c2073746f702044656c74612021"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e633775343731306e3a20342d622c632e6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e633775343731306e3a20342d622c632e6421",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b1b9e7b1bee7b1b7e7b1ace7b1bde7b1bee7b1aae7b1bde7b1b2e7b1b8e7b1b7e7b18320e7b1aae7b0b6e7b1abe7b0b5e7b1ace7b0b7e7b1ade7b0aa"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b1b9e7b1bee7b1b7e7b1ace7b1bde7b1bee7b1aae7b1bde7b1b2e7b1b8e7b1b7e7b18320e7b1aae7b0b6e7b1abe7b0b5e7b1ace7b0b7e7b1ade7b0aa",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "454545454545454545656565454545454545454545454545456565654565456545454545454545454565654565656545454545454545454545656545454565654545454545454545456565654565454545454545454545454565656545654565454545454545454545656545454545654545454545454545456565654565454545454545454545454565654565454565454545454545454545656545656565654545454545454545456565456565654545454545454545454545656565456545204545454545454545456565454545456545454545454545454545654565654565454545454545454545656545454565454545454545454545454565456565454545454545454545454565654545456565454545454545454545456545656565454545454545454545456565454565454545454545454545454545654545454565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "454545454545454545656565454545454545454545454545456565654565456545454545454545454565654565656545454545454545454545656545454565654545454545454545456565654565454545454545454545454565656545654565454545454545454545656545454545654545454545454545456565654565454545454545454545454565654565454565454545454545454545656545656565654545454545454545456565456565654545454545454545454545656565456545204545454545454545456565454545456545454545454545454545654565654565454545454545454545656545454565454545454545454545454565456565454545454545454545454565654545456565454545454545454545456545656565454545454545454545456565454565454545454545454545454545654545454565",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_4_1_0",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_4_1_0",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e6374756174696f6e3a20612d622c632e6421",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_4_5_8",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666576737a65697a7761763a20692d6e2c732e7821"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_4_5_8",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666576737a65697a7761763a20692d6e2c732e7821",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_4_25_25",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b666d7867667a67726c6d3a207a2d792c782e7721"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_4_25_25",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b666d7867667a67726c6d3a207a2d792c782e7721",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_4_7_3",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "656e7172676e64676878713a20642d6b2c722e7921"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_4_7_3",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "656e7172676e64676878713a20642d6b2c722e7921",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_4_11_0",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6a6d6e77626d61626b796e3a20612d6c2c772e6821"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_4_11_0",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6a6d6e77626d61626b796e3a20612d6c2c772e6821",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_4_a",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_4_a",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70756e6374756174696f6e3a20612d622c632e6421",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_4_key",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a796c6d78736b786779723a20792d6c2c672e6221"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_4_key",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a796c6d78736b786779723a20792d6c2c672e6221",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_4_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61797a71676665667762793a20652d6e2c712e7121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_4_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61797a71676665667762793a20652d6e2c712e7121",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_4_zz",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f746d6273747a73686e6d3a207a2d612c622e6321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_4_zz",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f746d6273747a73686e6d3a207a2d612c622e6321",
+    "70756e6374756174696f6e3a20612d622c632e6421"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_4_Space",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31362032312031342033203230203231203120323020392031352031342031203220332034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_4_Space",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31362032312031342033203230203231203120323020392031352031342031203220332034",
+    "70756e6374756174696f6e61626364"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_4_Comma",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31362c32312c31342c332c32302c32312c312c32302c392c31352c31342c312c322c332c34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_4_Comma",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31362c32312c31342c332c32302c32312c312c32302c392c31352c31342c312c322c332c34",
+    "70756e6374756174696f6e61626364"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_4_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31360a32310a31340a330a32300a32310a310a32300a390a31350a31340a310a320a330a34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_4_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "punctuation: a-b,c.d!"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31360a32310a31340a330a32300a32310a310a32300a390a31350a31340a310a320a330a34",
+    "70756e6374756174696f6e61626364"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "atbash_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7a6867697a6f20f09f998220677a726f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "416c6661205369657272612054616e676f20526f6d656f20416c6661204c696d612020f09f99822054616e676f20416c666120496e646961204c696d6120"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34353772346c20f09f9982203734316c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34353772346c20f09f9982203734316c",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b1aae7b1bce7b1bde7b1bbe7b1aae7b1b520f09f998220e7b1bde7b1aae7b1b2e7b1b5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b1aae7b1bce7b1bde7b1bbe7b1aae7b1b520f09f998220e7b1bde7b1aae7b1b2e7b1b5",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4545454545454545456565454545456545454545454545454565656545456565454545454545454545656565456545454545454545454545456565654545654545454545454545454565654545454565454545454545454545656545656545452065654565654545454545656565654565656545656565654545654545454565452045454545454545454565656545654545454545454545454545656545454545654545454545454545456565456545456545454545454545454565654565654545"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4545454545454545456565454545456545454545454545454565656545456565454545454545454545656565456545454545454545454545456565654545654545454545454545454565654545454565454545454545454545656545656545452065654565654545454545656565654565656545656565654545654545454565452045454545454545454565656545654545454545454545454545656545454545654545454545454545456565456545456545454545454545454565654565654545",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_5_1_0",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_5_1_0",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61737472616c20f09f9982207461696c",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_5_5_8",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "69757a70696c20f09f9982207a69776c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_5_5_8",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "69757a70696c20f09f9982207a69776c",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_5_25_25",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a6867697a6f20f09f998220677a726f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_5_25_25",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a6867697a6f20f09f998220677a726f",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_5_7_3",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "647a6773646320f09f99822067646863"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_5_7_3",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "647a6773646320f09f99822067646863",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_5_11_0",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61716266617220f09f99822062616b72"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_5_11_0",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61716266617220f09f99822062616b72",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_5_a",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_5_a",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61737472616c20f09f9982207461696c",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_5_key",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b777262656a20f09f99822064656776"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_5_key",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b777262656a20f09f99822064656776",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_5_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c7766666e7720f09f998220786d7779"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_5_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c7766666e7720f09f998220786d7779",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_5_zz",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a7273717a6b20f09f998220737a686b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_5_zz",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a7273717a6b20f09f998220737a686b",
+    "61737472616c20f09f9982207461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_5_Space",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31203139203230203138203120313220323020312039203132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_5_Space",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31203139203230203138203120313220323020312039203132",
+    "61737472616c7461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_5_Comma",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c31392c32302c31382c312c31322c32302c312c392c3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_5_Comma",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c31392c32302c31382c312c31322c32302c312c392c3132",
+    "61737472616c7461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_5_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "310a31390a32300a31380a310a31320a32300a310a390a3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_5_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "astral 🙂 tail"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "310a31390a32300a31380a310a31320a32300a310a390a3132",
+    "61737472616c7461696c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "atbash_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Atbash Cipher",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "50766f65726d2050206872746d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nato_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Convert to NATO alphabet",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4b696c6f204563686f204c696d6120566963746f7220496e646961204e6f76656d6265722020e284aa2053696572726120496e64696120476f6c66204e6f76656d62657220"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_to_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b336c76316e20e284aa203531676e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_from_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b656c76696e20e284aa207369676e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "leet_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "To Leet Speak"
+     ]
+    },
+    {
+     "op": "Convert Leet Speak",
+     "args": [
+      "From Leet Speak"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b336c76316e20e284aa203531676e",
+    "4b656c76696e20e284aa207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rot8000_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b194e7b1aee7b1b5e7b1bfe7b1b2e7b1b720e9b48120e7b1bce7b1b2e7b1b0e7b1b7"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot8000_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "ROT8000",
+     "args": []
+    },
+    {
+     "op": "ROT8000",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e7b194e7b1aee7b1b5e7b1bfe7b1b2e7b1b720e9b48120e7b1bce7b1b2e7b1b0e7b1b7",
+    "4b656c76696e20e284aa207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cetacean_encode_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "45454545454545454565454565456565454545454545454545656545456545654545454545454545456565456565454545454545454545454565656545656545454545454545454545656545654545654545454545454545456565456565654520454565454545456545456545654565452045454545454545454565656545456565454545454545454545656545654545654545454545454545456565454565656545454545454545454565654565656545"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cetacean_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Cetacean Cipher Encode",
+     "args": []
+    },
+    {
+     "op": "Cetacean Cipher Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "45454545454545454565454565456565454545454545454545656545456545654545454545454545456565456565454545454545454545454565656545656545454545454545454545656545654545654545454545454545456565456565654520454565454545456545456545654565452045454545454545454565656545456565454545454545454545656545654545654545454545454545456565454565656545454545454545454565654565656545",
+    "4b656c76696e20e284aa207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_6_1_0",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_6_1_0",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      1,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      1,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b656c76696e204b207369676e",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_6_5_8",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47636c6a777620472075776d76"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_6_5_8",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      5,
+      8
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      5,
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47636c6a777620472075776d76",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_6_25_25",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "50766f65726d2050206872746d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_6_25_25",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      25,
+      25
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      25,
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "50766f65726d2050206872746d",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_6_7_3",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5666637568712056207a687471"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_6_7_3",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5666637568712056207a687471",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "affine_encode_6_11_0",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "477372786b6e204720716b6f6e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "affine_round_trip_6_11_0",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Affine Cipher Encode",
+     "args": [
+      11,
+      0
+     ]
+    },
+    {
+     "op": "Affine Cipher Decode",
+     "args": [
+      11,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "477372786b6e204720716b6f6e",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_6_a",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_6_a",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "a"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "a"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b656c76696e204b207369676e",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_6_key",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "55696a666d6c20552077677172"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_6_key",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "key"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "key"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "55696a666d6c20552077677172",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_6_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5669786a7679204f2065777479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_6_LEMON",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "LEMON"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "LEMON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5669786a7679204f2065777479",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "vigenere_encode_6_zz",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a646b75686d204a207268666d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "vigenere_round_trip_6_zz",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "Vigenère Encode",
+     "args": [
+      "zz"
+     ]
+    },
+    {
+     "op": "Vigenère Decode",
+     "args": [
+      "zz"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a646b75686d204a207268666d",
+    "4b656c76696e204b207369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_6_Space",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31312035203132203232203920313420313120313920392037203134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_6_Space",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31312035203132203232203920313420313120313920392037203134",
+    "6b656c76696e6b7369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_6_Comma",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31312c352c31322c32322c392c31342c31312c31392c392c372c3134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_6_Comma",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Comma"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31312c352c31322c32322c392c31342c31312c31392c392c372c3134",
+    "6b656c76696e6b7369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_encode_6_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31310a350a31320a32320a390a31340a31310a31390a390a370a3134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_round_trip_6_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "Kelvin K sign"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Encode",
+     "args": [
+      "Line feed"
+     ]
+    },
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31310a350a31320a32320a390a31340a31310a31390a390a370a3134",
+    "6b656c76696e6b7369676e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "a1z26_decode_plain",
+   "input": {
+    "kind": "text",
+    "value": "8 5 12 12 15"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_decode_non_numeric",
+   "input": {
+    "kind": "text",
+    "value": "8 xy 12"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68006c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "a1z26_decode_boundaries",
+   "input": {
+    "kind": "text",
+    "value": "1 26"
+   },
+   "recipe": [
+    {
+     "op": "A1Z26 Cipher Decode",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "617a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_encode_2_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      2,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57414549435652444c45544e45455244534f45454645414f43"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_2_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      2,
+      0
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      2,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57414549435652444c45544e45455244534f45454645414f43",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_2_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      2,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "455244534f45454645414f4357414549435652444c45544e45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_2_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      2,
+      1
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      2,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "455244534f45454645414f4357414549435652444c45544e45",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_2_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      2,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "455244534f45454645414f4357414549435652444c45544e45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_2_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      2,
+      3
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      2,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "455244534f45454645414f4357414549435652444c45544e45",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_3_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      3,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "574543524c5445455244534f45454645414f4341495644454e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_3_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      3,
+      0
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      3,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "574543524c5445455244534f45454645414f4341495644454e",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_3_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "52534546414357414549435652444c45544e4545444f45454f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_3_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      3,
+      1
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      3,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "52534546414357414549435652444c45544e4545444f45454f",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_3_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      3,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45444f45454f57414549435652444c45544e45525345464143"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_3_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      3,
+      3
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      3,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45444f45454f57414549435652444c45544e45525345464143",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_4_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      4,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5749524545454453454545414341454356444c544e524f464f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_4_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      4,
+      0
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      4,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5749524545454453454545414341454356444c544e524f464f",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_4_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      4,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4445454357454956524c454e454552534f4546414f41434454"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_4_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      4,
+      1
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      4,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4445454357454956524c454e454552534f4546414f41434454",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_4_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      4,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "524f464f41454356444c544e45445345454541435749524545"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_4_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      4,
+      3
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      4,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "524f464f41454356444c544e45445345454541435749524545",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_7_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      7,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "575245454545434156444e524f464f45434c54445345414945"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_7_0",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      7,
+      0
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      7,
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "575245454545434156444e524f464f45434c54445345414945",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_7_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      7,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45435756524e45454f454f414344545253464145494c454445"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_7_1",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      7,
+      1
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      7,
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45435756524e45454f454f414344545253464145494c454445",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "rail_encode_7_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f4f4356544e534541435749524545454445454145444c5246"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rail_round_trip_7_3",
+   "input": {
+    "kind": "text",
+    "value": "WEAREDISCOVEREDFLEEATONCE"
+   },
+   "recipe": [
+    {
+     "op": "Rail Fence Cipher Encode",
+     "args": [
+      7,
+      3
+     ]
+    },
+    {
+     "op": "Rail Fence Cipher Decode",
+     "args": [
+      7,
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f4f4356544e534541435749524545454445454145444c5246",
+    "5745415245444953434f5645524544464c454541544f4e4345"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "caesar_box_1",
+   "input": {
+    "kind": "text",
+    "value": "MEET ME AT THE OLD BRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d4545544d4541545448454f4c44425249444745"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_nospace_1",
+   "input": {
+    "kind": "text",
+    "value": "MEETMEATTHEOLDBRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d4545544d4541545448454f4c44425249444745"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_2",
+   "input": {
+    "kind": "text",
+    "value": "MEET ME AT THE OLD BRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d454d4154454c42494745544554484f44524445"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_nospace_2",
+   "input": {
+    "kind": "text",
+    "value": "MEETMEATTHEOLDBRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d454d4154454c42494745544554484f44524445"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_3",
+   "input": {
+    "kind": "text",
+    "value": "MEET ME AT THE OLD BRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d5441484c5247454d54454449454545544f4244"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_nospace_3",
+   "input": {
+    "kind": "text",
+    "value": "MEETMEATTHEOLDBRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d5441484c5247454d54454449454545544f4244"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_5",
+   "input": {
+    "kind": "text",
+    "value": "MEET ME AT THE OLD BRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d45455245414f4945544c44545444474d484245"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_nospace_5",
+   "input": {
+    "kind": "text",
+    "value": "MEETMEATTHEOLDBRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d45455245414f4945544c44545444474d484245"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_8",
+   "input": {
+    "kind": "text",
+    "value": "MEET ME AT THE OLD BRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d5449454844454547544f454d4c454441425452"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caesar_box_nospace_8",
+   "input": {
+    "kind": "text",
+    "value": "MEETMEATTHEOLDBRIDGE"
+   },
+   "recipe": [
+    {
+     "op": "Caesar Box Cipher",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d5449454844454547544f454d4c454441425452"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20576f726c6421207e20007f"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421207e20007f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20576f726c6421207e20007f"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "49666d6d702d205870736d6522202120007f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_47",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20576f726c6421207e20007f"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      47
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "77363d3d405b202840433d3550204f20007f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_94",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20576f726c6421207e20007f"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      94
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f2c20576f726c6421207e20007f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_95",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20576f726c6421207e20007f"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      95
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "49666d6d702d205870736d6522202120007f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_-5",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20576f726c6421207e20007f"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      -5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436067676a2720526a6d675f7a207920007f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "rot47_round_trip",
+   "input": {
+    "kind": "bytes",
+    "hex": "54686520517569636b2042726f776e20466f7821"
+   },
+   "recipe": [
+    {
+     "op": "ROT47",
+     "args": [
+      47
+     ]
+    },
+    {
+     "op": "ROT47",
+     "args": [
+      47
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2539362022463a343c20714340483f2075404950",
+    "54686520517569636b2042726f776e20466f7821"
+   ],
+   "stopped_after": 2
   }
  ]
 }
