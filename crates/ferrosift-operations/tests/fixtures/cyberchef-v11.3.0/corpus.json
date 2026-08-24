@@ -10611,6 +10611,2610 @@
     "385b2e5d385b2e5d385b2e5d3820616e6420315b2e5d325b2e5d335b2e5d3420616e6420323030315b3a5d6462385b3a5d5b3a5d31"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "tail_lines_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "393920"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3120",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_1",
+   "input": {
+    "kind": "text",
+    "value": "one"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f6e65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_1",
+   "input": {
+    "kind": "text",
+    "value": "one"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_1",
+   "input": {
+    "kind": "text",
+    "value": "one"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31206f6e65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_1",
+   "input": {
+    "kind": "text",
+    "value": "one"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3939206f6e65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_1",
+   "input": {
+    "kind": "text",
+    "value": "one"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6f6e65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "one"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31206f6e65",
+    "6f6e65"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_2",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74776f0a7468726565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_2",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74776f0a7468726565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_2",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31206f6e650a322074776f0a33207468726565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_2",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3939206f6e650a3130302074776f0a313031207468726565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_2",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6f6e650a74776f0a7468726565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31206f6e650a322074776f0a33207468726565",
+    "6f6e650a74776f0a7468726565"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_3",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree\n"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74687265650a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_3",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree\n"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74776f0a74687265650a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_3",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree\n"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31206f6e650a322074776f0a332074687265650a3420"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_3",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree\n"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3939206f6e650a3130302074776f0a3130312074687265650a31303220"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_3",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree\n"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6f6e650a74776f0a74687265650a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "one\ntwo\nthree\n"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31206f6e650a322074776f0a332074687265650a3420",
+    "6f6e650a74776f0a74687265650a"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_4",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_4",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_4",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31200a32200a3320"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_4",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3939200a313030200a31303120"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_4",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0a0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31200a32200a3320",
+    "0a0a"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_5",
+   "input": {
+    "kind": "text",
+    "value": "  12. indented\n3) second\n     456| deep\n      7 too deep"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20202020203435367c20646565700a2020202020203720746f6f2064656570"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_5",
+   "input": {
+    "kind": "text",
+    "value": "  12. indented\n3) second\n     456| deep\n      7 too deep"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3329207365636f6e640a20202020203435367c20646565700a2020202020203720746f6f2064656570"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_5",
+   "input": {
+    "kind": "text",
+    "value": "  12. indented\n3) second\n     456| deep\n      7 too deep"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120202031322e20696e64656e7465640a32203329207365636f6e640a332020202020203435367c20646565700a34202020202020203720746f6f2064656570"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_5",
+   "input": {
+    "kind": "text",
+    "value": "  12. indented\n3) second\n     456| deep\n      7 too deep"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "393920202031322e20696e64656e7465640a313030203329207365636f6e640a3130312020202020203435367c20646565700a313032202020202020203720746f6f2064656570"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_5",
+   "input": {
+    "kind": "text",
+    "value": "  12. indented\n3) second\n     456| deep\n      7 too deep"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "20696e64656e7465640a207365636f6e640a20646565700a2020202020203720746f6f2064656570"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "  12. indented\n3) second\n     456| deep\n      7 too deep"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3120202031322e20696e64656e7465640a32203329207365636f6e640a332020202020203435367c20646565700a34202020202020203720746f6f2064656570",
+    "202031322e20696e64656e7465640a3329207365636f6e640a20202020203435367c20646565700a2020202020203720746f6f2064656570"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_6",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "620d0a63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_6",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "620d0a63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_6",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120610d0a3220620d0a332063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_6",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "393920610d0a31303020620d0a3130312063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_6",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "610d0a620d0a63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3120610d0a3220620d0a332063",
+    "610d0a620d0a63"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_lines_7",
+   "input": {
+    "kind": "text",
+    "value": "1 alpha\n2 beta\n3 gamma"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3220626574610a332067616d6d61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_negative_7",
+   "input": {
+    "kind": "text",
+    "value": "1 alpha\n2 beta\n3 gamma"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Line feed",
+      -1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3220626574610a332067616d6d61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_7",
+   "input": {
+    "kind": "text",
+    "value": "1 alpha\n2 beta\n3 gamma"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31203120616c7068610a32203220626574610a3320332067616d6d61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "add_line_numbers_offset_7",
+   "input": {
+    "kind": "text",
+    "value": "1 alpha\n2 beta\n3 gamma"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      98
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3939203120616c7068610a313030203220626574610a31303120332067616d6d61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_line_numbers_7",
+   "input": {
+    "kind": "text",
+    "value": "1 alpha\n2 beta\n3 gamma"
+   },
+   "recipe": [
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616c7068610a626574610a67616d6d61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "line_numbers_round_trip_7",
+   "input": {
+    "kind": "text",
+    "value": "1 alpha\n2 beta\n3 gamma"
+   },
+   "recipe": [
+    {
+     "op": "Add line numbers",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "Remove line numbers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31203120616c7068610a32203220626574610a3320332067616d6d61",
+    "3120616c7068610a3220626574610a332067616d6d61"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "tail_comma",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c,d,e"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Comma",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "632c642c65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tail_chars",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "Tail",
+     "args": [
+      "Nothing (separate chars)",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_start_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2020202020"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_end_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      3,
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_multi_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      "ab"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162616261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_zero_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      0,
+      "x"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_start_1",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncde"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "202020202061620a2020202020636465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_end_1",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncde"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      3,
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61622d2d2d0a6364652d2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_multi_1",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncde"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      "ab"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616261626161620a6162616261636465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_zero_1",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncde"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      0,
+      "x"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61620a636465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_start_2",
+   "input": {
+    "kind": "text",
+    "value": "\n"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20202020200a2020202020"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_end_2",
+   "input": {
+    "kind": "text",
+    "value": "\n"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      3,
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d0a2d2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_multi_2",
+   "input": {
+    "kind": "text",
+    "value": "\n"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      "ab"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61626162610a6162616261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_zero_2",
+   "input": {
+    "kind": "text",
+    "value": "\n"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      0,
+      "x"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_start_3",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nwörld"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "202020202068e96c6c6f0a202020202077f6726c64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_end_3",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nwörld"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      3,
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68e96c6c6f2d2d2d0a77f6726c642d2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_multi_3",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nwörld"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      "ab"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616261626168e96c6c6f0a616261626177f6726c64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_zero_3",
+   "input": {
+    "kind": "text",
+    "value": "héllo\nwörld"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      0,
+      "x"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68e96c6c6f0a77f6726c64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_start_4",
+   "input": {
+    "kind": "text",
+    "value": "🙂\n🙂🙂"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2020202020f09f99820a2020202020f09f9982f09f9982"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_end_4",
+   "input": {
+    "kind": "text",
+    "value": "🙂\n🙂🙂"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      3,
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f09f99822d2d2d0af09f9982f09f99822d2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_multi_4",
+   "input": {
+    "kind": "text",
+    "value": "🙂\n🙂🙂"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "Start",
+      5,
+      "ab"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162616261f09f99820a6162616261f09f9982f09f9982"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pad_zero_4",
+   "input": {
+    "kind": "text",
+    "value": "🙂\n🙂🙂"
+   },
+   "recipe": [
+    {
+     "op": "Pad lines",
+     "args": [
+      "End",
+      0,
+      "x"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f09f99820af09f9982f09f9982"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_whitespace_default_0",
+   "input": {
+    "kind": "text",
+    "value": " \t\r\n\f. "
+   },
+   "recipe": [
+    {
+     "op": "Remove whitespace",
+     "args": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_whitespace_stops_0",
+   "input": {
+    "kind": "text",
+    "value": " \t\r\n\f. "
+   },
+   "recipe": [
+    {
+     "op": "Remove whitespace",
+     "args": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20090d0a0c20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_whitespace_default_4",
+   "input": {
+    "kind": "text",
+    "value": " f-1,\t\r\n\f.f-1, "
+   },
+   "recipe": [
+    {
+     "op": "Remove whitespace",
+     "args": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "662d312c2e662d312c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_whitespace_stops_4",
+   "input": {
+    "kind": "text",
+    "value": " f-1,\t\r\n\f.f-1, "
+   },
+   "recipe": [
+    {
+     "op": "Remove whitespace",
+     "args": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20662d312c090d0a0c662d312c20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_whitespace_default_20",
+   "input": {
+    "kind": "text",
+    "value": " Yw3,*[wQ]o=J~8;UAPdZ\t\r\n\f.Yw3,*[wQ]o=J~8;UAPdZ "
+   },
+   "recipe": [
+    {
+     "op": "Remove whitespace",
+     "args": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5977332c2a5b77515d6f3d4a7e383b554150645a2e5977332c2a5b77515d6f3d4a7e383b554150645a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_whitespace_stops_20",
+   "input": {
+    "kind": "text",
+    "value": " Yw3,*[wQ]o=J~8;UAPdZ\t\r\n\f.Yw3,*[wQ]o=J~8;UAPdZ "
+   },
+   "recipe": [
+    {
+     "op": "Remove whitespace",
+     "args": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "205977332c2a5b77515d6f3d4a7e383b554150645a090d0a0c5977332c2a5b77515d6f3d4a7e383b554150645a20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_null_bytes_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Remove null bytes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_byte_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Byte"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_line_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Line"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_0_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_0_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_0_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_0_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_0_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_0_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_0_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_0_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_null_bytes_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b0000"
+   },
+   "recipe": [
+    {
+     "op": "Remove null bytes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_byte_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Byte"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_line_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Line"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_1_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_1_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_1_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_1_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_1_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_1_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_1_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_1_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "8b"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_null_bytes_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d60000"
+   },
+   "recipe": [
+    {
+     "op": "Remove null bytes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5814107d7d8b4448d6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_byte_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Byte"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d648448b7d7d101458"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_line_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Line"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5814107d7d8b4448d6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_9_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "587dd6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_9_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "14107d8b4448"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_9_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "108bd6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_9_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "58147d7d4448"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_9_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5814107d7d8b4448d6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_9_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_9_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_9_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "5814107d7d8b4448d6"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5814107d7d8b44d6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "remove_null_bytes_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d299562770000"
+   },
+   "recipe": [
+    {
+     "op": "Remove null bytes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6857021f7297798f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_byte_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Byte"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "776295290db92032b9482380140c4ab61987f72fd0c2395e7950e975fb433b26d44baf044895dd98d30822a55e8f8ae3972b2c72a546578f007997721f025768"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_line_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Line"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_64_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68728f72e3a5980426755e2fb6803229"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_64_4_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      4,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57021f9779005746a52c2b978a8f5e2208d3dd9548af4bd43b43fbe9507939c2d0f787194a0c142348b920b90d956277"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_64_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "02978fa52b8aa5d395af26fb50392f190c23320d62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_64_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      3,
+      2,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68571f7279005746722c97e38f5e220898dd48044bd43b4375e9795ec2d0f787b64a148048b920b9299577"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_64_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_64_1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      1,
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_64_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00728a084826e9c219802062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_64_5_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "6857021f729779008f5746a5722c2b97e38a8f5ea52208d398dd954804af4bd4263b43fb75e950795e39c2d02ff78719b64a0c14802348b93220b90d29956277"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      5,
+      7,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6857021f7297798f5746a52c2b97e38f5ea522d398dd9504af4bd43b43fb7550795e39d02ff787b64a0c142348b932b90d299577"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "take_nth_each_line",
+   "input": {
+    "kind": "bytes",
+    "hex": "61626364656667680a696a6b6c0a0a6d6e6f70717273747576"
+   },
+   "recipe": [
+    {
+     "op": "Take nth bytes",
+     "args": [
+      3,
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6265680a6a0a0a6e7174"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "drop_nth_each_line",
+   "input": {
+    "kind": "bytes",
+    "hex": "61626364656667680a696a6b6c0a0a6d6e6f70717273747576"
+   },
+   "recipe": [
+    {
+     "op": "Drop nth bytes",
+     "args": [
+      3,
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61636466670a696b6c0a0a6d6f7072737576"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_line_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "61626364656667680a696a6b6c0a0a6d6e6f70717273747576"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Line"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e6f707172737475760a0a696a6b6c0a6162636465666768"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_character_ascii",
+   "input": {
+    "kind": "bytes",
+    "hex": "616263646566"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Character"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666564636261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_character_latin",
+   "input": {
+    "kind": "bytes",
+    "hex": "68c3a96c6c6f2077c3b6726c64"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Character"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646c72c3b677206f6c6cc3a968"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_character_cjk",
+   "input": {
+    "kind": "bytes",
+    "hex": "e697a5e69cace8aa9ee38386e382ade382b9e38388"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Character"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e38388e382b9e382ade38386e8aa9ee69cace697a5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_character_astral",
+   "input": {
+    "kind": "bytes",
+    "hex": "61f09f998262f09f87acf09f87a763"
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Character"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63f09f87a7f09f87ac62f09f998261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "reverse_character_empty",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Reverse",
+     "args": [
+      "Character"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
   }
  ]
 }

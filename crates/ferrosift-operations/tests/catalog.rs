@@ -1,9 +1,15 @@
 //! Built-in operation catalog contracts.
 
+use std::collections::BTreeSet;
+
 use ferrosift_model::{CompatibilityProfile, Target};
 
 mod support;
 
+/// Which operations exist is pinned by the generated compatibility ledger and
+/// checked against the CLI in `ferrosift-cli/tests/discovery.rs`. This test
+/// covers the properties that make that list usable: a stable order, no
+/// duplicates, and identifiers in the canonical `family.name@version` form.
 #[test]
 fn builtin_catalog_is_complete_and_ordered() {
     let registry = support::registry();
@@ -12,80 +18,46 @@ fn builtin_catalog_is_complete_and_ordered() {
         .map(|specification| specification.id.as_str())
         .collect();
 
-    assert_eq!(
-        ids,
-        [
-            "analysis.suggest@1",
-            "compression.bzip2.compress@1",
-            "compression.bzip2.decompress@1",
-            "compression.gunzip@1",
-            "compression.gzip@1",
-            "compression.raw.deflate@1",
-            "compression.raw.inflate@1",
-            "compression.zlib.deflate@1",
-            "compression.zlib.inflate@1",
-            "core.identity@1",
-            "crypto.aes.decrypt@1",
-            "crypto.aes.encrypt@1",
-            "crypto.aes_kw.unwrap@1",
-            "crypto.aes_kw.wrap@1",
-            "crypto.pbkdf2@1",
-            "crypto.rc4@1",
-            "crypto.scrypt@1",
-            "data.drop_bytes@1",
-            "data.head@1",
-            "data.take_bytes@1",
-            "defang.fang_url@1",
-            "defang.ip@1",
-            "defang.url@1",
-            "encoding.base32.decode@1",
-            "encoding.base32.encode@1",
-            "encoding.base45.decode@1",
-            "encoding.base45.encode@1",
-            "encoding.base58.decode@1",
-            "encoding.base58.encode@1",
-            "encoding.base64.decode@1",
-            "encoding.base64.encode@1",
-            "encoding.base85.decode@1",
-            "encoding.base85.encode@1",
-            "encoding.binary.decode@1",
-            "encoding.binary.encode@1",
-            "encoding.charcode.decode@1",
-            "encoding.charcode.encode@1",
-            "encoding.decimal.decode@1",
-            "encoding.decimal.encode@1",
-            "encoding.hex.decode@1",
-            "encoding.hex.encode@1",
-            "encoding.hexdump.decode@1",
-            "encoding.hexdump.encode@1",
-            "encoding.html.decode@1",
-            "encoding.html.encode@1",
-            "encoding.octal.decode@1",
-            "encoding.octal.encode@1",
-            "encoding.rot13@1",
-            "encoding.url.decode@1",
-            "encoding.url.encode@1",
-            "extract.domain@1",
-            "extract.email@1",
-            "extract.file_paths@1",
-            "extract.hashes@1",
-            "extract.ip@1",
-            "extract.mac@1",
-            "extract.strings@1",
-            "extract.url@1",
-            "flow.fork@1",
-            "flow.merge@1",
-            "hash.hmac@1",
-            "hash.md5@1",
-            "hash.sha1@1",
-            "hash.sha2@1",
-            "hash.sha3@1",
-            "logic.xor@1",
-            "logic.xor_brute@1",
-            "text.find_replace@1",
-        ]
-    );
-    assert_eq!(registry.len(), 68);
+    assert_eq!(ids.len(), registry.len());
+    assert!(!ids.is_empty());
+
+    let mut sorted = ids.clone();
+    sorted.sort_unstable();
+    assert_eq!(ids, sorted, "catalog must be enumerated in sorted order");
+
+    let unique: BTreeSet<_> = ids.iter().copied().collect();
+    assert_eq!(unique.len(), ids.len(), "identifiers must be unique");
+
+    for id in &ids {
+        let (path, version) = id.split_once('@').expect("id must carry a version");
+        assert!(
+            version.parse::<u32>().is_ok(),
+            "`{id}` must end in a numeric version"
+        );
+        assert!(path.contains('.'), "`{id}` must be namespaced by family");
+        assert!(
+            path.chars().all(|value| value.is_ascii_lowercase()
+                || value.is_ascii_digit()
+                || value == '.'
+                || value == '_'),
+            "`{id}` must be lower snake case"
+        );
+    }
+}
+
+/// Two operations sharing a display name would make the catalog ambiguous to
+/// anyone reading it, which no identifier check would catch.
+#[test]
+fn display_names_are_unique() {
+    let registry = support::registry();
+    let mut seen: BTreeSet<&str> = BTreeSet::new();
+    for specification in registry.catalog() {
+        assert!(
+            seen.insert(specification.display_name.as_str()),
+            "duplicate display name `{}`",
+            specification.display_name
+        );
+    }
 }
 
 #[test]

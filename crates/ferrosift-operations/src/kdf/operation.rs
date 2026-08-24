@@ -31,7 +31,7 @@ impl DerivePbkdf2Key {
             spec: build(SpecDefinition {
                 id: "crypto.pbkdf2@1",
                 display_name: "Derive PBKDF2 key",
-                category: "Ciphers",
+                category: "KDF",
                 description: "Derives a key with PBKDF2-HMAC. Empty salt is rejected for determinism.",
                 cyberchef_alias: Some("Derive PBKDF2 key"),
                 input: text_kinds(),
@@ -109,7 +109,7 @@ impl Scrypt {
             spec: build(SpecDefinition {
                 id: "crypto.scrypt@1",
                 display_name: "Scrypt",
-                category: "Crypto",
+                category: "KDF",
                 description: "Derives a key with scrypt (RFC 7914).",
                 cyberchef_alias: Some("Scrypt"),
                 input: text_kinds(),

@@ -2,84 +2,39 @@
 
 mod support;
 
-#[test]
-fn operations_lists_canonical_ids_in_stable_order() {
-    let output = support::run(&["operations"], b"");
+/// The published compatibility ledger, which is generated from this same
+/// catalog. Comparing against it here means the CLI and the ledger cannot
+/// disagree, and replaces the frozen literal that used to live in this test —
+/// a list that had to be re-typed by hand on every new operation and said
+/// nothing about whether the catalog was right.
+const LEDGER: &str = include_str!("../../../docs/compatibility/ledger.json");
 
+#[test]
+fn operations_lists_every_ledger_id_in_sorted_order() {
+    let output = support::run(&["operations"], b"");
     assert!(output.status.success(), "{}", support::stderr(&output));
-    assert_eq!(
-        support::stdout(&output),
-        concat!(
-            "analysis.suggest@1\n",
-            "compression.bzip2.compress@1\n",
-            "compression.bzip2.decompress@1\n",
-            "compression.gunzip@1\n",
-            "compression.gzip@1\n",
-            "compression.raw.deflate@1\n",
-            "compression.raw.inflate@1\n",
-            "compression.zlib.deflate@1\n",
-            "compression.zlib.inflate@1\n",
-            "core.identity@1\n",
-            "crypto.aes.decrypt@1\n",
-            "crypto.aes.encrypt@1\n",
-            "crypto.aes_kw.unwrap@1\n",
-            "crypto.aes_kw.wrap@1\n",
-            "crypto.pbkdf2@1\n",
-            "crypto.rc4@1\n",
-            "crypto.scrypt@1\n",
-            "data.drop_bytes@1\n",
-            "data.head@1\n",
-            "data.take_bytes@1\n",
-            "defang.fang_url@1\n",
-            "defang.ip@1\n",
-            "defang.url@1\n",
-            "encoding.base32.decode@1\n",
-            "encoding.base32.encode@1\n",
-            "encoding.base45.decode@1\n",
-            "encoding.base45.encode@1\n",
-            "encoding.base58.decode@1\n",
-            "encoding.base58.encode@1\n",
-            "encoding.base64.decode@1\n",
-            "encoding.base64.encode@1\n",
-            "encoding.base85.decode@1\n",
-            "encoding.base85.encode@1\n",
-            "encoding.binary.decode@1\n",
-            "encoding.binary.encode@1\n",
-            "encoding.charcode.decode@1\n",
-            "encoding.charcode.encode@1\n",
-            "encoding.decimal.decode@1\n",
-            "encoding.decimal.encode@1\n",
-            "encoding.hex.decode@1\n",
-            "encoding.hex.encode@1\n",
-            "encoding.hexdump.decode@1\n",
-            "encoding.hexdump.encode@1\n",
-            "encoding.html.decode@1\n",
-            "encoding.html.encode@1\n",
-            "encoding.octal.decode@1\n",
-            "encoding.octal.encode@1\n",
-            "encoding.rot13@1\n",
-            "encoding.url.decode@1\n",
-            "encoding.url.encode@1\n",
-            "extract.domain@1\n",
-            "extract.email@1\n",
-            "extract.file_paths@1\n",
-            "extract.hashes@1\n",
-            "extract.ip@1\n",
-            "extract.mac@1\n",
-            "extract.strings@1\n",
-            "extract.url@1\n",
-            "flow.fork@1\n",
-            "flow.merge@1\n",
-            "hash.hmac@1\n",
-            "hash.md5@1\n",
-            "hash.sha1@1\n",
-            "hash.sha2@1\n",
-            "hash.sha3@1\n",
-            "logic.xor@1\n",
-            "logic.xor_brute@1\n",
-            "text.find_replace@1\n",
-        )
-    );
+
+    let ledger: serde_json::Value = serde_json::from_str(LEDGER).expect("ledger must be JSON");
+    let expected: Vec<&str> = ledger["operations"]
+        .as_array()
+        .expect("ledger must list operations")
+        .iter()
+        .map(|entry| entry["id"].as_str().expect("every entry must have an id"))
+        .collect();
+
+    let listed: Vec<String> = support::stdout(&output)
+        .lines()
+        .map(alloc_string)
+        .collect::<Vec<_>>();
+
+    assert_eq!(listed, expected, "CLI catalog differs from the ledger");
+    let mut sorted = listed.clone();
+    sorted.sort();
+    assert_eq!(listed, sorted, "catalog must be listed in sorted order");
+}
+
+fn alloc_string(value: &str) -> String {
+    value.to_owned()
 }
 
 #[test]

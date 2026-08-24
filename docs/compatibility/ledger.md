@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 68 |
-| Reference-aliased | 66 |
-| Byte-pinned (`exact`) | 62 |
+| Registered operations | 77 |
+| Reference-aliased | 75 |
+| Byte-pinned (`exact`) | 71 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 616 |
+| Pinned cases | 752 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -48,6 +48,11 @@ does.
 | `crypto.scrypt@1` | Scrypt | crypto | exact | 2 |
 | `data.drop_bytes@1` | Drop bytes | core | exact | 4 |
 | `data.head@1` | Head | core | exact | 5 |
+| `data.nth_bytes.drop@1` | Drop nth bytes | core | exact | 17 |
+| `data.nth_bytes.take@1` | Take nth bytes | core | exact | 17 |
+| `data.remove_null_bytes@1` | Remove null bytes | core | exact | 4 |
+| `data.reverse@1` | Reverse | core | exact | 14 |
+| `data.tail@1` | Tail | core | exact | 18 |
 | `data.take_bytes@1` | Take bytes | core | exact | 4 |
 | `defang.fang_url@1` | Fang URL | text | exact | 2 |
 | `defang.ip@1` | Defang IP Addresses | text | exact | 2 |
@@ -97,6 +102,10 @@ does.
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |
+| `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |
+| `text.line_numbers.remove@1` | Remove line numbers | core | exact | 16 |
+| `text.pad_lines@1` | Pad lines | core | exact | 20 |
+| `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
 
 Operations the reference has and FerroSift does not are reported by
 `cargo xtask cyberchef gap`, which needs the pinned checkout and so is

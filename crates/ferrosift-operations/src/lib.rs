@@ -35,10 +35,13 @@ mod html;
 mod identity;
 mod jsint;
 mod key;
+mod lines;
 mod octal;
 mod rot13;
+mod sift;
 mod spec;
 mod url;
+mod value;
 mod xor;
 
 #[cfg(feature = "crypto")]
@@ -86,8 +89,10 @@ pub use hex::{FromHex, ToHex};
 pub use hexdump::{FromHexdump, ToHexdump};
 pub use html::{FromHtmlEntity, ToHtmlEntity};
 pub use identity::Identity;
+pub use lines::{AddLineNumbers, PadLines, RemoveLineNumbers, Tail};
 pub use octal::{FromOctal, ToOctal};
 pub use rot13::Rot13;
+pub use sift::{DropNthBytes, RemoveNullBytes, RemoveWhitespace, Reverse, TakeNthBytes};
 pub use url::{UrlDecode, UrlEncode};
 pub use xor::Xor;
 
@@ -133,6 +138,7 @@ pub use xor_brute::XorBruteForce;
 pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     let mut registry = OperationRegistry::new();
     register_core(&mut registry)?;
+    register_text(&mut registry)?;
     register_encoding(&mut registry)?;
     register_packs(&mut registry)?;
     Ok(registry)
@@ -144,9 +150,23 @@ fn register_core(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(Fork::new())?;
     registry.register(Merge::new())?;
     registry.register(DropBytes::new())?;
+    registry.register(DropNthBytes::new())?;
     registry.register(Head::new())?;
+    registry.register(RemoveNullBytes::new())?;
+    registry.register(Reverse::new())?;
     registry.register(TakeBytes::new())?;
+    registry.register(TakeNthBytes::new())?;
+    registry.register(Tail::new())?;
     registry.register(Xor::new())?;
+    Ok(())
+}
+
+/// Dependency-free text shaping: line numbering, padding, and whitespace.
+fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(AddLineNumbers::new())?;
+    registry.register(PadLines::new())?;
+    registry.register(RemoveLineNumbers::new())?;
+    registry.register(RemoveWhitespace::new())?;
     Ok(())
 }
 

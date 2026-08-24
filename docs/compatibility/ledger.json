@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 68,
-    "aliased": 66,
-    "exact": 62,
+    "operations": 77,
+    "aliased": 75,
+    "exact": 71,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 616
+    "pinned_cases": 752
   },
   "operations": [
     {
@@ -203,7 +203,7 @@
     {
       "id": "crypto.pbkdf2@1",
       "display_name": "Derive PBKDF2 key",
-      "category": "Ciphers",
+      "category": "KDF",
       "reference_alias": "Derive PBKDF2 key",
       "feature": "crypto",
       "targets": [
@@ -229,7 +229,7 @@
     {
       "id": "crypto.scrypt@1",
       "display_name": "Scrypt",
-      "category": "Crypto",
+      "category": "KDF",
       "reference_alias": "Scrypt",
       "feature": "crypto",
       "targets": [
@@ -263,6 +263,71 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "data.nth_bytes.drop@1",
+      "display_name": "Drop nth bytes",
+      "category": "Data",
+      "reference_alias": "Drop nth bytes",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 17,
+      "status": "exact"
+    },
+    {
+      "id": "data.nth_bytes.take@1",
+      "display_name": "Take nth bytes",
+      "category": "Data",
+      "reference_alias": "Take nth bytes",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 17,
+      "status": "exact"
+    },
+    {
+      "id": "data.remove_null_bytes@1",
+      "display_name": "Remove null bytes",
+      "category": "Data",
+      "reference_alias": "Remove null bytes",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "data.reverse@1",
+      "display_name": "Reverse",
+      "category": "Data",
+      "reference_alias": "Reverse",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "data.tail@1",
+      "display_name": "Tail",
+      "category": "Text",
+      "reference_alias": "Tail",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 18,
       "status": "exact"
     },
     {
@@ -902,6 +967,58 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "text.line_numbers.add@1",
+      "display_name": "Add line numbers",
+      "category": "Text",
+      "reference_alias": "Add line numbers",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 24,
+      "status": "exact"
+    },
+    {
+      "id": "text.line_numbers.remove@1",
+      "display_name": "Remove line numbers",
+      "category": "Text",
+      "reference_alias": "Remove line numbers",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
+      "status": "exact"
+    },
+    {
+      "id": "text.pad_lines@1",
+      "display_name": "Pad lines",
+      "category": "Text",
+      "reference_alias": "Pad lines",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 20,
+      "status": "exact"
+    },
+    {
+      "id": "text.remove_whitespace@1",
+      "display_name": "Remove whitespace",
+      "category": "Text",
+      "reference_alias": "Remove whitespace",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 6,
       "status": "exact"
     }
   ]

@@ -207,28 +207,44 @@ export const jsonPath = path.join(repoRoot, "docs/compatibility/ledger.json");
 export const markdownPath = path.join(repoRoot, "docs/compatibility/ledger.md");
 export const readmePath = path.join(repoRoot, "README.md");
 
-const BEGIN = "<!-- ledger:begin -->";
-const END = "<!-- ledger:end -->";
+/** Replaces the text between one marker pair, markers included. */
+function replaceBlock(current, marker, lines) {
+    const begin = `<!-- ${marker}:begin -->`;
+    const end = `<!-- ${marker}:end -->`;
+    const start = current.indexOf(begin);
+    const stop = current.indexOf(end);
+    if (start === -1 || stop === -1) {
+        throw new Error(`README.md is missing its ${begin} / ${end} markers`);
+    }
+    const block = [begin, ...lines, end].join("\n");
+    return current.slice(0, start) + block + current.slice(stop + end.length);
+}
 
 /**
- * Rewrites the headline table in the README between its markers, so the
- * front-page claim is generated from the same data as everything else.
+ * Rewrites the headline table and the catalog table in the README, so the
+ * front page is generated from the same data as everything else. A
+ * hand-maintained operation list is the first thing to go stale in a
+ * catalog that grows.
  */
 export function renderReadme(ledger, current) {
     const {totals} = ledger;
-    const table = [
-        BEGIN,
+    const headline = [
         "| Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |",
         "|---:|---:|---:|---:|",
         `| ${totals.operations} | ${totals.aliased} | **${totals.exact}** | **${totals.pinned_cases}** |`,
-        END,
-    ].join("\n");
-    const start = current.indexOf(BEGIN);
-    const end = current.indexOf(END);
-    if (start === -1 || end === -1) {
-        throw new Error(`README.md is missing its ${BEGIN} / ${END} markers`);
+    ];
+
+    const families = new Map();
+    for (const entry of ledger.operations) {
+        if (!families.has(entry.category)) families.set(entry.category, []);
+        families.get(entry.category).push(entry.display_name);
     }
-    return current.slice(0, start) + table + current.slice(end + END.length);
+    const catalog = ["| Family | Operations |", "|---|---|"];
+    for (const [family, names] of [...families].sort()) {
+        catalog.push(`| ${family} | ${names.sort().join(", ")} |`);
+    }
+
+    return replaceBlock(replaceBlock(current, "ledger", headline), "catalog", catalog);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

@@ -3,7 +3,7 @@ use alloc::{collections::BTreeMap, string::String, vec, vec::Vec};
 use ferrosift_model::{
     ArgumentSpec, CapabilitySet, CompatibilityAlias, CompatibilityProfile, EvidenceRecord,
     EvidenceState, EvidenceSummary, OperationClassification, OperationId, OperationSpec,
-    StreamingSupport, Target, TargetSet, ValueConstraint,
+    StreamingSupport, Target, TargetSet, ValueConstraint, ValueKind,
 };
 
 pub(crate) struct SpecDefinition {
@@ -58,6 +58,34 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
 
 pub(crate) const fn operation_id(value: &'static str) -> OperationId {
     OperationId::from_static(value)
+}
+
+/// A specification whose input and output are both the same value kind.
+///
+/// Most operations are shaped this way, and spelling out the two constraints
+/// at every call site buried the parts that actually differ.
+pub(crate) struct UniformSpec {
+    pub id: &'static str,
+    pub display_name: &'static str,
+    pub category: &'static str,
+    pub description: &'static str,
+    pub cyberchef_alias: &'static str,
+    pub arguments: Vec<ArgumentSpec>,
+}
+
+pub(crate) fn build_uniform(kind: ValueKind, definition: UniformSpec) -> OperationSpec {
+    build(SpecDefinition {
+        id: definition.id,
+        display_name: definition.display_name,
+        category: definition.category,
+        description: definition.description,
+        cyberchef_alias: Some(definition.cyberchef_alias),
+        input: ValueConstraint::Exact(kind),
+        output: ValueConstraint::Exact(kind),
+        arguments: definition.arguments,
+        inverse: None,
+        classifications: None,
+    })
 }
 
 fn evidence() -> EvidenceSummary {
