@@ -99,6 +99,35 @@ jobs:
         env:
           RUSTFLAGS: -D warnings
 
+  # `no_std` is a claim about targets that have no operating system, and
+  # `wasm32-unknown-unknown` is not one of them: it still has `std`. Only a
+  # real bare-metal target proves the claim, so build on two with different
+  # word layouts and calling conventions.
+  #
+  # `compression` and the `analysis` pack that enables it are absent on
+  # purpose: bzip2 comes from `oxiarc-bzip2`, whose `oxiarc-core` needs `std`.
+  # That is the single remaining blocker and is tracked in
+  # docs/portability.md. Listing the packs that do hold keeps the gap
+  # measured rather than assumed.
+  embedded:
+    name: Bare metal (${{ matrix.target }}, ${{ matrix.features }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [thumbv7em-none-eabihf, riscv32imac-unknown-none-elf]
+        features: ["", pattern, hash, crypto, text, "hash,crypto,text,pattern"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Add the bare-metal target
+        run: rustup target add ${{ matrix.target }}
+      - name: Check the facade
+        run: >
+          cargo check -p ferrosift --target ${{ matrix.target }} --no-default-features
+          ${{ matrix.features && format('--features {0}', matrix.features) || '' }}
+        env:
+          RUSTFLAGS: -D warnings
+
   # `cargo xtask` is deliberately outside the workspace, so the gates above
   # never see it. Lint it on its own rather than leaving it unchecked.
   xtask:

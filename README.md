@@ -145,7 +145,11 @@ ferrosift = { version = "...", default-features = false, features = ["pattern"] 
 | `ferrosift` | Facade: engine, pipeline builder, unified error |
 | `ferrosift-cli` | Native CLI binary `ferrosift` |
 
-Library crates are `no_std` + `alloc` and forbid `unsafe`.
+Library crates are `no_std` + `alloc` and forbid `unsafe`. That claim is built
+on two real bare-metal targets in CI — `thumbv7em-none-eabihf` and
+`riscv32imac-unknown-none-elf` — not inferred from the WASM build, which still
+has a `std`. One pack does not yet reach bare metal;
+[docs/portability.md](docs/portability.md) names it and why.
 
 ## Built-in operations
 
