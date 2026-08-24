@@ -72,11 +72,17 @@ impl Alphabet {
         self.padding
     }
 
-    pub(super) fn value(&self, symbol: char) -> Option<u8> {
+    /// The value of a byte, or `None` if it is not a symbol.
+    pub(super) fn value_byte(&self, symbol: u8) -> Option<u8> {
         self.values.get(symbol as usize).copied().flatten()
     }
 
-    pub(super) fn contains(&self, symbol: char) -> bool {
-        self.value(symbol).is_some() || self.padding == Some(symbol)
+    /// Whether a byte is a symbol or the padding.
+    ///
+    /// Non-ASCII bytes are never either — the alphabet is validated as ASCII —
+    /// which is what makes byte-wise filtering agree with the character-wise
+    /// filtering it replaced, including for multi-byte sequences.
+    pub(super) fn contains_byte(&self, symbol: u8) -> bool {
+        self.value_byte(symbol).is_some() || self.padding_byte == Some(symbol)
     }
 }

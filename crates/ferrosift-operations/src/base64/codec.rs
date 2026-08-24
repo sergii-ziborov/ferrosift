@@ -66,9 +66,14 @@ pub(super) fn decode(
     strict: bool,
     context: &OperationContext<'_>,
 ) -> Result<Vec<u8>, OperationError> {
+    // Bytes, not `char`. Every alphabet symbol is ASCII, so a byte at or above
+    // 0x80 — which is every byte of a multi-byte sequence — can never be in
+    // the alphabet, and is filtered or rejected exactly as the character it
+    // belongs to would have been. Collecting `char` cost four bytes per symbol
+    // and a UTF-8 decode of the whole input before any decoding began.
     let mut symbols = Vec::with_capacity(input.len());
-    for value in input.chars() {
-        if alphabet.contains(value) {
+    for value in input.bytes() {
+        if alphabet.contains_byte(value) {
             symbols.push(value);
         } else if !remove_non_alphabet {
             return Err(failed("encoding.base64.invalid_character"));
@@ -81,12 +86,53 @@ pub(super) fn decode(
     let capacity = decoded_len(&symbols, alphabet)?;
     ensure_output_fits(capacity, context)?;
     let mut output = Vec::with_capacity(capacity);
-    for (index, chunk) in symbols.chunks(4).enumerate() {
-        if index % 1024 == 0 {
-            context.ensure_active()?;
+
+    // `validate_shape` has already established that padding, if present at
+    // all, occupies only the last one or two positions. Stripping it here
+    // means the loop below never compares against it — the previous version
+    // asked twice per group of four, for the sake of the final group.
+    let data = match alphabet.padding_byte() {
+        Some(padding) => {
+            let end = symbols
+                .iter()
+                .rposition(|value| *value != padding)
+                .map_or(0, |index| index + 1);
+            &symbols[..end]
         }
-        decode_chunk(chunk, alphabet, &mut output)?;
+        None => &symbols[..],
+    };
+
+    let whole = data.len() - data.len() % 4;
+    let (body, tail) = data.split_at(whole);
+    for block in body.chunks(4 * 1024) {
+        context.ensure_active()?;
+        for quad in block.chunks_exact(4) {
+            let packed = u32::from(value(quad[0], alphabet)?) << 18
+                | u32::from(value(quad[1], alphabet)?) << 12
+                | u32::from(value(quad[2], alphabet)?) << 6
+                | u32::from(value(quad[3], alphabet)?);
+            // Three bytes in one capacity check rather than three. Each shift
+            // leaves the wanted byte in the low bits, so the masks are what
+            // make the narrowing exact rather than a truncation.
+            output.extend_from_slice(&[
+                ((packed >> 16) & 0xff) as u8,
+                ((packed >> 8) & 0xff) as u8,
+                (packed & 0xff) as u8,
+            ]);
+        }
     }
+
+    // A tail of two symbols carries one byte, three carry two. One symbol is
+    // impossible: `validate_shape` rejects that length.
+    if !tail.is_empty() {
+        let first = value(tail[0], alphabet)?;
+        let second = value(tail[1], alphabet)?;
+        output.push((first << 2) | (second >> 4));
+        if let Some(third) = tail.get(2).copied() {
+            output.push((second << 4) | (value(third, alphabet)? >> 2));
+        }
+    }
+
     context.ensure_active()?;
     Ok(output)
 }
@@ -104,11 +150,11 @@ fn encoded_len(input_len: usize, padded: bool) -> Option<usize> {
     }
 }
 
-fn decoded_len(symbols: &[char], alphabet: &Alphabet) -> Result<usize, OperationError> {
+fn decoded_len(symbols: &[u8], alphabet: &Alphabet) -> Result<usize, OperationError> {
     if symbols.is_empty() {
         return Ok(0);
     }
-    let padding = alphabet.padding();
+    let padding = alphabet.padding_byte();
     let padding_count = symbols
         .iter()
         .rev()
@@ -129,11 +175,11 @@ fn decoded_len(symbols: &[char], alphabet: &Alphabet) -> Result<usize, Operation
         .ok_or(OperationError::OutputLimitExceeded)
 }
 
-fn validate_shape(symbols: &[char], alphabet: &Alphabet) -> Result<(), OperationError> {
+fn validate_shape(symbols: &[u8], alphabet: &Alphabet) -> Result<(), OperationError> {
     if symbols.len() % 4 == 1 {
         return Err(failed("encoding.base64.invalid_length"));
     }
-    let Some(padding) = alphabet.padding() else {
+    let Some(padding) = alphabet.padding_byte() else {
         return Ok(());
     };
     let Some(first_padding) = symbols.iter().position(|value| *value == padding) else {
@@ -151,10 +197,10 @@ fn validate_shape(symbols: &[char], alphabet: &Alphabet) -> Result<(), Operation
     Ok(())
 }
 
-fn validate_canonical_bits(symbols: &[char], alphabet: &Alphabet) -> Result<(), OperationError> {
+fn validate_canonical_bits(symbols: &[u8], alphabet: &Alphabet) -> Result<(), OperationError> {
     let unpadded_len = symbols
         .iter()
-        .position(|value| Some(*value) == alphabet.padding())
+        .position(|value| Some(*value) == alphabet.padding_byte())
         .unwrap_or(symbols.len());
     match unpadded_len % 4 {
         2 => {
@@ -174,36 +220,9 @@ fn validate_canonical_bits(symbols: &[char], alphabet: &Alphabet) -> Result<(), 
     Ok(())
 }
 
-fn decode_chunk(
-    chunk: &[char],
-    alphabet: &Alphabet,
-    output: &mut Vec<u8>,
-) -> Result<(), OperationError> {
-    if chunk.len() < 2 {
-        return Err(failed("encoding.base64.invalid_length"));
-    }
-    let first = value(chunk[0], alphabet)?;
-    let second = value(chunk[1], alphabet)?;
-    output.push((first << 2) | (second >> 4));
-
-    if let Some(third) = chunk.get(2).copied() {
-        if Some(third) == alphabet.padding() {
-            return Ok(());
-        }
-        let third = value(third, alphabet)?;
-        output.push((second << 4) | (third >> 2));
-        if let Some(fourth) = chunk.get(3).copied()
-            && Some(fourth) != alphabet.padding()
-        {
-            output.push((third << 6) | value(fourth, alphabet)?);
-        }
-    }
-    Ok(())
-}
-
-fn value(symbol: char, alphabet: &Alphabet) -> Result<u8, OperationError> {
+fn value(symbol: u8, alphabet: &Alphabet) -> Result<u8, OperationError> {
     alphabet
-        .value(symbol)
+        .value_byte(symbol)
         .ok_or_else(|| failed("encoding.base64.invalid_character"))
 }
 
