@@ -59,8 +59,8 @@ pub(super) fn brute(
             options.null_preserving,
             context,
         )?;
-        let utf8 = latin1_string(&result);
-        if !crib.is_empty() && !utf8.to_ascii_lowercase().contains(&crib) {
+        let decoded = byte_array_to_utf8(&result);
+        if !crib.is_empty() && !decoded.to_ascii_lowercase().contains(&crib) {
             continue;
         }
         let mut record = String::new();
@@ -75,7 +75,7 @@ pub(super) fn brute(
         if options.output_hex {
             record.push_str(&to_hex_spaced(&result));
         } else {
-            record.push_str(&utf8);
+            record.push_str(&escape_whitespace(&decoded));
         }
         lines.push(record);
     }
@@ -96,8 +96,29 @@ fn int_to_key(mut value: u32, len: usize) -> Vec<u8> {
     key
 }
 
-fn latin1_string(bytes: &[u8]) -> String {
-    bytes.iter().map(|byte| char::from(*byte)).collect()
+/// Reproduces `Utils.byteArrayToUtf8`: a strict UTF-8 decode, falling back to
+/// a Latin-1 char-by-char decode when the bytes are not well-formed UTF-8.
+fn byte_array_to_utf8(bytes: &[u8]) -> String {
+    match core::str::from_utf8(bytes) {
+        Ok(text) => String::from(text),
+        Err(_) => bytes.iter().map(|byte| char::from(*byte)).collect(),
+    }
+}
+
+/// Reproduces `Utils.escapeWhitespace`: control characters in `0x09..=0x10`
+/// are shifted into the `U+E000` private-use area so they do not render as
+/// whitespace and cannot corrupt the line-delimited report.
+fn escape_whitespace(text: &str) -> String {
+    text.chars()
+        .map(|value| {
+            let code = value as u32;
+            if (0x09..=0x10).contains(&code) {
+                char::from_u32(0xe000 + code).unwrap_or(value)
+            } else {
+                value
+            }
+        })
+        .collect()
 }
 
 fn to_hex_spaced(bytes: &[u8]) -> String {

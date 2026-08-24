@@ -120,6 +120,23 @@ The built-in registry provides these exact CyberChef 11.3 aliases:
 | `RC4` | text/bytes | text/bytes | passphrase, I/O formats |
 | `XOR Brute Force` | bytes | UTF-8 text | key length, sample, scheme, crib |
 
+## Verified corpus
+
+Compatibility is measured, not asserted. Two machine-generated fixtures pin
+FerroSift against the reference at commit
+`d24ba1afce2e3a080308b5df7db033332fe94a1a`:
+
+- a curated differential suite of **65** representative recipes, and
+- an automatic corpus of **518** deterministically sampled cases.
+
+Every case is replayed through the real executor and must match the reference
+output bytes and stopping position at **every recipe prefix** (**583** pinned
+cases total). A coverage gate fails the build if any CyberChef-aliased
+operation has no corpus case and no documented exemption, so no operation is
+silently unverified. The only exemptions are the compressor directions (whose
+output is interoperable, not bit-identical; their inverse is byte-pinned) and
+the `Fork` / `Merge` flow-control pair (pinned by dedicated tests).
+
 ## Conformance profile
 
 Outputs are byte-for-byte identical to CyberChef 11.3.0 for every input the
@@ -144,6 +161,10 @@ reference processes into valid bytes, including its observable quirks:
 - `URL Decode` never fails: strict UTF-8 percent decoding falls back to the
   legacy `unescape` algorithm (`%XX` and `%uXXXX` code units), matching the
   reference's error handling exactly.
+- `To Hexdump` pads the hex field to `width * 3` columns, keeps Latin-1 bytes
+  in the ASCII gutter, and — with the final-length line enabled — emits that
+  trailer as raw **lower-case** hex even in upper-case mode, exactly as the
+  reference pushes it after per-line upper-casing.
 - `XOR` reproduces Standard, Input/Output differential, Cascade, and null
   preserving schemes against the same key encodings as the reference.
 - `Find / Replace` applies `binaryString` escape parsing to the replacement
@@ -170,7 +191,11 @@ reference processes into valid bytes, including its observable quirks:
   expressions; IPv6 extraction uses a conservative scanner rather than the full
   browser regex. MAC extraction uses colon/dash forms with hexadecimal sort and
   exact (case-sensitive) unique. Hash extraction matches **lowercase** hex only,
-  like the reference.
+  like the reference. `Extract domains` reproduces the reference match set
+  (including its quirk of reading `cmd.exe` as a domain); because the portable
+  automata engine has no lookaround, the reference's `{1,63}` per-label cap is
+  dropped, so domain labels **longer than 63 characters** are a documented
+  micro-divergence that does not arise for real domains.
 - `Defang URL` / `Fang URL` follow the same substitution order as CyberChef
   (`http`→`hxxp`, `.`→`[.]`, `://`→`[://]` and the reverse).
 - AES supports CBC/CFB/OFB/CTR/ECB (PKCS#7 and NoPadding for CBC/ECB) and GCM.
@@ -184,7 +209,11 @@ reference processes into valid bytes, including its observable quirks:
 - `Scrypt` accepts empty salt (deterministic). `N` must be a power of two ≥ 2.
 - RC4 and AES carry `legacy` / `unsafe` classifications where appropriate.
 - `XOR Brute Force` enumerates keys `1..256^n-1` (never the zero key), matching
-  the reference; key length is limited to 1..=2.
+  the reference; key length is limited to 1..=2. The text sample is UTF-8
+  decoded (Latin-1 fallback) and its control bytes `0x09..=0x10` are shifted
+  into the `U+E000` private-use area (`Utils.escapeWhitespace`) so a decoded
+  newline cannot split a record; the hex-output mode emits spaced lower-case
+  hex.
 
 Where the reference produces values outside the byte range (which its node
 API also rejects), decoding fails with a stable `encoding.*` /

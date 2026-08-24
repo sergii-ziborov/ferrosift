@@ -74,12 +74,11 @@ pub(super) fn encode(
         output.push('|');
         offset = end;
         if include_final_length && offset == input.len() {
+            // The reference pushes the final-length line as raw lowercase hex
+            // after the per-line upper-casing, so it stays lowercase even when
+            // upper-case mode is on.
             output.push('\n');
-            let mut final_len = format_hex(offset as u64, 8);
-            if upper_case {
-                final_len = final_len.to_ascii_uppercase();
-            }
-            output.push_str(&final_len);
+            output.push_str(&format_hex(offset as u64, 8));
         }
     }
     context.ensure_active()?;

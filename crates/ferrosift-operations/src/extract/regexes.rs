@@ -32,10 +32,15 @@ pub(super) fn extract_domains(
     dmarc: bool,
     context: &OperationContext<'_>,
 ) -> Result<String, OperationError> {
+    // CyberChef's DOMAIN_REGEX caps each label at 63 characters with a
+    // `(?=[a-z0-9-]{1,63}\.)` lookahead. `regex-automata` has no lookaround,
+    // so the label body is kept verbatim and the length cap is dropped: the
+    // result is identical for every label of 1..=63 characters (all real
+    // domains), and the >63-character edge is a documented micro-divergence.
     let pattern = if dmarc {
-        r"(?i)\b((?=[a-z0-9_-]{1,63}\.)(xn--)?[a-z0-9_]+(-[a-z0-9_]+)*\.)+[a-z]{2,63}\b"
+        r"(?i)\b((xn--)?[a-z0-9_]+(-[a-z0-9_]+)*\.)+[a-z]{2,63}\b"
     } else {
-        r"(?i)\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b"
+        r"(?i)\b((xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b"
     };
     extract_with(input, pattern, present, context)
 }
@@ -99,13 +104,7 @@ pub(super) fn extract_file_paths(
         }
     };
     let mut results = collect_matches(input, &pattern)?;
-    results = finalize(
-        results,
-        present.sort(),
-        present.unique(),
-        false,
-        context,
-    )?;
+    results = finalize(results, present.sort(), present.unique(), false, context)?;
     let output = format_results(&results, present.display_total());
     ensure_output(&output, context)?;
     Ok(output)
@@ -133,7 +132,8 @@ pub(super) fn extract_hashes(
         return Err(failed(INVALID_HASH_LEN));
     }
     // Character length N => bit length (N/2)*8 = N*4.
-    let bits = u32::try_from(hash_length.saturating_mul(4)).map_err(|_| failed(INVALID_HASH_LEN))?;
+    let bits =
+        u32::try_from(hash_length.saturating_mul(4)).map_err(|_| failed(INVALID_HASH_LEN))?;
     extract_hash_lengths(input, &[bits], display_total, context)
 }
 
@@ -153,8 +153,7 @@ fn extract_hash_lengths(
         }
         let mut pattern = String::new();
         // CyberChef: /(\b|^)[a-f0-9]{N}(\b|$)/g  (lowercase hex only)
-        write!(&mut pattern, r"(\b|^)[a-f0-9]{{{chars}}}(\b|$)")
-            .map_err(|_| failed(INVALID))?;
+        write!(&mut pattern, r"(\b|^)[a-f0-9]{{{chars}}}(\b|$)").map_err(|_| failed(INVALID))?;
         results.extend(collect_matches(input, &pattern)?);
     }
     let output = format_results_labeled(&results, display_total, "Total Results");

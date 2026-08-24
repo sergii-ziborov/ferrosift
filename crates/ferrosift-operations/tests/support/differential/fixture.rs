@@ -2,12 +2,19 @@ use ferrosift_model::{TextEncoding, TextValue, Value};
 use serde::Deserialize;
 
 const FIXTURE: &str = include_str!("../../fixtures/cyberchef-v11.3.0/differential.json");
+const CORPUS: &str = include_str!("../../fixtures/cyberchef-v11.3.0/corpus.json");
 
 #[derive(Debug, Deserialize)]
 pub struct Suite {
     pub reference: Reference,
     pub cases: Vec<Case>,
     pub unsupported: UnsupportedCase,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CorpusSuite {
+    pub reference: Reference,
+    pub cases: Vec<Case>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -61,6 +68,20 @@ impl Input {
 
 pub fn load_suite() -> Suite {
     serde_json::from_str(FIXTURE).expect("reference fixture must be valid")
+}
+
+pub fn load_corpus() -> CorpusSuite {
+    serde_json::from_str(CORPUS).expect("corpus fixture must be valid")
+}
+
+impl Case {
+    /// The exact `CyberChef` operation names this case exercises, in order.
+    pub fn operations(&self) -> Vec<&str> {
+        self.recipe
+            .iter()
+            .filter_map(|step| step.get("op").and_then(serde_json::Value::as_str))
+            .collect()
+    }
 }
 
 pub fn decode_hex(value: &str) -> Vec<u8> {
