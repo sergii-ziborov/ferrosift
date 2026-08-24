@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 123 |
-| Reference-aliased | 121 |
-| Byte-pinned (`exact`) | 117 |
+| Registered operations | 128 |
+| Reference-aliased | 126 |
+| Byte-pinned (`exact`) | 122 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2043 |
+| Pinned cases | 2147 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -124,10 +124,15 @@ does.
 | `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
 | `hash.hmac@1` | HMAC | hash | exact | 5 |
+| `hash.md2@1` | MD2 | hash | exact | 13 |
+| `hash.md4@1` | MD4 | hash | exact | 13 |
 | `hash.md5@1` | MD5 | hash | exact | 7 |
+| `hash.ripemd@1` | RIPEMD | hash | exact | 52 |
 | `hash.sha1@1` | SHA1 | hash | exact | 7 |
 | `hash.sha2@1` | SHA2 | hash | exact | 13 |
 | `hash.sha3@1` | SHA3 | hash | exact | 13 |
+| `hash.sm3@1` | SM3 | hash | exact | 13 |
+| `hash.whirlpool@1` | Whirlpool | hash | exact | 13 |
 | `logic.add@1` | ADD | core | exact | 31 |
 | `logic.and@1` | AND | core | exact | 30 |
 | `logic.not@1` | NOT | core | exact | 7 |

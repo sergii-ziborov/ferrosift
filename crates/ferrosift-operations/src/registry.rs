@@ -30,7 +30,7 @@ use crate::{
     Strings,
 };
 #[cfg(feature = "hash")]
-use crate::{Hmac, Md5, Sha1, Sha2, Sha3};
+use crate::{FixedDigest, Hmac, Md5, Ripemd, Sha1, Sha2, Sha3};
 #[cfg(feature = "analysis")]
 use crate::{SuggestRecipe, XorBruteForce};
 
@@ -235,6 +235,11 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
         registry.register(Sha1::new())?;
         registry.register(Sha2::new())?;
         registry.register(Sha3::new())?;
+        registry.register(FixedDigest::md2())?;
+        registry.register(FixedDigest::md4())?;
+        registry.register(FixedDigest::sm3())?;
+        registry.register(FixedDigest::whirlpool())?;
+        registry.register(Ripemd::new())?;
         registry.register(Hmac::new())?;
     }
     #[cfg(feature = "crypto")]

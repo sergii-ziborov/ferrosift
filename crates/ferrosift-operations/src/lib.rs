@@ -65,6 +65,8 @@ mod compress;
 mod crc32;
 #[cfg(feature = "text")]
 mod defang;
+#[cfg(feature = "hash")]
+mod digest;
 #[cfg(feature = "text")]
 mod extract;
 #[cfg(feature = "text")]
@@ -120,6 +122,8 @@ pub use compress::{
 };
 #[cfg(feature = "text")]
 pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
+#[cfg(feature = "hash")]
+pub use digest::{FixedDigest, Ripemd};
 #[cfg(feature = "text")]
 pub use extract::{
     ExtractDomains, ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,

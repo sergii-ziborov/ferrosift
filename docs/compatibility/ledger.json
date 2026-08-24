@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 123,
-    "aliased": 121,
-    "exact": 117,
+    "operations": 128,
+    "aliased": 126,
+    "exact": 122,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2043
+    "pinned_cases": 2147
   },
   "operations": [
     {
@@ -1256,6 +1256,32 @@
       "status": "exact"
     },
     {
+      "id": "hash.md2@1",
+      "display_name": "MD2",
+      "category": "Hashing",
+      "reference_alias": "MD2",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "hash.md4@1",
+      "display_name": "MD4",
+      "category": "Hashing",
+      "reference_alias": "MD4",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
       "id": "hash.md5@1",
       "display_name": "MD5",
       "category": "Hashing",
@@ -1266,6 +1292,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "hash.ripemd@1",
+      "display_name": "RIPEMD",
+      "category": "Hashing",
+      "reference_alias": "RIPEMD",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 52,
       "status": "exact"
     },
     {
@@ -1299,6 +1338,32 @@
       "display_name": "SHA3",
       "category": "Hashing",
       "reference_alias": "SHA3",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "hash.sm3@1",
+      "display_name": "SM3",
+      "category": "Hashing",
+      "reference_alias": "SM3",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "hash.whirlpool@1",
+      "display_name": "Whirlpool",
+      "category": "Hashing",
+      "reference_alias": "Whirlpool",
       "feature": "hash",
       "targets": [
         "Native",
