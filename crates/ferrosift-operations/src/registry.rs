@@ -7,12 +7,13 @@
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, BitShift, Bitwise, ClassicalCipher, DropBytes, DropNthBytes, Fork, FromBase32,
-    FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode, FromDecimal, FromHex,
-    FromHexdump, FromHtmlEntity, FromOctal, Head, Identity, Merge, PadLines, RemoveLineNumbers,
-    RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot47, Rotate, SwapEndianness, Tail,
-    TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary,
-    ToCharcode, ToDecimal, ToHex, ToHexdump, ToHtmlEntity, ToOctal, UrlDecode, UrlEncode, Xor,
+    AddLineNumbers, BitShift, Bitwise, Checksum, ClassicalCipher, DropBytes, DropNthBytes, Fork,
+    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
+    FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal, Head,
+    Identity, LuhnChecksum, Merge, PadLines, RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace,
+    Reverse, Ror13, Rot13, Rot47, Rotate, SwapEndianness, Tail, TakeBytes, TakeNthBytes, ToBase32,
+    ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToDecimal, ToHex, ToHexdump,
+    ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -43,12 +44,26 @@ use crate::{SuggestRecipe, XorBruteForce};
 /// valid. The returned registry is never partially initialized.
 pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     let mut registry = OperationRegistry::new();
+    register_checksums(&mut registry)?;
     register_core(&mut registry)?;
     register_text(&mut registry)?;
     register_classical(&mut registry)?;
     register_encoding(&mut registry)?;
     register_packs(&mut registry)?;
     Ok(registry)
+}
+
+/// Checksums, all dependency-free.
+fn register_checksums(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Checksum::adler32())?;
+    registry.register(Checksum::fletcher8())?;
+    registry.register(Checksum::fletcher16())?;
+    registry.register(Checksum::fletcher32())?;
+    registry.register(Checksum::fletcher64())?;
+    registry.register(Checksum::tcp_ip())?;
+    registry.register(Checksum::xor())?;
+    registry.register(LuhnChecksum::new())?;
+    Ok(())
 }
 
 /// Classical ciphers, all dependency-free.
@@ -139,6 +154,10 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     registry.register(ToHexdump::new())?;
     registry.register(FromHtmlEntity::new())?;
     registry.register(ToHtmlEntity::new())?;
+    registry.register(FromModhex::new())?;
+    registry.register(ToModhex::new())?;
+    registry.register(FromMorseCode::new())?;
+    registry.register(ToMorseCode::new())?;
     registry.register(FromOctal::new())?;
     registry.register(ToOctal::new())?;
     registry.register(Rot13::new())?;

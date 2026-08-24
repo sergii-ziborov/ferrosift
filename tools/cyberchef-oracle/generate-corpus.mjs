@@ -26,6 +26,7 @@ import {
 } from "./reference.mjs";
 import {createBuilder} from "./corpus/builder.mjs";
 import * as bitwise from "./corpus/bitwise.mjs";
+import * as checksum from "./corpus/checksum.mjs";
 import * as classical from "./corpus/classical.mjs";
 import * as compress from "./corpus/compress.mjs";
 import * as crypto from "./corpus/crypto.mjs";
@@ -43,7 +44,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum]) {
     await family.add(builder);
 }
 

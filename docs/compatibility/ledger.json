@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 104,
-    "aliased": 102,
-    "exact": 98,
+    "operations": 116,
+    "aliased": 114,
+    "exact": 110,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 1531
+    "pinned_cases": 1960
   },
   "operations": [
     {
@@ -25,6 +25,110 @@
       ],
       "conformance_cases": 0,
       "status": "native"
+    },
+    {
+      "id": "checksum.adler32@1",
+      "display_name": "Adler-32 Checksum",
+      "category": "Checksums",
+      "reference_alias": "Adler-32 Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.fletcher16@1",
+      "display_name": "Fletcher-16 Checksum",
+      "category": "Checksums",
+      "reference_alias": "Fletcher-16 Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.fletcher32@1",
+      "display_name": "Fletcher-32 Checksum",
+      "category": "Checksums",
+      "reference_alias": "Fletcher-32 Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.fletcher64@1",
+      "display_name": "Fletcher-64 Checksum",
+      "category": "Checksums",
+      "reference_alias": "Fletcher-64 Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.fletcher8@1",
+      "display_name": "Fletcher-8 Checksum",
+      "category": "Checksums",
+      "reference_alias": "Fletcher-8 Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.luhn@1",
+      "display_name": "Luhn Checksum",
+      "category": "Checksums",
+      "reference_alias": "Luhn Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.tcp_ip@1",
+      "display_name": "TCP/IP Checksum",
+      "category": "Checksums",
+      "reference_alias": "TCP/IP Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "checksum.xor@1",
+      "display_name": "XOR Checksum",
+      "category": "Checksums",
+      "reference_alias": "XOR Checksum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 60,
+      "status": "exact"
     },
     {
       "id": "cipher.a1z26.decode@1",
@@ -861,6 +965,58 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.modhex.decode@1",
+      "display_name": "From Modhex",
+      "category": "Encoding",
+      "reference_alias": "From Modhex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 70,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.modhex.encode@1",
+      "display_name": "To Modhex",
+      "category": "Encoding",
+      "reference_alias": "To Modhex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 120,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.morse.decode@1",
+      "display_name": "From Morse Code",
+      "category": "Encoding",
+      "reference_alias": "From Morse Code",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 29,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.morse.encode@1",
+      "display_name": "To Morse Code",
+      "category": "Encoding",
+      "reference_alias": "To Morse Code",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 64,
       "status": "exact"
     },
     {

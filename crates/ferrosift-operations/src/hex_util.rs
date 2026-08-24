@@ -46,6 +46,37 @@ pub(crate) fn from_hex_auto(input: &str) -> Vec<u8> {
     output
 }
 
+/// Reads a hex string two characters at a time, as `fromHex(_, "None", 2)`.
+///
+/// Each pair goes through `parseInt`, which takes the longest valid prefix and
+/// yields NaN when there is none — and a NaN stored in a byte array reads back
+/// as zero.
+pub(crate) fn from_hex_pairs(input: &str) -> Vec<u8> {
+    let characters: Vec<char> = input.chars().collect();
+    characters
+        .chunks(2)
+        .map(|pair| {
+            let mut value: u32 = 0;
+            let mut seen = false;
+            for digit in pair {
+                match digit.to_digit(16) {
+                    Some(nibble) => {
+                        value = (value << 4) | nibble;
+                        seen = true;
+                    }
+                    // `parseInt` stops at the first character it cannot read.
+                    None => break,
+                }
+            }
+            if seen {
+                u8::try_from(value).unwrap_or(0)
+            } else {
+                0
+            }
+        })
+        .collect()
+}
+
 /// Reads one accumulated run of hex digits, two at a time.
 fn flush(digits: &mut Vec<char>, output: &mut Vec<u8>) {
     for pair in digits.chunks(2) {

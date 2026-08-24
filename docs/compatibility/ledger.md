@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 104 |
-| Reference-aliased | 102 |
-| Byte-pinned (`exact`) | 98 |
+| Registered operations | 116 |
+| Reference-aliased | 114 |
+| Byte-pinned (`exact`) | 110 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 1531 |
+| Pinned cases | 1960 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -30,6 +30,14 @@ does.
 | Operation | Alias | Pack | Status | Cases |
 |---|---|---|---|---:|
 | `analysis.suggest@1` | — | analysis | native | 0 |
+| `checksum.adler32@1` | Adler-32 Checksum | core | exact | 12 |
+| `checksum.fletcher16@1` | Fletcher-16 Checksum | core | exact | 12 |
+| `checksum.fletcher32@1` | Fletcher-32 Checksum | core | exact | 12 |
+| `checksum.fletcher64@1` | Fletcher-64 Checksum | core | exact | 12 |
+| `checksum.fletcher8@1` | Fletcher-8 Checksum | core | exact | 12 |
+| `checksum.luhn@1` | Luhn Checksum | core | exact | 14 |
+| `checksum.tcp_ip@1` | TCP/IP Checksum | core | exact | 12 |
+| `checksum.xor@1` | XOR Checksum | core | exact | 60 |
 | `cipher.a1z26.decode@1` | A1Z26 Cipher Decode | core | exact | 24 |
 | `cipher.a1z26.encode@1` | A1Z26 Cipher Encode | core | exact | 42 |
 | `cipher.affine.decode@1` | Affine Cipher Decode | core | exact | 35 |
@@ -94,6 +102,10 @@ does.
 | `encoding.hexdump.encode@1` | To Hexdump | core | exact | 12 |
 | `encoding.html.decode@1` | From HTML Entity | core | exact | 5 |
 | `encoding.html.encode@1` | To HTML Entity | core | exact | 5 |
+| `encoding.modhex.decode@1` | From Modhex | core | exact | 70 |
+| `encoding.modhex.encode@1` | To Modhex | core | exact | 120 |
+| `encoding.morse.decode@1` | From Morse Code | core | exact | 29 |
+| `encoding.morse.encode@1` | To Morse Code | core | exact | 64 |
 | `encoding.octal.decode@1` | From Octal | core | exact | 14 |
 | `encoding.octal.encode@1` | To Octal | core | exact | 14 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |

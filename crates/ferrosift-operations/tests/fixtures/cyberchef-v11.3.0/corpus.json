@@ -26953,6 +26953,7282 @@
     "54686520517569636b2042726f776e20466f7821"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "adler32_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "66666666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_0_2",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_0_4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_0_8",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_0_16",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_0_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_0_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_0_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_0_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_0_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_0_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_0_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_0_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_0_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_0_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030643330306433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "64326432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030643230306432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30303030303064323030303030306432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32646666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_1_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64323030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_1_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6432303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_1_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64323030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_1_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6432303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_1_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_1_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464",
+    "d2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_1_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_1_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464",
+    "d2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_1_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_1_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464",
+    "d2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_1_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_1_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464",
+    "d2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_1_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_1_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "d2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7464",
+    "d2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3031343830306134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6264"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34376133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030613330306133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30303030303061333030303030306133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "35636666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_2_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_2_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61333030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_2_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6133303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_2_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61333030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_2_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6133303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_2_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c65206363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_2_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c65206363",
+    "a300"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_2_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c656363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_2_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c656363",
+    "a300"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_2_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c652c6363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_2_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c652c6363",
+    "a300"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_2_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c65206363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_2_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c65206363",
+    "a300"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_2_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c653a6363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_2_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "a300"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c653a6363",
+    "a300"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3033323930316637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32396637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6631316266386665"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30306532663831633030653266383163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313037"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_3_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3036"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_3_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66656638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_3_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3163663865323030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_3_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31636638653230303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_3_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3163663865323030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_3_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "627220766a207564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_3_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "627220766a207564",
+    "1cf8e2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_3_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6272766a7564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_3_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6272766a7564",
+    "1cf8e2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_3_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62722c766a2c7564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_3_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62722c766a2c7564",
+    "1cf8e2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_3_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "627220766a207564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_3_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "627220766a207564",
+    "1cf8e2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_3_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62723a766a3a7564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_3_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "1cf8e2"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62723a766a3a7564",
+    "1cf8e2"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3035393030323534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6161"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "39313535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3731646631313434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "62306138363039626230613836303962"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "62626565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_4_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6533"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_4_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33336430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_4_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3962363061386230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_4_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39623630613862303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_4_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3962363061386230303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_4_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e206863206c6a206e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_4_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e206863206c6a206e63",
+    "9b60a8b0"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_4_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e68636c6a6e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_4_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e68636c6a6e63",
+    "9b60a8b0"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_4_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e2c68632c6c6a2c6e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_4_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e2c68632c6c6a2c6e63",
+    "9b60a8b0"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_4_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e206863206c6a206e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_4_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e206863206c6a206e63",
+    "9b60a8b0"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_4_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e3a68633a6c6a3a0a6e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_4_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "9b60a8b0"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6e3a68633a6c6a3a0a6e63",
+    "9b60a8b0"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3038666230326534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "66656535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6162636330636439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "66333835323561653739633239333136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32366633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_5_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6366"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_5_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32346562"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_5_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6536393263323739"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_5_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39383932633237393765303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_5_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3938393263323739376530303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_5_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a206b6420726420696b206975"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_5_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a206b6420726420696b206975",
+    "9892c2797e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_5_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a6b647264696b6975"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_5_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a6b647264696b6975",
+    "9892c2797e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_5_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a2c6b642c72642c696b2c6975"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_5_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a2c6b642c72642c696b2c6975",
+    "9892c2797e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_5_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a206b6420726420696b200a6975"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_5_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a206b6420726420696b200a6975",
+    "9892c2797e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_5_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a3a6b643a72643a0a696b3a6975"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_5_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "9892c2797e"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b6a3a6b643a72643a0a696b3a6975",
+    "9892c2797e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3064343230333038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6361"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34383061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3762366337643863"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "64376363646265336562663439313937"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "37333832"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_7_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_7_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63336536"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_7_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3037306463346562"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_7_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34623461643865623463343731633030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_7_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3462346164386562346334373163303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_7_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e20666c20746a20756e206672206669206272"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_7_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e20666c20746a20756e206672206669206272",
+    "4b4ad8eb4c471c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_7_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e666c746a756e667266696272"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_7_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e666c746a756e667266696272",
+    "4b4ad8eb4c471c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_7_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e2c666c2c746a2c756e2c66722c66692c6272"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_7_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e2c666c2c746a2c756e2c66722c66692c6272",
+    "4b4ad8eb4c471c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_7_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e20666c20746a20756e200a6672206669206272"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_7_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e20666c20746a20756e200a6672206669206272",
+    "4b4ad8eb4c471c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_7_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e3a666c3a746a3a0a756e3a66723a66693a0a6272"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_7_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b4ad8eb4c471c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666e3a666c3a746a3a0a756e3a66723a66693a0a6272",
+    "4b4ad8eb4c471c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3038653830326464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3763"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "65386465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3866666433306165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32636136653532323933393339643161"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "35316366"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_8_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_8_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38363765"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_8_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3135316439333633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_8_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30373438313339393132353538306661"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_8_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3037343831333939313235353830666130303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_8_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636920666a206265206b6b206264206767206a6320766c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_8_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636920666a206265206b6b206264206767206a6320766c",
+    "07481399125580fa"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_8_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6369666a62656b6b626467676a63766c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_8_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6369666a62656b6b626467676a63766c",
+    "07481399125580fa"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_8_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63692c666a2c62652c6b6b2c62642c67672c6a632c766c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_8_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63692c666a2c62652c6b6b2c62642c67672c6a632c766c",
+    "07481399125580fa"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_8_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636920666a206265206b6b200a6264206767206a6320766c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_8_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636920666a206265206b6b200a6264206767206a6320766c",
+    "07481399125580fa"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_8_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63693a666a3a62653a0a6b6b3a62643a67673a0a6a633a766c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_8_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "07481399125580fa"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63693a666a3a62653a0a6b6b3a62643a67673a0a6a633a766c",
+    "07481399125580fa"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3439306430386466"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34376536"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3134646162313335"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "36306465666334366135373130626334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "63613465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_15_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_15_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65613465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_15_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6262306435313433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_15_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38616239306439313331623435636432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_15_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3436626365386131663035613637643263633035653533306331656533623030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_15_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6668206e7220756a206c6220766320676c20686920746420727220636720756720656320726220757520656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_15_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6668206e7220756a206c6220766320676c20686920746420727220636720756720656320726220757520656e",
+    "46bce8a1f05a67d2cc05e530c1ee3b"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_15_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66686e72756a6c627663676c68697464727263677567656372627575656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_15_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66686e72756a6c627663676c68697464727263677567656372627575656e",
+    "46bce8a1f05a67d2cc05e530c1ee3b"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_15_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66682c6e722c756a2c6c622c76632c676c2c68692c74642c72722c63672c75672c65632c72622c75752c656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_15_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66682c6e722c756a2c6c622c76632c676c2c68692c74642c72722c63672c75672c65632c72622c75752c656e",
+    "46bce8a1f05a67d2cc05e530c1ee3b"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_15_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6668206e7220756a206c62200a766320676c206869207464200a7272206367207567206563200a726220757520656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_15_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6668206e7220756a206c62200a766320676c206869207464200a7272206367207567206563200a726220757520656e",
+    "46bce8a1f05a67d2cc05e530c1ee3b"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_15_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66683a6e723a756a3a0a6c623a76633a676c3a0a68693a74643a72723a0a63673a75673a65633a0a72623a75753a656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_15_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "46bce8a1f05a67d2cc05e530c1ee3b"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66683a6e723a756a3a0a6c623a76633a676c3a0a68693a74643a72723a0a63673a75673a65633a0a72623a75753a656e",
+    "46bce8a1f05a67d2cc05e530c1ee3b"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3439366630386163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3365"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61386233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3063663936333530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "62343161613935346164653462353662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61663963"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_16_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3037"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_16_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62656239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_16_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3966636232313732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_16_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34623235663932646434656564383566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_16_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6134353437633930303563323964636265663731383562646431326334353934"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_16_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c66206766206972206b63206367207264206b7420726e207576206962206a67206e74207462206472206667206b66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_16_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c66206766206972206b63206367207264206b7420726e207576206962206a67206e74207462206472206667206b66",
+    "a4547c9005c29dcbef7185bdd12c4594"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_16_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c66676669726b63636772646b74726e757669626a676e747462647266676b66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_16_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c66676669726b63636772646b74726e757669626a676e747462647266676b66",
+    "a4547c9005c29dcbef7185bdd12c4594"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_16_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c662c67662c69722c6b632c63672c72642c6b742c726e2c75762c69622c6a672c6e742c74622c64722c66672c6b66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_16_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c662c67662c69722c6b632c63672c72642c6b742c726e2c75762c69622c6a672c6e742c74622c64722c66672c6b66",
+    "a4547c9005c29dcbef7185bdd12c4594"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_16_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c66206766206972206b63200a6367207264206b7420726e200a7576206962206a67206e74200a7462206472206667206b66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_16_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c66206766206972206b63200a6367207264206b7420726e200a7576206962206a67206e74200a7462206472206667206b66",
+    "a4547c9005c29dcbef7185bdd12c4594"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_16_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c663a67663a69723a0a6b633a63673a72643a0a6b743a726e3a75763a0a69623a6a673a6e743a0a74623a64723a66673a0a6b66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_16_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "a4547c9005c29dcbef7185bdd12c4594"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c663a67663a69723a0a6b633a63673a72643a0a6b743a726e3a75763a0a69623a6a673a6e743a0a74623a64723a66673a0a6b66",
+    "a4547c9005c29dcbef7185bdd12c4594"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3431353930373131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "38393137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3831663134386365"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31363765653239383237366532313630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "33316237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_17_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_17_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34363063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_17_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3433633130356364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_17_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34303232343465383033653334313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_17_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6361306437613432383332336662326138613266336561613830633062613066"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_17_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "726820637420696c206664206a6520646520766e20646c206a6c206476206575206c6c206a63207263206e6c206376206372"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_17_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "726820637420696c206664206a6520646520766e20646c206a6c206476206575206c6c206a63207263206e6c206376206372",
+    "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_17_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "72686374696c66646a656465766e646c6a6c647665756c6c6a6372636e6c63766372"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_17_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "72686374696c66646a656465766e646c6a6c647665756c6c6a6372636e6c63766372",
+    "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_17_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "72682c63742c696c2c66642c6a652c64652c766e2c646c2c6a6c2c64762c65752c6c6c2c6a632c72632c6e6c2c63762c6372"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_17_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "72682c63742c696c2c66642c6a652c64652c766e2c646c2c6a6c2c64762c65752c6c6c2c6a632c72632c6e6c2c63762c6372",
+    "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_17_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "726820637420696c206664200a6a6520646520766e20646c200a6a6c206476206575206c6c200a6a63207263206e6c206376200a6372"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_17_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "726820637420696c206664200a6a6520646520766e20646c200a6a6c206476206575206c6c200a6a63207263206e6c206376200a6372",
+    "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_17_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "72683a63743a696c3a0a66643a6a653a64653a0a766e3a646c3a6a6c3a0a64763a65753a6c6c3a0a6a633a72633a6e6c3a0a63763a6372"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_17_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "72683a63743a696c3a0a66643a6a653a64653a0a766e3a646c3a6a6c3a0a64763a65753a6c6c3a0a6a633a72633a6e6c3a0a63763a6372",
+    "c60d7a428323fb2a8a2f3eaa80c0ba0f0c"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "adler32_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "Adler-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6366643032356436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher8_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-8 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6161"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher16_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-16 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32386661"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher32_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-32 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6461646234346236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "fletcher64_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "Fletcher-64 Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32316365343738306637633234636633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tcpip_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "TCP/IP Checksum",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34396262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_64_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3739"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_64_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36643134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_64_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6466326462323339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_64_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30316535353136306465633865333539"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "xor_checksum_64_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "XOR Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3937343130373732613835323764336439366134353631323736396139653634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_encode_64_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e207468206e72207265206e6220686520666a206a7420676220766e20746e20667520766e20757520726b206b66206862206b6a207266206762206663206e64206a6820766620666a20626e20757520757520726320756620747520656720656c206b66206a6e206769206a6420656c206964206c67206674207574206b6b206b6820647220746b206275206c66207569206b6e207666206e6920746e206e6b207262207562207264206c6b20766c20646620686220666b206b69206862"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_64_Space_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e207468206e72207265206e6220686520666a206a7420676220766e20746e20667520766e20757520726b206b66206862206b6a207266206762206663206e64206a6820766620666a20626e20757520757520726320756620747520656720656c206b66206a6e206769206a6420656c206964206c67206674207574206b6b206b6820647220746b206275206c66207569206b6e207666206e6920746e206e6b207262207562207264206c6b20766c20646620686220666b206b69206862",
+    "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_64_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e74686e7272656e626865666a6a746762766e746e6675766e7575726b6b6668626b6a7266676266636e646a687666666a626e757575757263756674756567656c6b666a6e67696a64656c69646c67667475746b6b6b686472746b62756c6675696b6e76666e69746e6e6b7262756272646c6b766c64666862666b6b696862"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_64_None_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e74686e7272656e626865666a6a746762766e746e6675766e7575726b6b6668626b6a7266676266636e646a687666666a626e757575757263756674756567656c6b666a6e67696a64656c69646c67667475746b6b6b686472746b62756c6675696b6e76666e69746e6e6b7262756272646c6b766c64666862666b6b696862",
+    "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_64_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e2c74682c6e722c72652c6e622c68652c666a2c6a742c67622c766e2c746e2c66752c766e2c75752c726b2c6b662c68622c6b6a2c72662c67622c66632c6e642c6a682c76662c666a2c626e2c75752c75752c72632c75662c74752c65672c656c2c6b662c6a6e2c67692c6a642c656c2c69642c6c672c66742c75742c6b6b2c6b682c64722c746b2c62752c6c662c75692c6b6e2c76662c6e692c746e2c6e6b2c72622c75622c72642c6c6b2c766c2c64662c68622c666b2c6b692c6862"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_64_Comma_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Comma",
+      0
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e2c74682c6e722c72652c6e622c68652c666a2c6a742c67622c766e2c746e2c66752c766e2c75752c726b2c6b662c68622c6b6a2c72662c67622c66632c6e642c6a682c76662c666a2c626e2c75752c75752c72632c75662c74752c65672c656c2c6b662c6a6e2c67692c6a642c656c2c69642c6c672c66742c75742c6b6b2c6b682c64722c746b2c62752c6c662c75692c6b6e2c76662c6e692c746e2c6e6b2c72622c75622c72642c6c6b2c766c2c64662c68622c666b2c6b692c6862",
+    "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_64_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e207468206e72207265200a6e6220686520666a206a74200a676220766e20746e206675200a766e20757520726b206b66200a6862206b6a207266206762200a6663206e64206a68207666200a666a20626e207575207575200a7263207566207475206567200a656c206b66206a6e206769200a6a6420656c206964206c67200a6674207574206b6b206b68200a647220746b206275206c66200a7569206b6e207666206e69200a746e206e6b207262207562200a7264206c6b20766c206466200a686220666b206b69206862"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_64_Space_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Space",
+      4
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e207468206e72207265200a6e6220686520666a206a74200a676220766e20746e206675200a766e20757520726b206b66200a6862206b6a207266206762200a6663206e64206a68207666200a666a20626e207575207575200a7263207566207475206567200a656c206b66206a6e206769200a6a6420656c206964206c67200a6674207574206b6b206b68200a647220746b206275206c66200a7569206b6e207666206e69200a746e206e6b207262207562200a7264206c6b20766c206466200a686220666b206b69206862",
+    "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_encode_64_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e3a74683a6e723a0a72653a6e623a68653a0a666a3a6a743a67623a0a766e3a746e3a66753a0a766e3a75753a726b3a0a6b663a68623a6b6a3a0a72663a67623a66633a0a6e643a6a683a76663a0a666a3a626e3a75753a0a75753a72633a75663a0a74753a65673a656c3a0a6b663a6a6e3a67693a0a6a643a656c3a69643a0a6c673a66743a75743a0a6b6b3a6b683a64723a0a746b3a62753a6c663a0a75693a6b6e3a76663a0a6e693a746e3a6e6b3a0a72623a75623a72643a0a6c6b3a766c3a64663a0a68623a666b3a6b693a0a6862"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_round_trip_64_Colon_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   },
+   "recipe": [
+    {
+     "op": "To Modhex",
+     "args": [
+      "Colon",
+      3
+     ]
+    },
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646e3a74683a6e723a0a72653a6e623a68653a0a666a3a6a743a67623a0a766e3a746e3a66753a0a766e3a75753a726b3a0a6b663a68623a6b6a3a0a72663a67623a66633a0a6e643a6a683a76663a0a666a3a626e3a75753a0a75753a72633a75663a0a74753a65673a656c3a0a6b663a6a6e3a67693a0a6a643a656c3a69643a0a6c673a66743a75743a0a6b6b3a6b683a64723a0a746b3a62753a6c663a0a75693a6b6e3a76663a0a6e693a746e3a6e6b3a0a72623a75623a72643a0a6c6b3a766c3a64663a0a68623a666b3a6b693a0a6862",
+    "2bd6bcc3b163488d51fbdb4efbeec9946198c45140b286f4481beeeec0e4de353a948b57823a72a54ded99962cd91ea4e79bf4b7dbb9c1e1c2a9fa2461499761"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "modhex_decode_auto_clean",
+   "input": {
+    "kind": "text",
+    "value": "cbdefghi"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234567"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_none_clean",
+   "input": {
+    "kind": "text",
+    "value": "cbdefghi"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "None"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234567"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_auto_spaced",
+   "input": {
+    "kind": "text",
+    "value": "cb de fg hi"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234567"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_none_spaced",
+   "input": {
+    "kind": "text",
+    "value": "cb de fg hi"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "None"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234567"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_auto_mixed_case",
+   "input": {
+    "kind": "text",
+    "value": "CBdeFGhi"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234567"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_none_mixed_case",
+   "input": {
+    "kind": "text",
+    "value": "CBdeFGhi"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "None"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234567"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_auto_stray",
+   "input": {
+    "kind": "text",
+    "value": "cb!de"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0123"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_none_stray",
+   "input": {
+    "kind": "text",
+    "value": "cb!de"
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "None"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0100de0f00d203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_auto_empty",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "Auto"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "modhex_decode_none_empty",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Modhex",
+     "args": [
+      "None"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_digits_10",
+   "input": {
+    "kind": "text",
+    "value": "4485275742308327"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20300a436865636b64696769743a20300a4c75686e2056616c69646174656420537472696e673a203434383532373537343233303833323730"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_digits_16",
+   "input": {
+    "kind": "text",
+    "value": "4485275742308327"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20640a436865636b64696769743a20360a4c75686e2056616c69646174656420537472696e673a203434383532373537343233303833323736"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_digits_36",
+   "input": {
+    "kind": "text",
+    "value": "4485275742308327"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a207a0a436865636b64696769743a20320a4c75686e2056616c69646174656420537472696e673a203434383532373537343233303833323732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_short_10",
+   "input": {
+    "kind": "text",
+    "value": "7"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20370a436865636b64696769743a20350a4c75686e2056616c69646174656420537472696e673a203735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_short_16",
+   "input": {
+    "kind": "text",
+    "value": "7"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20370a436865636b64696769743a20320a4c75686e2056616c69646174656420537472696e673a203732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_short_36",
+   "input": {
+    "kind": "text",
+    "value": "7"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20370a436865636b64696769743a206d0a4c75686e2056616c69646174656420537472696e673a20376d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_zeros_10",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20300a436865636b64696769743a20300a4c75686e2056616c69646174656420537472696e673a203030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_zeros_16",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20300a436865636b64696769743a20300a4c75686e2056616c69646174656420537472696e673a203030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_zeros_36",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20300a436865636b64696769743a20300a4c75686e2056616c69646174656420537472696e673a203030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_empty_10",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_empty_16",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_empty_36",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_binary_2",
+   "input": {
+    "kind": "text",
+    "value": "10110"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20310a436865636b64696769743a20310a4c75686e2056616c69646174656420537472696e673a20313031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "luhn_hex_letters_16",
+   "input": {
+    "kind": "text",
+    "value": "deadBEEF"
+   },
+   "recipe": [
+    {
+     "op": "Luhn Checksum",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "436865636b73756d3a20630a436865636b64696769743a20630a4c75686e2056616c69646174656420537472696e673a20646561644245454663"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_0_",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_0__",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_0_DashDot",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_0_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_0_dashdot",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_0_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_0_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_0_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_1_",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202d2d2d202e2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_1__",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e205f5f5f202e2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_1_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446f74446f74446f742044617368446173684461736820446f74446f74446f74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_1_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444f54444f54444f542044415348444153484441534820444f54444f54444f54"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_1_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646f74646f74646f742064617368646173686461736820646f74646f74646f74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_1_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202d2d2d202e2e2e",
+    "534f53"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_1_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202d2d2d202e2e2e",
+    "534f53"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_1_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "SOS"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2c2d2d2d2c2e2e2e",
+    "534f53"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_2_",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2e202e202e2d2e2e202e2d2e2e202d2d2d0a2e2d2d202d2d2d202e2d2e202e2d2e2e202d2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_2__",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2e202e202e5f2e2e202e5f2e2e205f5f5f0a2e5f5f205f5f5f202e5f2e202e5f2e2e205f2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_2_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446f74446f74446f74446f7420446f7420446f7444617368446f74446f7420446f7444617368446f74446f74204461736844617368446173680a446f7444617368446173682044617368446173684461736820446f7444617368446f7420446f7444617368446f74446f742044617368446f74446f74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_2_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444f54444f54444f54444f5420444f5420444f5444415348444f54444f5420444f5444415348444f54444f54204441534844415348444153480a444f5444415348444153482044415348444153484441534820444f5444415348444f5420444f5444415348444f54444f542044415348444f54444f54"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_2_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646f74646f74646f74646f7420646f7420646f7464617368646f74646f7420646f7464617368646f74646f74206461736864617368646173680a646f7464617368646173682064617368646173686461736820646f7464617368646f7420646f7464617368646f74646f742064617368646f74646f74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_2_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2e202e202e2d2e2e202e2d2e2e202d2d2d0a2e2d2d202d2d2d202e2d2e202e2d2e2e202d2e2e",
+    "48454c4c4f20574f524c44"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_2_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2e202e202e2d2e2e202e2d2e2e202d2d2d2f2e2d2d202d2d2d202e2d2e202e2d2e2e202d2e2e",
+    "48454c4c4f20574f524c44"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_2_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2e2c2e2c2e2d2e2e2c2e2d2e2e2c2d2d2d0a2e2d2d2c2d2d2d2c2e2d2e2c2e2d2e2e2c2d2e2e",
+    "48454c4c4f20574f524c44"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_3_",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d202e2e202d2e2e2d202e202d2e2e0a2d2e2d2e202e2d202e2e2e202e0a2e2d2d2d2d202e2e2d2d2d202e2e2e2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_3__",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f5f202e2e205f2e2e5f202e205f2e2e0a5f2e5f2e202e5f202e2e2e202e0a2e5f5f5f5f202e2e5f5f5f202e2e2e5f5f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_3_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446173684461736820446f74446f742044617368446f74446f744461736820446f742044617368446f74446f740a44617368446f7444617368446f7420446f744461736820446f74446f74446f7420446f740a446f744461736844617368446173684461736820446f74446f7444617368446173684461736820446f74446f74446f744461736844617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_3_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444153484441534820444f54444f542044415348444f54444f544441534820444f542044415348444f54444f540a44415348444f5444415348444f5420444f544441534820444f54444f54444f5420444f540a444f544441534844415348444153484441534820444f54444f5444415348444153484441534820444f54444f54444f544441534844415348"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_3_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646173686461736820646f74646f742064617368646f74646f746461736820646f742064617368646f74646f740a64617368646f7464617368646f7420646f746461736820646f74646f74646f7420646f740a646f746461736864617368646173686461736820646f74646f7464617368646173686461736820646f74646f74646f746461736864617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_3_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d202e2e202d2e2e2d202e202d2e2e0a2d2e2d2e202e2d202e2e2e202e0a2e2d2d2d2d202e2e2d2d2d202e2e2e2d2d",
+    "4d49584544204341534520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_3_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d202e2e202d2e2e2d202e202d2e2e2f2d2e2d2e202e2d202e2e2e202e2f2e2d2d2d2d202e2e2d2d2d202e2e2e2d2d",
+    "4d49584544204341534520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_3_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "MIXED case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2c2e2e2c2d2e2e2d2c2e2c2d2e2e0a2d2e2d2e2c2e2d2c2e2e2e2c2e0a2e2d2d2d2d2c2e2e2d2d2d2c2e2e2e2d2d",
+    "4d49584544204341534520313233"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_4_",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202e2d2d2e202e2d202d2e2d2e202e202d2e2e0a2d2d2d202e2e2d202d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_4__",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202e5f5f2e202e5f205f2e5f2e202e205f2e2e0a5f5f5f202e2e5f205f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_4_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446f74446f74446f7420446f744461736844617368446f7420446f74446173682044617368446f7444617368446f7420446f742044617368446f74446f740a44617368446173684461736820446f74446f74446173682044617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_4_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444f54444f54444f5420444f544441534844415348444f5420444f54444153482044415348444f5444415348444f5420444f542044415348444f54444f540a44415348444153484441534820444f54444f54444153482044415348"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_4_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646f74646f74646f7420646f746461736864617368646f7420646f74646173682064617368646f7464617368646f7420646f742064617368646f74646f740a64617368646173686461736820646f74646f74646173682064617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_4_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202e2d2d2e202e2d202d2e2d2e202e202d2e2e0a2d2d2d202e2e2d202d",
+    "535041434544204f5554"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_4_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e202e2d2d2e202e2d202d2e2d2e202e202d2e2e2f2d2d2d202e2e2d202d",
+    "535041434544204f5554"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_4_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "spaced    out"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e2c2e2d2d2e2c2e2d2c2d2e2d2e2c2e2c2d2e2e0a2d2d2d2c2e2e2d2c2d",
+    "535041434544204f5554"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_5_",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2e2e202e2e202d2e202e0a2d2d2d202d2e202e0a2e2d2e2e202e2e202d2e202e0a2d202e2d2d202d2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_5__",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e5f2e2e202e2e205f2e202e0a5f5f5f205f2e202e0a2e5f2e2e202e2e205f2e202e0a5f202e5f5f205f5f5f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_5_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446f7444617368446f74446f7420446f74446f742044617368446f7420446f740a4461736844617368446173682044617368446f7420446f740a446f7444617368446f74446f7420446f74446f742044617368446f7420446f740a4461736820446f74446173684461736820446173684461736844617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_5_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444f5444415348444f54444f5420444f54444f542044415348444f5420444f540a4441534844415348444153482044415348444f5420444f540a444f5444415348444f54444f5420444f54444f542044415348444f5420444f540a4441534820444f54444153484441534820444153484441534844415348"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_5_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646f7464617368646f74646f7420646f74646f742064617368646f7420646f740a6461736864617368646173682064617368646f7420646f740a646f7464617368646f74646f7420646f74646f742064617368646f7420646f740a6461736820646f74646173686461736820646173686461736864617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_5_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2e2e202e2e202d2e202e0a2d2d2d202d2e202e0a2e2d2e2e202e2e202d2e202e0a2d202e2d2d202d2d2d",
+    "4c494e45204f4e45204c494e452054574f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_5_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2e2e202e2e202d2e202e2f2d2d2d202d2e202e0a2e2d2e2e202e2e202d2e202e2f2d202e2d2d202d2d2d",
+    "4c494e45204f4e494e452054574f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_5_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "line one\nline two"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2e2e2c2e2e2c2d2e2c2e0a2d2d2d2c2d2e2c2e0a2e2d2e2e2c2e2e2c2d2e2c2e0a2d2c2e2d2d2c2d2d2d",
+    "4c494e45204f4e45204c494e452054574f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_6_",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2d2e202e2e2d202d2e202d2e2d2e202d202e2e2d202e2d202d202e2e202d2d2d202d2e0a2e2d2e2d2e2d202d2d2e2e2d2d202d2d2d2e2e2e202e2e2d2d2e2e202d2e2d2e2d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_6__",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e5f5f2e202e2e5f205f2e205f2e5f2e205f202e2e5f202e5f205f202e2e205f5f5f205f2e0a2e5f2e5f2e5f205f5f2e2e5f5f205f5f5f2e2e2e202e2e5f5f2e2e205f2e5f2e5f5f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_6_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446f744461736844617368446f7420446f74446f74446173682044617368446f742044617368446f7444617368446f74204461736820446f74446f744461736820446f7444617368204461736820446f74446f74204461736844617368446173682044617368446f740a446f7444617368446f7444617368446f7444617368204461736844617368446f74446f74446173684461736820446173684461736844617368446f74446f74446f7420446f74446f744461736844617368446f74446f742044617368446f7444617368446f744461736844617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_6_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444f544441534844415348444f5420444f54444f54444153482044415348444f542044415348444f5444415348444f54204441534820444f54444f544441534820444f5444415348204441534820444f54444f54204441534844415348444153482044415348444f540a444f5444415348444f5444415348444f5444415348204441534844415348444f54444f54444153484441534820444153484441534844415348444f54444f54444f5420444f54444f544441534844415348444f54444f542044415348444f5444415348444f544441534844415348"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_6_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646f746461736864617368646f7420646f74646f74646173682064617368646f742064617368646f7464617368646f74206461736820646f74646f746461736820646f7464617368206461736820646f74646f74206461736864617368646173682064617368646f740a646f7464617368646f7464617368646f7464617368206461736864617368646f74646f74646173686461736820646173686461736864617368646f74646f74646f7420646f74646f746461736864617368646f74646f742064617368646f7464617368646f746461736864617368"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_6_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2d2e202e2e2d202d2e202d2e2d2e202d202e2e2d202e2d202d202e2e202d2d2d202d2e0a2e2d2e2d2e2d202d2d2e2e2d2d202d2d2d2e2e2e202e2e2d2d2e2e202d2e2d2e2d2d",
+    "50554e4354554154494f4e202e2c3a3f21"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_6_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2d2e202e2e2d202d2e202d2e2d2e202d202e2e2d202e2d202d202e2e202d2d2d202d2e2f2e2d2e2d2e2d202d2d2e2e2d2d202d2d2d2e2e2e202e2e2d2d2e2e202d2e2d2e2d2d",
+    "50554e4354554154494f4e202e2c3a3f21"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_6_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "punctuation .,:?!"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2d2d2e2c2e2e2d2c2d2e2c2d2e2d2e2c2d2c2e2e2d2c2e2d2c2d2c2e2e2c2d2d2d2c2d2e0a2e2d2e2d2e2d2c2d2d2e2e2d2d2c2d2d2d2e2e2e2c2e2e2d2d2e2e2c2d2e2d2e2d2d",
+    "50554e4354554154494f4e202e2c3a3f21"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_encode_7_",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2d202d2e202d2e2d202d2e202d2d2d202e2d2d202d2e0a0a2d2e2d2e202e2e2e2e202e2d202e2d2e202e2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_7__",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "_/.",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e5f205f2e205f2e5f205f2e205f5f5f202e5f5f205f2e0a0a5f2e5f2e202e2e2e2e202e5f202e5f2e202e2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_7_DashDot",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "Dash/Dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446f74446f74446173682044617368446f742044617368446f74446173682044617368446f742044617368446173684461736820446f7444617368446173682044617368446f740a0a44617368446f7444617368446f7420446f74446f74446f74446f7420446f744461736820446f7444617368446f7420446f74446f74446f74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_7_DASHDOT",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "DASH/DOT",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "444f54444f54444153482044415348444f542044415348444f54444153482044415348444f542044415348444153484441534820444f5444415348444153482044415348444f540a0a44415348444f5444415348444f5420444f54444f54444f54444f5420444f544441534820444f5444415348444f5420444f54444f54444f54"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_encode_7_dashdot",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "dash/dot",
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "646f74646f74646173682064617368646f742064617368646f74646173682064617368646f742064617368646173686461736820646f7464617368646173682064617368646f740a0a64617368646f7464617368646f7420646f74646f74646f74646f7420646f746461736820646f7464617368646f7420646f74646f74646f74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_round_trip_7_Space_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2d202d2e202d2e2d202d2e202d2d2d202e2d2d202d2e0a0a2d2e2d2e202e2e2e2e202e2d202e2d2e202e2e2e",
+    "554e4b4e4f574e20204348415253"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_7_Space_Forwardslash",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Space",
+      "Forward slash"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Forward slash"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2d202d2e202d2e2d202d2e202d2d2d202e2d2d202d2e2f2f2d2e2d2e202e2e2e2e202e2d202e2d2e202e2e2e",
+    "554e4b4e4f574e20204348415253"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_round_trip_7_Comma_Linefeed",
+   "input": {
+    "kind": "text",
+    "value": "unknown ~ chars"
+   },
+   "recipe": [
+    {
+     "op": "To Morse Code",
+     "args": [
+      "-/.",
+      "Comma",
+      "Line feed"
+     ]
+    },
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Comma",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2d2c2d2e2c2d2e2d2c2d2e2c2d2d2d2c2e2d2d2c2d2e0a0a2d2e2d2e2c2e2e2e2e2c2e2d2c2e2d2e2c2e2e2e",
+    "554e4b4e4f574e20204348415253"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "morse_decode_hyphen",
+   "input": {
+    "kind": "text",
+    "value": "... --- ..."
+   },
+   "recipe": [
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "534f53"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_decode_underscore",
+   "input": {
+    "kind": "text",
+    "value": "___ ... ___"
+   },
+   "recipe": [
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f534f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_decode_words",
+   "input": {
+    "kind": "text",
+    "value": "dot dot dot dash dash dash"
+   },
+   "recipe": [
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "454545545454"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_decode_middot",
+   "input": {
+    "kind": "text",
+    "value": "·· −−"
+   },
+   "recipe": [
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "494d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "morse_decode_unknown",
+   "input": {
+    "kind": "text",
+    "value": "........... ..."
+   },
+   "recipe": [
+    {
+     "op": "From Morse Code",
+     "args": [
+      "Space",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "53"
+   ],
+   "stopped_after": 1
   }
  ]
 }

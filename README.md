@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 104 | 102 | **98** | **1531** |
+| 116 | 114 | **110** | **1960** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -158,12 +158,13 @@ has a `std`. One pack does not yet reach bare metal;
 | Family | Operations |
 |---|---|
 | Analysis | Suggest recipe |
+| Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
 | Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT47, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Vigenère Decode, Vigenère Encode |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
 | Defang | Defang IP Addresses, Defang URL, Fang URL |
-| Encoding | From Base32, From Base45, From Base58, From Base64, From Base85, From Binary, From Charcode, From Decimal, From HTML Entity, From Hex, From Hexdump, From Octal, ROT13, To Base32, To Base45, To Base58, To Base64, To Base85, To Binary, To Charcode, To Decimal, To HTML Entity, To Hex, To Hexdump, To Octal, URL Decode, URL Encode |
+| Encoding | From Base32, From Base45, From Base58, From Base64, From Base85, From Binary, From Charcode, From Decimal, From HTML Entity, From Hex, From Hexdump, From Modhex, From Morse Code, From Octal, ROT13, To Base32, To Base45, To Base58, To Base64, To Base85, To Binary, To Charcode, To Decimal, To HTML Entity, To Hex, To Hexdump, To Modhex, To Morse Code, To Octal, URL Decode, URL Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
 | Flow control | Fork, Merge |
 | Hashing | HMAC, MD5, SHA1, SHA2, SHA3 |
