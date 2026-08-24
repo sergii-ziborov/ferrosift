@@ -1,5 +1,10 @@
 .ferrosift-private/
 .worktrees/
-/target/
+# Every build directory, including the out-of-workspace task runner's.
+target/
+
+# The pinned reference checkout is fetched by `cargo xtask cyberchef setup`,
+# never committed: it is large and belongs to upstream.
+tools/cyberchef-oracle/vendor/
 
 lcov.info

@@ -14,7 +14,7 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
     let registry = default_registry()
         .map_err(|error| CliError::new("cli.registry.invalid", error.to_string()))?;
     match arguments.command {
-        Command::Operations => commands::operations::run(&registry, output),
+        Command::Operations { format } => commands::operations::run(&registry, format, output),
         Command::Describe { operation } => commands::describe::run(&registry, &operation, output),
         Command::Validate {
             format,

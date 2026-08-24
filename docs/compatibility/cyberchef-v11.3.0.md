@@ -133,7 +133,15 @@ Every case is replayed through the real executor and must match the reference
 output bytes and stopping position at **every recipe prefix** (**583** pinned
 cases total). A coverage gate fails the build if any CyberChef-aliased
 operation has no corpus case and no documented exemption, so no operation is
-silently unverified. The only exemptions are the compressor directions (whose
+silently unverified.
+
+Both fixtures are reproducible by anyone. The generator lives in
+[`tools/cyberchef-oracle`](../../tools/cyberchef-oracle/README.md) and is
+driven by `cargo xtask cyberchef generate`; it refuses to run against any
+commit other than the pin, and re-running it produces byte-identical output.
+`cargo xtask cyberchef gap` reports which reference operations are still
+unimplemented, derived from the reference catalog and the live FerroSift
+catalog rather than from a hand-maintained list. The only exemptions are the compressor directions (whose
 output is interoperable, not bit-identical; their inverse is byte-pinned) and
 the `Fork` / `Merge` flow-control pair (pinned by dedicated tests).
 

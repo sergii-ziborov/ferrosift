@@ -1,0 +1,11 @@
+[package]
+name = "xtask"
+description = "Development tasks for the FerroSift workspace"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.97"
+license = "Apache-2.0"
+publish = false
+
+# No dependencies: the task runner drives git, node, and cargo directly.
+[dependencies]

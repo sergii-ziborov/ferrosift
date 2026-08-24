@@ -1,0 +1,4 @@
+[alias]
+# The task runner lives outside the workspace so `--workspace` builds, the
+# wasm check, and the lint gate never see it.
+xtask = "run --quiet --manifest-path xtask/Cargo.toml --"

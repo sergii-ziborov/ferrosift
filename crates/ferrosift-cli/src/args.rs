@@ -18,7 +18,11 @@ pub struct Args {
 #[derive(Debug, Subcommand)]
 pub enum Command {
     /// List canonical built-in operation identifiers.
-    Operations,
+    Operations {
+        /// Listing format.
+        #[arg(long, value_enum, default_value_t = CatalogFormat::Plain)]
+        format: CatalogFormat,
+    },
     /// Describe one canonical operation as JSON.
     Describe {
         /// Canonical versioned operation identifier.
@@ -54,6 +58,16 @@ pub enum Command {
         #[arg(long, default_value = "-")]
         output: PathBuf,
     },
+}
+
+/// How `operations` renders the catalog.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, ValueEnum)]
+pub enum CatalogFormat {
+    /// One canonical identifier per line.
+    #[default]
+    Plain,
+    /// One JSON object per operation, with compatibility aliases.
+    Json,
 }
 
 #[derive(Clone, Copy, Debug, ValueEnum)]
