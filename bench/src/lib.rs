@@ -1,7 +1,7 @@
-//! Shared setup for the FerroSift benchmarks.
+//! Shared setup for the `FerroSift` benchmarks.
 //!
-//! Every benchmark runs FerroSift the way a caller would — through a compiled
-//! pipeline on a real engine — rather than reaching past it to the codec.
+//! Every benchmark runs `FerroSift` the way a caller would — through a real
+//! engine and recipe — rather than reaching past it to the codec.
 //! Measuring the codec alone would flatter the library by hiding the argument
 //! resolution, budget checks, and value wrapping that a real call pays for,
 //! and those are exactly what a comparison against a single-function crate

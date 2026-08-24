@@ -44,9 +44,9 @@ fn measure() -> ExitCode {
             bench,
             "--",
             "--warm-up-time",
-            "1",
-            "--measurement-time",
             "3",
+            "--measurement-time",
+            "8",
         ];
         if !run_streaming("cargo", &arguments, Some(&directory)) {
             return ExitCode::FAILURE;

@@ -5,8 +5,8 @@
 
 //! Checksums and distances against their specialist crates.
 //!
-//! These are the families where FerroSift wrote the algorithm itself rather
-//! than wrapping RustCrypto, so a comparison against an independent
+//! These are the families where `FerroSift` wrote the algorithm itself rather
+//! than wrapping `RustCrypto`, so a comparison against an independent
 //! implementation says something. `crc32fast` uses SIMD where the CPU has it;
 //! `strsim` is the usual Rust edit-distance crate.
 
@@ -22,15 +22,19 @@ fn adler32(criterion: &mut Criterion) {
     for size in SIZES {
         let input = sample(size);
         group.throughput(Throughput::Bytes(size as u64));
-        group.bench_with_input(BenchmarkId::new("ferrosift", size), &input, |bencher, input| {
-            bencher.iter(|| {
-                black_box(run(
-                    &engine,
-                    &recipe,
-                    Value::Bytes(black_box(input).clone()),
-                ))
-            });
-        });
+        group.bench_with_input(
+            BenchmarkId::new("ferrosift", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| {
+                    black_box(run(
+                        &engine,
+                        &recipe,
+                        Value::Bytes(black_box(input).clone()),
+                    ))
+                });
+            },
+        );
     }
     group.finish();
 }
@@ -73,7 +77,10 @@ fn levenshtein(criterion: &mut Criterion) {
     // Edit distance is quadratic, so the sweep stops well short of the byte
     // sizes the linear operations use.
     for size in [16usize, 64, 256, 1024] {
-        let left: String = sample(size).iter().map(|byte| char::from(byte % 26 + b'a')).collect();
+        let left: String = sample(size)
+            .iter()
+            .map(|byte| char::from(byte % 26 + b'a'))
+            .collect();
         let right: String = sample(size)
             .iter()
             .map(|byte| char::from(byte % 25 + b'a'))

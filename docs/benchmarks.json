@@ -1,0 +1,674 @@
+{
+ "environment": {
+  "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: x86_64-pc-windows-msvc\nrelease: 1.97.1\nLLVM version: 22.1.6",
+  "os": "windows",
+  "arch": "x86_64",
+  "cpu": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel"
+ },
+ "measurements": [
+  {
+   "group": "base64_decode",
+   "arm": "base64-crate",
+   "size": 1048576,
+   "nanoseconds": 989136.5909090908,
+   "low": 960717.1052631579,
+   "high": 1014366.6318355973
+  },
+  {
+   "group": "base64_decode",
+   "arm": "base64-crate",
+   "size": 16,
+   "nanoseconds": 70.01024098116145,
+   "low": 69.38723889859472,
+   "high": 71.5096227902556
+  },
+  {
+   "group": "base64_decode",
+   "arm": "base64-crate",
+   "size": 256,
+   "nanoseconds": 219.7236161747382,
+   "low": 216.29876796714578,
+   "high": 222.8898388601224
+  },
+  {
+   "group": "base64_decode",
+   "arm": "base64-crate",
+   "size": 4096,
+   "nanoseconds": 2497.3409024103466,
+   "low": 2477.729677729678,
+   "high": 2524.563242487771
+  },
+  {
+   "group": "base64_decode",
+   "arm": "base64-crate",
+   "size": 65536,
+   "nanoseconds": 64231.83838383838,
+   "low": 62734.65,
+   "high": 67549.45632183908
+  },
+  {
+   "group": "base64_decode",
+   "arm": "ferrosift",
+   "size": 1048576,
+   "nanoseconds": 7584486.363636363,
+   "low": 7370340.909090909,
+   "high": 7754336.363636363
+  },
+  {
+   "group": "base64_decode",
+   "arm": "ferrosift",
+   "size": 16,
+   "nanoseconds": 4131.919709181399,
+   "low": 3942.9217624392695,
+   "high": 4379.647998545636
+  },
+  {
+   "group": "base64_decode",
+   "arm": "ferrosift",
+   "size": 256,
+   "nanoseconds": 4695.861299907543,
+   "low": 4625.981282686485,
+   "high": 4765.905587668593
+  },
+  {
+   "group": "base64_decode",
+   "arm": "ferrosift",
+   "size": 4096,
+   "nanoseconds": 30527.489276960783,
+   "low": 28801.8427724992,
+   "high": 34024.32432432433
+  },
+  {
+   "group": "base64_decode",
+   "arm": "ferrosift",
+   "size": 65536,
+   "nanoseconds": 433897.3990208078,
+   "low": 426263.01369863015,
+   "high": 442157.14285714284
+  },
+  {
+   "group": "base64_encode",
+   "arm": "base64-crate",
+   "size": 1048576,
+   "nanoseconds": 1122234.6844293273,
+   "low": 952516.1290322581,
+   "high": 1225463.888888889
+  },
+  {
+   "group": "base64_encode",
+   "arm": "base64-crate",
+   "size": 16,
+   "nanoseconds": 91.38036887218593,
+   "low": 89.03788098809774,
+   "high": 94.50070209188745
+  },
+  {
+   "group": "base64_encode",
+   "arm": "base64-crate",
+   "size": 256,
+   "nanoseconds": 258.73386395395426,
+   "low": 250.3340744638119,
+   "high": 268.9443497489289
+  },
+  {
+   "group": "base64_encode",
+   "arm": "base64-crate",
+   "size": 4096,
+   "nanoseconds": 2579.965057695433,
+   "low": 2503.9018540725024,
+   "high": 2642.1613975211067
+  },
+  {
+   "group": "base64_encode",
+   "arm": "base64-crate",
+   "size": 65536,
+   "nanoseconds": 43949.32039810998,
+   "low": 42775.76366030284,
+   "high": 45385
+  },
+  {
+   "group": "base64_encode",
+   "arm": "ferrosift",
+   "size": 1048576,
+   "nanoseconds": 5109273.529411765,
+   "low": 4922141.176470588,
+   "high": 5420811.764705882
+  },
+  {
+   "group": "base64_encode",
+   "arm": "ferrosift",
+   "size": 16,
+   "nanoseconds": 4016.135265205583,
+   "low": 3909.632730568383,
+   "high": 4123.322949869604
+  },
+  {
+   "group": "base64_encode",
+   "arm": "ferrosift",
+   "size": 256,
+   "nanoseconds": 5916.275801493193,
+   "low": 5789.285204057336,
+   "high": 6161.88304449174
+  },
+  {
+   "group": "base64_encode",
+   "arm": "ferrosift",
+   "size": 4096,
+   "nanoseconds": 17127.652135098942,
+   "low": 16735.67860710718,
+   "high": 17718.334297281664
+  },
+  {
+   "group": "base64_encode",
+   "arm": "ferrosift",
+   "size": 65536,
+   "nanoseconds": 236533.49944629014,
+   "low": 232433.12682215744,
+   "high": 247305.20408163266
+  },
+  {
+   "group": "checksum_adler32",
+   "arm": "ferrosift",
+   "size": 1048576,
+   "nanoseconds": 1228525.5,
+   "low": 1214520.430107527,
+   "high": 1248905.5555555555
+  },
+  {
+   "group": "checksum_adler32",
+   "arm": "ferrosift",
+   "size": 16,
+   "nanoseconds": 965.4856640438722,
+   "low": 946.5337982832618,
+   "high": 978.4639887339056
+  },
+  {
+   "group": "checksum_adler32",
+   "arm": "ferrosift",
+   "size": 256,
+   "nanoseconds": 1133.900414372914,
+   "low": 1119.8252707581228,
+   "high": 1158.729519577895
+  },
+  {
+   "group": "checksum_adler32",
+   "arm": "ferrosift",
+   "size": 4096,
+   "nanoseconds": 4398.661759973134,
+   "low": 4337.373086220789,
+   "high": 4441.13914924297
+  },
+  {
+   "group": "checksum_adler32",
+   "arm": "ferrosift",
+   "size": 65536,
+   "nanoseconds": 55127.71660388293,
+   "low": 54039.18918918919,
+   "high": 55907.93297171639
+  },
+  {
+   "group": "checksum_crc32",
+   "arm": "crc32fast-crate",
+   "size": 1048576,
+   "nanoseconds": 36533.95316804408,
+   "low": 36157.31534090909,
+   "high": 36814.82213438735
+  },
+  {
+   "group": "checksum_crc32",
+   "arm": "crc32fast-crate",
+   "size": 16,
+   "nanoseconds": 16.33459214670883,
+   "low": 16.17833909771052,
+   "high": 16.581173498426125
+  },
+  {
+   "group": "checksum_crc32",
+   "arm": "crc32fast-crate",
+   "size": 256,
+   "nanoseconds": 12.836469778882165,
+   "low": 12.719360172332514,
+   "high": 12.964808243814709
+  },
+  {
+   "group": "checksum_crc32",
+   "arm": "crc32fast-crate",
+   "size": 4096,
+   "nanoseconds": 137.93652891591034,
+   "low": 135.98705204872817,
+   "high": 141.14482611498346
+  },
+  {
+   "group": "checksum_crc32",
+   "arm": "crc32fast-crate",
+   "size": 65536,
+   "nanoseconds": 2161.6634842698677,
+   "low": 2137.5821392386742,
+   "high": 2186.0182370820667
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "ferrosift",
+   "size": 1024,
+   "nanoseconds": 4344908.333333334,
+   "low": 4295144.444444444,
+   "high": 4392350
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "ferrosift",
+   "size": 16,
+   "nanoseconds": 3055.5767100915,
+   "low": 3028.601796179497,
+   "high": 3079.1827852998067
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "ferrosift",
+   "size": 256,
+   "nanoseconds": 259521.93452380953,
+   "low": 255012.8351340536,
+   "high": 269842.3826173826
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "ferrosift",
+   "size": 64,
+   "nanoseconds": 12653.828781512606,
+   "low": 12571.238423997673,
+   "high": 12741.694309302668
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "strsim-crate",
+   "size": 1024,
+   "nanoseconds": 1618002.3170731706,
+   "low": 1590250.9803921569,
+   "high": 1641200
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "strsim-crate",
+   "size": 16,
+   "nanoseconds": 453.3630022321429,
+   "low": 449.08181992044064,
+   "high": 462.00651041666663
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "strsim-crate",
+   "size": 256,
+   "nanoseconds": 112692.03361200183,
+   "low": 107212.46744791666,
+   "high": 117641.92708333333
+  },
+  {
+   "group": "distance_levenshtein",
+   "arm": "strsim-crate",
+   "size": 64,
+   "nanoseconds": 6222.3030716927715,
+   "low": 6105.313797779472,
+   "high": 6277.686989838414
+  },
+  {
+   "group": "hex_encode",
+   "arm": "faster-hex-crate",
+   "size": 1048576,
+   "nanoseconds": 596253.3607429226,
+   "low": 586010.3503401361,
+   "high": 616968.1112146629
+  },
+  {
+   "group": "hex_encode",
+   "arm": "faster-hex-crate",
+   "size": 16,
+   "nanoseconds": 70.61716352843584,
+   "low": 67.7601461038961,
+   "high": 74.15388074763075
+  },
+  {
+   "group": "hex_encode",
+   "arm": "faster-hex-crate",
+   "size": 256,
+   "nanoseconds": 104.51806053891175,
+   "low": 102.55545642795042,
+   "high": 109.19205567888127
+  },
+  {
+   "group": "hex_encode",
+   "arm": "faster-hex-crate",
+   "size": 4096,
+   "nanoseconds": 796.0031448509894,
+   "low": 744.4838370871747,
+   "high": 826.0386801545337
+  },
+  {
+   "group": "hex_encode",
+   "arm": "faster-hex-crate",
+   "size": 65536,
+   "nanoseconds": 18956.715785907858,
+   "low": 18229.90740740741,
+   "high": 19888.11230585424
+  },
+  {
+   "group": "hex_encode",
+   "arm": "ferrosift",
+   "size": 1048576,
+   "nanoseconds": 5965115.384615384,
+   "low": 5770230.769230769,
+   "high": 6112538.461538462
+  },
+  {
+   "group": "hex_encode",
+   "arm": "ferrosift",
+   "size": 16,
+   "nanoseconds": 1818.1357766834876,
+   "low": 1747.8513986013986,
+   "high": 1872.465909090909
+  },
+  {
+   "group": "hex_encode",
+   "arm": "ferrosift",
+   "size": 256,
+   "nanoseconds": 2366.469032853938,
+   "low": 2303.288981288981,
+   "high": 2439.4526627218934
+  },
+  {
+   "group": "hex_encode",
+   "arm": "ferrosift",
+   "size": 4096,
+   "nanoseconds": 17589.55821786711,
+   "low": 17156.648100444545,
+   "high": 18339.02701410471
+  },
+  {
+   "group": "hex_encode",
+   "arm": "ferrosift",
+   "size": 65536,
+   "nanoseconds": 304346.12775217614,
+   "low": 296043.5247747748,
+   "high": 311456.25
+  },
+  {
+   "group": "hex_encode",
+   "arm": "hex-crate",
+   "size": 1048576,
+   "nanoseconds": 4644515.625,
+   "low": 4523412.5,
+   "high": 4762675
+  },
+  {
+   "group": "hex_encode",
+   "arm": "hex-crate",
+   "size": 16,
+   "nanoseconds": 146.83291245791247,
+   "low": 142.28253193096944,
+   "high": 150.6324293043043
+  },
+  {
+   "group": "hex_encode",
+   "arm": "hex-crate",
+   "size": 256,
+   "nanoseconds": 1099.6551326454705,
+   "low": 1077.872469742614,
+   "high": 1157.9169344806137
+  },
+  {
+   "group": "hex_encode",
+   "arm": "hex-crate",
+   "size": 4096,
+   "nanoseconds": 17044.872862173037,
+   "low": 16593.30769230769,
+   "high": 17754.277777777777
+  },
+  {
+   "group": "hex_encode",
+   "arm": "hex-crate",
+   "size": 65536,
+   "nanoseconds": 290723.4265734266,
+   "low": 277766.78571428574,
+   "high": 303387.175066313
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "compiled-pipeline",
+   "size": 1048576,
+   "nanoseconds": 451332.421875,
+   "low": 436904.03225806454,
+   "high": 470510.79343971633
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "compiled-pipeline",
+   "size": 16,
+   "nanoseconds": 714.2638695883593,
+   "low": 655.773348809206,
+   "high": 761.2259031181777
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "compiled-pipeline",
+   "size": 256,
+   "nanoseconds": 679.2068670507775,
+   "low": 633.9633495631294,
+   "high": 708.7579064182231
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "compiled-pipeline",
+   "size": 4096,
+   "nanoseconds": 796.4501555979914,
+   "low": 769.8264598479011,
+   "high": 822.967420866848
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "compiled-pipeline",
+   "size": 65536,
+   "nanoseconds": 4127.429589962921,
+   "low": 4024.408143939394,
+   "high": 4220.510416666667
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "execute-each-call",
+   "size": 1048576,
+   "nanoseconds": 588596.6916354557,
+   "low": 532412.4378109453,
+   "high": 690079.4871794871
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "execute-each-call",
+   "size": 16,
+   "nanoseconds": 1120.808541247619,
+   "low": 1051.3334185481715,
+   "high": 1181.0152315067662
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "execute-each-call",
+   "size": 256,
+   "nanoseconds": 1188.5460734510325,
+   "low": 1150.5241383089483,
+   "high": 1239.8620213878532
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "execute-each-call",
+   "size": 4096,
+   "nanoseconds": 1280.7603026138866,
+   "low": 1239.200263752826,
+   "high": 1309.5444432482864
+  },
+  {
+   "group": "overhead_identity",
+   "arm": "execute-each-call",
+   "size": 65536,
+   "nanoseconds": 4742.862039079735,
+   "low": 4639.657351962741,
+   "high": 4859.399326347306
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "primitive-direct",
+   "size": 1048576,
+   "nanoseconds": 2052058.9285714286,
+   "low": 1963122.2222222222,
+   "high": 2174426.25588697
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "primitive-direct",
+   "size": 16,
+   "nanoseconds": 163.33247227009338,
+   "low": 160.4190712200421,
+   "high": 165.79430884649332
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "primitive-direct",
+   "size": 256,
+   "nanoseconds": 741.9584848514712,
+   "low": 725.4603591217765,
+   "high": 754.1891354489779
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "primitive-direct",
+   "size": 4096,
+   "nanoseconds": 8952.72630541872,
+   "low": 8676.869099154814,
+   "high": 9378.920634920634
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "primitive-direct",
+   "size": 65536,
+   "nanoseconds": 116025.81501831501,
+   "low": 114138.46153846153,
+   "high": 118074.125
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "through-recipe",
+   "size": 1048576,
+   "nanoseconds": 2668574.847001224,
+   "low": 2606974.1604477614,
+   "high": 2703535.909090909
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "through-recipe",
+   "size": 16,
+   "nanoseconds": 1550.1337898003685,
+   "low": 1507.1406962517542,
+   "high": 1651.5400080418174
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "through-recipe",
+   "size": 256,
+   "nanoseconds": 1942.7556109684606,
+   "low": 1861.0264826347977,
+   "high": 2040.7557162337869
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "through-recipe",
+   "size": 4096,
+   "nanoseconds": 13240.78869047619,
+   "low": 12626.71130952381,
+   "high": 13898.10267857143
+  },
+  {
+   "group": "overhead_md5",
+   "arm": "through-recipe",
+   "size": 65536,
+   "nanoseconds": 139309.11746329273,
+   "low": 137073.58124253288,
+   "high": 144909.63345864663
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "primitive-direct",
+   "size": 1048576,
+   "nanoseconds": 587725.3472222222,
+   "low": 566527.8138528138,
+   "high": 629107.2289156626
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "primitive-direct",
+   "size": 16,
+   "nanoseconds": 70.97983137875808,
+   "low": 67.7309116734961,
+   "high": 72.66647875977186
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "primitive-direct",
+   "size": 256,
+   "nanoseconds": 220.87895079830565,
+   "low": 207.8182603686636,
+   "high": 234.7624693197756
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "primitive-direct",
+   "size": 4096,
+   "nanoseconds": 1909.121894064665,
+   "low": 1867.4019607843138,
+   "high": 1991.0393214509068
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "primitive-direct",
+   "size": 65536,
+   "nanoseconds": 35340.07834757835,
+   "low": 34189.64102564102,
+   "high": 38461.85897435898
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "through-recipe",
+   "size": 1048576,
+   "nanoseconds": 1169918.732394366,
+   "low": 1135763.048245614,
+   "high": 1217218.3403558051
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "through-recipe",
+   "size": 16,
+   "nanoseconds": 1801.9235686396462,
+   "low": 1731.8983246670464,
+   "high": 1851.2833225270342
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "through-recipe",
+   "size": 256,
+   "nanoseconds": 2056.257017670335,
+   "low": 1989.2462213188837,
+   "high": 2123.94330085708
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "through-recipe",
+   "size": 4096,
+   "nanoseconds": 4186.775911553076,
+   "low": 3890.878983172216,
+   "high": 4393.998746867168
+  },
+  {
+   "group": "overhead_sha256",
+   "arm": "through-recipe",
+   "size": 65536,
+   "nanoseconds": 37396.00694444444,
+   "low": 35652.98202614379,
+   "high": 39822.47474747475
+  }
+ ]
+}

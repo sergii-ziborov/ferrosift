@@ -7,7 +7,7 @@
 //!
 //! The comparison targets are single-algorithm crates — `base64` and `hex` —
 //! chosen because they are the fastest widely used Rust implementations of
-//! exactly one thing. FerroSift is measured through a real recipe, so the
+//! exactly one thing. `FerroSift` is measured through a real recipe, so the
 //! numbers include the argument resolution and value handling a caller pays
 //! for; comparing a raw codec against `base64::encode` would be measuring two
 //! different things and calling one of them faster.
@@ -27,21 +27,29 @@ fn base64_encode(criterion: &mut Criterion) {
     for size in SIZES {
         let input = sample(size);
         group.throughput(Throughput::Bytes(size as u64));
-        group.bench_with_input(BenchmarkId::new("ferrosift", size), &input, |bencher, input| {
-            bencher.iter(|| {
-                black_box(run(
-                    &engine,
-                    &recipe,
-                    Value::Bytes(black_box(input).clone()),
-                ))
-            });
-        });
-        group.bench_with_input(BenchmarkId::new("base64-crate", size), &input, |bencher, input| {
-            use base64::Engine as _;
-            bencher.iter(|| {
-                black_box(base64::engine::general_purpose::STANDARD.encode(black_box(input)))
-            });
-        });
+        group.bench_with_input(
+            BenchmarkId::new("ferrosift", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| {
+                    black_box(run(
+                        &engine,
+                        &recipe,
+                        Value::Bytes(black_box(input).clone()),
+                    ))
+                });
+            },
+        );
+        group.bench_with_input(
+            BenchmarkId::new("base64-crate", size),
+            &input,
+            |bencher, input| {
+                use base64::Engine as _;
+                bencher.iter(|| {
+                    black_box(base64::engine::general_purpose::STANDARD.encode(black_box(input)))
+                });
+            },
+        );
     }
     group.finish();
 }
@@ -107,18 +115,26 @@ fn hex_encode(criterion: &mut Criterion) {
     for size in SIZES {
         let input = sample(size);
         group.throughput(Throughput::Bytes(size as u64));
-        group.bench_with_input(BenchmarkId::new("ferrosift", size), &input, |bencher, input| {
-            bencher.iter(|| {
-                black_box(run(
-                    &engine,
-                    &recipe,
-                    Value::Bytes(black_box(input).clone()),
-                ))
-            });
-        });
-        group.bench_with_input(BenchmarkId::new("hex-crate", size), &input, |bencher, input| {
-            bencher.iter(|| black_box(hex::encode(black_box(input))));
-        });
+        group.bench_with_input(
+            BenchmarkId::new("ferrosift", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| {
+                    black_box(run(
+                        &engine,
+                        &recipe,
+                        Value::Bytes(black_box(input).clone()),
+                    ))
+                });
+            },
+        );
+        group.bench_with_input(
+            BenchmarkId::new("hex-crate", size),
+            &input,
+            |bencher, input| {
+                bencher.iter(|| black_box(hex::encode(black_box(input))));
+            },
+        );
         // `faster-hex` is the SIMD implementation of the same thing. It is
         // here because reporting a win over `hex` while a quicker crate exists
         // would be choosing the opponent.

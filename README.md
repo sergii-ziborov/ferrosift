@@ -103,9 +103,22 @@ for packet in packets {
 ```
 
 Compiling resolves every operation once, so a repeated pipeline never rebuilds
-the registry or the recipe — worth 1.7× on a 4 KiB call, measured in
-[docs/benchmarks.md](docs/benchmarks.md), which also records where FerroSift
-is still behind the specialist crate for a given algorithm.
+the registry or the recipe.
+
+## Speed
+
+FerroSift is **not** currently faster than a best-in-class specialist crate at
+anything measured. [docs/benchmarks.md](docs/benchmarks.md) says so with
+numbers, prints every input size including the unflattering ones, compares
+against the fastest available competitor rather than a convenient one, and
+ships the raw estimates so a reader can recompute every ratio. `cargo xtask
+bench all` reproduces it.
+
+Precision came first and it cost speed: the ports iterate characters where
+bytes would do, and carry validation the specialist crates do not. Those are
+reasons, not defences — the harness exists to close them, and has already
+made base64 decoding 13× faster by finding a linear scan that should have
+been a lookup table.
 
 `ferrosift-pattern` deliberately claims **no** compatibility with any upstream
 pattern-language runtime yet: that claim requires a pinned differential

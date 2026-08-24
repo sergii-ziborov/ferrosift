@@ -106,6 +106,64 @@ function subjectArm(arms) {
     );
 }
 
+/**
+ * Every performance claim FerroSift is entitled to make, derived from the
+ * data rather than written down.
+ *
+ * A claim appears here only where the subject beat the baseline at some size
+ * with non-overlapping intervals on a run that was not noisy. Nothing can be
+ * added to this list by editing prose — the only way to make a claim is to
+ * earn it in a measurement, and the only way to keep it is to keep earning
+ * it. Groups with no supported win are listed too, as no claim.
+ */
+function renderClaims(groups) {
+    const rows = [];
+    for (const [name, sizes] of [...groups].sort()) {
+        const arms = [...new Set([...sizes.values()].flatMap(row => [...row.keys()]))].sort();
+        const subject = subjectArm(arms);
+        const baseline = baselineArm(arms, sizes);
+        if (!subject || !baseline) {
+            rows.push([name, "—", "no comparison arm in this group"]);
+            continue;
+        }
+        const wins = [];
+        for (const size of [...sizes.keys()].sort((a, b) => a - b)) {
+            const row = sizes.get(size);
+            if (!row.has(subject) || !row.has(baseline)) continue;
+            const stated = verdict(row.get(subject), row.get(baseline));
+            if (stated.endsWith("faster")) wins.push({size, stated});
+        }
+        rows.push(
+            wins.length === 0
+                ? [name, `\`${baseline}\``, "**no claim** — loses or ties at every size"]
+                : [
+                      name,
+                      `\`${baseline}\``,
+                      wins.map(win => `${win.stated} at ${bytes(win.size)}`).join(", "),
+                  ],
+        );
+    }
+
+    const supported = rows.filter(row => !row[2].startsWith("**no claim**") && row[1] !== "—");
+    return [
+        "## Claims",
+        "",
+        "This table is computed from the measurements, not written. A row can",
+        "only say *faster* if the subject beat the fastest comparison arm at",
+        "that size, on a run that was not noisy, with confidence intervals that",
+        "do not overlap. There is no way to add a claim here by editing text.",
+        "",
+        `Supported claims right now: **${supported.length}** of ${rows.length} groups.`,
+        "",
+        "| Group | Compared against | Claim |",
+        "|---|---|---|",
+        ...rows.map(row => `| ${row[0].replace(/_/g, " / ")} | ${row[1]} | ${row[2]} |`),
+        "",
+        "## Results",
+        "",
+    ];
+}
+
 function renderGroup(name, sizes) {
     const arms = [...new Set([...sizes.values()].flatMap(row => [...row.keys()]))].sort();
     const subject = subjectArm(arms);
@@ -123,11 +181,11 @@ function renderGroup(name, sizes) {
         const cells = arms.map(arm =>
             row.has(arm) ? ` ${duration(row.get(arm).nanoseconds)} |` : " — |",
         );
-        let verdict = " — |";
+        let stated = " — |";
         if (subject && baseline && row.has(subject) && row.has(baseline)) {
-            verdict = ` ${describe(row.get(subject).nanoseconds / row.get(baseline).nanoseconds)} |`;
+            stated = ` ${verdict(row.get(subject), row.get(baseline))} |`;
         }
-        lines.push([`| ${bytes(size)} |`, ...cells, verdict].join(""));
+        lines.push([`| ${bytes(size)} |`, ...cells, stated].join(""));
     }
     lines.push("");
 
@@ -159,6 +217,35 @@ function describe(ratio) {
     if (ratio < 1) return `${(1 / ratio).toFixed(2)}× faster`;
     if (ratio > 1) return `${ratio.toFixed(2)}× slower`;
     return "even";
+}
+
+/**
+ * A measurement whose interval is wide relative to its median.
+ *
+ * A loaded machine produces numbers that look like results. Marking them
+ * stops a reader — or a later version of this file — from treating noise as a
+ * finding.
+ */
+const NOISE_THRESHOLD = 0.15;
+
+function noisy(cell) {
+    return (cell.high - cell.low) / cell.nanoseconds > NOISE_THRESHOLD;
+}
+
+/**
+ * The verdict for one row, or a refusal to give one.
+ *
+ * A ratio is only stated when the two confidence intervals do not overlap.
+ * Where they do, the run cannot tell the two apart and saying which is faster
+ * would be reading a preference into noise — which is the failure mode this
+ * whole file is arranged against, and it applies in FerroSift's favour
+ * exactly as much as against it.
+ */
+function verdict(subject, baseline) {
+    if (noisy(subject) || noisy(baseline)) return "noisy — rerun";
+    const overlap = subject.low <= baseline.high && baseline.low <= subject.high;
+    if (overlap) return "no measurable difference";
+    return describe(subject.nanoseconds / baseline.nanoseconds);
 }
 
 export function render(results, environment) {
@@ -201,6 +288,16 @@ export function render(results, environment) {
         "`benchmarks.json`, and the machine and compiler are recorded below. A",
         "reader who does not trust the prose can recompute every ratio from the",
         "data, or re-run the whole thing with one command.",
+        "",
+        "**A ratio is only stated when the run can support it.** Where the two",
+        "confidence intervals overlap the verdict reads *no measurable",
+        "difference* rather than picking a direction, and a measurement whose",
+        "own interval is wider than 15% of its median is marked *noisy* and",
+        "reported as no result at all. This cuts both ways and is meant to: an",
+        "earlier run on a loaded machine produced a FerroSift digest that",
+        "appeared faster than the primitive it calls, which is impossible, and",
+        "nothing in the report at the time would have stopped that being read",
+        "as a win.",
         "",
         environment ? "## Measured on" : "",
         environment ? "" : "",
@@ -255,31 +352,48 @@ export function render(results, environment) {
         "",
         "## Where this stands",
         "",
-        "FerroSift is not yet faster than every comparison target, and the",
-        "tables below say so. Two things are true at once and both are worth",
-        "reading off them.",
+        "**FerroSift is not currently faster than any best-in-class specialist",
+        "crate, at any size measured.** Every competitive comparison below is a",
+        "loss. That is the finding, and it is stated here rather than left for",
+        "a reader to assemble from the tables.",
         "",
-        "There is a fixed cost of roughly half a microsecond per call —",
-        "registry lookup, argument resolution, budget checks, value handling.",
-        "Below about four kilobytes it is the whole measurement, which is why",
-        "the 16-byte column looks the way it does against a crate that is one",
-        "function. Compiling a pipeline removes about half of it, and the",
-        "`overhead / identity` table is where to see that.",
+        "An earlier version of this file claimed a win over the `hex` crate at",
+        "64 KiB and above. The claim was arithmetically true and worthless:",
+        "`faster-hex` implements the same function with SIMD, had not been",
+        "measured, and beats both. Against it FerroSift is between 4.8× and",
+        "33.6× slower. The win is retracted, and the rule that produced it —",
+        "compare against whichever crate happens to be in the file — has been",
+        "replaced by one that compares against the fastest arm in the group.",
         "",
-        "Above that, the algorithms themselves are the measurement, and there",
-        "the picture is mixed: hex encoding is ahead of the `hex` crate at",
-        "64 KiB and beyond; base64 and Levenshtein are behind their specialist",
-        "crates. Those gaps are work, not explanation.",
+        "Two results are genuine and neither is a competitive claim. Compiling",
+        "a pipeline is measurably faster than resolving a recipe on every call,",
+        "which is FerroSift against itself and the first evidence that the",
+        "compiled path earns its place. And at large inputs the cost of going",
+        "through a recipe rather than calling a digest directly is small, which",
+        "says the library layer is thin — not that the library is fast.",
         "",
-        "This harness exists to make that work visible. The first thing it",
-        "found was a base64 decoder scanning a 64-symbol list for every",
-        "character, several times per character; replacing it with a lookup",
-        "table made decoding 13 times faster at 1 MiB and moved the gap from",
-        "118× to 7×. The corpus confirmed the output did not change.",
+        "The gaps have a shape. Roughly half a microsecond of fixed per-call",
+        "cost decides everything below about four kilobytes, which is why the",
+        "16-byte rows are so lopsided against crates that are one function.",
+        "Above that the algorithms are the measurement, and the ports are",
+        "written for exactness against the reference rather than for speed:",
+        "they iterate `char` where bytes would do, allocate per chunk, and",
+        "carry validation the specialist crates do not.",
+        "",
+        "None of that is an excuse and none of it is stated as one. They are",
+        "the reasons, and each is a thing to fix.",
+        "",
+        "This harness exists to make that work visible, and it already has. The",
+        "first thing it found was a base64 decoder scanning a 64-symbol list",
+        "for every character, several times per character; replacing it with a",
+        "lookup table made decoding 13 times faster at 1 MiB and cut the gap",
+        "from 118× to 7×. The corpus confirmed the output did not change. That",
+        "is the loop this file is here to run.",
         "",
         "## Results",
         "",
     ];
+    lines.push(...renderClaims(groups));
     for (const [name, sizes] of [...groups].sort()) {
         lines.push(...renderGroup(name, sizes));
     }

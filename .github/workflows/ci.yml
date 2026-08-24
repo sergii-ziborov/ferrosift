@@ -140,6 +140,22 @@ jobs:
       - name: Run Clippy
         run: cargo clippy --manifest-path xtask/Cargo.toml --all-targets -- -D warnings
 
+  # The benchmarks are outside the workspace, so nothing above compiles them.
+  # An uncompiled benchmark rots silently and is then unavailable exactly when
+  # a performance question comes up. This builds them and runs one iteration
+  # of each; it does not measure, because a shared runner cannot.
+  benchmarks:
+    name: Benchmarks compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Lint
+        run: cargo clippy --manifest-path bench/Cargo.toml --all-targets -- -D warnings
+      - name: Check formatting
+        run: cargo fmt --manifest-path bench/Cargo.toml -- --check
+      - name: Run each benchmark once
+        run: cargo bench --manifest-path bench/Cargo.toml --benches -- --test
+
   # The compatibility claim is only evidence if it cannot drift. Regenerate the
   # ledger from the code and fail when the committed copy disagrees. This needs
   # no reference checkout: every column comes from the catalog, the pack-only

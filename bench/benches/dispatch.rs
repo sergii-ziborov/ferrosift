@@ -5,15 +5,15 @@
 
 //! What the library layer costs above the algorithm.
 //!
-//! For the digests and ciphers, FerroSift *is* RustCrypto — the same code
-//! computes the same bytes. Benchmarking those against RustCrypto and
+//! For the digests and ciphers, `FerroSift` *is* `RustCrypto` — the same code
+//! computes the same bytes. Benchmarking those against `RustCrypto` and
 //! reporting a win would be measuring nothing. The question worth asking is
 //! the opposite one: how much does going through a recipe cost compared with
 //! calling the primitive directly?
 //!
 //! That difference is the library's own overhead — argument resolution,
 //! budget checks, value wrapping — and it is the number that has to stay
-//! small, because it is the only part FerroSift is responsible for.
+//! small, because it is the only part `FerroSift` is responsible for.
 
 use criterion::{BenchmarkId, Criterion, Throughput, criterion_group, criterion_main};
 use ferrosift_bench::{SIZES, engine, recipe, run, sample, text};
