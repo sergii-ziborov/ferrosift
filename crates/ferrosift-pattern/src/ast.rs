@@ -194,6 +194,34 @@ impl Builtin {
         })
     }
 
+    /// The spelling this type has in pattern source.
+    #[must_use]
+    pub const fn name(self) -> &'static str {
+        match self {
+            Self::Unsigned(1) => "u8",
+            Self::Unsigned(2) => "u16",
+            Self::Unsigned(3) => "u24",
+            Self::Unsigned(4) => "u32",
+            Self::Unsigned(6) => "u48",
+            Self::Unsigned(8) => "u64",
+            Self::Unsigned(12) => "u96",
+            Self::Unsigned(_) => "u128",
+            Self::Signed(1) => "s8",
+            Self::Signed(2) => "s16",
+            Self::Signed(3) => "s24",
+            Self::Signed(4) => "s32",
+            Self::Signed(6) => "s48",
+            Self::Signed(8) => "s64",
+            Self::Signed(12) => "s96",
+            Self::Signed(_) => "s128",
+            Self::Float => "float",
+            Self::Double => "double",
+            Self::Bool => "bool",
+            Self::Char => "char",
+            Self::Char16 => "char16",
+        }
+    }
+
     /// Width in bytes.
     #[must_use]
     pub const fn size(self) -> u32 {

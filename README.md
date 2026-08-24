@@ -78,7 +78,7 @@ patterns:
 | Layer | Crate | Status |
 |---|---|---|
 | Verified CyberChef-compatible operation catalog | `ferrosift-operations` | Shipping |
-| Hex-pattern front end (source → checked declaration tree) | `ferrosift-pattern` | Parsing a [documented subset](docs/pattern-language-subset.md); evaluation next |
+| Hex patterns: source → declaration tree → values with offsets | `ferrosift-pattern` | Parsing and evaluating a [documented subset](docs/pattern-language-subset.md) |
 | Facade: direct Rust calls and a pipeline builder | `ferrosift` | **Planned — not yet implemented** |
 
 The intent is that transform-then-parse becomes one operation: decode,
@@ -99,7 +99,7 @@ the workspace does not have.
 | `ferrosift-core` | Operation trait, registry, executor, budgets, traces |
 | `ferrosift-operations` | Built-in pure-Rust operations and default registry |
 | `ferrosift-compat` | CyberChef 11.3 JSON import/export |
-| `ferrosift-pattern` | Hex-pattern lexer, AST, and parser |
+| `ferrosift-pattern` | Hex-pattern lexer, parser, and bounded evaluator |
 | `ferrosift-cli` | Native CLI binary `ferrosift` |
 
 Library crates are `no_std` + `alloc` and forbid `unsafe`.

@@ -1,7 +1,9 @@
 # Pattern language subset
 
-`ferrosift-pattern` reads a hex-pattern source file and produces a checked
-declaration tree describing binary structures.
+`ferrosift-pattern` reads a hex-pattern source file, produces a checked
+declaration tree describing binary structures, and evaluates that tree against
+bytes into a value tree where every node carries its absolute offset and byte
+size — enough to annotate a hex view without re-deriving the layout.
 
 ## Compatibility status
 
@@ -55,6 +57,31 @@ Integers accept decimal, `0x` hexadecimal, `0b` binary, and `0o` octal, with
 `\n`, `\r`, `\t`, `\0`, `\\`, `\'`, and `\"` escapes. Both `//` line comments
 and `/* */` block comments are ignored.
 
+## Evaluation semantics
+
+Evaluation walks each placement in source order and reads from the placement's
+absolute address.
+
+- **Endianness.** Types with no `be` / `le` prefix use the default in
+  `EvalOptions`, which is little-endian. A prefix on a struct or alias *use*
+  propagates to members that do not carry a prefix of their own; a member's
+  own prefix always wins.
+- **Layout.** Struct fields and array elements are laid out consecutively with
+  no padding. A composite node's size is the span from its first byte to the
+  end of its last child.
+- **Signed integers** are sign-extended from their declared width.
+- **Enums** read their backing type and resolve the value against the declared
+  constants; an unmatched value is preserved with no name rather than failing.
+- **Bitfields** occupy `ceil(total_bits / 8)` bytes and unpack members
+  most-significant-bit first from a big-endian view of that span. This is the
+  layout *this crate defines*, not a claim about another implementation.
+- **Bounds.** Every read is checked against the real buffer length, so a
+  pattern can never observe bytes that are not there.
+- **Budgets.** Array lengths and nesting come from untrusted text, so
+  `EvalOptions` caps the total node count (default 1,000,000) and the type
+  nesting depth (default 64). Exceeding either fails with a stable code
+  instead of exhausting memory or the stack.
+
 ## Not implemented
 
 Each of these is a named future step, never a silent gap: functions,
@@ -84,3 +111,7 @@ are matchable identifiers whose meaning does not change between releases.
 | `pattern.parse.invalid_array_length` | Array length is not positive |
 | `pattern.parse.invalid_bit_width` | Bitfield width is outside 1..=64 |
 | `pattern.parse.duplicate_declaration` | A name is declared more than once |
+| `pattern.eval.out_of_bounds` | A read extends past the end of the data |
+| `pattern.eval.unknown_type` | A referenced type is not declared in the pattern |
+| `pattern.eval.depth_exceeded` | Type nesting exceeds the configured depth |
+| `pattern.eval.node_budget_exceeded` | The value tree exceeds the configured node budget |
