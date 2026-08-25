@@ -133,6 +133,21 @@ function renderClaims(groups) {
             const stated = verdict(row.get(subject), row.get(baseline));
             if (stated.endsWith("faster")) wins.push({size, stated});
         }
+        // A win at exactly one size, with losses either side of it, is not a
+        // performance characteristic. Cost here is broadly linear in input, so
+        // a real advantage shows up across a range; a single point that beats
+        // its neighbours is the baseline having a bad run. Narrow confidence
+        // intervals do not rule that out — they describe the repeatability of
+        // one measurement, not whether the surrounding ones agree with it.
+        if (wins.length === 1 && sizes.size > 2) {
+            rows.push([
+                name,
+                `\`${baseline}\``,
+                `**no claim** — faster only at ${bytes(wins[0].size)}, slower either ` +
+                    "side; an isolated win is a noisy baseline, not an advantage",
+            ]);
+            continue;
+        }
         rows.push(
             wins.length === 0
                 ? [name, `\`${baseline}\``, "**no claim** — loses or ties at every size"]
@@ -151,7 +166,16 @@ function renderClaims(groups) {
         "This table is computed from the measurements, not written. A row can",
         "only say *faster* if the subject beat the fastest comparison arm at",
         "that size, on a run that was not noisy, with confidence intervals that",
-        "do not overlap. There is no way to add a claim here by editing text.",
+        "do not overlap — and the win has to hold across more than one size.",
+        "There is no way to add a claim here by editing text.",
+        "",
+        "That last rule was added because the first three were not enough. A",
+        "digest measured *faster through a recipe than by calling the primitive",
+        "the recipe calls* passed all of them: both intervals were narrow, they",
+        "did not overlap, and neither run looked noisy. It was still impossible.",
+        "The baseline had simply had a bad run at one size, and nothing about a",
+        "confidence interval — which describes how repeatable one measurement",
+        "is — could see that the measurements either side of it disagreed.",
         "",
         `Supported claims right now: **${supported.length}** of ${rows.length} groups.`,
         "",
@@ -162,6 +186,44 @@ function renderClaims(groups) {
         "## Results",
         "",
     ];
+}
+
+/**
+ * The machine, compiler, and commit behind each batch.
+ *
+ * Every batch gets a row because they are measured separately. A single
+ * commit across the whole report would be a claim nobody could keep once
+ * partial re-runs became the normal way to work.
+ */
+function renderProvenance(batches) {
+    const names = Object.keys(batches).sort();
+    if (names.length === 0) return [];
+
+    const first = batches[names[0]];
+    const lines = [
+        "## Measured on",
+        "",
+        "| | |",
+        "|---|---|",
+        // `rustc -vV` is multi-line. Take the first line however it was
+        // stored — escaped by the recorder, or literal if hand-edited — since
+        // a real newline would break the table.
+        `| Compiler | ${first.rustc.split(/\\n|\n/)[0].trim()} |`,
+        `| Platform | ${first.os} / ${first.arch} |`,
+        `| CPU | ${first.cpu} |`,
+        "",
+        "| Batch | Commit | Working tree |",
+        "|---|---|---|",
+    ];
+    for (const name of names) {
+        const batch = batches[name];
+        lines.push(
+            `| ${name} | \`${(batch.commit ?? "unknown").slice(0, 8)}\` | ` +
+                `${batch.dirty ? "**uncommitted changes present**" : "clean"} |`,
+        );
+    }
+    lines.push("");
+    return lines;
 }
 
 function renderGroup(name, sizes) {
@@ -299,19 +361,22 @@ export function render(results, environment) {
         "nothing in the report at the time would have stopped that being read",
         "as a win.",
         "",
-        environment ? "## Measured on" : "",
-        environment ? "" : "",
-        environment ? "| | |" : "",
-        environment ? "|---|---|" : "",
-        environment ? `| Compiler | ${environment.rustc.split("\\n")[0]} |` : "",
-        environment ? `| Platform | ${environment.os} / ${environment.arch} |` : "",
-        environment ? `| CPU | ${environment.cpu} |` : "",
-        environment ? "" : "",
+        ...renderProvenance(environment),
         "## Reproducing",
         "",
+        "Batches are measured independently, so only what changed needs",
+        "re-measuring. At this catalog size a full sweep is minutes; at five",
+        "hundred operations it is an afternoon, and an afternoon spent",
+        "re-measuring untouched code is an afternoon nobody spends — which is",
+        "how published numbers go stale.",
+        "",
         "```bash",
-        "cargo xtask bench all",
+        "cargo xtask bench check   # which batches predate a change they cover",
+        "cargo xtask bench stale   # re-run only those, then rebuild this file",
         "```",
+        "",
+        "`cargo xtask bench run encoding` measures one batch by name, and",
+        "`cargo xtask bench all` still does everything.",
         "",
         "The toolchain is pinned in `bench/rust-toolchain.toml`, every",
         "comparison crate is pinned to an exact version, `bench/Cargo.lock` is",
@@ -401,16 +466,44 @@ export function render(results, environment) {
     return `${lines.filter((line, index) => line !== "" || lines[index - 1] !== "").join("\n")}\n`;
 }
 
-/** Reads the environment the run recorded, if there is one. */
-function environment() {
-    const path_ = path.join(repoRoot, "bench/target/environment.json");
-    if (!existsSync(path_)) return null;
-    return JSON.parse(readFileSync(path_, "utf8"));
+/**
+ * Reads what each batch was measured on.
+ *
+ * Batches are measured independently — re-running one leaves the others
+ * alone — so provenance is per batch rather than per report. A report that
+ * claimed a single commit for all of them would be wrong the moment anyone
+ * re-ran less than everything, which at five hundred operations is always.
+ */
+function provenance() {
+    const directory = path.join(repoRoot, "bench/target/provenance");
+    if (!existsSync(directory)) return {};
+    const batches = {};
+    for (const file of readdirSync(directory)) {
+        if (!file.endsWith(".json")) continue;
+        // Tolerate a byte-order mark: these are small enough to hand-edit, and
+        // several Windows tools add one.
+        const raw = readFileSync(path.join(directory, file), "utf8").replace(/^﻿/, "");
+        batches[file.replace(".json", "")] = JSON.parse(raw);
+    }
+    return batches;
 }
+
+/** The batch a criterion group belongs to, by the bench binary that made it. */
+const GROUP_BATCH = {
+    base64_encode: "encoding",
+    base64_decode: "encoding",
+    hex_encode: "encoding",
+    checksum_adler32: "digest",
+    checksum_crc32: "digest",
+    distance_levenshtein: "digest",
+    overhead_identity: "dispatch",
+    overhead_md5: "dispatch",
+    overhead_sha256: "dispatch",
+};
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const results = measurements();
-    const recorded = environment();
+    const recorded = provenance();
     writeFileSync(reportPath, render(results, recorded), "utf8");
     // The raw estimates travel with the report so a reader can recompute
     // every ratio in it rather than taking the prose on trust.
