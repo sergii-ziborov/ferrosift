@@ -202,6 +202,54 @@ pub use xor_brute::XorBruteForce;
 
 pub use registry::default_registry;
 
+/// Test-only access to the registration families.
+///
+/// `tests/registry.rs` builds each family on its own and checks that every
+/// operation in it declares a category the family accepts. Without that, a
+/// family drifts into a junk drawer one convenient placement at a time — which
+/// is exactly what happened to the old grouping.
+///
+/// Hidden from the documentation for the same reason as
+/// [`jscompat_testing`]: the surface a caller uses is the operation catalog.
+#[doc(hidden)]
+pub mod registry_testing {
+    use alloc::vec::Vec;
+
+    use ferrosift_core::{OperationRegistry, RegistryError};
+
+    /// One family: its name, the categories it accepts, and what it registers.
+    pub struct Family {
+        /// What to call this family when reporting a mismatch.
+        pub name: &'static str,
+        /// Catalog categories whose operations may live here.
+        pub categories: &'static [&'static str],
+        /// The display name and category of everything it registered.
+        pub registered: Vec<(alloc::string::String, alloc::string::String)>,
+    }
+
+    /// Builds every family separately and reports what each one holds.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`RegistryError`] if a family's own registrations conflict.
+    pub fn families() -> Result<Vec<Family>, RegistryError> {
+        let mut result = Vec::new();
+        for family in crate::registry::FAMILIES {
+            let mut registry = OperationRegistry::new();
+            (family.register)(&mut registry)?;
+            result.push(Family {
+                name: family.name,
+                categories: family.categories,
+                registered: registry
+                    .catalog()
+                    .map(|spec| (spec.display_name.clone(), spec.category.clone()))
+                    .collect(),
+            });
+        }
+        Ok(result)
+    }
+}
+
 /// Test-only access to the JavaScript compatibility layer.
 ///
 /// `tests/jscompat.rs` pins these against Node directly rather than only

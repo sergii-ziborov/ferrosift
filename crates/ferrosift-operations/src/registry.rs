@@ -1,30 +1,43 @@
 //! Which operations a build contains.
 //!
-//! Registration is grouped by what a group costs rather than by what it does:
-//! the first four functions carry no external dependency and are always
-//! present, and `register_packs` is the only one gated behind a feature.
+//! Registration is grouped by *family* â€” what an operation is for â€” rather
+//! than by what it costs to compile. That is a deliberate reversal. Grouping
+//! by cost put every hash in one function because they share a feature gate,
+//! and every encoding in another because they share the absence of one, so
+//! "where does a new hash go" and "where does a new encoding go" had different
+//! answers for a reason that had nothing to do with either. Feature gates now
+//! sit inside the family they belong to.
+//!
+//! The families are a table rather than a sequence of calls, and each one
+//! declares which catalog categories it accepts. `tests/registry.rs` builds
+//! each family on its own and fails if an operation landed somewhere its own
+//! specification does not agree with. That is what stops a family from
+//! becoming the junk drawer the old `register_shape` had turned into â€” it held
+//! HTTP framing, Braille, `NetBIOS` names, and `PowerSet`, none of which is
+//! shaping anything.
+//!
+//! Where a category is too small to be its own family it is merged into a
+//! neighbour, and the merge is named in the table rather than left implicit.
 
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, AlternatingCaps, BitShift, Bitwise, CaretMDecode, Checksum, ClassicalCipher,
-    DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
-    EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
-    FromBraille, FromCaseInsensitiveRegex, FromQuotedPrintable, GenerateDeBruijnSequence,
-    GetAllCasings, HtmlToText, ParityBit, PowerSet, RemoveAnsiEscapeCodes, StripHtmlTags,
-    StripHttpHeaders, Substitute, SwapCase, ToBraille, ToLowerCase, ToUpperCase, UnescapeString,
-    UnescapeUnicodeCharacters, UnicodeTextFormat, VarIntDecode, VarIntEncode, Wrap,
-};
-use crate::{
-    CitrixCtx1Decode, CitrixCtx1Encode, FromBase32, FromBase45, FromBase58, FromBase64, FromBase85,
-    FromBinary, FromCharcode, FromCobs, FromDecimal, FromFloat, FromHex, FromHexdump,
-    FromHtmlEntity, FromModhex, FromMorseCode, FromOctal, HammingDistance, Head, HexToPem,
-    Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines, PemToHex, RemoveLineNumbers,
-    RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47,
-    Rot47BruteForce, Rotate, SetOperation, Split, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
-    ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToCobs, ToDecimal,
-    ToFloat, ToHex, ToHexdump, ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable,
-    Unique, UrlDecode, UrlEncode, Xor,
+    AddLineNumbers, AlternatingCaps, BitShift, Bitwise, CaretMDecode, Checksum, CitrixCtx1Decode,
+    CitrixCtx1Encode, ClassicalCipher, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
+    DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
+    ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
+    FromBase85, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
+    FromDecimal, FromFloat, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode,
+    FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
+    HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines, ParityBit,
+    PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
+    RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
+    SetOperation, Split, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness,
+    Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary,
+    ToBraille, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexdump, ToHtmlEntity, ToLowerCase,
+    ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
+    UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
+    VarIntEncode, Wrap, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -48,6 +61,110 @@ use crate::{FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase62};
 #[cfg(feature = "analysis")]
 use crate::{SuggestRecipe, XorBruteForce};
 
+/// One family of operations, and the catalog categories it is allowed to hold.
+pub(crate) struct Family {
+    /// What to call this family when a test reports a mismatch.
+    pub name: &'static str,
+    /// Categories whose operations may be registered here.
+    ///
+    /// More than one only where a category is too small to stand alone; the
+    /// doc comment on each entry says why that merge is the right one.
+    pub categories: &'static [&'static str],
+    /// Adds this family's operations to a registry.
+    pub register: fn(&mut OperationRegistry) -> Result<(), RegistryError>,
+}
+
+/// Every family, in the order `default_registry` builds them.
+///
+/// Order is presentation only â€” the registry is keyed by operation id, and
+/// nothing downstream depends on insertion order.
+pub(crate) const FAMILIES: &[Family] = &[
+    Family {
+        name: "analysis",
+        categories: &["Analysis"],
+        register: register_analysis,
+    },
+    Family {
+        name: "arithmetic",
+        categories: &["Arithmetic"],
+        register: register_arithmetic,
+    },
+    Family {
+        name: "checksums",
+        categories: &["Checksums"],
+        register: register_checksums,
+    },
+    Family {
+        // Key derivation is here rather than alone: a KDF is what turns a
+        // password into a key, and the only reason to want one is to feed a
+        // cipher that is also here.
+        name: "ciphers",
+        categories: &["Ciphers", "KDF"],
+        register: register_ciphers,
+    },
+    Family {
+        name: "compression",
+        categories: &["Compression"],
+        register: register_compression,
+    },
+    Family {
+        // Slicing and reordering raw bytes, plus Identity, which is the
+        // do-nothing operation and belongs with the byte primitives rather
+        // than with control flow.
+        name: "data",
+        categories: &["Data", "Core"],
+        register: register_data,
+    },
+    Family {
+        name: "encoding",
+        categories: &["Encoding"],
+        register: register_encoding,
+    },
+    Family {
+        // Defanging is what you do to the indicators extraction finds, so the
+        // two travel together and share the `text` pack.
+        name: "extractors",
+        categories: &["Extractors", "Defang"],
+        register: register_extractors,
+    },
+    Family {
+        name: "flow",
+        categories: &["Flow control"],
+        register: register_flow,
+    },
+    Family {
+        name: "hashing",
+        categories: &["Hashing"],
+        register: register_hashing,
+    },
+    Family {
+        name: "logic",
+        categories: &["Logic"],
+        register: register_logic,
+    },
+    Family {
+        // Reading a structured format rather than transforming bytes: object
+        // identifiers, PEM blocks, and one address format.
+        name: "parsing",
+        categories: &["Parsing", "Networking"],
+        register: register_parsing,
+    },
+    Family {
+        // Both are comparisons over lists â€” one asks what two sets share, the
+        // other asks how far apart two strings are.
+        name: "sets",
+        categories: &["Sets", "Distance"],
+        register: register_sets,
+    },
+    Family {
+        // Splitting and deduplicating a delimited list is text handling; the
+        // `Shaping` category is two operations and does not earn a family.
+        name: "text",
+        categories: &["Text", "Shaping"],
+        register: register_text,
+    },
+];
+
 /// Creates a validated registry containing every enabled built-in operation.
 ///
 /// Which operations are present depends on the selected feature packs; with
@@ -59,29 +176,40 @@ use crate::{SuggestRecipe, XorBruteForce};
 /// valid. The returned registry is never partially initialized.
 pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     let mut registry = OperationRegistry::new();
-    register_checksums(&mut registry)?;
-    register_sets(&mut registry)?;
-    register_core(&mut registry)?;
-    register_text(&mut registry)?;
-    register_classical(&mut registry)?;
-    register_encoding(&mut registry)?;
-    register_packs(&mut registry)?;
+    for family in FAMILIES {
+        (family.register)(&mut registry)?;
+    }
     Ok(registry)
 }
 
-/// Set operations and edit distances, all dependency-free.
-fn register_sets(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(SetOperation::cartesian_product())?;
-    registry.register(SetOperation::difference())?;
-    registry.register(SetOperation::intersection())?;
-    registry.register(SetOperation::symmetric_difference())?;
-    registry.register(SetOperation::union())?;
-    registry.register(HammingDistance::new())?;
-    registry.register(LevenshteinDistance::new())?;
+/// Recipe suggestion and brute-force search.
+#[cfg_attr(
+    not(feature = "analysis"),
+    expect(unused_variables, reason = "the analysis pack is not enabled")
+)]
+fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    #[cfg(feature = "analysis")]
+    {
+        registry.register(SuggestRecipe::new())?;
+    }
     Ok(())
 }
 
-/// Checksums, all dependency-free.
+/// Arbitrary-precision integer arithmetic.
+#[cfg_attr(
+    not(feature = "arithmetic"),
+    expect(unused_variables, reason = "the arithmetic pack is not enabled")
+)]
+fn register_arithmetic(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    #[cfg(feature = "arithmetic")]
+    {
+        registry.register(ExtendedGcd::new())?;
+        registry.register(ModularInverse::new())?;
+    }
+    Ok(())
+}
+
+/// Checksums: cheap integrity, not integrity against an adversary.
 fn register_checksums(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(Checksum::adler32())?;
     registry.register(Checksum::fletcher8())?;
@@ -94,8 +222,12 @@ fn register_checksums(registry: &mut OperationRegistry) -> Result<(), RegistryEr
     Ok(())
 }
 
-/// Classical ciphers, all dependency-free.
-fn register_classical(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+/// Ciphers and key derivation, classical and modern.
+///
+/// The classical half needs no dependency and the modern half needs the
+/// `crypto` pack, which is a difference in cost rather than in kind â€” so both
+/// live here and the gate sits around the half that needs it.
+fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(ClassicalCipher::a1z26_decode())?;
     registry.register(ClassicalCipher::a1z26_encode())?;
     registry.register(ClassicalCipher::affine_decode())?;
@@ -114,192 +246,27 @@ fn register_classical(registry: &mut OperationRegistry) -> Result<(), RegistryEr
     registry.register(Rot47::new())?;
     registry.register(Rot13BruteForce::new())?;
     registry.register(Rot47BruteForce::new())?;
-    Ok(())
-}
-
-/// Operations that carry no external dependency and no pack gate.
-fn register_core(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(Identity::new())?;
-    registry.register(Fork::new())?;
-    registry.register(Merge::new())?;
-    registry.register(DropBytes::new())?;
-    registry.register(DropNthBytes::new())?;
-    registry.register(Head::new())?;
-    registry.register(RemoveNullBytes::new())?;
-    registry.register(Reverse::new())?;
-    registry.register(Ror13::new())?;
-    registry.register(SwapEndianness::new())?;
-    registry.register(TakeBytes::new())?;
-    registry.register(TakeNthBytes::new())?;
-    registry.register(Tail::new())?;
-    registry.register(Xor::new())?;
-    register_bitwise(registry)?;
-    register_casing(registry)?;
-    register_shape(registry)?;
-    Ok(())
-}
-
-/// Case transforms.
-///
-/// These carry no feature gate: they are string-to-string transforms with no
-/// tables and no dependencies, so a build that has text values at all can
-/// afford them.
-fn register_casing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(ToLowerCase::new())?;
-    registry.register(ToUpperCase::new())?;
-    registry.register(SwapCase::new())?;
-    registry.register(AlternatingCaps::new())?;
-    registry.register(GetAllCasings::new())?;
-    Ok(())
-}
-
-/// Reshaping text: ANSI stripping, HTTP framing, wrapping, and ranges.
-///
-/// Ungated for the same reason as the case transforms: no tables, no
-/// dependencies. The two HTTP operations parse framing rather than speak the
-/// protocol, so they need no host handle either.
-fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(Unique::new())?;
-    registry.register(Split::new())?;
-    registry.register(RemoveAnsiEscapeCodes::new())?;
-    registry.register(StripHttpHeaders::new())?;
-    registry.register(DechunkHttpResponse::new())?;
-    registry.register(Wrap::new())?;
-    registry.register(ExpandAlphabetRange::new())?;
-    registry.register(CaretMDecode::new())?;
-    registry.register(FromCaseInsensitiveRegex::new())?;
-    registry.register(PowerSet::new())?;
     registry.register(Substitute::new())?;
-    registry.register(UnescapeString::new())?;
-    registry.register(GenerateDeBruijnSequence::new())?;
-    registry.register(ParityBit::new())?;
-    registry.register(FormatMacAddresses::new())?;
-    registry.register(EscapeSmartCharacters::new())?;
-    registry.register(StripHtmlTags::new())?;
-    registry.register(VarIntEncode::new())?;
-    registry.register(VarIntDecode::new())?;
-    registry.register(FromQuotedPrintable::new())?;
-    registry.register(ToQuotedPrintable::new())?;
-    registry.register(HexToPem::new())?;
-    registry.register(PemToHex::new())?;
-    registry.register(ToBraille::new())?;
-    registry.register(FromBraille::new())?;
-    registry.register(UnicodeTextFormat::new())?;
-    registry.register(HtmlToText::new())?;
-    registry.register(EscapeUnicodeCharacters::new())?;
-    registry.register(UnescapeUnicodeCharacters::new())?;
-    registry.register(EncodeNetbiosName::new())?;
-    registry.register(DecodeNetbiosName::new())?;
+
+    #[cfg(feature = "crypto")]
+    {
+        registry.register(AesDecrypt::new())?;
+        registry.register(AesEncrypt::new())?;
+        registry.register(AesKeyUnwrap::new())?;
+        registry.register(AesKeyWrap::new())?;
+        registry.register(Rc4::new())?;
+        registry.register(DerivePbkdf2Key::new())?;
+        registry.register(Scrypt::new())?;
+    }
     Ok(())
 }
 
-/// Bit-level logic, arithmetic, shifts, and rotations.
-fn register_bitwise(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(Bitwise::add())?;
-    registry.register(Bitwise::and())?;
-    registry.register(Bitwise::not())?;
-    registry.register(Bitwise::or())?;
-    registry.register(Bitwise::sub())?;
-    registry.register(BitShift::left())?;
-    registry.register(BitShift::right())?;
-    registry.register(Rotate::left())?;
-    registry.register(Rotate::right())?;
-    Ok(())
-}
-
-/// Dependency-free text shaping: line numbering, padding, and whitespace.
-fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(AddLineNumbers::new())?;
-    registry.register(PadLines::new())?;
-    registry.register(RemoveLineNumbers::new())?;
-    registry.register(RemoveWhitespace::new())?;
-    Ok(())
-}
-
-/// Every representation codec, all dependency-free.
-///
-/// Except Base62, which is registered with the `bignum` pack instead: 62 is
-/// not a power of two, so the whole input is one integer rather than a stream
-/// of bit groups.
-fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    registry.register(FromBase32::new())?;
-    registry.register(ToBase32::new())?;
-    registry.register(FromBase45::new())?;
-    registry.register(ToBase45::new())?;
-    registry.register(FromBase58::new())?;
-    registry.register(ToBase58::new())?;
-    registry.register(CitrixCtx1Decode::new())?;
-    registry.register(CitrixCtx1Encode::new())?;
-    registry.register(FromCobs::new())?;
-    registry.register(FromFloat::new())?;
-    registry.register(ToFloat::new())?;
-    registry.register(ToCobs::new())?;
-    registry.register(FromBase64::new())?;
-    registry.register(ToBase64::new())?;
-    registry.register(FromBase85::new())?;
-    registry.register(ToBase85::new())?;
-    registry.register(FromBinary::new())?;
-    registry.register(ToBinary::new())?;
-    registry.register(FromCharcode::new())?;
-    registry.register(ToCharcode::new())?;
-    registry.register(FromDecimal::new())?;
-    registry.register(ToDecimal::new())?;
-    registry.register(FromHex::new())?;
-    registry.register(ToHex::new())?;
-    registry.register(FromHexdump::new())?;
-    registry.register(ToHexdump::new())?;
-    registry.register(FromHtmlEntity::new())?;
-    registry.register(ToHtmlEntity::new())?;
-    registry.register(FromModhex::new())?;
-    registry.register(ToModhex::new())?;
-    registry.register(FromMorseCode::new())?;
-    registry.register(ToMorseCode::new())?;
-    registry.register(FromOctal::new())?;
-    registry.register(ToOctal::new())?;
-    registry.register(Rot13::new())?;
-    registry.register(UrlDecode::new())?;
-    registry.register(UrlEncode::new())?;
-    Ok(())
-}
-
-/// Operations gated behind the opt-in packs.
-///
-/// With no pack selected there is nothing to register, so the registry is
-/// untouched; every arm below is compiled in only with its feature.
+/// Compressors and their inverses.
 #[cfg_attr(
-    not(any(
-        feature = "analysis",
-        feature = "arithmetic",
-        feature = "compression",
-        feature = "crypto",
-        feature = "hash",
-        feature = "text"
-    )),
-    expect(
-        unused_variables,
-        reason = "no pack is enabled, so nothing is registered"
-    )
+    not(feature = "compression"),
+    expect(unused_variables, reason = "the compression pack is not enabled")
 )]
-fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    #[cfg(feature = "analysis")]
-    {
-        registry.register(SuggestRecipe::new())?;
-        registry.register(XorBruteForce::new())?;
-    }
-    #[cfg(feature = "arithmetic")]
-    {
-        registry.register(ExtendedGcd::new())?;
-        registry.register(ModularInverse::new())?;
-    }
-    // Encodings rather than arithmetic, but they need the same big integers,
-    // so they follow the dependency and not the subject.
-    #[cfg(feature = "bignum")]
-    {
-        registry.register(FromBase62::new())?;
-        registry.register(ToBase62::new())?;
-        registry.register(HexToObjectIdentifier::new())?;
-        registry.register(ObjectIdentifierToHex::new())?;
-    }
+fn register_compression(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "compression")]
     {
         registry.register(Bzip2Compress::new())?;
@@ -311,12 +278,94 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
         registry.register(ZlibDeflate::new())?;
         registry.register(ZlibInflate::new())?;
     }
+    Ok(())
+}
+
+/// Slicing, reordering, and passing bytes through untouched.
+fn register_data(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Identity::new())?;
+    registry.register(DropBytes::new())?;
+    registry.register(DropNthBytes::new())?;
+    registry.register(Head::new())?;
+    registry.register(RemoveNullBytes::new())?;
+    registry.register(Reverse::new())?;
+    registry.register(SwapEndianness::new())?;
+    registry.register(TakeBytes::new())?;
+    registry.register(TakeNthBytes::new())?;
+    Ok(())
+}
+
+/// Every representation codec.
+fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(FromBase32::new())?;
+    registry.register(ToBase32::new())?;
+    registry.register(FromBase45::new())?;
+    registry.register(ToBase45::new())?;
+    registry.register(FromBase58::new())?;
+    registry.register(ToBase58::new())?;
+    registry.register(FromBase64::new())?;
+    registry.register(ToBase64::new())?;
+    registry.register(FromBase85::new())?;
+    registry.register(ToBase85::new())?;
+    registry.register(FromBinary::new())?;
+    registry.register(ToBinary::new())?;
+    registry.register(FromBraille::new())?;
+    registry.register(ToBraille::new())?;
+    registry.register(FromCharcode::new())?;
+    registry.register(ToCharcode::new())?;
+    registry.register(CaretMDecode::new())?;
+    registry.register(FromCobs::new())?;
+    registry.register(ToCobs::new())?;
+    registry.register(CitrixCtx1Decode::new())?;
+    registry.register(CitrixCtx1Encode::new())?;
+    registry.register(FromDecimal::new())?;
+    registry.register(ToDecimal::new())?;
+    registry.register(FromFloat::new())?;
+    registry.register(ToFloat::new())?;
+    registry.register(FromHex::new())?;
+    registry.register(ToHex::new())?;
+    registry.register(FromHexdump::new())?;
+    registry.register(ToHexdump::new())?;
+    registry.register(FromHtmlEntity::new())?;
+    registry.register(ToHtmlEntity::new())?;
+    registry.register(FromModhex::new())?;
+    registry.register(ToModhex::new())?;
+    registry.register(FromMorseCode::new())?;
+    registry.register(ToMorseCode::new())?;
+    registry.register(DecodeNetbiosName::new())?;
+    registry.register(EncodeNetbiosName::new())?;
+    registry.register(FromOctal::new())?;
+    registry.register(ToOctal::new())?;
+    registry.register(FromQuotedPrintable::new())?;
+    registry.register(ToQuotedPrintable::new())?;
+    registry.register(Rot13::new())?;
+    registry.register(UnicodeTextFormat::new())?;
+    registry.register(UrlDecode::new())?;
+    registry.register(UrlEncode::new())?;
+    registry.register(VarIntDecode::new())?;
+    registry.register(VarIntEncode::new())?;
+    registry.register(EscapeUnicodeCharacters::new())?;
+    registry.register(UnescapeUnicodeCharacters::new())?;
+
+    // 62 is not a power of two, so Base62 reads the whole input as one integer
+    // rather than as a stream of bit groups â€” which is why it needs arbitrary
+    // precision and the rest of this family does not.
+    #[cfg(feature = "bignum")]
+    {
+        registry.register(FromBase62::new())?;
+        registry.register(ToBase62::new())?;
+    }
+    Ok(())
+}
+
+/// Pulling indicators out of text, and putting them back safely.
+#[cfg_attr(
+    not(feature = "text"),
+    expect(unused_variables, reason = "the text pack is not enabled")
+)]
+fn register_extractors(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "text")]
     {
-        registry.register(FindReplace::new())?;
-        registry.register(DefangIpAddresses::new())?;
-        registry.register(DefangUrl::new())?;
-        registry.register(FangUrl::new())?;
         registry.register(ExtractDomains::new())?;
         registry.register(ExtractEmailAddresses::new())?;
         registry.register(ExtractFilePaths::new())?;
@@ -325,8 +374,26 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
         registry.register(ExtractMacAddresses::new())?;
         registry.register(ExtractUrls::new())?;
         registry.register(Strings::new())?;
-        registry.register(CountOccurrences::new())?;
+        registry.register(DefangIpAddresses::new())?;
+        registry.register(DefangUrl::new())?;
+        registry.register(FangUrl::new())?;
     }
+    Ok(())
+}
+
+/// Splitting a recipe and rejoining it.
+fn register_flow(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Fork::new())?;
+    registry.register(Merge::new())?;
+    Ok(())
+}
+
+/// Digests and message authentication.
+#[cfg_attr(
+    not(feature = "hash"),
+    expect(unused_variables, reason = "the hash pack is not enabled")
+)]
+fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "hash")]
     {
         registry.register(Md5::new())?;
@@ -341,15 +408,95 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
         registry.register(Ripemd::new())?;
         registry.register(Hmac::new())?;
     }
-    #[cfg(feature = "crypto")]
+    Ok(())
+}
+
+/// Bit-level logic, arithmetic, shifts, and rotations.
+///
+/// XOR and its brute force are here rather than with the ciphers. XOR against
+/// a repeating key is a cipher in the sense that people use it as one, and a
+/// bitwise operation in the sense that matters to a port â€” the catalog calls
+/// it Logic, and that is the placement this follows.
+fn register_logic(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Bitwise::add())?;
+    registry.register(Bitwise::and())?;
+    registry.register(Bitwise::not())?;
+    registry.register(Bitwise::or())?;
+    registry.register(Bitwise::sub())?;
+    registry.register(BitShift::left())?;
+    registry.register(BitShift::right())?;
+    registry.register(Rotate::left())?;
+    registry.register(Rotate::right())?;
+    registry.register(Ror13::new())?;
+    registry.register(ParityBit::new())?;
+    registry.register(Xor::new())?;
+
+    #[cfg(feature = "analysis")]
     {
-        registry.register(AesDecrypt::new())?;
-        registry.register(AesEncrypt::new())?;
-        registry.register(AesKeyUnwrap::new())?;
-        registry.register(AesKeyWrap::new())?;
-        registry.register(DerivePbkdf2Key::new())?;
-        registry.register(Rc4::new())?;
-        registry.register(Scrypt::new())?;
+        registry.register(XorBruteForce::new())?;
+    }
+    Ok(())
+}
+
+/// Reading a structured format rather than transforming bytes.
+fn register_parsing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(HexToPem::new())?;
+    registry.register(PemToHex::new())?;
+    registry.register(FormatMacAddresses::new())?;
+
+    // Object identifiers need arbitrary precision: an arc has no bound, and a
+    // registered one really does exceed sixty-four bits.
+    #[cfg(feature = "bignum")]
+    {
+        registry.register(HexToObjectIdentifier::new())?;
+        registry.register(ObjectIdentifierToHex::new())?;
+    }
+    Ok(())
+}
+
+/// Comparisons over lists: what two sets share, how far two strings are apart.
+fn register_sets(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(SetOperation::cartesian_product())?;
+    registry.register(SetOperation::difference())?;
+    registry.register(SetOperation::intersection())?;
+    registry.register(SetOperation::symmetric_difference())?;
+    registry.register(SetOperation::union())?;
+    registry.register(PowerSet::new())?;
+    registry.register(HammingDistance::new())?;
+    registry.register(LevenshteinDistance::new())?;
+    Ok(())
+}
+
+/// Reading, reshaping, and re-casing text.
+fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(ToLowerCase::new())?;
+    registry.register(ToUpperCase::new())?;
+    registry.register(SwapCase::new())?;
+    registry.register(AlternatingCaps::new())?;
+    registry.register(GetAllCasings::new())?;
+    registry.register(AddLineNumbers::new())?;
+    registry.register(PadLines::new())?;
+    registry.register(RemoveLineNumbers::new())?;
+    registry.register(RemoveWhitespace::new())?;
+    registry.register(Tail::new())?;
+    registry.register(RemoveAnsiEscapeCodes::new())?;
+    registry.register(StripHttpHeaders::new())?;
+    registry.register(DechunkHttpResponse::new())?;
+    registry.register(Wrap::new())?;
+    registry.register(Split::new())?;
+    registry.register(Unique::new())?;
+    registry.register(ExpandAlphabetRange::new())?;
+    registry.register(FromCaseInsensitiveRegex::new())?;
+    registry.register(EscapeSmartCharacters::new())?;
+    registry.register(StripHtmlTags::new())?;
+    registry.register(HtmlToText::new())?;
+    registry.register(UnescapeString::new())?;
+    registry.register(GenerateDeBruijnSequence::new())?;
+
+    #[cfg(feature = "text")]
+    {
+        registry.register(FindReplace::new())?;
+        registry.register(CountOccurrences::new())?;
     }
     Ok(())
 }
