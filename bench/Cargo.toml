@@ -23,6 +23,27 @@ ferrosift-core = { path = "../crates/ferrosift-core" }
 ferrosift-model = { path = "../crates/ferrosift-model" }
 ferrosift-operations = { path = "../crates/ferrosift-operations" }
 
+# The other Rust CyberChef port, and the only comparison here that is a peer
+# rather than a specialist: it answers "is FerroSift fast for a library of this
+# shape", where `base64` answers "is FerroSift fast for a codec".
+#
+# Optional and off by default, for a reason worth recording rather than
+# working around. rxchef depends unconditionally on `fernet`, which depends on
+# `openssl`, which needs a system OpenSSL install and a Perl toolchain to
+# build. Running a benchmark should not require that, so the arm is opt-in:
+#
+#     cargo bench --features peer --bench peer
+#
+# A regular dependency rather than a dev-dependency because cargo does not
+# allow optional dev-dependencies. Pinned to a commit because rxchef is not
+# published to crates.io.
+rxchef = { git = "https://github.com/MichaelWeissDEV/rx-chef", rev = "99e26de96e28faed5b850a32825afcc7cfd9cd22", optional = true }
+
+[features]
+# The peer comparison against rx-chef. Off by default because building it
+# needs a system OpenSSL toolchain; see the dependency note below.
+peer = ["dep:rxchef"]
+
 [dev-dependencies]
 criterion = { version = "=0.5.1", default-features = false, features = ["cargo_bench_support"] }
 
@@ -34,7 +55,7 @@ criterion = { version = "=0.5.1", default-features = false, features = ["cargo_b
 # as a win is the thing this file exists to make impossible — so `hex` and
 # `faster-hex` are both here, and whichever beats FerroSift is printed.
 base64 = "=0.22.1"
-crc32fast = "=1.4.2"
+crc32fast = "=1.5.1"
 faster-hex = "=0.10.0"
 hex = "=0.4.3"
 md-5 = "=0.10.6"
@@ -71,3 +92,9 @@ unsafe_code = "forbid"
 [lints.clippy]
 all = { level = "deny", priority = -1 }
 pedantic = { level = "deny", priority = -1 }
+
+# Opt-in: needs the peer feature, which pulls rxchef and therefore OpenSSL.
+[[bench]]
+name = "peer"
+harness = false
+required-features = ["peer"]

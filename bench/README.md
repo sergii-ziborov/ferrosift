@@ -67,6 +67,34 @@ Being self-contained also means this directory can be split into its own
 repository without changing anything but the `path` dependencies in
 `Cargo.toml`.
 
+## The peer arm
+
+Every other comparison here is a specialist. `base64` does one thing, and
+beating it would say FerroSift's codec is good. `rx-chef` is the other Rust
+CyberChef port, so it answers a different question: whether a library of *this
+shape* — registry, operation trait, typed arguments, pipeline — carries its
+structure cheaply. Both sides pay that cost, which is what makes the
+comparison about the implementations rather than the architectures.
+
+```bash
+cargo bench --features peer --bench peer
+```
+
+It is off by default, and the reason is worth recording rather than working
+around. `rxchef` depends unconditionally on `fernet`, which depends on
+`openssl`, which needs a system OpenSSL install and a Perl toolchain to build.
+Running a benchmark should not require installing a C library, so the arm is
+opt-in and the default build never pulls it.
+
+That dependency is itself a measurement of sorts. FerroSift's portable surface
+needs no system library on any target, which is the claim `docs/portability.md`
+holds to two bare-metal targets. Noting where a peer differs is fair; the
+numbers below, when they exist, are what actually settles anything.
+
+Where the two disagree on output, the bench prints the divergence instead of
+timing it. Comparing the speed of operations that do not produce the same bytes
+is not a comparison of anything.
+
 ## Adding a comparison
 
 1. Add the crate to `[dev-dependencies]` with an exact `=` version.
