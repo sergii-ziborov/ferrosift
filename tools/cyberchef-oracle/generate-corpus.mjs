@@ -52,6 +52,8 @@ import * as legacyDigest from "./corpus/legacy-digest.mjs";
 import * as sets from "./corpus/sets.mjs";
 import * as shape from "./corpus/shape.mjs";
 import * as text from "./corpus/text.mjs";
+import * as sponge from "./corpus/sponge.mjs";
+import * as snort from "./corpus/snort.mjs";
 
 const profile = selectedProfile();
 const chef = await loadChef(profile);
@@ -62,7 +64,10 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind]) {
+// Order is part of the fixture: it fixes the PRNG draw order, so a new family
+// is appended rather than inserted. Inserting one would re-draw every sample
+// after it and rewrite fixtures that nothing about the change had touched.
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort]) {
     await family.add(builder);
 }
 

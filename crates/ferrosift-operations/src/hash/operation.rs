@@ -244,6 +244,120 @@ impl Operation for Sha2 {
     }
 }
 
+/// Keccak as submitted to the SHA-3 competition, before the padding changed.
+pub struct Keccak {
+    spec: OperationSpec,
+}
+
+impl Keccak {
+    /// Creates the Keccak operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "hash.keccak@1",
+                display_name: "Keccak",
+                category: "Hashing",
+                description: "Computes an original Keccak digest as lower-case hex.",
+                cyberchef_alias: Some("Keccak"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![text_argument(
+                    "size",
+                    "Digest size: 224, 256, 384, or 512.",
+                    "512",
+                )],
+                inverse: None,
+                classifications: None,
+            }),
+        }
+    }
+}
+
+impl Default for Keccak {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Keccak {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let input = crate::value::take_bytes(input)?;
+        Ok(text(codec::keccak(
+            &input,
+            text_value(arguments, "size")?,
+            context,
+        )?))
+    }
+}
+
+/// SHAKE, the extendable-output function of the Keccak family.
+pub struct Shake {
+    spec: OperationSpec,
+}
+
+impl Shake {
+    /// Creates the SHAKE operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: build(SpecDefinition {
+                id: "hash.shake@1",
+                display_name: "Shake",
+                category: "Hashing",
+                description: "Computes a SHAKE digest of the requested length as lower-case hex.",
+                cyberchef_alias: Some("Shake"),
+                input: ValueConstraint::Exact(ValueKind::Bytes),
+                output: ValueConstraint::Exact(ValueKind::Text),
+                arguments: vec![
+                    text_argument("capacity", "Security level: 128 or 256.", "256"),
+                    integer_argument("size", "Output size in bits, a multiple of 8.", 512),
+                ],
+                inverse: None,
+                classifications: None,
+            }),
+        }
+    }
+}
+
+impl Default for Shake {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Shake {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let input = crate::value::take_bytes(input)?;
+        Ok(text(codec::shake(
+            &input,
+            text_value(arguments, "capacity")?,
+            integer_value(arguments, "size")?,
+            context,
+        )?))
+    }
+}
+
 fn text(value: alloc::string::String) -> Value {
     Value::Text(TextValue {
         text: value,

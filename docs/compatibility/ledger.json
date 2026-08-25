@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 180,
-    "aliased": 178,
-    "exact": 174,
+    "operations": 186,
+    "aliased": 184,
+    "exact": 180,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3384
+    "pinned_cases": 3483
   },
   "operations": [
     {
@@ -958,6 +958,32 @@
       "status": "exact"
     },
     {
+      "id": "encoding.base92.decode@1",
+      "display_name": "From Base92",
+      "category": "Encoding",
+      "reference_alias": "From Base92",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base92.encode@1",
+      "display_name": "To Base92",
+      "category": "Encoding",
+      "reference_alias": "To Base92",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 8,
+      "status": "exact"
+    },
+    {
       "id": "encoding.binary.decode@1",
       "display_name": "From Binary",
       "category": "Encoding",
@@ -1176,6 +1202,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 49,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.hex_content.decode@1",
+      "display_name": "From Hex Content",
+      "category": "Encoding",
+      "reference_alias": "From Hex Content",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.hex_content.encode@1",
+      "display_name": "To Hex Content",
+      "category": "Encoding",
+      "reference_alias": "To Hex Content",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 26,
       "status": "exact"
     },
     {
@@ -1597,6 +1649,19 @@
       "status": "exact"
     },
     {
+      "id": "hash.keccak@1",
+      "display_name": "Keccak",
+      "category": "Hashing",
+      "reference_alias": "Keccak",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 24,
+      "status": "exact"
+    },
+    {
       "id": "hash.md2@1",
       "display_name": "MD2",
       "category": "Hashing",
@@ -1698,6 +1763,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "hash.shake@1",
+      "display_name": "Shake",
+      "category": "Hashing",
+      "reference_alias": "Shake",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 24,
       "status": "exact"
     },
     {

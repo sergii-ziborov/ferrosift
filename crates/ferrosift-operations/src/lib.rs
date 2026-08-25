@@ -22,6 +22,7 @@ mod base58;
 mod base62;
 mod base64;
 mod base85;
+mod base92;
 mod binary;
 mod bitwise;
 mod braille;
@@ -41,6 +42,7 @@ mod generate;
 mod head;
 mod hex;
 mod hex_util;
+mod hexcontent;
 mod hexdump;
 mod html;
 mod identity;
@@ -116,6 +118,7 @@ pub use base58::{FromBase58, ToBase58};
 pub use base62::{FromBase62, ToBase62};
 pub use base64::{FromBase64, ToBase64};
 pub use base85::{FromBase85, ToBase85};
+pub use base92::{FromBase92, ToBase92};
 pub use binary::{FromBinary, ToBinary};
 pub use bitwise::{BitShift, Bitwise, Ror13, Rotate, SwapEndianness};
 pub use braille::{FromBraille, ToBraille, UnicodeTextFormat};
@@ -133,6 +136,7 @@ pub use flow::{Fork, Merge};
 pub use generate::GenerateDeBruijnSequence;
 pub use head::Head;
 pub use hex::{FromHex, ToHex};
+pub use hexcontent::{FromHexContent, ToHexContent};
 pub use hexdump::{FromHexdump, ToHexdump};
 pub use html::{FromHtmlEntity, ToHtmlEntity};
 pub use identity::Identity;
@@ -186,7 +190,7 @@ pub use extract::{
 #[cfg(feature = "text")]
 pub use find::FindReplace;
 #[cfg(feature = "hash")]
-pub use hash::{Md5, Sha1, Sha2, Sha3};
+pub use hash::{Keccak, Md5, Sha1, Sha2, Sha3, Shake};
 #[cfg(feature = "hash")]
 pub use hmac_op::Hmac;
 #[cfg(feature = "crypto")]

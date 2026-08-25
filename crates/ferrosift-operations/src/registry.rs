@@ -27,14 +27,16 @@ use crate::{
     DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
     ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
     FromBase85, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
-    FromDecimal, FromFloat, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode,
+    FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
+    FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
     HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines, ParityBit,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
     SetOperation, Split, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness,
-    Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary,
-    ToBraille, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexdump, ToHtmlEntity, ToLowerCase,
+    Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
+    ToBinary, ToBraille, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent, ToHexdump,
+    ToHtmlEntity, ToLowerCase,
     ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
     UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
     VarIntEncode, Wrap, Xor,
@@ -55,7 +57,7 @@ use crate::{
 #[cfg(feature = "arithmetic")]
 use crate::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "hash")]
-use crate::{FixedDigest, Hmac, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3};
+use crate::{FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake};
 #[cfg(feature = "bignum")]
 use crate::{FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase62};
 #[cfg(feature = "analysis")]
@@ -307,6 +309,10 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     registry.register(ToBase64::new())?;
     registry.register(FromBase85::new())?;
     registry.register(ToBase85::new())?;
+    registry.register(FromBase92::new())?;
+    registry.register(ToBase92::new())?;
+    registry.register(FromHexContent::new())?;
+    registry.register(ToHexContent::new())?;
     registry.register(FromBinary::new())?;
     registry.register(ToBinary::new())?;
     registry.register(FromBraille::new())?;
@@ -400,6 +406,8 @@ fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
         registry.register(Sha1::new())?;
         registry.register(Sha2::new())?;
         registry.register(Sha3::new())?;
+        registry.register(Keccak::new())?;
+        registry.register(Shake::new())?;
         registry.register(FixedDigest::md2())?;
         registry.register(FixedDigest::md4())?;
         registry.register(FixedDigest::sm3())?;

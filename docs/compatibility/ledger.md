@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 180 |
-| Reference-aliased | 178 |
-| Byte-pinned (`exact`) | 174 |
+| Registered operations | 186 |
+| Reference-aliased | 184 |
+| Byte-pinned (`exact`) | 180 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3384 |
+| Pinned cases | 3483 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -106,6 +106,8 @@ does.
 | `encoding.base64.encode@1` | To Base64 | core | exact | 52 |
 | `encoding.base85.decode@1` | From Base85 | core | exact | 26 |
 | `encoding.base85.encode@1` | To Base85 | core | exact | 27 |
+| `encoding.base92.decode@1` | From Base92 | core | exact | 7 |
+| `encoding.base92.encode@1` | To Base92 | core | exact | 8 |
 | `encoding.binary.decode@1` | From Binary | core | exact | 14 |
 | `encoding.binary.encode@1` | To Binary | core | exact | 13 |
 | `encoding.braille.decode@1` | From Braille | core | exact | 15 |
@@ -123,6 +125,8 @@ does.
 | `encoding.float.encode@1` | To Float | core | exact | 59 |
 | `encoding.hex.decode@1` | From Hex | core | exact | 27 |
 | `encoding.hex.encode@1` | To Hex | core | exact | 49 |
+| `encoding.hex_content.decode@1` | From Hex Content | core | exact | 10 |
+| `encoding.hex_content.encode@1` | To Hex Content | core | exact | 26 |
 | `encoding.hexdump.decode@1` | From Hexdump | core | exact | 6 |
 | `encoding.hexdump.encode@1` | To Hexdump | core | exact | 12 |
 | `encoding.html.decode@1` | From HTML Entity | core | exact | 5 |
@@ -155,6 +159,7 @@ does.
 | `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
 | `hash.hmac@1` | HMAC | hash | exact | 5 |
+| `hash.keccak@1` | Keccak | hash | exact | 24 |
 | `hash.md2@1` | MD2 | hash | exact | 13 |
 | `hash.md4@1` | MD4 | hash | exact | 13 |
 | `hash.md5@1` | MD5 | hash | exact | 7 |
@@ -163,6 +168,7 @@ does.
 | `hash.sha1@1` | SHA1 | hash | exact | 7 |
 | `hash.sha2@1` | SHA2 | hash | exact | 13 |
 | `hash.sha3@1` | SHA3 | hash | exact | 13 |
+| `hash.shake@1` | Shake | hash | exact | 24 |
 | `hash.sm3@1` | SM3 | hash | exact | 13 |
 | `hash.whirlpool@1` | Whirlpool | hash | exact | 13 |
 | `http.dechunk@1` | Dechunk HTTP response | core | exact | 7 |

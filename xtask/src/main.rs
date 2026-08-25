@@ -52,17 +52,47 @@ fn main() -> ExitCode {
 
 /// Runs a command, streaming its output, and reports whether it succeeded.
 fn run_streaming(program: &str, arguments: &[&str], directory: Option<&str>) -> bool {
-    let mut command = Command::new(program);
-    command.args(arguments);
-    if let Some(directory) = directory {
-        command.current_dir(directory);
-    }
     eprintln!("$ {program} {}", arguments.join(" "));
-    match command.status() {
+    match spawn(program, arguments, directory) {
         Ok(status) => status.success(),
         Err(error) => {
             eprintln!("failed to run {program}: {error}");
             false
         }
     }
+}
+
+/// Starts a program, falling back to the shell for Windows batch shims.
+///
+/// `npm` and `npx` on Windows are `npm.cmd` and `npx.cmd`. `Command::new`
+/// resolves neither: it looks for an executable image and does not consult
+/// `PATHEXT`, so a machine with a working npm still reports "program not
+/// found". Retrying through `cmd /c` is the documented way to reach a shim.
+///
+/// The retry is deliberately conditional on the direct spawn failing to find
+/// the program, so `git` and `node` — real executables — keep their exact
+/// argument vector rather than being re-parsed by the shell.
+fn spawn(
+    program: &str,
+    arguments: &[&str],
+    directory: Option<&str>,
+) -> std::io::Result<std::process::ExitStatus> {
+    let mut command = Command::new(program);
+    command.args(arguments);
+    if let Some(directory) = directory {
+        command.current_dir(directory);
+    }
+    let error = match command.status() {
+        Ok(status) => return Ok(status),
+        Err(error) => error,
+    };
+    if !cfg!(windows) || error.kind() != std::io::ErrorKind::NotFound {
+        return Err(error);
+    }
+    let mut shell = Command::new("cmd");
+    shell.arg("/c").arg(program).args(arguments);
+    if let Some(directory) = directory {
+        shell.current_dir(directory);
+    }
+    shell.status()
 }
