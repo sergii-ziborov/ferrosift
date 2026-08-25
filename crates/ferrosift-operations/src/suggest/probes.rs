@@ -5,16 +5,32 @@ use alloc::vec::Vec;
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{ArgumentValue, Arguments, Value};
 
+#[cfg(feature = "text")]
+use super::detect::looks_defanged;
+#[cfg(feature = "compression")]
+use super::detect::zlib_args;
 use super::detect::{
-    looks_defanged, looks_like_base32, looks_like_base64, looks_like_hex, looks_like_html_entities,
-    looks_like_url_encoded, looks_like_zlib, looks_mostly_alpha, zlib_args,
+    looks_like_base32, looks_like_base64, looks_like_hex, looks_like_html_entities,
+    looks_like_url_encoded, looks_mostly_alpha,
 };
+// Used only by the magic-byte probes, which the compression pack gates.
+#[cfg(feature = "compression")]
+use super::detect::looks_like_zlib;
 use super::model::{Hit, Options, Step};
 use super::scoring::{try_op, try_text};
-use crate::{
-    Bzip2Decompress, FangUrl, FromBase32, FromBase64, FromHex, FromHtmlEntity, Gunzip, RawInflate,
-    Rot13, UrlDecode, ZlibInflate,
-};
+// Probes for operations that always exist. Suggest itself needs nothing more
+// than these, which is what lets `analysis` stand on its own.
+use crate::{FromBase32, FromBase64, FromHex, FromHtmlEntity, Rot13, UrlDecode};
+
+// Probes are only compiled when the pack that provides the operation they
+// offer is compiled. Suggest used to force `compression` and `text` for these,
+// which pulled a regex engine and bzip2 — and bzip2's std edge is what kept
+// `analysis` off bare metal. A recipe suggester should widen with the catalog,
+// not decide the catalog.
+#[cfg(feature = "text")]
+use crate::FangUrl;
+#[cfg(feature = "compression")]
+use crate::{Bzip2Decompress, Gunzip, RawInflate, ZlibInflate};
 
 pub(super) fn explore(
     bytes: &[u8],
@@ -27,6 +43,7 @@ pub(super) fn explore(
     if bytes.is_empty() {
         return Ok(());
     }
+    #[cfg(feature = "compression")]
     probe_magic_bytes(bytes, options, hits, context)?;
     if let Some(text) = text {
         probe_text(text, options, hits, context)?;
@@ -78,6 +95,12 @@ fn probe_rot13(
     )
 }
 
+/// Container magic numbers, offered only when the decompressors exist.
+///
+/// Without the `compression` pack there is nothing to suggest for a gzip
+/// header, so the probe is absent rather than offering an operation the build
+/// does not contain.
+#[cfg(feature = "compression")]
 fn probe_magic_bytes(
     bytes: &[u8],
     options: Options,
@@ -171,6 +194,7 @@ fn probe_text(
     probe_base32(text, trimmed, options, hits, context)?;
     probe_url(text, trimmed, options, hits, context)?;
     probe_html(text, trimmed, options, hits, context)?;
+    #[cfg(feature = "text")]
     probe_defang(text, trimmed, options, hits, context)?;
     Ok(())
 }
@@ -282,6 +306,8 @@ text_probe!(
     fragment: r#"{"op":"From HTML Entity","args":[]}"#
 );
 
+// Offered only when the `text` pack provides Fang URL to offer.
+#[cfg(feature = "text")]
 text_probe!(
     probe_defang,
     looks_defanged,

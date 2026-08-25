@@ -26,9 +26,18 @@ hash = [
     "dep:sm3",
     "dep:whirlpool",
 ]
-# Ciphers and key derivation. PBKDF2 and scrypt build on the hash pack.
+# Ciphers and key derivation.
+#
+# PBKDF2 and scrypt need the SHA and HMAC *crates*, which is not the same as
+# needing the SHA, MD2, MD4, RIPEMD, SM3, and Whirlpool *operations*. Asking
+# for AES used to register all of them; it now pulls only the primitives the
+# key derivations instantiate.
 crypto = [
-    "hash",
+    "dep:digest",
+    "dep:hmac",
+    "dep:md5",
+    "dep:sha1",
+    "dep:sha2",
     "dep:aes",
     "dep:aes-gcm",
     "dep:cbc",
@@ -44,8 +53,14 @@ crypto = [
 compression = ["dep:miniz_oxide", "dep:oxiarc-bzip2"]
 # Indicator extraction and defanging.
 text = ["dep:regex-automata"]
-# Recipe suggestion, which probes the compression and text packs.
-analysis = ["compression", "text"]
+# Recipe suggestion and XOR brute force.
+#
+# Probes widen with whatever else is compiled rather than pulling packs in.
+# `analysis` alone offers Base64, Hex, Base32, URL, HTML, and ROT13; adding
+# `compression` or `text` adds their probes too. Forcing both used to drag in a
+# regex engine and bzip2, and bzip2's transitive std edge is what kept
+# `analysis` off bare metal.
+analysis = []
 
 # Operations outside these packs — identity, flow control, every encoding,
 # byte slicing, and XOR — carry no external dependency and are always

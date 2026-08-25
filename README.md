@@ -137,7 +137,7 @@ the packs below are the only ones that pull third-party crates.
 | `crypto` | AES, key wrap, RC4, PBKDF2, scrypt | RustCrypto ciphers, KDFs |
 | `compression` | gzip, zlib, raw DEFLATE, bzip2 | `miniz_oxide`, `oxiarc-bzip2` |
 | `text` | extractors, defang, Find / Replace | `regex-automata` |
-| `analysis` | Suggest recipe, XOR brute force | via `compression` + `text` |
+| `analysis` | Suggest recipe, XOR brute force | nothing |
 | `pattern` | the hex-pattern engine | nothing |
 | `portable-full` | every pack above | — |
 

@@ -2,6 +2,7 @@
 
 use alloc::string::String;
 
+#[cfg(feature = "compression")]
 use ferrosift_model::{ArgumentValue, Arguments};
 
 pub(super) fn looks_like_hex(text: &str) -> bool {
@@ -62,11 +63,17 @@ pub(super) fn looks_like_html_entities(text: &str) -> bool {
         || text.contains("&quot;")
 }
 
+#[cfg(feature = "text")]
 pub(super) fn looks_defanged(text: &str) -> bool {
     let lower = text.to_ascii_lowercase();
     lower.contains("hxxp") || lower.contains("[.]") || lower.contains("[://]")
 }
 
+/// Whether the first two bytes read as a zlib header.
+///
+/// Ungated: recognising a header is a property of the bytes, not of whether
+/// this build can act on it. The scoring heuristic uses it to raise confidence
+/// on compressed-looking input even when no decompressor is compiled.
 pub(super) fn looks_like_zlib(bytes: &[u8]) -> bool {
     if bytes.len() < 2 {
         return false;
@@ -87,6 +94,7 @@ pub(super) fn looks_mostly_alpha(bytes: &[u8]) -> bool {
     alpha * 100 / bytes.len() >= 80
 }
 
+#[cfg(feature = "compression")]
 pub(super) fn zlib_args() -> Arguments {
     Arguments::from([
         ("start_index".into(), ArgumentValue::Integer(0)),
