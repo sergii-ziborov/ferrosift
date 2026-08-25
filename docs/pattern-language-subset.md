@@ -105,6 +105,20 @@ A field may only refer to fields declared **before** it. That is not a
 restriction this crate adds — a later field's bytes have not been read, so its
 value does not exist yet.
 
+Two limits here *are* this crate's, and are worth knowing before writing a
+pattern against it:
+
+- **A nested type cannot see the body that holds it.** Expressions resolve
+  against siblings only, so `struct Inner { u8 data[parent.length]; }` has no
+  way to reach `length`. Passing the value down as a field of the inner type
+  is not possible either, because there are no parameters yet. Where a real
+  format needs this, the inner fields have to be written into the outer body.
+- **`sizeof` does not take a named type.** `sizeof(u32)` works and
+  `sizeof(some_field)` works, but `sizeof(Header)` is read as a field path and
+  fails with `unknown_field`. A declared type's width is not always a
+  constant — a body with an `if` in it has no single size — so answering it
+  properly means evaluating the type, which is a larger change than this.
+
 ## Built-in types
 
 | Category | Types |
@@ -166,8 +180,9 @@ Each of these is a named future step, never a silent gap: functions and their
 `return`, `while` and `for` statements, `match`, pointers (`Type *p : u32`),
 namespaces, attributes (`[[color]]`, `[[name]]`, `[[hidden]]`, …), the
 preprocessor (`#include`, `#define`, `#pragma`), `str` and `auto`, unbounded
-arrays terminated by a sentinel, and `in` / `out` variables. Sources using
-them are rejected with a stable code, never partially accepted.
+arrays terminated by a sentinel, `in` / `out` variables, and the `parent` and
+`this` scopes. Sources using them are rejected with a stable code, never
+partially accepted.
 
 ## Failure codes
 

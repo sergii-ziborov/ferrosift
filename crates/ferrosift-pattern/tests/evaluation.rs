@@ -485,3 +485,87 @@ fn a_while_array_that_never_advances_is_stopped_by_the_node_budget() {
     .expect_err("expected the budget to stop it");
     assert_eq!(error.code(), "pattern.eval.node_budget_exceeded");
 }
+
+#[test]
+fn a_nested_type_cannot_reach_the_body_that_holds_it() {
+    // Documented limitation rather than a bug being hidden: expressions
+    // resolve against siblings, so an inner type has no path to the outer
+    // field. Pinning the code keeps the limit honest -- if scoping is ever
+    // widened, this test is what says so.
+    let error = reject(
+        "struct Inner { u8 data[length]; };
+         struct Outer { u8 length; Inner inner; };
+         Outer outer @ 0;",
+        &[2, 7, 7],
+    );
+    assert_eq!(error.code(), "pattern.eval.unknown_field");
+}
+
+#[test]
+fn sizeof_a_declared_type_is_read_as_a_field_and_fails() {
+    // `sizeof(Header)` looks reasonable and is not supported: a body with an
+    // `if` in it has no single width, so the answer needs evaluation. It fails
+    // as an unreadable field rather than silently returning something.
+    let error = reject(
+        "struct Header { u8 a; };
+         u8 body[sizeof(Header)] @ 0;",
+        &[1, 2, 3],
+    );
+    assert_eq!(error.code(), "pattern.eval.unknown_field");
+}
+
+#[test]
+fn short_circuit_operators_do_not_evaluate_the_dead_side() {
+    // The right side divides by a zero the left side has already excluded.
+    let nodes = run(
+        "struct S { u8 n; u8 items[(n != 0 && 8 / n > 100) ? 1 : 2]; };
+         S s @ 0;",
+        &[0, 9, 9],
+    );
+    assert_eq!(nodes[0].child("items").expect("field").children().len(), 2);
+}
+
+#[test]
+fn a_computed_zero_length_yields_an_empty_array() {
+    // A literal `[0]` is refused while parsing, but a computed zero cannot be:
+    // its value is not known until the bytes are read. An empty array is the
+    // answer rather than a failure.
+    let nodes = run(
+        "struct S { u8 n; u8 items[n]; u8 tail; };
+         S s @ 0;",
+        &[0, 0xab],
+    );
+    let items = nodes[0].child("items").expect("field");
+    assert_eq!(items.children().len(), 0);
+    assert_eq!((items.offset, items.size), (1, 0));
+    // The zero-width array must not disturb what follows it.
+    assert_eq!(nodes[0].child("tail").expect("field").offset, 1);
+}
+
+#[test]
+fn a_union_takes_its_widest_member_even_when_declared_first() {
+    let nodes = run(
+        "union U { be u32 wide; u8 narrow; };
+         struct S { U u; u8 after; };
+         S s @ 0;",
+        &[1, 2, 3, 4, 0xff],
+    );
+    assert_eq!(nodes[0].child("u").expect("member").size, 4);
+    assert_eq!(nodes[0].child("after").expect("field").offset, 4);
+}
+
+#[test]
+fn conditionals_nest_inside_a_union_and_stay_overlaid() {
+    let nodes = run(
+        "union U {
+             u8 tag;
+             if (tag == 1) { be u16 pair; }
+         };
+         U u @ 0;",
+        &[1, 0x02],
+    );
+    let pair = nodes[0].child("pair").expect("member");
+    assert_eq!(pair.offset, 0);
+    assert_eq!(pair.value, NodeValue::Unsigned(0x0102));
+    assert_eq!(nodes[0].size, 2);
+}
