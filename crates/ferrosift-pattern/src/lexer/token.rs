@@ -108,6 +108,8 @@ pub enum Symbol {
     Comma,
     /// `:`
     Colon,
+    /// `::`, qualifying a constant with the enum that declares it.
+    PathSep,
     /// `=`
     Assign,
     /// `@`, placing a variable at an absolute offset.
@@ -211,6 +213,7 @@ impl Symbol {
             ('!', '=') => Self::NotEqual,
             ('<', '=') => Self::LessEqual,
             ('>', '=') => Self::GreaterEqual,
+            (':', ':') => Self::PathSep,
             _ => return None,
         })
     }

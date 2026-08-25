@@ -5,12 +5,13 @@
 //! it is not zero -- so a separate boolean type would have to be converted at
 //! every operator rather than at the two places that actually ask.
 
-use crate::ast::{BinaryOperator, Expression, SizeOfTarget, UnaryOperator};
+use crate::ast::{BinaryOperator, Declaration, Expression, Pattern, SizeOfTarget, UnaryOperator};
 use crate::error::{PatternError, Position};
 
 use super::value::{Node, NodeValue};
 
 pub(super) const UNKNOWN_FIELD: &str = "pattern.eval.unknown_field";
+pub(super) const UNKNOWN_CONSTANT: &str = "pattern.eval.unknown_constant";
 pub(super) const NOT_A_NUMBER: &str = "pattern.eval.not_a_number";
 pub(super) const ARITHMETIC_OVERFLOW: &str = "pattern.eval.arithmetic_overflow";
 pub(super) const DIVIDE_BY_ZERO: &str = "pattern.eval.divide_by_zero";
@@ -27,6 +28,12 @@ pub(super) struct Scope<'a> {
     pub(super) siblings: &'a [Node],
     /// The offset the field being evaluated begins at, for `$`.
     pub(super) offset: u64,
+    /// The declarations, for resolving `Enum::Constant`.
+    ///
+    /// Absent while folding a constant during parsing: the pattern is still
+    /// being built then, so an enum referenced from a bit width may not have
+    /// been read yet. Failing there is honest; half a pattern is not a scope.
+    pub(super) pattern: Option<&'a Pattern>,
 }
 
 impl Scope<'_> {
@@ -34,6 +41,7 @@ impl Scope<'_> {
     pub(super) const EMPTY: Scope<'static> = Scope {
         siblings: &[],
         offset: 0,
+        pattern: None,
     };
 }
 
@@ -57,6 +65,10 @@ pub(super) fn evaluate(expression: &Expression, scope: Scope<'_>) -> Result<i128
         Expression::Char(value) => Ok(i128::from(u32::from(*value))),
         Expression::Offset => Ok(i128::from(scope.offset)),
         Expression::Path(segments) => number(resolve(segments, scope)?),
+        Expression::EnumConstant {
+            enumeration,
+            constant,
+        } => enum_constant(enumeration, constant, scope),
         Expression::SizeOf(target) => size_of(target, scope),
         Expression::Unary { operator, operand } => {
             let value = evaluate(operand, scope)?;
@@ -180,6 +192,27 @@ fn size_of(target: &SizeOfTarget, scope: Scope<'_>) -> Result<i128, PatternError
         SizeOfTarget::Builtin(builtin) => i128::from(builtin.size()),
         SizeOfTarget::Path(segments) => i128::from(resolve(segments, scope)?.size),
     })
+}
+
+/// Looks up `Enum::Constant` among the pattern's declarations.
+fn enum_constant(
+    enumeration: &str,
+    constant: &str,
+    scope: Scope<'_>,
+) -> Result<i128, PatternError> {
+    let pattern = scope
+        .pattern
+        .ok_or_else(|| fail(UNKNOWN_CONSTANT, "no declarations are in scope here"))?;
+    let Some(Declaration::Enum(declaration)) = pattern.type_named(enumeration) else {
+        return Err(fail(UNKNOWN_CONSTANT, "no enum of that name is declared"));
+    };
+    let entry = declaration
+        .entries
+        .iter()
+        .find(|entry| entry.name == constant)
+        .ok_or_else(|| fail(UNKNOWN_CONSTANT, "that enum declares no such constant"))?;
+    i128::try_from(entry.value)
+        .map_err(|_| fail(ARITHMETIC_OVERFLOW, "constant exceeds 127 bits"))
 }
 
 /// Walks a dotted path through the fields already read.

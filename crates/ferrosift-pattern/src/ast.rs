@@ -19,6 +19,17 @@ pub enum Expression {
     Char(char),
     /// A dotted path to a field already read in the enclosing scope.
     Path(Vec<String>),
+    /// `Enum::Constant`, the declared value of one enum entry.
+    ///
+    /// Qualified rather than bare: a constant name may be declared by more
+    /// than one enum, and picking one of them by search would make the meaning
+    /// of a pattern depend on what else happens to be declared beside it.
+    EnumConstant {
+        /// The enum that declares it.
+        enumeration: String,
+        /// The entry name.
+        constant: String,
+    },
     /// `$`, the offset the field being evaluated starts at.
     Offset,
     /// `sizeof(...)`, in bytes.

@@ -1,4 +1,4 @@
-//! Evaluation vectors: value decoding, layout offsets, and bounded failure.
+﻿//! Evaluation vectors: value decoding, layout offsets, and bounded failure.
 
 use ferrosift_pattern::{EvalOptions, Node, NodeValue, PatternError, evaluate, parse};
 
@@ -568,4 +568,114 @@ fn conditionals_nest_inside_a_union_and_stay_overlaid() {
     assert_eq!(pair.offset, 0);
     assert_eq!(pair.value, NodeValue::Unsigned(0x0102));
     assert_eq!(nodes[0].size, 2);
+}
+
+
+#[test]
+fn a_realistic_container_format_parses_end_to_end() {
+    // The expression layer exercised the way a real pattern would use it: a
+    // header whose length decides where the body starts, a record count taken
+    // from the file, a per-record tag choosing between two payload shapes, and
+    // a body placed after a header of no fixed size.
+    //
+    // None of this could be written before. Every length and address had to be
+    // a literal, so a pattern matched one file rather than a format.
+    let source = "
+        enum Tag : u8 { Text = 1, Number = 2 };
+
+        struct Record {
+            Tag tag;
+            u8 length;
+            if (tag == Tag::Text) { char text[length]; }
+            else { be u32 number; }
+        };
+
+        struct Header {
+            be u16 magic;
+            u8 name_length;
+            char name[name_length];
+            u8 records;
+        };
+
+        Header header @ 0;
+        Record body[header.records] @ sizeof(header);
+    ";
+
+    let data = [
+        // header: magic, name length 3, `abc`, two records
+        0xca, 0xfe, 3, b'a', b'b', b'c', 2,
+        // record 0: Text, length 2, `hi`
+        1, 2, b'h', b'i',
+        // record 1: Number, length 4, 42 big-endian
+        2, 4, 0x00, 0x00, 0x00, 0x2a,
+    ];
+
+    let nodes = run(source, &data);
+
+    let header = &nodes[0];
+    assert_eq!(
+        header.child("magic").expect("field").value,
+        NodeValue::Unsigned(0xcafe)
+    );
+    assert_eq!(header.size, 7);
+
+    let body = &nodes[1];
+    assert_eq!(body.offset, 7);
+    assert_eq!(body.children().len(), 2);
+
+    let first = &body.children()[0];
+    assert_eq!(
+        first.child("tag").expect("field").value,
+        NodeValue::Enumerator {
+            name: Some("Text".into()),
+            value: 1
+        }
+    );
+    assert_eq!(first.child("text").expect("field").children().len(), 2);
+    assert!(first.child("number").is_none());
+
+    let second = &body.children()[1];
+    assert_eq!(
+        second.child("number").expect("field").value,
+        NodeValue::Unsigned(42)
+    );
+    assert!(second.child("text").is_none());
+
+    // Every node still carries the exact bytes it came from, which is the
+    // property the whole crate exists for.
+    assert_eq!((second.offset, second.size), (11, 6));
+}
+
+#[test]
+fn an_enum_constant_is_qualified_by_the_enum_that_declares_it() {
+    // Two enums declaring the same name is why the qualifier is required: a
+    // bare `Read` would have to pick one, and which one it picked would depend
+    // on what else happened to be declared beside it.
+    let source = "
+        enum Access : u8 { None = 0, Read = 1 };
+        enum Mode : u8 { Write = 1, Read = 2 };
+        struct S {
+            u8 kind;
+            if (kind == Mode::Read) { u8 from_mode; }
+            else if (kind == Access::Read) { u8 from_access; }
+        };
+        S s @ 0;
+    ";
+
+    let nodes = run(source, &[2, 0xaa]);
+    assert!(nodes[0].child("from_mode").is_some());
+
+    let nodes = run(source, &[1, 0xaa]);
+    assert!(nodes[0].child("from_access").is_some());
+}
+
+#[test]
+fn unknown_enum_constants_report_a_stable_code() {
+    for source in [
+        "enum E : u8 { A = 1 }; struct S { u8 k; if (k == E::Missing) { u8 x; } }; S s @ 0;",
+        "struct S { u8 k; if (k == Absent::A) { u8 x; } }; S s @ 0;",
+    ] {
+        let error = reject(source, &[1, 2]);
+        assert_eq!(error.code(), "pattern.eval.unknown_constant", "{source}");
+    }
 }

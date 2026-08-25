@@ -136,7 +136,20 @@ fn primary(cursor: &mut Cursor) -> Result<Expression, PatternError> {
             cursor.advance();
             size_of(cursor)
         }
-        TokenKind::Identifier(_) => Ok(Expression::Path(path(cursor)?)),
+        TokenKind::Identifier(_) => {
+            let first = cursor.expect_identifier()?;
+            if cursor.eat(Symbol::PathSep) {
+                return Ok(Expression::EnumConstant {
+                    enumeration: first,
+                    constant: cursor.expect_identifier()?,
+                });
+            }
+            let mut segments = vec![first];
+            while cursor.eat(Symbol::Dot) {
+                segments.push(cursor.expect_identifier()?);
+            }
+            Ok(Expression::Path(segments))
+        }
         _ => Err(cursor.fail(UNEXPECTED_TOKEN, "expected a value")),
     }
 }

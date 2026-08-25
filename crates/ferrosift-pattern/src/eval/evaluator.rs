@@ -1,4 +1,4 @@
-use alloc::format;
+﻿use alloc::format;
 use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 
@@ -41,6 +41,7 @@ pub fn evaluate(
             let scope = Scope {
                 siblings: &roots,
                 offset: 0,
+                pattern: Some(pattern),
             };
             let address = expression::evaluate(&placement.address, scope)?;
             let offset = u64::try_from(address)
@@ -48,6 +49,7 @@ pub fn evaluate(
             let scope = Scope {
                 siblings: &roots,
                 offset,
+                pattern: Some(pattern),
             };
             let node = evaluator.item(
                 &placement.name,
@@ -115,6 +117,7 @@ impl Evaluator<'_> {
                     let test = Scope {
                         siblings: scope.siblings,
                         offset: cursor,
+                        pattern: scope.pattern,
                     };
                     if expression::evaluate(condition, test)? == 0 {
                         break;
@@ -287,3 +290,4 @@ fn truncate_u32(value: u128) -> u32 {
 fn truncate_u64(value: u128) -> u64 {
     u64::try_from(value & u128::from(u64::MAX)).unwrap_or(0)
 }
+

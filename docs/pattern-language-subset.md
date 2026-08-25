@@ -64,6 +64,7 @@ binary      := unary (OP binary)*
 unary       := ('-' | '~' | '!')? primary
 primary     := INT | CHAR | 'true' | 'false' | '$'
              | 'sizeof' '(' (BUILTIN | path) ')'
+             | IDENT '::' IDENT
              | path | '(' expr ')'
 path        := IDENT ('.' IDENT)*
 ```
@@ -100,6 +101,12 @@ than a wrapped value.
 `$` is the offset the current field starts at. `sizeof(u32)` is a built-in's
 width; `sizeof(field)` is the span a field actually occupied, which is the
 only way to ask the size of something whose length varied.
+
+`Enum::Constant` is the declared value of one enum entry, which is what makes
+`if (tag == Tag::Text)` say what it means instead of comparing against a bare
+number. The qualifier is required rather than optional: two enums may declare
+the same constant name, and resolving a bare one by search would make a
+pattern's meaning depend on what else happens to be declared beside it.
 
 A field may only refer to fields declared **before** it. That is not a
 restriction this crate adds — a later field's bytes have not been read, so its
@@ -208,6 +215,7 @@ are matchable identifiers whose meaning does not change between releases.
 | `pattern.eval.out_of_bounds` | A read extends past the end of the data |
 | `pattern.eval.unknown_type` | A referenced type is not declared in the pattern |
 | `pattern.eval.unknown_field` | An expression names a field not readable from there |
+| `pattern.eval.unknown_constant` | `Enum::Constant` names no declared enum or entry |
 | `pattern.eval.not_a_number` | An expression uses a float or a composite as a number |
 | `pattern.eval.arithmetic_overflow` | An expression overflows 128 bits, or shifts too far |
 | `pattern.eval.divide_by_zero` | An expression divides or takes a remainder by zero |

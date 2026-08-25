@@ -1,4 +1,4 @@
-use alloc::string::ToString;
+﻿use alloc::string::ToString;
 use alloc::vec::Vec;
 
 use super::evaluator::Evaluator;
@@ -135,6 +135,7 @@ fn walk(
                 let scope = Scope {
                     siblings: children,
                     offset: start,
+                    pattern: Some(evaluator.pattern),
                 };
                 let child = evaluator.item(
                     &field.name,
@@ -155,6 +156,7 @@ fn walk(
                 let scope = Scope {
                     siblings: children,
                     offset: start,
+                    pattern: Some(evaluator.pattern),
                 };
                 let taken = if expression::evaluate(condition, scope)? == 0 {
                     when_false
@@ -169,6 +171,7 @@ fn walk(
                 let scope = Scope {
                     siblings: children,
                     offset: start,
+                    pattern: Some(evaluator.pattern),
                 };
                 let count = expression::evaluate(count, scope)?;
                 let count = u64::try_from(count).map_err(|_| {
@@ -271,3 +274,4 @@ pub(super) fn bitfield(
 fn bit_width_name(bits: u32) -> alloc::string::String {
     alloc::format!("{bits} bits")
 }
+
