@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 197,
-    "aliased": 195,
-    "exact": 191,
+    "operations": 198,
+    "aliased": 196,
+    "exact": 192,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3612
+    "pinned_cases": 3628
   },
   "operations": [
     {
@@ -2518,6 +2518,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "text.regex.case_widen@1",
+      "display_name": "To Case Insensitive Regex",
+      "category": "Text",
+      "reference_alias": "To Case Insensitive Regex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
       "status": "exact"
     },
     {

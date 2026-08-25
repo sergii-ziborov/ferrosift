@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 197 |
-| Reference-aliased | 195 |
-| Byte-pinned (`exact`) | 191 |
+| Registered operations | 198 |
+| Reference-aliased | 196 |
+| Byte-pinned (`exact`) | 192 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3612 |
+| Pinned cases | 3628 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -226,6 +226,7 @@ does.
 | `text.nato@1` | Convert to NATO alphabet | core | exact | 7 |
 | `text.pad_lines@1` | Pad lines | core | exact | 20 |
 | `text.regex.case_fold@1` | From Case Insensitive Regex | core | exact | 12 |
+| `text.regex.case_widen@1` | To Case Insensitive Regex | core | exact | 16 |
 | `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
 | `text.smart.escape@1` | Escape Smart Characters | core | exact | 33 |
 | `text.unicode.format@1` | Unicode Text Format | core | exact | 16 |

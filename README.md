@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 197 | 195 | **191** | **3612** |
+| 198 | 196 | **192** | **3628** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -194,7 +194,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Parsing | Hex to Object Identifier, Hex to PEM, Object Identifier to Hex, PEM to Hex |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
 | Shaping | Split, Unique |
-| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
+| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Case Insensitive Regex, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
 <!-- catalog:end -->
 
 Full alias tables, argument shapes, and intentional divergences from the

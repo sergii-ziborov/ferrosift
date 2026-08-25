@@ -65738,6 +65738,278 @@
     "34"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "case_widen_0",
+   "input": {
+    "kind": "text",
+    "value": "Mozilla/[0-9].[0-9] .*"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b6d4d5d5b6f4f5d5b7a5a5d5b69495d5b6c4c5d5b6c4c5d5b61415d2f5b302d395d2e5b302d395d202e2a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_1",
+   "input": {
+    "kind": "text",
+    "value": "[test]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b5b74545d5b65455d5b73535d5b74545d5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_2",
+   "input": {
+    "kind": "text",
+    "value": "[A-Z]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b412d5a612d7a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_3",
+   "input": {
+    "kind": "text",
+    "value": "[a-z]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b412d5a612d7a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_4",
+   "input": {
+    "kind": "text",
+    "value": "[H-d]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b412d44482d64682d7a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_5",
+   "input": {
+    "kind": "text",
+    "value": "[!-D]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b212d44612d645d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_6",
+   "input": {
+    "kind": "text",
+    "value": "[%-^]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b252d5e612d7a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_7",
+   "input": {
+    "kind": "text",
+    "value": "[K-`]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b4b2d606b2d7a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_8",
+   "input": {
+    "kind": "text",
+    "value": "[[-}]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b5b2d7d412d5a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_9",
+   "input": {
+    "kind": "text",
+    "value": "[b-}]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b622d7d422d5a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_10",
+   "input": {
+    "kind": "text",
+    "value": "[<-j]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b3c2d7a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_11",
+   "input": {
+    "kind": "text",
+    "value": "[^-j]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b412d4a5e2d6a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_12",
+   "input": {
+    "kind": "text",
+    "value": "\\!-D"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5c212d44612d2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_13",
+   "input": {
+    "kind": "text",
+    "value": "[A-Za-z0-9]"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b412d5a612d7a412d5a612d7a302d395d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_14",
+   "input": {
+    "kind": "text",
+    "value": "plain text, no ranges"
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b70505d5b6c4c5d5b61415d5b69495d5b6e4e5d205b74545d5b65455d5b78585d5b74545d2c205b6e4e5d5b6f4f5d205b72525d5b61415d5b6e4e5d5b67475d5b65455d5b73535d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_widen_15",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
   }
  ]
 }

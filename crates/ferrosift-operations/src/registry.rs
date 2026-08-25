@@ -38,7 +38,8 @@ use crate::{
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
     SwapEndianness,
     Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
-    ToBinary, ToBraille, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent, ToHexdump,
+    ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
+    ToHexContent, ToHexdump,
     ToHtmlEntity, ToLowerCase,
     ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
     UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
@@ -519,6 +520,7 @@ fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(UnescapeString::new())?;
     registry.register(GenerateDeBruijnSequence::new())?;
     registry.register(XkcdRandomNumber::new())?;
+    registry.register(ToCaseInsensitiveRegex::new())?;
 
     #[cfg(feature = "text")]
     {
