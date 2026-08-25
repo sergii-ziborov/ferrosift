@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 133,
-    "aliased": 131,
-    "exact": 127,
+    "operations": 138,
+    "aliased": 136,
+    "exact": 132,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2192
+    "pinned_cases": 2256
   },
   "operations": [
     {
@@ -1373,6 +1373,32 @@
       "status": "exact"
     },
     {
+      "id": "http.dechunk@1",
+      "display_name": "Dechunk HTTP response",
+      "category": "Text",
+      "reference_alias": "Dechunk HTTP response",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "http.headers.strip@1",
+      "display_name": "Strip HTTP headers",
+      "category": "Text",
+      "reference_alias": "Strip HTTP headers",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 6,
+      "status": "exact"
+    },
+    {
       "id": "logic.add@1",
       "display_name": "ADD",
       "category": "Logic",
@@ -1594,6 +1620,32 @@
       "status": "exact"
     },
     {
+      "id": "text.alphabet.expand@1",
+      "display_name": "Expand alphabet range",
+      "category": "Text",
+      "reference_alias": "Expand alphabet range",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "text.ansi.strip@1",
+      "display_name": "Remove ANSI Escape Codes",
+      "category": "Text",
+      "reference_alias": "Remove ANSI Escape Codes",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
       "id": "text.case.all@1",
       "display_name": "Get All Casings",
       "category": "Text",
@@ -1747,6 +1799,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 6,
+      "status": "exact"
+    },
+    {
+      "id": "text.wrap@1",
+      "display_name": "Wrap",
+      "category": "Text",
+      "reference_alias": "Wrap",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 28,
       "status": "exact"
     }
   ]

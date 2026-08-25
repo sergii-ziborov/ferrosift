@@ -8,6 +8,13 @@ use crate::failure::failed;
 ///
 /// `a-b` spans become inclusive character ranges, and `\-` escapes a literal
 /// hyphen. Invalid range endpoints report the caller's stable failure code.
+///
+/// Both branches need at least two characters after the current position, not
+/// one. That looks like an off-by-one in the reference — an expression ending
+/// in `\-` keeps its backslash instead of collapsing to a hyphen — but it is
+/// the behaviour every alphabet argument in the catalog is measured against,
+/// so it is the behaviour implemented here. `Expand alphabet range` pins it
+/// directly.
 pub(crate) fn expand(expression: &str, code: &'static str) -> Result<Vec<char>, OperationError> {
     let input: Vec<_> = expression.chars().collect();
     // Alphabets are written as ranges, so the output is normally several
@@ -24,7 +31,7 @@ pub(crate) fn expand(expression: &str, code: &'static str) -> Result<Vec<char>, 
                 output.push(char::from_u32(value).ok_or_else(|| failed(code))?);
             }
             index += 3;
-        } else if index + 1 < input.len() && input[index] == '\\' && input[index + 1] == '-' {
+        } else if index + 2 < input.len() && input[index] == '\\' && input[index + 1] == '-' {
             output.push('-');
             index += 2;
         } else {

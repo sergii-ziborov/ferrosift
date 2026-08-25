@@ -38718,6 +38718,1178 @@
     "612d620a412d620a612d620a412d620a612d420a412d420a612d420a412d42"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_0",
+   "input": {
+    "kind": "text",
+    "value": "\u001b[31mred\u001b[0m plain"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "72656420706c61696e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_1",
+   "input": {
+    "kind": "text",
+    "value": "\u001b[1;32;40mbold green\u001b[m"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "626f6c6420677265656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_2",
+   "input": {
+    "kind": "text",
+    "value": "no escapes at all"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6e6f206573636170657320617420616c6c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_3",
+   "input": {
+    "kind": "text",
+    "value": "trailing \u001b["
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "747261696c696e67201b5b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_4",
+   "input": {
+    "kind": "text",
+    "value": "trailing \u001b[31"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "747261696c696e67201b5b3331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_5",
+   "input": {
+    "kind": "text",
+    "value": "\u001b"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "1b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_6",
+   "input": {
+    "kind": "text",
+    "value": "\u001b[?25l hidden cursor \u001b[?25h"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2068696464656e20637572736f7220"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_7",
+   "input": {
+    "kind": "text",
+    "value": "\u001b[0 qcursor"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "637572736f72"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ansi_strip_8",
+   "input": {
+    "kind": "text",
+    "value": "\u001bXnot a csi"
+   },
+   "recipe": [
+    {
+     "op": "Remove ANSI Escape Codes",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "1b586e6f74206120637369"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_strip_headers_0",
+   "input": {
+    "kind": "text",
+    "value": "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nbody here"
+   },
+   "recipe": [
+    {
+     "op": "Strip HTTP headers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "626f64792068657265"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_strip_headers_1",
+   "input": {
+    "kind": "text",
+    "value": "HTTP/1.1 200 OK\nContent-Type: text/plain\n\nbody here"
+   },
+   "recipe": [
+    {
+     "op": "Strip HTTP headers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "626f64792068657265"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_strip_headers_2",
+   "input": {
+    "kind": "text",
+    "value": "HTTP/1.1 200 OK\r\nContent-Type: text/plain"
+   },
+   "recipe": [
+    {
+     "op": "Strip HTTP headers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "485454502f312e3120323030204f4b0d0a436f6e74656e742d547970653a20746578742f706c61696e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_strip_headers_3",
+   "input": {
+    "kind": "text",
+    "value": "no headers at all"
+   },
+   "recipe": [
+    {
+     "op": "Strip HTTP headers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6e6f206865616465727320617420616c6c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_strip_headers_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Strip HTTP headers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_strip_headers_5",
+   "input": {
+    "kind": "text",
+    "value": "\r\n\r\nbody"
+   },
+   "recipe": [
+    {
+     "op": "Strip HTTP headers",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "626f6479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_0",
+   "input": {
+    "kind": "text",
+    "value": "4\r\nWiki\r\n5\r\npedia\r\n0\r\n\r\n"
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "57696b697065646961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_1",
+   "input": {
+    "kind": "text",
+    "value": "4\nWiki\n5\npedia\n0\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "57696b697065646961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_2",
+   "input": {
+    "kind": "text",
+    "value": "4;name=value\r\nWiki\r\n0\r\n\r\n"
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "57696b69"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_3",
+   "input": {
+    "kind": "text",
+    "value": "A\r\n0123456789\r\n0\r\n\r\n"
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30313233343536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_4",
+   "input": {
+    "kind": "text",
+    "value": "4\r\nWiki\r\n"
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "57696b69"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_5",
+   "input": {
+    "kind": "text",
+    "value": "zz\r\nWiki\r\n"
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "http_dechunk_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Dechunk HTTP response",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_1_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_1_1",
+   "input": {
+    "kind": "text",
+    "value": "t"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_1_7",
+   "input": {
+    "kind": "text",
+    "value": "bK{nKGo"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "620a4b0a7b0a6e0a4b0a470a6f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_1_8",
+   "input": {
+    "kind": "text",
+    "value": "9Z$*\"WA~"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "390a5a0a240a2a0a220a570a410a7e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_1_9",
+   "input": {
+    "kind": "text",
+    "value": "!QL/aM/AE"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "210a510a4c0a2f0a610a4d0a2f0a410a45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_1_40",
+   "input": {
+    "kind": "text",
+    "value": "NkKWw.M[/78!%],@kH)UZ9p?*,$}*\"p9I,-XG`DQ"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e0a6b0a4b0a570a770a2e0a4d0a5b0a2f0a370a380a210a250a5d0a2c0a400a6b0a480a290a550a5a0a390a700a3f0a2a0a2c0a240a7d0a2a0a220a700a390a490a2c0a2d0a580a470a600a440a51"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_multiline_1",
+   "input": {
+    "kind": "text",
+    "value": "first line\nsecond line\n\nfourth"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "660a690a720a730a740a200a6c0a690a6e0a650a730a650a630a6f0a6e0a640a200a6c0a690a6e0a650a660a6f0a750a720a740a68"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_4_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_4_1",
+   "input": {
+    "kind": "text",
+    "value": "-"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_4_7",
+   "input": {
+    "kind": "text",
+    "value": "%92Ju::"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2539324a0a753a3a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_4_8",
+   "input": {
+    "kind": "text",
+    "value": "y!$c;*Yp"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "792124630a3b2a5970"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_4_9",
+   "input": {
+    "kind": "text",
+    "value": "w9MU}=\\Ft"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "77394d550a7d3d5c460a74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_4_40",
+   "input": {
+    "kind": "text",
+    "value": "/C(QaV_5Q9qigcFT|\\K7Ocb9y3^rq:$9\"h#*(sr+"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2f4328510a61565f350a513971690a676346540a7c5c4b370a4f6362390a79335e720a713a24390a2268232a0a2873722b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_multiline_4",
+   "input": {
+    "kind": "text",
+    "value": "first line\nsecond line\n\nfourth"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666972730a74206c690a6e650a7365636f0a6e64206c0a696e650a666f75720a7468"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_8_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_8_1",
+   "input": {
+    "kind": "text",
+    "value": "E"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_8_7",
+   "input": {
+    "kind": "text",
+    "value": "xn>feA8"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e3e66654138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_8_8",
+   "input": {
+    "kind": "text",
+    "value": "&3a:1zkT"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2633613a317a6b54"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_8_9",
+   "input": {
+    "kind": "text",
+    "value": "VqL73tYm6"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "56714c373374596d0a36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_8_40",
+   "input": {
+    "kind": "text",
+    "value": "bkhMyJg% D9W5O[No(WP;2G|QbXFuLg$k/~l:cbo"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626b684d794a67250a20443957354f5b4e0a6f2857503b32477c0a51625846754c67240a6b2f7e6c3a63626f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_multiline_8",
+   "input": {
+    "kind": "text",
+    "value": "first line\nsecond line\n\nfourth"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6669727374206c690a6e650a7365636f6e64206c0a696e650a666f75727468"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_64_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_64_1",
+   "input": {
+    "kind": "text",
+    "value": "y"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "79"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_64_7",
+   "input": {
+    "kind": "text",
+    "value": "?&N3h>w"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f264e33683e77"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_64_8",
+   "input": {
+    "kind": "text",
+    "value": "+jjHwjDd"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b6a6a48776a4464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_64_9",
+   "input": {
+    "kind": "text",
+    "value": "ha%/@r Iq"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6861252f4072204971"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_64_40",
+   "input": {
+    "kind": "text",
+    "value": "i#Z;_fTe]sr[pN{0'M21y%,qmJ2^<3WmvXqu:AHR"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "69235a3b5f6654655d73725b704e7b30274d323179252c716d4a325e3c33576d765871753a414852"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "wrap_multiline_64",
+   "input": {
+    "kind": "text",
+    "value": "first line\nsecond line\n\nfourth"
+   },
+   "recipe": [
+    {
+     "op": "Wrap",
+     "args": [
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6669727374206c696e650a7365636f6e64206c696e650a666f75727468"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_0",
+   "input": {
+    "kind": "text",
+    "value": "a-z"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162636465666768696a6b6c6d6e6f707172737475767778797a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_0",
+   "input": {
+    "kind": "text",
+    "value": "a-z"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c632c642c652c662c672c682c692c6a2c6b2c6c2c6d2c6e2c6f2c702c712c722c732c742c752c762c772c782c792c7a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_1",
+   "input": {
+    "kind": "text",
+    "value": "a-f0-9"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61626364656630313233343536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_1",
+   "input": {
+    "kind": "text",
+    "value": "a-f0-9"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c632c642c652c662c302c312c322c332c342c352c362c372c382c39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_2",
+   "input": {
+    "kind": "text",
+    "value": "A-Za-z0-9+/="
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4142434445464748494a4b4c4d4e4f505152535455565758595a6162636465666768696a6b6c6d6e6f707172737475767778797a303132333435363738392b2f3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_2",
+   "input": {
+    "kind": "text",
+    "value": "A-Za-z0-9+/="
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "412c422c432c442c452c462c472c482c492c4a2c4b2c4c2c4d2c4e2c4f2c502c512c522c532c542c552c562c572c582c592c5a2c612c622c632c642c652c662c672c682c692c6a2c6b2c6c2c6d2c6e2c6f2c702c712c722c732c742c752c762c772c782c792c7a2c302c312c322c332c342c352c362c372c382c392c2b2c2f2c3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_3",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_3",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_5",
+   "input": {
+    "kind": "text",
+    "value": "\\-"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5c2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_5",
+   "input": {
+    "kind": "text",
+    "value": "\\-"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5c2c2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_6",
+   "input": {
+    "kind": "text",
+    "value": "a-c-e"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162632d65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "alphabet_expand_delim_6",
+   "input": {
+    "kind": "text",
+    "value": "a-c-e"
+   },
+   "recipe": [
+    {
+     "op": "Expand alphabet range",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c632c2d2c65"
+   ],
+   "stopped_after": 1
   }
  ]
 }

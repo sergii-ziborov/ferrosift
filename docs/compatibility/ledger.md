@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 133 |
-| Reference-aliased | 131 |
-| Byte-pinned (`exact`) | 127 |
+| Registered operations | 138 |
+| Reference-aliased | 136 |
+| Byte-pinned (`exact`) | 132 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2192 |
+| Pinned cases | 2256 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -133,6 +133,8 @@ does.
 | `hash.sha3@1` | SHA3 | hash | exact | 13 |
 | `hash.sm3@1` | SM3 | hash | exact | 13 |
 | `hash.whirlpool@1` | Whirlpool | hash | exact | 13 |
+| `http.dechunk@1` | Dechunk HTTP response | core | exact | 7 |
+| `http.headers.strip@1` | Strip HTTP headers | core | exact | 6 |
 | `logic.add@1` | ADD | core | exact | 31 |
 | `logic.and@1` | AND | core | exact | 30 |
 | `logic.not@1` | NOT | core | exact | 7 |
@@ -150,6 +152,8 @@ does.
 | `sets.intersection@1` | Set Intersection | core | exact | 10 |
 | `sets.symmetric_difference@1` | Symmetric Difference | core | exact | 9 |
 | `sets.union@1` | Set Union | core | exact | 10 |
+| `text.alphabet.expand@1` | Expand alphabet range | core | exact | 14 |
+| `text.ansi.strip@1` | Remove ANSI Escape Codes | core | exact | 9 |
 | `text.case.all@1` | Get All Casings | core | exact | 4 |
 | `text.case.alternating@1` | Alternating Caps | core | exact | 9 |
 | `text.case.lower@1` | To Lower case | core | exact | 9 |
@@ -162,6 +166,7 @@ does.
 | `text.nato@1` | Convert to NATO alphabet | core | exact | 7 |
 | `text.pad_lines@1` | Pad lines | core | exact | 20 |
 | `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
+| `text.wrap@1` | Wrap | core | exact | 28 |
 
 Operations the reference has and FerroSift does not are reported by
 `cargo xtask cyberchef gap`, which needs the pinned checkout and so is

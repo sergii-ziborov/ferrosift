@@ -7,8 +7,9 @@
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, AlternatingCaps, BitShift, Bitwise, Checksum, ClassicalCipher, DropBytes,
-    DropNthBytes, Fork, GetAllCasings, SwapCase, ToLowerCase, ToUpperCase,
+    AddLineNumbers, AlternatingCaps, BitShift, Bitwise, Checksum, ClassicalCipher,
+    DechunkHttpResponse, DropBytes, DropNthBytes, ExpandAlphabetRange, Fork, GetAllCasings,
+    RemoveAnsiEscapeCodes, StripHttpHeaders, SwapCase, ToLowerCase, ToUpperCase, Wrap,
 };
 use crate::{
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
@@ -122,6 +123,7 @@ fn register_core(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(Xor::new())?;
     register_bitwise(registry)?;
     register_casing(registry)?;
+    register_shape(registry)?;
     Ok(())
 }
 
@@ -136,6 +138,20 @@ fn register_casing(registry: &mut OperationRegistry) -> Result<(), RegistryError
     registry.register(SwapCase::new())?;
     registry.register(AlternatingCaps::new())?;
     registry.register(GetAllCasings::new())?;
+    Ok(())
+}
+
+/// Reshaping text: ANSI stripping, HTTP framing, wrapping, and ranges.
+///
+/// Ungated for the same reason as the case transforms: no tables, no
+/// dependencies. The two HTTP operations parse framing rather than speak the
+/// protocol, so they need no host handle either.
+fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(RemoveAnsiEscapeCodes::new())?;
+    registry.register(StripHttpHeaders::new())?;
+    registry.register(DechunkHttpResponse::new())?;
+    registry.register(Wrap::new())?;
+    registry.register(ExpandAlphabetRange::new())?;
     Ok(())
 }
 

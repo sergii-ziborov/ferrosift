@@ -48,6 +48,7 @@ mod octal;
 mod registry;
 mod rot13;
 mod sets;
+mod shape;
 mod sift;
 mod spec;
 mod url;
@@ -110,6 +111,9 @@ pub use morse::{FromMorseCode, ToMorseCode};
 pub use octal::{FromOctal, ToOctal};
 pub use rot13::Rot13;
 pub use sets::{HammingDistance, LevenshteinDistance, SetOperation};
+pub use shape::{
+    DechunkHttpResponse, ExpandAlphabetRange, RemoveAnsiEscapeCodes, StripHttpHeaders, Wrap,
+};
 pub use sift::{DropNthBytes, RemoveNullBytes, RemoveWhitespace, Reverse, TakeNthBytes};
 pub use url::{UrlDecode, UrlEncode};
 pub use xor::Xor;
