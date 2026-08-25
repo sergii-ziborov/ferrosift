@@ -269,3 +269,219 @@ fn deep_nesting_stops_at_the_depth_limit() {
     .expect_err("the depth limit must stop evaluation");
     assert_eq!(error.code(), "pattern.eval.depth_exceeded");
 }
+
+// --- expressions, conditionals, unions, padding -------------------------
+
+#[test]
+fn an_array_length_may_be_a_field_read_before_it() {
+    // The whole point of the expression layer: one pattern describes a family
+    // of files rather than one file. The same source is run against two
+    // different counts.
+    let source = "struct List { u8 count; u16 items[count]; };
+                  List list @ 0;";
+
+    let nodes = run(source, &[2, 0x11, 0x00, 0x22, 0x00]);
+    let items = nodes[0].child("items").expect("field");
+    assert_eq!(items.children().len(), 2);
+    assert_eq!((items.offset, items.size), (1, 4));
+
+    let nodes = run(source, &[3, 1, 0, 2, 0, 3, 0]);
+    assert_eq!(nodes[0].child("items").expect("field").children().len(), 3);
+}
+
+#[test]
+fn arithmetic_and_precedence_hold_at_evaluation_time() {
+    let nodes = run(
+        "struct S { u8 base; u8 tail[base * 2 + 1]; };
+         S s @ 0;",
+        &[2, 9, 9, 9, 9, 9],
+    );
+    // 2 * 2 + 1, not 2 * 3: multiplication binds first.
+    assert_eq!(nodes[0].child("tail").expect("field").children().len(), 5);
+}
+
+#[test]
+fn a_conditional_chooses_which_fields_exist() {
+    let source = "struct S {
+                      u8 kind;
+                      if (kind == 1) { be u16 word; }
+                      else { u8 byte; }
+                  };
+                  S s @ 0;";
+
+    let taken = run(source, &[1, 0xab, 0xcd]);
+    assert!(taken[0].child("word").is_some());
+    assert!(taken[0].child("byte").is_none());
+    assert_eq!(taken[0].size, 3);
+
+    let other = run(source, &[0, 0xab]);
+    assert!(other[0].child("word").is_none());
+    assert_eq!(other[0].child("byte").expect("field").value, NodeValue::Unsigned(0xab));
+    assert_eq!(other[0].size, 2);
+}
+
+#[test]
+fn an_else_if_chain_picks_exactly_one_arm() {
+    let source = "struct S {
+                      u8 kind;
+                      if (kind == 1) { u8 a; }
+                      else if (kind == 2) { u8 b; }
+                      else { u8 c; }
+                  };
+                  S s @ 0;";
+
+    for (kind, expected) in [(1, "a"), (2, "b"), (7, "c")] {
+        let nodes = run(source, &[kind, 0x55]);
+        let present: Vec<_> = nodes[0]
+            .children()
+            .iter()
+            .map(|child| child.name.as_str())
+            .filter(|name| *name != "kind")
+            .collect();
+        assert_eq!(present, [expected], "kind {kind}");
+    }
+}
+
+#[test]
+fn union_members_share_one_address_and_the_widest_size() {
+    let nodes = run(
+        "union Value { be u32 word; u8 bytes[4]; be u16 half; };
+         Value value @ 0;",
+        &[0xde, 0xad, 0xbe, 0xef],
+    );
+
+    let value = &nodes[0];
+    assert_eq!((value.offset, value.size), (0, 4));
+    for name in ["word", "bytes", "half"] {
+        assert_eq!(value.child(name).expect("member").offset, 0, "{name}");
+    }
+    assert_eq!(
+        value.child("word").expect("member").value,
+        NodeValue::Unsigned(0xdead_beef)
+    );
+    assert_eq!(
+        value.child("half").expect("member").value,
+        NodeValue::Unsigned(0xdead)
+    );
+}
+
+#[test]
+fn padding_advances_the_cursor_without_producing_a_field() {
+    let nodes = run(
+        "struct S { u8 first; padding[3]; u8 last; };
+         S s @ 0;",
+        &[1, 0, 0, 0, 9],
+    );
+
+    let s = &nodes[0];
+    assert_eq!(s.children().len(), 2);
+    assert_eq!(s.child("last").expect("field").offset, 4);
+    assert_eq!(s.size, 5);
+}
+
+#[test]
+fn a_while_sized_array_stops_when_its_test_fails() {
+    let nodes = run(
+        "struct S { u8 items[while($ < 4)]; };
+         S s @ 0;",
+        &[1, 2, 3, 4, 5, 6],
+    );
+    let items = nodes[0].child("items").expect("field");
+    assert_eq!(items.children().len(), 4);
+    assert_eq!(items.size, 4);
+}
+
+#[test]
+fn sizeof_reads_builtin_widths_and_the_span_a_field_occupied() {
+    let nodes = run(
+        "struct Header { u8 count; u8 items[count]; };
+         Header header @ 0;
+         u8 body[sizeof(u16)] @ sizeof(header);",
+        &[2, 0xaa, 0xbb, 0xcc, 0xdd],
+    );
+
+    // The header occupied three bytes because `count` was 2, so the body
+    // starts at 3 -- an address no literal could have expressed.
+    let body = &nodes[1];
+    assert_eq!((body.offset, body.size), (3, 2));
+}
+
+#[test]
+fn a_dotted_path_reaches_into_a_nested_field() {
+    let nodes = run(
+        "struct Inner { u8 length; };
+         struct Outer { Inner meta; u8 data[meta.length]; };
+         Outer outer @ 0;",
+        &[3, 7, 7, 7],
+    );
+    assert_eq!(nodes[0].child("data").expect("field").children().len(), 3);
+}
+
+#[test]
+fn a_conditional_only_evaluates_the_branch_it_takes() {
+    // The false arm divides by a zero that the test has already excluded.
+    // Evaluating both arms would fail on a pattern that is correct.
+    let nodes = run(
+        "struct S { u8 n; u8 items[n == 0 ? 1 : 4 / n]; };
+         S s @ 0;",
+        &[0, 9],
+    );
+    assert_eq!(nodes[0].child("items").expect("field").children().len(), 1);
+}
+
+#[test]
+fn expression_failures_carry_stable_codes() {
+    for (source, data, code) in [
+        (
+            "struct S { u8 n; u8 items[4 / n]; }; S s @ 0;",
+            &[0_u8, 1, 2, 3, 4][..],
+            "pattern.eval.divide_by_zero",
+        ),
+        (
+            "struct S { u8 items[missing]; }; S s @ 0;",
+            &[1, 2][..],
+            "pattern.eval.unknown_field",
+        ),
+        (
+            "struct S { u8 a; u8 items[b.c]; u8 b; }; S s @ 0;",
+            &[1, 2][..],
+            "pattern.eval.unknown_field",
+        ),
+        (
+            "struct S { float f; u8 items[f]; }; S s @ 0;",
+            &[0, 0, 0, 0, 1][..],
+            "pattern.eval.not_a_number",
+        ),
+    ] {
+        let error = reject(source, data);
+        assert_eq!(error.code(), code, "source: {source}");
+    }
+}
+
+#[test]
+fn a_field_cannot_refer_to_one_declared_after_it() {
+    // Not a restriction this crate adds: the later field's bytes have not been
+    // read, so its value does not exist yet.
+    let error = reject(
+        "struct S { u8 items[count]; u8 count; }; S s @ 0;",
+        &[1, 2, 3],
+    );
+    assert_eq!(error.code(), "pattern.eval.unknown_field");
+}
+
+#[test]
+fn a_while_array_that_never_advances_is_stopped_by_the_node_budget() {
+    let options = EvalOptions {
+        max_nodes: 64,
+        ..EvalOptions::default()
+    };
+    let error = run_with(
+        "struct Empty { padding[0]; };
+         struct S { Empty items[while(true)]; };
+         S s @ 0;",
+        &[0; 8],
+        &options,
+    )
+    .expect_err("expected the budget to stop it");
+    assert_eq!(error.code(), "pattern.eval.node_budget_exceeded");
+}

@@ -8,7 +8,7 @@ use crate::hex_util::to_hex_lower;
 const UNSUPPORTED_ROUNDS: &str = "hash.sha0.unsupported_rounds";
 const INVALID_SEED: &str = "hash.murmur3.invalid_seed";
 
-/// MurmurHash3, 32-bit, as a decimal string.
+/// `MurmurHash3`, 32-bit, as a decimal string.
 ///
 /// The reference emulates 32-bit multiplication by splitting each operand into
 /// halves, because JavaScript numbers lose the low bits of a product above
@@ -25,13 +25,16 @@ pub(super) fn murmur3(
     signed: bool,
     context: &OperationContext<'_>,
 ) -> Result<String, OperationError> {
-    context.ensure_active()?;
-    let seed = u32::try_from(seed).map_err(|_| failed(INVALID_SEED))?;
-
     const C1: u32 = 0xcc9e_2d51;
     const C2: u32 = 0x1b87_3593;
 
-    let units: alloc::vec::Vec<u8> = input.encode_utf16().map(|unit| (unit & 0xff) as u8).collect();
+    context.ensure_active()?;
+    let seed = u32::try_from(seed).map_err(|_| failed(INVALID_SEED))?;
+
+    let units: alloc::vec::Vec<u8> = input
+        .encode_utf16()
+        .map(|unit| u8::try_from(unit & 0xff).unwrap_or(0))
+        .collect();
     let remainder = units.len() & 3;
     let body = units.len() - remainder;
 
@@ -73,7 +76,7 @@ pub(super) fn murmur3(
 
     // The length is mixed in as a 32-bit value; a string longer than 4 GiB of
     // code units would wrap in the reference too, so wrapping is the match.
-    h1 ^= units.len() as u32;
+    h1 ^= u32::try_from(units.len() & 0xffff_ffff).unwrap_or(0);
     h1 ^= h1 >> 16;
     h1 = h1.wrapping_mul(0x85eb_ca6b);
     h1 ^= h1 >> 13;
@@ -82,7 +85,7 @@ pub(super) fn murmur3(
 
     context.ensure_active()?;
     Ok(if signed {
-        (h1 as i32).to_string()
+        h1.cast_signed().to_string()
     } else {
         h1.to_string()
     })
@@ -158,30 +161,36 @@ fn compress(state: &mut [u32; 5], block: &[u8]) {
             ^ schedule[index - 16];
     }
 
-    let [mut a, mut b, mut c, mut d, mut e] = *state;
+    // The five working variables carry the names the specification gives them.
+    // Renaming them would make the round below harder to check against it, not
+    // easier to read.
+    let [mut var_a, mut var_b, mut var_c, mut var_d, mut var_e] = *state;
     for (index, word) in schedule.iter().enumerate() {
         let (mixed, constant) = match index {
-            0..=19 => ((b & c) | (!b & d), 0x5a82_7999),
-            20..=39 => (b ^ c ^ d, 0x6ed9_eba1),
-            40..=59 => ((b & c) | (b & d) | (c & d), 0x8f1b_bcdc),
-            _ => (b ^ c ^ d, 0xca62_c1d6),
+            0..=19 => ((var_b & var_c) | (!var_b & var_d), 0x5a82_7999),
+            20..=39 => (var_b ^ var_c ^ var_d, 0x6ed9_eba1),
+            40..=59 => (
+                (var_b & var_c) | (var_b & var_d) | (var_c & var_d),
+                0x8f1b_bcdc,
+            ),
+            _ => (var_b ^ var_c ^ var_d, 0xca62_c1d6),
         };
-        let temp = a
+        let temp = var_a
             .rotate_left(5)
             .wrapping_add(mixed)
-            .wrapping_add(e)
+            .wrapping_add(var_e)
             .wrapping_add(constant)
             .wrapping_add(*word);
-        e = d;
-        d = c;
-        c = b.rotate_left(30);
-        b = a;
-        a = temp;
+        var_e = var_d;
+        var_d = var_c;
+        var_c = var_b.rotate_left(30);
+        var_b = var_a;
+        var_a = temp;
     }
 
-    state[0] = state[0].wrapping_add(a);
-    state[1] = state[1].wrapping_add(b);
-    state[2] = state[2].wrapping_add(c);
-    state[3] = state[3].wrapping_add(d);
-    state[4] = state[4].wrapping_add(e);
+    state[0] = state[0].wrapping_add(var_a);
+    state[1] = state[1].wrapping_add(var_b);
+    state[2] = state[2].wrapping_add(var_c);
+    state[3] = state[3].wrapping_add(var_d);
+    state[4] = state[4].wrapping_add(var_e);
 }

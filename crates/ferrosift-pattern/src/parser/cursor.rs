@@ -85,16 +85,6 @@ impl Cursor {
         }
     }
 
-    pub(super) fn expect_integer(&mut self) -> Result<u128, PatternError> {
-        if let TokenKind::Integer(value) = self.peek() {
-            let value = *value;
-            self.advance();
-            Ok(value)
-        } else {
-            Err(self.fail(EXPECTED_INTEGER, "expected an integer literal"))
-        }
-    }
-
     pub(super) fn fail(&self, code: &'static str, detail: impl Into<String>) -> PatternError {
         PatternError::new(code, self.position(), detail)
     }

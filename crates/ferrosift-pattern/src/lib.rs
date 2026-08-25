@@ -41,9 +41,9 @@ mod lexer;
 mod parser;
 
 pub use ast::{
-    AliasDeclaration, BitfieldDeclaration, BitfieldMember, Builtin, Declaration, Endian,
-    EnumDeclaration, EnumEntry, Field, Pattern, Placement, StructDeclaration, TypeKind,
-    TypeReference,
+    AliasDeclaration, ArrayLength, BinaryOperator, BitfieldDeclaration, BitfieldMember, Builtin,
+    Declaration, Endian, EnumDeclaration, EnumEntry, Expression, Field, Member, Pattern, Placement,
+    SizeOfTarget, StructDeclaration, TypeKind, TypeReference, UnaryOperator, UnionDeclaration,
 };
 pub use error::{PatternError, Position};
 pub use eval::{EvalOptions, Node, NodeValue, evaluate};

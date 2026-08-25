@@ -39,12 +39,28 @@ pub enum Keyword {
     Enum,
     /// `bitfield`
     Bitfield,
+    /// `union`, whose members all start at the same offset.
+    Union,
     /// `using`
     Using,
     /// `be`, forcing big-endian reads.
     BigEndian,
     /// `le`, forcing little-endian reads.
     LittleEndian,
+    /// `if`
+    If,
+    /// `else`
+    Else,
+    /// `while`, sizing an array by a test instead of a count.
+    While,
+    /// `padding`, reserving bytes without naming them.
+    Padding,
+    /// `sizeof`, the byte width of a type or a read field.
+    Sizeof,
+    /// `true`
+    True,
+    /// `false`
+    False,
 }
 
 impl Keyword {
@@ -55,9 +71,17 @@ impl Keyword {
             "struct" => Self::Struct,
             "enum" => Self::Enum,
             "bitfield" => Self::Bitfield,
+            "union" => Self::Union,
             "using" => Self::Using,
             "be" => Self::BigEndian,
             "le" => Self::LittleEndian,
+            "if" => Self::If,
+            "else" => Self::Else,
+            "while" => Self::While,
+            "padding" => Self::Padding,
+            "sizeof" => Self::Sizeof,
+            "true" => Self::True,
+            "false" => Self::False,
             _ => return None,
         })
     }
@@ -74,6 +98,10 @@ pub enum Symbol {
     BracketOpen,
     /// `]`
     BracketClose,
+    /// `(`
+    ParenOpen,
+    /// `)`
+    ParenClose,
     /// `;`
     Semicolon,
     /// `,`
@@ -84,6 +112,52 @@ pub enum Symbol {
     Assign,
     /// `@`, placing a variable at an absolute offset.
     At,
+    /// `.`, selecting a member of a composite value.
+    Dot,
+    /// `?`, opening a conditional expression.
+    Question,
+    /// `$`, the offset the current field starts at.
+    Dollar,
+    /// `+`
+    Plus,
+    /// `-`
+    Minus,
+    /// `*`
+    Star,
+    /// `/`
+    Slash,
+    /// `%`
+    Percent,
+    /// `<<`
+    ShiftLeft,
+    /// `>>`
+    ShiftRight,
+    /// `&`
+    Ampersand,
+    /// `|`
+    Pipe,
+    /// `^`
+    Caret,
+    /// `~`
+    Tilde,
+    /// `!`
+    Bang,
+    /// `&&`
+    AndAnd,
+    /// `||`
+    OrOr,
+    /// `==`
+    Equal,
+    /// `!=`
+    NotEqual,
+    /// `<`
+    Less,
+    /// `>`
+    Greater,
+    /// `<=`
+    LessEqual,
+    /// `>=`
+    GreaterEqual,
 }
 
 impl Symbol {
@@ -95,11 +169,48 @@ impl Symbol {
             '}' => Self::BraceClose,
             '[' => Self::BracketOpen,
             ']' => Self::BracketClose,
+            '(' => Self::ParenOpen,
+            ')' => Self::ParenClose,
             ';' => Self::Semicolon,
             ',' => Self::Comma,
             ':' => Self::Colon,
             '=' => Self::Assign,
             '@' => Self::At,
+            '.' => Self::Dot,
+            '?' => Self::Question,
+            '$' => Self::Dollar,
+            '+' => Self::Plus,
+            '-' => Self::Minus,
+            '*' => Self::Star,
+            '/' => Self::Slash,
+            '%' => Self::Percent,
+            '&' => Self::Ampersand,
+            '|' => Self::Pipe,
+            '^' => Self::Caret,
+            '~' => Self::Tilde,
+            '!' => Self::Bang,
+            '<' => Self::Less,
+            '>' => Self::Greater,
+            _ => return None,
+        })
+    }
+
+    /// Resolves a two-character operator, or `None` when the pair is not one.
+    ///
+    /// Tried before [`Symbol::parse`], because every pair here begins with a
+    /// character that is also a symbol on its own: `<` and `<=` differ only in
+    /// what follows, and taking the shorter one first would leave a stray `=`.
+    #[must_use]
+    pub const fn parse_pair(first: char, second: char) -> Option<Self> {
+        Some(match (first, second) {
+            ('<', '<') => Self::ShiftLeft,
+            ('>', '>') => Self::ShiftRight,
+            ('&', '&') => Self::AndAnd,
+            ('|', '|') => Self::OrOr,
+            ('=', '=') => Self::Equal,
+            ('!', '=') => Self::NotEqual,
+            ('<', '=') => Self::LessEqual,
+            ('>', '=') => Self::GreaterEqual,
             _ => return None,
         })
     }

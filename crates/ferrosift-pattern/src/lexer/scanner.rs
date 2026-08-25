@@ -59,6 +59,12 @@ impl Scanner {
                 self.scan_char()?
             } else if value == '"' {
                 self.scan_text()?
+            } else if let Some(symbol) =
+                self.peek_at(1).and_then(|next| Symbol::parse_pair(value, next))
+            {
+                self.advance();
+                self.advance();
+                TokenKind::Symbol(symbol)
             } else if let Some(symbol) = Symbol::parse(value) {
                 self.advance();
                 TokenKind::Symbol(symbol)

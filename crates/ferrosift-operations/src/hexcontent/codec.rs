@@ -147,7 +147,7 @@ fn closing_pipe(characters: &[char], open: usize) -> Option<usize> {
     while cursor < characters.len() {
         let character = characters[cursor];
         if character == '|' {
-            return (cursor - open - 1 >= 2).then_some(cursor);
+            return (cursor - open > 2).then_some(cursor);
         }
         if !character.is_ascii_hexdigit() && character != ' ' {
             return None;

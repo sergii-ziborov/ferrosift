@@ -35,7 +35,7 @@ pub(super) fn encode(
         output.push(DELIMITER);
     }
 
-    let mut n = INITIAL_N;
+    let mut boundary = INITIAL_N;
     let mut delta: u32 = 0;
     let mut bias = INITIAL_BIAS;
 
@@ -44,47 +44,48 @@ pub(super) fn encode(
         // The next code point to deal with is the smallest one not yet
         // handled. Working in ascending order is what lets the deltas stay
         // small enough to encode compactly.
-        let m = points
+        let next = points
             .iter()
             .copied()
-            .filter(|point| *point >= n)
+            .filter(|point| *point >= boundary)
             .min()
             .ok_or_else(overflow)?;
 
-        let advance = m
-            .checked_sub(n)
+        let advance = next
+            .checked_sub(boundary)
             .and_then(|gap| gap.checked_mul(u32::try_from(handled + 1).ok()?))
             .ok_or_else(overflow)?;
         delta = delta.checked_add(advance).ok_or_else(overflow)?;
-        n = m;
+        boundary = next;
 
         for point in &points {
-            if *point < n {
+            if *point < boundary {
                 delta = delta.checked_add(1).ok_or_else(overflow)?;
             }
-            if *point != n {
+            if *point != boundary {
                 continue;
             }
-            let mut q = delta;
-            let mut k = BASE;
+            let mut remainder = delta;
+            let mut weight = BASE;
             loop {
-                let t = threshold(k, bias);
-                if q < t {
+                let limit = threshold(weight, bias);
+                if remainder < limit {
                     break;
                 }
-                let digit = t + (q - t) % (BASE - t);
+                let digit = limit + (remainder - limit) % (BASE - limit);
                 output.push(digit_to_basic(digit));
-                q = (q - t) / (BASE - t);
-                k += BASE;
+                remainder = (remainder - limit) / (BASE - limit);
+                weight += BASE;
             }
-            output.push(digit_to_basic(q));
-            bias = adapt(delta, u32::try_from(handled + 1).map_err(|_| overflow())?, handled == basic_length);
+            output.push(digit_to_basic(remainder));
+            let points_so_far = u32::try_from(handled + 1).map_err(|_| overflow())?;
+            bias = adapt(delta, points_so_far, handled == basic_length);
             delta = 0;
             handled += 1;
         }
 
         delta = delta.checked_add(1).ok_or_else(overflow)?;
-        n = n.checked_add(1).ok_or_else(overflow)?;
+        boundary = boundary.checked_add(1).ok_or_else(overflow)?;
     }
 
     Ok(output)
@@ -110,38 +111,40 @@ pub(super) fn decode(
     }
 
     let mut cursor = if split > 0 { split + 1 } else { 0 };
-    let mut n = INITIAL_N;
-    let mut i: u32 = 0;
+    let mut boundary = INITIAL_N;
+    let mut insertion: u32 = 0;
     let mut bias = INITIAL_BIAS;
 
     while cursor < characters.len() {
         context.ensure_active()?;
-        let previous = i;
-        let mut weight: u32 = 1;
-        let mut k = BASE;
+        let previous = insertion;
+        let mut place: u32 = 1;
+        let mut weight = BASE;
         loop {
-            let character = *characters.get(cursor).ok_or_else(|| failed("encoding.punycode.truncated"))?;
+            let character = *characters
+                .get(cursor)
+                .ok_or_else(|| failed("encoding.punycode.truncated"))?;
             cursor += 1;
             let digit = basic_to_digit(character)
                 .ok_or_else(|| failed("encoding.punycode.invalid_digit"))?;
-            let step = digit.checked_mul(weight).ok_or_else(overflow)?;
-            i = i.checked_add(step).ok_or_else(overflow)?;
-            let t = threshold(k, bias);
-            if digit < t {
+            let step = digit.checked_mul(place).ok_or_else(overflow)?;
+            insertion = insertion.checked_add(step).ok_or_else(overflow)?;
+            let limit = threshold(weight, bias);
+            if digit < limit {
                 break;
             }
-            weight = weight.checked_mul(BASE - t).ok_or_else(overflow)?;
-            k += BASE;
+            place = place.checked_mul(BASE - limit).ok_or_else(overflow)?;
+            weight += BASE;
         }
 
         let length = u32::try_from(output.len() + 1).map_err(|_| overflow())?;
-        bias = adapt(i - previous, length, previous == 0);
-        n = n.checked_add(i / length).ok_or_else(overflow)?;
-        i %= length;
+        bias = adapt(insertion - previous, length, previous == 0);
+        boundary = boundary.checked_add(insertion / length).ok_or_else(overflow)?;
+        insertion %= length;
 
-        let position = usize::try_from(i).map_err(|_| overflow())?;
-        output.insert(position, n);
-        i += 1;
+        let position = usize::try_from(insertion).map_err(|_| overflow())?;
+        output.insert(position, boundary);
+        insertion += 1;
     }
 
     output
@@ -235,13 +238,13 @@ fn is_separator(character: char) -> bool {
 }
 
 /// The digit threshold for one round, clamped to `tmin..=tmax`.
-fn threshold(k: u32, bias: u32) -> u32 {
-    if k <= bias {
+fn threshold(weight: u32, bias: u32) -> u32 {
+    if weight <= bias {
         TMIN
-    } else if k >= bias + TMAX {
+    } else if weight >= bias + TMAX {
         TMAX
     } else {
-        k - bias
+        weight - bias
     }
 }
 
@@ -249,12 +252,12 @@ fn threshold(k: u32, bias: u32) -> u32 {
 fn adapt(delta: u32, points: u32, first: bool) -> u32 {
     let mut delta = if first { delta / DAMP } else { delta / 2 };
     delta += delta / points;
-    let mut k = 0;
+    let mut weight = 0;
     while delta > ((BASE - TMIN) * TMAX) / 2 {
         delta /= BASE - TMIN;
-        k += BASE;
+        weight += BASE;
     }
-    k + (((BASE - TMIN + 1) * delta) / (delta + SKEW))
+    weight + (((BASE - TMIN + 1) * delta) / (delta + SKEW))
 }
 
 /// Maps 0-25 to `a`-`z` and 26-35 to `0`-`9`.

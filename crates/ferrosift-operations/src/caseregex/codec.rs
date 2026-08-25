@@ -198,16 +198,13 @@ fn apply(source: &[char], pass: Pass) -> Vec<char> {
     let mut output: Vec<char> = Vec::with_capacity(source.len());
     let mut index = 0;
     while index < source.len() {
-        match match_at(source, index, pass) {
-            Some(length) => {
-                let matched = &source[index..index + length];
-                emit(&mut output, matched, pass.rule);
-                index += length;
-            }
-            None => {
-                output.push(source[index]);
-                index += 1;
-            }
+        if let Some(length) = match_at(source, index, pass) {
+            let matched = &source[index..index + length];
+            emit(&mut output, matched, pass.rule);
+            index += length;
+        } else {
+            output.push(source[index]);
+            index += 1;
         }
     }
     output

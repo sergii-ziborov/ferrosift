@@ -10,13 +10,13 @@ use crate::spec::{SpecDefinition, build};
 
 use super::codec;
 
-/// MurmurHash3, reported as a decimal number.
+/// `MurmurHash3`, reported as a decimal number.
 pub struct MurmurHash3 {
     spec: OperationSpec,
 }
 
 impl MurmurHash3 {
-    /// Creates the MurmurHash3 operation.
+    /// Creates the `MurmurHash3` operation.
     #[must_use]
     pub fn new() -> Self {
         Self {

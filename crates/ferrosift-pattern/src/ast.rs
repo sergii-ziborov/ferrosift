@@ -1,5 +1,147 @@
+use alloc::boxed::Box;
 use alloc::string::String;
 use alloc::vec::Vec;
+
+/// A value computed from literals and fields already read.
+///
+/// Expressions are what let a pattern describe a format rather than one file:
+/// an array whose length is a header field, a placement past a base address, a
+/// member present only when a flag is set. Every position that took a literal
+/// integer takes one of these instead, and a bare literal is still the common
+/// case.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Expression {
+    /// An integer literal.
+    Integer(u128),
+    /// `true` or `false`.
+    Bool(bool),
+    /// A character literal, held as its code point.
+    Char(char),
+    /// A dotted path to a field already read in the enclosing scope.
+    Path(Vec<String>),
+    /// `$`, the offset the field being evaluated starts at.
+    Offset,
+    /// `sizeof(...)`, in bytes.
+    SizeOf(SizeOfTarget),
+    /// A prefix operator applied to one operand.
+    Unary {
+        /// Which operator.
+        operator: UnaryOperator,
+        /// What it applies to.
+        operand: Box<Expression>,
+    },
+    /// An infix operator applied to two operands.
+    Binary {
+        /// Which operator.
+        operator: BinaryOperator,
+        /// Left-hand operand.
+        left: Box<Expression>,
+        /// Right-hand operand.
+        right: Box<Expression>,
+    },
+    /// `condition ? when_true : when_false`.
+    Conditional {
+        /// The test.
+        condition: Box<Expression>,
+        /// Value when the test holds.
+        when_true: Box<Expression>,
+        /// Value otherwise.
+        when_false: Box<Expression>,
+    },
+}
+
+/// What a `sizeof` is asking about.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum SizeOfTarget {
+    /// A built-in type, whose width is fixed.
+    Builtin(Builtin),
+    /// A field already read, whose width is the span it occupied.
+    Path(Vec<String>),
+}
+
+/// Prefix operators.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum UnaryOperator {
+    /// `-`, two's-complement negation.
+    Negate,
+    /// `~`, bitwise complement.
+    Complement,
+    /// `!`, logical negation.
+    Not,
+}
+
+/// Infix operators, in the C precedence the language inherits.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum BinaryOperator {
+    /// `*`
+    Multiply,
+    /// `/`
+    Divide,
+    /// `%`
+    Remainder,
+    /// `+`
+    Add,
+    /// `-`
+    Subtract,
+    /// `<<`
+    ShiftLeft,
+    /// `>>`
+    ShiftRight,
+    /// `<`
+    Less,
+    /// `<=`
+    LessEqual,
+    /// `>`
+    Greater,
+    /// `>=`
+    GreaterEqual,
+    /// `==`
+    Equal,
+    /// `!=`
+    NotEqual,
+    /// `&`
+    BitAnd,
+    /// `^`
+    BitXor,
+    /// `|`
+    BitOr,
+    /// `&&`
+    And,
+    /// `||`
+    Or,
+}
+
+impl BinaryOperator {
+    /// Binding power, higher binding tighter.
+    ///
+    /// These are C's levels, which is what the language this grammar follows
+    /// uses. Writing them as one table rather than a ladder of parser
+    /// functions keeps the precedence readable and in one place.
+    #[must_use]
+    pub const fn precedence(self) -> u8 {
+        match self {
+            Self::Multiply | Self::Divide | Self::Remainder => 10,
+            Self::Add | Self::Subtract => 9,
+            Self::ShiftLeft | Self::ShiftRight => 8,
+            Self::Less | Self::LessEqual | Self::Greater | Self::GreaterEqual => 7,
+            Self::Equal | Self::NotEqual => 6,
+            Self::BitAnd => 5,
+            Self::BitXor => 4,
+            Self::BitOr => 3,
+            Self::And => 2,
+            Self::Or => 1,
+        }
+    }
+}
+
+/// How many elements an array holds.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum ArrayLength {
+    /// `[expr]` -- a count computed before the first element is read.
+    Counted(Expression),
+    /// `[while(expr)]` -- read elements while the test holds.
+    While(Expression),
+}
 
 /// A parsed pattern source: every declaration in the order it was written.
 #[derive(Clone, Debug, PartialEq, Eq, Default)]
@@ -16,6 +158,7 @@ impl Pattern {
             matches!(
                 declaration,
                 Declaration::Struct(value) if value.name == name)
+                || matches!(declaration, Declaration::Union(value) if value.name == name)
                 || matches!(declaration, Declaration::Enum(value) if value.name == name)
                 || matches!(declaration, Declaration::Bitfield(value) if value.name == name)
                 || matches!(declaration, Declaration::Alias(value) if value.name == name)
@@ -28,6 +171,8 @@ impl Pattern {
 pub enum Declaration {
     /// `struct Name { ... }`
     Struct(StructDeclaration),
+    /// `union Name { ... }`
+    Union(UnionDeclaration),
     /// `enum Name : Type { ... }`
     Enum(EnumDeclaration),
     /// `bitfield Name { ... }`
@@ -38,24 +183,56 @@ pub enum Declaration {
     Placement(Placement),
 }
 
-/// A composite type whose fields are laid out back to back.
+/// A composite type whose members are laid out back to back.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct StructDeclaration {
     /// Type name.
     pub name: String,
-    /// Fields in layout order.
-    pub fields: Vec<Field>,
+    /// Members in layout order.
+    pub members: Vec<Member>,
 }
 
-/// One member of a struct.
+/// A composite type whose members all begin at the same offset.
+///
+/// The size is the widest member rather than the sum, and evaluation reads
+/// every member from the same address. That is the whole difference from a
+/// struct, so the two share their member type.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct UnionDeclaration {
+    /// Type name.
+    pub name: String,
+    /// Members, all starting at offset zero within the union.
+    pub members: Vec<Member>,
+}
+
+/// One entry in a struct or union body.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Member {
+    /// A named, typed field.
+    Field(Field),
+    /// `if (condition) { ... } else { ... }`, choosing members by a test over
+    /// the fields already read.
+    Conditional {
+        /// The test, evaluated against the members read so far.
+        condition: Expression,
+        /// Members contributed when the test holds.
+        when_true: Vec<Member>,
+        /// Members contributed otherwise; empty when there is no `else`.
+        when_false: Vec<Member>,
+    },
+    /// `padding[expr];`, advancing the cursor without producing a field.
+    Padding(Expression),
+}
+
+/// One named field of a struct or union.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Field {
     /// Member name.
     pub name: String,
     /// Member type.
     pub type_reference: TypeReference,
-    /// `Some(n)` when the member is a fixed-size array of `n` elements.
-    pub array_length: Option<u128>,
+    /// `Some(..)` when the member is an array.
+    pub array_length: Option<ArrayLength>,
 }
 
 /// A named set of integer constants over an explicit backing type.
@@ -112,10 +289,14 @@ pub struct Placement {
     pub name: String,
     /// Variable type.
     pub type_reference: TypeReference,
-    /// `Some(n)` when the variable is a fixed-size array of `n` elements.
-    pub array_length: Option<u128>,
+    /// `Some(..)` when the variable is an array.
+    pub array_length: Option<ArrayLength>,
     /// Absolute byte offset the variable starts at.
-    pub address: u128,
+    ///
+    /// An expression rather than a literal so a placement can be written
+    /// relative to an earlier one -- `Body body @ sizeof(header);` -- which is
+    /// how a format with a variable-length header is described.
+    pub address: Expression,
 }
 
 /// A type together with any explicit endianness prefix.

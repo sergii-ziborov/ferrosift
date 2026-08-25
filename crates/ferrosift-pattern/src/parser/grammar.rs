@@ -1,16 +1,18 @@
 use alloc::collections::BTreeSet;
 use alloc::format;
 use alloc::string::String;
+use alloc::vec;
 use alloc::vec::Vec;
 
 use super::cursor::{
-    Cursor, DUPLICATE_DECLARATION, EXPECTED_TYPE, INVALID_ARRAY_LENGTH, INVALID_BIT_WIDTH,
-    UNEXPECTED_TOKEN,
+    Cursor, DUPLICATE_DECLARATION, EXPECTED_INTEGER, EXPECTED_TYPE, INVALID_ARRAY_LENGTH,
+    INVALID_BIT_WIDTH, UNEXPECTED_TOKEN,
 };
+use super::expression::expression;
 use crate::ast::{
-    AliasDeclaration, BitfieldDeclaration, BitfieldMember, Builtin, Declaration, Endian,
-    EnumDeclaration, EnumEntry, Field, Pattern, Placement, StructDeclaration, TypeKind,
-    TypeReference,
+    AliasDeclaration, ArrayLength, BitfieldDeclaration, BitfieldMember, Builtin, Declaration,
+    Endian, EnumDeclaration, EnumEntry, Expression, Field, Member, Pattern, Placement,
+    StructDeclaration, TypeKind, TypeReference, UnionDeclaration,
 };
 use crate::error::PatternError;
 use crate::lexer::{Keyword, Symbol, TokenKind};
@@ -35,6 +37,7 @@ pub(super) fn pattern(cursor: &mut Cursor) -> Result<Pattern, PatternError> {
 fn declared_name(declaration: &Declaration) -> String {
     match declaration {
         Declaration::Struct(value) => value.name.clone(),
+        Declaration::Union(value) => value.name.clone(),
         Declaration::Enum(value) => value.name.clone(),
         Declaration::Bitfield(value) => value.name.clone(),
         Declaration::Alias(value) => value.name.clone(),
@@ -45,6 +48,9 @@ fn declared_name(declaration: &Declaration) -> String {
 fn declaration(cursor: &mut Cursor) -> Result<Declaration, PatternError> {
     if cursor.eat_keyword(Keyword::Struct) {
         return structure(cursor).map(Declaration::Struct);
+    }
+    if cursor.eat_keyword(Keyword::Union) {
+        return union(cursor).map(Declaration::Union);
     }
     if cursor.eat_keyword(Keyword::Enum) {
         return enumeration(cursor).map(Declaration::Enum);
@@ -60,16 +66,70 @@ fn declaration(cursor: &mut Cursor) -> Result<Declaration, PatternError> {
 
 fn structure(cursor: &mut Cursor) -> Result<StructDeclaration, PatternError> {
     let name = cursor.expect_identifier()?;
+    let members = body(cursor, "struct")?;
+    cursor.eat(Symbol::Semicolon);
+    Ok(StructDeclaration { name, members })
+}
+
+fn union(cursor: &mut Cursor) -> Result<UnionDeclaration, PatternError> {
+    let name = cursor.expect_identifier()?;
+    let members = body(cursor, "union")?;
+    cursor.eat(Symbol::Semicolon);
+    Ok(UnionDeclaration { name, members })
+}
+
+/// Reads a brace-delimited member list, shared by structs, unions, and the
+/// arms of a conditional.
+fn body(cursor: &mut Cursor, what: &'static str) -> Result<Vec<Member>, PatternError> {
     cursor.expect(Symbol::BraceOpen)?;
-    let mut fields = Vec::new();
+    let mut members = Vec::new();
     while !cursor.eat(Symbol::BraceClose) {
         if cursor.at_end() {
-            return Err(cursor.fail(UNEXPECTED_TOKEN, "struct body is never closed"));
+            return Err(cursor.fail(
+                UNEXPECTED_TOKEN,
+                format!("{what} body is never closed"),
+            ));
         }
-        fields.push(field(cursor)?);
+        members.push(member(cursor)?);
     }
-    cursor.eat(Symbol::Semicolon);
-    Ok(StructDeclaration { name, fields })
+    Ok(members)
+}
+
+fn member(cursor: &mut Cursor) -> Result<Member, PatternError> {
+    if cursor.eat_keyword(Keyword::If) {
+        return conditional(cursor);
+    }
+    if cursor.eat_keyword(Keyword::Padding) {
+        cursor.expect(Symbol::BracketOpen)?;
+        let count = expression(cursor)?;
+        cursor.expect(Symbol::BracketClose)?;
+        cursor.expect(Symbol::Semicolon)?;
+        return Ok(Member::Padding(count));
+    }
+    field(cursor).map(Member::Field)
+}
+
+/// `if (condition) { ... }` with an optional `else`, which may be another
+/// `if` so that a chain reads the way it is written.
+fn conditional(cursor: &mut Cursor) -> Result<Member, PatternError> {
+    cursor.expect(Symbol::ParenOpen)?;
+    let condition = expression(cursor)?;
+    cursor.expect(Symbol::ParenClose)?;
+    let when_true = body(cursor, "if")?;
+    let when_false = if cursor.eat_keyword(Keyword::Else) {
+        if cursor.eat_keyword(Keyword::If) {
+            vec![conditional(cursor)?]
+        } else {
+            body(cursor, "else")?
+        }
+    } else {
+        Vec::new()
+    };
+    Ok(Member::Conditional {
+        condition,
+        when_true,
+        when_false,
+    })
 }
 
 fn field(cursor: &mut Cursor) -> Result<Field, PatternError> {
@@ -97,7 +157,7 @@ fn enumeration(cursor: &mut Cursor) -> Result<EnumDeclaration, PatternError> {
         }
         let entry_name = cursor.expect_identifier()?;
         let value = if cursor.eat(Symbol::Assign) {
-            cursor.expect_integer()?
+            constant(cursor, EXPECTED_INTEGER, "enum value")?
         } else {
             next
         };
@@ -129,7 +189,7 @@ fn bitfield(cursor: &mut Cursor) -> Result<BitfieldDeclaration, PatternError> {
         }
         let member_name = cursor.expect_identifier()?;
         cursor.expect(Symbol::Colon)?;
-        let bits = cursor.expect_integer()?;
+        let bits = constant(cursor, INVALID_BIT_WIDTH, "bit width")?;
         let bits = u32::try_from(bits)
             .ok()
             .filter(|width| (1..=64).contains(width))
@@ -157,7 +217,7 @@ fn placement(cursor: &mut Cursor) -> Result<Placement, PatternError> {
     let name = cursor.expect_identifier()?;
     let array_length = array_length(cursor)?;
     cursor.expect(Symbol::At)?;
-    let address = cursor.expect_integer()?;
+    let address = expression(cursor)?;
     cursor.expect(Symbol::Semicolon)?;
     Ok(Placement {
         name,
@@ -167,16 +227,45 @@ fn placement(cursor: &mut Cursor) -> Result<Placement, PatternError> {
     })
 }
 
-fn array_length(cursor: &mut Cursor) -> Result<Option<u128>, PatternError> {
+/// `[expr]` or `[while(expr)]`, or nothing at all.
+///
+/// A literal count is checked here, where the position is still known. A
+/// computed one cannot be: its value depends on bytes that have not been read,
+/// so a negative or oversized result is an evaluation failure instead.
+fn array_length(cursor: &mut Cursor) -> Result<Option<ArrayLength>, PatternError> {
     if !cursor.eat(Symbol::BracketOpen) {
         return Ok(None);
     }
-    let length = cursor.expect_integer()?;
-    if length == 0 {
+    if cursor.eat_keyword(Keyword::While) {
+        cursor.expect(Symbol::ParenOpen)?;
+        let condition = expression(cursor)?;
+        cursor.expect(Symbol::ParenClose)?;
+        cursor.expect(Symbol::BracketClose)?;
+        return Ok(Some(ArrayLength::While(condition)));
+    }
+    let count = expression(cursor)?;
+    if count == Expression::Integer(0) {
         return Err(cursor.fail(INVALID_ARRAY_LENGTH, "array length must be positive"));
     }
     cursor.expect(Symbol::BracketClose)?;
-    Ok(Some(length))
+    Ok(Some(ArrayLength::Counted(count)))
+}
+
+/// Reads an expression that must resolve without reading any data.
+///
+/// Enum values and bit widths are fixed by the source, so allowing an
+/// expression there costs nothing at evaluation time -- `Flag = 1 << 3` folds
+/// once, here, and the result is what every read compares against.
+fn constant(
+    cursor: &mut Cursor,
+    code: &'static str,
+    what: &'static str,
+) -> Result<u128, PatternError> {
+    let value = expression(cursor)?;
+    let folded = crate::eval::fold(&value)
+        .map_err(|_| cursor.fail(code, format!("{what} must be a constant expression")))?;
+    u128::try_from(folded)
+        .map_err(|_| cursor.fail(code, format!("{what} must not be negative")))
 }
 
 fn type_reference(cursor: &mut Cursor) -> Result<TypeReference, PatternError> {

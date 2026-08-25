@@ -10,6 +10,10 @@ use crate::failure::failed;
 /// textual and octal forms both address the bits in a fixed order, and the
 /// output renders them in a third order again. Grouping would mean three
 /// different traversals of a shape that suits none of them.
+#[expect(
+    clippy::struct_excessive_bools,
+    reason = "a UNIX mode is nineteen independent flags; a bitmask would hide which bit is which at every use"
+)]
 #[derive(Default, Clone, Copy)]
 struct Perms {
     directory: bool,
@@ -195,6 +199,9 @@ fn from_textual(rest: &[char]) -> Perms {
     perms
 }
 
+/// The horizontal rule between every row of the permission matrix.
+const RULE: &str = " +---------+-------+-------+-------+\n";
+
 /// Builds the report.
 ///
 /// The file-type line appears only for textual input. Octal carries no type
@@ -222,7 +229,6 @@ fn render(perms: &Perms, textual: bool) -> String {
         output.push_str("\nThe sticky bit is set");
     }
 
-    const RULE: &str = " +---------+-------+-------+-------+\n";
     output.push_str("\n\n");
     output.push_str(RULE);
     output.push_str(" |         | User  | Group | Other |\n");
@@ -249,7 +255,20 @@ fn push_row(output: &mut String, label: &str, user: bool, group: bool, other: bo
     output.push('\n');
 }
 
+/// The three permission classes, in the order the textual form writes them.
+#[derive(Clone, Copy)]
+enum Class {
+    User,
+    Group,
+    Other,
+}
+
 /// Appends the ten-character textual form.
+///
+/// The leading character is chosen by the *last* type flag that is set, which
+/// is what a chain of plain assignments does in the reference. Only one is
+/// ever set by the parser, so the order matters solely for agreement rather
+/// than for any input that occurs.
 fn push_textual(output: &mut String, perms: &Perms) {
     output.push(match () {
         () if perms.door => 'D',
@@ -261,25 +280,9 @@ fn push_textual(output: &mut String, perms: &Perms) {
         () if perms.directory => 'd',
         () => '-',
     });
-    push_triple(output, perms.read_user, perms.write_user, perms.exec_user, perms.setuid, 's', 'S');
-    push_triple(
-        output,
-        perms.read_group,
-        perms.write_group,
-        perms.exec_group,
-        perms.setgid,
-        's',
-        'S',
-    );
-    push_triple(
-        output,
-        perms.read_other,
-        perms.write_other,
-        perms.exec_other,
-        perms.sticky,
-        't',
-        'T',
-    );
+    for class in [Class::User, Class::Group, Class::Other] {
+        push_triple(output, perms, class);
+    }
 }
 
 /// Appends one read/write/execute triple.
@@ -287,16 +290,35 @@ fn push_textual(output: &mut String, perms: &Perms) {
 /// The execute slot carries two bits: whether execute is granted and whether
 /// the class's special bit is set. The special bit shows in upper case when
 /// execute is absent, which is how `chmod` reports a flag that cannot take
-/// effect.
-fn push_triple(
-    output: &mut String,
-    read: bool,
-    write: bool,
-    execute: bool,
-    special: bool,
-    both: char,
-    special_only: char,
-) {
+/// effect. Only the "other" class spells that pair `t` and `T`; the first two
+/// use `s` and `S`.
+fn push_triple(output: &mut String, perms: &Perms, class: Class) {
+    let (read, write, execute, special, both, special_only) = match class {
+        Class::User => (
+            perms.read_user,
+            perms.write_user,
+            perms.exec_user,
+            perms.setuid,
+            's',
+            'S',
+        ),
+        Class::Group => (
+            perms.read_group,
+            perms.write_group,
+            perms.exec_group,
+            perms.setgid,
+            's',
+            'S',
+        ),
+        Class::Other => (
+            perms.read_other,
+            perms.write_other,
+            perms.exec_other,
+            perms.sticky,
+            't',
+            'T',
+        ),
+    };
     output.push(if read { 'r' } else { '-' });
     output.push(if write { 'w' } else { '-' });
     output.push(match (execute, special) {

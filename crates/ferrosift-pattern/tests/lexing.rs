@@ -1,11 +1,16 @@
 //! Literal, escape, and every-built-in-type coverage for the front end.
 
-use ferrosift_pattern::{Builtin, Declaration, EvalOptions, NodeValue, evaluate, parse};
+use ferrosift_pattern::{
+    Builtin, Declaration, EvalOptions, Expression, NodeValue, evaluate, parse,
+};
 
 fn placement_address(source: &str) -> u128 {
     let pattern = parse(source).unwrap_or_else(|error| panic!("parse failed: {error}"));
     match &pattern.declarations[0] {
-        Declaration::Placement(placement) => placement.address,
+        Declaration::Placement(placement) => match placement.address {
+            Expression::Integer(value) => value,
+            ref other => panic!("expected a literal address, found {other:?}"),
+        },
         other => panic!("expected a placement, found {other:?}"),
     }
 }
@@ -76,10 +81,13 @@ fn unterminated_literals_and_comments_are_rejected() {
 fn unsupported_escapes_and_characters_are_rejected() {
     assert_eq!(code(r"u8 a @ '\q';"), "pattern.lex.invalid_escape");
     assert_eq!(code(r"u8 a @ '\"), "pattern.lex.invalid_escape");
+    // `$` and `&` used to belong here. They are operators now, so a source
+    // using them reaches the parser and fails there instead -- the characters
+    // that remain are the ones no part of the grammar spells.
     for source in [
-        "struct S { u8 a; } $",
         "u8 a @ 0; #pragma once",
-        "u8 a & 0;",
+        "struct S { u8 a; } `",
+        "u8 a @ 0 \\ 1;",
     ] {
         assert_eq!(code(source), "pattern.lex.unexpected_character", "{source}");
     }
@@ -97,7 +105,7 @@ fn comments_may_close_and_nest_line_forms() {
     let Declaration::Struct(structure) = &pattern.declarations[0] else {
         panic!("expected a struct");
     };
-    assert_eq!(structure.fields.len(), 2);
+    assert_eq!(structure.members.len(), 2);
 }
 
 #[test]

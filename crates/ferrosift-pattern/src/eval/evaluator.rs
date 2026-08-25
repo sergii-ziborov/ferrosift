@@ -3,15 +3,17 @@ use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 
 use super::composite;
+use super::expression::{self, Scope};
 use super::options::EvalOptions;
 use super::reader::{Reader, out_of_bounds};
 use super::value::{Node, NodeValue};
-use crate::ast::{Builtin, Declaration, Endian, Pattern, TypeKind, TypeReference};
+use crate::ast::{ArrayLength, Builtin, Declaration, Endian, Pattern, TypeKind, TypeReference};
 use crate::error::{PatternError, Position};
 
 pub(super) const UNKNOWN_TYPE: &str = "pattern.eval.unknown_type";
 pub(super) const DEPTH_EXCEEDED: &str = "pattern.eval.depth_exceeded";
 pub(super) const NODE_BUDGET: &str = "pattern.eval.node_budget_exceeded";
+pub(super) const INVALID_LENGTH: &str = "pattern.eval.invalid_length";
 
 /// Evaluates every placement in `pattern` against `data`.
 ///
@@ -31,18 +33,31 @@ pub fn evaluate(
         options: *options,
         nodes: 0,
     };
-    let mut roots = Vec::new();
+    let mut roots: Vec<Node> = Vec::new();
     for declaration in &pattern.declarations {
         if let Declaration::Placement(placement) = declaration {
-            let offset = u64::try_from(placement.address)
+            // Earlier placements are in scope, so an address can be written
+            // relative to one already read rather than as a literal.
+            let scope = Scope {
+                siblings: &roots,
+                offset: 0,
+            };
+            let address = expression::evaluate(&placement.address, scope)?;
+            let offset = u64::try_from(address)
                 .map_err(|_| out_of_bounds("placement address is past the addressable range"))?;
-            roots.push(evaluator.item(
+            let scope = Scope {
+                siblings: &roots,
+                offset,
+            };
+            let node = evaluator.item(
                 &placement.name,
                 &placement.type_reference,
-                placement.array_length,
+                placement.array_length.as_ref(),
                 offset,
                 0,
-            )?);
+                scope,
+            )?;
+            roots.push(node);
         }
     }
     Ok(roots)
@@ -56,14 +71,15 @@ pub(super) struct Evaluator<'a> {
 }
 
 impl Evaluator<'_> {
-    /// Evaluates one named item, which may be a fixed-size array.
+    /// Evaluates one named item, which may be an array.
     pub(super) fn item(
         &mut self,
         name: &str,
         type_reference: &TypeReference,
-        array_length: Option<u128>,
+        array_length: Option<&ArrayLength>,
         offset: u64,
         depth: u32,
+        scope: Scope<'_>,
     ) -> Result<Node, PatternError> {
         let Some(length) = array_length else {
             return self.value(name, type_reference, offset, depth);
@@ -71,21 +87,55 @@ impl Evaluator<'_> {
         self.charge()?;
         let mut children = Vec::new();
         let mut cursor = offset;
-        let mut index: u128 = 0;
-        while index < length {
-            let child = self.value(
-                &format!("{name}[{index}]"),
-                type_reference,
-                cursor,
-                depth + 1,
-            )?;
-            cursor = child.end();
-            children.push(child);
-            index += 1;
+
+        match length {
+            ArrayLength::Counted(count) => {
+                let count = expression::evaluate(count, scope)?;
+                let count = u64::try_from(count)
+                    .map_err(|_| fail(INVALID_LENGTH, "array length is negative or too large"))?;
+                for index in 0..count {
+                    let child = self.value(
+                        &format!("{name}[{index}]"),
+                        type_reference,
+                        cursor,
+                        depth + 1,
+                    )?;
+                    cursor = child.end();
+                    children.push(child);
+                }
+            }
+            ArrayLength::While(condition) => {
+                // The test sees `$` as the offset the next element would start
+                // at, which is what makes `[while($ < end)]` mean what it
+                // reads as. An element of zero width would spin here; the node
+                // budget is what stops it, the same bound that stops a wrong
+                // count.
+                let mut index: u64 = 0;
+                loop {
+                    let test = Scope {
+                        siblings: scope.siblings,
+                        offset: cursor,
+                    };
+                    if expression::evaluate(condition, test)? == 0 {
+                        break;
+                    }
+                    let child = self.value(
+                        &format!("{name}[{index}]"),
+                        type_reference,
+                        cursor,
+                        depth + 1,
+                    )?;
+                    cursor = child.end();
+                    children.push(child);
+                    index += 1;
+                }
+            }
         }
+
+        let count = children.len();
         Ok(Node {
             name: name.to_string(),
-            type_name: format!("{}[{length}]", type_name(type_reference)),
+            type_name: format!("{}[{count}]", type_name(type_reference)),
             offset,
             size: cursor.saturating_sub(offset),
             value: NodeValue::Group(children),
@@ -139,6 +189,9 @@ impl Evaluator<'_> {
             }
             Declaration::Struct(structure) => {
                 composite::structure(self, name, structure, endian, offset, depth)
+            }
+            Declaration::Union(union) => {
+                composite::union(self, name, union, endian, offset, depth)
             }
             Declaration::Enum(enumeration) => {
                 composite::enumeration(self, name, enumeration, endian, offset)
@@ -215,7 +268,7 @@ pub(super) fn type_name(type_reference: &TypeReference) -> String {
     }
 }
 
-pub(super) fn fail(code: &'static str, detail: &'static str) -> PatternError {
+pub(crate) fn fail(code: &'static str, detail: &'static str) -> PatternError {
     PatternError::new(code, Position { line: 0, column: 0 }, detail)
 }
 

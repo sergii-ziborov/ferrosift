@@ -5,41 +5,105 @@ declaration tree describing binary structures, and evaluates that tree against
 bytes into a value tree where every node carries its absolute offset and byte
 size — enough to annotate a hex view without re-deriving the layout.
 
+## Where this grammar comes from
+
+The syntax is modelled on the **ImHex pattern language** (`.hexpat`) — the
+same `struct` / `union` / `enum` / `bitfield` / `using` declarations, the same
+`be` and `le` prefixes, the same `Type name @ address;` placement, and the
+same `u8`…`u128` type names.
+
+Recording that here is itself a fix. Until now nothing in this repository
+named the language it follows, in the docs, the README, or a single comment,
+which left every grammar decision looking arbitrary rather than inherited.
+
 ## Compatibility status
 
-**No upstream compatibility is claimed yet.** FerroSift's rule is that a
+**No upstream compatibility is claimed.** FerroSift's rule is that a
 compatibility claim must be backed by a pinned differential corpus, the way
 [CyberChef 11.3.0 compatibility](compatibility/cyberchef-v11.3.0.md) is backed
-by 583 pinned cases. No such corpus exists for a pattern-language runtime in
-this repository, so this crate documents *its own* grammar and says nothing
-about matching any other implementation. The claim will be made only once the
-evidence exists, and this page will then state the pinned reference and case
-count exactly as the CyberChef ledger does.
+by its pinned cases. No pattern-language runtime is vendored in this
+repository and no such corpus exists, so this page documents *what this crate
+does* and nothing more. Naming the inspiration above is not a claim of
+agreement with it: where this crate has had to decide something the grammar
+alone does not settle — bitfield bit order is the clearest case — the choice
+is marked as this crate's own.
+
+The claim will be made only once the evidence exists, and this page will then
+state the pinned reference and case count exactly as the CyberChef ledger
+does.
 
 ## Supported grammar
 
 ```text
 pattern     := declaration*
-declaration := struct | enum | bitfield | alias | placement
+declaration := struct | union | enum | bitfield | alias | placement
 
-struct      := 'struct' IDENT '{' field* '}' ';'?
-field       := type IDENT ('[' INT ']')? ';'
+struct      := 'struct' IDENT body ';'?
+union       := 'union' IDENT body ';'?
+body        := '{' member* '}'
+member      := field | conditional | padding
+field       := type IDENT array? ';'
+conditional := 'if' '(' expr ')' body ('else' (conditional | body))?
+padding     := 'padding' '[' expr ']' ';'
+array       := '[' expr ']' | '[' 'while' '(' expr ')' ']'
 
 enum        := 'enum' IDENT ':' type '{' entry (',' entry)* ','? '}' ';'?
-entry       := IDENT ('=' INT)?
+entry       := IDENT ('=' expr)?
 
-bitfield    := 'bitfield' IDENT '{' member* '}' ';'?
-member      := IDENT ':' INT ';'
+bitfield    := 'bitfield' IDENT '{' bits* '}' ';'?
+bits        := IDENT ':' expr ';'
 
 alias       := 'using' IDENT '=' type ';'
-placement   := type IDENT ('[' INT ']')? '@' INT ';'
+placement   := type IDENT array? '@' expr ';'
 
 type        := ('be' | 'le')? (BUILTIN | IDENT)
+
+expr        := ternary
+ternary     := binary ('?' ternary ':' ternary)?
+binary      := unary (OP binary)*
+unary       := ('-' | '~' | '!')? primary
+primary     := INT | CHAR | 'true' | 'false' | '$'
+             | 'sizeof' '(' (BUILTIN | path) ')'
+             | path | '(' expr ')'
+path        := IDENT ('.' IDENT)*
 ```
 
 An enum entry without `= value` continues from the previous entry, starting
-at zero. Bitfield member widths are 1 to 64 bits. Array lengths must be
-positive. A name may be declared only once per pattern.
+at zero. Bitfield member widths are 1 to 64 bits. A literal array length must
+be positive. A name may be declared only once per pattern.
+
+## Expressions
+
+Anywhere an integer was once required, an expression is accepted. This is what
+lets one pattern describe a format rather than one file.
+
+| Position | Sees |
+|---|---|
+| Array length, `[expr]` | Fields already read in the same body |
+| Array test, `[while(expr)]` | The same, with `$` at the next element |
+| Placement address, `@ expr` | Placements already evaluated |
+| Conditional test, `if (expr)` | Fields already read in the same body |
+| `padding[expr]` | The same |
+| Enum value, bit width | Nothing — folded once while parsing |
+
+Operators are C's, with C's precedence: `* / %`, then `+ -`, `<< >>`,
+`< <= > >=`, `== !=`, `&`, `^`, `|`, `&&`, `||`, and the `?:` conditional.
+Prefix `-`, `~`, and `!` bind tighter than all of them. Comparisons yield 0 or
+1 and any non-zero value is true, so a test and a count are the same kind of
+thing.
+
+`&&`, `||`, and `?:` evaluate only what they must, which is what makes
+`n == 0 ? 1 : 4 / n` safe to write. Arithmetic is checked: an overflow, a
+division by zero, or a shift of 128 or more is a stable failure code rather
+than a wrapped value.
+
+`$` is the offset the current field starts at. `sizeof(u32)` is a built-in's
+width; `sizeof(field)` is the span a field actually occupied, which is the
+only way to ask the size of something whose length varied.
+
+A field may only refer to fields declared **before** it. That is not a
+restriction this crate adds — a later field's bytes have not been read, so its
+value does not exist yet.
 
 ## Built-in types
 
@@ -69,6 +133,20 @@ absolute address.
 - **Layout.** Struct fields and array elements are laid out consecutively with
   no padding. A composite node's size is the span from its first byte to the
   end of its last child.
+- **Unions.** Every member is read from the union's own offset, and the size
+  is the widest member rather than the sum. Members still see the ones
+  declared before them, so a union can be discriminated by a field read
+  earlier.
+- **Conditionals.** `if` contributes its members to the enclosing body rather
+  than producing a node of its own, so a condition changes which fields exist
+  without changing the shape of the value tree. `else if` nests, and exactly
+  one arm is taken.
+- **Padding.** `padding[n]` advances the cursor by `n` bytes and produces no
+  node. The bytes it covers are still counted in the enclosing size.
+- **`while` arrays.** Elements are read while the test holds, with `$` bound
+  to where the next element would start. An element of zero width would spin,
+  and the node budget is what stops it — the same bound that stops a wrong
+  count.
 - **Signed integers** are sign-extended from their declared width.
 - **Enums** read their backing type and resolve the value against the declared
   constants; an unmatched value is preserved with no name rather than failing.
@@ -84,11 +162,12 @@ absolute address.
 
 ## Not implemented
 
-Each of these is a named future step, never a silent gap: functions,
-`if` / `else`, loops, `while`-sized and unbounded arrays, pointers, unions,
-namespaces, attributes, the preprocessor (`#include`, `#define`, `#pragma`),
-and expressions beyond integer literals. Sources using them are rejected with
-a stable code, never partially accepted.
+Each of these is a named future step, never a silent gap: functions and their
+`return`, `while` and `for` statements, `match`, pointers (`Type *p : u32`),
+namespaces, attributes (`[[color]]`, `[[name]]`, `[[hidden]]`, …), the
+preprocessor (`#include`, `#define`, `#pragma`), `str` and `auto`, unbounded
+arrays terminated by a sentinel, and `in` / `out` variables. Sources using
+them are rejected with a stable code, never partially accepted.
 
 ## Failure codes
 
@@ -113,5 +192,10 @@ are matchable identifiers whose meaning does not change between releases.
 | `pattern.parse.duplicate_declaration` | A name is declared more than once |
 | `pattern.eval.out_of_bounds` | A read extends past the end of the data |
 | `pattern.eval.unknown_type` | A referenced type is not declared in the pattern |
+| `pattern.eval.unknown_field` | An expression names a field not readable from there |
+| `pattern.eval.not_a_number` | An expression uses a float or a composite as a number |
+| `pattern.eval.arithmetic_overflow` | An expression overflows 128 bits, or shifts too far |
+| `pattern.eval.divide_by_zero` | An expression divides or takes a remainder by zero |
+| `pattern.eval.invalid_length` | A computed array or padding length is negative or too large |
 | `pattern.eval.depth_exceeded` | Type nesting exceeds the configured depth |
 | `pattern.eval.node_budget_exceeded` | The value tree exceeds the configured node budget |
