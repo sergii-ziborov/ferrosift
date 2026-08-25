@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 164 |
-| Reference-aliased | 162 |
-| Byte-pinned (`exact`) | 158 |
+| Registered operations | 170 |
+| Reference-aliased | 168 |
+| Byte-pinned (`exact`) | 164 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2884 |
+| Pinned cases | 3023 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -35,6 +35,8 @@ does.
 | Operation | Alias | Pack | Status | Cases |
 |---|---|---|---|---:|
 | `analysis.suggest@1` | — | analysis | native | 0 |
+| `asn1.oid.decode@1` | Hex to Object Identifier | core | exact | 30 |
+| `asn1.oid.encode@1` | Object Identifier to Hex | core | exact | 41 |
 | `checksum.adler32@1` | Adler-32 Checksum | core | exact | 12 |
 | `checksum.fletcher16@1` | Fletcher-16 Checksum | core | exact | 12 |
 | `checksum.fletcher32@1` | Fletcher-32 Checksum | core | exact | 12 |
@@ -96,6 +98,8 @@ does.
 | `encoding.base45.encode@1` | To Base45 | core | exact | 13 |
 | `encoding.base58.decode@1` | From Base58 | core | exact | 25 |
 | `encoding.base58.encode@1` | To Base58 | core | exact | 25 |
+| `encoding.base62.decode@1` | From Base62 | core | exact | 12 |
+| `encoding.base62.encode@1` | To Base62 | core | exact | 15 |
 | `encoding.base64.decode@1` | From Base64 | core | exact | 28 |
 | `encoding.base64.encode@1` | To Base64 | core | exact | 29 |
 | `encoding.base85.decode@1` | From Base85 | core | exact | 26 |
@@ -107,6 +111,8 @@ does.
 | `encoding.caret_m.decode@1` | Caret/M-decode | core | exact | 20 |
 | `encoding.charcode.decode@1` | From Charcode | core | exact | 13 |
 | `encoding.charcode.encode@1` | To Charcode | core | exact | 13 |
+| `encoding.cobs.decode@1` | From COBS | core | exact | 25 |
+| `encoding.cobs.encode@1` | To COBS | core | exact | 16 |
 | `encoding.decimal.decode@1` | From Decimal | core | exact | 14 |
 | `encoding.decimal.encode@1` | To Decimal | core | exact | 13 |
 | `encoding.hex.decode@1` | From Hex | core | exact | 27 |

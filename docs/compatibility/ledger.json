@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 164,
-    "aliased": 162,
-    "exact": 158,
+    "operations": 170,
+    "aliased": 168,
+    "exact": 164,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2884
+    "pinned_cases": 3023
   },
   "operations": [
     {
@@ -28,6 +28,32 @@
       ],
       "conformance_cases": 0,
       "status": "native"
+    },
+    {
+      "id": "asn1.oid.decode@1",
+      "display_name": "Hex to Object Identifier",
+      "category": "Parsing",
+      "reference_alias": "Hex to Object Identifier",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 30,
+      "status": "exact"
+    },
+    {
+      "id": "asn1.oid.encode@1",
+      "display_name": "Object Identifier to Hex",
+      "category": "Parsing",
+      "reference_alias": "Object Identifier to Hex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 41,
+      "status": "exact"
     },
     {
       "id": "checksum.adler32@1",
@@ -828,6 +854,32 @@
       "status": "exact"
     },
     {
+      "id": "encoding.base62.decode@1",
+      "display_name": "From Base62",
+      "category": "Encoding",
+      "reference_alias": "From Base62",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.base62.encode@1",
+      "display_name": "To Base62",
+      "category": "Encoding",
+      "reference_alias": "To Base62",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 15,
+      "status": "exact"
+    },
+    {
       "id": "encoding.base64.decode@1",
       "display_name": "From Base64",
       "category": "Encoding",
@@ -968,6 +1020,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.cobs.decode@1",
+      "display_name": "From COBS",
+      "category": "Encoding",
+      "reference_alias": "From COBS",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 25,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.cobs.encode@1",
+      "display_name": "To COBS",
+      "category": "Encoding",
+      "reference_alias": "To COBS",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
       "status": "exact"
     },
     {

@@ -16,8 +16,8 @@ targets rather than inferring it.
 it still ships a `std`. Only the last two rows carry that claim.
 
 On the bare-metal targets the gate builds the facade with no features, with
-`pattern`, and with `hash`, `crypto`, `text`, and `analysis` individually and
-together.
+`pattern`, and with `hash`, `crypto`, `text`, `analysis`, `arithmetic`, and
+`bignum` individually and together.
 
 ## The one gap
 
@@ -34,8 +34,15 @@ dependency and make every pack bare-metal, which is why it is on the roadmap
 as its own piece of work rather than as a patch to a vendored manifest.
 
 Until then, the honest statement is: **FerroSift is `no_std` on bare metal for
-core, pattern, hash, crypto, text, analysis, and arithmetic; compression requires an
-allocator plus `std` because of one transitive dependency.**
+core, pattern, hash, crypto, text, analysis, arithmetic, and bignum;
+compression requires an allocator plus `std` because of one transitive
+dependency.**
+
+`bignum` is `arithmetic`'s dependency without its subject: Base62 and the ASN.1
+object identifiers are encodings that happen to need arbitrary precision, so
+they follow `num-bigint` rather than Extended GCD. Selecting one does not drag
+in the other, and CI builds each alone so a future release that quietly needed
+`std` fails a gate rather than a claim.
 
 `analysis` was on that list until recently, and not for a reason of its own.
 It declared `analysis = ["compression", "text"]` because recipe suggestion

@@ -16,6 +16,10 @@ default = ["portable-full", "pattern"]
 portable-full = ["analysis", "arithmetic", "compression", "crypto", "hash", "text"]
 analysis = ["ferrosift-operations/analysis"]
 arithmetic = ["ferrosift-operations/arithmetic"]
+# Base62 and the ASN.1 object identifiers: encodings that need arbitrary
+# precision. Separate from `arithmetic` because wanting Base62 is not wanting
+# Extended GCD; they share a dependency, not a purpose.
+bignum = ["ferrosift-operations/bignum"]
 compression = ["ferrosift-operations/compression"]
 crypto = ["ferrosift-operations/crypto"]
 hash = ["ferrosift-operations/hash"]

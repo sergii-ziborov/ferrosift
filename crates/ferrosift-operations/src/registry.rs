@@ -16,13 +16,13 @@ use crate::{
     UnescapeUnicodeCharacters, UnicodeTextFormat, VarIntDecode, VarIntEncode, Wrap,
 };
 use crate::{
-    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
+    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode, FromCobs,
     FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
     HammingDistance, Head, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines,
     RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
     Rot47, Rot47BruteForce, Rotate, SetOperation, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
-    ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToDecimal, ToHex,
-    ToHexdump, ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
+    ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToCobs, ToDecimal,
+    ToHex, ToHexdump, ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -41,6 +41,8 @@ use crate::{
 use crate::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "hash")]
 use crate::{FixedDigest, Hmac, Md5, Ripemd, Sha1, Sha2, Sha3};
+#[cfg(feature = "bignum")]
+use crate::{FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase62};
 #[cfg(feature = "analysis")]
 use crate::{SuggestRecipe, XorBruteForce};
 
@@ -208,6 +210,10 @@ fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 }
 
 /// Every representation codec, all dependency-free.
+///
+/// Except Base62, which is registered with the `bignum` pack instead: 62 is
+/// not a power of two, so the whole input is one integer rather than a stream
+/// of bit groups.
 fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(FromBase32::new())?;
     registry.register(ToBase32::new())?;
@@ -215,6 +221,8 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     registry.register(ToBase45::new())?;
     registry.register(FromBase58::new())?;
     registry.register(ToBase58::new())?;
+    registry.register(FromCobs::new())?;
+    registry.register(ToCobs::new())?;
     registry.register(FromBase64::new())?;
     registry.register(ToBase64::new())?;
     registry.register(FromBase85::new())?;
@@ -271,6 +279,15 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     {
         registry.register(ExtendedGcd::new())?;
         registry.register(ModularInverse::new())?;
+    }
+    // Encodings rather than arithmetic, but they need the same big integers,
+    // so they follow the dependency and not the subject.
+    #[cfg(feature = "bignum")]
+    {
+        registry.register(FromBase62::new())?;
+        registry.register(ToBase62::new())?;
+        registry.register(HexToObjectIdentifier::new())?;
+        registry.register(ObjectIdentifierToHex::new())?;
     }
     #[cfg(feature = "compression")]
     {

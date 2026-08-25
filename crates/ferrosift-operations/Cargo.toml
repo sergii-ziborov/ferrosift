@@ -12,14 +12,22 @@ description = "Portable pure-Rust operations for FerroSift"
 default = ["portable-full"]
 portable-full = ["analysis", "arithmetic", "compression", "crypto", "hash", "text"]
 
-# Arbitrary-precision integer arithmetic.
+# Arbitrary precision, as a dependency rather than as a subject.
 #
 # num-bigint with default features off: three pure-Rust crates, and both
 # bare-metal targets build with it. The reference reaches for JavaScript's
-# BigInt here, and a fixed-width port would be a different operation —
-# cryptographic moduli routinely exceed sixty-four bits, which is most of the
-# reason Modular Inverse exists at all.
-arithmetic = ["dep:num-bigint", "dep:num-traits"]
+# BigInt in these places, and a fixed-width port would be a different
+# operation — cryptographic moduli routinely exceed sixty-four bits, which is
+# most of the reason Modular Inverse exists at all.
+#
+# Named separately from `arithmetic` because wanting Base62 is not wanting
+# Extended GCD. Base62 and the ASN.1 object identifiers are encodings that
+# happen to need big integers; the arithmetic operations are the subject
+# itself. They share a dependency, not a purpose.
+bignum = ["dep:num-bigint", "dep:num-traits"]
+
+# Arbitrary-precision integer arithmetic: Extended GCD and Modular Inverse.
+arithmetic = ["bignum"]
 
 # Digests and HMAC.
 hash = [
@@ -71,10 +79,12 @@ text = ["dep:regex-automata"]
 # `analysis` off bare metal.
 analysis = []
 
-# Operations outside these packs — identity, flow control, every encoding,
-# byte slicing, and XOR — carry no external dependency and are always
-# compiled. Find / Replace is not among them: its Regex mode needs the regex
-# engine, so it belongs to `text`.
+# Operations outside these packs — identity, flow control, byte slicing, XOR,
+# and nearly every encoding — carry no external dependency and are always
+# compiled. Three are not among them, each for a named reason: Find / Replace
+# needs the regex engine for its Regex mode, so it belongs to `text`; Base62
+# and the object identifiers need arbitrary precision, so they belong to
+# `bignum`.
 
 [dependencies]
 aes = { version = "0.8.4", default-features = false, optional = true }

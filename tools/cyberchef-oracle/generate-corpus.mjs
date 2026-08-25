@@ -44,6 +44,7 @@ import * as crypto from "./corpus/crypto.mjs";
 import * as digest from "./corpus/digest.mjs";
 import * as encoding from "./corpus/encoding.mjs";
 import * as extract from "./corpus/extract.mjs";
+import * as framing from "./corpus/framing.mjs";
 import * as legacyDigest from "./corpus/legacy-digest.mjs";
 import * as sets from "./corpus/sets.mjs";
 import * as shape from "./corpus/shape.mjs";
@@ -58,7 +59,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing]) {
     await family.add(builder);
 }
 

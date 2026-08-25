@@ -268,6 +268,45 @@ So it is absent, and this note is the record of why. If the reference fixes
 it, FerroSift can implement the fixed behaviour and pin it like everything
 else.
 
+### Object identifiers refuse where the reference answers `NaN`
+
+`Object Identifier to Hex` and `Hex to Object Identifier` both hand text to a
+bignum whose parser skips characters it does not recognise. Where the text
+contains such characters, the reference returns a number derived from the
+letters of the word `NaN`:
+
+| Operation | Input | Reference | FerroSift |
+|---|---|---|---|
+| Object Identifier to Hex | `1` | `NaN` | refuses |
+| Object Identifier to Hex | `1..2` | `NaN02` | refuses |
+| Hex to Object Identifier | *(empty)* | `NaN.NaN` | refuses |
+| Hex to Object Identifier | `2azz` | `1.2.95` | refuses |
+
+`95` is what you get from reading `N`, `a`, `N` as bignum digits. This is a
+divergence, not compatibility, and it is recorded as one here rather than left
+to be discovered.
+
+Two reasons for refusing. No caller wants `95` for input `zz`, and an operation
+that answers a question it cannot answer is more dangerous than one that says
+so. And reproducing it would mean reproducing a specific bignum's digit table
+and word-size carry behaviour — pinned to that library rather than to any
+specification, and a large amount of machinery for output nobody should act on.
+
+Everything reachable from well-formed input matches byte for byte. That
+includes two bugs, which *are* reproduced because well-formed input reaches
+them:
+
+- A first arc pair above 255 is written as plain hexadecimal with no base-128
+  continuation and no padding, so `2.999` produces `437` — three hex digits
+  that no ASN.1 decoder, including FerroSift's own, reads back as `2.999`.
+- The first pair is computed with JavaScript doubles while every later arc goes
+  through an exact big integer, so `9007199254740993.1` and
+  `9007199254740992.1` encode identically while `1.2.9007199254740993` and
+  `1.2.9007199254740992` do not.
+
+Both are pinned in the corpus. `tests/conformance_framing.rs` holds the
+refusals and states the rounding property.
+
 ### Flow control: Fork / Merge
 
 `Fork` / `Merge` are first-class map/join control (not jump soup). The executor

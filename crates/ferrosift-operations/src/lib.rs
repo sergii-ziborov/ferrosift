@@ -18,6 +18,8 @@ mod args;
 mod base32;
 mod base45;
 mod base58;
+#[cfg(feature = "bignum")]
+mod base62;
 mod base64;
 mod base85;
 mod binary;
@@ -29,6 +31,7 @@ mod casing;
 mod charcode;
 mod checksum;
 mod classical;
+mod cobs;
 mod decimal;
 mod failure;
 mod flow;
@@ -48,6 +51,8 @@ mod modhex;
 mod morse;
 mod netfmt;
 mod octal;
+#[cfg(feature = "bignum")]
+mod oid;
 mod registry;
 mod rot13;
 mod sets;
@@ -100,6 +105,8 @@ pub use annotate::HtmlToText;
 pub use base32::{FromBase32, ToBase32};
 pub use base45::{FromBase45, ToBase45};
 pub use base58::{FromBase58, ToBase58};
+#[cfg(feature = "bignum")]
+pub use base62::{FromBase62, ToBase62};
 pub use base64::{FromBase64, ToBase64};
 pub use base85::{FromBase85, ToBase85};
 pub use binary::{FromBinary, ToBinary};
@@ -111,6 +118,7 @@ pub use casing::{AlternatingCaps, GetAllCasings, SwapCase, ToLowerCase, ToUpperC
 pub use charcode::{FromCharcode, ToCharcode};
 pub use checksum::{Checksum, LuhnChecksum};
 pub use classical::{ClassicalCipher, Rot47};
+pub use cobs::{FromCobs, ToCobs};
 pub use decimal::{FromDecimal, ToDecimal};
 pub use flow::{Fork, Merge};
 pub use generate::GenerateDeBruijnSequence;
@@ -126,6 +134,8 @@ pub use modhex::{FromModhex, ToModhex};
 pub use morse::{FromMorseCode, ToMorseCode};
 pub use netfmt::{FormatMacAddresses, ParityBit};
 pub use octal::{FromOctal, ToOctal};
+#[cfg(feature = "bignum")]
+pub use oid::{HexToObjectIdentifier, ObjectIdentifierToHex};
 pub use rot13::Rot13;
 pub use sets::{HammingDistance, LevenshteinDistance, SetOperation};
 pub use shape::{

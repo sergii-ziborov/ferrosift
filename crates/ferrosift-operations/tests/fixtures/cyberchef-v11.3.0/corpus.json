@@ -52609,6 +52609,2195 @@
     "34"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "cobs_round_trip_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "010203"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "04010203",
+    "010203"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "00"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0101",
+    "00"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "0000"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "010101",
+    "0000"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "000000"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "01010101",
+    "000000"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "010003"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "02010203",
+    "010003"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "01000002"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0201010202",
+    "01000002"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "000100"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "01020101",
+    "000100"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "01020300"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0401020301",
+    "01020300"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "00010203"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0104010203",
+    "00010203"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfd"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "fe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfd",
+    "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfd"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe",
+    "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe01"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0201",
+    "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe01"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe2f0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e",
+    "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_14",
+   "input": {
+    "kind": "bytes",
+    "hex": "01000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0201ff0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe2f0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e",
+    "01000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_round_trip_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e0007"
+   },
+   "recipe": [
+    {
+     "op": "To COBS",
+     "args": []
+    },
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe2f0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e0207",
+    "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e0007"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "cobs_decode_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "01"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "02"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "0101"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "010101"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "04010203"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "010203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "02010203"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "010003"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "050102"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0102"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "cobs_decode_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff010203"
+   },
+   "recipe": [
+    {
+     "op": "From COBS",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "010203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_text_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "41"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_text_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3774514c46487a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_text_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "54686520717569636b2062726f776e20666f78"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32757146786c4559323251464836663831473834654f59684d38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_text_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41494b76644d447a49334868527a6244786661617a334a6b73493565734c6552374e516e6c3466366b444f5137336e363654314a4430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "00"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "0000"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3437"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "ffff"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "483331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "0001"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "0100"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "00ff00ff"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313837584c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "deadbeef"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3434705a6746"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_bytes_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "0102030405060708090a0b0c0d0e0f"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5359573752694a786b45674f47757351477770"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_0",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_2",
+   "input": {
+    "kind": "text",
+    "value": "zzzz"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e1780f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_3",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_4",
+   "input": {
+    "kind": "text",
+    "value": "Zz09"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "82dbe5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_5",
+   "input": {
+    "kind": "text",
+    "value": "00A"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_6",
+   "input": {
+    "kind": "text",
+    "value": "A00"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9628"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_7",
+   "input": {
+    "kind": "text",
+    "value": "aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0aA0"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "16390348a9448d797817774361b66b9bffeda55863bb96a7c3474c99249f6f060dc14edf097f13db9edb96e21c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_filtered",
+   "input": {
+    "kind": "text",
+    "value": "he!!o"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "028f8e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_all_filtered",
+   "input": {
+    "kind": "text",
+    "value": "-!-"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "0-9A-Za-z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_reordered",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "a-z0-9A-Z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6854307670725a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_reordered",
+   "input": {
+    "kind": "text",
+    "value": "gXh"
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "a-z0-9A-Z"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6869"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_encode_empty_bad_alphabet",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Base62",
+     "args": [
+      "!"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "base62_decode_empty_bad_alphabet",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Base62",
+     "args": [
+      "!"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_0",
+   "input": {
+    "kind": "text",
+    "value": "1.2.840.113549.1.1.11"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326138363438383666373064303130313062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_1",
+   "input": {
+    "kind": "text",
+    "value": "2.5.4.3"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "353530343033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_2",
+   "input": {
+    "kind": "text",
+    "value": "2.16.840.1.101.3.4.2.1"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "363038363438303136353033303430323031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_3",
+   "input": {
+    "kind": "text",
+    "value": "1.2.840.10045.4.3.2"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613836343863653364303430333032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_4",
+   "input": {
+    "kind": "text",
+    "value": "1.3.6.1.4.1.311.21.20"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326230363031303430313832333731353134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_5",
+   "input": {
+    "kind": "text",
+    "value": "2.16.840.1.113730.1.13"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "363038363438303138366638343230313064"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_6",
+   "input": {
+    "kind": "text",
+    "value": "0.0"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_7",
+   "input": {
+    "kind": "text",
+    "value": "0.39"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_8",
+   "input": {
+    "kind": "text",
+    "value": "0.40"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_9",
+   "input": {
+    "kind": "text",
+    "value": "1.39"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3466"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_10",
+   "input": {
+    "kind": "text",
+    "value": "1.40"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_11",
+   "input": {
+    "kind": "text",
+    "value": "2.40"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3738"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_12",
+   "input": {
+    "kind": "text",
+    "value": "1.2"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_13",
+   "input": {
+    "kind": "text",
+    "value": "1.3"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_14",
+   "input": {
+    "kind": "text",
+    "value": "2.0"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_15",
+   "input": {
+    "kind": "text",
+    "value": "2.16"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_16",
+   "input": {
+    "kind": "text",
+    "value": "2.999"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "343337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_17",
+   "input": {
+    "kind": "text",
+    "value": "2.100.3"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "62343033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_18",
+   "input": {
+    "kind": "text",
+    "value": "127.127"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31343537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_19",
+   "input": {
+    "kind": "text",
+    "value": "255.255"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32386437"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_20",
+   "input": {
+    "kind": "text",
+    "value": "3.1.1"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "37393031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_21",
+   "input": {
+    "kind": "text",
+    "value": "9999999999.1"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "35643231646239666439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_22",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993.1"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "353030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_23",
+   "input": {
+    "kind": "text",
+    "value": "18014398509481984.0"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "613030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_24",
+   "input": {
+    "kind": "text",
+    "value": "99999999999999999999.1"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "643864373236623731373761383030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_25",
+   "input": {
+    "kind": "text",
+    "value": "12345678901234567890.7"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "316163353361376530346263643930303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_26",
+   "input": {
+    "kind": "text",
+    "value": "1.2.127"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613766"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_27",
+   "input": {
+    "kind": "text",
+    "value": "1.2.128"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326138313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_28",
+   "input": {
+    "kind": "text",
+    "value": "1.2.16383"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326166663766"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_29",
+   "input": {
+    "kind": "text",
+    "value": "1.2.16384"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3261383138303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_30",
+   "input": {
+    "kind": "text",
+    "value": "1.2.3.4294967296"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3261303339303830383038303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_31",
+   "input": {
+    "kind": "text",
+    "value": "2.25.223663413560170236103021352304496384762"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "36393832643063343830656263356361393639366538393161613935383938306462383262353761"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_32",
+   "input": {
+    "kind": "text",
+    "value": "1.2.340282366920938463463374607431768211456"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613834383038303830383038303830383038303830383038303830383038303830383038303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_33",
+   "input": {
+    "kind": "text",
+    "value": "01.02"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_34",
+   "input": {
+    "kind": "text",
+    "value": "1.2.03"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_35",
+   "input": {
+    "kind": "text",
+    "value": "1.2.0"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_36",
+   "input": {
+    "kind": "text",
+    "value": "1.2."
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_encode_37",
+   "input": {
+    "kind": "text",
+    "value": "0.0.0"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_0",
+   "input": {
+    "kind": "text",
+    "value": "2a864886f70d01010b"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e3834302e3131333534392e312e312e3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_1",
+   "input": {
+    "kind": "text",
+    "value": "550403"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "322e352e342e33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_2",
+   "input": {
+    "kind": "text",
+    "value": "608648016503040201"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "322e31362e3834302e312e3130312e332e342e322e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_3",
+   "input": {
+    "kind": "text",
+    "value": "2a8648ce3d040302"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e3834302e31303034352e342e332e32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_4",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e302e30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_5",
+   "input": {
+    "kind": "text",
+    "value": "2b"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_6",
+   "input": {
+    "kind": "text",
+    "value": "01"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_7",
+   "input": {
+    "kind": "text",
+    "value": "0a"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_8",
+   "input": {
+    "kind": "text",
+    "value": "63"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "322e3139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_9",
+   "input": {
+    "kind": "text",
+    "value": "7f"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e37"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_10",
+   "input": {
+    "kind": "text",
+    "value": "80"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_11",
+   "input": {
+    "kind": "text",
+    "value": "ff"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "362e3135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_12",
+   "input": {
+    "kind": "text",
+    "value": "8837"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e31362e3535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_13",
+   "input": {
+    "kind": "text",
+    "value": "8000"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e382e30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_14",
+   "input": {
+    "kind": "text",
+    "value": "807f"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e382e313237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_15",
+   "input": {
+    "kind": "text",
+    "value": "819c"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_16",
+   "input": {
+    "kind": "text",
+    "value": "8180808000"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e392e30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_17",
+   "input": {
+    "kind": "text",
+    "value": "ffffffff7f"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "362e31352e323638343335343535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_18",
+   "input": {
+    "kind": "text",
+    "value": "2a8"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_19",
+   "input": {
+    "kind": "text",
+    "value": "2a86488"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e3834302e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_20",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_21",
+   "input": {
+    "kind": "text",
+    "value": "2a86"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_22",
+   "input": {
+    "kind": "text",
+    "value": "8080"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "332e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_23",
+   "input": {
+    "kind": "text",
+    "value": "2a8080"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_24",
+   "input": {
+    "kind": "text",
+    "value": "2a 86 48"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e383430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_25",
+   "input": {
+    "kind": "text",
+    "value": "2a\t86\n48"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e383430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_decode_26",
+   "input": {
+    "kind": "text",
+    "value": "2A864886F70D01010B"
+   },
+   "recipe": [
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "312e322e3834302e3131333534392e312e312e3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "oid_round_trip_1.2.840.113549.1.1.11",
+   "input": {
+    "kind": "text",
+    "value": "1.2.840.113549.1.1.11"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    },
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326138363438383666373064303130313062",
+    "312e322e3834302e3131333534392e312e312e3131"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "oid_round_trip_2.5.4.3",
+   "input": {
+    "kind": "text",
+    "value": "2.5.4.3"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    },
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "353530343033",
+    "322e352e342e33"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "oid_round_trip_1.3.6.1.4.1.311.21.20",
+   "input": {
+    "kind": "text",
+    "value": "1.3.6.1.4.1.311.21.20"
+   },
+   "recipe": [
+    {
+     "op": "Object Identifier to Hex",
+     "args": []
+    },
+    {
+     "op": "Hex to Object Identifier",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326230363031303430313832333731353134",
+    "312e332e362e312e342e312e3331312e32312e3230"
+   ],
+   "stopped_after": 2
   }
  ]
 }

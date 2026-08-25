@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 164 | 162 | **158** | **2884** |
+| 170 | 168 | **164** | **3023** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -184,13 +184,14 @@ has a `std`. One pack does not yet reach bare metal;
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
 | Defang | Defang IP Addresses, Defang URL, Fang URL |
 | Distance | Hamming Distance, Levenshtein Distance |
-| Encoding | Caret/M-decode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base32, From Base45, From Base58, From Base64, From Base85, From Binary, From Braille, From Charcode, From Decimal, From HTML Entity, From Hex, From Hexdump, From Modhex, From Morse Code, From Octal, From Quoted Printable, ROT13, To Base32, To Base45, To Base58, To Base64, To Base85, To Binary, To Braille, To Charcode, To Decimal, To HTML Entity, To Hex, To Hexdump, To Modhex, To Morse Code, To Octal, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
+| Encoding | Caret/M-decode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Binary, From Braille, From COBS, From Charcode, From Decimal, From HTML Entity, From Hex, From Hexdump, From Modhex, From Morse Code, From Octal, From Quoted Printable, ROT13, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Binary, To Braille, To COBS, To Charcode, To Decimal, To HTML Entity, To Hex, To Hexdump, To Modhex, To Morse Code, To Octal, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
 | Flow control | Fork, Merge |
 | Hashing | HMAC, MD2, MD4, MD5, RIPEMD, SHA1, SHA2, SHA3, SM3, Whirlpool |
 | KDF | Derive PBKDF2 key, Scrypt |
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, Parity Bit, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Networking | Format MAC addresses |
+| Parsing | Hex to Object Identifier, Object Identifier to Hex |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
 | Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
 <!-- catalog:end -->

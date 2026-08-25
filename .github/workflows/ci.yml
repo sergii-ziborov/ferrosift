@@ -63,6 +63,7 @@ jobs:
           - text
           - analysis
           - arithmetic
+          - bignum
           - portable-full
           - portable-full,pattern
     steps:
@@ -110,9 +111,11 @@ jobs:
   # tracked in docs/portability.md. Listing the packs that do hold keeps the
   # gap measured rather than assumed.
   #
-  # `arithmetic` is here too: `num-bigint` with default features off is three
-  # pure-Rust crates and needs no `std`, which is what lets a cryptographic
-  # modulus be computed on a microcontroller rather than only near one.
+  # `arithmetic` and `bignum` are here too: `num-bigint` with default features
+  # off is three pure-Rust crates and needs no `std`, which is what lets a
+  # cryptographic modulus be computed on a microcontroller rather than only
+  # near one. Both are listed because they can be selected independently, and a
+  # release that quietly needed `std` would otherwise only fail one of them.
   #
   # `analysis` is present now. It used to require `compression` and `text`, so
   # it inherited that std edge; recipe suggestion now offers whichever probes
@@ -133,8 +136,9 @@ jobs:
           - text
           - analysis
           - arithmetic
+          - bignum
           - "analysis,text"
-          - "analysis,arithmetic,hash,crypto,text,pattern"
+          - "analysis,arithmetic,bignum,hash,crypto,text,pattern"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Add the bare-metal target
