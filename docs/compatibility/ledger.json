@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 150,
-    "aliased": 148,
-    "exact": 144,
+    "operations": 152,
+    "aliased": 150,
+    "exact": 146,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2500
+    "pinned_cases": 2617
   },
   "operations": [
     {
@@ -1555,6 +1555,19 @@
       "status": "exact"
     },
     {
+      "id": "logic.parity@1",
+      "display_name": "Parity Bit",
+      "category": "Logic",
+      "reference_alias": "Parity Bit",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 54,
+      "status": "exact"
+    },
+    {
       "id": "logic.ror13@1",
       "display_name": "ROR13",
       "category": "Logic",
@@ -1656,6 +1669,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 3,
+      "status": "exact"
+    },
+    {
+      "id": "network.mac.format@1",
+      "display_name": "Format MAC addresses",
+      "category": "Networking",
+      "reference_alias": "Format MAC addresses",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 63,
       "status": "exact"
     },
     {

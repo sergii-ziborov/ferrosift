@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 150 |
-| Reference-aliased | 148 |
-| Byte-pinned (`exact`) | 144 |
+| Registered operations | 152 |
+| Reference-aliased | 150 |
+| Byte-pinned (`exact`) | 146 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2500 |
+| Pinned cases | 2617 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -147,6 +147,7 @@ does.
 | `logic.and@1` | AND | core | exact | 30 |
 | `logic.not@1` | NOT | core | exact | 7 |
 | `logic.or@1` | OR | core | exact | 30 |
+| `logic.parity@1` | Parity Bit | core | exact | 54 |
 | `logic.ror13@1` | ROR13 | core | exact | 5 |
 | `logic.rotate.left@1` | Rotate left | core | exact | 62 |
 | `logic.rotate.right@1` | Rotate right | core | exact | 62 |
@@ -155,6 +156,7 @@ does.
 | `logic.sub@1` | SUB | core | exact | 31 |
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
+| `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
 | `sets.cartesian_product@1` | Cartesian Product | core | exact | 10 |
 | `sets.difference@1` | Set Difference | core | exact | 9 |
 | `sets.intersection@1` | Set Intersection | core | exact | 10 |

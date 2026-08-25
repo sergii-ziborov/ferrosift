@@ -32,6 +32,7 @@ import * as unicodeEscape from "./corpus/unicode-escape.mjs";
 import * as brute from "./corpus/brute.mjs";
 import * as misc from "./corpus/misc.mjs";
 import * as substitute from "./corpus/substitute.mjs";
+import * as netfmt from "./corpus/netfmt.mjs";
 import * as checksum from "./corpus/checksum.mjs";
 import * as classical from "./corpus/classical.mjs";
 import * as compress from "./corpus/compress.mjs";
@@ -52,7 +53,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt]) {
     await family.add(builder);
 }
 

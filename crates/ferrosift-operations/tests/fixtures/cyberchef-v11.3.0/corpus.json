@@ -44946,6 +44946,2610 @@
     "303030313030323031313031323032313032323131313231323232"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "parity_es_0",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_0",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_0",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_0",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313030",
+    "31303130"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_1",
+   "input": {
+    "kind": "text",
+    "value": "1011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_1",
+   "input": {
+    "kind": "text",
+    "value": "1011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_1",
+   "input": {
+    "kind": "text",
+    "value": "1011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_1",
+   "input": {
+    "kind": "text",
+    "value": "1011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "1011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313131",
+    "31303131"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_2",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_2",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_2",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_2",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "0000"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030",
+    "30303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_3",
+   "input": {
+    "kind": "text",
+    "value": "1111"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_3",
+   "input": {
+    "kind": "text",
+    "value": "1111"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_3",
+   "input": {
+    "kind": "text",
+    "value": "1111"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_3",
+   "input": {
+    "kind": "text",
+    "value": "1111"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "1111"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313130",
+    "31313131"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131",
+    "31"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030",
+    "30"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_es_7",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313031302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_ee_7",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303130203131303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_os_7",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "Start",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313031302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_oe_7",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Odd Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303130203131303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_round_trip_7",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ""
+     ]
+    },
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303130203131303030",
+    "313031302031313030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "parity_delimited_0",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100 0011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313030203131303030203030313130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_delimited_decode_0",
+   "input": {
+    "kind": "text",
+    "value": "1010 1100 0011"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130312031313020303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_delimited_1",
+   "input": {
+    "kind": "text",
+    "value": "1,0,1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31312c30302c3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_delimited_decode_1",
+   "input": {
+    "kind": "text",
+    "value": "1,0,1"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2c2c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_delimited_2",
+   "input": {
+    "kind": "text",
+    "value": "11-00-11"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Encode",
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131302d3030302d313130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "parity_delimited_decode_2",
+   "input": {
+    "kind": "text",
+    "value": "11-00-11"
+   },
+   "recipe": [
+    {
+     "op": "Parity Bit",
+     "args": [
+      "Even Parity",
+      "End",
+      "Decode",
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312d302d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031312e323233332e343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303231313a323266663a666533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a303031312e323233332e343435350a303031312e323233332e343435350a303231313a323266663a666533333a343435350a303231313a323246463a464533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_0",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031312e323233332e343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303231313a323266663a666533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a303031312e323233332e343435350a303031312e323233332e343435350a303231313a323266663a666533333a343435350a303231313a323246463a464533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_1",
+   "input": {
+    "kind": "text",
+    "value": "00-11-22-33-44-55"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031312e323233332e343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303231313a323266663a666533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a303031312e323233332e343435350a303031312e323233332e343435350a303231313a323266663a666533333a343435350a303231313a323246463a464533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_2",
+   "input": {
+    "kind": "text",
+    "value": "001122334455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031312e323233332e343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303231313a323266663a666533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a303031312e323233332e343435350a303031312e323233332e343435350a303231313a323266663a666533333a343435350a303231313a323246463a464533333a343435350a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_3",
+   "input": {
+    "kind": "text",
+    "value": "0011.2233.4455"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a0a6161626263636464656566660a4141424243434444454546460a61612d62622d63632d64642d65652d66660a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a66660a41413a42423a43433a44443a45453a46460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a0a4141424243434444454546460a41412d42422d43432d44442d45452d46460a41413a42423a43433a44443a45453a46460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a0a6161626263636464656566660a61612d62622d63632d64642d65652d66660a61613a62623a63633a64643a65653a66660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031312e323233332e343435350a0a616162622e636364642e656566660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303231313a323266663a666533333a343435350a0a613862623a636366663a666564643a656566660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a303031312e323233332e343435350a303031312e323233332e343435350a303231313a323266663a666533333a343435350a303231313a323246463a464533333a343435350a0a6161626263636464656566660a4141424243434444454546460a61612d62622d63632d64642d65652d66660a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a66660a41413a42423a43433a44443a45453a46460a616162622e636364642e656566660a414142422e434344442e454546460a613862623a636366663a666564643a656566660a413842423a434346463a464544443a454546460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_4",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55, aa-bb-cc-dd-ee-ff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a0a6161626263636464656566660a4141424243434444454546460a61612d62622d63632d64642d65652d66660a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a66660a41413a42423a43433a44443a45453a46460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a0a4141424243434444454546460a41412d42422d43432d44442d45452d46460a41413a42423a43433a44443a45453a46460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a0a6161626263636464656566660a61612d62622d63632d64642d65652d66660a61613a62623a63633a64643a65653a66660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031312e323233332e343435350a0a616162622e636364642e656566660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303231313a323266663a666533333a343435350a0a613862623a636366663a666564643a656566660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313132323333343435350a3030313132323333343435350a30302d31312d32322d33332d34342d35350a30302d31312d32322d33332d34342d35350a30303a31313a32323a33333a34343a35350a30303a31313a32323a33333a34343a35350a303031312e323233332e343435350a303031312e323233332e343435350a303231313a323266663a666533333a343435350a303231313a323246463a464533333a343435350a0a6161626263636464656566660a4141424243434444454546460a61612d62622d63632d64642d65652d66660a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a66660a41413a42423a43433a44443a45453a46460a616162622e636364642e656566660a414142422e434344442e454546460a613862623a636366663a666564643a656566660a413842423a434346463a464544443a454546460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_5",
+   "input": {
+    "kind": "text",
+    "value": "00:11:22:33:44:55\naabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161626263636464656566660a4141424243434444454546460a61612d62622d63632d64642d65652d66660a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a66660a41413a42423a43433a44443a45453a46460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4141424243434444454546460a41412d42422d43432d44442d45452d46460a41413a42423a43433a44443a45453a46460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161626263636464656566660a61612d62622d63632d64642d65652d66660a61613a62623a63633a64643a65653a66660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616162622e636364642e656566660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "613862623a636366663a666564643a656566660a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161626263636464656566660a4141424243434444454546460a61612d62622d63632d64642d65652d66660a41412d42422d43432d44442d45452d46460a61613a62623a63633a64643a65653a66660a41413a42423a43433a44443a45453a46460a616162622e636364642e656566660a414142422e434344442e454546460a613862623a636366663a666564643a656566660a413842423a434346463a464544443a454546460a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_6",
+   "input": {
+    "kind": "text",
+    "value": "AA:BB:CC:DD:EE:FF"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_default_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f0a48454c4c4f0a68652d6c6c2d6f0a48452d4c4c2d4f0a68653a6c6c3a6f0a48453a4c4c3a4f0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_upper_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Upper only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f0a48452d4c4c2d4f0a48453a4c4c3a4f0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_lower_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      true,
+      true,
+      true,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f0a68652d6c6c2d6f0a68653a6c6c3a6f0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_cisco_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c2e6f0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_ipv6_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Lower only",
+      false,
+      false,
+      false,
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30326c6c3a6f6666663a650a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_all_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      true,
+      true,
+      true,
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f0a48454c4c4f0a68652d6c6c2d6f0a48452d4c4c2d4f0a68653a6c6c3a6f0a48453a4c4c3a4f0a68656c6c2e6f0a48454c4c2e4f0a30326c6c3a6f6666663a650a30324c4c3a4f4646463a450a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "mac_none_8",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Format MAC addresses",
+     "args": [
+      "Both",
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
   }
  ]
 }
