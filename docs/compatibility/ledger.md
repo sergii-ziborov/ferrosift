@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 192 |
-| Reference-aliased | 190 |
-| Byte-pinned (`exact`) | 186 |
+| Registered operations | 194 |
+| Reference-aliased | 192 |
+| Byte-pinned (`exact`) | 188 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3522 |
+| Pinned cases | 3579 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -166,8 +166,10 @@ does.
 | `hash.md2@1` | MD2 | hash | exact | 13 |
 | `hash.md4@1` | MD4 | hash | exact | 13 |
 | `hash.md5@1` | MD5 | hash | exact | 7 |
+| `hash.murmur3@1` | MurmurHash3 | core | exact | 48 |
 | `hash.nt@1` | NT Hash | hash | exact | 9 |
 | `hash.ripemd@1` | RIPEMD | hash | exact | 52 |
+| `hash.sha0@1` | SHA0 | core | exact | 9 |
 | `hash.sha1@1` | SHA1 | hash | exact | 7 |
 | `hash.sha2@1` | SHA2 | hash | exact | 13 |
 | `hash.sha3@1` | SHA3 | hash | exact | 13 |

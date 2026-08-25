@@ -31,10 +31,11 @@ use crate::{
     FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
-    HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines, ParityBit,
+    HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, MurmurHash3,
+    PadLines, ParityBit,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
-    SetOperation, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
+    SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
     SwapEndianness,
     Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
     ToBinary, ToBraille, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent, ToHexdump,
@@ -405,6 +406,13 @@ fn register_flow(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     expect(unused_variables, reason = "the hash pack is not enabled")
 )]
 fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    // SHA-0 and MurmurHash3 need no dependency, so they are not behind the
+    // `hash` pack. That pack exists to keep the RustCrypto tree optional, and
+    // gating a self-contained implementation behind it would charge these two
+    // for a cost they do not incur.
+    registry.register(Sha0::new())?;
+    registry.register(MurmurHash3::new())?;
+
     #[cfg(feature = "hash")]
     {
         registry.register(Md5::new())?;

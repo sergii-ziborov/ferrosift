@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 192,
-    "aliased": 190,
-    "exact": 186,
+    "operations": 194,
+    "aliased": 192,
+    "exact": 188,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3522
+    "pinned_cases": 3579
   },
   "operations": [
     {
@@ -1741,6 +1741,19 @@
       "status": "exact"
     },
     {
+      "id": "hash.murmur3@1",
+      "display_name": "MurmurHash3",
+      "category": "Hashing",
+      "reference_alias": "MurmurHash3",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 48,
+      "status": "exact"
+    },
+    {
       "id": "hash.nt@1",
       "display_name": "NT Hash",
       "category": "Hashing",
@@ -1764,6 +1777,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 52,
+      "status": "exact"
+    },
+    {
+      "id": "hash.sha0@1",
+      "display_name": "SHA0",
+      "category": "Hashing",
+      "reference_alias": "SHA0",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
       "status": "exact"
     },
     {

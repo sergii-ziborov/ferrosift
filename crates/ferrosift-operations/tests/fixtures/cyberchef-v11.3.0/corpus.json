@@ -63994,6 +63994,1137 @@
     ""
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "sha0_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66393663656131393861643164643536313761633038346133643932633631303737303863306566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "50"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37623237373864346666623634646536306366373566303266643435643335623463373966393661"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_55",
+   "input": {
+    "kind": "bytes",
+    "hex": "6a7f51c8552379f94f6bc0bd72cf45e2d3e232b8d8649cdf40b0470e2742b9d50bddd5be074f338337b15c7295ad4f876db4ece8cf000d"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61383634366435393863303338663165353865643665623837396363656661326237653930623337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_56",
+   "input": {
+    "kind": "bytes",
+    "hex": "d7335df6a42fd55f5d3e2eb4e44617055de3c9eb64ec65b03810f286ead9c0d667d5bc63ff0c507b2bfd1393c8bc4b5ac76c7e8b61d887cc"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64616263616236356338636362663831626562386363313632303366633766633661333630386365"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_63",
+   "input": {
+    "kind": "bytes",
+    "hex": "0f95d6e0dc753439fbebd6b9ac391b2f4db181823047091fc95599135c5027af21658b3ffd76c949943212517cba67dbc34f2bfa1d85dd48bc4e0a126890d3"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633665663263636633306439363738366162356235666138666330393466626635343034626330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "d060b235a466ca54ea870530dc8b035984dcd4e1cee08a4dc302fbc57aad0374007d384cf987d3b4196ec47b716d2a240cc7fadc7b47860d176aa9f5d2079b3b"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39653961633639643861333261663835393537366632313630306437333664613631373737323138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_65",
+   "input": {
+    "kind": "bytes",
+    "hex": "6eb9facec72e96e79cb8e91fe09d51cc247d99239a9cb3ee770ad21ea9fde93c1c50585eb52be3697f050cbd4d7b07cc801af6e3687c1a41c6f8aa8f411740f32a"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66323763626537656237313838646232333638376365656138323834353136356166373763386461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_119",
+   "input": {
+    "kind": "bytes",
+    "hex": "62ac73ced52caeb28b3b520e1b1c7877c01dbf648e4ddb91dbe99599da58e261fd38c61e755dae1cc3d55c1dfb609933b9dbbcf062a5036bbcd24cd5a87a0d4a7c7a2544a6013d3c70cb3bd3408a6f9c933131038e1e294223bc2553bff051c0eaf9dc17cfe1da44c06fb9c16b12f4178b43f555404ceb"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61376565366562343266623735626539383531653765343161646663666563366431636337323461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "sha0_120",
+   "input": {
+    "kind": "bytes",
+    "hex": "df7bd12ca2c349dc2f53df78e61673519d96f116156acadcb16666efdf637f9be9e6f226276c03768fd4344a7ce3466aacc2b80a86e1966068510bd19e8a07870521c20d6c28f13362c7eec5d156d8e94151aec287df7669e731d54228ed4ab86716f044ae6cb9e49716cea759fb8e1d94fda135bb2f2887"
+   },
+   "recipe": [
+    {
+     "op": "SHA0",
+     "args": [
+      80
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64653835396433366639343762616330333162353733656164383937363330383638613764303332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_0_0_u",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_0_0_s",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_0_1_u",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31333634303736373237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_0_1_s",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31333634303736373237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_0_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33393534363233303136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_0_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d333430333434323830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_1_0_u",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303039303834383530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_1_0_s",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303039303834383530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_1_1_u",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31343835343935353238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_1_1_s",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31343835343935353238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_1_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32313431323332383036"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_1_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32313431323332383036"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_2_0_u",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32363133303430393931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_2_0_s",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31363831393236333035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_2_1_u",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33303837353036323436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_2_1_s",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31323037343631303530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_2_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31393535303236333232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_2_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31393535303236333232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_3_0_u",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33303137363433303032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_3_0_s",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31323737333234323934"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_3_1_u",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32383539383534333335"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_3_1_s",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31343335313132393631"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_3_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33333630333138313733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_3_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d393334363439313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_4_0_u",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313339363331393738"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_4_0_s",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313339363331393738"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_4_1_u",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32363136353432363130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_4_1_s",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31363738343234363836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_4_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34303331323139323339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_4_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d323633373438303537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_5_0_u",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33393032353131383632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_5_0_s",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d333932343535343334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_5_1_u",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34323839353037363131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_5_1_s",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d35343539363835"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_5_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33393130353134373338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_5_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d333834343532353538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_6_0_u",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353932363331323339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_6_0_s",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353932363331323339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_6_1_u",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373736353530393236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_6_1_s",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373736353530393236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_6_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323936373036303230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_6_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323936373036303230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_7_0_u",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373736393932353437"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_7_0_s",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      0,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373736393932353437"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_7_1_u",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32303238333739363837"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_7_1_s",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      1,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32303238333739363837"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_7_2538058380_u",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373939353439313333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "murmur3_7_2538058380_s",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "MurmurHash3",
+     "args": [
+      2538058380,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373939353439313333"
+   ],
+   "stopped_after": 1
   }
  ]
 }
