@@ -65125,6 +65125,619 @@
     "373939353439313333"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_0_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello World"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "466e706f6c205061727264"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_0_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello World"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b6d63796f20426e616c74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_0_1",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6471626461782064712070647168"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_0_1",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61617474717420616120656d6878"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_0_2",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123!"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d764164422053794c702031323321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_0_2",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123!"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f66487156204f6356652031323321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_0_3",
+   "input": {
+    "kind": "text",
+    "value": "JUJU jumps"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "49544a4e206a747a7778"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_0_3",
+   "input": {
+    "kind": "text",
+    "value": "JUJU jumps"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b534a52206a78757973"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_0_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_0_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_1_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello World"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "486b756e69204571626670"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_1_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello World"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d6572626820516b716f64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_1_1",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616563616279207476206b746861"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_1_1",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6273737a65782062732074696c68"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_1_2",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123!"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b7641615420446448652031323321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_1_2",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123!"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b764b625620487341622031323321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_1_3",
+   "input": {
+    "kind": "text",
+    "value": "JUJU jumps"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4c514a4c206a657a7a68"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_1_3",
+   "input": {
+    "kind": "text",
+    "value": "JUJU jumps"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d444a55206a7970766e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_1_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_1_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_2_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello World"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "466e706f6c205061727264"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_2_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello World"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b6d63796f20426e616c74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_2_1",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6471626461782064712070647168"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_2_1",
+   "input": {
+    "kind": "text",
+    "value": "attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61617474717420616120656d6878"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_2_2",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123!"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d764164422053794c702031323321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_2_2",
+   "input": {
+    "kind": "text",
+    "value": "MiXeD CaSe 123!"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f66487156204f6356652031323321"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_2_3",
+   "input": {
+    "kind": "text",
+    "value": "JUJU jumps"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "49544a4e206a747a7778"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_2_3",
+   "input": {
+    "kind": "text",
+    "value": "JUJU jumps"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b534a52206a78757973"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_encode_2_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_decode_2_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "AAABBB"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bifid_round_trip",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn"
+   },
+   "recipe": [
+    {
+     "op": "Bifid Cipher Encode",
+     "args": [
+      "SECRET"
+     ]
+    },
+    {
+     "op": "Bifid Cipher Decode",
+     "args": [
+      "SECRET"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "416563616279207476206b746861",
+    "41747461636b206174206461776e"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "xkcd_random",
+   "input": {
+    "kind": "text",
+    "value": "anything at all"
+   },
+   "recipe": [
+    {
+     "op": "XKCD Random Number",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
   }
  ]
 }

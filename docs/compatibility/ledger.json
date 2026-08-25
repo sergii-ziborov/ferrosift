@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 194,
-    "aliased": 192,
-    "exact": 188,
+    "operations": 197,
+    "aliased": 195,
+    "exact": 191,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3579
+    "pinned_cases": 3612
   },
   "operations": [
     {
@@ -268,6 +268,32 @@
       "display_name": "Bacon Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Bacon Cipher Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.bifid.decode@1",
+      "display_name": "Bifid Cipher Decode",
+      "category": "Ciphers",
+      "reference_alias": "Bifid Cipher Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.bifid.encode@1",
+      "display_name": "Bifid Cipher Encode",
+      "category": "Ciphers",
+      "reference_alias": "Bifid Cipher Encode",
       "feature": "core",
       "targets": [
         "Native",
@@ -2544,6 +2570,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 28,
+      "status": "exact"
+    },
+    {
+      "id": "text.xkcd_random@1",
+      "display_name": "XKCD Random Number",
+      "category": "Text",
+      "reference_alias": "XKCD Random Number",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 1,
       "status": "exact"
     }
   ]

@@ -17,6 +17,7 @@ mod annotate;
 mod args;
 mod bacon;
 mod base32;
+mod bifid;
 mod base45;
 mod base58;
 #[cfg(feature = "bignum")]
@@ -75,6 +76,7 @@ mod unicode_escape;
 mod url;
 mod value;
 mod varint;
+mod xkcd;
 mod xor;
 
 #[cfg(feature = "crypto")]
@@ -118,6 +120,8 @@ pub use annotate::HtmlToText;
 pub use base32::{FromBase32, ToBase32};
 pub use base45::{FromBase45, ToBase45};
 pub use bacon::{BaconDecode, BaconEncode};
+pub use bifid::BifidCipher;
+pub use xkcd::XkcdRandomNumber;
 pub use base58::{FromBase58, ToBase58};
 #[cfg(feature = "bignum")]
 pub use base62::{FromBase62, ToBase62};

@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 194 |
-| Reference-aliased | 192 |
-| Byte-pinned (`exact`) | 188 |
+| Registered operations | 197 |
+| Reference-aliased | 195 |
+| Byte-pinned (`exact`) | 191 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3579 |
+| Pinned cases | 3612 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -54,6 +54,8 @@ does.
 | `cipher.atbash@1` | Atbash Cipher | core | exact | 7 |
 | `cipher.bacon.decode@1` | Bacon Cipher Decode | core | exact | 17 |
 | `cipher.bacon.encode@1` | Bacon Cipher Encode | core | exact | 16 |
+| `cipher.bifid.decode@1` | Bifid Cipher Decode | core | exact | 16 |
+| `cipher.bifid.encode@1` | Bifid Cipher Encode | core | exact | 16 |
 | `cipher.caesar_box@1` | Caesar Box Cipher | core | exact | 10 |
 | `cipher.cetacean.decode@1` | Cetacean Cipher Decode | core | exact | 7 |
 | `cipher.cetacean.encode@1` | Cetacean Cipher Encode | core | exact | 14 |
@@ -228,6 +230,7 @@ does.
 | `text.smart.escape@1` | Escape Smart Characters | core | exact | 33 |
 | `text.unicode.format@1` | Unicode Text Format | core | exact | 16 |
 | `text.wrap@1` | Wrap | core | exact | 28 |
+| `text.xkcd_random@1` | XKCD Random Number | core | exact | 1 |
 
 Operations the reference has and FerroSift does not are reported by
 `cargo xtask cyberchef gap`, which needs the pinned checkout and so is

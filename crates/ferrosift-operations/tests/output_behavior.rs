@@ -116,9 +116,16 @@ fn the_default_behavior_is_the_conservative_one() {
 
     // Forgetting the declaration must fail closed, so the exemption is opt-in
     // and the list of operations holding it stays short enough to read.
+    //
+    // Both entries earn it the same way: the output is decided by the
+    // arguments and the value handed in is discarded, so a ratio measured
+    // against that input would be measuring nothing.
     assert_eq!(
         generators,
-        vec!["text.debruijn@1".to_owned()],
+        vec![
+            "text.debruijn@1".to_owned(),
+            "text.xkcd_random@1".to_owned()
+        ],
         "every operation waiving the expansion ratio should be named here"
     );
 }

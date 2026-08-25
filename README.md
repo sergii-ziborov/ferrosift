@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 194 | 192 | **188** | **3579** |
+| 197 | 195 | **191** | **3612** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -178,7 +178,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Analysis | Suggest recipe |
 | Arithmetic | Extended GCD, Modular Inverse |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
-| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Bacon Cipher Decode, Bacon Cipher Encode, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode |
+| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Bacon Cipher Decode, Bacon Cipher Encode, Bifid Cipher Decode, Bifid Cipher Encode, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
@@ -194,7 +194,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Parsing | Hex to Object Identifier, Hex to PEM, Object Identifier to Hex, PEM to Hex |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
 | Shaping | Split, Unique |
-| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
+| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
 <!-- catalog:end -->
 
 Full alias tables, argument shapes, and intentional divergences from the

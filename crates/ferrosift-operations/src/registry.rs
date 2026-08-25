@@ -22,8 +22,8 @@
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BitShift, Bitwise, CaretMDecode,
-    Checksum, CitrixCtx1Decode,
+    AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BifidCipher, BitShift, Bitwise,
+    CaretMDecode, Checksum, CitrixCtx1Decode,
     CitrixCtx1Encode, ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
     DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
     ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
@@ -42,7 +42,7 @@ use crate::{
     ToHtmlEntity, ToLowerCase,
     ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
     UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
-    VarIntEncode, Wrap, Xor,
+    VarIntEncode, Wrap, XkcdRandomNumber, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -235,6 +235,8 @@ fn register_checksums(registry: &mut OperationRegistry) -> Result<(), RegistryEr
 fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(BaconDecode::new())?;
     registry.register(BaconEncode::new())?;
+    registry.register(BifidCipher::decode())?;
+    registry.register(BifidCipher::encode())?;
     registry.register(ClassicalCipher::a1z26_decode())?;
     registry.register(ClassicalCipher::a1z26_encode())?;
     registry.register(ClassicalCipher::affine_decode())?;
@@ -516,6 +518,7 @@ fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(HtmlToText::new())?;
     registry.register(UnescapeString::new())?;
     registry.register(GenerateDeBruijnSequence::new())?;
+    registry.register(XkcdRandomNumber::new())?;
 
     #[cfg(feature = "text")]
     {
