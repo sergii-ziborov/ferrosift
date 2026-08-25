@@ -43635,6 +43635,740 @@
     "416d6f756e74203d2020313a20607d3175644d5b7e70763079754e5b6650642e6023215a663c28742c5a327e5d0a416d6f756e74203d2020323a20617e3276654e5c217177317a764f5c6751652f6124225b673d29752d5b33215e0a416d6f756e74203d2020333a2062213377664f5d227278327b77505d685266306225235c683e2a762e5c34225f0a416d6f756e74203d2020343a206322347867505e237379337c78515e695367316326245d693f2b772f5d3523600a416d6f756e74203d2020353a206423357968515f24747a347d79525f6a5468326427255e6a402c78305e3624610a416d6f756e74203d2020363a206524367a69526025757b357e7a53606b5569336528265f6b412d79315f3725620a416d6f756e74203d2020373a206625377b6a536126767c36217b54616c566a34662927606c422e7a32603826630a416d6f756e74203d2020383a206726387c6b546227777d37227c55626d576b35672a28616d432f7b33613927640a416d6f756e74203d2020393a206827397d6c556328787e38237d56636e586c36682b29626e44307c34623a28650a416d6f756e74203d2031303a2069283a7e6d566429792139247e57646f596d37692c2a636f45317d35633b29660a416d6f756e74203d2031313a206a293b216e57652a7a223a25215865705a6e386a2d2b647046327e36643c2a670a416d6f756e74203d2031323a206b2a3c226f58662b7b233b26225966715b6f396b2e2c657147332137653d2b680a416d6f756e74203d2031333a206c2b3d237059672c7c243c27235a67725c703a6c2f2d667248342238663e2c690a416d6f756e74203d2031343a206d2c3e24715a682d7d253d28245b68735d713b6d302e677349352339673f2d6a0a416d6f756e74203d2031353a206e2d3f25725b692e7e263e29255c69745e723c6e312f68744a36243a68402e6b0a416d6f756e74203d2031363a206f2e4026735c6a2f21273f2a265d6a755f733d6f323069754b37253b69412f6c0a416d6f756e74203d2031373a20702f4127745d6b302228402b275e6b7660743e7033316a764c38263c6a42306d0a416d6f756e74203d2031383a2071304228755e6c312329412c285f6c7761753f7134326b774d39273d6b43316e0a416d6f756e74203d2031393a2072314329765f6d32242a422d29606d786276407235336c784e3a283e6c44326f0a416d6f756e74203d2032303a207332442a77606e33252b432e2a616e796377417336346d794f3b293f6d4533700a416d6f756e74203d2032313a207433452b78616f34262c442f2b626f7a6478427437356e7a503c2a406e4634710a416d6f756e74203d2032323a207534462c79627035272d45302c63707b6579437538366f7b513d2b416f4735720a416d6f756e74203d2032333a207635472d7a637136282e46312d64717c667a44763937707c523e2c42704836730a416d6f756e74203d2032343a207736482e7b647237292f47322e65727d677b45773a38717d533f2d43714937740a416d6f756e74203d2032353a207837492f7c6573382a3048332f66737e687c46783b39727e54402e44724a38750a416d6f756e74203d2032363a2079384a307d6674392b31493430677421697d47793c3a732155412f45734b39760a416d6f756e74203d2032373a207a394b317e67753a2c324a35316875226a7e487a3d3b742256423046744c3a770a416d6f756e74203d2032383a207b3a4c322168763b2d334b36326976236b21497b3e3c752357433147754d3b780a416d6f756e74203d2032393a207c3b4d332269773c2e344c37336a77246c224a7c3f3d762458443248764e3c790a416d6f756e74203d2033303a207d3c4e34236a783d2f354d38346b78256d234b7d403e772559453349774f3d7a0a416d6f756e74203d2033313a207e3d4f35246b793e30364e39356c79266e244c7e413f78265a46344a78503e7b0a416d6f756e74203d2033323a20213e5036256c7a3f31374f3a366d7a276f254d21424079275b47354b79513f7c0a416d6f756e74203d2033333a20223f5137266d7b403238503b376e7b2870264e2243417a285c48364c7a52407d0a416d6f756e74203d2033343a2023405238276e7c413339513c386f7c2971274f2344427b295d49374d7b53417e0a416d6f756e74203d2033353a2024415339286f7d42343a523d39707d2a7228502445437c2a5e4a384e7c5442210a416d6f756e74203d2033363a202542543a29707e43353b533e3a717e2b7329512546447d2b5f4b394f7d5543220a416d6f756e74203d2033373a202643553b2a712144363c543f3b72212c742a522647457e2c604c3a507e5644230a416d6f756e74203d2033383a202744563c2b722245373d55403c73222d752b53274846212d614d3b51215745240a416d6f756e74203d2033393a202845573d2c732346383e56413d74232e762c54284947222e624e3c52225846250a416d6f756e74203d2034303a202946583e2d742447393f57423e75242f772d55294a48232f634f3d53235947260a416d6f756e74203d2034313a202a47593f2e7525483a4058433f762530782e562a4b49243064503e54245a48270a416d6f756e74203d2034323a202b485a402f7626493b41594440772631792f572b4c4a253165513f55255b49280a416d6f756e74203d2034333a202c495b413077274a3c425a45417827327a30582c4d4b263266524056265c4a290a416d6f756e74203d2034343a202d4a5c423178284b3d435b46427928337b31592d4e4c273367534157275d4b2a0a416d6f756e74203d2034353a202e4b5d433279294c3e445c47437a29347c325a2e4f4d283468544258285e4c2b0a416d6f756e74203d2034363a202f4c5e44337a2a4d3f455d48447b2a357d335b2f504e293569554359295f4d2c0a416d6f756e74203d2034373a20304d5f45347b2b4e40465e49457c2b367e345c30514f2a366a56445a2a604e2d0a416d6f756e74203d2034383a20314e6046357c2c4f41475f4a467d2c3721355d3152502b376b57455b2b614f2e0a416d6f756e74203d2034393a20324f6147367d2d504248604b477e2d3822365e3253512c386c58465c2c62502f0a416d6f756e74203d2035303a2033506248377e2e514349614c48212e3923375f3354522d396d59475d2d6351300a416d6f756e74203d2035313a203451634938212f52444a624d49222f3a2438603455532e3a6e5a485e2e6452310a416d6f756e74203d2035323a203552644a39223053454b634e4a23303b2539613556542f3b6f5b495f2f6553320a416d6f756e74203d2035333a203653654b3a233154464c644f4b24313c263a62365755303c705c4a60306654330a416d6f756e74203d2035343a203754664c3b243255474d65504c25323d273b63375856313d715d4b61316755340a416d6f756e74203d2035353a203855674d3c253356484e66514d26333e283c64385957323e725e4c62326856350a416d6f756e74203d2035363a203956684e3d263457494f67524e27343f293d65395a58333f735f4d63336957360a416d6f756e74203d2035373a203a57694f3e2735584a5068534f2835402a3e663a5b59344074604e64346a58370a416d6f756e74203d2035383a203b586a503f2836594b516954502936412b3f673b5c5a354175614f65356b59380a416d6f756e74203d2035393a203c596b514029375a4c526a55512a37422c40683c5d5b364276625066366c5a390a416d6f756e74203d2036303a203d5a6c52412a385b4d536b56522b38432d41693d5e5c374377635167376d5b3a0a416d6f756e74203d2036313a203e5b6d53422b395c4e546c57532c39442e426a3e5f5d384478645268386e5c3b0a416d6f756e74203d2036323a203f5c6e54432c3a5d4f556d58542d3a452f436b3f605e394579655369396f5d3c0a416d6f756e74203d2036333a20405d6f55442d3b5e50566e59552e3b4630446c40615f3a467a66546a3a705e3d0a416d6f756e74203d2036343a20415e7056452e3c5f51576f5a562f3c4731456d4162603b477b67556b3b715f3e0a416d6f756e74203d2036353a20425f7157462f3d605258705b57303d4832466e4263613c487c68566c3c72603f0a416d6f756e74203d2036363a204360725847303e615359715c58313e4933476f4364623d497d69576d3d7361400a416d6f756e74203d2036373a204461735948313f62545a725d59323f4a3448704465633e4a7e6a586e3e7462410a416d6f756e74203d2036383a204562745a49324063555b735e5a33404b3549714566643f4b216b596f3f7563420a416d6f756e74203d2036393a204663755b4a334164565c745f5b34414c364a72466765404c226c5a70407664430a416d6f756e74203d2037303a204764765c4b344265575d75605c35424d374b73476866414d236d5b71417765440a416d6f756e74203d2037313a204865775d4c354366585e76615d36434e384c74486967424e246e5c72427866450a416d6f756e74203d2037323a204966785e4d364467595f77625e37444f394d75496a68434f256f5d73437967460a416d6f756e74203d2037333a204a67795f4e3745685a6078635f3845503a4e764a6b69445026705e74447a68470a416d6f756e74203d2037343a204b687a604f3846695b617964603946513b4f774b6c6a455127715f75457b69480a416d6f756e74203d2037353a204c697b615039476a5c627a65613a47523c50784c6d6b465228726076467c6a490a416d6f756e74203d2037363a204d6a7c62513a486b5d637b66623b48533d51794d6e6c475329736177477d6b4a0a416d6f756e74203d2037373a204e6b7d63523b496c5e647c67633c49543e527a4e6f6d48542a746278487e6c4b0a416d6f756e74203d2037383a204f6c7e64533c4a6d5f657d68643d4a553f537b4f706e49552b75637949216d4c0a416d6f756e74203d2037393a20506d2165543d4b6e60667e69653e4b5640547c50716f4a562c76647a4a226e4d0a416d6f756e74203d2038303a20516e2266553e4c6f6167216a663f4c5741557d5172704b572d77657b4b236f4e0a416d6f756e74203d2038313a20526f2367563f4d706268226b67404d5842567e5273714c582e78667c4c24704f0a416d6f756e74203d2038323a205370246857404e716369236c68414e594357215374724d592f79677d4d2571500a416d6f756e74203d2038333a205471256958414f72646a246d69424f5a4458225475734e5a307a687e4e2672510a416d6f756e74203d2038343a205572266a59425073656b256e6a43505b4559235576744f5b317b69214f2773520a416d6f756e74203d2038353a205673276b5a435174666c266f6b44515c465a24567775505c327c6a22502874530a416d6f756e74203d2038363a205774286c5b445275676d27706c45525d475b25577876515d337d6b23512975540a416d6f756e74203d2038373a205875296d5c455376686e28716d46535e485c26587977525e347e6c24522a76550a416d6f756e74203d2038383a2059762a6e5d465477696f29726e47545f495d27597a78535f35216d25532b77560a416d6f756e74203d2038393a205a772b6f5e4755786a702a736f4855604a5e285a7b79546036226e26542c78570a416d6f756e74203d2039303a205b782c705f4856796b712b74704956614b5f295b7c7a556137236f27552d79580a416d6f756e74203d2039313a205c792d716049577a6c722c75714a57624c602a5c7d7b566238247028562e7a590a416d6f756e74203d2039323a205d7a2e72614a587b6d732d76724b58634d612b5d7e7c576339257129572f7b5a0a416d6f756e74203d2039333a205e7b2f73624b597c6e742e77734c59644e622c5e217d58643a26722a58307c5b"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_0",
+   "input": {
+    "kind": "text",
+    "value": "^A^B^C"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "010203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_1",
+   "input": {
+    "kind": "text",
+    "value": "M-AM-BM-C"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "c1c2c3"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_2",
+   "input": {
+    "kind": "text",
+    "value": "M-^AM-^B"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "8182"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_3",
+   "input": {
+    "kind": "text",
+    "value": "^?"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_4",
+   "input": {
+    "kind": "text",
+    "value": "M-^?"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_5",
+   "input": {
+    "kind": "text",
+    "value": "^>"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_6",
+   "input": {
+    "kind": "text",
+    "value": "^@"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_7",
+   "input": {
+    "kind": "text",
+    "value": "^~"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_8",
+   "input": {
+    "kind": "text",
+    "value": "M- "
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "a0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_9",
+   "input": {
+    "kind": "text",
+    "value": "M-~"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "fe"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_10",
+   "input": {
+    "kind": "text",
+    "value": "M!"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4d21"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_11",
+   "input": {
+    "kind": "text",
+    "value": "M-\\x01"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "dc783031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_12",
+   "input": {
+    "kind": "text",
+    "value": "^\\x01"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "1c783031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_13",
+   "input": {
+    "kind": "text",
+    "value": "abcM"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_14",
+   "input": {
+    "kind": "text",
+    "value": "abcM-"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_15",
+   "input": {
+    "kind": "text",
+    "value": "abcM-^"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_16",
+   "input": {
+    "kind": "text",
+    "value": "abc^"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_18",
+   "input": {
+    "kind": "text",
+    "value": "plain text with no markers"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "706c61696e20746578742077697468206e6f206d61726b657273"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "caret_m_decode_19",
+   "input": {
+    "kind": "text",
+    "value": "mixed ^A and M-B and M-^C together"
+   },
+   "recipe": [
+    {
+     "op": "Caret/M-decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6d69786564200120616e6420c220616e64208320746f676574686572"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_0",
+   "input": {
+    "kind": "text",
+    "value": "[aA][bB][cC]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_1",
+   "input": {
+    "kind": "text",
+    "value": "[aA]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_2",
+   "input": {
+    "kind": "text",
+    "value": "[ab]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b61625d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_3",
+   "input": {
+    "kind": "text",
+    "value": "[Ab][aB]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b41625d5b61425d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_4",
+   "input": {
+    "kind": "text",
+    "value": "[a]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b615d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_5",
+   "input": {
+    "kind": "text",
+    "value": "[abc]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b6162635d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_6",
+   "input": {
+    "kind": "text",
+    "value": "[a1]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b61315d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_7",
+   "input": {
+    "kind": "text",
+    "value": "[]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "5b5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_8",
+   "input": {
+    "kind": "text",
+    "value": "no brackets here"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6e6f20627261636b6574732068657265"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_9",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_10",
+   "input": {
+    "kind": "text",
+    "value": "trailing [aA"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "747261696c696e67205b6141"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "regex_case_fold_11",
+   "input": {
+    "kind": "text",
+    "value": "[aA][ab][bB]"
+   },
+   "recipe": [
+    {
+     "op": "From Case Insensitive Regex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "615b61625d62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_0",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a630a620a610a622c630a612c630a612c620a612c622c630a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a620a610a612c620a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_2",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a610a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_3",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a620a610a612c620a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_5",
+   "input": {
+    "kind": "text",
+    "value": ",,,"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_6",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three,four"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a74776f0a6f6e650a666f75720a74687265650a6f6e652c74776f0a74776f2c666f75720a6f6e652c666f75720a74776f2c74687265650a6f6e652c74687265650a74687265652c666f75720a6f6e652c74776f2c666f75720a6f6e652c74776f2c74687265650a74776f2c74687265652c666f75720a6f6e652c74687265652c666f75720a6f6e652c74776f2c74687265652c666f75720a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_space",
+   "input": {
+    "kind": "text",
+    "value": "a b c"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      " "
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a630a620a610a6220630a6120630a6120620a61206220630a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_multi",
+   "input": {
+    "kind": "text",
+    "value": "a::b::c"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      "::"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a630a620a610a623a3a630a613a3a630a613a3a620a613a3a623a3a630a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "power_set_dash",
+   "input": {
+    "kind": "text",
+    "value": "x-y-z"
+   },
+   "recipe": [
+    {
+     "op": "Power Set",
+     "args": [
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a7a0a790a780a792d7a0a782d7a0a782d790a782d792d7a0a"
+   ],
+   "stopped_after": 1
   }
  ]
 }

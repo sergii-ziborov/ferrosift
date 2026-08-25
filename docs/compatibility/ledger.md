@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 144 |
-| Reference-aliased | 142 |
-| Byte-pinned (`exact`) | 138 |
+| Registered operations | 147 |
+| Reference-aliased | 145 |
+| Byte-pinned (`exact`) | 141 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2428 |
+| Pinned cases | 2470 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -96,6 +96,7 @@ does.
 | `encoding.base85.encode@1` | To Base85 | core | exact | 27 |
 | `encoding.binary.decode@1` | From Binary | core | exact | 14 |
 | `encoding.binary.encode@1` | To Binary | core | exact | 13 |
+| `encoding.caret_m.decode@1` | Caret/M-decode | core | exact | 20 |
 | `encoding.charcode.decode@1` | From Charcode | core | exact | 13 |
 | `encoding.charcode.encode@1` | To Charcode | core | exact | 13 |
 | `encoding.decimal.decode@1` | From Decimal | core | exact | 14 |
@@ -156,6 +157,7 @@ does.
 | `sets.cartesian_product@1` | Cartesian Product | core | exact | 10 |
 | `sets.difference@1` | Set Difference | core | exact | 9 |
 | `sets.intersection@1` | Set Intersection | core | exact | 10 |
+| `sets.power@1` | Power Set | core | exact | 10 |
 | `sets.symmetric_difference@1` | Symmetric Difference | core | exact | 9 |
 | `sets.union@1` | Set Union | core | exact | 10 |
 | `text.alphabet.expand@1` | Expand alphabet range | core | exact | 14 |
@@ -171,6 +173,7 @@ does.
 | `text.line_numbers.remove@1` | Remove line numbers | core | exact | 16 |
 | `text.nato@1` | Convert to NATO alphabet | core | exact | 7 |
 | `text.pad_lines@1` | Pad lines | core | exact | 20 |
+| `text.regex.case_fold@1` | From Case Insensitive Regex | core | exact | 12 |
 | `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
 | `text.wrap@1` | Wrap | core | exact | 28 |
 

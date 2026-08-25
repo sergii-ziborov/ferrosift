@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 144,
-    "aliased": 142,
-    "exact": 138,
+    "operations": 147,
+    "aliased": 145,
+    "exact": 141,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2428
+    "pinned_cases": 2470
   },
   "operations": [
     {
@@ -890,6 +890,19 @@
       "status": "exact"
     },
     {
+      "id": "encoding.caret_m.decode@1",
+      "display_name": "Caret/M-decode",
+      "category": "Encoding",
+      "reference_alias": "Caret/M-decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 20,
+      "status": "exact"
+    },
+    {
       "id": "encoding.charcode.decode@1",
       "display_name": "From Charcode",
       "category": "Encoding",
@@ -1672,6 +1685,19 @@
       "status": "exact"
     },
     {
+      "id": "sets.power@1",
+      "display_name": "Power Set",
+      "category": "Sets",
+      "reference_alias": "Power Set",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
       "id": "sets.symmetric_difference@1",
       "display_name": "Symmetric Difference",
       "category": "Sets",
@@ -1864,6 +1890,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
+      "status": "exact"
+    },
+    {
+      "id": "text.regex.case_fold@1",
+      "display_name": "From Case Insensitive Regex",
+      "category": "Text",
+      "reference_alias": "From Case Insensitive Regex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
       "status": "exact"
     },
     {
