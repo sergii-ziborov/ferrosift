@@ -1,4 +1,4 @@
-﻿use alloc::{string::String, vec::Vec};
+use alloc::{string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 

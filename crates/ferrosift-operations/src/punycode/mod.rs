@@ -1,4 +1,4 @@
-﻿//! Punycode (RFC 3492) and the domain-name wrapper around it.
+//! Punycode (RFC 3492) and the domain-name wrapper around it.
 
 mod codec;
 mod operation;

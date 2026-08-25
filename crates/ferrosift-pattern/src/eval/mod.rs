@@ -1,4 +1,4 @@
-﻿mod composite;
+mod composite;
 mod evaluator;
 mod expression;
 mod options;

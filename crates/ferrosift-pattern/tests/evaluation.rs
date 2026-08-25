@@ -1,4 +1,4 @@
-﻿//! Evaluation vectors: value decoding, layout offsets, and bounded failure.
+//! Evaluation vectors: value decoding, layout offsets, and bounded failure.
 
 use ferrosift_pattern::{EvalOptions, Node, NodeValue, PatternError, evaluate, parse};
 

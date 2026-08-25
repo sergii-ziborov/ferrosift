@@ -1,4 +1,4 @@
-﻿mod cursor;
+mod cursor;
 mod expression;
 mod grammar;
 

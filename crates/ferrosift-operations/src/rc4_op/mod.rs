@@ -1,4 +1,4 @@
-﻿mod codec;
+mod codec;
 mod drop_operation;
 mod operation;
 

@@ -1,4 +1,4 @@
-﻿// Automatic differential corpus generator.
+// Automatic differential corpus generator.
 //
 // Deterministically samples inputs for every CyberChef-aliased FerroSift
 // operation, bakes each recipe through the pinned checkout, and records the

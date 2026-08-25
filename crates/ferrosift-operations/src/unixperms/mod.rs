@@ -1,4 +1,4 @@
-﻿//! Explaining UNIX file permission strings.
+//! Explaining UNIX file permission strings.
 
 mod codec;
 mod operation;

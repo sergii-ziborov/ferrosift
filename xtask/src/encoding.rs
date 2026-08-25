@@ -70,26 +70,27 @@ fn repo_root() -> PathBuf {
         .map_or_else(|| PathBuf::from("."), Path::to_path_buf)
 }
 
-/// Reports every file holding a known double-encoded sequence.
+/// Reports every file damaged by an encoding round trip.
 fn check() -> ExitCode {
     let mut findings: Vec<String> = Vec::new();
     let mut scanned = 0usize;
     walk(&repo_root(), &mut scanned, &mut findings);
 
     if findings.is_empty() {
-        println!("no double-encoded text in {scanned} files");
+        println!("no encoding damage in {scanned} files");
         return ExitCode::SUCCESS;
     }
 
-    eprintln!("double-encoded text in {} place(s):", findings.len());
+    eprintln!("encoding damage in {} place(s):", findings.len());
     for finding in &findings {
         eprintln!("  {finding}");
     }
     eprintln!(
-        "\nThis is UTF-8 that was read as CP-1252 and written back as UTF-8,\n\
-         almost always by a PowerShell `Get-Content | Set-Content` round trip.\n\
-         Edit the file with a tool that preserves the encoding and restore the\n\
-         characters shown on the right."
+        "\nBoth failures come from the same place: a PowerShell\n\
+         `Get-Content | Set-Content` round trip. Mojibake is UTF-8 that was\n\
+         read as CP-1252 and written back as UTF-8; a byte-order mark is what\n\
+         `Set-Content -Encoding utf8` adds on Windows PowerShell whether or not\n\
+         the file had one. Edit with a tool that preserves the encoding."
     );
     ExitCode::FAILURE
 }
@@ -128,6 +129,18 @@ fn walk(directory: &Path, scanned: &mut usize, findings: &mut Vec<String>) {
 }
 
 fn inspect(path: &Path, text: &str, findings: &mut Vec<String>) {
+    // A byte-order mark is invisible in an editor and legal UTF-8, so nothing
+    // else here would report it -- but it is the first byte of the file, so it
+    // lands inside the opening token. In a Rust file that is a `//!` that no
+    // longer starts a doc comment; in a shell script it is text before the
+    // shebang. Windows tooling writes one by default, which is how two of them
+    // reached this tree.
+    if text.starts_with('\u{feff}') {
+        findings.push(format!(
+            "{}:1  file begins with a byte-order mark",
+            path.display()
+        ));
+    }
     for (number, line) in text.lines().enumerate() {
         for (broken, fixed) in DOUBLE_ENCODED {
             if line.contains(broken) {

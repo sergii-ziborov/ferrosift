@@ -1,4 +1,4 @@
-﻿// Rotation brute force.
+// Rotation brute force.
 //
 // Two details decide whether a port of these is right, and neither shows up
 // on a plain ASCII sentence with default arguments. The amount column is

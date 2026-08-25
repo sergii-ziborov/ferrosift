@@ -1,4 +1,4 @@
-﻿//! Bech32 (BIP-173) and Bech32m (BIP-350).
+//! Bech32 (BIP-173) and Bech32m (BIP-350).
 
 use alloc::string::String;
 use alloc::vec::Vec;

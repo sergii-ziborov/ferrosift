@@ -1,4 +1,4 @@
-﻿//! Grammar acceptance and rejection vectors for the supported subset.
+//! Grammar acceptance and rejection vectors for the supported subset.
 
 use ferrosift_pattern::{
     ArrayLength, BinaryOperator, Builtin, Declaration, Endian, Expression, Field, Member, Pattern,
