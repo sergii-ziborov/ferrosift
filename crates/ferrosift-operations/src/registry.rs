@@ -9,10 +9,10 @@ use ferrosift_core::{OperationRegistry, RegistryError};
 use crate::{
     AddLineNumbers, AlternatingCaps, BitShift, Bitwise, CaretMDecode, Checksum, ClassicalCipher,
     DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
-    EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
+    EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
     FromCaseInsensitiveRegex, GenerateDeBruijnSequence, GetAllCasings, ParityBit, PowerSet,
-    RemoveAnsiEscapeCodes, StripHttpHeaders, Substitute, SwapCase, ToLowerCase, ToUpperCase,
-    UnescapeString, UnescapeUnicodeCharacters, Wrap,
+    RemoveAnsiEscapeCodes, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, ToLowerCase,
+    ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, Wrap,
 };
 use crate::{
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
@@ -165,6 +165,8 @@ fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     registry.register(GenerateDeBruijnSequence::new())?;
     registry.register(ParityBit::new())?;
     registry.register(FormatMacAddresses::new())?;
+    registry.register(EscapeSmartCharacters::new())?;
+    registry.register(StripHtmlTags::new())?;
     registry.register(EscapeUnicodeCharacters::new())?;
     registry.register(UnescapeUnicodeCharacters::new())?;
     registry.register(EncodeNetbiosName::new())?;

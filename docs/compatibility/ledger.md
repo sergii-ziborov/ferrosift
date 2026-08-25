@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 152 |
-| Reference-aliased | 150 |
-| Byte-pinned (`exact`) | 146 |
+| Registered operations | 154 |
+| Reference-aliased | 152 |
+| Byte-pinned (`exact`) | 148 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2617 |
+| Pinned cases | 2694 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -173,6 +173,7 @@ does.
 | `text.debruijn@1` | Generate De Bruijn Sequence | core | exact | 9 |
 | `text.escape.unescape@1` | Unescape string | core | exact | 11 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |
+| `text.html.strip_tags@1` | Strip HTML tags | core | exact | 44 |
 | `text.leet@1` | Convert Leet Speak | core | exact | 28 |
 | `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |
 | `text.line_numbers.remove@1` | Remove line numbers | core | exact | 16 |
@@ -180,6 +181,7 @@ does.
 | `text.pad_lines@1` | Pad lines | core | exact | 20 |
 | `text.regex.case_fold@1` | From Case Insensitive Regex | core | exact | 12 |
 | `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
+| `text.smart.escape@1` | Escape Smart Characters | core | exact | 33 |
 | `text.wrap@1` | Wrap | core | exact | 28 |
 
 Operations the reference has and FerroSift does not are reported by
