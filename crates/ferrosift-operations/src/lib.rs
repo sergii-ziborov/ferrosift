@@ -29,8 +29,6 @@ mod charcode;
 mod checksum;
 mod classical;
 mod decimal;
-mod delim;
-mod escape;
 mod failure;
 mod flow;
 mod generate;
@@ -40,9 +38,7 @@ mod hex_util;
 mod hexdump;
 mod html;
 mod identity;
-mod jsint;
-mod jsobject;
-mod jsstr;
+mod jscompat;
 mod key;
 mod lines;
 mod markup;
@@ -171,3 +167,61 @@ pub use suggest::SuggestRecipe;
 pub use xor_brute::XorBruteForce;
 
 pub use registry::default_registry;
+
+/// Test-only access to the JavaScript compatibility layer.
+///
+/// `tests/jscompat.rs` pins these against Node directly rather than only
+/// through the operations that use them, which is what makes a divergence
+/// legible: "our parseInt disagrees" instead of four unrelated operations
+/// failing for reasons nobody would connect.
+///
+/// Hidden from the documentation because it is not part of the library's
+/// contract — the surface a caller uses is the operation catalog.
+#[doc(hidden)]
+pub mod jscompat_testing {
+    use alloc::{string::String, vec::Vec};
+
+    /// Whether JavaScript's `\s` matches this character.
+    ///
+    /// Wider than `char::is_whitespace`: it includes the byte-order mark.
+    #[must_use]
+    pub const fn is_js_whitespace(value: char) -> bool {
+        crate::jscompat::delim::is_js_whitespace(value)
+    }
+
+    /// `parseInt`, as `Option` rather than the internal enum.
+    ///
+    /// `None` is JavaScript's `NaN`. The value saturates at a million, which
+    /// is what every caller in this crate needs and no more.
+    #[must_use]
+    pub fn parse_int(token: &str, radix: u32) -> Option<i64> {
+        match crate::jscompat::number::parse(token, radix) {
+            crate::jscompat::number::JsInt::Nan => None,
+            crate::jscompat::number::JsInt::Value(value) => Some(value),
+        }
+    }
+
+    /// Accumulates keys the way a JavaScript object literal used as a set does.
+    #[derive(Default)]
+    pub struct KeySet {
+        inner: Vec<String>,
+    }
+
+    impl KeySet {
+        /// Adds one key.
+        pub fn insert(&mut self, key: &str) {
+            let mut set = crate::jscompat::object::KeySet::new();
+            for existing in &self.inner {
+                set.insert(existing);
+            }
+            set.insert(key);
+            self.inner = set.keys();
+        }
+
+        /// The keys in `Object.keys` order.
+        #[must_use]
+        pub fn into_keys(self) -> Vec<String> {
+            self.inner
+        }
+    }
+}

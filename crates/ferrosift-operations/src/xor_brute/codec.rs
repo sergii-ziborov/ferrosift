@@ -6,9 +6,9 @@ use core::fmt::Write as _;
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::escape::parse_escaped_chars;
 use crate::failure::failed;
 use crate::hex_util::to_hex_lower;
+use crate::jscompat::escape::parse_escaped_chars;
 use crate::xor::codec as xor_codec;
 
 const INVALID_KEY_LENGTH: &str = "logic.xor_brute.invalid_key_length";

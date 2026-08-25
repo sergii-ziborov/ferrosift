@@ -5,7 +5,7 @@ use alloc::{string::String, vec::Vec};
 use ferrosift_core::OperationError;
 
 use crate::failure::failed;
-use crate::jsint::{self, JsInt};
+use crate::jscompat::number::{self as jsint, JsInt};
 
 /// The failure code XOR has reported since it shipped; other callers pass
 /// their own so a stable code always names the operation that raised it.

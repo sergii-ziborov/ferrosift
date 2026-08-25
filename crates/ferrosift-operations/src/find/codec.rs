@@ -3,8 +3,8 @@ use alloc::string::String;
 use ferrosift_core::{OperationContext, OperationError};
 use regex_automata::{meta::Regex, util::syntax};
 
-use crate::escape::parse_escaped_chars;
 use crate::failure::failed;
+use crate::jscompat::escape::parse_escaped_chars;
 
 const INVALID_FIND: &str = "text.find_replace.invalid_pattern";
 const INVALID_TYPE: &str = "text.find_replace.invalid_type";

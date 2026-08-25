@@ -145,6 +145,8 @@ impl Operation for UnescapeString {
         let input = take_text(input)?;
         // The same helper the escape-taking arguments already use, so this
         // operation also pins that helper against the reference directly.
-        Ok(text_output(crate::escape::parse_escaped_chars(&input)))
+        Ok(text_output(crate::jscompat::escape::parse_escaped_chars(
+            &input,
+        )))
     }
 }

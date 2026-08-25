@@ -2,7 +2,7 @@ use alloc::{string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::delim::char_rep;
+use crate::jscompat::delim::char_rep;
 
 const INVALID_DELIMITER: &str = "data.head.invalid_delimiter";
 

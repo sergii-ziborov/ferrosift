@@ -6,7 +6,7 @@ use alloc::{
 use ferrosift_core::{OperationContext, OperationError};
 
 use crate::failure::failed;
-use crate::jsobject::KeySet;
+use crate::jscompat::object::KeySet;
 
 const WRONG_SAMPLE_COUNT: &str = "sets.wrong_sample_count";
 
@@ -189,7 +189,7 @@ fn decode_sample(sample: &str, hex_input: bool) -> Vec<u8> {
     if hex_input {
         crate::hex_util::from_hex_auto(sample)
     } else {
-        crate::jsstr::str_to_byte_array(sample)
+        crate::jscompat::string::str_to_byte_array(sample)
     }
 }
 

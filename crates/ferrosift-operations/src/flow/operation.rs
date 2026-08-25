@@ -74,11 +74,11 @@ impl Operation for Fork {
         // Standalone empty-body behaviour: split and re-join unchanged branches.
         // The executor intercepts recipes that contain a body before Merge.
         context.ensure_active()?;
-        let split = crate::escape::parse_escaped_chars(crate::args::text_value(
+        let split = crate::jscompat::escape::parse_escaped_chars(crate::args::text_value(
             arguments,
             "split_delimiter",
         )?);
-        let merge = crate::escape::parse_escaped_chars(crate::args::text_value(
+        let merge = crate::jscompat::escape::parse_escaped_chars(crate::args::text_value(
             arguments,
             "merge_delimiter",
         )?);

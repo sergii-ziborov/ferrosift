@@ -263,9 +263,9 @@ fn interface_id(clean: &str) -> String {
     // pair like "he" yields `0 ^ 2` and the octet becomes "02". That only
     // happens for input that is not a MAC address at all, which the reference
     // reformats anyway rather than rejecting, so it is reachable and pinned.
-    let parsed = match crate::jsint::parse(grouped.get(..2).unwrap_or(""), 16) {
-        crate::jsint::JsInt::Nan => 0,
-        crate::jsint::JsInt::Value(value) => value,
+    let parsed = match crate::jscompat::number::parse(grouped.get(..2).unwrap_or(""), 16) {
+        crate::jscompat::number::JsInt::Nan => 0,
+        crate::jscompat::number::JsInt::Value(value) => value,
     };
     let flipped = u8::try_from(parsed & 0xff).unwrap_or(0) ^ 2;
     let mut output = String::with_capacity(grouped.len());

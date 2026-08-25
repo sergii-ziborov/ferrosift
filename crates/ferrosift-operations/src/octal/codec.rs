@@ -3,9 +3,9 @@ use core::fmt::Write;
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::delim::char_rep;
 use crate::failure::failed;
-use crate::jsint;
+use crate::jscompat::delim::char_rep;
+use crate::jscompat::number as jsint;
 
 const INVALID_DELIMITER: &str = "encoding.octal.invalid_delimiter";
 const VALUE_OUT_OF_RANGE: &str = "encoding.octal.value_out_of_range";

@@ -2,9 +2,9 @@ use alloc::{string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::delim::{char_rep, is_js_whitespace};
 use crate::failure::failed;
-use crate::jsint;
+use crate::jscompat::delim::{char_rep, is_js_whitespace};
+use crate::jscompat::number as jsint;
 
 pub(super) const INVALID_DELIMITER: &str = "encoding.binary.invalid_delimiter";
 pub(super) const INVALID_BYTE_LENGTH: &str = "encoding.binary.invalid_byte_length";

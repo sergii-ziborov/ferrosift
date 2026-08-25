@@ -9,6 +9,7 @@ use std::process::{Command, ExitCode};
 
 mod bench;
 mod cyberchef;
+mod jscompat;
 mod ledger;
 
 const USAGE: &str = "\
@@ -32,6 +33,7 @@ fn main() -> ExitCode {
     match parts.as_slice() {
         ["bench", rest @ ..] => bench::run(rest),
         ["cyberchef", rest @ ..] => cyberchef::run(rest),
+        ["jscompat", rest @ ..] => jscompat::run(rest),
         ["ledger", rest @ ..] => ledger::run(rest),
         ["--help" | "-h"] | [] => {
             print!("{USAGE}");

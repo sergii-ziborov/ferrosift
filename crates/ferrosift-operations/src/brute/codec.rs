@@ -3,7 +3,7 @@ use alloc::vec::Vec;
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::jsstr::byte_array_to_utf8;
+use crate::jscompat::string::byte_array_to_utf8;
 
 /// Which characters a ROT13 brute force rotates.
 #[derive(Clone, Copy)]

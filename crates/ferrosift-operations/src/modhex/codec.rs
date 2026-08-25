@@ -2,8 +2,8 @@ use alloc::{string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::delim::char_rep;
 use crate::hex_util;
+use crate::jscompat::delim::char_rep;
 
 /// Modhex substitutes the sixteen hex digits with keyboard-layout-safe letters.
 const MODHEX: [char; 16] = [
@@ -62,7 +62,7 @@ pub(super) fn decode(
     let stripped: String = input
         .to_lowercase()
         .chars()
-        .filter(|character| !crate::delim::is_js_whitespace(*character))
+        .filter(|character| !crate::jscompat::delim::is_js_whitespace(*character))
         .collect();
     let delimiter = if delimiter_token == "Auto" {
         None

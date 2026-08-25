@@ -3,7 +3,7 @@ use alloc::{format, string::String, vec::Vec};
 use ferrosift_core::{OperationContext, OperationError};
 
 use crate::hex_util;
-use crate::jsstr::{byte_array_to_utf8, str_to_byte_array};
+use crate::jscompat::string::{byte_array_to_utf8, str_to_byte_array};
 
 /// The per-byte operators the reference's `bitOp` dispatches to.
 #[derive(Clone, Copy)]

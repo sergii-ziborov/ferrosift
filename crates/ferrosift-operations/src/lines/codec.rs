@@ -5,7 +5,7 @@ use alloc::{
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::delim::{char_rep, is_js_whitespace};
+use crate::jscompat::delim::{char_rep, is_js_whitespace};
 
 const INVALID_DELIMITER: &str = "data.tail.invalid_delimiter";
 const INVALID_POSITION: &str = "text.pad_lines.invalid_position";

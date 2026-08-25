@@ -6,8 +6,8 @@ use alloc::{
 
 use ferrosift_core::{OperationContext, OperationError};
 
-use crate::delim::char_rep;
 use crate::failure::failed;
+use crate::jscompat::delim::char_rep;
 
 const INVALID_BASE: &str = "encoding.charcode.invalid_base";
 const INVALID_DELIMITER: &str = "encoding.charcode.invalid_delimiter";

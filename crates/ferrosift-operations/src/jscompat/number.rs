@@ -1,4 +1,4 @@
-use crate::delim::is_js_whitespace;
+use crate::jscompat::delim::is_js_whitespace;
 
 /// Result of the ECMAScript `parseInt` prefix-parsing algorithm.
 ///
@@ -18,6 +18,15 @@ const SATURATION: i64 = 1_000_000;
 /// Parses a token the way JavaScript `parseInt(token, radix)` does: leading
 /// whitespace is skipped, one optional sign is honored, and the longest
 /// prefix of valid digits wins while trailing garbage is ignored.
+///
+/// At radix sixteen a leading `0x` or `0X` is consumed rather than parsed, so
+/// `parseInt("0x1f", 16)` is thirty-one and `parseInt("0x", 16)` is `NaN` —
+/// the prefix is stripped and nothing is left. At any other radix those are
+/// ordinary characters, so `parseInt("0x1f", 10)` is zero.
+///
+/// That branch was missing until `tests/jscompat.rs` compared this function
+/// against Node directly; every operation reading a hex token shared the
+/// mistake, and none of their own corpus cases had reached it.
 pub(crate) fn parse(token: &str, radix: u32) -> JsInt {
     let mut chars = token.chars().skip_while(|value| is_js_whitespace(*value));
     let mut first = chars.next();
@@ -32,6 +41,14 @@ pub(crate) fn parse(token: &str, radix: u32) -> JsInt {
         }
         _ => false,
     };
+
+    if radix == 16 && first == Some('0') {
+        let mut lookahead = chars.clone();
+        if matches!(lookahead.next(), Some('x' | 'X')) {
+            chars = lookahead;
+            first = chars.next();
+        }
+    }
 
     let mut value: i64 = 0;
     let mut digits = 0_usize;
