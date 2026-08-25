@@ -253,3 +253,39 @@ fn fork_flow_depth_limit_is_enforced() {
         .expect_err("nested fork must exceed max_flow_depth=1");
     assert_eq!(error.code(), "core.executor.flow_depth_exceeded");
 }
+
+/// `Comment` carries a note and must not touch the value.
+///
+/// The reference marks it flow control, and its Node build omits flow-control
+/// operations entirely, so the automatic corpus cannot bake it. That absence is
+/// recorded in `docs/compatibility/exemptions.json`; this is the pin it points
+/// at. The claim being pinned is narrow and total: whatever goes in comes out,
+/// with its representation intact, whatever the note says.
+#[test]
+fn comment_passes_every_representation_through_unchanged() {
+    let note = Arguments::from([(
+        "comment".into(),
+        ArgumentValue::Text("why this recipe looks like this".into()),
+    )]);
+
+    let text = run_recipe(
+        vec![step("note", "flow.comment@1", note.clone())],
+        support::text("value survives the note"),
+    );
+    match text {
+        Value::Text(value) => {
+            assert_eq!(value.text, "value survives the note");
+            assert_eq!(value.encoding, TextEncoding::Utf8);
+        }
+        other => panic!("text must stay text, got {other:?}"),
+    }
+
+    // Bytes matter separately: an operation that quietly re-encoded through a
+    // string would pass the text case and corrupt anything not valid UTF-8.
+    let raw = vec![0x00, 0xff, 0x80, 0x41];
+    let bytes = run_recipe(
+        vec![step("note", "flow.comment@1", note)],
+        Value::Bytes(raw.clone()),
+    );
+    assert_eq!(bytes, Value::Bytes(raw));
+}

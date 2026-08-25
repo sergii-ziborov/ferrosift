@@ -22,8 +22,9 @@
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, AlternatingCaps, BitShift, Bitwise, CaretMDecode, Checksum, CitrixCtx1Decode,
-    CitrixCtx1Encode, ClassicalCipher, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
+    AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BitShift, Bitwise, CaretMDecode,
+    Checksum, CitrixCtx1Decode,
+    CitrixCtx1Encode, ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
     DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
     ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
     FromBase85, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
@@ -33,7 +34,8 @@ use crate::{
     HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines, ParityBit,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
-    SetOperation, Split, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness,
+    SetOperation, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
+    SwapEndianness,
     Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
     ToBinary, ToBraille, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent, ToHexdump,
     ToHtmlEntity, ToLowerCase,
@@ -230,6 +232,8 @@ fn register_checksums(registry: &mut OperationRegistry) -> Result<(), RegistryEr
 /// `crypto` pack, which is a difference in cost rather than in kind — so both
 /// live here and the gate sits around the half that needs it.
 fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(BaconDecode::new())?;
+    registry.register(BaconEncode::new())?;
     registry.register(ClassicalCipher::a1z26_decode())?;
     registry.register(ClassicalCipher::a1z26_encode())?;
     registry.register(ClassicalCipher::affine_decode())?;
@@ -391,6 +395,7 @@ fn register_extractors(registry: &mut OperationRegistry) -> Result<(), RegistryE
 fn register_flow(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(Fork::new())?;
     registry.register(Merge::new())?;
+    registry.register(Comment::new())?;
     Ok(())
 }
 
@@ -451,6 +456,9 @@ fn register_parsing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     registry.register(HexToPem::new())?;
     registry.register(PemToHex::new())?;
     registry.register(FormatMacAddresses::new())?;
+    registry.register(StripHeader::ipv4())?;
+    registry.register(StripHeader::tcp())?;
+    registry.register(StripHeader::udp())?;
 
     // Object identifiers need arbitrary precision: an arc has no bound, and a
     // registered one really does exceed sixty-four bits.

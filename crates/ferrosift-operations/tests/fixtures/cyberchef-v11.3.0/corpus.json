@@ -63183,6 +63183,817 @@
     "41424378797a"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_01_drop_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "0/1",
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030203130303130203130303130203030303030203030303130203031303031203030303030203130303130203030303131203030303030203130313030203031313030203031303030203031303030203130303131203130303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_01_drop_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "0/1",
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313131203031313031203031313031203131313131203131313031203130313130203131313131203031313031203131313030203131313131203031303131203130303131203130313131203130313131203031313030203031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_01_keep_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "0/1",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030303130303130313030313030303030303030303130303130303120303030303031303031302030303031313030303030313031303030313130302c20303130303030313030303130303131313030313120303121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_01_keep_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "0/1",
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313131313031313031303131303131313131313131313031313031313020313131313130313130312031313130303131313131303130313131303031312c20313031313131303131313031313030303131303020313021"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_ab_drop_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A/B",
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4141414141204241414241204241414241204141414141204141414241204142414142204141414141204241414241204141414242204141414141204241424141204142424141204142414141204142414141204241414242204241414242"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_ab_drop_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A/B",
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4242424242204142424142204142424142204242424242204242424142204241424241204242424242204142424142204242424141204242424242204142414242204241414242204241424242204241424242204142424141204142424141"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_ab_keep_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A/B",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41414141414241414241424141424141414141414141414241414241414220414141414142414142412041414142424141414141424142414141424241412c20414241414141424141414241414242424141424220414221"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_std_ab_keep_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A/B",
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "42424242424142424142414242414242424242424242424142424142424120424242424241424241422042424241414242424242414241424242414142422c20424142424242414242424142424141414242414120424121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_01_drop_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "0/1",
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030203130303131203130303131203030303030203030303130203031303130203030303030203130303131203030303131203030303030203130313130203031313031203031303030203031303031203130313030203130313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_01_drop_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "0/1",
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313131203031313030203031313030203131313131203131313031203130313031203131313131203031313030203131313030203131313131203031303031203130303130203130313131203130313130203031303131203031303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_01_keep_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "0/1",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030303130303131313030313130303030303030303130303130313020303030303031303031312030303031313030303030313031313030313130312c20303130303030313030313130313030313031303120303121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_01_keep_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "0/1",
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313131313031313030303131303031313131313131313031313031303120313131313130313130302031313130303131313131303130303131303031302c20313031313131303131303031303131303130313020313021"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_ab_drop_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "A/B",
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4141414141204241414242204241414242204141414141204141414241204142414241204141414141204241414242204141414242204141414141204241424241204142424142204142414141204142414142204241424141204241424142"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_ab_drop_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "A/B",
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4242424242204142424141204142424141204242424242204242424142204241424142204242424242204142424141204242424141204242424242204142414142204241414241204241424242204241424241204142414242204142414241"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_ab_keep_std",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "A/B",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41414141414241414242424141424241414141414141414241414241424120414141414142414142422041414142424141414141424142424141424241422c20414241414141424141424241424141424142414220414221"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_encode_full_ab_keep_inv",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn, IJUV 01!"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Encode",
+     "args": [
+      "Complete",
+      "A/B",
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "42424242424142424141414242414142424242424242424142424142414220424242424241424241412042424241414242424242414241414242414142412c20424142424242414242414142414242414241424120424121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std__std",
+   "input": {
+    "kind": "text",
+    "value": "00000 00001 00010 11001"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "0/1",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4142433f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std__inv",
+   "input": {
+    "kind": "text",
+    "value": "00000 00001 00010 11001"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "0/1",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f3f3f47"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std_ab_std",
+   "input": {
+    "kind": "text",
+    "value": "AAAAA AAAAB AAABA BBAAB"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A/B",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4142433f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std_ab_inv",
+   "input": {
+    "kind": "text",
+    "value": "AAAAA AAAAB AAABA BBAAB"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A/B",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f3f3f47"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std_case_std",
+   "input": {
+    "kind": "text",
+    "value": "aBcDe FgHiJ kLmNo PqRsT"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "Case",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4c584c58"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std_case_inv",
+   "input": {
+    "kind": "text",
+    "value": "aBcDe FgHiJ kLmNo PqRsT"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "Case",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "584c584c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std_amnzfi_std",
+   "input": {
+    "kind": "text",
+    "value": "never a zebra, only apples now — ever"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A-M/N-Z first letter",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "59"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_std_amnzfi_inv",
+   "input": {
+    "kind": "text",
+    "value": "never a zebra, only apples now — ever"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Standard (I=J and U=V)",
+      "A-M/N-Z first letter",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full__std",
+   "input": {
+    "kind": "text",
+    "value": "00000 00001 00010 11001"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "0/1",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4142435a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full__inv",
+   "input": {
+    "kind": "text",
+    "value": "00000 00001 00010 11001"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "0/1",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f3f3f47"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full_ab_std",
+   "input": {
+    "kind": "text",
+    "value": "AAAAA AAAAB AAABA BBAAB"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "A/B",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4142435a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full_ab_inv",
+   "input": {
+    "kind": "text",
+    "value": "AAAAA AAAAB AAABA BBAAB"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "A/B",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f3f3f47"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full_case_std",
+   "input": {
+    "kind": "text",
+    "value": "aBcDe FgHiJ kLmNo PqRsT"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "Case",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b564b56"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full_case_inv",
+   "input": {
+    "kind": "text",
+    "value": "aBcDe FgHiJ kLmNo PqRsT"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "Case",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "564b564b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full_amnzfi_std",
+   "input": {
+    "kind": "text",
+    "value": "never a zebra, only apples now — ever"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "A-M/N-Z first letter",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_full_amnzfi_inv",
+   "input": {
+    "kind": "text",
+    "value": "never a zebra, only apples now — ever"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "A-M/N-Z first letter",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bacon_decode_undefined",
+   "input": {
+    "kind": "text",
+    "value": "never undefined a zebra only apples now"
+   },
+   "recipe": [
+    {
+     "op": "Bacon Cipher Decode",
+     "args": [
+      "Complete",
+      "A-M/N-Z first letter",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "strip_ipv4_basic",
+   "input": {
+    "kind": "bytes",
+    "hex": "4500002c0001000040060000c0a80001c0a80002deadbeef"
+   },
+   "recipe": [
+    {
+     "op": "Strip IPv4 header",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "deadbeef"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "strip_ipv4_options",
+   "input": {
+    "kind": "bytes",
+    "hex": "460000300001000040060000c0a80001c0a8000201020304cafe"
+   },
+   "recipe": [
+    {
+     "op": "Strip IPv4 header",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "cafe"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "strip_tcp_basic",
+   "input": {
+    "kind": "bytes",
+    "hex": "00501f9000000001000000005002200000000000706179"
+   },
+   "recipe": [
+    {
+     "op": "Strip TCP header",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "706179"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "strip_tcp_options",
+   "input": {
+    "kind": "bytes",
+    "hex": "00501f9000000001000000006002200000000000020405b46c6f6164"
+   },
+   "recipe": [
+    {
+     "op": "Strip TCP header",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6c6f6164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "strip_udp_basic",
+   "input": {
+    "kind": "bytes",
+    "hex": "1f900035000c000064617461"
+   },
+   "recipe": [
+    {
+     "op": "Strip UDP header",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "64617461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "strip_udp_empty",
+   "input": {
+    "kind": "bytes",
+    "hex": "1f900035000c0000"
+   },
+   "recipe": [
+    {
+     "op": "Strip UDP header",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
   }
  ]
 }

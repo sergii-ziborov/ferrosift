@@ -47,6 +47,11 @@
       "alias": "Merge",
       "scope": "elsewhere",
       "reason": "flow-control join; pinned in conformance_fork.rs"
+    },
+    {
+      "alias": "Comment",
+      "scope": "elsewhere",
+      "reason": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
     }
   ]
 }
