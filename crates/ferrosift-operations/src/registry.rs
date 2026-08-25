@@ -473,6 +473,7 @@ fn register_parsing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     registry.register(StripHeader::ipv4())?;
     registry.register(StripHeader::tcp())?;
     registry.register(StripHeader::udp())?;
+    registry.register(ParseUnixFilePermissions::new())?;
 
     // Object identifiers need arbitrary precision: an arc has no bound, and a
     // registered one really does exceed sixty-four bits.
@@ -524,7 +525,6 @@ fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(GenerateDeBruijnSequence::new())?;
     registry.register(XkcdRandomNumber::new())?;
     registry.register(ToCaseInsensitiveRegex::new())?;
-    registry.register(ParseUnixFilePermissions::new())?;
 
     #[cfg(feature = "text")]
     {

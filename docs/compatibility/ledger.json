@@ -1675,7 +1675,7 @@
     {
       "id": "filesystem.unix_permissions@1",
       "display_name": "Parse UNIX file permissions",
-      "category": "Filesystem",
+      "category": "Parsing",
       "reference_alias": "Parse UNIX file permissions",
       "feature": "core",
       "targets": [

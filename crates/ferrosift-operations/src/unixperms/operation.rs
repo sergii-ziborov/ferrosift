@@ -20,7 +20,7 @@ impl ParseUnixFilePermissions {
             spec: build(SpecDefinition {
                 id: "filesystem.unix_permissions@1",
                 display_name: "Parse UNIX file permissions",
-                category: "Filesystem",
+                category: "Parsing",
                 description: "Explains which permissions a UNIX mode grants to which users.",
                 cyberchef_alias: Some("Parse UNIX file permissions"),
                 input: ValueConstraint::Exact(ValueKind::Text),
