@@ -11,8 +11,8 @@ use crate::{
     DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
     EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
     FromBraille, FromCaseInsensitiveRegex, FromQuotedPrintable, GenerateDeBruijnSequence,
-    GetAllCasings, ParityBit, PowerSet, RemoveAnsiEscapeCodes, StripHtmlTags, StripHttpHeaders,
-    Substitute, SwapCase, ToBraille, ToLowerCase, ToUpperCase, UnescapeString,
+    GetAllCasings, HtmlToText, ParityBit, PowerSet, RemoveAnsiEscapeCodes, StripHtmlTags,
+    StripHttpHeaders, Substitute, SwapCase, ToBraille, ToLowerCase, ToUpperCase, UnescapeString,
     UnescapeUnicodeCharacters, UnicodeTextFormat, VarIntDecode, VarIntEncode, Wrap,
 };
 use crate::{
@@ -33,9 +33,9 @@ use crate::{
 };
 #[cfg(feature = "text")]
 use crate::{
-    DefangIpAddresses, DefangUrl, ExtractDomains, ExtractEmailAddresses, ExtractFilePaths,
-    ExtractHashes, ExtractIpAddresses, ExtractMacAddresses, ExtractUrls, FangUrl, FindReplace,
-    Strings,
+    CountOccurrences, DefangIpAddresses, DefangUrl, ExtractDomains, ExtractEmailAddresses,
+    ExtractFilePaths, ExtractHashes, ExtractIpAddresses, ExtractMacAddresses, ExtractUrls, FangUrl,
+    FindReplace, Strings,
 };
 #[cfg(feature = "hash")]
 use crate::{FixedDigest, Hmac, Md5, Ripemd, Sha1, Sha2, Sha3};
@@ -174,6 +174,7 @@ fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     registry.register(ToBraille::new())?;
     registry.register(FromBraille::new())?;
     registry.register(UnicodeTextFormat::new())?;
+    registry.register(HtmlToText::new())?;
     registry.register(EscapeUnicodeCharacters::new())?;
     registry.register(UnescapeUnicodeCharacters::new())?;
     registry.register(EncodeNetbiosName::new())?;
@@ -288,6 +289,7 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
         registry.register(ExtractMacAddresses::new())?;
         registry.register(ExtractUrls::new())?;
         registry.register(Strings::new())?;
+        registry.register(CountOccurrences::new())?;
     }
     #[cfg(feature = "hash")]
     {

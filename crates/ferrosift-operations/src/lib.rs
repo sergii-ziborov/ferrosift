@@ -13,6 +13,7 @@
 extern crate alloc;
 
 mod alphabet;
+mod annotate;
 mod args;
 mod base32;
 mod base45;
@@ -68,6 +69,8 @@ mod aes_op;
 mod codec_bytes;
 #[cfg(feature = "compression")]
 mod compress;
+#[cfg(feature = "text")]
+mod count;
 #[cfg(feature = "compression")]
 mod crc32;
 #[cfg(feature = "text")]
@@ -91,6 +94,7 @@ mod suggest;
 #[cfg(feature = "analysis")]
 mod xor_brute;
 
+pub use annotate::HtmlToText;
 pub use base32::{FromBase32, ToBase32};
 pub use base45::{FromBase45, ToBase45};
 pub use base58::{FromBase58, ToBase58};
@@ -142,6 +146,8 @@ pub use aes_op::{AesDecrypt, AesEncrypt};
 pub use compress::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
 };
+#[cfg(feature = "text")]
+pub use count::CountOccurrences;
 #[cfg(feature = "text")]
 pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
 #[cfg(feature = "hash")]

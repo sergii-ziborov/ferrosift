@@ -36,6 +36,7 @@ import * as netfmt from "./corpus/netfmt.mjs";
 import * as markup from "./corpus/markup.mjs";
 import * as varint from "./corpus/varint.mjs";
 import * as braille from "./corpus/braille.mjs";
+import * as annotate from "./corpus/annotate.mjs";
 import * as checksum from "./corpus/checksum.mjs";
 import * as classical from "./corpus/classical.mjs";
 import * as compress from "./corpus/compress.mjs";
@@ -56,7 +57,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate]) {
     await family.add(builder);
 }
 

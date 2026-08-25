@@ -50839,6 +50839,416 @@
     "61"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "html_to_text_0",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "HTML To Text",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f20776f726c64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "html_to_text_1",
+   "input": {
+    "kind": "text",
+    "value": "<p>markup</p>"
+   },
+   "recipe": [
+    {
+     "op": "HTML To Text",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3c703e6d61726b75703c2f703e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "html_to_text_2",
+   "input": {
+    "kind": "text",
+    "value": "  leading and trailing  "
+   },
+   "recipe": [
+    {
+     "op": "HTML To Text",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "20206c656164696e6720616e6420747261696c696e672020"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "html_to_text_3",
+   "input": {
+    "kind": "text",
+    "value": "line\nbreaks\n"
+   },
+   "recipe": [
+    {
+     "op": "HTML To Text",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6c696e650a627265616b730a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "html_to_text_4",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "HTML To Text",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "html_to_text_5",
+   "input": {
+    "kind": "text",
+    "value": "café 中文 😀"
+   },
+   "recipe": [
+    {
+     "op": "HTML To Text",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "636166c3a920e4b8ade6968720f09f9880"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_0",
+   "input": {
+    "kind": "text",
+    "value": "hello world hello"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Simple string",
+       "string": "hello"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_1",
+   "input": {
+    "kind": "text",
+    "value": "hello world hello"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Simple string",
+       "string": "l"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_2",
+   "input": {
+    "kind": "text",
+    "value": "aaaa"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Simple string",
+       "string": "aa"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_3",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Simple string",
+       "string": "z"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_4",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Simple string",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_5",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Simple string",
+       "string": "x"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_6",
+   "input": {
+    "kind": "text",
+    "value": "a\tb\tc"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Extended (\\n, \\t, \\x...)",
+       "string": "\\t"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_7",
+   "input": {
+    "kind": "text",
+    "value": "a\nb"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Extended (\\n, \\t, \\x...)",
+       "string": "\\n"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_8",
+   "input": {
+    "kind": "text",
+    "value": "aAbB"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Extended (\\n, \\t, \\x...)",
+       "string": "\\x41"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_9",
+   "input": {
+    "kind": "text",
+    "value": "Hello hello HELLO"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Regex",
+       "string": "hello"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_10",
+   "input": {
+    "kind": "text",
+    "value": "a1b2c3"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Regex",
+       "string": "[0-9]"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_11",
+   "input": {
+    "kind": "text",
+    "value": "aaa"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Regex",
+       "string": "a+"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_12",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Regex",
+       "string": "("
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "count_13",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Count occurrences",
+     "args": [
+      {
+       "option": "Regex",
+       "string": "z+"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
   }
  ]
 }

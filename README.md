@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 160 | 158 | **154** | **2796** |
+| 162 | 160 | **156** | **2816** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -188,7 +188,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, Parity Bit, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Networking | Format MAC addresses |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
-| Text | Add line numbers, Alternating Caps, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
+| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
 <!-- catalog:end -->
 
 Full alias tables, argument shapes, and intentional divergences from the

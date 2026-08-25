@@ -106,6 +106,13 @@ fn normalize(value: Value) -> Vec<u8> {
         Value::Text(text) if text.encoding == TextEncoding::Utf8 => {
             encode_text_like_reference(&text.text)
         }
+        // An operation whose reference returns a JavaScript number. The
+        // reference's own harness renders it with `String(value)`, so the
+        // comparison is against its decimal digits — which is also what a
+        // caller sees when they print it. Modelling it as an integer rather
+        // than as text is what stops the caller parsing a number back out of a
+        // string to use it.
+        Value::Integer(number) => number.to_string().into_bytes(),
         other => panic!(
             "reference normalization does not support {:?}",
             other.kind()

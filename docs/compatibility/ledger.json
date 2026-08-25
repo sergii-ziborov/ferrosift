@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 160,
-    "aliased": 158,
-    "exact": 154,
+    "operations": 162,
+    "aliased": 160,
+    "exact": 156,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2796
+    "pinned_cases": 2816
   },
   "operations": [
     {
@@ -1919,6 +1919,19 @@
       "status": "exact"
     },
     {
+      "id": "text.count@1",
+      "display_name": "Count occurrences",
+      "category": "Text",
+      "reference_alias": "Count occurrences",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
       "id": "text.debruijn@1",
       "display_name": "Generate De Bruijn Sequence",
       "category": "Text",
@@ -1968,6 +1981,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 44,
+      "status": "exact"
+    },
+    {
+      "id": "text.html.to_text@1",
+      "display_name": "HTML To Text",
+      "category": "Text",
+      "reference_alias": "HTML To Text",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 6,
       "status": "exact"
     },
     {
