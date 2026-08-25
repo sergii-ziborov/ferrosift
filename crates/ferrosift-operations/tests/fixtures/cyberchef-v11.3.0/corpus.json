@@ -50094,6 +50094,751 @@
     "c3a920616e6420c3a9"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_0",
+   "input": {
+    "kind": "text",
+    "value": "HELLO WORLD"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a093e2a091e2a087e2a087e2a095e2a080e2a0bae2a095e2a097e2a087e2a099"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": "⠓⠑⠇⠇⠕⠀⠺⠕⠗⠇⠙"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f20574f524c44"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_1",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a093e2a091e2a087e2a087e2a095e2a080e2a0bae2a095e2a097e2a087e2a099"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "⠓⠑⠇⠇⠕⠀⠺⠕⠗⠇⠙"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f20574f524c44"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_2",
+   "input": {
+    "kind": "text",
+    "value": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a081e2a083e2a089e2a099e2a091e2a08be2a09be2a093e2a08ae2a09ae2a085e2a087e2a08de2a09de2a095e2a08fe2a09fe2a097e2a08ee2a09ee2a0a5e2a0a7e2a0bae2a0ade2a0bde2a0b5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4142434445464748494a4b4c4d4e4f505152535455565758595a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_3",
+   "input": {
+    "kind": "text",
+    "value": "abcdefghijklmnopqrstuvwxyz"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a081e2a083e2a089e2a099e2a091e2a08be2a09be2a093e2a08ae2a09ae2a085e2a087e2a08de2a09de2a095e2a08fe2a09fe2a097e2a08ee2a09ee2a0a5e2a0a7e2a0bae2a0ade2a0bde2a0b5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4142434445464748494a4b4c4d4e4f505152535455565758595a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_4",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a0b4e2a082e2a086e2a092e2a0b2e2a0a2e2a096e2a0b6e2a0a6e2a094"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "⠴⠂⠆⠒⠲⠢⠖⠶⠦⠔"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30313233343536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_5",
+   "input": {
+    "kind": "text",
+    "value": " '@/\"^>,*<-.%[$+!&;:\\(_?]#)="
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a080e2a084e2a088e2a08ce2a090e2a098e2a09ce2a0a0e2a0a1e2a0a3e2a0a4e2a0a8e2a0a9e2a0aae2a0abe2a0ace2a0aee2a0afe2a0b0e2a0b1e2a0b3e2a0b7e2a0b8e2a0b9e2a0bbe2a0bce2a0bee2a0bf"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "⠀⠄⠈⠌⠐⠘⠜⠠⠡⠣⠤⠨⠩⠪⠫⠬⠮⠯⠰⠱⠳⠷⠸⠹⠻⠼⠾⠿"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2027402f225e3e2c2a3c2d2e255b242b21263b3a5c285f3f5d23293d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_6",
+   "input": {
+    "kind": "text",
+    "value": "Mixed Case 123"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a08de2a08ae2a0ade2a091e2a099e2a080e2a089e2a081e2a08ee2a091e2a080e2a082e2a086e2a092"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "⠍⠊⠭⠑⠙⠀⠉⠁⠎⠑⠀⠂⠆⠒"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4d49584544204341534520313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_8",
+   "input": {
+    "kind": "text",
+    "value": " "
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a080"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_8",
+   "input": {
+    "kind": "text",
+    "value": "⠀"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_encode_9",
+   "input": {
+    "kind": "text",
+    "value": "café 中文"
+   },
+   "recipe": [
+    {
+     "op": "To Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a089e2a081e2a08bc3a9e2a080e4b8ade69687"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_round_trip_9",
+   "input": {
+    "kind": "text",
+    "value": "⠉⠁⠋é⠀中文"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "434146c3a920e4b8ade69687"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_decode_0",
+   "input": {
+    "kind": "text",
+    "value": "⠓⠑⠇⠇⠕"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_decode_1",
+   "input": {
+    "kind": "text",
+    "value": "⠀"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_decode_2",
+   "input": {
+    "kind": "text",
+    "value": "⠿"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_decode_3",
+   "input": {
+    "kind": "text",
+    "value": "⣿"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e2a3bf"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "braille_decode_4",
+   "input": {
+    "kind": "text",
+    "value": "not braille"
+   },
+   "recipe": [
+    {
+     "op": "From Braille",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6e6f7420627261696c6c65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_0_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68ccb265ccb26cccb26cccb26fccb2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_0_01",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68ccb665ccb66cccb66cccb66fccb6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_0_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68ccb6ccb265ccb6ccb26cccb6ccb26cccb6ccb26fccb6ccb2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_0_00",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_1_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a9"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63ccb261ccb266ccb2c3ccb2a9ccb2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_1_01",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a9"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63ccb661ccb666ccb6c3ccb6a9ccb6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_1_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a9"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63ccb6ccb261ccb6ccb266ccb6ccb2c3ccb6ccb2a9ccb6ccb2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_1_00",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a9"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636166c3a9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_2_10",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_2_01",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_2_11",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_2_00",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_3_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "61"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61ccb2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_3_01",
+   "input": {
+    "kind": "bytes",
+    "hex": "61"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61ccb6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_3_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "61"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      true,
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61ccb6ccb2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unicode_format_3_00",
+   "input": {
+    "kind": "bytes",
+    "hex": "61"
+   },
+   "recipe": [
+    {
+     "op": "Unicode Text Format",
+     "args": [
+      false,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
   }
  ]
 }

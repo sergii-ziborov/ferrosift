@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 157 |
-| Reference-aliased | 155 |
-| Byte-pinned (`exact`) | 151 |
+| Registered operations | 160 |
+| Reference-aliased | 158 |
+| Byte-pinned (`exact`) | 154 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2755 |
+| Pinned cases | 2796 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -97,6 +97,8 @@ does.
 | `encoding.base85.encode@1` | To Base85 | core | exact | 27 |
 | `encoding.binary.decode@1` | From Binary | core | exact | 14 |
 | `encoding.binary.encode@1` | To Binary | core | exact | 13 |
+| `encoding.braille.decode@1` | From Braille | core | exact | 15 |
+| `encoding.braille.encode@1` | To Braille | core | exact | 10 |
 | `encoding.caret_m.decode@1` | Caret/M-decode | core | exact | 20 |
 | `encoding.charcode.decode@1` | From Charcode | core | exact | 13 |
 | `encoding.charcode.encode@1` | To Charcode | core | exact | 13 |
@@ -185,6 +187,7 @@ does.
 | `text.regex.case_fold@1` | From Case Insensitive Regex | core | exact | 12 |
 | `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
 | `text.smart.escape@1` | Escape Smart Characters | core | exact | 33 |
+| `text.unicode.format@1` | Unicode Text Format | core | exact | 16 |
 | `text.wrap@1` | Wrap | core | exact | 28 |
 
 Operations the reference has and FerroSift does not are reported by

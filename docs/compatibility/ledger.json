@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 157,
-    "aliased": 155,
-    "exact": 151,
+    "operations": 160,
+    "aliased": 158,
+    "exact": 154,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2755
+    "pinned_cases": 2796
   },
   "operations": [
     {
@@ -900,6 +900,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.braille.decode@1",
+      "display_name": "From Braille",
+      "category": "Encoding",
+      "reference_alias": "From Braille",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 15,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.braille.encode@1",
+      "display_name": "To Braille",
+      "category": "Encoding",
+      "reference_alias": "To Braille",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
       "status": "exact"
     },
     {
@@ -2046,6 +2072,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 33,
+      "status": "exact"
+    },
+    {
+      "id": "text.unicode.format@1",
+      "display_name": "Unicode Text Format",
+      "category": "Encoding",
+      "reference_alias": "Unicode Text Format",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
       "status": "exact"
     },
     {
