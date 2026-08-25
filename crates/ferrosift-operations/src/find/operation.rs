@@ -72,9 +72,7 @@ impl Operation for FindReplace {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let (option, string) = toggle_string_parts(map_value(arguments, "find")?)?;
         let mut flag_bits = 0_u8;
         if boolean_value(arguments, "global_match")? {

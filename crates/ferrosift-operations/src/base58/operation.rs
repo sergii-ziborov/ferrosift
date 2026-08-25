@@ -62,9 +62,7 @@ impl Operation for ToBase58 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         // Unlike Base32, the reference validates the alphabet before the
         // empty-input early return; preserve that observable order.
         let alphabet = codec::parse_alphabet(text_value(arguments, "alphabet")?)?;
@@ -135,9 +133,7 @@ impl Operation for FromBase58 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let alphabet = codec::parse_alphabet(text_value(arguments, "alphabet")?)?;
         if input.text.is_empty() {
             return Ok(Value::Bytes(Vec::new()));

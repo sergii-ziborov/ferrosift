@@ -43,10 +43,9 @@ fn validate_accepts_native_and_cyberchef_recipes_after_full_preflight() {
 }
 
 #[test]
-fn validate_reports_unsupported_operations_and_input_kinds() {
+fn validate_reports_an_unsupported_operation() {
     let directory = support::TempDir::new("validate-incompatible");
     let unsupported = directory.write("unsupported.json", r#"[{"op":"Magic","args":[]}]"#);
-    let mismatch = directory.write("mismatch.json", NATIVE_TO_HEX);
 
     let output = validate("cyberchef-v11.3", "bytes", &unsupported);
     assert!(!output.status.success());
@@ -56,14 +55,28 @@ fn validate_reports_unsupported_operations_and_input_kinds() {
         "{}",
         support::stderr(&output)
     );
+}
 
-    let output = validate("ferrosift", "text", &mismatch);
-    assert!(!output.status.success());
-    assert!(
-        support::stderr(&output).contains("core.executor.input_kind_mismatch"),
-        "{}",
-        support::stderr(&output)
-    );
+/// Text into a byte-reading operation is no longer a mismatch.
+///
+/// It used to be, and this test used to assert it. The reference carries one
+/// value between steps and presents it as whatever the next step asks for, so
+/// refusing here rejected recipes that work there — `To Hex` over text is an
+/// ordinary thing to want. Both representations are now declared and the
+/// conversion is the reference's own.
+///
+/// Which leaves the two kinds this command offers with nothing to mismatch
+/// against, so there is no negative case left to write here. A representation
+/// the executor really does refuse — structured values, file lists — cannot be
+/// supplied from the command line at all.
+#[test]
+fn validate_accepts_text_for_a_byte_reading_recipe() {
+    let directory = support::TempDir::new("validate-crosskind");
+    let recipe = directory.write("to-hex.json", NATIVE_TO_HEX);
+
+    let output = validate("ferrosift", "text", &recipe);
+    assert!(output.status.success(), "{}", support::stderr(&output));
+    assert_eq!(support::stdout(&output), "valid\n");
 }
 
 #[test]

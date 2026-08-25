@@ -57,9 +57,7 @@ impl Operation for ToHex {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let delimiter = delimiter::encode(text_value(arguments, "delimiter")?)?;
         let line_size = nonnegative_usize(integer_value(arguments, "bytes_per_line")?)?;
         let output = codec::encode(&input, delimiter, line_size, context)?;
@@ -118,9 +116,7 @@ impl Operation for FromHex {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let delimiter = delimiter::decode(text_value(arguments, "delimiter")?)?;
         codec::decode(&input.text, delimiter, context).map(Value::Bytes)
     }

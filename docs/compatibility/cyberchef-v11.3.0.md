@@ -268,6 +268,45 @@ So it is absent, and this note is the record of why. If the reference fixes
 it, FerroSift can implement the fixed behaviour and pin it like everything
 else.
 
+### An omitted argument is its declared default, not `undefined`
+
+A recipe saved by the reference carries every argument, so this is only
+reachable in hand-written JSON. Where it is reachable, the two disagree: the
+reference reads `args[]` positionally and a missing entry is `undefined`, which
+for a boolean is falsy. `{"op": "URL Decode", "args": []}` therefore runs with
+`Treat "+" as space` **off** there, despite the operation declaring that
+argument's default as **on**.
+
+FerroSift applies the declared default instead, so the same JSON runs with it
+on. Neither reading is obviously right — the reference disagrees with its own
+declared default, and matching that would mean an omitted argument meaning
+something different from the value the catalog publishes for it.
+
+The safe form is to write every argument explicitly, which is what the
+reference's own export does.
+
+### From Hex refuses an odd number of digits
+
+The reference reads a trailing lone hex digit as a byte with a zero high
+nibble, so `abc` decodes to `ab 0c` and `not-hex` decodes to nothing at all.
+FerroSift refuses both with `encoding.hex.odd_length`.
+
+| Input | Reference | FerroSift |
+|---|---|---|
+| `abc` | `ab 0c` | refuses |
+| `a` | `0a` | refuses |
+| `68 69 6` | `68 69 06` | refuses |
+| `not-hex` | *(empty)* | refuses |
+
+The reason is the last row. Automatic delimiter detection means any text can be
+offered to this operation, and text with no hex digits in it decodes to an
+empty result rather than an error — so a mistyped recipe or a wrong input
+produces silence instead of a complaint. Refusing turns that into a message,
+at the cost of also refusing the three rows above it, which are unambiguous.
+
+That trade is arguable in both directions and this note exists so it is
+arguable rather than invisible. `tests/safety.rs` pins the refusal.
+
 ### Object identifiers refuse where the reference answers `NaN`
 
 `Object Identifier to Hex` and `Hex to Object Identifier` both hand text to a

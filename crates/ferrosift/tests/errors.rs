@@ -115,14 +115,16 @@ fn structured_input_is_left_for_the_engine_to_reject() {
 }
 
 #[test]
-fn non_utf8_bytes_are_not_forced_into_text() {
-    // 0xff is not valid UTF-8, so the bytes stay bytes and the text-taking
-    // step reports the mismatch rather than the facade guessing.
-    let error = pipeline()
+fn non_utf8_bytes_reach_a_text_step_the_way_the_reference_delivers_them() {
+    // Not a mismatch any more. A byte-and-text step accepts either, and bytes
+    // that are not valid UTF-8 are read a byte per character rather than
+    // refused — which is what the reference does, and what makes `From Base64`
+    // on `ff fe` an empty result there rather than an error.
+    let output = pipeline()
         .from_base64()
         .run(Value::Bytes(vec![0xff, 0xfe]))
-        .expect_err("invalid UTF-8 cannot become text");
-    assert_eq!(error.code(), "core.executor.input_kind_mismatch");
+        .expect("bytes are readable as text");
+    assert_eq!(output, Value::Bytes(Vec::new()));
 }
 
 #[test]

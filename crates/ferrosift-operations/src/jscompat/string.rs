@@ -54,9 +54,15 @@ pub(crate) fn str_to_byte_array(value: &str) -> Vec<u8> {
 /// A strict UTF-8 decode, falling back to Latin-1 for the whole buffer when
 /// any part of it is not valid UTF-8. The fallback is all-or-nothing, so a
 /// single bad byte changes how every other byte is read.
+///
+/// A leading byte-order mark is dropped on the successful path and kept on the
+/// fallback. That is not a choice made here: the reference decodes with a
+/// `TextDecoder`, whose default `ignoreBOM: false` means *remove* the mark, and
+/// its Latin-1 fallback has no such notion. So `ef bb bf` decodes to the empty
+/// string while `ef bb` — which is not valid UTF-8 — decodes to two characters.
 pub(crate) fn byte_array_to_utf8(value: &[u8]) -> String {
     core::str::from_utf8(value).map_or_else(
         |_| value.iter().map(|byte| char::from(*byte)).collect(),
-        String::from,
+        |text| String::from(text.strip_prefix('\u{feff}').unwrap_or(text)),
     )
 }

@@ -55,9 +55,7 @@ impl Operation for ToOctal {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let output = codec::encode(&input, text_value(arguments, "delimiter")?, context)?;
         Ok(Value::Text(TextValue {
             text: output,
@@ -110,9 +108,7 @@ impl Operation for FromOctal {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         if input.text.is_empty() {
             return Ok(Value::Bytes(Vec::new()));
         }

@@ -66,9 +66,7 @@ impl Operation for Bzip2Compress {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::bzip2_compress(
             &input,
             integer_value(arguments, "block_size")?,
@@ -126,9 +124,7 @@ impl Operation for Bzip2Decompress {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::bzip2_decompress(
             &input,
             boolean_value(arguments, "low_memory")?,
@@ -181,9 +177,7 @@ impl Operation for Gunzip {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::gunzip(&input, context)?))
     }
 }
@@ -245,9 +239,7 @@ impl Operation for Gzip {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::gzip(
             &input,
             text_value(arguments, "compression_type")?,

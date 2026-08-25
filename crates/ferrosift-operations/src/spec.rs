@@ -1,4 +1,9 @@
-use alloc::{collections::BTreeMap, string::String, vec, vec::Vec};
+use alloc::{
+    collections::{BTreeMap, BTreeSet},
+    string::String,
+    vec,
+    vec::Vec,
+};
 
 use ferrosift_model::{
     ArgumentSpec, CapabilitySet, CompatibilityAlias, CompatibilityProfile, EvidenceRecord,
@@ -18,6 +23,31 @@ pub(crate) struct SpecDefinition {
     pub inverse: Option<&'static str>,
     /// Optional review classifications; omit with `None` for ordinary ops.
     pub classifications: Option<&'static [OperationClassification]>,
+}
+
+/// Widens a declared input so bytes and text are interchangeable on the way in.
+///
+/// The reference carries one value between steps and presents it in whatever
+/// type the next operation asks for, so `To Base64` twice in a row is an
+/// ordinary recipe there. Declaring `Exact(Bytes)` here made it an error, which
+/// was a compatibility gap rather than a safety property: nothing was being
+/// protected, a legal recipe was being refused.
+///
+/// Widening happens on the *input* only. An output stays exactly what the
+/// operation produces, because that is a fact about the operation rather than
+/// a courtesy to the next step — and the type-flow preflight needs it precise
+/// to say anything useful.
+///
+/// Every other representation is left alone. A step that wants a structured
+/// value or a file list is not asking for bytes with extra steps, and
+/// converting for it would be inventing a rule the reference does not have.
+fn readable(declared: ValueConstraint) -> ValueConstraint {
+    match declared {
+        ValueConstraint::Exact(ValueKind::Bytes | ValueKind::Text) => {
+            ValueConstraint::OneOf(BTreeSet::from([ValueKind::Bytes, ValueKind::Text]))
+        }
+        other => other,
+    }
 }
 
 pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
@@ -56,7 +86,7 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
         category: String::from(definition.category),
         description: String::from(definition.description),
         aliases,
-        input: definition.input,
+        input: readable(definition.input),
         output: definition.output,
         arguments: definition.arguments,
         targets: TargetSet::from([Target::Native, Target::Wasm32UnknownUnknown]),

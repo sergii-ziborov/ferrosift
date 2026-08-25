@@ -61,9 +61,7 @@ impl Operation for Head {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let output = codec::head(
             &input.text,
             text_value(arguments, "delimiter")?,

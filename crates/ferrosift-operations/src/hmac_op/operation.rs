@@ -68,9 +68,7 @@ impl Operation for Hmac {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
         let key = convert_to_byte_array(string, option, XOR_INVALID_KEY)?;
         let digest = codec::hmac(

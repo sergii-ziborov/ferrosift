@@ -68,9 +68,7 @@ impl Operation for TakeBytes {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::take(
             &input,
             integer_value(arguments, "start")?,
@@ -141,9 +139,7 @@ impl Operation for DropBytes {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::drop(
             &input,
             integer_value(arguments, "start")?,

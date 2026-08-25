@@ -19,7 +19,7 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3299 |
+| Pinned cases | 3384 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -95,15 +95,15 @@ does.
 | `distance.hamming@1` | Hamming Distance | core | exact | 10 |
 | `distance.levenshtein@1` | Levenshtein Distance | core | exact | 25 |
 | `encoding.base32.decode@1` | From Base32 | core | exact | 28 |
-| `encoding.base32.encode@1` | To Base32 | core | exact | 27 |
+| `encoding.base32.encode@1` | To Base32 | core | exact | 29 |
 | `encoding.base45.decode@1` | From Base45 | core | exact | 13 |
 | `encoding.base45.encode@1` | To Base45 | core | exact | 13 |
 | `encoding.base58.decode@1` | From Base58 | core | exact | 25 |
 | `encoding.base58.encode@1` | To Base58 | core | exact | 25 |
 | `encoding.base62.decode@1` | From Base62 | core | exact | 12 |
 | `encoding.base62.encode@1` | To Base62 | core | exact | 15 |
-| `encoding.base64.decode@1` | From Base64 | core | exact | 28 |
-| `encoding.base64.encode@1` | To Base64 | core | exact | 29 |
+| `encoding.base64.decode@1` | From Base64 | core | exact | 41 |
+| `encoding.base64.encode@1` | To Base64 | core | exact | 52 |
 | `encoding.base85.decode@1` | From Base85 | core | exact | 26 |
 | `encoding.base85.encode@1` | To Base85 | core | exact | 27 |
 | `encoding.binary.decode@1` | From Binary | core | exact | 14 |
@@ -118,11 +118,11 @@ does.
 | `encoding.ctx1.decode@1` | Citrix CTX1 Decode | core | exact | 9 |
 | `encoding.ctx1.encode@1` | Citrix CTX1 Encode | core | exact | 9 |
 | `encoding.decimal.decode@1` | From Decimal | core | exact | 14 |
-| `encoding.decimal.encode@1` | To Decimal | core | exact | 13 |
+| `encoding.decimal.encode@1` | To Decimal | core | exact | 26 |
 | `encoding.float.decode@1` | From Float | core | exact | 87 |
 | `encoding.float.encode@1` | To Float | core | exact | 59 |
 | `encoding.hex.decode@1` | From Hex | core | exact | 27 |
-| `encoding.hex.encode@1` | To Hex | core | exact | 28 |
+| `encoding.hex.encode@1` | To Hex | core | exact | 49 |
 | `encoding.hexdump.decode@1` | From Hexdump | core | exact | 6 |
 | `encoding.hexdump.encode@1` | To Hexdump | core | exact | 12 |
 | `encoding.html.decode@1` | From HTML Entity | core | exact | 5 |
@@ -140,7 +140,7 @@ does.
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |
 | `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
 | `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
-| `encoding.url.decode@1` | URL Decode | core | exact | 15 |
+| `encoding.url.decode@1` | URL Decode | core | exact | 26 |
 | `encoding.url.encode@1` | URL Encode | core | exact | 13 |
 | `encoding.varint.decode@1` | VarInt Decode | core | exact | 29 |
 | `encoding.varint.encode@1` | VarInt Encode | core | exact | 20 |
@@ -197,7 +197,7 @@ does.
 | `text.case.alternating@1` | Alternating Caps | core | exact | 9 |
 | `text.case.lower@1` | To Lower case | core | exact | 9 |
 | `text.case.swap@1` | Swap case | core | exact | 9 |
-| `text.case.upper@1` | To Upper case | core | exact | 14 |
+| `text.case.upper@1` | To Upper case | core | exact | 16 |
 | `text.count@1` | Count occurrences | text | exact | 14 |
 | `text.debruijn@1` | Generate De Bruijn Sequence | core | exact | 9 |
 | `text.escape.unescape@1` | Unescape string | core | exact | 11 |

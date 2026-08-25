@@ -61,9 +61,7 @@ impl Operation for ToBase32 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         // The reference returns early on empty input, before it ever
         // validates the alphabet; preserve that observable order.
         let output = if input.is_empty() {
@@ -134,9 +132,7 @@ impl Operation for FromBase32 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         if input.text.is_empty() {
             return Ok(Value::Bytes(Vec::new()));
         }

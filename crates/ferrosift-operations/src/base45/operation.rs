@@ -62,9 +62,7 @@ impl Operation for ToBase45 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let output = if input.is_empty() {
             String::new()
         } else {
@@ -132,9 +130,7 @@ impl Operation for FromBase45 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         if input.text.is_empty() {
             return Ok(Value::Bytes(Vec::new()));
         }

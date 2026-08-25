@@ -57,9 +57,7 @@ impl Operation for ToCharcode {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         Ok(Value::Text(TextValue {
             text: codec::encode(
                 &input.text,
@@ -119,9 +117,7 @@ impl Operation for FromCharcode {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         Ok(Value::Bytes(codec::decode(
             &input.text,
             text_value(arguments, "delimiter")?,

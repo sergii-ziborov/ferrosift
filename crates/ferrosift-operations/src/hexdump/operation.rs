@@ -71,9 +71,7 @@ impl Operation for ToHexdump {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let output = codec::encode(
             &input,
             integer_value(arguments, "width")?,
@@ -133,9 +131,7 @@ impl Operation for FromHexdump {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         Ok(Value::Bytes(codec::decode(&input.text, context)?))
     }
 }

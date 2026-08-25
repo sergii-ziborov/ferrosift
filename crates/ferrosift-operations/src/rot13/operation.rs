@@ -57,9 +57,7 @@ impl Operation for Rot13 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::rot13(
             &input,
             boolean_value(arguments, "rotate_lower_case_chars")?,

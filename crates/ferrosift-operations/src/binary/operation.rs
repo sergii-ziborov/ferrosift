@@ -58,9 +58,7 @@ impl Operation for ToBinary {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let width = byte_length(arguments)?;
         let output = codec::encode(&input, text_value(arguments, "delimiter")?, width, context)?;
         Ok(Value::Text(TextValue {
@@ -117,9 +115,7 @@ impl Operation for FromBinary {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let width = byte_length(arguments)?;
         codec::decode(
             &input.text,

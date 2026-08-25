@@ -58,9 +58,7 @@ impl Operation for Sha3 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(text(codec::sha3(
             &input,
             text_value(arguments, "size")?,
@@ -113,9 +111,7 @@ impl Operation for Md5 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(text(codec::md5(&input, context)?))
     }
 }
@@ -168,9 +164,7 @@ impl Operation for Sha1 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(text(codec::sha1(
             &input,
             integer_value(arguments, "rounds")?,
@@ -239,9 +233,7 @@ impl Operation for Sha2 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(text(codec::sha2(
             &input,
             text_value(arguments, "size")?,

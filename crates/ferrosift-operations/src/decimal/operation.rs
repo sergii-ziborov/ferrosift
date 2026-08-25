@@ -61,9 +61,7 @@ impl Operation for ToDecimal {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let output = codec::encode(
             &input,
             text_value(arguments, "delimiter")?,
@@ -128,9 +126,7 @@ impl Operation for FromDecimal {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         codec::decode(
             &input.text,
             text_value(arguments, "delimiter")?,

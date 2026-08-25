@@ -60,9 +60,7 @@ impl Operation for ToBase64 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let alphabet = Alphabet::parse(text_value(arguments, "alphabet")?)?;
         let output = codec::encode(&input, &alphabet, context)?;
         Ok(Value::Text(TextValue {
@@ -128,9 +126,7 @@ impl Operation for FromBase64 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let alphabet = Alphabet::parse(text_value(arguments, "alphabet")?)?;
         codec::decode(
             &input.text,

@@ -58,9 +58,7 @@ impl Operation for UrlEncode {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let output = codec::encode(
             &input,
             boolean_value(arguments, "encode_all_special_chars")?,
@@ -121,9 +119,7 @@ impl Operation for UrlDecode {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let output = codec::decode(
             &input.text,
             boolean_value(arguments, "treat_plus_as_space")?,

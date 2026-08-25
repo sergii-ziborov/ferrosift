@@ -59,9 +59,7 @@ impl Operation for RawDeflate {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::raw_deflate(
             &input,
             text_value(arguments, "compression_type")?,
@@ -136,9 +134,7 @@ impl Operation for RawInflate {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let _ = (
             integer_value(arguments, "initial_output_buffer_size")?,
             text_value(arguments, "buffer_expansion_type")?,
@@ -201,9 +197,7 @@ impl Operation for ZlibDeflate {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         Ok(Value::Bytes(codec::zlib_deflate(
             &input,
             text_value(arguments, "compression_type")?,
@@ -278,9 +272,7 @@ impl Operation for ZlibInflate {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         // Extra CyberChef buffer knobs are accepted for interchange and ignored.
         let _ = (
             integer_value(arguments, "initial_output_buffer_size")?,

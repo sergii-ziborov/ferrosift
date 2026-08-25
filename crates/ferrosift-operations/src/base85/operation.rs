@@ -68,9 +68,7 @@ impl Operation for ToBase85 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         let alphabet = codec::parse_alphabet(text_value(arguments, "alphabet")?)?;
         // The reference returns an empty string before the delimiter wrap,
         // so empty input never produces `<~~>`.
@@ -151,9 +149,7 @@ impl Operation for FromBase85 {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         let alphabet = codec::parse_alphabet(text_value(arguments, "alphabet")?)?;
         codec::decode(
             &input.text,

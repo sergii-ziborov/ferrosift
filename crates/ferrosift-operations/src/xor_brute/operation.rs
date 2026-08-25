@@ -85,9 +85,7 @@ impl Operation for XorBruteForce {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Bytes(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_bytes(input)?;
         // Brute force key length 2 expands heavily; raise effective allowance via budget check inside.
         let text = codec::brute(
             &input,

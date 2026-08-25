@@ -65,9 +65,7 @@ impl Operation for ToHtmlEntity {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         Ok(Value::Text(TextValue {
             text: codec::encode(
                 &input.text,
@@ -124,9 +122,7 @@ impl Operation for FromHtmlEntity {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
-        let Value::Text(input) = input else {
-            return Err(OperationError::InvalidArguments);
-        };
+        let input = crate::value::take_text_value(input)?;
         Ok(Value::Text(TextValue {
             text: codec::decode(&input.text, context)?,
             encoding: TextEncoding::Utf8,

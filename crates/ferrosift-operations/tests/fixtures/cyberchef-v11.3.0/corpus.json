@@ -59861,6 +59861,1447 @@
     "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "crosskind_text_to_bytes_0",
+   "input": {
+    "kind": "text",
+    "value": "hi"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3638203639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_0",
+   "input": {
+    "kind": "text",
+    "value": "hi"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61476b3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_0",
+   "input": {
+    "kind": "text",
+    "value": "hi"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303420313035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_1",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_1",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_1",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_2",
+   "input": {
+    "kind": "text",
+    "value": "é"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6539"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_2",
+   "input": {
+    "kind": "text",
+    "value": "é"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36513d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_2",
+   "input": {
+    "kind": "text",
+    "value": "é"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_3",
+   "input": {
+    "kind": "text",
+    "value": "café"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3633203631203636206539"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_3",
+   "input": {
+    "kind": "text",
+    "value": "café"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5932466d36513d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_3",
+   "input": {
+    "kind": "text",
+    "value": "café"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39392039372031303220323333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_4",
+   "input": {
+    "kind": "text",
+    "value": "€"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6532203832206163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_4",
+   "input": {
+    "kind": "text",
+    "value": "€"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "346f4b73"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_4",
+   "input": {
+    "kind": "text",
+    "value": "€"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3232362031333020313732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_5",
+   "input": {
+    "kind": "text",
+    "value": "a€b"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3631206532203832206163203632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_5",
+   "input": {
+    "kind": "text",
+    "value": "a€b"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "59654b437247493d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_5",
+   "input": {
+    "kind": "text",
+    "value": "a€b"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3937203232362031333020313732203938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_6",
+   "input": {
+    "kind": "text",
+    "value": "éé€"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6333206139206333206139206532203832206163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_6",
+   "input": {
+    "kind": "text",
+    "value": "éé€"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "77366e4471654b4372413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_6",
+   "input": {
+    "kind": "text",
+    "value": "éé€"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313935203136392031393520313639203232362031333020313732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_7",
+   "input": {
+    "kind": "text",
+    "value": "ÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_7",
+   "input": {
+    "kind": "text",
+    "value": "ÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2f773d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_7",
+   "input": {
+    "kind": "text",
+    "value": "ÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_8",
+   "input": {
+    "kind": "text",
+    "value": "ÿÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6666206666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_8",
+   "input": {
+    "kind": "text",
+    "value": "ÿÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2f2f383d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_8",
+   "input": {
+    "kind": "text",
+    "value": "ÿÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32353520323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_9",
+   "input": {
+    "kind": "text",
+    "value": "\u0000ÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030206666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_9",
+   "input": {
+    "kind": "text",
+    "value": "\u0000ÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4150383d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_9",
+   "input": {
+    "kind": "text",
+    "value": "\u0000ÿ"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_bytes_10",
+   "input": {
+    "kind": "text",
+    "value": "😀"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6630203966203938203830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_base64_10",
+   "input": {
+    "kind": "text",
+    "value": "😀"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "384a2b5967413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_text_to_decimal_10",
+   "input": {
+    "kind": "text",
+    "value": "😀"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323430203135392031353220313238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "6869"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "86"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "6869"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6869"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "fffe"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "fffe"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "fffe"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "c3a9"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "c3a9"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "e9"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "e9"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "e9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "00ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "00ff"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "00ff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "efbbbf"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "efbbbf"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "f09f9880"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "f09f9880"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "f09f9880"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_text_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "80"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_bytes_to_url_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "80"
+   },
+   "recipe": [
+    {
+     "op": "URL Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "80"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "crosskind_chain_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "534756736247387349486476636d786b",
+    "5530645763324a484f484e4a534752325932313461773d3d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_0_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5932466d77366b67346f4b73",
+    "57544a4762586332613263306230747a"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3438203635203663203663203666203263203230203737203666203732203663203634",
+    "4e4467674e6a55674e6d4d674e6d4d674e6d59674d6d4d674d6a41674e7a63674e6d59674e7a49674e6d4d674e6a513d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_1_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3633203631203636206333206139203230206532203832206163",
+    "4e6a4d674e6a45674e6a5967597a4d6759546b674d6a41675a5449674f44496759574d3d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "534756736247387349486476636d786b",
+    "3533203437203536203733203632203437203338203733203439203438203634203736203633203664203738203662"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_2_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5932466d77366b67346f4b73",
+    "3539203332203436203664203737203336203662203637203334203666203462203733"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "To Base32",
+     "args": [
+      "A-Z2-7="
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a42535759334450465151484f3333534e5253413d3d3d3d",
+    "3461203432203533203537203539203333203434203530203436203531203531203438203466203333203333203533203465203532203533203431203364203364203364203364"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_3_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Base32",
+     "args": [
+      "A-Z2-7="
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d4e51574e51354a45445249464c413d",
+    "3464203465203531203537203465203531203335203461203435203434203532203439203436203463203431203364"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3732203130312031303820313038203131312034342033322031313920313131203131342031303820313030",
+    "4e7a49674d544178494445774f4341784d4467674d5445784944513049444d79494445784f5341784d5445674d544530494445774f4341784d44413d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_4_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Decimal",
+     "args": [
+      "Space",
+      false
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3939203937203130322031393520313639203332203232362031333020313732",
+    "4f546b674f5463674d544179494445354e5341784e6a6b674d7a49674d6a49324944457a4d4341784e7a493d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    },
+    {
+     "op": "URL Decode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1de965a30a2b95",
+    "1de965a30a2095"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_5_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    },
+    {
+     "op": "URL Decode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "71a7",
+    "71a7"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1de965a30a2b95",
+    "1dc945a30a2b95"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_6_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "71a7",
+    "51a7"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "crosskind_chain_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "48656c6c6f2c20776f726c64"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3438203635203663203663203666203263203230203737203666203732203663203634",
+    "4e4467674e6a55674e6d4d674e6d4d674e6d59674d6d4d674d6a41674e7a63674e6d59674e7a49674e6d4d674e6a513d",
+    "3465203434203637203637203465203661203535203637203465203664203464203637203465203664203464203637203465203664203539203637203464203664203464203637203464203661203431203637203465203761203633203637203465203664203539203637203465203761203439203637203465203664203464203637203465203661203531203364"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "crosskind_chain_7_text",
+   "input": {
+    "kind": "bytes",
+    "hex": "636166c3a920e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    },
+    {
+     "op": "To Base64",
+     "args": [
+      "A-Za-z0-9+/="
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3633203631203636206333206139203230206532203832206163",
+    "4e6a4d674e6a45674e6a5967597a4d6759546b674d6a41675a5449674f44496759574d3d",
+    "3465203661203464203637203465203661203435203637203465203661203539203637203539203761203464203637203539203534203662203637203464203661203431203637203561203534203439203637203466203434203439203637203539203537203464203364"
+   ],
+   "stopped_after": 3
   }
  ]
 }
