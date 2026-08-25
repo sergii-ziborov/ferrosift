@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 170,
-    "aliased": 168,
-    "exact": 164,
+    "operations": 180,
+    "aliased": 178,
+    "exact": 174,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3023
+    "pinned_cases": 3299
   },
   "operations": [
     {
@@ -53,6 +53,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 41,
+      "status": "exact"
+    },
+    {
+      "id": "asn1.pem.decode@1",
+      "display_name": "PEM to Hex",
+      "category": "Parsing",
+      "reference_alias": "PEM to Hex",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 17,
+      "status": "exact"
+    },
+    {
+      "id": "asn1.pem.encode@1",
+      "display_name": "Hex to PEM",
+      "category": "Parsing",
+      "reference_alias": "Hex to PEM",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
       "status": "exact"
     },
     {
@@ -1049,6 +1075,32 @@
       "status": "exact"
     },
     {
+      "id": "encoding.ctx1.decode@1",
+      "display_name": "Citrix CTX1 Decode",
+      "category": "Encoding",
+      "reference_alias": "Citrix CTX1 Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.ctx1.encode@1",
+      "display_name": "Citrix CTX1 Encode",
+      "category": "Encoding",
+      "reference_alias": "Citrix CTX1 Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
       "id": "encoding.decimal.decode@1",
       "display_name": "From Decimal",
       "category": "Encoding",
@@ -1072,6 +1124,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.float.decode@1",
+      "display_name": "From Float",
+      "category": "Encoding",
+      "reference_alias": "From Float",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 87,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.float.encode@1",
+      "display_name": "To Float",
+      "category": "Encoding",
+      "reference_alias": "To Float",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 59,
       "status": "exact"
     },
     {
@@ -1266,7 +1344,20 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 12,
+      "conformance_cases": 31,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.quoted_printable.encode@1",
+      "display_name": "To Quoted Printable",
+      "category": "Encoding",
+      "reference_alias": "To Quoted Printable",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 19,
       "status": "exact"
     },
     {
@@ -1545,6 +1636,19 @@
       "status": "exact"
     },
     {
+      "id": "hash.nt@1",
+      "display_name": "NT Hash",
+      "category": "Hashing",
+      "reference_alias": "NT Hash",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
       "id": "hash.ripemd@1",
       "display_name": "RIPEMD",
       "category": "Hashing",
@@ -1646,6 +1750,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 6,
+      "status": "exact"
+    },
+    {
+      "id": "list.split@1",
+      "display_name": "Split",
+      "category": "Shaping",
+      "reference_alias": "Split",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "list.unique@1",
+      "display_name": "Unique",
+      "category": "Shaping",
+      "reference_alias": "Unique",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 30,
       "status": "exact"
     },
     {

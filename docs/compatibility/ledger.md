@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 170 |
-| Reference-aliased | 168 |
-| Byte-pinned (`exact`) | 164 |
+| Registered operations | 180 |
+| Reference-aliased | 178 |
+| Byte-pinned (`exact`) | 174 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3023 |
+| Pinned cases | 3299 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -37,6 +37,8 @@ does.
 | `analysis.suggest@1` | — | analysis | native | 0 |
 | `asn1.oid.decode@1` | Hex to Object Identifier | core | exact | 30 |
 | `asn1.oid.encode@1` | Object Identifier to Hex | core | exact | 41 |
+| `asn1.pem.decode@1` | PEM to Hex | core | exact | 17 |
+| `asn1.pem.encode@1` | Hex to PEM | core | exact | 9 |
 | `checksum.adler32@1` | Adler-32 Checksum | core | exact | 12 |
 | `checksum.fletcher16@1` | Fletcher-16 Checksum | core | exact | 12 |
 | `checksum.fletcher32@1` | Fletcher-32 Checksum | core | exact | 12 |
@@ -113,8 +115,12 @@ does.
 | `encoding.charcode.encode@1` | To Charcode | core | exact | 13 |
 | `encoding.cobs.decode@1` | From COBS | core | exact | 25 |
 | `encoding.cobs.encode@1` | To COBS | core | exact | 16 |
+| `encoding.ctx1.decode@1` | Citrix CTX1 Decode | core | exact | 9 |
+| `encoding.ctx1.encode@1` | Citrix CTX1 Encode | core | exact | 9 |
 | `encoding.decimal.decode@1` | From Decimal | core | exact | 14 |
 | `encoding.decimal.encode@1` | To Decimal | core | exact | 13 |
+| `encoding.float.decode@1` | From Float | core | exact | 87 |
+| `encoding.float.encode@1` | To Float | core | exact | 59 |
 | `encoding.hex.decode@1` | From Hex | core | exact | 27 |
 | `encoding.hex.encode@1` | To Hex | core | exact | 28 |
 | `encoding.hexdump.decode@1` | From Hexdump | core | exact | 6 |
@@ -129,7 +135,8 @@ does.
 | `encoding.netbios.encode@1` | Encode NetBIOS Name | core | exact | 7 |
 | `encoding.octal.decode@1` | From Octal | core | exact | 14 |
 | `encoding.octal.encode@1` | To Octal | core | exact | 14 |
-| `encoding.quoted_printable.decode@1` | From Quoted Printable | core | exact | 12 |
+| `encoding.quoted_printable.decode@1` | From Quoted Printable | core | exact | 31 |
+| `encoding.quoted_printable.encode@1` | To Quoted Printable | core | exact | 19 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |
 | `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
 | `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
@@ -151,6 +158,7 @@ does.
 | `hash.md2@1` | MD2 | hash | exact | 13 |
 | `hash.md4@1` | MD4 | hash | exact | 13 |
 | `hash.md5@1` | MD5 | hash | exact | 7 |
+| `hash.nt@1` | NT Hash | hash | exact | 9 |
 | `hash.ripemd@1` | RIPEMD | hash | exact | 52 |
 | `hash.sha1@1` | SHA1 | hash | exact | 7 |
 | `hash.sha2@1` | SHA2 | hash | exact | 13 |
@@ -159,6 +167,8 @@ does.
 | `hash.whirlpool@1` | Whirlpool | hash | exact | 13 |
 | `http.dechunk@1` | Dechunk HTTP response | core | exact | 7 |
 | `http.headers.strip@1` | Strip HTTP headers | core | exact | 6 |
+| `list.split@1` | Split | core | exact | 9 |
+| `list.unique@1` | Unique | core | exact | 30 |
 | `logic.add@1` | ADD | core | exact | 31 |
 | `logic.and@1` | AND | core | exact | 30 |
 | `logic.not@1` | NOT | core | exact | 7 |

@@ -12,7 +12,7 @@ use crate::failure::failed;
 /// syntax error, which the reference surfaces as an operation error.
 ///
 /// The result is bounded to `u128`. The reference is arbitrary precision, so a
-/// number past that bound is refused rather than wrapped — inventing a
+/// number past that bound is refused rather than wrapped â€” inventing a
 /// different answer would be worse than declining to give one, and a
 /// 39-digit `VarInt` is well outside what the format is used for.
 fn parse_big(input: &str) -> Result<u128, OperationError> {
@@ -111,61 +111,4 @@ fn decimal(mut value: u128) -> String {
     }
     digits.reverse();
     digits.iter().map(|byte| char::from(*byte)).collect()
-}
-
-/// Decodes quoted-printable text into bytes.
-///
-/// Soft line breaks — an `=` at end of line, or at the very end of the input —
-/// are removed first. After that an `=` followed by two hex digits is one
-/// byte, and anything else is its own code unit.
-pub(super) fn from_quoted_printable(input: &str) -> Result<Vec<u8>, OperationError> {
-    // `=(?:\r?\n|$)` removed globally, including the end-of-input case.
-    let mut joined = String::with_capacity(input.len());
-    let characters: Vec<char> = input.chars().collect();
-    let mut index = 0;
-    while index < characters.len() {
-        if characters[index] == '=' {
-            if index + 1 >= characters.len() {
-                index += 1;
-                continue;
-            }
-            if characters[index + 1] == '\n' {
-                index += 2;
-                continue;
-            }
-            if characters[index + 1] == '\r'
-                && index + 2 < characters.len()
-                && characters[index + 2] == '\n'
-            {
-                index += 3;
-                continue;
-            }
-        }
-        joined.push(characters[index]);
-        index += 1;
-    }
-
-    let symbols: Vec<char> = joined.chars().collect();
-    let mut output = Vec::with_capacity(symbols.len());
-    let mut cursor = 0;
-    while cursor < symbols.len() {
-        if symbols[cursor] == '=' && cursor + 2 < symbols.len() {
-            let high = symbols[cursor + 1];
-            let low = symbols[cursor + 2];
-            if high.is_ascii_hexdigit() && low.is_ascii_hexdigit() {
-                let value = high.to_digit(16).unwrap_or(0) * 16 + low.to_digit(16).unwrap_or(0);
-                output.push(u8::try_from(value).unwrap_or(0));
-                cursor += 3;
-                continue;
-            }
-        }
-        // `charCodeAt` gives a UTF-16 code unit, which is not a byte above
-        // U+00FF. The reference then fails converting the result, so refusing
-        // here says the same thing up front.
-        let code = symbols[cursor] as u32;
-        output
-            .push(u8::try_from(code).map_err(|_| failed("encoding.quoted_printable.not_a_byte"))?);
-        cursor += 1;
-    }
-    Ok(output)
 }

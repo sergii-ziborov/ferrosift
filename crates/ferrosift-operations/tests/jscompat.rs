@@ -19,6 +19,18 @@ struct Fixture {
     whitespace: Vec<WhitespaceCase>,
     utf16: Vec<Utf16Case>,
     key_order: Vec<KeyOrderCase>,
+    number_format: Vec<NumberFormatCase>,
+}
+
+#[derive(Deserialize)]
+struct NumberFormatCase {
+    /// The double being formatted, as its big-endian bit pattern.
+    ///
+    /// Bits rather than a decimal literal, so the fixture states exactly which
+    /// double Node formatted with no parsing step in between that could itself
+    /// be the thing that disagrees.
+    bits: String,
+    text: String,
 }
 
 #[derive(Deserialize)]
@@ -207,6 +219,35 @@ fn object_key_order_matches_node() {
     );
 }
 
+#[test]
+fn number_formatting_matches_node() {
+    let fixture = fixture();
+    let mut mismatches = Vec::new();
+
+    for case in &fixture.number_format {
+        let bits = u64::from_str_radix(&case.bits, 16).expect("fixture bits must be hexadecimal");
+        let value = f64::from_bits(bits);
+        let actual = ferrosift_operations::jscompat_testing::format_double(value);
+        if actual != case.text {
+            mismatches.push(format!(
+                "0x{} — node gives {:?}, we give {:?}",
+                case.bits, case.text, actual
+            ));
+        }
+    }
+
+    assert!(
+        mismatches.is_empty(),
+        "{} of {} number-format cases disagree with Node:\n{}\n\
+         JavaScript takes the shortest round-tripping digits, then switches to \
+         exponential notation above 1e21 and below 1e-6. Rust agrees on the \
+         digits and on neither threshold.",
+        mismatches.len(),
+        fixture.number_format.len(),
+        mismatches.join("\n")
+    );
+}
+
 /// A guard against the fixture quietly emptying out.
 #[test]
 fn the_fixture_is_not_empty() {
@@ -216,6 +257,7 @@ fn the_fixture_is_not_empty() {
         ("whitespace", fixture.whitespace.len()),
         ("utf16", fixture.utf16.len()),
         ("key_order", fixture.key_order.len()),
+        ("number_format", fixture.number_format.len()),
     ]);
     for (name, count) in counts {
         assert!(count > 0, "the {name} section of the fixture is empty");

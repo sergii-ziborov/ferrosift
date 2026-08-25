@@ -6,6 +6,33 @@
 
 use alloc::{string::String, vec::Vec};
 
+/// UTF-16 little-endian bytes, as Windows and Citrix both mean by "Unicode".
+///
+/// Two bytes per code unit, so an astral character contributes four. That
+/// matters for NT Hash, where the digest is over these exact bytes: hashing
+/// UTF-8 instead would agree on ASCII and differ on everything else.
+pub(crate) fn to_utf16le(value: &str) -> Vec<u8> {
+    let mut output = Vec::with_capacity(value.len() * 2);
+    for unit in value.encode_utf16() {
+        output.extend_from_slice(&unit.to_le_bytes());
+    }
+    output
+}
+
+/// The inverse, or `None` when the units are not well-formed UTF-16.
+///
+/// JavaScript would hand back a string containing a lone surrogate here; Rust
+/// has no such string, so this reports that it cannot rather than substituting
+/// a replacement character and claiming a successful decode. A caller that
+/// hits this is looking at input the reference would have mangled.
+pub(crate) fn from_utf16le(bytes: &[u8]) -> Option<String> {
+    let units: Vec<u16> = bytes
+        .chunks_exact(2)
+        .map(|pair| u16::from_le_bytes([pair[0], pair[1]]))
+        .collect();
+    String::from_utf16(&units).ok()
+}
+
 /// `Utils.strToByteArray`.
 ///
 /// Takes UTF-16 code units directly when every one fits in a byte, and only

@@ -54798,6 +54798,5069 @@
     "312e332e362e312e342e312e3331312e32312e3230"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "float_single_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "80000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f800000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "bf800000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "40490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e31343135393237343130313235373332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "41200000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "7f800000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff800000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "7fc00000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "7fa00000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000001"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e343031323938343634333234383137652d3435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "007fffff"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e31373534393432313036393234343131652d3338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "00800000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e31373534393433353038323232383735652d3338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "7f7fffff"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e34303238323334363633383532383836652b3338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_14",
+   "input": {
+    "kind": "bytes",
+    "hex": "4b7fffff"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3136373737323135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "4f000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32313437343833363438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "5f000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39323233333732303336383534373736303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "1e000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "362e373736323633353738303334343033652d3231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "0d000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e393434333034353236313035303539652d3331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_19",
+   "input": {
+    "kind": "bytes",
+    "hex": "2edbe6ff"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e303030303030303133333531343332652d3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_20",
+   "input": {
+    "kind": "bytes",
+    "hex": "66000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e35313131353732373435313832383635652b3233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_21",
+   "input": {
+    "kind": "bytes",
+    "hex": "7149f2ca"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e30303030303030313530343734363632652b3330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_single_22",
+   "input": {
+    "kind": "bytes",
+    "hex": "0c000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "392e383630373631333135323632363438652d3332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "0000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "3ff0000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "bff0000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "4005bf0a8b145769"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e373138323831383238343539303435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "400921fb54442d18"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e313431353932363533353839373933"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "7ff0000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "fff0000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "7ff8000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "0000000000000001"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35652d333234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "7fefffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e37393736393331333438363233313537652b333038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "3cb0000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e323230343436303439323530333133652d3136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "4376345785d8a000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "43abc16d674ec800"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "43e158e460913d00"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_14",
+   "input": {
+    "kind": "bytes",
+    "hex": "4415af1d78b58c40"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "444b1ae4d6e2ef50"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652b3231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "4480f0cf064dd592"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652b3232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "44b52d02c7e14af6"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652b3233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "3ee4f8b588e368f1"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_19",
+   "input": {
+    "kind": "bytes",
+    "hex": "3eb0c6f7a0b5ed8d"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_20",
+   "input": {
+    "kind": "bytes",
+    "hex": "3e7ad7f29abcaf48"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652d37"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_21",
+   "input": {
+    "kind": "bytes",
+    "hex": "3e45798ee2308c3a"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652d38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_22",
+   "input": {
+    "kind": "bytes",
+    "hex": "4341c37937e08000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_23",
+   "input": {
+    "kind": "bytes",
+    "hex": "4350000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3138303134333938353039343831393834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_24",
+   "input": {
+    "kind": "bytes",
+    "hex": "c3e0000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d39323233333732303336383534373736303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_25",
+   "input": {
+    "kind": "bytes",
+    "hex": "433fffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_double_26",
+   "input": {
+    "kind": "bytes",
+    "hex": "4340000000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393932"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Big Endian_Space",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120332e31343135393237343130313235373332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Big Endian_Comma",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312c332e31343135393237343130313235373332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Big Endian_Line feed",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "310a332e31343135393237343130313235373332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Big Endian_CRLF",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "CRLF"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "310d0a332e31343135393237343130313235373332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Little Endian_Space",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Little Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e363030363032393838323234383037652d3431202d3430333331343630383936333538343030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Little Endian_Comma",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Little Endian",
+      "Float (4 bytes)",
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e363030363032393838323234383037652d34312c2d3430333331343630383936333538343030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Little Endian_Line feed",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Little Endian",
+      "Float (4 bytes)",
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e363030363032393838323234383037652d34310a2d3430333331343630383936333538343030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_layout_Little Endian_CRLF",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdb"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Little Endian",
+      "Float (4 bytes)",
+      "CRLF"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e363030363032393838323234383037652d34310d0a2d3430333331343630383936333538343030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_1",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3fc00000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_1",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff8000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_2",
+   "input": {
+    "kind": "text",
+    "value": "-1.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bfc00000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_2",
+   "input": {
+    "kind": "text",
+    "value": "-1.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bff8000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_3",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_3",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_4",
+   "input": {
+    "kind": "text",
+    "value": "-0"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "80000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_4",
+   "input": {
+    "kind": "text",
+    "value": "-0"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_5",
+   "input": {
+    "kind": "text",
+    "value": ".5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_5",
+   "input": {
+    "kind": "text",
+    "value": ".5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3fe0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_6",
+   "input": {
+    "kind": "text",
+    "value": "5."
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40a00000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_6",
+   "input": {
+    "kind": "text",
+    "value": "5."
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4014000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_7",
+   "input": {
+    "kind": "text",
+    "value": "1e10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "501502f9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_7",
+   "input": {
+    "kind": "text",
+    "value": "1e10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4202a05f20000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_8",
+   "input": {
+    "kind": "text",
+    "value": "1E10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "501502f9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_8",
+   "input": {
+    "kind": "text",
+    "value": "1E10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4202a05f20000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_9",
+   "input": {
+    "kind": "text",
+    "value": "1e+10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "501502f9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_9",
+   "input": {
+    "kind": "text",
+    "value": "1e+10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4202a05f20000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_10",
+   "input": {
+    "kind": "text",
+    "value": "1e-10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2edbe6ff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_10",
+   "input": {
+    "kind": "text",
+    "value": "1e-10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ddb7cdfd9d7bdbb"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_11",
+   "input": {
+    "kind": "text",
+    "value": "1.2.3"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f99999a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_11",
+   "input": {
+    "kind": "text",
+    "value": "1.2.3"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff3333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_12",
+   "input": {
+    "kind": "text",
+    "value": "1,2"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_12",
+   "input": {
+    "kind": "text",
+    "value": "1,2"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_13",
+   "input": {
+    "kind": "text",
+    "value": "12abc"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41400000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_13",
+   "input": {
+    "kind": "text",
+    "value": "12abc"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4028000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_14",
+   "input": {
+    "kind": "text",
+    "value": "0x10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_14",
+   "input": {
+    "kind": "text",
+    "value": "0x10"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_15",
+   "input": {
+    "kind": "text",
+    "value": "1_000"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_15",
+   "input": {
+    "kind": "text",
+    "value": "1_000"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_16",
+   "input": {
+    "kind": "text",
+    "value": "1e"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_16",
+   "input": {
+    "kind": "text",
+    "value": "1e"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_17",
+   "input": {
+    "kind": "text",
+    "value": "1e+"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_17",
+   "input": {
+    "kind": "text",
+    "value": "1e+"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_18",
+   "input": {
+    "kind": "text",
+    "value": "."
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_18",
+   "input": {
+    "kind": "text",
+    "value": "."
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_19",
+   "input": {
+    "kind": "text",
+    "value": "+.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_19",
+   "input": {
+    "kind": "text",
+    "value": "+.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3fe0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_20",
+   "input": {
+    "kind": "text",
+    "value": "-.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bf000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_20",
+   "input": {
+    "kind": "text",
+    "value": "-.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bfe0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_21",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_21",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_22",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_22",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_23",
+   "input": {
+    "kind": "text",
+    "value": " "
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f8000017f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_23",
+   "input": {
+    "kind": "text",
+    "value": " "
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff00000000000017ff0000000000001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_24",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_24",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_25",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_25",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_26",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ff800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_26",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "fff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_27",
+   "input": {
+    "kind": "text",
+    "value": "+Infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_27",
+   "input": {
+    "kind": "text",
+    "value": "+Infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_28",
+   "input": {
+    "kind": "text",
+    "value": "infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_28",
+   "input": {
+    "kind": "text",
+    "value": "infinity"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_29",
+   "input": {
+    "kind": "text",
+    "value": "  7  "
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f8000017f80000140e000007f8000017f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_29",
+   "input": {
+    "kind": "text",
+    "value": "  7  "
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff00000000000017ff0000000000001401c0000000000007ff00000000000017ff0000000000001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_30",
+   "input": {
+    "kind": "text",
+    "value": "\t3.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "40600000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_30",
+   "input": {
+    "kind": "text",
+    "value": "\t3.5"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "400c000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_31",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f8000004000000040400000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_31",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff000000000000040000000000000004008000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_32",
+   "input": {
+    "kind": "text",
+    "value": "1  2"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f8000007f80000140000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_32",
+   "input": {
+    "kind": "text",
+    "value": "1  2"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff00000000000007ff00000000000014000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_33",
+   "input": {
+    "kind": "text",
+    "value": "1e39"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_33",
+   "input": {
+    "kind": "text",
+    "value": "1e39"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48078287f49c4a1d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_34",
+   "input": {
+    "kind": "text",
+    "value": "-1e39"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ff800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_34",
+   "input": {
+    "kind": "text",
+    "value": "-1e39"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c8078287f49c4a1d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_35",
+   "input": {
+    "kind": "text",
+    "value": "1e-46"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_35",
+   "input": {
+    "kind": "text",
+    "value": "1e-46"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "366244ce242c5561"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_36",
+   "input": {
+    "kind": "text",
+    "value": "1e400"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f800000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_36",
+   "input": {
+    "kind": "text",
+    "value": "1e400"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7ff0000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_37",
+   "input": {
+    "kind": "text",
+    "value": "1e-400"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_37",
+   "input": {
+    "kind": "text",
+    "value": "1e-400"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_38",
+   "input": {
+    "kind": "text",
+    "value": "16777217"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_38",
+   "input": {
+    "kind": "text",
+    "value": "16777217"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4170000010000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_39",
+   "input": {
+    "kind": "text",
+    "value": "16777219"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b800002"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_39",
+   "input": {
+    "kind": "text",
+    "value": "16777219"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4170000030000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_40",
+   "input": {
+    "kind": "text",
+    "value": "1.0000001"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f800001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_40",
+   "input": {
+    "kind": "text",
+    "value": "1.0000001"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3ff000001ad7f29b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_41",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3dcccccd"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_41",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3fb999999999999a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_single_42",
+   "input": {
+    "kind": "text",
+    "value": "3.4028235e38"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7f7fffff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_parse_double_42",
+   "input": {
+    "kind": "text",
+    "value": "3.4028235e38"
+   },
+   "recipe": [
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Double (8 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "47efffffe54daff8"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "float_round_trip",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f80000040490fdbc0000000"
+   },
+   "recipe": [
+    {
+     "op": "To Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    },
+    {
+     "op": "From Float",
+     "args": [
+      "Big Endian",
+      "Float (4 bytes)",
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120332e31343135393237343130313235373332202d32",
+    "3f80000040490fdbc0000000"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "unique_0_plain",
+   "input": {
+    "kind": "text",
+    "value": "a\nb\na\nc"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "610a620a63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_0_counted",
+   "input": {
+    "kind": "text",
+    "value": "a\nb\na\nc"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3220610a3120620a312063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_1_plain",
+   "input": {
+    "kind": "text",
+    "value": "a\na\na"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_1_counted",
+   "input": {
+    "kind": "text",
+    "value": "a\na\na"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_2_plain",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_2_counted",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_3_plain",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_3_counted",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_4_plain",
+   "input": {
+    "kind": "text",
+    "value": "\n"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_4_counted",
+   "input": {
+    "kind": "text",
+    "value": "\n"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3220"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_5_plain",
+   "input": {
+    "kind": "text",
+    "value": "a\n\nb"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "610a0a62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_5_counted",
+   "input": {
+    "kind": "text",
+    "value": "a\n\nb"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120610a31200a312062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_6_plain",
+   "input": {
+    "kind": "text",
+    "value": "b\n2\na\n1"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "620a320a610a31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_6_counted",
+   "input": {
+    "kind": "text",
+    "value": "b\n2\na\n1"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120310a3120320a3120620a312061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_7_plain",
+   "input": {
+    "kind": "text",
+    "value": "10\n9\n1\n10"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31300a390a31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_7_counted",
+   "input": {
+    "kind": "text",
+    "value": "10\n9\n1\n10"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120310a3120390a32203130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_8_plain",
+   "input": {
+    "kind": "text",
+    "value": "2\n1\n0"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "320a310a30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_8_counted",
+   "input": {
+    "kind": "text",
+    "value": "2\n1\n0"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120300a3120310a312032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_9_plain",
+   "input": {
+    "kind": "text",
+    "value": "01\n1\n01"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30310a31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_9_counted",
+   "input": {
+    "kind": "text",
+    "value": "01\n1\n01"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120310a32203031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_10_plain",
+   "input": {
+    "kind": "text",
+    "value": "-1\n1\n0"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d310a310a30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_10_counted",
+   "input": {
+    "kind": "text",
+    "value": "-1\n1\n0"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120300a3120310a31202d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_11_plain",
+   "input": {
+    "kind": "text",
+    "value": "1.5\n1\n1.5"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e350a31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_11_counted",
+   "input": {
+    "kind": "text",
+    "value": "1.5\n1\n1.5"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3120310a3220312e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_12_plain",
+   "input": {
+    "kind": "text",
+    "value": "\nb\n\na"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a620a61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_12_counted",
+   "input": {
+    "kind": "text",
+    "value": "\nb\n\na"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32200a3120620a312061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_delim_Line feed",
+   "input": {
+    "kind": "text",
+    "value": "abcabc"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Line feed",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_delim_Comma",
+   "input": {
+    "kind": "text",
+    "value": "abcabc"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Comma",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_delim_Space",
+   "input": {
+    "kind": "text",
+    "value": "abcabc"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Space",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unique_delim_Nothing (separate chars)",
+   "input": {
+    "kind": "text",
+    "value": "abcabc"
+   },
+   "recipe": [
+    {
+     "op": "Unique",
+     "args": [
+      "Nothing (separate chars)",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_0",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      ",",
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612d622d63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      ",",
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_2",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      "",
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612d622d63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_3",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      ",",
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_4",
+   "input": {
+    "kind": "text",
+    "value": "a,,b"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      ",",
+      "|"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "617c7c62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_5",
+   "input": {
+    "kind": "text",
+    "value": "a-b-c"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      "-",
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c622c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_6",
+   "input": {
+    "kind": "text",
+    "value": "aXXbXXc"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      "XX",
+      "\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "610a620a63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_7",
+   "input": {
+    "kind": "text",
+    "value": "a,b"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      ";",
+      "-"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612c62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "split_8",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c"
+   },
+   "recipe": [
+    {
+     "op": "Split",
+     "args": [
+      ",",
+      "\\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "615c6e625c6e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "qp_round_trip_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "68656c6c6f"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f",
+    "68656c6c6f"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d30303d30313d30323d30333d30343d30353d30363d30373d30383d30390d0a3d30423d30430d0a3d30453d30463d31303d31313d31323d31333d31343d31353d31363d31373d31383d31393d31413d31423d31433d31443d31453d314620213d3232232425262728292a2b2c2d2e3d0d0a2f303132333435363738393a3b3c3d33443e3d3346404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e3d3546606162636465666768696a6b6c6d6e6f707172733d0d0a7475767778797a7b7c7d7e3d37463d0d0a3d38303d38313d38323d38333d0d0a3d38343d38353d38363d38373d0d0a3d38383d38393d38413d38423d0d0a3d38433d38443d38453d38463d0d0a3d39303d39313d39323d39333d0d0a3d39343d39353d39363d39373d0d0a3d39383d39393d39413d39423d0d0a3d39433d39443d39453d39463d0d0a3d41303d41313d41323d41333d0d0a3d41343d41353d41363d41373d0d0a3d41383d41393d41413d41423d41433d41443d41453d41463d42303d42313d42323d42333d42343d42353d42363d42373d42383d42393d42413d42423d42433d42443d42453d42463d0d0a3d43303d43313d43323d43333d43343d43353d43363d43373d43383d43393d43413d43423d43433d43443d43453d43463d44303d44313d44323d44333d44343d44353d44363d44373d0d0a3d44383d44393d44413d44423d44433d44443d44453d44463d45303d45313d45323d45333d45343d45353d45363d45373d45383d45393d45413d45423d45433d45443d45453d45463d0d0a3d46303d46313d46323d46333d46343d46353d46363d46373d46383d46393d46413d46423d46433d46443d46453d4646",
+    "000102030405060708090d0a0b0c0d0a0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "223f5f3d"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d32323d33463d35463d3344",
+    "223f5f3d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "6c696e65207769746820747261696c696e6720737061636573202020"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6c696e65207769746820747261696c696e67207370616365733d32303d32303d3230",
+    "6c696e65207769746820747261696c696e6720737061636573202020"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "74616209617409656e6409"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "74616209617409656e643d3039",
+    "74616209617409656e6409"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "747261696c696e67207370616365206265666f726520627265616b2020200a6e657874206c696e65"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "747261696c696e67207370616365206265666f726520627265616b3d32303d32303d32300d0a6e657874206c696e65",
+    "747261696c696e67207370616365206265666f726520627265616b2020200d0a6e657874206c696e65"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "610a620d0a630d64"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "610d0a620d0a630d0a64",
+    "610d0a620d0a630d0a64"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878",
+    "787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878",
+    "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a7878",
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a78787878787878787878787878787878787878787878787878",
+    "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878",
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d0d0a3d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d0d0a3d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d43333d41393d0d0a3d43333d41393d43333d41393d43333d41393d43333d4139",
+    "c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_14",
+   "input": {
+    "kind": "bytes",
+    "hex": "54686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e20"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "54686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f7665723d0d0a20746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e3d0d0a20666f78206a756d7073206f76657220746865206c617a7920646f672e3d3230",
+    "54686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e2054686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f672e20"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878c3a9c3a9c3a9"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a3d43333d41393d43333d41393d43333d4139",
+    "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878c3a9c3a9c3a9"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a3d45323d38323d4143",
+    "787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878e282ac"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878e282ac"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878783d0d0a3d45323d38323d4143",
+    "7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878e282ac"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "qp_round_trip_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616120626262626262626262626262626262626262626262626262626262626262"
+   },
+   "recipe": [
+    {
+     "op": "To Quoted Printable",
+     "args": []
+    },
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161203d0d0a626262626262626262626262626262626262626262626262626262626262",
+    "61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616120626262626262626262626262626262626262626262626262626262626262"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "pem_write_0",
+   "input": {
+    "kind": "text",
+    "value": "2a864886f70d01010b"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a4b6f5a496876634e4151454c0d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nKoZIhvcNAQEL\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326138363438383666373064303130313062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_1",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a0d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\n\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_2",
+   "input": {
+    "kind": "text",
+    "value": "aabb"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "MY KEY"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e204d59204b45592d2d2d2d2d0d0a7172733d0d0a2d2d2d2d2d454e44204d59204b45592d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN MY KEY-----\r\nqrs=\r\n-----END MY KEY-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61616262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_3",
+   "input": {
+    "kind": "text",
+    "value": "00"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "PUBLIC KEY"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e205055424c4943204b45592d2d2d2d2d0d0a41413d3d0d0a2d2d2d2d2d454e44205055424c4943204b45592d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN PUBLIC KEY-----\r\nAA==\r\n-----END PUBLIC KEY-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_4",
+   "input": {
+    "kind": "text",
+    "value": "abababababababababababababababababababababababababababababababababababababababababababababababab"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675720d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_5",
+   "input": {
+    "kind": "text",
+    "value": "ababababababababababababababababababababababababababababababababababababababababababababababab"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a7136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136733d0d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6s=\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_6",
+   "input": {
+    "kind": "text",
+    "value": "ababababababababababababababababababababababababababababababababababababababababababababababababab"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675720d0a71773d3d0d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur\r\nqw==\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_7",
+   "input": {
+    "kind": "text",
+    "value": "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675720d0a713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675720d0a713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675720d0a713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675727136757271367572713675720d0a71367572713675727136733d0d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_7",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur\r\nq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur\r\nq6urq6urq6s=\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_write_8",
+   "input": {
+    "kind": "text",
+    "value": "2a 86 48\n86f7"
+   },
+   "recipe": [
+    {
+     "op": "Hex to PEM",
+     "args": [
+      "CERTIFICATE"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0d0a4b6f5a496876633d0d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0d0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_round_trip_8",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nKoZIhvc=\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32613836343838366637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_0",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\r\nKoZIhvcNAQEL\r\n-----END CERTIFICATE-----\r\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326138363438383666373064303130313062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_1",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\nKoZIhvcNAQEL\n-----END CERTIFICATE-----\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "326138363438383666373064303130313062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_2",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN CERTIFICATE-----\nqrs=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nAAE=\n-----END CERTIFICATE-----\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "616162620a30303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_3",
+   "input": {
+    "kind": "text",
+    "value": "subject: example\n-----BEGIN CERTIFICATE-----\nqrs=\n-----END CERTIFICATE-----\ntrailing\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61616262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_4",
+   "input": {
+    "kind": "text",
+    "value": "nothing here"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_5",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_6",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN certificate-----\nqrs=\n-----END certificate-----\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "pem_read_7",
+   "input": {
+    "kind": "text",
+    "value": "-----BEGIN MY KEY-----\nqrs=\n-----END MY KEY-----\n"
+   },
+   "recipe": [
+    {
+     "op": "PEM to Hex",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61616262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "nt_hash_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3331443643464530443136414539333142373343353944374530433038394330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "",
+    ""
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_1",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3138364342303931383145324332454341414337363843343743373239393034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4d454742",
+    "61"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_2",
+   "input": {
+    "kind": "text",
+    "value": "password"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3838343646374541454538464231313741443036424444383330423735383643"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "password"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4e4648414c4542424d4847434c4542424d4447474b4d414a4e4f484c4c4b4250",
+    "70617373776f7264"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_3",
+   "input": {
+    "kind": "text",
+    "value": "Password1!"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3746414344433439384544313638304334464431343438333139413843303446"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_3",
+   "input": {
+    "kind": "text",
+    "value": "Password1!"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "504646414a4544424f4845434a4544424f444547494d434a504f464c4a4b44504b4c414f494b4350",
+    "50617373776f72643121"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_4",
+   "input": {
+    "kind": "text",
+    "value": "pässword"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4631423039344632354242444342364644424141364343384234334630433434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_4",
+   "input": {
+    "kind": "text",
+    "value": "pässword"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4e46484144424a4545434f4844424a4545474f44434a494d464c504f44504a4b",
+    "70e47373776f7264"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_5",
+   "input": {
+    "kind": "text",
+    "value": "你好"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3837374344313841324433423441443938423536334632433439424543363342"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_5",
+   "input": {
+    "kind": "text",
+    "value": "你好"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4d4643505048414c",
+    "e4bda0e5a5bd"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_6",
+   "input": {
+    "kind": "text",
+    "value": "éèê"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4233393738303939324239353133353946423339323032423845463132433232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_6",
+   "input": {
+    "kind": "text",
+    "value": "éèê"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "454d4f4a4b454142454f4f4c",
+    "e9e8ea"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_7",
+   "input": {
+    "kind": "text",
+    "value": " leading and trailing "
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4445463744463841384245413435463034373638394343383532443434423638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_7",
+   "input": {
+    "kind": "text",
+    "value": " leading and trailing "
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "494643414f4a454d494d434a4f4e4549494a434d4f414546494f434c4f4a454d4d4a474d4b49414e4d4747444b4341484943434850474644494543424f464541494d434a4f414546494a434d4f484543494143464b414146",
+    "206c656164696e6720616e6420747261696c696e6720"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "nt_hash_8",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "NT Hash",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4231423333353645354530353034364646453644334638374145324638433132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ctx1_round_trip_8",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Citrix CTX1 Encode",
+     "args": []
+    },
+    {
+     "op": "Citrix CTX1 Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "4e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b4641414e4e48494b464141",
+    "78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878"
+   ],
+   "stopped_after": 2
   }
  ]
 }

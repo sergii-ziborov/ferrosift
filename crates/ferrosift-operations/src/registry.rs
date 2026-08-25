@@ -16,13 +16,15 @@ use crate::{
     UnescapeUnicodeCharacters, UnicodeTextFormat, VarIntDecode, VarIntEncode, Wrap,
 };
 use crate::{
-    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode, FromCobs,
-    FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
-    HammingDistance, Head, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines,
-    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
-    Rot47, Rot47BruteForce, Rotate, SetOperation, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
+    CitrixCtx1Decode, CitrixCtx1Encode, FromBase32, FromBase45, FromBase58, FromBase64, FromBase85,
+    FromBinary, FromCharcode, FromCobs, FromDecimal, FromFloat, FromHex, FromHexdump,
+    FromHtmlEntity, FromModhex, FromMorseCode, FromOctal, HammingDistance, Head, HexToPem,
+    Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines, PemToHex, RemoveLineNumbers,
+    RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47,
+    Rot47BruteForce, Rotate, SetOperation, Split, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
     ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToCobs, ToDecimal,
-    ToHex, ToHexdump, ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
+    ToFloat, ToHex, ToHexdump, ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable,
+    Unique, UrlDecode, UrlEncode, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -40,7 +42,7 @@ use crate::{
 #[cfg(feature = "arithmetic")]
 use crate::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "hash")]
-use crate::{FixedDigest, Hmac, Md5, Ripemd, Sha1, Sha2, Sha3};
+use crate::{FixedDigest, Hmac, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3};
 #[cfg(feature = "bignum")]
 use crate::{FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase62};
 #[cfg(feature = "analysis")]
@@ -157,6 +159,8 @@ fn register_casing(registry: &mut OperationRegistry) -> Result<(), RegistryError
 /// dependencies. The two HTTP operations parse framing rather than speak the
 /// protocol, so they need no host handle either.
 fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Unique::new())?;
+    registry.register(Split::new())?;
     registry.register(RemoveAnsiEscapeCodes::new())?;
     registry.register(StripHttpHeaders::new())?;
     registry.register(DechunkHttpResponse::new())?;
@@ -175,6 +179,9 @@ fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     registry.register(VarIntEncode::new())?;
     registry.register(VarIntDecode::new())?;
     registry.register(FromQuotedPrintable::new())?;
+    registry.register(ToQuotedPrintable::new())?;
+    registry.register(HexToPem::new())?;
+    registry.register(PemToHex::new())?;
     registry.register(ToBraille::new())?;
     registry.register(FromBraille::new())?;
     registry.register(UnicodeTextFormat::new())?;
@@ -221,7 +228,11 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     registry.register(ToBase45::new())?;
     registry.register(FromBase58::new())?;
     registry.register(ToBase58::new())?;
+    registry.register(CitrixCtx1Decode::new())?;
+    registry.register(CitrixCtx1Encode::new())?;
     registry.register(FromCobs::new())?;
+    registry.register(FromFloat::new())?;
+    registry.register(ToFloat::new())?;
     registry.register(ToCobs::new())?;
     registry.register(FromBase64::new())?;
     registry.register(ToBase64::new())?;
@@ -326,6 +337,7 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
         registry.register(FixedDigest::md4())?;
         registry.register(FixedDigest::sm3())?;
         registry.register(FixedDigest::whirlpool())?;
+        registry.register(NtHash::new())?;
         registry.register(Ripemd::new())?;
         registry.register(Hmac::new())?;
     }

@@ -1,6 +1,6 @@
-//! `VarInt` coding and quoted-printable decoding.
+//! `VarInt` coding.
 
 mod codec;
 mod operation;
 
-pub use operation::{FromQuotedPrintable, VarIntDecode, VarIntEncode};
+pub use operation::{VarIntDecode, VarIntEncode};

@@ -1,4 +1,4 @@
-// Automatic differential corpus generator.
+﻿// Automatic differential corpus generator.
 //
 // Deterministically samples inputs for every CyberChef-aliased FerroSift
 // operation, bakes each recipe through the pinned checkout, and records the
@@ -30,6 +30,8 @@ import * as shaping from "./corpus/shaping.mjs";
 import * as unicodeEscape from "./corpus/unicode-escape.mjs";
 import * as brute from "./corpus/brute.mjs";
 import * as misc from "./corpus/misc.mjs";
+import * as mail from "./corpus/mail.mjs";
+import * as numeric from "./corpus/numeric.mjs";
 import * as substitute from "./corpus/substitute.mjs";
 import * as netfmt from "./corpus/netfmt.mjs";
 import * as markup from "./corpus/markup.mjs";
@@ -59,7 +61,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail]) {
     await family.add(builder);
 }
 

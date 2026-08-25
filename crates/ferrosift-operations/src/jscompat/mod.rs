@@ -17,6 +17,8 @@
 //!
 //! - [`number`] — `parseInt` prefix parsing, radix prefixes, and the byte
 //!   coercion the reference's byte-array validation applies.
+//! - [`double`] — `String(x)` for a double, whose two notation thresholds are
+//!   JavaScript's own and match no other language's default formatting.
 //! - [`string`] — conversions between JavaScript strings and byte arrays,
 //!   including the UTF-16 code-unit view that decides astral behaviour.
 //! - [`object`] — key ordering, which is insertion order except for
@@ -26,6 +28,7 @@
 //!   whitespace, which is wider than `char::is_whitespace`.
 
 pub(crate) mod delim;
+pub(crate) mod double;
 pub(crate) mod escape;
 pub(crate) mod number;
 pub(crate) mod object;
