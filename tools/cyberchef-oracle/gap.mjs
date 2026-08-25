@@ -7,9 +7,10 @@ import {execFileSync} from "node:child_process";
 import {readFileSync} from "node:fs";
 import path from "node:path";
 
-import {VERSION, repoRoot, verifyCheckout} from "./reference.mjs";
+import {repoRoot, selectedProfile, verifyCheckout} from "./reference.mjs";
 
-const checkout = verifyCheckout();
+const profile = selectedProfile();
+const checkout = verifyCheckout(profile);
 
 /** Every operation name the pinned reference exposes. */
 function referenceOperations() {
@@ -42,7 +43,7 @@ const extra = [...implemented].filter(name => !reference.includes(name)).sort();
 
 const percent = ((implemented.size / reference.length) * 100).toFixed(1);
 process.stdout.write(
-    `CyberChef ${VERSION}: ${reference.length} operations\n` +
+    `CyberChef ${profile.version}: ${reference.length} operations\n` +
         `FerroSift: ${implemented.size} aliased (${percent}%)\n` +
         `missing: ${missing.length}\n\n`,
 );

@@ -6,7 +6,9 @@ and `wasm32-unknown-unknown`, with no JavaScript runtime.
 
 The design principle is precision over breadth: **if FerroSift says an
 operation is compatible, it is compatible.** Compatibility is measured against
-a pinned CyberChef v11.3.0 checkout, not asserted.
+pinned CyberChef v11.3.0 and v11.4.0 checkouts, not asserted. Every corpus case
+is replayed against both, and adding the newer profile did not retire the
+older: see [reference profiles](docs/compatibility/profiles.md).
 
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |

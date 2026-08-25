@@ -1,7 +1,10 @@
 {
   "reference": {
     "name": "CyberChef",
-    "version": "11.3.0"
+    "version": "11.3.0",
+    "alsoVersions": [
+      "11.4.0"
+    ]
   },
   "totals": {
     "operations": 164,

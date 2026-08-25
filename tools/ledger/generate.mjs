@@ -20,7 +20,10 @@ export const repoRoot = path.resolve(here, "../..");
 
 /** Packs, smallest first, so an operation is attributed to its own pack. */
 const PACKS = ["hash", "crypto", "compression", "text", "analysis"];
-const REFERENCE = {name: "CyberChef", version: "11.3.0"};
+// Every reference version the suite replays, not the newest one. A caller
+// pinned to the older release is entitled to know FerroSift still matches it,
+// so both stay in the ledger until one stops being replayed.
+const REFERENCE = {name: "CyberChef", version: "11.3.0", alsoVersions: ["11.4.0"]};
 
 /** Reads the catalog the CLI reports for one feature selection. */
 function catalog(features) {
@@ -160,7 +163,13 @@ export function renderMarkdown(ledger) {
         "column is derived from the live catalog, the pack-only builds, and the",
         "committed pinned fixtures, so it cannot drift from the code.",
         "",
-        `Reference: ${reference.name} ${reference.version}.`,
+        `Reference: ${reference.name} ` +
+            `${[reference.version, ...(reference.alsoVersions ?? [])].join(" and ")}.`,
+        "",
+        "The counts below are for the baseline. Every later version listed is",
+        "replayed too, as a delta against the baseline: see",
+        "`crates/ferrosift-operations/tests/profiles.rs` for what that proves",
+        "and `docs/compatibility/profiles.md` for why it is stored that way.",
         "",
         "| | |",
         "|---|---:|",

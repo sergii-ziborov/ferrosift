@@ -21,13 +21,26 @@ pub(crate) struct SpecDefinition {
 }
 
 pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
+    // One alias per profile the operation is proven against, not one per
+    // profile that exists. Both are emitted here because `tests/profiles.rs`
+    // replays every corpus case through 11.4 as well as 11.3 and refuses an
+    // 11.4 alias that no 11.4 case backs — so the second entry is a claim the
+    // suite has to keep earning. An operation whose behaviour genuinely
+    // diverged between references would need two specs and a versioned
+    // identifier instead, which that same test enforces.
     let aliases = definition
         .cyberchef_alias
         .map(|name| {
-            vec![CompatibilityAlias {
-                profile: CompatibilityProfile::CyberChefV11_3,
-                name: String::from(name),
-            }]
+            vec![
+                CompatibilityAlias {
+                    profile: CompatibilityProfile::CyberChefV11_3,
+                    name: String::from(name),
+                },
+                CompatibilityAlias {
+                    profile: CompatibilityProfile::CyberChefV11_4,
+                    name: String::from(name),
+                },
+            ]
         })
         .unwrap_or_default();
     let classifications = definition

@@ -1,0 +1,15 @@
+{
+ "reference": {
+  "name": "CyberChef",
+  "version": "11.4.0",
+  "commit": "49d1a5634a67a3b806c6db0fdca7dcecb41a776c"
+ },
+ "baseline": {
+  "version": "11.3.0",
+  "commit": "d24ba1afce2e3a080308b5df7db033332fe94a1a"
+ },
+ "compared_cases": 65,
+ "changed": [],
+ "added": [],
+ "removed": []
+}

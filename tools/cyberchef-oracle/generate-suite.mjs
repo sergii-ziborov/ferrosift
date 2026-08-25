@@ -9,11 +9,12 @@
 import {mkdir, writeFile} from "node:fs/promises";
 import path from "node:path";
 
-import {COMMIT, VERSION, bakeEveryPrefix, fixtureDir, loadChef} from "./reference.mjs";
+import {bakeEveryPrefix, fixtureDirFor, loadChef, selectedProfile} from "./reference.mjs";
 import {curatedCases, unsupportedCase} from "./suite/index.mjs";
 
-const chef = await loadChef();
-const output = path.join(fixtureDir, "differential.json");
+const profile = selectedProfile();
+const chef = await loadChef(profile);
+const output = path.join(fixtureDirFor(profile), "differential.json");
 
 for (const testCase of curatedCases) {
     try {
@@ -25,7 +26,7 @@ for (const testCase of curatedCases) {
 }
 
 const suite = {
-    reference: {name: "CyberChef", version: VERSION, commit: COMMIT},
+    reference: {name: "CyberChef", version: profile.version, commit: profile.commit},
     cases: curatedCases,
     unsupported: unsupportedCase,
 };

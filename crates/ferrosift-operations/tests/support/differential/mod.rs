@@ -6,5 +6,7 @@
 mod fixture;
 mod runner;
 
-pub use fixture::{load_corpus, load_suite};
+pub use fixture::{
+    Case, apply_overlay, load_corpus, load_corpus_overlay_11_4, load_suite, load_suite_overlay_11_4,
+};
 pub use runner::{assert_supported_case, assert_unsupported_case};

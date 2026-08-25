@@ -7,5 +7,12 @@ target/
 # never committed: it is large and belongs to upstream.
 tools/cyberchef-oracle/vendor/
 
+# Non-baseline profiles are committed as deltas against the baseline
+# (`*.overlay.json`), not as second copies of a million bytes that agree.
+# `cargo xtask cyberchef generate` still writes the full files so they can be
+# inspected; `overlay` condenses them and these keep them out of the tree.
+crates/ferrosift-operations/tests/fixtures/cyberchef-v11.4.0/corpus.json
+crates/ferrosift-operations/tests/fixtures/cyberchef-v11.4.0/differential.json
+
 lcov.info
 bench/target/

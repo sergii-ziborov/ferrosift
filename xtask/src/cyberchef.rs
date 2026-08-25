@@ -5,19 +5,76 @@ use std::process::ExitCode;
 
 use crate::run_streaming;
 
-const VERSION: &str = "11.3.0";
-const TAG: &str = "v11.3.0";
-const COMMIT: &str = "d24ba1afce2e3a080308b5df7db033332fe94a1a";
+/// One pinned reference version.
+///
+/// More than one, because a compatibility claim is against a version rather
+/// than against a project. Evidence for an older profile is kept when a newer
+/// one is added: a caller pinned to 11.3 is entitled to know FerroSift still
+/// matches it.
+struct Profile {
+    version: &'static str,
+    commit: &'static str,
+}
+
+const PROFILES: &[Profile] = &[
+    Profile {
+        version: "11.3.0",
+        commit: "d24ba1afce2e3a080308b5df7db033332fe94a1a",
+    },
+    Profile {
+        version: "11.4.0",
+        // The annotated tag points at this commit; the tag object's own SHA
+        // would check out nothing useful.
+        commit: "49d1a5634a67a3b806c6db0fdca7dcecb41a776c",
+    },
+];
+
+/// Used when `--profile` is not given.
+const DEFAULT_PROFILE: &str = "11.3.0";
+
 const UPSTREAM: &str = "https://github.com/gchq/CyberChef.git";
+
+/// Reads `--profile <version>` out of the arguments.
+///
+/// An unknown name is refused rather than defaulted: measuring against a
+/// different version than the one asked for is the failure this arrangement
+/// exists to prevent.
+fn profile_from(arguments: &[&str]) -> Result<&'static Profile, String> {
+    let requested = arguments
+        .iter()
+        .position(|value| *value == "--profile")
+        .and_then(|index| arguments.get(index + 1).copied())
+        .unwrap_or(DEFAULT_PROFILE);
+
+    PROFILES
+        .iter()
+        .find(|profile| profile.version == requested)
+        .ok_or_else(|| {
+            let known: Vec<&str> = PROFILES.iter().map(|p| p.version).collect();
+            format!("unknown profile {requested}; known: {}", known.join(", "))
+        })
+}
 
 pub fn run(arguments: &[&str]) -> ExitCode {
     match arguments {
-        ["setup"] => setup(),
-        ["generate"] => generate(),
-        ["verify"] => verify(),
+        ["setup", rest @ ..] => dispatch(rest, setup),
+        ["generate", rest @ ..] => dispatch(rest, generate),
+        ["verify", rest @ ..] => dispatch(rest, verify),
+        ["overlay", rest @ ..] => dispatch(rest, overlay),
         ["gap", rest @ ..] => gap(rest),
         other => {
             eprintln!("unknown cyberchef task: {}", other.join(" "));
+            ExitCode::FAILURE
+        }
+    }
+}
+
+/// Resolves the profile, then runs the task with it.
+fn dispatch(arguments: &[&str], task: fn(&Profile) -> ExitCode) -> ExitCode {
+    match profile_from(arguments) {
+        Ok(profile) => task(profile),
+        Err(message) => {
+            eprintln!("{message}");
             ExitCode::FAILURE
         }
     }
@@ -35,12 +92,13 @@ fn oracle_dir() -> PathBuf {
 }
 
 /// Where the pinned checkout lives, honouring the environment override.
-fn checkout_dir() -> PathBuf {
+fn checkout_dir(profile: &Profile) -> PathBuf {
+    let version = profile.version;
     std::env::var_os("FERROSIFT_CYBERCHEF_DIR").map_or_else(
         || {
             oracle_dir()
                 .join("vendor")
-                .join(format!("cyberchef-v{VERSION}"))
+                .join(format!("cyberchef-v{version}"))
         },
         PathBuf::from,
     )
@@ -50,11 +108,11 @@ fn checkout_dir() -> PathBuf {
 ///
 /// The checkout is never committed: it is large, it is upstream's, and pinning
 /// it by commit makes re-fetching reproducible.
-fn setup() -> ExitCode {
-    let checkout = checkout_dir();
+fn setup(profile: &Profile) -> ExitCode {
+    let checkout = checkout_dir(profile);
     if checkout.exists() {
         eprintln!("checkout already present at {}", checkout.display());
-        return verify();
+        return verify(profile);
     }
     let Some(parent) = checkout.parent() else {
         eprintln!("cannot determine a parent directory for the checkout");
@@ -65,35 +123,40 @@ fn setup() -> ExitCode {
         return ExitCode::FAILURE;
     }
     let target = checkout.to_string_lossy().to_string();
-    let steps: [(&str, Vec<&str>, Option<&str>); 3] = [
+    // `npx grunt node` writes src/node/index.mjs, the barrel the oracle
+    // imports. It is generated rather than committed, so a fresh clone has no
+    // entry point until this runs.
+    let steps: [(&str, Vec<&str>, Option<&str>); 4] = [
         (
             "git",
             vec!["clone", "--no-checkout", UPSTREAM, &target],
             None,
         ),
-        ("git", vec!["-C", &target, "checkout", COMMIT], None),
+        ("git", vec!["-C", &target, "checkout", profile.commit], None),
         ("npm", vec!["ci"], Some(&target)),
+        ("npx", vec!["grunt", "node"], Some(&target)),
     ];
     for (program, arguments, directory) in steps {
         if !run_streaming(program, &arguments, directory) {
             return ExitCode::FAILURE;
         }
     }
-    verify()
+    verify(profile)
 }
 
 /// Confirms the checkout sits exactly on the pinned tag and commit.
-fn verify() -> ExitCode {
-    let checkout = checkout_dir();
+fn verify(profile: &Profile) -> ExitCode {
+    let checkout = checkout_dir(profile);
     if !checkout.exists() {
         eprintln!(
-            "reference checkout missing at {}\nrun: cargo xtask cyberchef setup",
-            checkout.display()
+            "reference checkout missing at {}\nrun: cargo xtask cyberchef setup --profile {}",
+            checkout.display(),
+            profile.version
         );
         return ExitCode::FAILURE;
     }
     let target = checkout.to_string_lossy().to_string();
-    eprintln!("expecting {TAG} {COMMIT}");
+    eprintln!("expecting v{} {}", profile.version, profile.commit);
     if !run_streaming("git", &["-C", &target, "rev-parse", "HEAD"], None) {
         return ExitCode::FAILURE;
     }
@@ -119,14 +182,32 @@ fn verify() -> ExitCode {
 }
 
 /// Regenerates both pinned fixtures from the reference.
-fn generate() -> ExitCode {
+fn generate(profile: &Profile) -> ExitCode {
     for script in ["generate-suite.mjs", "generate-corpus.mjs"] {
         let path = oracle_dir().join(script).to_string_lossy().to_string();
-        if !run_streaming("node", &[&path], None) {
+        // The scripts read the same flag, so the profile travels with the
+        // request rather than being implied by an environment variable
+        // somebody forgot to set.
+        if !run_streaming("node", &[&path, "--profile", profile.version], None) {
             return ExitCode::FAILURE;
         }
     }
     ExitCode::SUCCESS
+}
+
+/// Condenses a non-baseline profile's fixtures into a delta against the baseline.
+///
+/// Two agreeing profiles would otherwise be stored as two identical
+/// million-byte files. What a second profile actually contributes is where it
+/// differs, so that is what gets committed; the full generated files stay out
+/// of the tree.
+fn overlay(profile: &Profile) -> ExitCode {
+    let path = oracle_dir().join("overlay.mjs").to_string_lossy().to_string();
+    if run_streaming("node", &[&path, "--profile", profile.version], None) {
+        ExitCode::SUCCESS
+    } else {
+        ExitCode::FAILURE
+    }
 }
 
 /// Reports which reference operations are still unimplemented.

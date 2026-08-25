@@ -16,13 +16,12 @@ import {mkdir, writeFile} from "node:fs/promises";
 import path from "node:path";
 
 import {
-    COMMIT,
-    VERSION,
     bakeHex,
     bakeString as bakeStringWith,
-    fixtureDir,
+    fixtureDirFor,
     loadChef,
     makeInput,
+    selectedProfile,
 } from "./reference.mjs";
 import {createBuilder} from "./corpus/builder.mjs";
 import * as bitwise from "./corpus/bitwise.mjs";
@@ -50,8 +49,9 @@ import * as sets from "./corpus/sets.mjs";
 import * as shape from "./corpus/shape.mjs";
 import * as text from "./corpus/text.mjs";
 
-const chef = await loadChef();
-const output = path.join(fixtureDir, "corpus.json");
+const profile = selectedProfile();
+const chef = await loadChef(profile);
+const output = path.join(fixtureDirFor(profile), "corpus.json");
 
 const builder = createBuilder({
     bakeString: (input, recipe) => bakeStringWith(chef, input, recipe),
@@ -85,7 +85,7 @@ for (const testCase of cases) {
 const complete = cases.filter(testCase => testCase.stopped_after === testCase.recipe.length);
 
 const suite = {
-    reference: {name: "CyberChef", version: VERSION, commit: COMMIT},
+    reference: {name: "CyberChef", version: profile.version, commit: profile.commit},
     cases: complete,
 };
 
