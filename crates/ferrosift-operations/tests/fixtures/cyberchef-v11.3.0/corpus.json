@@ -68031,6 +68031,1808 @@
     "d180d1842ed180d184"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_0",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633177353038643671656a7874646734793572337a6172766172793063357877376b6a37677a377a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_1",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633177353038643671656a7874646734793572337a6172766172793063357877376b387a63776d71"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_2",
+   "input": {
+    "kind": "text",
+    "value": "1863143c14c5166804bd19203356da136c985678cd4d27a1b8c6329604903262"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331727033336730713563357478737039617279737278346b367a646b6673346e636534786a30676463636365667670797378663371776168337339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_3",
+   "input": {
+    "kind": "text",
+    "value": "1863143c14c5166804bd19203356da136c985678cd4d27a1b8c6329604903262"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331727033336730713563357478737039617279737278346b367a646b6673346e636534786a306764636363656676707973786633716d7038613438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_4",
+   "input": {
+    "kind": "text",
+    "value": "00"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317171736137733066"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_5",
+   "input": {
+    "kind": "text",
+    "value": "00"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317171397077753274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_6",
+   "input": {
+    "kind": "text",
+    "value": "0001"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317171717335646d666330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_7",
+   "input": {
+    "kind": "text",
+    "value": "0001"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633171717173703374396164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_8",
+   "input": {
+    "kind": "text",
+    "value": "deadbeef"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263316d366b6d616d63723066377973"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_9",
+   "input": {
+    "kind": "text",
+    "value": "deadbeef"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263316d366b6d616d636b6e656a706a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_10",
+   "input": {
+    "kind": "text",
+    "value": "ffffffffffffffffffffffffffffffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263316c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c683337673364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_enc_11",
+   "input": {
+    "kind": "text",
+    "value": "ffffffffffffffffffffffffffffffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263316c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c7a6477793530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_hrp_12",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633177353038643671656a7874646734793572337a6172766172793063357877376b6a37677a377a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_hrp_13",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "tb",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74623177353038643671656a7874646734793572337a6172766172793063357877376b7a7030333476"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_hrp_14",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "ltc",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c74633177353038643671656a7874646734793572337a6172766172793063357877376b636839613468"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_hrp_15",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bcrt",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626372743177353038643671656a7874646734793572337a6172766172793063357877376b6b65647a7870"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_hrp_16",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "abcdef",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162636465663177353038643671656a7874646734793572337a6172766172793063357877376b786335363961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_hrp_17",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "A",
+      "Bech32",
+      "Hex",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "613177353038643671656a7874646734793572337a6172766172793063357877376b36687a326630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_18",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Bitcoin SegWit",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317177353038643671656a7874646734793572337a6172766172793063357877376b763866337434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_19",
+   "input": {
+    "kind": "text",
+    "value": "1863143c14c5166804bd19203356da136c985678cd4d27a1b8c6329604903262"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Bitcoin SegWit",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633171727033336730713563357478737039617279737278346b367a646b6673346e636534786a306764636363656676707973786633716363666d7633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_23",
+   "input": {
+    "kind": "text",
+    "value": "ffffffffffffffffffffffffffffffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Hex",
+      "Bitcoin SegWit",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331716c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c66676c6d7936"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_24",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317077353038643671656a7874646734793572337a6172766172793063357877376b6a39776b7275"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_25",
+   "input": {
+    "kind": "text",
+    "value": "1863143c14c5166804bd19203356da136c985678cd4d27a1b8c6329604903262"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633170727033336730713563357478737039617279737278346b367a646b6673346e636534786a306764636363656676707973786633716a30666a3564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_27",
+   "input": {
+    "kind": "text",
+    "value": "0001"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331707171717334656d323472"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_28",
+   "input": {
+    "kind": "text",
+    "value": "deadbeef"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331706d366b6d616d63773976367835"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_29",
+   "input": {
+    "kind": "text",
+    "value": "ffffffffffffffffffffffffffffffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331706c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c68326375766e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_30",
+   "input": {
+    "kind": "text",
+    "value": "751e76e8199196d454941c45d1b3a323f1433bd6"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317377353038643671656a7874646734793572337a6172766172793063357877376b646867667072"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_31",
+   "input": {
+    "kind": "text",
+    "value": "1863143c14c5166804bd19203356da136c985678cd4d27a1b8c6329604903262"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633173727033336730713563357478737039617279737278346b367a646b6673346e636534786a3067646363636566767079737866337133737234756c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_33",
+   "input": {
+    "kind": "text",
+    "value": "0001"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317371717173726778686a6a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_34",
+   "input": {
+    "kind": "text",
+    "value": "deadbeef"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331736d366b6d616d63787876707236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_segwit_35",
+   "input": {
+    "kind": "text",
+    "value": "ffffffffffffffffffffffffffffffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32m",
+      "Hex",
+      "Bitcoin SegWit",
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331736c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c676337727776"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_raw_36",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Raw bytes",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633164706a6b636d7230383973373366"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_raw_37",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Raw bytes",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626331676d6b397975"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_raw_38",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001\u0002"
+   },
+   "recipe": [
+    {
+     "op": "To Bech32",
+     "args": [
+      "bc",
+      "Bech32",
+      "Raw bytes",
+      "Generic",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263317171717379633670716d6a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_39",
+   "input": {
+    "kind": "text",
+    "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00751e76e8199196d454941c45d1b3a323f1433bd6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_40",
+   "input": {
+    "kind": "text",
+    "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_41",
+   "input": {
+    "kind": "text",
+    "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313437353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_42",
+   "input": {
+    "kind": "text",
+    "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633a20303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_43",
+   "input": {
+    "kind": "text",
+    "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a20226263222c0a202022656e636f64696e67223a2022426563683332222c0a20202264617461223a2022303037353165373665383139393139366434353439343163343564316233613332336631343333626436220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_44",
+   "input": {
+    "kind": "text",
+    "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00751e76e8199196d454941c45d1b3a323f1433bd6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_45",
+   "input": {
+    "kind": "text",
+    "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_46",
+   "input": {
+    "kind": "text",
+    "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313437353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_47",
+   "input": {
+    "kind": "text",
+    "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633a20303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_48",
+   "input": {
+    "kind": "text",
+    "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a20226263222c0a202022656e636f64696e67223a2022426563683332222c0a20202264617461223a2022303037353165373665383139393139366434353439343163343564316233613332336631343333626436220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_49",
+   "input": {
+    "kind": "text",
+    "value": "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "001863143c14c5166804bd19203356da136c985678cd4d27a1b8c6329604903262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_50",
+   "input": {
+    "kind": "text",
+    "value": "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031383633313433633134633531363638303462643139323033333536646131333663393835363738636434643237613162386336333239363034393033323632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_51",
+   "input": {
+    "kind": "text",
+    "value": "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030323031383633313433633134633531363638303462643139323033333536646131333663393835363738636434643237613162386336333239363034393033323632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_52",
+   "input": {
+    "kind": "text",
+    "value": "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74623a20303031383633313433633134633531363638303462643139323033333536646131333663393835363738636434643237613162386336333239363034393033323632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_53",
+   "input": {
+    "kind": "text",
+    "value": "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a20227462222c0a202022656e636f64696e67223a2022426563683332222c0a20202264617461223a2022303031383633313433633134633531363638303462643139323033333536646131333663393835363738636434643237613162386336333239363034393033323632220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_54",
+   "input": {
+    "kind": "text",
+    "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0179be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_55",
+   "input": {
+    "kind": "text",
+    "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303137396265363637656639646362626163353561303632393563653837306230373032396266636462326463653238643935396632383135623136663831373938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_56",
+   "input": {
+    "kind": "text",
+    "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3531323037396265363637656639646362626163353561303632393563653837306230373032396266636462326463653238643935396632383135623136663831373938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_57",
+   "input": {
+    "kind": "text",
+    "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633a20303137396265363637656639646362626163353561303632393563653837306230373032396266636462326463653238643935396632383135623136663831373938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_58",
+   "input": {
+    "kind": "text",
+    "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a20226263222c0a202022656e636f64696e67223a20224265636833326d222c0a20202264617461223a2022303137396265363637656639646362626163353561303632393563653837306230373032396266636462326463653238643935396632383135623136663831373938220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_59",
+   "input": {
+    "kind": "text",
+    "value": "bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kt5nd6y"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01751e76e8199196d454941c45d1b3a323f1433bd6751e76e8199196d454941c45d1b3a323f1433bd6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_60",
+   "input": {
+    "kind": "text",
+    "value": "bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kt5nd6y"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313735316537366538313939313936643435343934316334356431623361333233663134333362643637353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_61",
+   "input": {
+    "kind": "text",
+    "value": "bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kt5nd6y"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353132383735316537366538313939313936643435343934316334356431623361333233663134333362643637353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_62",
+   "input": {
+    "kind": "text",
+    "value": "bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kt5nd6y"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633a2030313735316537366538313939313936643435343934316334356431623361333233663134333362643637353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_63",
+   "input": {
+    "kind": "text",
+    "value": "bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kt5nd6y"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a20226263222c0a202022656e636f64696e67223a20224265636833326d222c0a20202264617461223a202230313735316537366538313939313936643435343934316334356431623361333233663134333362643637353165373665383139393139366434353439343163343564316233613332336631343333626436220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_64",
+   "input": {
+    "kind": "text",
+    "value": "bc1sw50qgdz25j"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10751e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_65",
+   "input": {
+    "kind": "text",
+    "value": "bc1sw50qgdz25j"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313037353165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_66",
+   "input": {
+    "kind": "text",
+    "value": "bc1sw50qgdz25j"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3630303237353165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_67",
+   "input": {
+    "kind": "text",
+    "value": "bc1sw50qgdz25j"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62633a20313037353165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_68",
+   "input": {
+    "kind": "text",
+    "value": "bc1sw50qgdz25j"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a20226263222c0a202022656e636f64696e67223a20224265636833326d222c0a20202264617461223a2022313037353165220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_69",
+   "input": {
+    "kind": "text",
+    "value": "split1checkupstagehandshakeupstreamerranterredcaperredlc445v"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c5f38b70305f519bf66d85fb6cf03058f3dde463ecd7918f2dc743918f2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_70",
+   "input": {
+    "kind": "text",
+    "value": "split1checkupstagehandshakeupstreamerranterredcaperredlc445v"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "633566333862373033303566353139626636366438356662366366303330353866336464653436336563643739313866326463373433393138663264"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_71",
+   "input": {
+    "kind": "text",
+    "value": "split1checkupstagehandshakeupstreamerranterredcaperredlc445v"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "633566333862373033303566353139626636366438356662366366303330353866336464653436336563643739313866326463373433393138663264"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_72",
+   "input": {
+    "kind": "text",
+    "value": "split1checkupstagehandshakeupstreamerranterredcaperredlc445v"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "73706c69743a20633566333862373033303566353139626636366438356662366366303330353866336464653436336563643739313866326463373433393138663264"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_73",
+   "input": {
+    "kind": "text",
+    "value": "split1checkupstagehandshakeupstreamerranterredcaperredlc445v"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a202273706c6974222c0a202022656e636f64696e67223a20224265636833326d222c0a20202264617461223a2022633566333862373033303566353139626636366438356662366366303330353866336464653436336563643739313866326463373433393138663264220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_74",
+   "input": {
+    "kind": "text",
+    "value": "abcdef1l7aum6echk45nj3s0wdvt2fg8x9yrzpqzd3ryx"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ffbbcdeb38bdab49ca307b9ac5a928398a418820"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_75",
+   "input": {
+    "kind": "text",
+    "value": "abcdef1l7aum6echk45nj3s0wdvt2fg8x9yrzpqzd3ryx"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66666262636465623338626461623439636133303762396163356139323833393861343138383230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_76",
+   "input": {
+    "kind": "text",
+    "value": "abcdef1l7aum6echk45nj3s0wdvt2fg8x9yrzpqzd3ryx"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66666262636465623338626461623439636133303762396163356139323833393861343138383230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_77",
+   "input": {
+    "kind": "text",
+    "value": "abcdef1l7aum6echk45nj3s0wdvt2fg8x9yrzpqzd3ryx"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162636465663a2066666262636465623338626461623439636133303762396163356139323833393861343138383230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_78",
+   "input": {
+    "kind": "text",
+    "value": "abcdef1l7aum6echk45nj3s0wdvt2fg8x9yrzpqzd3ryx"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a2022616263646566222c0a202022656e636f64696e67223a20224265636833326d222c0a20202264617461223a202266666262636465623338626461623439636133303762396163356139323833393861343138383230220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_79",
+   "input": {
+    "kind": "text",
+    "value": "an83characterlonghumanreadablepartthatcontainsthenumber1andtheexcludedcharactersbio1tt5tgs"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_80",
+   "input": {
+    "kind": "text",
+    "value": "an83characterlonghumanreadablepartthatcontainsthenumber1andtheexcludedcharactersbio1tt5tgs"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_81",
+   "input": {
+    "kind": "text",
+    "value": "an83characterlonghumanreadablepartthatcontainsthenumber1andtheexcludedcharactersbio1tt5tgs"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Bitcoin scriptPubKey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_82",
+   "input": {
+    "kind": "text",
+    "value": "an83characterlonghumanreadablepartthatcontainsthenumber1andtheexcludedcharactersbio1tt5tgs"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "HRP: Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616e38336368617261637465726c6f6e6768756d616e7265616461626c657061727474686174636f6e7461696e737468656e756d62657231616e647468656578636c756465646368617261637465727362696f3a20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_dec_83",
+   "input": {
+    "kind": "text",
+    "value": "an83characterlonghumanreadablepartthatcontainsthenumber1andtheexcludedcharactersbio1tt5tgs"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "JSON"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b0a202022687270223a2022616e38336368617261637465726c6f6e6768756d616e7265616461626c657061727474686174636f6e7461696e737468656e756d62657231616e647468656578636c756465646368617261637465727362696f222c0a202022656e636f64696e67223a2022426563683332222c0a20202264617461223a2022220a7d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_variant_84",
+   "input": {
+    "kind": "text",
+    "value": "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Bech32",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_variant_86",
+   "input": {
+    "kind": "text",
+    "value": "BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Bech32",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_variant_88",
+   "input": {
+    "kind": "text",
+    "value": "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Bech32",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303031383633313433633134633531363638303462643139323033333536646131333663393835363738636434643237613162386336333239363034393033323632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_variant_91",
+   "input": {
+    "kind": "text",
+    "value": "bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0"
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Bech32m",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303137396265363637656639646362626163353561303632393563653837306230373032396266636462326463653238643935396632383135623136663831373938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_trim_92",
+   "input": {
+    "kind": "text",
+    "value": "  bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4  "
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303037353165373665383139393139366434353439343163343564316233613332336631343333626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bech32_empty_93",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "From Bech32",
+     "args": [
+      "Auto-detect",
+      "Hex"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
   }
  ]
 }

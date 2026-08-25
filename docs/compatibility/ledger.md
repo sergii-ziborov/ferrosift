@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 202 |
-| Reference-aliased | 200 |
-| Byte-pinned (`exact`) | 196 |
+| Registered operations | 204 |
+| Reference-aliased | 202 |
+| Byte-pinned (`exact`) | 198 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3727 |
+| Pinned cases | 3812 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -113,6 +113,8 @@ does.
 | `encoding.base85.encode@1` | To Base85 | core | exact | 27 |
 | `encoding.base92.decode@1` | From Base92 | core | exact | 7 |
 | `encoding.base92.encode@1` | To Base92 | core | exact | 8 |
+| `encoding.bech32.decode@1` | From Bech32 | core | exact | 51 |
+| `encoding.bech32.encode@1` | To Bech32 | core | exact | 34 |
 | `encoding.binary.decode@1` | From Binary | core | exact | 14 |
 | `encoding.binary.encode@1` | To Binary | core | exact | 13 |
 | `encoding.braille.decode@1` | From Braille | core | exact | 15 |

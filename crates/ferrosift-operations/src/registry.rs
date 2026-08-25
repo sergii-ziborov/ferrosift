@@ -27,7 +27,8 @@ use crate::{
     CitrixCtx1Encode, ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
     DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
     ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
-    FromBase85, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
+    FromBase85, FromBech32, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode,
+    FromCobs,
     FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
@@ -38,6 +39,7 @@ use crate::{
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
     SwapEndianness,
     Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
+    ToBech32,
     ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
     ToHexContent, ToHexdump,
     ToHtmlEntity, ToLowerCase,
@@ -312,6 +314,8 @@ fn register_data(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(Punycode::encode())?;
     registry.register(Punycode::decode())?;
+    registry.register(ToBech32::new())?;
+    registry.register(FromBech32::new())?;
     registry.register(FromBase32::new())?;
     registry.register(ToBase32::new())?;
     registry.register(FromBase45::new())?;
