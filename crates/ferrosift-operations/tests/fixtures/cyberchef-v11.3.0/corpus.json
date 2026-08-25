@@ -44369,6 +44369,403 @@
     "0a7a0a790a780a792d7a0a782d7a0a782d790a782d792d7a0a"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "substitute_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "XYZABCDEFGHIJKLMNOPQRSTUVW",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45656c6c6f2c20546f726c6421"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello, World!"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "XYZABCDEFGHIJKLMNOPQRSTUVW",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "456269696c2c20546c6f696121"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_2",
+   "input": {
+    "kind": "text",
+    "value": "hello world"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "a-z",
+      "n-za-m",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7572797962206a62657971"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_3",
+   "input": {
+    "kind": "text",
+    "value": "HELLO world"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "a-z",
+      "n-za-m",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5552595942206a62657971"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_4",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "abc",
+      "xyzw",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5761726e696e673a20506c61696e7465787420616e642043697068657274657874206c656e67746873206469666665720a0a78797a646566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_5",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "abcd",
+      "xy",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5761726e696e673a20506c61696e7465787420616e642043697068657274657874206c656e67746873206469666665720a0a787963646566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_6",
+   "input": {
+    "kind": "text",
+    "value": "aaa"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "aa",
+      "xy",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "797979"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_7",
+   "input": {
+    "kind": "text",
+    "value": "a1b2c3 !@#"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "abc",
+      "xyz",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "783179327a3320214023"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_8",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "abc",
+      "xyz",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "substitute_9",
+   "input": {
+    "kind": "text",
+    "value": "aA1 中"
+   },
+   "recipe": [
+    {
+     "op": "Substitute",
+     "args": [
+      "a",
+      "z",
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a5a3120e4b8ad"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_0",
+   "input": {
+    "kind": "text",
+    "value": "line\\nbreak"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6c696e650a627265616b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_1",
+   "input": {
+    "kind": "text",
+    "value": "tab\\there"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7461620968657265"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_2",
+   "input": {
+    "kind": "text",
+    "value": "hex \\x41\\x42"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "686578204142"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_3",
+   "input": {
+    "kind": "text",
+    "value": "unicode \\u0041\\u00e9"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "756e69636f64652041e9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_4",
+   "input": {
+    "kind": "text",
+    "value": "backslash \\\\ and quote \\'"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6261636b736c617368205c20616e642071756f74652027"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_5",
+   "input": {
+    "kind": "text",
+    "value": "octal \\101"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6f6374616c2041"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_6",
+   "input": {
+    "kind": "text",
+    "value": "not an escape \\q"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6e6f7420616e20657363617065205c71"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_7",
+   "input": {
+    "kind": "text",
+    "value": "trailing backslash \\"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "747261696c696e67206261636b736c617368205c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_8",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_9",
+   "input": {
+    "kind": "text",
+    "value": "plain text"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "706c61696e2074657874"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "unescape_string_10",
+   "input": {
+    "kind": "text",
+    "value": "\\r\\n\\t\\0"
+   },
+   "recipe": [
+    {
+     "op": "Unescape string",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0d0a0900"
+   ],
+   "stopped_after": 1
   }
  ]
 }

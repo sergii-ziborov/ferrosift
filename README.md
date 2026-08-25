@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 147 | 145 | **141** | **2470** |
+| 149 | 147 | **143** | **2491** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -174,7 +174,7 @@ has a `std`. One pack does not yet reach bare metal;
 |---|---|
 | Analysis | Suggest recipe |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
-| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Vigenère Decode, Vigenère Encode |
+| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
@@ -187,7 +187,7 @@ has a `std`. One pack does not yet reach bare metal;
 | KDF | Derive PBKDF2 key, Scrypt |
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
-| Text | Add line numbers, Alternating Caps, Dechunk HTTP response, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Get All Casings, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Wrap |
+| Text | Add line numbers, Alternating Caps, Dechunk HTTP response, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Get All Casings, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
 <!-- catalog:end -->
 
 Full alias tables, argument shapes, and intentional divergences from the

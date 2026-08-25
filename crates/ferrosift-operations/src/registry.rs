@@ -10,8 +10,8 @@ use crate::{
     AddLineNumbers, AlternatingCaps, BitShift, Bitwise, CaretMDecode, Checksum, ClassicalCipher,
     DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
     EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FromCaseInsensitiveRegex, GetAllCasings,
-    PowerSet, RemoveAnsiEscapeCodes, StripHttpHeaders, SwapCase, ToLowerCase, ToUpperCase,
-    UnescapeUnicodeCharacters, Wrap,
+    PowerSet, RemoveAnsiEscapeCodes, StripHttpHeaders, Substitute, SwapCase, ToLowerCase,
+    ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, Wrap,
 };
 use crate::{
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
@@ -159,6 +159,8 @@ fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     registry.register(CaretMDecode::new())?;
     registry.register(FromCaseInsensitiveRegex::new())?;
     registry.register(PowerSet::new())?;
+    registry.register(Substitute::new())?;
+    registry.register(UnescapeString::new())?;
     registry.register(EscapeUnicodeCharacters::new())?;
     registry.register(UnescapeUnicodeCharacters::new())?;
     registry.register(EncodeNetbiosName::new())?;

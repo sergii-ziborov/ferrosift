@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 147,
-    "aliased": 145,
-    "exact": 141,
+    "operations": 149,
+    "aliased": 147,
+    "exact": 143,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2470
+    "pinned_cases": 2491
   },
   "operations": [
     {
@@ -310,6 +310,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 21,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.substitute@1",
+      "display_name": "Substitute",
+      "category": "Ciphers",
+      "reference_alias": "Substitute",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 10,
       "status": "exact"
     },
     {
@@ -1812,6 +1825,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "text.escape.unescape@1",
+      "display_name": "Unescape string",
+      "category": "Text",
+      "reference_alias": "Unescape string",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 11,
       "status": "exact"
     },
     {

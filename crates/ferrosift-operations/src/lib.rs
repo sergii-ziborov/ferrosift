@@ -53,6 +53,7 @@ mod sets;
 mod shape;
 mod sift;
 mod spec;
+mod substitute;
 mod unicode_escape;
 mod url;
 mod value;
@@ -120,6 +121,7 @@ pub use shape::{
     DechunkHttpResponse, ExpandAlphabetRange, RemoveAnsiEscapeCodes, StripHttpHeaders, Wrap,
 };
 pub use sift::{DropNthBytes, RemoveNullBytes, RemoveWhitespace, Reverse, TakeNthBytes};
+pub use substitute::{Substitute, UnescapeString};
 pub use unicode_escape::{
     DecodeNetbiosName, EncodeNetbiosName, EscapeUnicodeCharacters, UnescapeUnicodeCharacters,
 };

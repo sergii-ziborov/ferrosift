@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 147 |
-| Reference-aliased | 145 |
-| Byte-pinned (`exact`) | 141 |
+| Registered operations | 149 |
+| Reference-aliased | 147 |
+| Byte-pinned (`exact`) | 143 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2470 |
+| Pinned cases | 2491 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -52,6 +52,7 @@ does.
 | `cipher.rot47.brute@1` | ROT47 Brute Force | core | exact | 15 |
 | `cipher.rot47@1` | ROT47 | core | exact | 8 |
 | `cipher.rot8000@1` | ROT8000 | core | exact | 21 |
+| `cipher.substitute@1` | Substitute | core | exact | 10 |
 | `cipher.vigenere.decode@1` | Vigenère Decode | core | exact | 28 |
 | `cipher.vigenere.encode@1` | Vigenère Encode | core | exact | 56 |
 | `compression.bzip2.compress@1` | Bzip2 Compress | compression | interoperable (compressor output is interoperable; Bzip2 Decompress is differential-pinned) | 0 |
@@ -167,6 +168,7 @@ does.
 | `text.case.lower@1` | To Lower case | core | exact | 9 |
 | `text.case.swap@1` | Swap case | core | exact | 9 |
 | `text.case.upper@1` | To Upper case | core | exact | 14 |
+| `text.escape.unescape@1` | Unescape string | core | exact | 11 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |
 | `text.leet@1` | Convert Leet Speak | core | exact | 28 |
 | `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |
