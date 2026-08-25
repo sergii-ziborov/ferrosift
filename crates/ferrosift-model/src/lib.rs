@@ -22,8 +22,8 @@ pub use recipe::{Recipe, RecipeMetadata, RecipeStep};
 pub use spec::{
     ArgumentKind, ArgumentSpec, CapabilitySet, ClassificationSet, CompatibilityAlias,
     CompatibilityProfile, EvidenceRecord, EvidenceState, EvidenceSummary, HostCapability,
-    OperationClassification, OperationSpec, SpecError, StreamingSupport, Target, TargetSet,
-    ValueConstraint,
+    OperationClassification, OperationSpec, OutputBehavior, SpecError, StreamingSupport, Target,
+    TargetSet, ValueConstraint,
 };
 pub use step_id::StepId;
 pub use value::{StructuredValue, TextEncoding, TextValue, Value, ValueKind, VirtualFile};

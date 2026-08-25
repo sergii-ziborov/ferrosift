@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 149 | 147 | **143** | **2491** |
+| 150 | 148 | **144** | **2500** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -187,7 +187,7 @@ has a `std`. One pack does not yet reach bare metal;
 | KDF | Derive PBKDF2 key, Scrypt |
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
-| Text | Add line numbers, Alternating Caps, Dechunk HTTP response, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Get All Casings, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
+| Text | Add line numbers, Alternating Caps, Dechunk HTTP response, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTTP headers, Swap case, Tail, To Lower case, To Upper case, Unescape string, Wrap |
 <!-- catalog:end -->
 
 Full alias tables, argument shapes, and intentional divergences from the

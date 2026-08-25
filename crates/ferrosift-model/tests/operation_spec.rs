@@ -5,7 +5,8 @@ use std::collections::{BTreeMap, BTreeSet};
 use ferrosift_model::{
     ArgumentKind, ArgumentSpec, ArgumentValue, CapabilitySet, ClassificationSet,
     CompatibilityAlias, CompatibilityProfile, EvidenceRecord, EvidenceState, EvidenceSummary,
-    OperationId, OperationSpec, StreamingSupport, Target, TargetSet, ValueConstraint, ValueKind,
+    OperationId, OperationSpec, OutputBehavior, StreamingSupport, Target, TargetSet,
+    ValueConstraint, ValueKind,
 };
 
 fn passed(reference: &str) -> EvidenceRecord {
@@ -45,6 +46,7 @@ fn valid_spec() -> OperationSpec {
         classifications: ClassificationSet::new(),
         deterministic: true,
         streaming: StreamingSupport::Buffered,
+        output_behavior: OutputBehavior::default(),
         inverse: Some(
             OperationId::new("encoding.base64.encode@1").expect("valid inverse operation ID"),
         ),

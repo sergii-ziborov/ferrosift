@@ -47,4 +47,16 @@ export async function add({addCase}) {
         addCase(`unescape_string_${index}`, value, [{op: "Unescape string", args: []}]);
     }
 
+    // De Bruijn ignores its input, so the arguments are what vary. An empty
+    // input is the natural way to call a generator, and it is exactly the case
+    // the expansion-ratio check used to refuse — so it is what gets pinned.
+    for (const [k, n] of [[2, 2], [2, 3], [2, 8], [3, 2], [3, 4], [5, 3], [9, 2], [9, 4]]) {
+        addCase(`de_bruijn_${k}_${n}`, "", [
+            {op: "Generate De Bruijn Sequence", args: [k, n]},
+        ]);
+    }
+    // A non-empty input must not change the answer.
+    addCase("de_bruijn_input_ignored", "this text is discarded", [
+        {op: "Generate De Bruijn Sequence", args: [3, 3]},
+    ]);
 }

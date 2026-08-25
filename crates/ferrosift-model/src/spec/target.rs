@@ -61,6 +61,43 @@ pub enum OperationClassification {
 /// A deterministic set of operation review classifications.
 pub type ClassificationSet = BTreeSet<OperationClassification>;
 
+/// How an operation's output size relates to its input size.
+///
+/// The execution budget bounds growth with an expansion ratio, which is the
+/// right instrument only when output is a function of input. An operation that
+/// generates from its arguments has no meaningful ratio against an empty
+/// input, and one that reduces to a fixed-size digest has no meaningful
+/// growth at all. Saying which of the three an operation is lets the executor
+/// apply the limit that fits instead of the one that happens to be there.
+///
+/// This is a declaration, not an exemption: every variant is still bounded by
+/// the budget's absolute output limit and by cancellation. Only the *ratio*
+/// changes, and only for the variant that cannot have one.
+#[derive(
+    Clone, Copy, Debug, Default, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize,
+)]
+#[serde(rename_all = "snake_case")]
+pub enum OutputBehavior {
+    /// Output grows with input: encodings, compression, substitution.
+    ///
+    /// The default, because it is the honest assumption for anything that has
+    /// not said otherwise.
+    #[default]
+    InputProportional,
+    /// Output is determined by the arguments, not the input.
+    ///
+    /// Sequence and identifier generators. The expansion ratio is not applied,
+    /// because the input it would divide by is unrelated to the result; the
+    /// operation is expected to bound itself against the output limit.
+    InputIndependent,
+    /// Output is a bounded summary regardless of input size.
+    ///
+    /// Hashes, checksums, and statistics. Behaves like the proportional case
+    /// today; naming it separately is what will later let the executor skip
+    /// growth accounting it cannot need.
+    Reducer,
+}
+
 /// The streaming contract implemented by an operation.
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 #[serde(rename_all = "snake_case")]

@@ -203,6 +203,7 @@ impl Runner<'_> {
             input_summary.size_bytes,
             self.initial_input_size,
             self.budget,
+            operation.spec().output_behavior,
         ) {
             return Err(self.fail(failure, location));
         }

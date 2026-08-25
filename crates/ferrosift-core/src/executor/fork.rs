@@ -3,7 +3,7 @@
 use alloc::{string::String, vec::Vec};
 use core::mem;
 
-use ferrosift_model::{ArgumentValue, TextEncoding, TextValue, Value};
+use ferrosift_model::{ArgumentValue, OutputBehavior, TextEncoding, TextValue, Value};
 
 use crate::{OperationError, StepLocation, TraceEvent, TraceEventKind, ValueSummary};
 
@@ -156,11 +156,16 @@ impl Runner<'_> {
         location: StepLocation,
     ) -> Result<StepControl, ExecutionError> {
         let output_summary = ValueSummary::from_value(&output);
+        // A merge is not an operation and has no spec to consult. Its output is
+        // the branches joined, so it is proportional by construction and keeps
+        // the ratio check — a fork that multiplied its input is exactly the
+        // growth that check exists to catch.
         if let Err(failure) = limits::check_output(
             output_summary.size_bytes,
             input_size,
             self.initial_input_size,
             self.budget,
+            OutputBehavior::InputProportional,
         ) {
             return Err(self.fail(failure, location));
         }

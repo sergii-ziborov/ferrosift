@@ -9,8 +9,8 @@ use std::sync::{
 use ferrosift_core::{Cancellation, ExecutionBudget, Operation, OperationContext, OperationError};
 use ferrosift_model::{
     ArgumentValue, Arguments, CapabilitySet, ClassificationSet, EvidenceRecord, EvidenceState,
-    EvidenceSummary, OperationId, OperationSpec, Recipe, RecipeMetadata, RecipeStep,
-    StreamingSupport, Target, TargetSet, Value, ValueConstraint,
+    EvidenceSummary, OperationId, OperationSpec, OutputBehavior, Recipe, RecipeMetadata,
+    RecipeStep, StreamingSupport, Target, TargetSet, Value, ValueConstraint,
 };
 
 #[derive(Clone)]
@@ -109,6 +109,7 @@ pub fn spec(id: &str) -> OperationSpec {
         classifications: ClassificationSet::new(),
         deterministic: true,
         streaming: StreamingSupport::Buffered,
+        output_behavior: OutputBehavior::default(),
         inverse: None,
         evidence: EvidenceSummary {
             provenance: verified("fixtures/provenance"),

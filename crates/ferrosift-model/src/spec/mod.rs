@@ -17,8 +17,8 @@ pub use compatibility::{CompatibilityAlias, CompatibilityProfile};
 pub use error::SpecError;
 pub use evidence::{EvidenceRecord, EvidenceState, EvidenceSummary};
 pub use target::{
-    CapabilitySet, ClassificationSet, HostCapability, OperationClassification, StreamingSupport,
-    Target, TargetSet,
+    CapabilitySet, ClassificationSet, HostCapability, OperationClassification, OutputBehavior,
+    StreamingSupport, Target, TargetSet,
 };
 
 /// A complete machine-readable operation contract.
@@ -50,6 +50,12 @@ pub struct OperationSpec {
     pub deterministic: bool,
     /// Streaming contract.
     pub streaming: StreamingSupport,
+    /// How output size relates to input size.
+    ///
+    /// Decides which budget limit the executor can meaningfully apply. See
+    /// [`OutputBehavior`].
+    #[serde(default)]
+    pub output_behavior: OutputBehavior,
     /// Optional inverse operation contract.
     pub inverse: Option<OperationId>,
     /// Independent evidence dimensions.

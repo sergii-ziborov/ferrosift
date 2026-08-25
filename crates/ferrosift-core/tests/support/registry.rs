@@ -9,8 +9,8 @@ use std::sync::{
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{
     Arguments, CapabilitySet, ClassificationSet, CompatibilityAlias, CompatibilityProfile,
-    EvidenceRecord, EvidenceState, EvidenceSummary, OperationId, OperationSpec, StreamingSupport,
-    Target, TargetSet, Value, ValueConstraint,
+    EvidenceRecord, EvidenceState, EvidenceSummary, OperationId, OperationSpec, OutputBehavior,
+    StreamingSupport, Target, TargetSet, Value, ValueConstraint,
 };
 
 pub struct StaticOperation {
@@ -81,6 +81,7 @@ pub fn spec(id: &str, aliases: Vec<CompatibilityAlias>) -> OperationSpec {
         classifications: ClassificationSet::new(),
         deterministic: true,
         streaming: StreamingSupport::Buffered,
+        output_behavior: OutputBehavior::default(),
         inverse: None,
         evidence: EvidenceSummary {
             provenance: verified("fixtures/provenance"),

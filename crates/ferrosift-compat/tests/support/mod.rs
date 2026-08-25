@@ -6,7 +6,8 @@ use ferrosift_core::{Operation, OperationContext, OperationError, OperationRegis
 use ferrosift_model::{
     ArgumentKind, ArgumentSpec, ArgumentValue, Arguments, CapabilitySet, ClassificationSet,
     CompatibilityAlias, CompatibilityProfile, EvidenceRecord, EvidenceState, EvidenceSummary,
-    OperationId, OperationSpec, StreamingSupport, Target, TargetSet, Value, ValueConstraint,
+    OperationId, OperationSpec, OutputBehavior, StreamingSupport, Target, TargetSet, Value,
+    ValueConstraint,
 };
 
 pub struct StaticOperation {
@@ -82,6 +83,7 @@ pub fn operation_spec(
         classifications: ClassificationSet::new(),
         deterministic: true,
         streaming: StreamingSupport::Buffered,
+        output_behavior: OutputBehavior::default(),
         inverse: None,
         evidence: EvidenceSummary {
             provenance: verified("fixtures/provenance"),

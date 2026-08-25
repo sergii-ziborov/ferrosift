@@ -8,8 +8,8 @@ use ferrosift_core::{
 };
 use ferrosift_model::{
     Arguments, CapabilitySet, ClassificationSet, EvidenceRecord, EvidenceState, EvidenceSummary,
-    HostCapability, OperationId, OperationSpec, StreamingSupport, Target, TargetSet, Value,
-    ValueConstraint,
+    HostCapability, OperationId, OperationSpec, OutputBehavior, StreamingSupport, Target,
+    TargetSet, Value, ValueConstraint,
 };
 
 struct IdentityOperation {
@@ -74,6 +74,7 @@ fn operation_spec() -> OperationSpec {
         classifications: ClassificationSet::new(),
         deterministic: true,
         streaming: StreamingSupport::Buffered,
+        output_behavior: OutputBehavior::default(),
         inverse: None,
         evidence,
     }

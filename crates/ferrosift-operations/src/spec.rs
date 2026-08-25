@@ -3,7 +3,7 @@ use alloc::{collections::BTreeMap, string::String, vec, vec::Vec};
 use ferrosift_model::{
     ArgumentSpec, CapabilitySet, CompatibilityAlias, CompatibilityProfile, EvidenceRecord,
     EvidenceState, EvidenceSummary, OperationClassification, OperationId, OperationSpec,
-    StreamingSupport, Target, TargetSet, ValueConstraint, ValueKind,
+    OutputBehavior, StreamingSupport, Target, TargetSet, ValueConstraint, ValueKind,
 };
 
 pub(crate) struct SpecDefinition {
@@ -51,8 +51,27 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
         classifications,
         deterministic: true,
         streaming: StreamingSupport::Buffered,
+        output_behavior: OutputBehavior::InputProportional,
         inverse: definition.inverse.map(operation_id),
         evidence: evidence(),
+    }
+}
+
+/// Builds a spec for an operation whose output does not depend on its input.
+///
+/// Sequence and identifier generators read their arguments and ignore the
+/// value handed to them, so the executor's expansion ratio has nothing
+/// meaningful to divide by — see [`OutputBehavior::InputIndependent`]. Opting
+/// in through a separate function rather than a field keeps that decision
+/// visible at the one call site that makes it, instead of adding a `None` to
+/// every other operation in the catalog.
+///
+/// The operation is still bound by the absolute output limit and by
+/// cancellation, and is expected to refuse oversized requests itself.
+pub(crate) fn build_generator(definition: SpecDefinition) -> OperationSpec {
+    OperationSpec {
+        output_behavior: OutputBehavior::InputIndependent,
+        ..build(definition)
     }
 }
 
