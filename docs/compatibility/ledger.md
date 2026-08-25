@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 128 |
-| Reference-aliased | 126 |
-| Byte-pinned (`exact`) | 122 |
+| Registered operations | 133 |
+| Reference-aliased | 131 |
+| Byte-pinned (`exact`) | 127 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2147 |
+| Pinned cases | 2192 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -150,6 +150,11 @@ does.
 | `sets.intersection@1` | Set Intersection | core | exact | 10 |
 | `sets.symmetric_difference@1` | Symmetric Difference | core | exact | 9 |
 | `sets.union@1` | Set Union | core | exact | 10 |
+| `text.case.all@1` | Get All Casings | core | exact | 4 |
+| `text.case.alternating@1` | Alternating Caps | core | exact | 9 |
+| `text.case.lower@1` | To Lower case | core | exact | 9 |
+| `text.case.swap@1` | Swap case | core | exact | 9 |
+| `text.case.upper@1` | To Upper case | core | exact | 14 |
 | `text.find_replace@1` | Find / Replace | text | exact | 4 |
 | `text.leet@1` | Convert Leet Speak | core | exact | 28 |
 | `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |

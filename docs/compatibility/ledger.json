@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 128,
-    "aliased": 126,
-    "exact": 122,
+    "operations": 133,
+    "aliased": 131,
+    "exact": 127,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2147
+    "pinned_cases": 2192
   },
   "operations": [
     {
@@ -1591,6 +1591,71 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "text.case.all@1",
+      "display_name": "Get All Casings",
+      "category": "Text",
+      "reference_alias": "Get All Casings",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "text.case.alternating@1",
+      "display_name": "Alternating Caps",
+      "category": "Text",
+      "reference_alias": "Alternating Caps",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "text.case.lower@1",
+      "display_name": "To Lower case",
+      "category": "Text",
+      "reference_alias": "To Lower case",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "text.case.swap@1",
+      "display_name": "Swap case",
+      "category": "Text",
+      "reference_alias": "Swap case",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "text.case.upper@1",
+      "display_name": "To Upper case",
+      "category": "Text",
+      "reference_alias": "To Upper case",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
       "status": "exact"
     },
     {

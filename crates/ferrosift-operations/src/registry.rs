@@ -7,7 +7,10 @@
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, BitShift, Bitwise, Checksum, ClassicalCipher, DropBytes, DropNthBytes, Fork,
+    AddLineNumbers, AlternatingCaps, BitShift, Bitwise, Checksum, ClassicalCipher, DropBytes,
+    DropNthBytes, Fork, GetAllCasings, SwapCase, ToLowerCase, ToUpperCase,
+};
+use crate::{
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
     FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
     HammingDistance, Head, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines,
@@ -118,6 +121,21 @@ fn register_core(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(Tail::new())?;
     registry.register(Xor::new())?;
     register_bitwise(registry)?;
+    register_casing(registry)?;
+    Ok(())
+}
+
+/// Case transforms.
+///
+/// These carry no feature gate: they are string-to-string transforms with no
+/// tables and no dependencies, so a build that has text values at all can
+/// afford them.
+fn register_casing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(ToLowerCase::new())?;
+    registry.register(ToUpperCase::new())?;
+    registry.register(SwapCase::new())?;
+    registry.register(AlternatingCaps::new())?;
+    registry.register(GetAllCasings::new())?;
     Ok(())
 }
 

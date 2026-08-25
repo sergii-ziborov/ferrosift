@@ -37925,6 +37925,799 @@
     "6663333432303464373030623964623532313665666161653933616633656665323538616639333961343562376264346465313763386237643732393935666438666363386238396434346232346662"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "case_lower_edge_0",
+   "input": {
+    "kind": "text",
+    "value": "HELLO ÄÖÜ ẞ ΣΟΦΟΣ İIİ ǅ АБВ 中文"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f20c3a4c3b6c3bc20c39f20cf83cebfcf86cebfcf822069cc876969cc8720c78620d0b0d0b1d0b220e4b8ade69687"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_edge_0",
+   "input": {
+    "kind": "text",
+    "value": "HELLO ÄÖÜ ẞ ΣΟΦΟΣ İIİ ǅ АБВ 中文"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f20c384c396c39c20e1ba9e20cea3ce9fcea6ce9fcea320c4b049c4b020c78420d090d091d09220e4b8ade69687"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_edge_0",
+   "input": {
+    "kind": "text",
+    "value": "HELLO ÄÖÜ ẞ ΣΟΦΟΣ İIİ ǅ АБВ 中文"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f20c3a4c3b6c3bc20c39f20cf83cebfcf86cebfcf832069cc876969cc8720c78420d0b0d0b1d0b220e4b8ade69687"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_edge_0",
+   "input": {
+    "kind": "text",
+    "value": "HELLO ÄÖÜ ẞ ΣΟΦΟΣ İIİ ǅ АБВ 中文"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68456c4c6f20c384c3b6c39c20c39f20cea3cebfcea6cebfcea32069cc874969cc8720c78420d0b0d091d0b220e4b8ade69687"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_edge_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello ÄöÜ ß ẞ ΣσςΛ İi ǅ 123 中文 !?"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68656c6c6f20c3a4c3b6c3bc20c39f20c39f20cf83cf83cf82cebb2069cc876920c7862031323320e4b8ade6968720213f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_edge_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello ÄöÜ ß ẞ ΣσςΛ İi ǅ 123 中文 !?"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f20c384c396c39c20535320e1ba9e20cea3cea3cea3ce9b20c4b04920c7842031323320e4b8ade6968720213f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_edge_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello ÄöÜ ß ẞ ΣσςΛ İi ǅ 123 中文 !?"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68454c4c4f20c3a4c396c3bc20535320c39f20cf83cea3cea3cebb2069cc874920c7842031323320e4b8ade6968720213f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_edge_1",
+   "input": {
+    "kind": "text",
+    "value": "Hello ÄöÜ ß ẞ ΣσςΛ İi ǅ 123 中文 !?"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "68456c4c6f20c384c3b6c39c20c39f20e1ba9e20cf83cea3cf82ce9b2069cc874920c7862031323320e4b8ade6968720213f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_edge_2",
+   "input": {
+    "kind": "text",
+    "value": "ΑΣ ΟΔΟΣ σοφος ΣΣΣ"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ceb1cf8220cebfceb4cebfcf8220cf83cebfcf86cebfcf8220cf83cf83cf82"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_edge_2",
+   "input": {
+    "kind": "text",
+    "value": "ΑΣ ΟΔΟΣ σοφος ΣΣΣ"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ce91cea320ce9fce94ce9fcea320cea3ce9fcea6ce9fcea320cea3cea3cea3"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_edge_2",
+   "input": {
+    "kind": "text",
+    "value": "ΑΣ ΟΔΟΣ σοφος ΣΣΣ"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ceb1cf8320cebfceb4cebfcf8320cea3ce9fcea6ce9fcea320cf83cf83cf83"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_edge_2",
+   "input": {
+    "kind": "text",
+    "value": "ΑΣ ΟΔΟΣ σοφος ΣΣΣ"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ceb1cea320cebfce94cebfcea320cf83ce9fcf86ce9fcf8220cea3cf83cea3"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_edge_3",
+   "input": {
+    "kind": "text",
+    "value": "ǄǅǆǇǈǉǊǋǌ"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "c786c786c786c789c789c789c78cc78cc78c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_edge_3",
+   "input": {
+    "kind": "text",
+    "value": "ǄǅǆǇǈǉǊǋǌ"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c784c784c784c787c787c787c78ac78ac78a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_edge_3",
+   "input": {
+    "kind": "text",
+    "value": "ǄǅǆǇǈǉǊǋǌ"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "c786c784c784c789c787c787c78cc78ac78a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_edge_3",
+   "input": {
+    "kind": "text",
+    "value": "ǄǅǆǇǈǉǊǋǌ"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "c786c784c786c787c789c787c78cc78ac78c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_edge_4",
+   "input": {
+    "kind": "text",
+    "value": "i̇ İ ı I"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "69cc872069cc8720c4b12069"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_edge_4",
+   "input": {
+    "kind": "text",
+    "value": "i̇ İ ı I"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "49cc8720c4b020492049"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_edge_4",
+   "input": {
+    "kind": "text",
+    "value": "i̇ İ ı I"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "49cc872069cc8720492069"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_edge_4",
+   "input": {
+    "kind": "text",
+    "value": "i̇ İ ı I"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "69cc8720c4b020c4b12049"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_scope_all",
+   "input": {
+    "kind": "text",
+    "value": "hello world. new sentence here\nsecond paragraph. third one\n  indented start"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48454c4c4f20574f524c442e204e45572053454e54454e434520484552450a5345434f4e44205041524147524150482e205448495244204f4e450a2020494e44454e544544205354415254"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_scope_word",
+   "input": {
+    "kind": "text",
+    "value": "hello world. new sentence here\nsecond paragraph. third one\n  indented start"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Word"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f20576f726c642e204e65772053656e74656e636520486572650a5365636f6e64205061726167726170682e205468697264204f6e650a2020496e64656e746564205374617274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_scope_sentence",
+   "input": {
+    "kind": "text",
+    "value": "hello world. new sentence here\nsecond paragraph. third one\n  indented start"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Sentence"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f20776f726c642e204e65772073656e74656e636520686572650a7365636f6e64207061726167726170682e205468697264206f6e650a2020696e64656e746564207374617274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_scope_paragraph",
+   "input": {
+    "kind": "text",
+    "value": "hello world. new sentence here\nsecond paragraph. third one\n  indented start"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Paragraph"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f20776f726c642e206e65772073656e74656e636520686572650a5365636f6e64207061726167726170682e207468697264206f6e650a2020496e64656e746564207374617274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_word_a_b_c_d_e_f_1g_h2__x__y___z_",
+   "input": {
+    "kind": "text",
+    "value": "a_b c-d e.f 1g h2 _x (y) 'z'"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Word"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "415f6220432d4420452e46203167204832205f782028592920275a27"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_word__start",
+   "input": {
+    "kind": "text",
+    "value": "_start"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Word"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f7374617274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_word_9lives",
+   "input": {
+    "kind": "text",
+    "value": "9lives"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Word"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "396c69766573"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_word____",
+   "input": {
+    "kind": "text",
+    "value": "..."
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Word"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e2e2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_upper_word_empty",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "Word"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_1",
+   "input": {
+    "kind": "text",
+    "value": "$"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "24"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_1",
+   "input": {
+    "kind": "text",
+    "value": "$"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "24"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_1",
+   "input": {
+    "kind": "text",
+    "value": "$"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "24"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_7",
+   "input": {
+    "kind": "text",
+    "value": " v#6<}b"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "207623363c7d62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_7",
+   "input": {
+    "kind": "text",
+    "value": " v#6<}b"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "205623363c7d42"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_7",
+   "input": {
+    "kind": "text",
+    "value": " v#6<}b"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "207623363c7d42"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_lower_32",
+   "input": {
+    "kind": "text",
+    "value": "+0P)_ZH=n'[R 0$[$fZ03(;@s_/b36Ww"
+   },
+   "recipe": [
+    {
+     "op": "To Lower case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2b3070295f7a683d6e275b722030245b24667a3033283b40735f2f6233367777"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_swap_32",
+   "input": {
+    "kind": "text",
+    "value": "+0P)_ZH=n'[R 0$[$fZ03(;@s_/b36Ww"
+   },
+   "recipe": [
+    {
+     "op": "Swap case",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2b3070295f7a683d4e275b722030245b24467a3033283b40535f2f4233367757"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_alternating_32",
+   "input": {
+    "kind": "text",
+    "value": "+0P)_ZH=n'[R 0$[$fZ03(;@s_/b36Ww"
+   },
+   "recipe": [
+    {
+     "op": "Alternating Caps",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2b3070295f5a683d4e275b722030245b24467a3033283b40535f2f6233365777"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_all_casings_empty",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Get All Casings",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_all_casings_z",
+   "input": {
+    "kind": "text",
+    "value": "z"
+   },
+   "recipe": [
+    {
+     "op": "Get All Casings",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7a0a5a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_all_casings_ab1",
+   "input": {
+    "kind": "text",
+    "value": "aB1"
+   },
+   "recipe": [
+    {
+     "op": "Get All Casings",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6162310a4162310a6142310a4142310a6162310a4162310a6142310a414231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "case_all_casings_a_b",
+   "input": {
+    "kind": "text",
+    "value": "a-b"
+   },
+   "recipe": [
+    {
+     "op": "Get All Casings",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "612d620a412d620a612d620a412d620a612d420a412d420a612d420a412d42"
+   ],
+   "stopped_after": 1
   }
  ]
 }
