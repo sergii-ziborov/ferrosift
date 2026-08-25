@@ -65,6 +65,8 @@ mod xor;
 mod aes_kw;
 #[cfg(feature = "crypto")]
 mod aes_op;
+#[cfg(feature = "arithmetic")]
+mod bigint;
 #[cfg(feature = "crypto")]
 mod codec_bytes;
 #[cfg(feature = "compression")]
@@ -142,6 +144,8 @@ pub use xor::Xor;
 pub use aes_kw::{AesKeyUnwrap, AesKeyWrap};
 #[cfg(feature = "crypto")]
 pub use aes_op::{AesDecrypt, AesEncrypt};
+#[cfg(feature = "arithmetic")]
+pub use bigint::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "compression")]
 pub use compress::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,

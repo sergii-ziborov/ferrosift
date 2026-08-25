@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 162 |
-| Reference-aliased | 160 |
-| Byte-pinned (`exact`) | 156 |
+| Registered operations | 164 |
+| Reference-aliased | 162 |
+| Byte-pinned (`exact`) | 158 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2816 |
+| Pinned cases | 2884 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -161,6 +161,8 @@ does.
 | `logic.sub@1` | SUB | core | exact | 31 |
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
+| `math.egcd@1` | Extended GCD | core | exact | 43 |
+| `math.modinv@1` | Modular Inverse | core | exact | 25 |
 | `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
 | `sets.cartesian_product@1` | Cartesian Product | core | exact | 10 |
 | `sets.difference@1` | Set Difference | core | exact | 9 |

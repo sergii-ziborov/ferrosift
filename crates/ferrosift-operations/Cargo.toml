@@ -10,7 +10,16 @@ description = "Portable pure-Rust operations for FerroSift"
 [features]
 # Everything portable. The default, and what the conformance corpus pins.
 default = ["portable-full"]
-portable-full = ["analysis", "compression", "crypto", "hash", "text"]
+portable-full = ["analysis", "arithmetic", "compression", "crypto", "hash", "text"]
+
+# Arbitrary-precision integer arithmetic.
+#
+# num-bigint with default features off: three pure-Rust crates, and both
+# bare-metal targets build with it. The reference reaches for JavaScript's
+# BigInt here, and a fixed-width port would be a different operation —
+# cryptographic moduli routinely exceed sixty-four bits, which is most of the
+# reason Modular Inverse exists at all.
+arithmetic = ["dep:num-bigint", "dep:num-traits"]
 
 # Digests and HMAC.
 hash = [
@@ -84,6 +93,8 @@ md4 = { version = "0.10.2", default-features = false, optional = true }
 # Declared under the name the code imports, so the manifest and the `use`
 # statements agree; the published crate is `md-5`.
 md5 = { package = "md-5", version = "0.10.6", default-features = false, optional = true }
+num-bigint = { version = "0.5.1", default-features = false, optional = true }
+num-traits = { version = "0.2.19", default-features = false, optional = true }
 miniz_oxide = { version = "0.8.9", default-features = false, features = ["with-alloc"], optional = true }
 ofb = { version = "0.6.1", default-features = false, optional = true }
 oxiarc-bzip2 = { version = "0.4.1", optional = true }

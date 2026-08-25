@@ -23,6 +23,7 @@ doc = false
 default = ["portable-full"]
 portable-full = ["ferrosift-operations/portable-full"]
 analysis = ["ferrosift-operations/analysis"]
+arithmetic = ["ferrosift-operations/arithmetic"]
 compression = ["ferrosift-operations/compression"]
 crypto = ["ferrosift-operations/crypto"]
 hash = ["ferrosift-operations/hash"]

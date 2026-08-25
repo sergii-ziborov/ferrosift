@@ -13,8 +13,9 @@ default = ["portable-full", "pattern"]
 
 # Operation packs, forwarded to ferrosift-operations. Identity, flow control,
 # every encoding, byte slicing, and XOR need no pack and are always present.
-portable-full = ["analysis", "compression", "crypto", "hash", "text"]
+portable-full = ["analysis", "arithmetic", "compression", "crypto", "hash", "text"]
 analysis = ["ferrosift-operations/analysis"]
+arithmetic = ["ferrosift-operations/arithmetic"]
 compression = ["ferrosift-operations/compression"]
 crypto = ["ferrosift-operations/crypto"]
 hash = ["ferrosift-operations/hash"]

@@ -37,6 +37,8 @@ use crate::{
     ExtractFilePaths, ExtractHashes, ExtractIpAddresses, ExtractMacAddresses, ExtractUrls, FangUrl,
     FindReplace, Strings,
 };
+#[cfg(feature = "arithmetic")]
+use crate::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "hash")]
 use crate::{FixedDigest, Hmac, Md5, Ripemd, Sha1, Sha2, Sha3};
 #[cfg(feature = "analysis")]
@@ -248,6 +250,7 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
 #[cfg_attr(
     not(any(
         feature = "analysis",
+        feature = "arithmetic",
         feature = "compression",
         feature = "crypto",
         feature = "hash",
@@ -263,6 +266,11 @@ fn register_packs(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     {
         registry.register(SuggestRecipe::new())?;
         registry.register(XorBruteForce::new())?;
+    }
+    #[cfg(feature = "arithmetic")]
+    {
+        registry.register(ExtendedGcd::new())?;
+        registry.register(ModularInverse::new())?;
     }
     #[cfg(feature = "compression")]
     {

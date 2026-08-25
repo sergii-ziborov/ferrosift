@@ -34,7 +34,7 @@ dependency and make every pack bare-metal, which is why it is on the roadmap
 as its own piece of work rather than as a patch to a vendored manifest.
 
 Until then, the honest statement is: **FerroSift is `no_std` on bare metal for
-core, pattern, hash, crypto, text, and analysis; compression requires an
+core, pattern, hash, crypto, text, analysis, and arithmetic; compression requires an
 allocator plus `std` because of one transitive dependency.**
 
 `analysis` was on that list until recently, and not for a reason of its own.
