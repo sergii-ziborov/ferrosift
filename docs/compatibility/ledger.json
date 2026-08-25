@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 138,
-    "aliased": 136,
-    "exact": 132,
+    "operations": 142,
+    "aliased": 140,
+    "exact": 136,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2256
+    "pinned_cases": 2369
   },
   "operations": [
     {
@@ -1046,6 +1046,32 @@
       "status": "exact"
     },
     {
+      "id": "encoding.netbios.decode@1",
+      "display_name": "Decode NetBIOS Name",
+      "category": "Encoding",
+      "reference_alias": "Decode NetBIOS Name",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.netbios.encode@1",
+      "display_name": "Encode NetBIOS Name",
+      "category": "Encoding",
+      "reference_alias": "Encode NetBIOS Name",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
       "id": "encoding.octal.decode@1",
       "display_name": "From Octal",
       "category": "Encoding",
@@ -1082,6 +1108,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.unicode.escape@1",
+      "display_name": "Escape Unicode Characters",
+      "category": "Encoding",
+      "reference_alias": "Escape Unicode Characters",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 56,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.unicode.unescape@1",
+      "display_name": "Unescape Unicode Characters",
+      "category": "Encoding",
+      "reference_alias": "Unescape Unicode Characters",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 38,
       "status": "exact"
     },
     {

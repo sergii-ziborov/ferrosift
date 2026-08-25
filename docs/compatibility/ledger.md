@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 138 |
-| Reference-aliased | 136 |
-| Byte-pinned (`exact`) | 132 |
+| Registered operations | 142 |
+| Reference-aliased | 140 |
+| Byte-pinned (`exact`) | 136 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2256 |
+| Pinned cases | 2369 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -108,9 +108,13 @@ does.
 | `encoding.modhex.encode@1` | To Modhex | core | exact | 120 |
 | `encoding.morse.decode@1` | From Morse Code | core | exact | 29 |
 | `encoding.morse.encode@1` | To Morse Code | core | exact | 64 |
+| `encoding.netbios.decode@1` | Decode NetBIOS Name | core | exact | 12 |
+| `encoding.netbios.encode@1` | Encode NetBIOS Name | core | exact | 7 |
 | `encoding.octal.decode@1` | From Octal | core | exact | 14 |
 | `encoding.octal.encode@1` | To Octal | core | exact | 14 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |
+| `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
+| `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
 | `encoding.url.decode@1` | URL Decode | core | exact | 15 |
 | `encoding.url.encode@1` | URL Encode | core | exact | 13 |
 | `extract.domain@1` | Extract domains | text | exact | 1 |

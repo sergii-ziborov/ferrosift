@@ -51,6 +51,7 @@ mod sets;
 mod shape;
 mod sift;
 mod spec;
+mod unicode_escape;
 mod url;
 mod value;
 mod xor;
@@ -115,6 +116,9 @@ pub use shape::{
     DechunkHttpResponse, ExpandAlphabetRange, RemoveAnsiEscapeCodes, StripHttpHeaders, Wrap,
 };
 pub use sift::{DropNthBytes, RemoveNullBytes, RemoveWhitespace, Reverse, TakeNthBytes};
+pub use unicode_escape::{
+    DecodeNetbiosName, EncodeNetbiosName, EscapeUnicodeCharacters, UnescapeUnicodeCharacters,
+};
 pub use url::{UrlDecode, UrlEncode};
 pub use xor::Xor;
 
