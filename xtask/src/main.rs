@@ -9,6 +9,7 @@ use std::process::{Command, ExitCode};
 
 mod bench;
 mod cyberchef;
+mod encoding;
 mod jscompat;
 mod ledger;
 
@@ -22,6 +23,7 @@ Usage:
   cargo xtask cyberchef gap        List reference operations not yet implemented
   cargo xtask ledger generate      Rewrite the derived compatibility ledger
   cargo xtask ledger check         Fail when the committed ledger is stale
+  cargo xtask encoding check       Fail on text that was double-encoded
 
 The reference checkout defaults to tools/cyberchef-oracle/vendor and can be
 pointed elsewhere with FERROSIFT_CYBERCHEF_DIR.
@@ -33,6 +35,7 @@ fn main() -> ExitCode {
     match parts.as_slice() {
         ["bench", rest @ ..] => bench::run(rest),
         ["cyberchef", rest @ ..] => cyberchef::run(rest),
+        ["encoding", rest @ ..] => encoding::run(rest),
         ["jscompat", rest @ ..] => jscompat::run(rest),
         ["ledger", rest @ ..] => ledger::run(rest),
         ["--help" | "-h"] | [] => {

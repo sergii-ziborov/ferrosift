@@ -253,7 +253,7 @@ fn object_identifier_diverges_by_refusing_non_hexadecimal() {
 ///
 /// A first pair above 255 is written as plain hexadecimal with no base-128
 /// continuation and no padding, so `2.999` produces three hex digits that no
-/// ASN.1 decoder â€” including this crate's own â€” will read back. It is
+/// ASN.1 decoder — including this crate's own — will read back. It is
 /// reproduced because the operation exists to say what this reference emits,
 /// and a port that silently produced correct DER here would disagree with
 /// every certificate the reference wrote.

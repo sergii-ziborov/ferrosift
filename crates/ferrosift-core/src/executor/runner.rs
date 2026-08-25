@@ -168,7 +168,7 @@ impl Runner<'_> {
 
         // Nested Fork is never handled here: execute_region intercepts it.
         // Standalone Fork (empty body) is still an operation.execute path only
-        // when not detected as a region Ã¢â‚¬â€ but execute_region always detects it.
+        // when not detected as a region — but execute_region always detects it.
 
         let Some(operation) = prepared.operation else {
             return Err(self.fail(ExecutionFailure::UnknownOperation, location));

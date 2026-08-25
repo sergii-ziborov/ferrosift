@@ -13,8 +13,8 @@ use crate::error::Error;
 ///
 /// Compiling builds the registry-resolved steps once: the operation lookups,
 /// capability checks, and argument resolution all happen here. Running then
-/// applies only what depends on the call â€” input size and representation, the
-/// budget, and cancellation â€” before executing.
+/// applies only what depends on the call — input size and representation, the
+/// budget, and cancellation — before executing.
 pub struct CompiledPipeline<'a> {
     prepared: PreparedRecipe<'a>,
     budget: ExecutionBudget,

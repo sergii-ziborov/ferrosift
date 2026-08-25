@@ -4,7 +4,7 @@
 // on a plain ASCII sentence with default arguments. The amount column is
 // right-aligned in two characters by `(" " + amount).slice(-2)`, so shifts
 // below ten carry a leading space. And the output runs through
-// `escapeWhitespace`, whose character range is written `\x09-\x10` â€” tab
+// `escapeWhitespace`, whose character range is written `\x09-\x10` — tab
 // through data-link escape, which is almost certainly not what was meant but
 // is what the bytes say. Inputs below carry control characters so that range
 // is exercised rather than assumed.

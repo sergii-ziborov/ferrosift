@@ -1,4 +1,4 @@
-use alloc::{string::String, vec::Vec};
+﻿use alloc::{string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 
@@ -71,19 +71,40 @@ pub(super) fn decode(
     // the alphabet, and is filtered or rejected exactly as the character it
     // belongs to would have been. Collecting `char` cost four bytes per symbol
     // and a UTF-8 decode of the whole input before any decoding began.
-    let mut symbols = Vec::with_capacity(input.len());
-    for value in input.bytes() {
-        if alphabet.contains_byte(value) {
-            symbols.push(value);
-        } else if !remove_non_alphabet {
-            return Err(failed("encoding.base64.invalid_character"));
+    // Scanned before it is copied. Well-formed base64 — which is nearly all of
+    // it — has nothing to filter, and the previous version still allocated a
+    // second buffer the size of the input and copied every byte into it to
+    // discover that. Finding the first byte that needs removing costs one pass
+    // with no allocation, and when there is none the input is used where it
+    // lies.
+    let first_foreign = input
+        .bytes()
+        .position(|value| !alphabet.contains_byte(value));
+    let owned;
+    let symbols: &[u8] = match first_foreign {
+        None => input.as_bytes(),
+        Some(at) => {
+            if !remove_non_alphabet {
+                return Err(failed("encoding.base64.invalid_character"));
+            }
+            // Everything before the first foreign byte is already known good,
+            // so the copy starts there rather than at the beginning.
+            let mut kept = Vec::with_capacity(input.len() - 1);
+            kept.extend_from_slice(&input.as_bytes()[..at]);
+            for value in input.as_bytes()[at + 1..].iter().copied() {
+                if alphabet.contains_byte(value) {
+                    kept.push(value);
+                }
+            }
+            owned = kept;
+            &owned
         }
-    }
-    validate_shape(&symbols, alphabet)?;
+    };
+    validate_shape(symbols, alphabet)?;
     if strict {
-        validate_canonical_bits(&symbols, alphabet)?;
+        validate_canonical_bits(symbols, alphabet)?;
     }
-    let capacity = decoded_len(&symbols, alphabet)?;
+    let capacity = decoded_len(symbols, alphabet)?;
     ensure_output_fits(capacity, context)?;
     let mut output = Vec::with_capacity(capacity);
 
@@ -99,7 +120,7 @@ pub(super) fn decode(
                 .map_or(0, |index| index + 1);
             &symbols[..end]
         }
-        None => &symbols[..],
+        None => symbols,
     };
 
     let whole = data.len() - data.len() % 4;

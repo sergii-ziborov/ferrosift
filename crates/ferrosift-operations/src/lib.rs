@@ -258,7 +258,7 @@ pub mod registry_testing {
 /// failing for reasons nobody would connect.
 ///
 /// Hidden from the documentation because it is not part of the library's
-/// contract â€” the surface a caller uses is the operation catalog.
+/// contract — the surface a caller uses is the operation catalog.
 #[doc(hidden)]
 pub mod jscompat_testing {
     use alloc::{string::String, vec::Vec};

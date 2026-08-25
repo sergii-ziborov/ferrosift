@@ -1,6 +1,6 @@
 //! Which operations a build contains.
 //!
-//! Registration is grouped by *family* â€” what an operation is for â€” rather
+//! Registration is grouped by *family* — what an operation is for — rather
 //! than by what it costs to compile. That is a deliberate reversal. Grouping
 //! by cost put every hash in one function because they share a feature gate,
 //! and every encoding in another because they share the absence of one, so
@@ -12,7 +12,7 @@
 //! declares which catalog categories it accepts. `tests/registry.rs` builds
 //! each family on its own and fails if an operation landed somewhere its own
 //! specification does not agree with. That is what stops a family from
-//! becoming the junk drawer the old `register_shape` had turned into â€” it held
+//! becoming the junk drawer the old `register_shape` had turned into — it held
 //! HTTP framing, Braille, `NetBIOS` names, and `PowerSet`, none of which is
 //! shaping anything.
 //!
@@ -76,7 +76,7 @@ pub(crate) struct Family {
 
 /// Every family, in the order `default_registry` builds them.
 ///
-/// Order is presentation only â€” the registry is keyed by operation id, and
+/// Order is presentation only — the registry is keyed by operation id, and
 /// nothing downstream depends on insertion order.
 pub(crate) const FAMILIES: &[Family] = &[
     Family {
@@ -150,7 +150,7 @@ pub(crate) const FAMILIES: &[Family] = &[
         register: register_parsing,
     },
     Family {
-        // Both are comparisons over lists â€” one asks what two sets share, the
+        // Both are comparisons over lists — one asks what two sets share, the
         // other asks how far apart two strings are.
         name: "sets",
         categories: &["Sets", "Distance"],
@@ -225,7 +225,7 @@ fn register_checksums(registry: &mut OperationRegistry) -> Result<(), RegistryEr
 /// Ciphers and key derivation, classical and modern.
 ///
 /// The classical half needs no dependency and the modern half needs the
-/// `crypto` pack, which is a difference in cost rather than in kind â€” so both
+/// `crypto` pack, which is a difference in cost rather than in kind — so both
 /// live here and the gate sits around the half that needs it.
 fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(ClassicalCipher::a1z26_decode())?;
@@ -348,7 +348,7 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     registry.register(UnescapeUnicodeCharacters::new())?;
 
     // 62 is not a power of two, so Base62 reads the whole input as one integer
-    // rather than as a stream of bit groups â€” which is why it needs arbitrary
+    // rather than as a stream of bit groups — which is why it needs arbitrary
     // precision and the rest of this family does not.
     #[cfg(feature = "bignum")]
     {
@@ -415,7 +415,7 @@ fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
 ///
 /// XOR and its brute force are here rather than with the ciphers. XOR against
 /// a repeating key is a cipher in the sense that people use it as one, and a
-/// bitwise operation in the sense that matters to a port â€” the catalog calls
+/// bitwise operation in the sense that matters to a port — the catalog calls
 /// it Logic, and that is the placement this follows.
 fn register_logic(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(Bitwise::add())?;

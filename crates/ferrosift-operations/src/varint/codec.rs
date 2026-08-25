@@ -12,7 +12,7 @@ use crate::failure::failed;
 /// syntax error, which the reference surfaces as an operation error.
 ///
 /// The result is bounded to `u128`. The reference is arbitrary precision, so a
-/// number past that bound is refused rather than wrapped â€” inventing a
+/// number past that bound is refused rather than wrapped — inventing a
 /// different answer would be worse than declining to give one, and a
 /// 39-digit `VarInt` is well outside what the format is used for.
 fn parse_big(input: &str) -> Result<u128, OperationError> {

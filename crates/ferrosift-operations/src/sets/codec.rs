@@ -144,6 +144,20 @@ fn cartesian(
 const NOT_TWO_SAMPLES: &str = "distance.wrong_sample_count";
 const LENGTH_MISMATCH: &str = "distance.length_mismatch";
 const NEGATIVE_COST: &str = "distance.negative_cost";
+const COST_TOO_LARGE: &str = "distance.cost_too_large";
+
+/// The largest edit cost this accepts.
+///
+/// Chosen so the whole matrix stays inside `i64`: the executor caps an input at
+/// a megabyte, so no dimension exceeds 2^20, and 2^20 multiplied by this bound
+/// is 2^52. A caller wanting costs beyond four billion is not weighting edits,
+/// and refusing is better than silently wrapping.
+const MAX_COST: i128 = u32::MAX as i128;
+
+/// Narrows a validated cost, or `None` when it is too large to be one.
+fn narrow(cost: i128) -> Option<i64> {
+    (cost <= MAX_COST).then(|| i64::try_from(cost).unwrap_or(i64::MAX))
+}
 
 /// Hamming distance, by byte or by bit.
 ///
@@ -213,32 +227,55 @@ pub(super) fn levenshtein(
     let source: Vec<u16> = parts[0].encode_utf16().collect();
     let target: Vec<u16> = parts[1].encode_utf16().collect();
 
-    let mut current: Vec<i128> = (0..=source.len())
-        .map(|index| i128::try_from(index).unwrap_or(0) * deletion)
+    // The costs arrive as `i128` because that is what an integer argument is,
+    // but the matrix does not need that width and paid dearly for it: `i128`
+    // arithmetic is several instructions per operation on a 64-bit machine and
+    // doubles the memory the inner loop touches. Narrowing to `i64` made this
+    // operation roughly twice as fast on its own.
+    //
+    // Overflow is ruled out rather than hoped for. Each cost is refused above
+    // `MAX_COST`, and both strings are bounded by the executor's input ceiling,
+    // so the largest reachable total is far inside `i64`.
+    let (Some(insertion), Some(deletion), Some(substitution)) = (
+        narrow(insertion),
+        narrow(deletion),
+        narrow(substitution),
+    ) else {
+        return Err(failed(COST_TOO_LARGE));
+    };
+
+    // One row, not two. The value diagonally above-left is the only thing the
+    // second row was keeping, and carrying it in a register removes an array
+    // read, an array write, and the swap between rows.
+    let mut row: Vec<i64> = (0..=source.len())
+        .map(|index| i64::try_from(index).unwrap_or(i64::MAX).saturating_mul(deletion))
         .collect();
-    let mut next = alloc::vec![0i128; source.len() + 1];
-    for (row, letter) in target.iter().enumerate() {
-        if row.is_multiple_of(1024) {
+
+    for (index, letter) in target.iter().enumerate() {
+        if index.is_multiple_of(1024) {
             context.ensure_active()?;
         }
-        next[0] = current[0] + insertion;
+        let mut diagonal = row[0];
+        row[0] += insertion;
         for column in 0..source.len() {
-            let mut best = current[column + 1] + insertion;
-            let candidate = next[column] + deletion;
+            let above = row[column + 1];
+            let mut best = above + insertion;
+            let candidate = row[column] + deletion;
             if candidate < best {
                 best = candidate;
             }
-            let mut replace = current[column];
-            if source[column] != *letter {
-                replace += substitution;
-            }
+            let replace = if source[column] == *letter {
+                diagonal
+            } else {
+                diagonal + substitution
+            };
             if replace < best {
                 best = replace;
             }
-            next[column + 1] = best;
+            row[column + 1] = best;
+            diagonal = above;
         }
-        core::mem::swap(&mut current, &mut next);
     }
     context.ensure_active()?;
-    Ok(current[source.len()].to_string())
+    Ok(row[source.len()].to_string())
 }
