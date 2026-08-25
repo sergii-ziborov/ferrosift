@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 154 |
-| Reference-aliased | 152 |
-| Byte-pinned (`exact`) | 148 |
+| Registered operations | 157 |
+| Reference-aliased | 155 |
+| Byte-pinned (`exact`) | 151 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2694 |
+| Pinned cases | 2755 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -116,11 +116,14 @@ does.
 | `encoding.netbios.encode@1` | Encode NetBIOS Name | core | exact | 7 |
 | `encoding.octal.decode@1` | From Octal | core | exact | 14 |
 | `encoding.octal.encode@1` | To Octal | core | exact | 14 |
+| `encoding.quoted_printable.decode@1` | From Quoted Printable | core | exact | 12 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |
 | `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
 | `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
 | `encoding.url.decode@1` | URL Decode | core | exact | 15 |
 | `encoding.url.encode@1` | URL Encode | core | exact | 13 |
+| `encoding.varint.decode@1` | VarInt Decode | core | exact | 29 |
+| `encoding.varint.encode@1` | VarInt Encode | core | exact | 20 |
 | `extract.domain@1` | Extract domains | text | exact | 1 |
 | `extract.email@1` | Extract email addresses | text | exact | 2 |
 | `extract.file_paths@1` | Extract file paths | text | exact | 2 |

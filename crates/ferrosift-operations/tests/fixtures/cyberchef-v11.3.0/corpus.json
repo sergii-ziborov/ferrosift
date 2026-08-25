@@ -49057,6 +49057,1043 @@
     "747261696c696e6720626c616e6b206c696e65730a0a0a"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_0",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "00"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "01"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_2",
+   "input": {
+    "kind": "text",
+    "value": "127"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "7f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_3",
+   "input": {
+    "kind": "text",
+    "value": "128"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "8001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "8001"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_4",
+   "input": {
+    "kind": "text",
+    "value": "129"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "8101"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "8101"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_5",
+   "input": {
+    "kind": "text",
+    "value": "255"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff01"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_6",
+   "input": {
+    "kind": "text",
+    "value": "300"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ac02"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "ac02"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "333030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_7",
+   "input": {
+    "kind": "text",
+    "value": "16383"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff7f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3136333833"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_8",
+   "input": {
+    "kind": "text",
+    "value": "16384"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "808001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "808001"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3136333834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_9",
+   "input": {
+    "kind": "text",
+    "value": "2097151"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ffff7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "ffff7f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32303937313531"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_10",
+   "input": {
+    "kind": "text",
+    "value": "2097152"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "80808001"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "80808001"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "32303937313532"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_11",
+   "input": {
+    "kind": "text",
+    "value": "4294967295"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ffffffff0f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "ffffffff0f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34323934393637323935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_12",
+   "input": {
+    "kind": "text",
+    "value": "18446744073709551615"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ffffffffffffffffff01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "ffffffffffffffffff01"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3138343436373434303733373039353531363135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_13",
+   "input": {
+    "kind": "text",
+    "value": "0x7f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "7f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "7f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_14",
+   "input": {
+    "kind": "text",
+    "value": "0xFF"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_14",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff01"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_15",
+   "input": {
+    "kind": "text",
+    "value": "0b1010"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "0a"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_16",
+   "input": {
+    "kind": "text",
+    "value": "0o777"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "ff03"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff03"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "353131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_17",
+   "input": {
+    "kind": "text",
+    "value": "  42  "
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "2a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "2a"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_18",
+   "input": {
+    "kind": "text",
+    "value": "+7"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "07"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "07"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "37"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_encode_19",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "VarInt Encode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_round_trip_19",
+   "input": {
+    "kind": "bytes",
+    "hex": "00"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "00"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "01"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "7f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "8001"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "ff01"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "ac02"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "333030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "ffffffff0f"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "34323934393637323935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "96019601"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "varint_decode_raw_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "80"
+   },
+   "recipe": [
+    {
+     "op": "VarInt Decode",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_0",
+   "input": {
+    "kind": "text",
+    "value": "Hello=20World"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "48656c6c6f20576f726c64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_1",
+   "input": {
+    "kind": "text",
+    "value": "caf=C3=A9"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "636166c3a9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_2",
+   "input": {
+    "kind": "text",
+    "value": "long line that was=\r\nwrapped"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6c6f6e67206c696e6520746861742077617377726170706564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_3",
+   "input": {
+    "kind": "text",
+    "value": "long line that was=\nwrapped"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6c6f6e67206c696e6520746861742077617377726170706564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_4",
+   "input": {
+    "kind": "text",
+    "value": "trailing soft break="
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "747261696c696e6720736f667420627265616b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_5",
+   "input": {
+    "kind": "text",
+    "value": "100="
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_6",
+   "input": {
+    "kind": "text",
+    "value": "=ZZ not hex"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d5a5a206e6f7420686578"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_7",
+   "input": {
+    "kind": "text",
+    "value": "=4 short"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d342073686f7274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_8",
+   "input": {
+    "kind": "text",
+    "value": "plain text with no escapes"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "706c61696e20746578742077697468206e6f2065736361706573"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_9",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_10",
+   "input": {
+    "kind": "text",
+    "value": "=3D is an escaped equals"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3d20697320616e206573636170656420657175616c73"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "quoted_printable_11",
+   "input": {
+    "kind": "text",
+    "value": "=c3=a9 and =C3=A9"
+   },
+   "recipe": [
+    {
+     "op": "From Quoted Printable",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "c3a920616e6420c3a9"
+   ],
+   "stopped_after": 1
   }
  ]
 }

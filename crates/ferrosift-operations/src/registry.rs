@@ -10,9 +10,10 @@ use crate::{
     AddLineNumbers, AlternatingCaps, BitShift, Bitwise, CaretMDecode, Checksum, ClassicalCipher,
     DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
     EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
-    FromCaseInsensitiveRegex, GenerateDeBruijnSequence, GetAllCasings, ParityBit, PowerSet,
-    RemoveAnsiEscapeCodes, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, ToLowerCase,
-    ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, Wrap,
+    FromCaseInsensitiveRegex, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings,
+    ParityBit, PowerSet, RemoveAnsiEscapeCodes, StripHtmlTags, StripHttpHeaders, Substitute,
+    SwapCase, ToLowerCase, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, VarIntDecode,
+    VarIntEncode, Wrap,
 };
 use crate::{
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
@@ -167,6 +168,9 @@ fn register_shape(registry: &mut OperationRegistry) -> Result<(), RegistryError>
     registry.register(FormatMacAddresses::new())?;
     registry.register(EscapeSmartCharacters::new())?;
     registry.register(StripHtmlTags::new())?;
+    registry.register(VarIntEncode::new())?;
+    registry.register(VarIntDecode::new())?;
+    registry.register(FromQuotedPrintable::new())?;
     registry.register(EscapeUnicodeCharacters::new())?;
     registry.register(UnescapeUnicodeCharacters::new())?;
     registry.register(EncodeNetbiosName::new())?;

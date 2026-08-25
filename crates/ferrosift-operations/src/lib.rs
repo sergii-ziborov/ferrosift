@@ -60,6 +60,7 @@ mod substitute;
 mod unicode_escape;
 mod url;
 mod value;
+mod varint;
 mod xor;
 
 #[cfg(feature = "crypto")]
@@ -132,6 +133,7 @@ pub use unicode_escape::{
     DecodeNetbiosName, EncodeNetbiosName, EscapeUnicodeCharacters, UnescapeUnicodeCharacters,
 };
 pub use url::{UrlDecode, UrlEncode};
+pub use varint::{FromQuotedPrintable, VarIntDecode, VarIntEncode};
 pub use xor::Xor;
 
 #[cfg(feature = "crypto")]

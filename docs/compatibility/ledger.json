@@ -4,13 +4,13 @@
     "version": "11.3.0"
   },
   "totals": {
-    "operations": 154,
-    "aliased": 152,
-    "exact": 148,
+    "operations": 157,
+    "aliased": 155,
+    "exact": 151,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 2694
+    "pinned_cases": 2755
   },
   "operations": [
     {
@@ -1150,6 +1150,19 @@
       "status": "exact"
     },
     {
+      "id": "encoding.quoted_printable.decode@1",
+      "display_name": "From Quoted Printable",
+      "category": "Encoding",
+      "reference_alias": "From Quoted Printable",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 12,
+      "status": "exact"
+    },
+    {
       "id": "encoding.rot13@1",
       "display_name": "ROT13",
       "category": "Encoding",
@@ -1212,6 +1225,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.varint.decode@1",
+      "display_name": "VarInt Decode",
+      "category": "Encoding",
+      "reference_alias": "VarInt Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 29,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.varint.encode@1",
+      "display_name": "VarInt Encode",
+      "category": "Encoding",
+      "reference_alias": "VarInt Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 20,
       "status": "exact"
     },
     {
