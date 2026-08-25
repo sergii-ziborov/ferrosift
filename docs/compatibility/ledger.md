@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 198 |
-| Reference-aliased | 196 |
-| Byte-pinned (`exact`) | 192 |
+| Registered operations | 200 |
+| Reference-aliased | 198 |
+| Byte-pinned (`exact`) | 194 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3628 |
+| Pinned cases | 3694 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -83,6 +83,7 @@ does.
 | `crypto.aes_kw.wrap@1` | AES Key Wrap | crypto | exact | 2 |
 | `crypto.pbkdf2@1` | Derive PBKDF2 key | crypto | exact | 2 |
 | `crypto.rc4@1` | RC4 | crypto | exact | 4 |
+| `crypto.rc4_drop@1` | RC4 Drop | crypto | exact | 34 |
 | `crypto.scrypt@1` | Scrypt | crypto | exact | 2 |
 | `data.drop_bytes@1` | Drop bytes | core | exact | 4 |
 | `data.head@1` | Head | core | exact | 5 |
@@ -160,6 +161,7 @@ does.
 | `extract.mac@1` | Extract MAC addresses | text | exact | 2 |
 | `extract.strings@1` | Strings | text | exact | 2 |
 | `extract.url@1` | Extract URLs | text | exact | 2 |
+| `filesystem.unix_permissions@1` | Parse UNIX file permissions | core | exact | 32 |
 | `flow.comment@1` | Comment | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
 | `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |

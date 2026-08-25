@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 198,
-    "aliased": 196,
-    "exact": 192,
+    "operations": 200,
+    "aliased": 198,
+    "exact": 194,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3628
+    "pinned_cases": 3694
   },
   "operations": [
     {
@@ -656,6 +656,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.rc4_drop@1",
+      "display_name": "RC4 Drop",
+      "category": "Ciphers",
+      "reference_alias": "RC4 Drop",
+      "feature": "crypto",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 34,
       "status": "exact"
     },
     {
@@ -1657,6 +1670,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "filesystem.unix_permissions@1",
+      "display_name": "Parse UNIX file permissions",
+      "category": "Filesystem",
+      "reference_alias": "Parse UNIX file permissions",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 32,
       "status": "exact"
     },
     {

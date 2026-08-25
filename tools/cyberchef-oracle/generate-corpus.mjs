@@ -58,6 +58,8 @@ import * as bacon from "./corpus/bacon.mjs";
 import * as legacyHash from "./corpus/legacy.mjs";
 import * as bifid from "./corpus/bifid.mjs";
 import * as caseregex from "./corpus/caseregex.mjs";
+import * as unixperms from "./corpus/unixperms.mjs";
+import * as rc4drop from "./corpus/rc4drop.mjs";
 
 const profile = selectedProfile();
 const chef = await loadChef(profile);
@@ -71,7 +73,7 @@ const builder = createBuilder({
 // Order is part of the fixture: it fixes the PRNG draw order, so a new family
 // is appended rather than inserted. Inserting one would re-draw every sample
 // after it and rewrite fixtures that nothing about the change had touched.
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop]) {
     await family.add(builder);
 }
 
@@ -107,5 +109,7 @@ await writeFile(output, `${JSON.stringify(suite, null, 1)}\n`, "utf8");
 process.stdout.write(
     `wrote ${complete.length} corpus cases (${failures} bake failures dropped) to ${output}\n`,
 );
+
+
 
 

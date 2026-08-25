@@ -46,6 +46,7 @@ mod hex;
 mod hex_util;
 mod caseregex;
 mod comment;
+mod unixperms;
 mod hexcontent;
 mod hexdump;
 mod html;
@@ -147,6 +148,7 @@ pub use generate::GenerateDeBruijnSequence;
 pub use head::Head;
 pub use hex::{FromHex, ToHex};
 pub use caseregex::ToCaseInsensitiveRegex;
+pub use unixperms::ParseUnixFilePermissions;
 pub use comment::Comment;
 pub use hexcontent::{FromHexContent, ToHexContent};
 pub use legacy::{MurmurHash3, Sha0};
@@ -212,7 +214,7 @@ pub use kdf::{DerivePbkdf2Key, Scrypt};
 #[cfg(feature = "hash")]
 pub use nthash::NtHash;
 #[cfg(feature = "crypto")]
-pub use rc4_op::Rc4;
+pub use rc4_op::{Rc4, Rc4Drop};
 #[cfg(feature = "analysis")]
 pub use suggest::SuggestRecipe;
 #[cfg(feature = "analysis")]

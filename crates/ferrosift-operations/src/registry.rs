@@ -32,7 +32,7 @@ use crate::{
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
     HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, MurmurHash3,
-    PadLines, ParityBit,
+    PadLines, ParityBit, ParseUnixFilePermissions,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
@@ -47,7 +47,9 @@ use crate::{
 };
 
 #[cfg(feature = "crypto")]
-use crate::{AesDecrypt, AesEncrypt, AesKeyUnwrap, AesKeyWrap, DerivePbkdf2Key, Rc4, Scrypt};
+use crate::{
+    AesDecrypt, AesEncrypt, AesKeyUnwrap, AesKeyWrap, DerivePbkdf2Key, Rc4, Rc4Drop, Scrypt,
+};
 #[cfg(feature = "compression")]
 use crate::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
@@ -265,6 +267,7 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
         registry.register(AesKeyUnwrap::new())?;
         registry.register(AesKeyWrap::new())?;
         registry.register(Rc4::new())?;
+    registry.register(Rc4Drop::new())?;
         registry.register(DerivePbkdf2Key::new())?;
         registry.register(Scrypt::new())?;
     }
@@ -521,6 +524,7 @@ fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(GenerateDeBruijnSequence::new())?;
     registry.register(XkcdRandomNumber::new())?;
     registry.register(ToCaseInsensitiveRegex::new())?;
+    registry.register(ParseUnixFilePermissions::new())?;
 
     #[cfg(feature = "text")]
     {
