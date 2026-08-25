@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 200,
-    "aliased": 198,
-    "exact": 194,
+    "operations": 202,
+    "aliased": 200,
+    "exact": 196,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3694
+    "pinned_cases": 3727
   },
   "operations": [
     {
@@ -1449,6 +1449,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.punycode.decode@1",
+      "display_name": "From Punycode",
+      "category": "Encoding",
+      "reference_alias": "From Punycode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.punycode.encode@1",
+      "display_name": "To Punycode",
+      "category": "Encoding",
+      "reference_alias": "To Punycode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 19,
       "status": "exact"
     },
     {

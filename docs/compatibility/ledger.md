@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 200 |
-| Reference-aliased | 198 |
-| Byte-pinned (`exact`) | 194 |
+| Registered operations | 202 |
+| Reference-aliased | 200 |
+| Byte-pinned (`exact`) | 196 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3694 |
+| Pinned cases | 3727 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -144,6 +144,8 @@ does.
 | `encoding.netbios.encode@1` | Encode NetBIOS Name | core | exact | 7 |
 | `encoding.octal.decode@1` | From Octal | core | exact | 14 |
 | `encoding.octal.encode@1` | To Octal | core | exact | 14 |
+| `encoding.punycode.decode@1` | From Punycode | core | exact | 14 |
+| `encoding.punycode.encode@1` | To Punycode | core | exact | 19 |
 | `encoding.quoted_printable.decode@1` | From Quoted Printable | core | exact | 31 |
 | `encoding.quoted_printable.encode@1` | To Quoted Printable | core | exact | 19 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |

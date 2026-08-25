@@ -67404,6 +67404,633 @@
     "4d684862797348436e6d513d"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_0",
+   "input": {
+    "kind": "text",
+    "value": "münchen"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e6368656e2d337961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_1",
+   "input": {
+    "kind": "text",
+    "value": "bücher"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62636865722d6b7661"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_2",
+   "input": {
+    "kind": "text",
+    "value": "مثال"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d676268306662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_3",
+   "input": {
+    "kind": "text",
+    "value": "例子"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66737175303061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_4",
+   "input": {
+    "kind": "text",
+    "value": "рф"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70316169"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_5",
+   "input": {
+    "kind": "text",
+    "value": "ascii-only"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61736369692d6f6e6c792d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_6",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_8",
+   "input": {
+    "kind": "text",
+    "value": "münchen-mit-bindestrich"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d6e6368656e2d6d69742d62696e64657374726963682d736c63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_enc_9",
+   "input": {
+    "kind": "text",
+    "value": "😀"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65323868"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_10",
+   "input": {
+    "kind": "text",
+    "value": "mnchen-3ya"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6dfc6e6368656e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_11",
+   "input": {
+    "kind": "text",
+    "value": "bcher-kva"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62fc63686572"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_12",
+   "input": {
+    "kind": "text",
+    "value": "mgbh0fb"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d985d8abd8a7d984"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_13",
+   "input": {
+    "kind": "text",
+    "value": "fsqu00a"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e4be8be5ad90"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_14",
+   "input": {
+    "kind": "text",
+    "value": "p1ai"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d180d184"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_16",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "80"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_dec_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_18",
+   "input": {
+    "kind": "text",
+    "value": "münchen.de"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e2d2d6d6e6368656e2d3379612e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_19",
+   "input": {
+    "kind": "text",
+    "value": "bücher.example.com"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e2d2d62636865722d6b76612e6578616d706c652e636f6d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_20",
+   "input": {
+    "kind": "text",
+    "value": "example.com"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6578616d706c652e636f6d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_21",
+   "input": {
+    "kind": "text",
+    "value": "user@münchen.de"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7573657240786e2d2d6d6e6368656e2d3379612e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_22",
+   "input": {
+    "kind": "text",
+    "value": "a@b@c"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "614062"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_23",
+   "input": {
+    "kind": "text",
+    "value": "münchen。de"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e2d2d6d6e6368656e2d3379612e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_24",
+   "input": {
+    "kind": "text",
+    "value": "münchen．de"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e2d2d6d6e6368656e2d3379612e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_25",
+   "input": {
+    "kind": "text",
+    "value": "münchen｡de"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e2d2d6d6e6368656e2d3379612e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_enc_26",
+   "input": {
+    "kind": "text",
+    "value": "рф.рф"
+   },
+   "recipe": [
+    {
+     "op": "To Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786e2d2d703161692e786e2d2d70316169"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_27",
+   "input": {
+    "kind": "text",
+    "value": "xn--mnchen-3ya.de"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6dfc6e6368656e2e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_28",
+   "input": {
+    "kind": "text",
+    "value": "xn--bcher-kva.example.com"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62fc636865722e6578616d706c652e636f6d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_29",
+   "input": {
+    "kind": "text",
+    "value": "example.com"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6578616d706c652e636f6d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_30",
+   "input": {
+    "kind": "text",
+    "value": "user@xn--mnchen-3ya.de"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "75736572406dfc6e6368656e2e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_31",
+   "input": {
+    "kind": "text",
+    "value": "xn--MNCHEN-3YA.de"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6dfc6e6368656e2e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_32",
+   "input": {
+    "kind": "text",
+    "value": "XN--mnchen-3ya.de"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "584e2d2d6d6e6368656e2d3379612e6465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "punycode_idn_dec_33",
+   "input": {
+    "kind": "text",
+    "value": "xn--p1ai.xn--p1ai"
+   },
+   "recipe": [
+    {
+     "op": "From Punycode",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d180d1842ed180d184"
+   ],
+   "stopped_after": 1
   }
  ]
 }

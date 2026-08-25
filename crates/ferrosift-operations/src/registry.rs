@@ -32,7 +32,7 @@ use crate::{
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
     HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, MurmurHash3,
-    PadLines, ParityBit, ParseUnixFilePermissions,
+    PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
@@ -310,6 +310,8 @@ fn register_data(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 
 /// Every representation codec.
 fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(Punycode::encode())?;
+    registry.register(Punycode::decode())?;
     registry.register(FromBase32::new())?;
     registry.register(ToBase32::new())?;
     registry.register(FromBase45::new())?;
