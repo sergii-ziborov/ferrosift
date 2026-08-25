@@ -8,13 +8,13 @@ Reference: CyberChef 11.3.0.
 
 | | |
 |---|---:|
-| Registered operations | 142 |
-| Reference-aliased | 140 |
-| Byte-pinned (`exact`) | 136 |
+| Registered operations | 144 |
+| Reference-aliased | 142 |
+| Byte-pinned (`exact`) | 138 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 2369 |
+| Pinned cases | 2428 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -48,6 +48,8 @@ does.
 | `cipher.cetacean.encode@1` | Cetacean Cipher Encode | core | exact | 14 |
 | `cipher.rail_fence.decode@1` | Rail Fence Cipher Decode | core | exact | 12 |
 | `cipher.rail_fence.encode@1` | Rail Fence Cipher Encode | core | exact | 24 |
+| `cipher.rot13.brute@1` | ROT13 Brute Force | core | exact | 44 |
+| `cipher.rot47.brute@1` | ROT47 Brute Force | core | exact | 15 |
 | `cipher.rot47@1` | ROT47 | core | exact | 8 |
 | `cipher.rot8000@1` | ROT8000 | core | exact | 21 |
 | `cipher.vigenere.decode@1` | Vigenère Decode | core | exact | 28 |

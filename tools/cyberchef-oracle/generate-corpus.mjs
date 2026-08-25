@@ -29,6 +29,7 @@ import * as bitwise from "./corpus/bitwise.mjs";
 import * as casing from "./corpus/casing.mjs";
 import * as shaping from "./corpus/shaping.mjs";
 import * as unicodeEscape from "./corpus/unicode-escape.mjs";
+import * as brute from "./corpus/brute.mjs";
 import * as checksum from "./corpus/checksum.mjs";
 import * as classical from "./corpus/classical.mjs";
 import * as compress from "./corpus/compress.mjs";
@@ -49,7 +50,7 @@ const builder = createBuilder({
     seed: 0x5f37_1d10,
 });
 
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute]) {
     await family.add(builder);
 }
 

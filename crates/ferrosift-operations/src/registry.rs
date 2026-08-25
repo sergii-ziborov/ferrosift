@@ -16,10 +16,10 @@ use crate::{
     FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBinary, FromCharcode,
     FromDecimal, FromHex, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
     HammingDistance, Head, Identity, LevenshteinDistance, LuhnChecksum, Merge, PadLines,
-    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot47, Rotate,
-    SetOperation, SwapEndianness, Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58,
-    ToBase64, ToBase85, ToBinary, ToCharcode, ToDecimal, ToHex, ToHexdump, ToHtmlEntity, ToModhex,
-    ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
+    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
+    Rot47, Rot47BruteForce, Rotate, SetOperation, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
+    ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBinary, ToCharcode, ToDecimal, ToHex,
+    ToHexdump, ToHtmlEntity, ToModhex, ToMorseCode, ToOctal, UrlDecode, UrlEncode, Xor,
 };
 
 #[cfg(feature = "crypto")]
@@ -103,6 +103,8 @@ fn register_classical(registry: &mut OperationRegistry) -> Result<(), RegistryEr
     registry.register(ClassicalCipher::vigenere_decode())?;
     registry.register(ClassicalCipher::vigenere_encode())?;
     registry.register(Rot47::new())?;
+    registry.register(Rot13BruteForce::new())?;
+    registry.register(Rot47BruteForce::new())?;
     Ok(())
 }
 

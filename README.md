@@ -11,7 +11,7 @@ a pinned CyberChef v11.3.0 checkout, not asserted.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 142 | 140 | **136** | **2369** |
+| 144 | 142 | **138** | **2428** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -174,7 +174,7 @@ has a `std`. One pack does not yet reach bare metal;
 |---|---|
 | Analysis | Suggest recipe |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
-| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT47, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Vigenère Decode, Vigenère Encode |
+| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Vigenère Decode, Vigenère Encode |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
