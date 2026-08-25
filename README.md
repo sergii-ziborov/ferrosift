@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 186 | 184 | **180** | **3483** |
+| 192 | 190 | **186** | **3522** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -178,7 +178,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Analysis | Suggest recipe |
 | Arithmetic | Extended GCD, Modular Inverse |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
-| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode |
+| Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Bacon Cipher Decode, Bacon Cipher Encode, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, RC4, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
@@ -186,11 +186,11 @@ has a `std`. One pack does not yet reach bare metal;
 | Distance | Hamming Distance, Levenshtein Distance |
 | Encoding | Caret/M-decode, Citrix CTX1 Decode, Citrix CTX1 Encode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Base92, From Binary, From Braille, From COBS, From Charcode, From Decimal, From Float, From HTML Entity, From Hex, From Hex Content, From Hexdump, From Modhex, From Morse Code, From Octal, From Quoted Printable, ROT13, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Base92, To Binary, To Braille, To COBS, To Charcode, To Decimal, To Float, To HTML Entity, To Hex, To Hex Content, To Hexdump, To Modhex, To Morse Code, To Octal, To Quoted Printable, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
-| Flow control | Fork, Merge |
+| Flow control | Comment, Fork, Merge |
 | Hashing | HMAC, Keccak, MD2, MD4, MD5, NT Hash, RIPEMD, SHA1, SHA2, SHA3, SM3, Shake, Whirlpool |
 | KDF | Derive PBKDF2 key, Scrypt |
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, Parity Bit, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
-| Networking | Format MAC addresses |
+| Networking | Format MAC addresses, Strip IPv4 header, Strip TCP header, Strip UDP header |
 | Parsing | Hex to Object Identifier, Hex to PEM, Object Identifier to Hex, PEM to Hex |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
 | Shaping | Split, Unique |

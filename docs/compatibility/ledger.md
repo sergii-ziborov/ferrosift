@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 186 |
-| Reference-aliased | 184 |
-| Byte-pinned (`exact`) | 180 |
+| Registered operations | 192 |
+| Reference-aliased | 190 |
+| Byte-pinned (`exact`) | 186 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3483 |
+| Pinned cases | 3522 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -52,6 +52,8 @@ does.
 | `cipher.affine.decode@1` | Affine Cipher Decode | core | exact | 35 |
 | `cipher.affine.encode@1` | Affine Cipher Encode | core | exact | 70 |
 | `cipher.atbash@1` | Atbash Cipher | core | exact | 7 |
+| `cipher.bacon.decode@1` | Bacon Cipher Decode | core | exact | 17 |
+| `cipher.bacon.encode@1` | Bacon Cipher Encode | core | exact | 16 |
 | `cipher.caesar_box@1` | Caesar Box Cipher | core | exact | 10 |
 | `cipher.cetacean.decode@1` | Cetacean Cipher Decode | core | exact | 7 |
 | `cipher.cetacean.encode@1` | Cetacean Cipher Encode | core | exact | 14 |
@@ -156,6 +158,7 @@ does.
 | `extract.mac@1` | Extract MAC addresses | text | exact | 2 |
 | `extract.strings@1` | Strings | text | exact | 2 |
 | `extract.url@1` | Extract URLs | text | exact | 2 |
+| `flow.comment@1` | Comment | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
 | `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
 | `hash.hmac@1` | HMAC | hash | exact | 5 |
@@ -191,6 +194,9 @@ does.
 | `math.egcd@1` | Extended GCD | core | exact | 43 |
 | `math.modinv@1` | Modular Inverse | core | exact | 25 |
 | `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
+| `network.strip.ipv4@1` | Strip IPv4 header | core | exact | 2 |
+| `network.strip.tcp@1` | Strip TCP header | core | exact | 2 |
+| `network.strip.udp@1` | Strip UDP header | core | exact | 2 |
 | `sets.cartesian_product@1` | Cartesian Product | core | exact | 10 |
 | `sets.difference@1` | Set Difference | core | exact | 9 |
 | `sets.intersection@1` | Set Intersection | core | exact | 10 |

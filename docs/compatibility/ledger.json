@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 186,
-    "aliased": 184,
-    "exact": 180,
+    "operations": 192,
+    "aliased": 190,
+    "exact": 186,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3483
+    "pinned_cases": 3522
   },
   "operations": [
     {
@@ -248,6 +248,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.bacon.decode@1",
+      "display_name": "Bacon Cipher Decode",
+      "category": "Ciphers",
+      "reference_alias": "Bacon Cipher Decode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 17,
+      "status": "exact"
+    },
+    {
+      "id": "cipher.bacon.encode@1",
+      "display_name": "Bacon Cipher Encode",
+      "category": "Ciphers",
+      "reference_alias": "Bacon Cipher Encode",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 16,
       "status": "exact"
     },
     {
@@ -1608,6 +1634,20 @@
       "status": "exact"
     },
     {
+      "id": "flow.comment@1",
+      "display_name": "Comment",
+      "category": "Flow control",
+      "reference_alias": "Comment",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "exact",
+      "note": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
+    },
+    {
       "id": "flow.fork@1",
       "display_name": "Fork",
       "category": "Flow control",
@@ -2062,6 +2102,45 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 63,
+      "status": "exact"
+    },
+    {
+      "id": "network.strip.ipv4@1",
+      "display_name": "Strip IPv4 header",
+      "category": "Networking",
+      "reference_alias": "Strip IPv4 header",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "network.strip.tcp@1",
+      "display_name": "Strip TCP header",
+      "category": "Networking",
+      "reference_alias": "Strip TCP header",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "network.strip.udp@1",
+      "display_name": "Strip UDP header",
+      "category": "Networking",
+      "reference_alias": "Strip UDP header",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 2,
       "status": "exact"
     },
     {
