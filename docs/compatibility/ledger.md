@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 212 |
-| Reference-aliased | 210 |
-| Byte-pinned (`exact`) | 206 |
+| Registered operations | 214 |
+| Reference-aliased | 212 |
+| Byte-pinned (`exact`) | 208 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 4029 |
+| Pinned cases | 4058 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -90,6 +90,8 @@ does.
 | `crypto.rc4@1` | RC4 | crypto | exact | 4 |
 | `crypto.rc4_drop@1` | RC4 Drop | crypto | exact | 34 |
 | `crypto.scrypt@1` | Scrypt | crypto | exact | 2 |
+| `crypto.xxtea.decrypt@1` | XXTEA Decrypt | core | exact | 8 |
+| `crypto.xxtea.encrypt@1` | XXTEA Encrypt | core | exact | 21 |
 | `data.drop_bytes@1` | Drop bytes | core | exact | 4 |
 | `data.head@1` | Head | core | exact | 5 |
 | `data.nth_bytes.drop@1` | Drop nth bytes | core | exact | 17 |

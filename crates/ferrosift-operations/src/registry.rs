@@ -45,7 +45,7 @@ use crate::{
     ToHtmlEntity, ToLowerCase, ToTable,
     ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
     UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
-    VarIntEncode, Wrap, XkcdRandomNumber, Xor,
+    VarIntEncode, Wrap, XkcdRandomNumber, Xor, Xxtea,
 };
 
 #[cfg(feature = "crypto")]
@@ -250,6 +250,8 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     registry.register(BifidCipher::decode())?;
     registry.register(BifidCipher::encode())?;
     registry.register(Ls47Encrypt::new())?;
+    registry.register(Xxtea::encrypt())?;
+    registry.register(Xxtea::decrypt())?;
     registry.register(Ls47Decrypt::new())?;
     registry.register(ClassicalCipher::a1z26_decode())?;
     registry.register(ClassicalCipher::a1z26_encode())?;
