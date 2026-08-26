@@ -4,6 +4,21 @@ use ferrosift_core::{OperationContext, OperationError};
 
 use super::alphabet::{Alphabet, failed};
 
+/// Groups of three encoded between two checks of the cancellation flag.
+const TRIPLES_PER_BLOCK: usize = 1366;
+
+/// Groups of three staged before a write reaches the output.
+///
+/// Deliberately much smaller than the cancellation block, and the two are
+/// separate for a reason worth stating. Sizing the staging buffer to the
+/// block made it five kilobytes, which a sixteen-byte input then zeroed in
+/// full before encoding five groups -- and measurably lost, at the small
+/// sizes, everything the change won at the large ones. Sixty-four groups is
+/// a quarter-kilobyte of stack: still one capacity check per two hundred and
+/// fifty-six output bytes rather than per four, and nothing a short input
+/// notices.
+const STAGING_TRIPLES: usize = 64;
+
 pub(super) fn encode(
     input: &[u8],
     alphabet: &Alphabet,
@@ -18,17 +33,28 @@ pub(super) fn encode(
     // what the previous single loop paid for on every group of three.
     let whole = input.len() - input.len() % 3;
     let (body, tail) = input.split_at(whole);
-    for block in body.chunks(3 * 1366) {
+
+    // Symbols land in a fixed stack buffer and reach the output in batches.
+    // Writing them straight into the `Vec` meant a capacity check per group of
+    // three -- a third of a million of them on a megabyte -- for a buffer
+    // whose size was already known before the loop began. Filling an array of
+    // known length instead lets the four stores be seen as four stores.
+    //
+    // A zeroed output buffer of the full size would remove the checks too, and
+    // pay a megabyte of memset to do it. This pays a quarter of a kilobyte.
+    let mut staging = [0_u8; STAGING_TRIPLES * 4];
+    for block in body.chunks(3 * TRIPLES_PER_BLOCK) {
         context.ensure_active()?;
-        for triple in block.chunks_exact(3) {
-            let packed =
-                u32::from(triple[0]) << 16 | u32::from(triple[1]) << 8 | u32::from(triple[2]);
-            output.extend_from_slice(&[
-                alphabet.symbol_byte((packed >> 18) as usize & 0x3f),
-                alphabet.symbol_byte((packed >> 12) as usize & 0x3f),
-                alphabet.symbol_byte((packed >> 6) as usize & 0x3f),
-                alphabet.symbol_byte(packed as usize & 0x3f),
-            ]);
+        for group in block.chunks(3 * STAGING_TRIPLES) {
+            for (triple, quad) in group.chunks_exact(3).zip(staging.chunks_exact_mut(4)) {
+                let packed =
+                    u32::from(triple[0]) << 16 | u32::from(triple[1]) << 8 | u32::from(triple[2]);
+                quad[0] = alphabet.symbol_byte((packed >> 18) as usize & 0x3f);
+                quad[1] = alphabet.symbol_byte((packed >> 12) as usize & 0x3f);
+                quad[2] = alphabet.symbol_byte((packed >> 6) as usize & 0x3f);
+                quad[3] = alphabet.symbol_byte(packed as usize & 0x3f);
+            }
+            output.extend_from_slice(&staging[..group.len() / 3 * 4]);
         }
     }
 
