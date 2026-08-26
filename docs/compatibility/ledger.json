@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 215,
-    "aliased": 213,
-    "exact": 209,
+    "operations": 216,
+    "aliased": 214,
+    "exact": 210,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4066
+    "pinned_cases": 4083
   },
   "operations": [
     {
@@ -2401,6 +2401,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 26,
+      "status": "exact"
+    },
+    {
+      "id": "parsing.tlv@1",
+      "display_name": "Parse TLV",
+      "category": "Parsing",
+      "reference_alias": "Parse TLV",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 17,
       "status": "exact"
     },
     {
