@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 211,
-    "aliased": 209,
-    "exact": 205,
+    "operations": 212,
+    "aliased": 210,
+    "exact": 206,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4003
+    "pinned_cases": 4029
   },
   "operations": [
     {
@@ -2349,6 +2349,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "parsing.colour_code@1",
+      "display_name": "Parse colour code",
+      "category": "Parsing",
+      "reference_alias": "Parse colour code",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 26,
       "status": "exact"
     },
     {

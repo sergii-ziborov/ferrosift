@@ -33,7 +33,7 @@ use crate::{
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
     HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
-    MicrosoftScriptDecoder, OffsetChecker, PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
+    MicrosoftScriptDecoder, OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseUnixFilePermissions, Punycode,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
@@ -483,6 +483,7 @@ fn register_logic(registry: &mut OperationRegistry) -> Result<(), RegistryError>
 
 /// Reading a structured format rather than transforming bytes.
 fn register_parsing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(ParseColourCode::new())?;
     registry.register(HexToPem::new())?;
     registry.register(PemToHex::new())?;
     registry.register(FormatMacAddresses::new())?;
