@@ -48,6 +48,28 @@ pub use ferrosift_model::{
 #[cfg(feature = "pattern")]
 pub use ferrosift_pattern::{EvalOptions, Node, NodeValue, Pattern, PatternError};
 
+/// The built-in operations, for assembling a catalog smaller than the whole.
+///
+/// [`Engine::portable`] builds every operation, which is the right default and
+/// the wrong thing for a deployment that wants three of them. Registering only
+/// what is needed is a supported way to use this library, not a workaround:
+///
+/// ```
+/// use ferrosift::{Engine, OperationRegistry, operations};
+///
+/// let mut registry = OperationRegistry::new();
+/// registry.register(operations::FromBase64::new())?;
+/// let engine = Engine::with_registry(registry);
+///
+/// assert_eq!(engine.len(), 1);
+/// # Ok::<(), ferrosift::Error>(())
+/// ```
+///
+/// The smaller catalog is not only a smaller registry. Nothing then references
+/// [`ferrosift_operations::default_registry`], so the operations left out can
+/// be dropped from the binary entirely rather than merely going unregistered.
+pub use ferrosift_operations as operations;
+
 /// Parses a hex pattern once, for repeated evaluation.
 ///
 /// Pair with [`CompiledPipeline::run_parsed`] so a loop over many inputs

@@ -142,6 +142,30 @@ pattern-language runtime yet: that claim requires a pinned differential
 corpus, exactly like the CyberChef one, and none exists in this repository
 today.
 
+## Taking only part of the catalog
+
+`Engine::portable()` builds every operation, which is the right default and the
+wrong thing for a deployment that wants three of them. Registering only what is
+needed is a supported way to use this library rather than a workaround:
+
+```rust
+use ferrosift::{Engine, OperationRegistry, operations};
+
+let mut registry = OperationRegistry::new();
+registry.register(operations::FromBase64::new())?;
+registry.register(operations::Gunzip::new())?;
+let engine = Engine::with_registry(registry);
+```
+
+The pipeline, the budgets, the traces, and `run_pattern` all work the same
+against it. And the smaller catalog is not only a smaller registry: nothing
+then references `default_registry`, so the operations left out can be dropped
+from the binary rather than merely going unregistered.
+
+Feature packs cut at a coarser grain -- a whole family and the dependencies it
+pulls -- and the two compose: select the packs whose dependencies you accept,
+then register the operations you actually call.
+
 ## Feature packs
 
 Only what you select is compiled. Identity, flow control, every encoding,
