@@ -97,12 +97,24 @@ about.
 
 ## The mechanism, now built
 
-`Value::reinterpret` performs The dish's own conversion, ``ValueKind::converts_to`is the single table both it and preflight read, and the executor applies it
-before handing a value to an operation. Preflight accepts a pair when a
-conversion exists rather than only when the kinds already match.
+Conversion goes through a canonical byte form, because that is what the
+reference does: `Dish._translate` writes the value to an `ArrayBuffer` and
+reads it back as the target type, whatever the pair. `Value::into_dish_bytes`
+and `Value::from_dish_bytes` are those two halves, and `reinterpret` is their
+composition.
 
-The projection layer, not the extra variants, was the substance of this work.
-What remains is to route the kinds that still travel as `Text` through it.
+A table of ordered pairs was the first attempt and was wrong in shape. Ten
+kinds make ninety pairs, every one of them a chance to disagree with the
+reference in a direction nobody chained -- and `Number` to `Decimal` was
+already missing from it. `ValueKind::converts_to` now asks only whether one
+end can be written and the other read, so it cannot promise a conversion
+execution declines to perform. A test asserts that agreement across every
+kind and every target.
+
+Two kinds are writable but not readable, and the asymmetry is deliberate.
+`Integer` read back from digits would have to decide what to do with a
+fraction the reference would have kept; `Structured` would need a JSON parser
+obliged to agree with `JSON.parse`. Both are absent rather than approximated.
 
 ### How the rendering is checked
 
@@ -133,3 +145,14 @@ to the model rather than to the operation.
 This is recorded rather than fixed because no operation needs it yet, and
 because a limitation nobody has written down is the kind that gets discovered
 by a user.
+
+## What the rewrite found
+
+Text became bytes as UTF-8, and the reference does not do that. It writes one
+byte per UTF-16 code unit and falls back to UTF-8 only when a unit exceeds 255
+-- so `é` is the single byte `0xE9` there and was the pair `0xC3 0xA9` here.
+
+No fixture caught it, and none would have: a corpus of recipes reaches a
+conversion only when two steps happen to form that pair, so a conversion
+nobody chained is a conversion nobody checked. `crates/ferrosift-model/tests/dish.rs`
+tests the conversions directly for that reason.

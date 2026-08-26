@@ -73,16 +73,30 @@ impl ValueKind {
     /// execution then declines to perform.
     #[must_use]
     pub fn converts_to(self, other: Self) -> bool {
-        // A kind always reads as itself; the rest is the table above.
-        self == other
-            || matches!(
-                (self, other),
-                (
-                    Self::Markup | Self::Number | Self::Integer | Self::Decimal | Self::Structured,
-                    Self::Text | Self::Bytes,
-                ) | (Self::Integer, Self::Number | Self::Decimal)
-                    | (Self::Text, Self::Bytes | Self::Decimal)
-            )
+        // A kind always reads as itself. Otherwise the question is only
+        // whether one end can be written as canonical bytes and the other read
+        // from them -- two predicates rather than a hundred ordered pairs, and
+        // therefore incapable of disagreeing with `Value::reinterpret`.
+        self == other || (self.has_dish_bytes() && other.reads_dish_bytes())
+    }
+
+    /// Whether a value of this kind can be written as canonical bytes.
+    const fn has_dish_bytes(self) -> bool {
+        !matches!(self, Self::Empty | Self::Boolean | Self::Files)
+    }
+
+    /// Whether a value of this kind can be read back from canonical bytes.
+    ///
+    /// `Integer` and `Structured` are writable but not readable. An integer
+    /// read from digits would have to decide what to do with a fraction the
+    /// reference would have kept, and a structure would need a JSON parser
+    /// obliged to agree with `JSON.parse`. Both are absent rather than
+    /// approximated.
+    const fn reads_dish_bytes(self) -> bool {
+        matches!(
+            self,
+            Self::Bytes | Self::Text | Self::Markup | Self::Number | Self::Decimal
+        )
     }
 }
 
@@ -245,66 +259,137 @@ impl Value {
         if self.kind() == kind {
             return Some(self);
         }
-        match (self, kind) {
-            // Markup read as anything else is stripped and unescaped, which is
-            // what makes this conversion lossy and why markup is its own kind.
-            (Self::Markup(markup), ValueKind::Text) => Some(Self::Text(TextValue {
-                text: strip_markup(&markup),
-                encoding: TextEncoding::Utf8,
-            })),
-            (Self::Markup(markup), ValueKind::Bytes) => {
-                Some(Self::Bytes(strip_markup(&markup).into_bytes()))
-            }
-            // A number becomes the digits the reference would print, not the
-            // digits this language would.
-            (Self::Number(number), ValueKind::Text) => Some(Self::Text(TextValue {
-                text: render_number(number.get()),
-                encoding: TextEncoding::Utf8,
-            })),
-            (Self::Number(number), ValueKind::Bytes) => {
-                Some(Self::Bytes(render_number(number.get()).into_bytes()))
-            }
-            (Self::Integer(number), ValueKind::Number) => {
-                Some(Self::Number(NumberValue::new(integer_to_float(number))))
-            }
-            // An integer prints as the reference prints a number, because the
-            // reference has no separate integer type to print differently.
-            (Self::Integer(number), ValueKind::Text) => Some(Self::Text(TextValue {
-                text: render_number(integer_to_float(number)),
-                encoding: TextEncoding::Utf8,
-            })),
-            (Self::Integer(number), ValueKind::Bytes) => Some(Self::Bytes(
-                render_number(integer_to_float(number)).into_bytes(),
-            )),
-            // A decimal renders with the reference's `toFixed`, which never
-            // uses exponential notation whatever the exponent.
-            (Self::Decimal(decimal), ValueKind::Text) => Some(Self::Text(TextValue {
-                text: decimal.to_fixed(),
-                encoding: TextEncoding::Utf8,
-            })),
-            (Self::Decimal(decimal), ValueKind::Bytes) => {
-                Some(Self::Bytes(decimal.to_fixed().into_bytes()))
-            }
-            (Self::Integer(number), ValueKind::Decimal) => {
-                Some(Self::Decimal(DecimalValue::from(number)))
-            }
-            // Unreadable text becomes not-a-number rather than a failure,
-            // because the reference's dish catches its constructor's throw and
-            // substitutes exactly that.
-            (Self::Text(text), ValueKind::Decimal) => {
-                Some(Self::Decimal(DecimalValue::parse(&text.text)))
-            }
-            (Self::Structured(value), ValueKind::Text) => Some(Self::Text(TextValue {
-                text: render_structured(&value, 0),
-                encoding: TextEncoding::Utf8,
-            })),
-            (Self::Structured(value), ValueKind::Bytes) => {
-                Some(Self::Bytes(render_structured(&value, 0).into_bytes()))
-            }
-            (Self::Text(text), ValueKind::Bytes) => Some(Self::Bytes(text.text.into_bytes())),
-            _ => None,
+        Self::from_dish_bytes(kind, self.into_dish_bytes()?)
+    }
+
+    /// The canonical bytes this value converts through.
+    ///
+    /// One arm per kind, mirroring the reference's dish types. `Boolean`,
+    /// `Empty`, and `Files` have no counterpart there and so no byte form
+    /// here: giving them one would invent a conversion the reference does not
+    /// define, and would quietly accept a recipe it refuses.
+    #[must_use]
+    pub fn into_dish_bytes(self) -> Option<Vec<u8>> {
+        match self {
+            Self::Bytes(bytes) => Some(bytes),
+            Self::Text(text) => Some(text_to_bytes(&text.text)),
+            Self::Integer(number) => Some(text_to_bytes(&render_number(integer_to_float(number)))),
+            Self::Number(number) => Some(text_to_bytes(&render_number(number.get()))),
+            Self::Decimal(decimal) => Some(text_to_bytes(&decimal.to_fixed())),
+            // Markup loses its tags and entities here, which is the whole
+            // reason it is a kind: a step after one sees this, not the markup.
+            Self::Markup(markup) => Some(text_to_bytes(&strip_markup(&markup))),
+            Self::Structured(value) => Some(text_to_bytes(&render_structured(&value, 0))),
+            Self::Empty | Self::Boolean(_) | Self::Files(_) => None,
         }
     }
+
+    /// Reads canonical bytes back as `kind`.
+    ///
+    /// `Structured` is deliberately absent. Reading it back means parsing
+    /// JSON, and a parser obliged to agree with `JSON.parse` on every input is
+    /// its own piece of work rather than a line here. A structure can be read
+    /// *as* something else but not reconstructed from it, and the asymmetry is
+    /// reported by [`ValueKind::converts_to`] so that preflight refuses such a
+    /// step rather than execution failing on it.
+    #[must_use]
+    pub fn from_dish_bytes(kind: ValueKind, bytes: Vec<u8>) -> Option<Self> {
+        match kind {
+            ValueKind::Bytes => Some(Self::Bytes(bytes)),
+            ValueKind::Text => Some(Self::Text(TextValue {
+                text: bytes_to_text(&bytes),
+                encoding: TextEncoding::Utf8,
+            })),
+            ValueKind::Markup => Some(Self::Markup(bytes_to_text(&bytes))),
+            ValueKind::Decimal => Some(Self::Decimal(DecimalValue::parse(&bytes_to_text(&bytes)))),
+            ValueKind::Number => Some(Self::Number(NumberValue::new(parse_number(
+                &bytes_to_text(&bytes),
+            )))),
+            ValueKind::Empty
+            | ValueKind::Boolean
+            | ValueKind::Integer
+            | ValueKind::Structured
+            | ValueKind::Files => None,
+        }
+    }
+}
+
+/// Turns text into bytes the way the reference does, which is not UTF-8.
+///
+/// One byte per UTF-16 code unit while every unit fits in one, and the whole
+/// string as UTF-8 the moment one does not. So `é` is the single byte `0xE9`
+/// and not the pair `0xC3 0xA9` -- a difference this crate had wrong until the
+/// conversion moved here, because nothing chained a step past text carrying a
+/// character in that range.
+fn text_to_bytes(text: &str) -> Vec<u8> {
+    let mut bytes = Vec::with_capacity(text.len());
+    for unit in text.encode_utf16() {
+        match u8::try_from(unit) {
+            Ok(byte) => bytes.push(byte),
+            Err(_) => return text.as_bytes().to_vec(),
+        }
+    }
+    bytes
+}
+
+/// Reads bytes back as text, preferring UTF-8 and falling back a byte at a time.
+///
+/// The fallback is not a guess: the reference reads a buffer as UTF-8 and
+/// keeps the byte values when that fails, so bytes that are not valid UTF-8
+/// arrive as the characters of those byte values rather than as an error.
+fn bytes_to_text(bytes: &[u8]) -> String {
+    match core::str::from_utf8(bytes) {
+        Ok(text) => String::from(text),
+        Err(_) => bytes.iter().map(|byte| char::from(*byte)).collect(),
+    }
+}
+
+/// Reads a number the way `parseFloat` does.
+///
+/// It reads the longest prefix that looks like a number and ignores the rest,
+/// answering not-a-number only when the prefix is empty. `12abc` is twelve
+/// there, and a parser that refused it would reject a conversion the reference
+/// performs.
+fn parse_number(text: &str) -> f64 {
+    let trimmed = text.trim_start();
+    let mut end = 0;
+    let mut seen_digit = false;
+    let mut seen_point = false;
+    let mut seen_exponent = false;
+    for (index, character) in trimmed.char_indices() {
+        let acceptable = match character {
+            '0'..='9' => {
+                seen_digit = true;
+                true
+            }
+            '+' | '-' => {
+                // A sign is only part of the number at the very start, or
+                // immediately after the exponent marker.
+                index == 0 || trimmed[..index].ends_with(['e', 'E'])
+            }
+            '.' => {
+                !seen_point && !seen_exponent && {
+                    seen_point = true;
+                    true
+                }
+            }
+            'e' | 'E' => {
+                seen_digit && !seen_exponent && {
+                    seen_exponent = true;
+                    true
+                }
+            }
+            _ => false,
+        };
+        if !acceptable {
+            break;
+        }
+        end = index + character.len_utf8();
+    }
+    if !seen_digit {
+        return f64::NAN;
+    }
+    trimmed[..end].parse::<f64>().unwrap_or(f64::NAN)
 }
 
 /// Removes tags and resolves entities, as the reference's markup dish does.

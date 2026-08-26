@@ -39,8 +39,14 @@ fn validation_performs_complete_preflight_without_invoking_operations() {
 fn deterministically_incompatible_later_input_fails_before_side_effects() {
     let first_calls = counter();
     let second_calls = counter();
-    let mut first = operation("core.bytes@1", Behavior::Identity, first_calls.clone());
-    first.spec.output = ValueConstraint::Exact(ValueKind::Bytes);
+    // Files against text, rather than bytes against text. The reference
+    // converts bytes to a string on every recipe that ends in a text
+    // operation, so rejecting *that* pair would reject recipes it runs. A file
+    // list has no counterpart among its dish types and no byte form here, so
+    // it is a flow that genuinely cannot happen -- which is what preflight is
+    // for.
+    let mut first = operation("core.files@1", Behavior::Identity, first_calls.clone());
+    first.spec.output = ValueConstraint::Exact(ValueKind::Files);
     let mut second = operation("core.text@1", Behavior::Identity, second_calls.clone());
     second.spec.input = ValueConstraint::Exact(ValueKind::Text);
     let mut registry = OperationRegistry::new();
@@ -50,7 +56,7 @@ fn deterministically_incompatible_later_input_fails_before_side_effects() {
     let error = Executor::new(&registry)
         .execute(
             &recipe(vec![
-                step("bytes", "core.bytes@1"),
+                step("files", "core.files@1"),
                 step("text", "core.text@1"),
             ]),
             Value::Bytes(vec![1]),
@@ -72,7 +78,7 @@ fn partially_overlapping_output_contract_fails_before_side_effects() {
     let first_calls = counter();
     let second_calls = counter();
     let mut first = operation("core.either@1", Behavior::Identity, first_calls.clone());
-    first.spec.output = ValueConstraint::OneOf(BTreeSet::from([ValueKind::Bytes, ValueKind::Text]));
+    first.spec.output = ValueConstraint::OneOf(BTreeSet::from([ValueKind::Files, ValueKind::Text]));
     let mut second = operation("core.text@1", Behavior::Identity, second_calls.clone());
     second.spec.input = ValueConstraint::Exact(ValueKind::Text);
     let mut registry = OperationRegistry::new();
@@ -135,15 +141,10 @@ fn unconstrained_output_accepts_a_semantically_complete_one_of() {
     let second_calls = counter();
     let first = operation("core.any@1", Behavior::Identity, first_calls.clone());
     let mut second = operation("core.all_kinds@1", Behavior::Identity, second_calls.clone());
-    second.spec.input = ValueConstraint::OneOf(BTreeSet::from([
-        ValueKind::Empty,
-        ValueKind::Bytes,
-        ValueKind::Text,
-        ValueKind::Boolean,
-        ValueKind::Integer,
-        ValueKind::Structured,
-        ValueKind::Files,
-    ]));
+    // Built from `ValueKind::ALL` rather than typed out. The list here used to
+    // name seven kinds, which was every kind when it was written and stopped
+    // being so when three were added -- and nothing would have said so.
+    second.spec.input = ValueConstraint::OneOf(ValueKind::ALL.into_iter().collect::<BTreeSet<_>>());
     let mut registry = OperationRegistry::new();
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
