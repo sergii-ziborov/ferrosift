@@ -16,7 +16,7 @@ import {mkdir, writeFile} from "node:fs/promises";
 import path from "node:path";
 
 import {
-    bakeHex,
+    bakeOutput,
     bakeString as bakeStringWith,
     fixtureDirFor,
     loadChef,
@@ -64,6 +64,7 @@ import * as punycode from "./corpus/punycode.mjs";
 import * as bech32 from "./corpus/bech32.mjs";
 import * as ls47 from "./corpus/ls47.mjs";
 import * as stats from "./corpus/stats.mjs";
+import * as offsetcheck from "./corpus/offsetcheck.mjs";
 
 const profile = selectedProfile();
 const chef = await loadChef(profile);
@@ -77,7 +78,7 @@ const builder = createBuilder({
 // Order is part of the fixture: it fixes the PRNG draw order, so a new family
 // is appended rather than inserted. Inserting one would re-draw every sample
 // after it and rewrite fixtures that nothing about the change had touched.
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47, stats]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47, stats, offsetcheck]) {
     await family.add(builder);
 }
 
@@ -87,9 +88,23 @@ for (const testCase of cases) {
     testCase.outputs_hex = [];
     for (let length = 1; length <= testCase.recipe.length; length += 1) {
         try {
-            testCase.outputs_hex.push(
-                await bakeHex(chef, makeInput(testCase.input), testCase.recipe.slice(0, length)),
+            const {hex, html} = await bakeOutput(
+                chef,
+                makeInput(testCase.input),
+                testCase.recipe.slice(0, length),
             );
+            // An HTML operation may only be the last step. FerroSift passes
+            // its markup on as text; the reference passes the stripped form.
+            // Chaining past one would pin a divergence that says nothing about
+            // either operation, so it is refused here rather than explained
+            // later.
+            if (html && length < testCase.recipe.length) {
+                throw new Error(
+                    `step ${length} produces HTML and is not last; ` +
+                        "an HTML operation may only end a recipe",
+                );
+            }
+            testCase.outputs_hex.push(hex);
         } catch (error) {
             failures += 1;
             process.stderr.write(

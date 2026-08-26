@@ -71651,6 +71651,443 @@
     "766172206d795f6d7367203d202254657374696e67203c313e3c323e3c333e21223b0d0a0d0a565363726970742e4563686f286d795f6d7367293b"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "offset_check_0",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcdef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162636465663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162636465663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_1",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_2",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nuvwxyz"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162636465660a0a75767778797a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_3",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e6465660a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_4",
+   "input": {
+    "kind": "text",
+    "value": "abc\n\nabcdef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e646566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_5",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcdef\n\nabcdef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162636465663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162636465663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162636465663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_6",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcXef\n\nabcdef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_7",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabc\n\nabcdefgh"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e6465660a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e6465666768"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_8",
+   "input": {
+    "kind": "text",
+    "value": "ab\n\nab"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e61623c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e61623c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_9",
+   "input": {
+    "kind": "text",
+    "value": "abcd\n\nab"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e61623c2f7370616e3e63640a0a3c7370616e20636c6173733d27686c35273e61623c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_10",
+   "input": {
+    "kind": "text",
+    "value": "a\n\na"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e613c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e613c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_11",
+   "input": {
+    "kind": "text",
+    "value": "a\n\nb"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "610a0a62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_12",
+   "input": {
+    "kind": "text",
+    "value": "\n\nabc"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_13",
+   "input": {
+    "kind": "text",
+    "value": "abc\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162630a0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_14",
+   "input": {
+    "kind": "text",
+    "value": "\n\n"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0a0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_15",
+   "input": {
+    "kind": "text",
+    "value": "&<>\"'`\n\n&<>\"'`"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e26616d703b266c743b2667743b2671756f743b26237832373b26237836303b3c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e26616d703b266c743b2667743b2671756f743b26237832373b26237836303b3c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_16",
+   "input": {
+    "kind": "text",
+    "value": "&<>\"'`\n\nxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "26616d703b266c743b2667743b2671756f743b26237832373b26237836303b0a0a787878787878"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_17",
+   "input": {
+    "kind": "text",
+    "value": "aébc\n\naébc"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e61e962633c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e61e962633c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_check_18",
+   "input": {
+    "kind": "text",
+    "value": "aébc\n\naXbc"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e613c2f7370616e3ee93c7370616e20636c6173733d27686c35273e62633c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e613c2f7370616e3e583c7370616e20636c6173733d27686c35273e62633c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_delim_19",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_delim_20",
+   "input": {
+    "kind": "text",
+    "value": "abcdef,abcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      ","
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e2c3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_delim_21",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\tabcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\t"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e093c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "offset_delim_22",
+   "input": {
+    "kind": "text",
+    "value": "abcdef||abcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "||"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e7c7c3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
+   ],
+   "stopped_after": 1
   }
  ]
 }

@@ -33,7 +33,7 @@ use crate::{
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
     HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
-    MicrosoftScriptDecoder, PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
+    MicrosoftScriptDecoder, OffsetChecker, PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
@@ -203,6 +203,7 @@ fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     // not have.
     registry.register(ChiSquare::new())?;
     registry.register(IndexOfCoincidence::new())?;
+    registry.register(OffsetChecker::new())?;
 
     #[cfg(feature = "analysis")]
     {

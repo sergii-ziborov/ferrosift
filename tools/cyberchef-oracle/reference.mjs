@@ -142,10 +142,63 @@ export async function loadChef(profile = selectedProfile()) {
     return chef;
 }
 
-/** Bakes a recipe and returns the output bytes as lower-case hex. */
+/** The dish type number the reference uses for HTML. */
+const HTML_DISH = 3;
+
+/**
+ * Bakes a recipe and returns the output bytes as lower-case hex.
+ *
+ * An operation that produces HTML is read from the dish's own value rather
+ * than through `get`. Every `get` translates by way of an ArrayBuffer, and the
+ * HTML dish's conversion to one strips the tags and unescapes the entities --
+ * so asking for bytes, or even for a string, returns the markup with the
+ * markup taken out. That is a fine thing to paste somewhere; it is not what
+ * the operation produced, and pinning it would have let a port that emitted no
+ * highlighting at all pass.
+ *
+ * Reading `value` is safe here only because the dish has not been translated
+ * yet: the first `get` mutates it in place.
+ */
 export async function bakeHex(chef, input, recipe) {
     const result = await chef.bake(input, recipe);
+    if (result.type === HTML_DISH) {
+        return Buffer.from(await stringBytes(chef, result.value)).toString("hex");
+    }
     return Buffer.from(result.get("byteArray")).toString("hex");
+}
+
+/**
+ * Turns a string into bytes the way the reference turns any other string.
+ *
+ * Encoding the markup as UTF-8 directly would be the obvious thing and the
+ * wrong one: the reference's string-to-bytes conversion emits one byte per
+ * code point below 256, so every other case in the corpus is pinned in that
+ * convention. Re-baking through an empty recipe borrows that conversion
+ * instead of restating it, so the markup cases cannot drift from the rest.
+ */
+async function stringBytes(chef, value) {
+    const dish = await chef.bake(value, []);
+    return dish.get("byteArray");
+}
+
+/**
+ * Bakes once and reports both the output bytes and whether it was markup.
+ *
+ * The caller needs the second fact to refuse a case that chains *past* an
+ * HTML operation. FerroSift carries the markup forward as its text, while the
+ * reference hands the next operation the stripped form, so the two part from
+ * the second step onwards for a reason that has nothing to do with either
+ * operation being wrong. Until the value model tells markup from text, the
+ * harness checks that no case depends on the difference rather than trusting
+ * whoever writes one to remember.
+ */
+export async function bakeOutput(chef, input, recipe) {
+    const result = await chef.bake(input, recipe);
+    if (result.type === HTML_DISH) {
+        const bytes = await stringBytes(chef, result.value);
+        return {hex: Buffer.from(bytes).toString("hex"), html: true};
+    }
+    return {hex: Buffer.from(result.get("byteArray")).toString("hex"), html: false};
 }
 
 /** Bakes a recipe and returns the output as the reference's string view. */
@@ -174,13 +227,12 @@ export function makeInput(input) {
 export async function bakeEveryPrefix(chef, testCase) {
     const outputs = [];
     for (let length = 1; length <= testCase.recipe.length; length += 1) {
-        outputs.push(
-            await bakeHex(
-                chef,
-                makeInput(testCase.input),
-                testCase.recipe.slice(0, length),
-            ),
+        const {hex} = await bakeOutput(
+            chef,
+            makeInput(testCase.input),
+            testCase.recipe.slice(0, length),
         );
+        outputs.push(hex);
     }
     return outputs;
 }

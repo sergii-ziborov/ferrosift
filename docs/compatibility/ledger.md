@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 209 |
-| Reference-aliased | 207 |
-| Byte-pinned (`exact`) | 203 |
+| Registered operations | 210 |
+| Reference-aliased | 208 |
+| Byte-pinned (`exact`) | 204 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3907 |
+| Pinned cases | 3930 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -36,6 +36,7 @@ does.
 |---|---|---|---|---:|
 | `analysis.chi_square@1` | Chi Square | core | exact | 14 |
 | `analysis.index_of_coincidence@1` | Index of Coincidence | core | exact | 11 |
+| `analysis.offset_checker@1` | Offset checker | core | exact | 23 |
 | `analysis.suggest@1` | — | analysis | native | 0 |
 | `asn1.oid.decode@1` | Hex to Object Identifier | core | exact | 30 |
 | `asn1.oid.encode@1` | Object Identifier to Hex | core | exact | 41 |
