@@ -17,7 +17,13 @@ use std::process::ExitCode;
 const EXTENSIONS: &[&str] = &["rs", "mjs", "js", "md", "toml", "yml", "yaml"];
 
 /// Directories that are not ours to police.
-const SKIP: &[&str] = &["target", "node_modules", ".git", ".ferrosift-private", "vendor"];
+const SKIP: &[&str] = &[
+    "target",
+    "node_modules",
+    ".git",
+    ".ferrosift-private",
+    "vendor",
+];
 
 /// This scanner's own path, relative to the repository root.
 const SELF: &str = "xtask/src/encoding.rs";

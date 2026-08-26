@@ -22,6 +22,8 @@ struct Case {
     written: String,
     #[serde(rename = "nan")]
     not_a_number: bool,
+    /// Whether the reference's constructor threw rather than answering.
+    rejected: bool,
 }
 
 #[derive(serde::Deserialize)]
@@ -74,6 +76,42 @@ fn renders_every_recorded_value_exactly() {
             case.input
         );
     }
+}
+
+#[test]
+fn what_the_constructor_refuses_is_told_apart_from_what_it_reads() {
+    // The fixture has always recorded which inputs made the reference *throw*
+    // rather than answer, and nothing read it. That was a gap rather than a
+    // spare column: a dish catches the exception and substitutes
+    // not-a-number, but an operation that calls the constructor itself stops
+    // its recipe. The text `NaN` is a value; the text `abc` is a refusal; and
+    // `parse` alone cannot tell them apart because it answers the same for
+    // both.
+    let mut refusals = 0;
+    for case in cases() {
+        let read = DecimalValue::read(&case.input);
+        assert_eq!(
+            read.is_none(),
+            case.rejected,
+            "the reference {} {:?}",
+            if case.rejected { "refused" } else { "accepted" },
+            case.input
+        );
+        refusals += usize::from(case.rejected);
+    }
+    assert!(
+        refusals >= 4,
+        "the fixture should hold refusals to check against; found {refusals}"
+    );
+
+    assert!(
+        DecimalValue::read("NaN").is_some_and(|value| value.is_not_a_number()),
+        "the text NaN is a value the reference reads"
+    );
+    assert!(
+        DecimalValue::read("abc").is_none(),
+        "and text that is not a number at all is refused"
+    );
 }
 
 #[test]

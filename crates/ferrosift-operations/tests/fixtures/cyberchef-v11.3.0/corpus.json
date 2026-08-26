@@ -80199,6 +80199,8608 @@
     "322e35"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "tobase_16_0",
+   "input": {
+    "kind": "text",
+    "value": "255"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_0",
+   "input": {
+    "kind": "text",
+    "value": "255"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131313131313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_0",
+   "input": {
+    "kind": "text",
+    "value": "255"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_3",
+   "input": {
+    "kind": "text",
+    "value": "-255"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d6666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_3",
+   "input": {
+    "kind": "text",
+    "value": "-255"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131313131313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_3",
+   "input": {
+    "kind": "text",
+    "value": "-255"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_4",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_4",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_4",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_5",
+   "input": {
+    "kind": "text",
+    "value": "35"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_5",
+   "input": {
+    "kind": "text",
+    "value": "35"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_5",
+   "input": {
+    "kind": "text",
+    "value": "35"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_6",
+   "input": {
+    "kind": "text",
+    "value": "36"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_6",
+   "input": {
+    "kind": "text",
+    "value": "36"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_6",
+   "input": {
+    "kind": "text",
+    "value": "36"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_7",
+   "input": {
+    "kind": "text",
+    "value": "1295"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353066"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_7",
+   "input": {
+    "kind": "text",
+    "value": "1295"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313030303031313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_7",
+   "input": {
+    "kind": "text",
+    "value": "1295"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a7a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_8",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_8",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_8",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32676f7361377061326778"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_9",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31386565393066663663333733653065653465336630616432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_9",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313030303131313031313130313030313030303031313131313131313031313031313030303031313031313130303131313131303030303031313130313131303031303031313130303031313131313130303030313031303131303130303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_9",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6279773937756d39733931646c7a3638747369"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_10",
+   "input": {
+    "kind": "text",
+    "value": "0.5"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_10",
+   "input": {
+    "kind": "text",
+    "value": "0.5"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_10",
+   "input": {
+    "kind": "text",
+    "value": "0.5"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e69"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_11",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3139393939393939393939393939393939393961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_11",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303031313030313130303131303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_11",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e336c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_12",
+   "input": {
+    "kind": "text",
+    "value": "0.25"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_12",
+   "input": {
+    "kind": "text",
+    "value": "0.25"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_12",
+   "input": {
+    "kind": "text",
+    "value": "0.25"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_13",
+   "input": {
+    "kind": "text",
+    "value": "255.5"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66662e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_13",
+   "input": {
+    "kind": "text",
+    "value": "255.5"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313131313131312e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_13",
+   "input": {
+    "kind": "text",
+    "value": "255.5"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37332e69"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_14",
+   "input": {
+    "kind": "text",
+    "value": "-0.75"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_14",
+   "input": {
+    "kind": "text",
+    "value": "-0.75"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_14",
+   "input": {
+    "kind": "text",
+    "value": "-0.75"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e72"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_15",
+   "input": {
+    "kind": "text",
+    "value": "1e-30"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_15",
+   "input": {
+    "kind": "text",
+    "value": "1e-30"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_15",
+   "input": {
+    "kind": "text",
+    "value": "1e-30"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030303064"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_16",
+   "input": {
+    "kind": "text",
+    "value": "1e-8"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303261663331646334363131383734"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_16",
+   "input": {
+    "kind": "text",
+    "value": "1e-8"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_16",
+   "input": {
+    "kind": "text",
+    "value": "1e-8"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303030306c726e336b65663773356b75647077"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_17",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333633356339616463356465613030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_17",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313031313030303131303130313131303031303031313031303131303131313030303130313131303131313130313031303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_17",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3576316a346634647337396d3973"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_18",
+   "input": {
+    "kind": "text",
+    "value": "1e30"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63396632633963643034363734656465613430303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_18",
+   "input": {
+    "kind": "text",
+    "value": "1e30"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313030313030313131313130303130313130303130303131313030313130313030303030313030303131303031313130313030313131303131303131313130313031303031303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_18",
+   "input": {
+    "kind": "text",
+    "value": "1e30"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "326f793939776e6b6c3163373664696f63713973"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_19",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_19",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313130303131313031313031313030303131313031313131303131303130313031303031313131313031303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_19",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "76756b3770383465746330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_20",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_20",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_20",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_21",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_21",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_21",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_22",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_22",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_22",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_23",
+   "input": {
+    "kind": "text",
+    "value": "apples"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_23",
+   "input": {
+    "kind": "text",
+    "value": "apples"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_23",
+   "input": {
+    "kind": "text",
+    "value": "apples"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_16_24",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_2_24",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_36_24",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_2",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313131303130313130313131313030313130313030303130313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_2",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303031313030313130303131303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_3",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3232313231303232303230323132323030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_3",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030323230303232303032323030323230303232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133313132333330333130313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_4",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      4
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031323132313231323132313231323132313232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_5",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323233313031313034313234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_5",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3032323232323232323232323232323232323232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_6",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      6
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230313330303335313133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_6",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      6
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3033333333333333333333333333333333333334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_7",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33303236323336323231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_7",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3034363230343632303436323034363230343632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_8",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373236373436343235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_8",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3036333134363331343633313436333134363332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_9",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      9
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323737323636373830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_9",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      9
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3038303830383038303830383038303830383038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_10",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233343536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_10",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_11",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      11
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3633373632613035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_11",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      11
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3131313131313131313131313131313131313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_12",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      12
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3335343138613939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_12",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      12
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3132343937323439373234393732343937323461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_13",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      13
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3163373637343731"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_13",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      13
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3133623931336239313362393133623931336239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_14",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      14
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132353739373831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_14",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      14
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3135383538353835383538353835383538353836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_15",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      15
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61633839626339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_15",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      15
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3137373737373737373737373737373737373737"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_16",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37356263643135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_16",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3139393939393939393939393939393939393961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_17",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      17
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35316732613231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_17",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      17
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3162663531626635316266353162663531626635"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_18",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      18
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33623630663839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_18",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      18
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3165373361653733616537336165373361653734"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_19",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      19
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32626736346165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_19",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      19
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3168316831683168316831683168316831683168"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_20",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      20
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31696263316a39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_20",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      20
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_21",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      21
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31393467683766"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_21",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      21
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3232323232323232323232323232323232323232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_22",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      22
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31316c30383035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_22",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      22
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3234386864343868643438686434386864343869"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_23",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      23
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6a34336a6662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_23",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      23
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e32366b6732366b6732366b6732366b6732366b67"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_24",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      24
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66633265676c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_24",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      24
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3239653965396539653965396539653965396561"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_25",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "636731356c65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_25",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      25
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3263636363636363636363636363636363636363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_26",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      26
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616134346131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_26",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      26
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3266666666666666666666666666666666666667"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_27",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      27
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "386738366e69"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_27",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      27
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e32696f3832696f3832696f3832696f3832696f38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_28",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      28
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37346e716231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_28",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      28
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e326d6235676d6235676d6235676d6235676d6236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_29",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      29
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36306673686a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_29",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      29
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3271327132713271327132713271327132713271"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_30",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      30
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353263653639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_30",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      30
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_31",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      31
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34396c333032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_31",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      31
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_32",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "336c6e6a386c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_32",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e333663706a3663706a3663706a3663706a366371"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_33",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      33
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333533633372"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_33",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      33
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3339746e3339746e3339746e3339746e3339746e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_34",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      34
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "326f64326931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_34",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      34
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e33646b646b646b646b646b646b646b646b646b65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_35",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      35
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "326339673174"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_35",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      35
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3368686868686868686868686868686868686868"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_36",
+   "input": {
+    "kind": "text",
+    "value": "123456789"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323169337639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tobase_alphabet_frac_36",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "To Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e336c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_0",
+   "input": {
+    "kind": "text",
+    "value": "ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_1",
+   "input": {
+    "kind": "text",
+    "value": "FF"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_2",
+   "input": {
+    "kind": "text",
+    "value": "zz"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_3",
+   "input": {
+    "kind": "text",
+    "value": "ZZ"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_4",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_5",
+   "input": {
+    "kind": "text",
+    "value": "777"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_6",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_7",
+   "input": {
+    "kind": "text",
+    "value": "hello"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3239323334363532"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_8",
+   "input": {
+    "kind": "text",
+    "value": "-ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_9",
+   "input": {
+    "kind": "text",
+    "value": "+ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_10",
+   "input": {
+    "kind": "text",
+    "value": "1e5"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "343835"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_11",
+   "input": {
+    "kind": "text",
+    "value": "1e5"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      15
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "343430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_12",
+   "input": {
+    "kind": "text",
+    "value": "ff.8"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3235352e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_13",
+   "input": {
+    "kind": "text",
+    "value": "1F.A"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33312e363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_14",
+   "input": {
+    "kind": "text",
+    "value": "1F.aB"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33312e3636373936383735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_15",
+   "input": {
+    "kind": "text",
+    "value": "1f.Ab"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33312e3636373936383735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_16",
+   "input": {
+    "kind": "text",
+    "value": "0.8"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_17",
+   "input": {
+    "kind": "text",
+    "value": ".8"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_18",
+   "input": {
+    "kind": "text",
+    "value": "8."
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_19",
+   "input": {
+    "kind": "text",
+    "value": "1010.1011"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31302e36383735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_20",
+   "input": {
+    "kind": "text",
+    "value": "0.1"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_21",
+   "input": {
+    "kind": "text",
+    "value": "0.0001"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_22",
+   "input": {
+    "kind": "text",
+    "value": "0.zzzzzzzz"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3939393939393939393939393634353532393538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_23",
+   "input": {
+    "kind": "text",
+    "value": "1.2.3"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_24",
+   "input": {
+    "kind": "text",
+    "value": "1.8.ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_25",
+   "input": {
+    "kind": "text",
+    "value": " ff "
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_26",
+   "input": {
+    "kind": "text",
+    "value": "f f"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_27",
+   "input": {
+    "kind": "text",
+    "value": "1 0 1 0"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_28",
+   "input": {
+    "kind": "text",
+    "value": "f\tf\nf"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34303935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_29",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_30",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_31",
+   "input": {
+    "kind": "text",
+    "value": "."
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_32",
+   "input": {
+    "kind": "text",
+    "value": "ffffffffffffffffffffffffffffffff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333430323832333636393230393338343633343633333734363037343331373638323131343535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_33",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_2",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_8",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_10",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_16",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34313132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_36",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      36
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3436363932"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_3",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      3
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_7",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      7
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_12",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      12
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_20",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      20
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38303230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_26",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      26
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3137363032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "frombase_radix_35",
+   "input": {
+    "kind": "text",
+    "value": "1010"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      35
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432393130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "numbase_round_trip",
+   "input": {
+    "kind": "text",
+    "value": "ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    },
+    {
+     "op": "To Base",
+     "args": [
+      16
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535",
+    "6666"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "numbase_round_trip_fraction",
+   "input": {
+    "kind": "text",
+    "value": "ff.8"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    },
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3235352e35",
+    "31313131313131312e31"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "numbase_into_sum",
+   "input": {
+    "kind": "text",
+    "value": "ff"
+   },
+   "recipe": [
+    {
+     "op": "From Base",
+     "args": [
+      16
+     ]
+    },
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323535",
+    "323535"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "numbase_from_sum",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "To Base",
+     "args": [
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36",
+    "313130"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "filetime_out_0",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_2",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_3",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_4",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_6",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_7",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_8",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_9",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_10",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_11",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303130303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435643731363830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38303136643764356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336561373130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31306137336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30613830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363030303030303030302e3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365383030302e3032386635633238663563323866356332386636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6636323835633866633266353238356338663032302e3030653835336564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_24",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313333343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_25",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "316461313734376336366430303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_26",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030366463363437313764613031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_27",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343631373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_28",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964633135346634333439303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_29",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303930333466343534633139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_30",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373533303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_31",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623165326361383565613030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_32",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30306561383563616532623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_33",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303137303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_34",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656436343165363430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_35",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34306536343164366465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_36",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313238373930343134393030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_37",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "316339386533333332393666353030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_38",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30306635393633323333386563393031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_39",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343537303831363738393030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_40",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964626431393439306361623230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_41",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32306162306334393139626439643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_42",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373438333435363738393030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_43",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623165316235316139633334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_44",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33343963316162356531623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_45",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363031323334353637382e39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_46",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564356661653134652e6536363636363636363636363636363636363636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_47",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3636363636363636363636363636363636366536652e3134616535666564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_48",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373335393930303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_49",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656434613565393830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_50",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38306539613564346465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_51",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373335393939393930303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_52",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336535386630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_53",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66303538336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_54",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373335393939393939393930"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_55",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336537666636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_56",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66363766336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_57",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733353939393939393939392e3939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_58",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365376666662e6664373061336437306133643730613364373061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_59",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3061643761333730336430616437613337306664662e6666653735336564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_60",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_61",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_62",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_63",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136333238323931323634303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_64",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964343766366565316537303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_65",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303730316565656636343739643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_66",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434363139353535323634303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_67",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623163336238393864363030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_68",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30306436393862386333623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_69",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373335383833353535323634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_70",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656365346462316330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_71",
+   "input": {
+    "kind": "text",
+    "value": "-11644473600"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63306231346463656465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_72",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d393939393939393939383833353535323633393930303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_73",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3333623265336339653332636535653132323865393830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_74",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "383065393238313235656365333239653363326533622d33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_75",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d393939393939383833353535323633393939393930303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_76",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d6433633231613331316230656362633135386630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_77",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6630353863316362306531623331316163326433302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_78",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d393939383833353535323633393939393939393930"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_79",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d333633343262666265373039363137666636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_80",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "663637663631303965376662326233343336302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_81",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3838333535353236333939393939393939392e3939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_82",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d6334333034643464323235376666662e6664373061336437306133643730613364373061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_83",
+   "input": {
+    "kind": "text",
+    "value": "-99999999999999999999"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3061643761333730336430616437613337306664662e6666353732323464346433306334302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_84",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303135303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_85",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656436323336316330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_86",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63303631323364366465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_87",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303135303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_88",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336562613938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_89",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39386261336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_90",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_91",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303066"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_92",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30663830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_93",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363030303030303030302e303135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_94",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365383030302e3033643730613364373061336437306133643731"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_95",
+   "input": {
+    "kind": "text",
+    "value": "1.5"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3731336430616437613337303364306164373033302e3030653835336564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_96",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313136343434373336303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_97",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313964623164656435336538303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_98",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313830336564356465623139643031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_99",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363030303030303030302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_100",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365383030302e3030343138393337346263366137656639646232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_101",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6232396465666137633634623337383934313030302e3030653835336564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_102",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363030303030303030302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_103",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365383030302e3030303031306336663761306235656438643337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_104",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3337386465646235613066376336313030303030302e3030653835336564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_105",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363030303030303030302e303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_106",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365383030302e3030303030303034346238326661303962356135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_107",
+   "input": {
+    "kind": "text",
+    "value": "0.0000001"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6135623530396661383234623034303030303030302e3030653835336564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_108",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133333434343733363030313233343536372e3839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_109",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3164613137343763363766643638372e6533643730613364373061336437306133643731"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_110",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3731336430616437613337303364306164376533372e3638666436373763373461313164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_111",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363436313733363030303030313233342e3536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_112",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646331353466343334393464322e3931363133643331623962363666393333356432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_113",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6432333539333666623662393331336436313931322e3464343934333466313564633139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_114",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343735333030303030303030312e3233343536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_115",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231653263613835656130312e3363306361343238336465316237656236393435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_116",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3435363965626237653133643238613430633363312e6130356561383263316564623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_117",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363031373030303030302e3030313233343536373839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_118",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564363431653634302e3030353065383963623635353739343539633835"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_119",
+   "input": {
+    "kind": "text",
+    "value": "1700000000.123456789"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3835396334353739353562363963653835303030302e3634316536346564316464623139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_120",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3930303732313038393932313435393330303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_121",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133313264313964623164656435643731363830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_122",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3830313664376435646562313964643131323133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_123",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3930313838343337323833343039393330303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_124",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3465333964623164656435336561373130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_125",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313061373365643564656231396465333034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_126",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323036353136373238353437343039393330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_127",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "326464623164656435336538303061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_128",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30613830336564356465623164643032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_129",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363533343830373939323534373430392e3933"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_130",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139653033636135613564333835312e6565313437616531343761653134376165313438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_131",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3438653137613134616534376531376131346565312e3835643361356135336365303139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_132",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_133",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323034666365356533666332623433666535336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_134",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303038303365653533666234633233663565636534663230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_135",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_136",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "383435393531376231623332373166336538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_137",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303830336531663237623362313137393534353038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_138",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_139",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32316531623765376239393837376538303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_140",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030383037653837393937623765316231653032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_141",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313136343434373336303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_142",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38633634643465333566323638303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_143",
+   "input": {
+    "kind": "text",
+    "value": "1e21"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303830323635666533643436343863"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_144",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_145",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_146",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "614e304e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_147",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_148",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_149",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "614e304e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_150",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_151",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_152",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "614e304e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_153",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_154",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_155",
+   "input": {
+    "kind": "text",
+    "value": "NaN"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "614e304e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_156",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_157",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_158",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_159",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_160",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_161",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_162",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_163",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_164",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_165",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_166",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_167",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_168",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_169",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_170",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_171",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_172",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_173",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_174",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_175",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_176",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_177",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_178",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_out_179",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74796e696669496e302d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_0",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_1",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_2",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_3",
+   "input": {
+    "kind": "text",
+    "value": "116444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_4",
+   "input": {
+    "kind": "text",
+    "value": "133444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_5",
+   "input": {
+    "kind": "text",
+    "value": "133444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_6",
+   "input": {
+    "kind": "text",
+    "value": "133444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_7",
+   "input": {
+    "kind": "text",
+    "value": "133444736000000000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_8",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733363030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_9",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733363030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_10",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733363030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_11",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733363030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_12",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333630302e30303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_13",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333630303030302e30303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_14",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333630303030303030302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_15",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733363030303030303030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_16",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_17",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_18",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_19",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_20",
+   "input": {
+    "kind": "text",
+    "value": "1DA1747C66D0000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_21",
+   "input": {
+    "kind": "text",
+    "value": "1DA1747C66D0000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_22",
+   "input": {
+    "kind": "text",
+    "value": "1DA1747C66D0000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_23",
+   "input": {
+    "kind": "text",
+    "value": "1DA1747C66D0000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_24",
+   "input": {
+    "kind": "text",
+    "value": "19DB1DED53E8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_25",
+   "input": {
+    "kind": "text",
+    "value": "19DB1DED53E8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_26",
+   "input": {
+    "kind": "text",
+    "value": "19DB1DED53E8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_27",
+   "input": {
+    "kind": "text",
+    "value": "19DB1DED53E8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_28",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313631383932383838342e31393133353735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_29",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313631383932383838343139312e33353735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_30",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313631383932383838343139313335372e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_31",
+   "input": {
+    "kind": "text",
+    "value": "19db1ded53e8000"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363138393238383834313931333537353030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_32",
+   "input": {
+    "kind": "text",
+    "value": "0080e83ced1d9b01"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d37323536313538302e35353935363438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_33",
+   "input": {
+    "kind": "text",
+    "value": "0080e83ced1d9b01"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d37323536313538303535392e35363438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_34",
+   "input": {
+    "kind": "text",
+    "value": "0080e83ced1d9b01"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d37323536313538303535393536342e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_35",
+   "input": {
+    "kind": "text",
+    "value": "0080e83ced1d9b01"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3732353631353830353539353634383030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_36",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539392e39303239383435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_37",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539393930322e39383435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_38",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539393930323938342e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_39",
+   "input": {
+    "kind": "text",
+    "value": "abcde"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733353939393032393834353030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_40",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539392e39393437333439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_41",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539393939342e37333439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_42",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539393939343733342e39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_43",
+   "input": {
+    "kind": "text",
+    "value": "abcd"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733353939393934373334393030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_44",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539392e393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_45",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31313634343437333539393939392e393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_46",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733353939393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_47",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131363434343733353939393939393939303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_48",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_49",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_50",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_51",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_52",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_53",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Milliseconds (ms)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_54",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Microseconds (μs)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_in_55",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "filetime_round_trip_0",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    },
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313333343434373336303030303030303030",
+    "31373030303030303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "filetime_round_trip_odd_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    },
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Decimal"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131363434343733363030303030303030302e3031",
+    "31"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "filetime_round_trip_1",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    },
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "316461313734376336366430303030",
+    "31373030303030303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "filetime_round_trip_odd_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    },
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (big endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3139646231646564353365383030302e3032386635633238663563323866356332386636",
+    "31"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "filetime_round_trip_2",
+   "input": {
+    "kind": "text",
+    "value": "1700000000"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    },
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Seconds (s)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030366463363437313764613031",
+    "31373030303030303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "filetime_round_trip_odd_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "UNIX Timestamp to Windows Filetime",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    },
+    {
+     "op": "Windows Filetime to UNIX Timestamp",
+     "args": [
+      "Nanoseconds (ns)",
+      "Hex (little endian)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6636323835633866633266353238356338663032302e3030653835336564316464623139",
+    "31"
+   ],
+   "stopped_after": 2
   }
  ]
 }

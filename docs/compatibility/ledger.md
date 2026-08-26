@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 224 |
-| Reference-aliased | 222 |
-| Byte-pinned (`exact`) | 218 |
+| Registered operations | 228 |
+| Reference-aliased | 226 |
+| Byte-pinned (`exact`) | 222 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 4349 |
+| Pinned cases | 4795 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -159,6 +159,8 @@ does.
 | `encoding.punycode.encode@1` | To Punycode | core | exact | 19 |
 | `encoding.quoted_printable.decode@1` | From Quoted Printable | core | exact | 31 |
 | `encoding.quoted_printable.encode@1` | To Quoted Printable | core | exact | 19 |
+| `encoding.radix.decode@1` | From Base | core | exact | 48 |
+| `encoding.radix.encode@1` | To Base | core | exact | 148 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |
 | `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
 | `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
@@ -219,7 +221,7 @@ does.
 | `math.multiply@1` | Multiply | core | exact | 32 |
 | `math.stddev@1` | Standard Deviation | core | exact | 32 |
 | `math.subtract@1` | Subtract | core | exact | 32 |
-| `math.sum@1` | Sum | core | exact | 40 |
+| `math.sum@1` | Sum | core | exact | 42 |
 | `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
 | `network.strip.ipv4@1` | Strip IPv4 header | core | exact | 2 |
 | `network.strip.tcp@1` | Strip TCP header | core | exact | 2 |
@@ -258,6 +260,8 @@ does.
 | `text.unicode.format@1` | Unicode Text Format | core | exact | 16 |
 | `text.wrap@1` | Wrap | core | exact | 28 |
 | `text.xkcd_random@1` | XKCD Random Number | core | exact | 1 |
+| `time.filetime.decode@1` | Windows Filetime to UNIX Timestamp | core | exact | 62 |
+| `time.filetime.encode@1` | UNIX Timestamp to Windows Filetime | core | exact | 186 |
 
 Operations the reference has and FerroSift does not are reported by
 `cargo xtask cyberchef gap`, which needs the pinned checkout and so is

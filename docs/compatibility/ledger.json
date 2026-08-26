@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 224,
-    "aliased": 222,
-    "exact": 218,
+    "operations": 228,
+    "aliased": 226,
+    "exact": 222,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4349
+    "pinned_cases": 4795
   },
   "operations": [
     {
@@ -1647,6 +1647,32 @@
       "status": "exact"
     },
     {
+      "id": "encoding.radix.decode@1",
+      "display_name": "From Base",
+      "category": "Encoding",
+      "reference_alias": "From Base",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 48,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.radix.encode@1",
+      "display_name": "To Base",
+      "category": "Encoding",
+      "reference_alias": "To Base",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 148,
+      "status": "exact"
+    },
+    {
       "id": "encoding.rot13@1",
       "display_name": "ROT13",
       "category": "Encoding",
@@ -2439,7 +2465,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 40,
+      "conformance_cases": 42,
       "status": "exact"
     },
     {
@@ -2934,6 +2960,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 1,
+      "status": "exact"
+    },
+    {
+      "id": "time.filetime.decode@1",
+      "display_name": "Windows Filetime to UNIX Timestamp",
+      "category": "Time",
+      "reference_alias": "Windows Filetime to UNIX Timestamp",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 62,
+      "status": "exact"
+    },
+    {
+      "id": "time.filetime.encode@1",
+      "display_name": "UNIX Timestamp to Windows Filetime",
+      "category": "Time",
+      "reference_alias": "UNIX Timestamp to Windows Filetime",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 186,
       "status": "exact"
     }
   ]

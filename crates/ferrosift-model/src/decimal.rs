@@ -180,6 +180,26 @@ impl DecimalValue {
         Self::normalised(negative, &digits, exponent)
     }
 
+    /// Reads a decimal, refusing what the reference's constructor refuses.
+    ///
+    /// [`Self::parse`] answers not-a-number for unreadable input because that
+    /// is what a *dish* observes: the dish catches the constructor's exception
+    /// and substitutes one. An operation that calls the constructor itself
+    /// sees the exception instead, and its recipe stops there. Both are the
+    /// reference's behaviour, in different places, so both are here.
+    ///
+    /// The distinction is narrow and real: the text `NaN` reads as a value,
+    /// while the text `abc` is refused. A port with only one of these would be
+    /// wrong about one of them, and would look right in every ordinary case.
+    #[must_use]
+    pub fn read(input: &str) -> Option<Self> {
+        let value = Self::parse(input);
+        if value.is_not_a_number() && trim_like_the_reference(input) != "NaN" {
+            return None;
+        }
+        Some(value)
+    }
+
     /// Positive or negative infinity.
     #[must_use]
     fn infinite(negative: bool) -> Self {

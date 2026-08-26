@@ -114,6 +114,8 @@ mod defang;
 mod digest;
 #[cfg(feature = "text")]
 mod extract;
+#[cfg(feature = "bignum")]
+mod filetime;
 #[cfg(feature = "text")]
 mod find;
 #[cfg(feature = "hash")]
@@ -124,6 +126,8 @@ mod hmac_op;
 mod kdf;
 #[cfg(feature = "hash")]
 mod nthash;
+#[cfg(feature = "bignum")]
+mod numbase;
 #[cfg(feature = "crypto")]
 mod rc4_op;
 #[cfg(feature = "analysis")]
@@ -229,6 +233,8 @@ pub use extract::{
     ExtractDomains, ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,
     ExtractMacAddresses, ExtractUrls, Strings,
 };
+#[cfg(feature = "bignum")]
+pub use filetime::{FiletimeToUnix, UnixToFiletime};
 #[cfg(feature = "text")]
 pub use find::FindReplace;
 #[cfg(feature = "hash")]
@@ -239,6 +245,8 @@ pub use hmac_op::Hmac;
 pub use kdf::{DerivePbkdf2Key, Scrypt};
 #[cfg(feature = "hash")]
 pub use nthash::NtHash;
+#[cfg(feature = "bignum")]
+pub use numbase::{FromBase, ToBase};
 #[cfg(feature = "crypto")]
 pub use rc4_op::{Rc4, Rc4Drop};
 #[cfg(feature = "analysis")]

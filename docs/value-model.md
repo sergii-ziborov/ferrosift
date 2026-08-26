@@ -18,7 +18,7 @@ disagrees.
 | `number` | `Number`, and `Integer` where the value is whole | **done** |
 | `html` | `Markup` | **done** |
 | `JSON` | `Structured` | **done**, with one named limit below |
-| `BigNumber` | `Decimal` | **done**, both renderings and the arithmetic; 8 of 16 operations ported |
+| `BigNumber` | `Decimal` | **done** — all three renderings, both readings, the arithmetic; 11 of the 16 blocked operations ported, plus `To Base` |
 | `File`, `List<File>` | `Files` | matches |
 
 Ten shipped operations used to declare `Text` where the reference declared
@@ -76,9 +76,12 @@ wrong today and the proof is a corpus case rather than an argument.
    display choice, and Parse TLV carries the structure rather than a string it
    built by hand.
 4. ~~**Decimal**~~ -- **done**, and now carrying operations. The kind, the
-   canonical form, both renderings, and the arithmetic are pinned against the
-   real library. Eight of the sixteen operations that needed it are ported;
-   the rest each wait on a second thing as well as on this.
+   canonical form, all three renderings, both readings, the arithmetic and the
+   base conversions are pinned against the real library. Eleven of the sixteen
+   operations that were blocked on it are ported, and so is `To Base`, which
+   the dependency scan had missed because it never imported the library — it
+   was handed a number by the dish. The five that remain each wait on a second
+   thing as well as on this.
 
 ## What `Decimal` is
 
@@ -95,27 +98,60 @@ backend to load into whatever it uses. Putting a crate in the model instead
 would make every consumer of a value depend on a choice only arithmetic cares
 about.
 
-### Two renderings, not one
+### Three renderings, not one
 
-The reference writes a `BigNumber` two different ways, and both are reachable
-from a recipe:
+The reference writes a `BigNumber` three different ways, and a recipe can
+reach all three:
 
 | Method | Exponential notation | Where it is used |
 |---|---|---|
 | `toFixed()` | never | the dish, so every operation that *hands back* a number |
 | `toString()` | at or below `1e-7`, at or above `1e21` | an operation that joins numbers into a string itself |
+| `toString(base)` | never, not even for base ten | To Base, and the hexadecimal filetime formats |
 
-`DecimalValue::to_fixed` and `DecimalValue::to_notation` are those two. MOD is
-the operation that needs the second: it joins its remainders with
-`Array.prototype.join`, which calls `toString`. A port carrying only `to_fixed`
-would be right about a remainder of `2.5` and wrong about a remainder of
-`1e-8` — in an operation whose other answers all looked correct.
+`DecimalValue::to_fixed`, `DecimalValue::to_notation`, and
+`jscompat::bignumber::to_base` are those three. MOD needs the second: it joins
+its remainders with `Array.prototype.join`, which calls `toString`. A port
+carrying only `to_fixed` would be right about a remainder of `2.5` and wrong
+about a remainder of `1e-8` — in an operation whose other answers all looked
+correct.
 
-The positive threshold is `21`, read from the library rather than from its
+The `toString()` threshold is `21`, read from the library rather than from its
 documentation, which says `20`. That is the same kind of error as the exponent
 range, where the documentation says a billion and the code says ten million.
 Both are recorded in `tests/fixtures/decimal.json` along with the cases either
 side of them.
+
+`toString(base)` rounds differently from everything else here, and the
+difference only shows on an odd base. It decides from the twenty-first digit
+alone, compared against half the base as a real number — and no digit of an
+odd base is worth exactly half, so an exact tie **truncates**. A tenth in base
+five repeats as `0.0222…`, sits exactly half a place above the twentieth
+digit, and comes out truncated where the same tie in base sixteen rounds away
+from zero. A sweep of one fraction per base is what found it; a sample would
+have missed it.
+
+### Reading is not the mirror of writing
+
+Two constructors, with rules that run *backwards* from each other in four
+places. Both are pinned, because deriving either from the other would be
+wrong:
+
+| | `new BigNumber(text)` | `new BigNumber(text, base)` |
+|---|---|---|
+| empty string | refused | zero |
+| `NaN`, `Infinity` | read | refused |
+| `0x` prefix | read as hexadecimal | refused |
+| `e` | an exponent marker | a digit |
+| letter case | irrelevant | must not mix within one value |
+
+`DecimalValue::parse` and `jscompat::bignumber::parse_in_base` are those two.
+There is a third reading, `DecimalValue::read`, which differs from `parse` in
+one respect: it *refuses* what the constructor refuses instead of answering
+not-a-number. A dish catches the constructor's exception and substitutes
+not-a-number; an operation that calls the constructor itself sees the
+exception and stops the recipe. The text `NaN` is a value either way, and the
+text `abc` is a value to one and an error to the other.
 
 ## The mechanism, now built
 

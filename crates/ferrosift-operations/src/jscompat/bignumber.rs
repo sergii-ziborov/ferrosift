@@ -19,12 +19,14 @@
 //! and obey all three. A port that rounded a sum, or that failed to round a
 //! quotient, would pass a great many tests before failing one.
 
-use alloc::string::ToString;
+use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 
 use ferrosift_model::DecimalValue;
 use num_bigint::{BigInt, BigUint, Sign};
-use num_traits::{One, Signed, Zero};
+use num_traits::{One, Signed, ToPrimitive, Zero};
+
+use crate::jscompat::delim::is_js_whitespace;
 
 /// How far an inexact result is carried, from the library's own configuration.
 const DECIMAL_PLACES: i64 = 20;
@@ -94,16 +96,21 @@ impl Scaled {
     }
 }
 
-/// Ten raised to `power`.
+/// `base` raised to `exponent`.
 ///
 /// By repeated squaring rather than a loop of multiplications: the powers here
 /// reach the model's exponent range, and ten million separate multiplications
 /// would be the slowest thing in the crate by a wide margin.
-fn power_of_ten(power: u64) -> BigUint {
-    // Every caller bounds the power by the model's range plus the digits of
+fn power(base: u32, exponent: u64) -> BigUint {
+    // Every caller bounds the exponent by the model's range plus the digits of
     // its operands, so the narrowing below has nothing to lose. Saturating
     // rather than unwrapping keeps the function total.
-    BigUint::from(10_u32).pow(u32::try_from(power).unwrap_or(u32::MAX))
+    BigUint::from(base).pow(u32::try_from(exponent).unwrap_or(u32::MAX))
+}
+
+/// Ten raised to `power`.
+fn power_of_ten(power: u64) -> BigUint {
+    self::power(10, power)
 }
 
 /// What kind of value this is, for the rules the specials follow.
@@ -486,6 +493,223 @@ pub fn mean(values: &[DecimalValue]) -> DecimalValue {
     }
     let count = DecimalValue::from(i128::try_from(values.len()).unwrap_or(i128::MAX));
     divide(&sum(values), &count)
+}
+
+/// The lowest and highest base the reference will read or write.
+const BASES: core::ops::RangeInclusive<u32> = 2..=36;
+
+/// How many places a base conversion keeps, as a count.
+fn places() -> usize {
+    usize::try_from(DECIMAL_PLACES).unwrap_or(0)
+}
+
+/// Reads a number written in another base, or `None` where the reference
+/// refuses one.
+///
+/// A different set of rules from the single-argument reading, and several of
+/// them run backwards from it, which is why both are pinned rather than one
+/// being derived from the other:
+///
+/// - an empty string is zero here, where the other refuses it;
+/// - `NaN` and `Infinity` are refused here, where the other reads them;
+/// - a `0x` prefix is refused here, where the other reads it;
+/// - `e` is a digit rather than an exponent marker, so `1e5` in base sixteen
+///   is four hundred and eighty-five rather than a hundred thousand;
+/// - the letters must agree on their case. The reference matches the whole
+///   string against one alphabet, so `ff` and `FF` are both read and `Ff` is
+///   not -- a rule with no analogue in the ordinary reading, where case never
+///   mattered at all.
+///
+/// The value is read as one whole number over a power of the base -- `1010.1011`
+/// in base two is `171 / 2^4` -- so a fraction that terminates in the base comes
+/// out exact, and one that does not is rounded once at the twentieth place
+/// rather than accumulating a rounding per digit.
+#[must_use]
+pub fn parse_in_base(text: &str, base: u32) -> Option<DecimalValue> {
+    if !BASES.contains(&base) {
+        return None;
+    }
+    let trimmed = text.trim_matches(is_js_whitespace);
+    let (negative, rest) = match trimmed.strip_prefix('-') {
+        Some(rest) => (true, rest),
+        None => (false, trimmed.strip_prefix('+').unwrap_or(trimmed)),
+    };
+
+    let (whole, fraction) = match rest.split_once('.') {
+        Some((whole, fraction)) => (whole, fraction),
+        None => (rest, ""),
+    };
+
+    // A second point is not a digit in any base, so it fails here rather than
+    // needing a rule of its own -- and so does every other stray character.
+    let mut digits = String::with_capacity(whole.len() + fraction.len());
+    let (mut lower, mut upper) = (false, false);
+    for character in whole.chars().chain(fraction.chars()) {
+        let value = character.to_digit(36)?;
+        if value >= base {
+            return None;
+        }
+        lower |= character.is_ascii_lowercase();
+        upper |= character.is_ascii_uppercase();
+        digits.push(character);
+    }
+    // One alphabet or the other, never both. The point does not divide them:
+    // `1f.A` is refused as surely as `Ff` is.
+    if lower && upper {
+        return None;
+    }
+
+    // No digits at all is zero rather than a refusal, which is the surprise
+    // worth stating: `new BigNumber("", 16)` is zero where `new BigNumber("")`
+    // throws.
+    if digits.is_empty() {
+        return Some(DecimalValue::zero());
+    }
+
+    let magnitude = BigUint::parse_bytes(digits.as_bytes(), base)?;
+    let numerator = DecimalValue::from_parts(negative, &magnitude.to_string(), 0);
+    if fraction.is_empty() {
+        return Some(numerator);
+    }
+    let scale = power(base, fraction.len() as u64);
+    Some(divide(
+        &numerator,
+        &DecimalValue::from_parts(false, &scale.to_string(), 0),
+    ))
+}
+
+/// Writes the value in another base, or `None` for a base outside the range.
+///
+/// Not the same as either rendering in the model, and the difference is worth
+/// naming: this one *never* uses exponential notation, not even for base ten,
+/// where the argumentless `toString` does. `1e21` written in base ten comes out
+/// as twenty-two characters.
+///
+/// The fraction is carried to twenty places **of the target base** rather than
+/// of ten -- a third in base two is twenty binary digits -- and the rounding is
+/// decided by the twenty-first digit alone, against half the base. On an odd
+/// base that means an exact tie rounds *down*, which is the opposite of what
+/// every other rounding in this module does.
+#[must_use]
+pub fn to_base(value: &DecimalValue, base: u32) -> Option<String> {
+    if !BASES.contains(&base) {
+        return None;
+    }
+    if value.is_not_a_number() {
+        return Some(String::from("NaN"));
+    }
+    if value.is_infinite() {
+        return Some(String::from(if value.is_negative() {
+            "-Infinity"
+        } else {
+            "Infinity"
+        }));
+    }
+
+    let (negative, digits, exponent) = value.parts()?;
+    if digits.is_empty() {
+        return Some(String::from("0"));
+    }
+    let magnitude = BigUint::parse_bytes(digits.as_bytes(), 10)?;
+
+    // The magnitude as an exact fraction: `whole + remainder / divisor`. A
+    // positive exponent has no fractional part at all, which is most inputs.
+    let (mut whole, remainder, divisor) = if exponent >= 0 {
+        (
+            magnitude * power_of_ten(exponent.unsigned_abs()),
+            BigUint::zero(),
+            BigUint::one(),
+        )
+    } else {
+        let divisor = power_of_ten(exponent.unsigned_abs());
+        let whole = &magnitude / &divisor;
+        let remainder = magnitude % &divisor;
+        (whole, remainder, divisor)
+    };
+
+    // One digit further than is kept, because that digit alone decides the
+    // rounding.
+    let mut fraction = Vec::new();
+    let mut left = remainder;
+    let radix = BigUint::from(base);
+    for _ in 0..=DECIMAL_PLACES {
+        if left.is_zero() {
+            break;
+        }
+        left *= &radix;
+        fraction.push(digit_of(&(&left / &divisor)));
+        left %= &divisor;
+    }
+
+    // The reference compares that digit against half the base as a *real*
+    // number, and looks at nothing after it. Two consequences, and the second
+    // is the one a port gets wrong:
+    //
+    // - a tail that continues past the deciding digit does not lift a value
+    //   the digit itself leaves below the half;
+    // - on an odd base no digit is worth exactly half, so an exact tie rounds
+    //   *down*. A tenth in base five repeats as `0.0222...`, sits exactly half
+    //   a place above the twentieth digit, and comes out truncated -- where
+    //   the same tie in base sixteen rounds away from zero.
+    //
+    // Written as `2 * digit >= base` because that is both conditions at once:
+    // equality is reachable only when the base is even.
+    if fraction.len() > places() {
+        let deciding = fraction.pop().unwrap_or(0);
+        if u64::from(deciding) * 2 >= u64::from(base) {
+            // The carry can run off the front of the fraction into the whole
+            // part, which is why the whole part is rendered after this.
+            carry_one(&mut fraction, &mut whole, base);
+        }
+    }
+    while fraction.last() == Some(&0) {
+        fraction.pop();
+    }
+
+    // A value that rounded away to nothing is zero, and zero carries no sign.
+    if whole.is_zero() && fraction.is_empty() {
+        return Some(String::from("0"));
+    }
+
+    let mut output = String::new();
+    if negative {
+        output.push('-');
+    }
+    output.push_str(&whole.to_str_radix(base));
+    if !fraction.is_empty() {
+        output.push('.');
+        for digit in fraction {
+            output.push(char::from_digit(digit, base).unwrap_or('0'));
+        }
+    }
+    Some(output)
+}
+
+/// `base` raised to `exponent`, as a value rather than as an integer.
+///
+/// The reference reaches this through `pow`, which is exact for a whole
+/// exponent -- so nothing here rounds, and a caller that divides by the result
+/// rounds once rather than twice.
+#[must_use]
+pub fn power_of(base: u32, exponent: u64) -> DecimalValue {
+    DecimalValue::from_parts(false, &power(base, exponent).to_string(), 0)
+}
+
+/// One digit of a base, from a value the division above bounded below it.
+fn digit_of(value: &BigUint) -> u32 {
+    value.to_u32().unwrap_or(0)
+}
+
+/// Adds one to the last place, carrying into the whole part if it runs out.
+fn carry_one(fraction: &mut [u32], whole: &mut BigUint, base: u32) {
+    for digit in fraction.iter_mut().rev() {
+        if *digit + 1 < base {
+            *digit += 1;
+            return;
+        }
+        *digit = 0;
+    }
+    *whole += BigUint::one();
 }
 
 /// The median, which is the middle value or the mean of the middle two.

@@ -23,6 +23,28 @@ struct Fixture {
     binary: Vec<Binary>,
     unary: Vec<Unary>,
     lists: Vec<List>,
+    base_parses: Vec<BaseParse>,
+    base_renders: Vec<BaseRender>,
+}
+
+/// One reading of a number written in another base.
+///
+/// `fixed` is `null` where the reference throws. A refusal is not a value, and
+/// recording it as one -- as not-a-number, say -- would let a port that
+/// answered instead of refusing pass.
+#[derive(Deserialize)]
+struct BaseParse {
+    text: String,
+    base: u32,
+    fixed: Option<String>,
+}
+
+/// One writing of a number in another base.
+#[derive(Deserialize)]
+struct BaseRender {
+    input: String,
+    base: u32,
+    written: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -164,6 +186,83 @@ fn every_fold_agrees_with_the_reference() {
             "the median of {context}"
         );
     }
+}
+
+#[test]
+fn every_reading_in_another_base_agrees_with_the_reference() {
+    for case in fixture().base_parses {
+        let read = bignumber::parse_in_base(&case.text, case.base);
+        let context = format!("{:?} in base {}", case.text, case.base);
+        match case.fixed {
+            Some(expected) => assert_eq!(
+                read.map(|value| value.to_fixed()),
+                Some(expected),
+                "reading {context}"
+            ),
+            None => assert!(
+                read.is_none(),
+                "reading {context} should be refused, and answered {:?}",
+                read.map(|value| value.to_fixed())
+            ),
+        }
+    }
+}
+
+#[test]
+fn every_writing_in_another_base_agrees_with_the_reference() {
+    for case in fixture().base_renders {
+        let value = DecimalValue::parse(&case.input);
+        let written = bignumber::to_base(&value, case.base);
+        assert_eq!(
+            written, case.written,
+            "writing {} in base {}",
+            case.input, case.base
+        );
+    }
+}
+
+#[test]
+fn the_two_base_rules_run_backwards_from_the_ordinary_ones() {
+    // Stated once here because a reader who knows the single-argument
+    // constructor will expect the opposite of each of these, and the fixture
+    // alone does not say which cases are the surprising ones.
+    assert_eq!(
+        bignumber::parse_in_base("", 16).map(|value| value.to_fixed()),
+        Some("0".to_owned()),
+        "an empty string is zero with a base, and refused without one"
+    );
+    assert!(
+        DecimalValue::parse("").is_not_a_number(),
+        "and refused without one"
+    );
+
+    assert!(
+        bignumber::parse_in_base("Infinity", 16).is_none(),
+        "a base refuses the specials, which the single-argument reading accepts"
+    );
+    assert!(DecimalValue::parse("Infinity").is_infinite());
+
+    assert_eq!(
+        bignumber::parse_in_base("1e5", 16).map(|value| value.to_fixed()),
+        Some("485".to_owned()),
+        "with a base, `e` is a digit rather than an exponent marker"
+    );
+    assert_eq!(DecimalValue::parse("1e5").to_fixed(), "100000");
+
+    assert!(
+        bignumber::parse_in_base("0xff", 16).is_none(),
+        "a base refuses the prefix the single-argument reading requires"
+    );
+    assert_eq!(DecimalValue::parse("0xff").to_fixed(), "255");
+
+    // And the writing: a base never turns exponential, where the argumentless
+    // rendering does at the same value.
+    let large = DecimalValue::parse("1e21");
+    assert_eq!(
+        bignumber::to_base(&large, 10).as_deref(),
+        Some("1000000000000000000000")
+    );
+    assert_eq!(large.to_notation(), "1e+21");
 }
 
 #[test]

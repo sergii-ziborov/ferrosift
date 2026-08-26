@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 224 | 222 | **218** | **4349** |
+| 228 | 226 | **222** | **4795** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -223,7 +223,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
 | Defang | Defang IP Addresses, Defang URL, Fang URL |
 | Distance | Hamming Distance, Levenshtein Distance |
-| Encoding | Caret/M-decode, Citrix CTX1 Decode, Citrix CTX1 Encode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Base92, From Bech32, From Binary, From Braille, From COBS, From Charcode, From Decimal, From Float, From HTML Entity, From Hex, From Hex Content, From Hexdump, From Modhex, From Morse Code, From Octal, From Punycode, From Quoted Printable, Microsoft Script Decoder, ROT13, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Base92, To Bech32, To Binary, To Braille, To COBS, To Charcode, To Decimal, To Float, To HTML Entity, To Hex, To Hex Content, To Hexdump, To Modhex, To Morse Code, To Octal, To Punycode, To Quoted Printable, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
+| Encoding | Caret/M-decode, Citrix CTX1 Decode, Citrix CTX1 Encode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Base92, From Bech32, From Binary, From Braille, From COBS, From Charcode, From Decimal, From Float, From HTML Entity, From Hex, From Hex Content, From Hexdump, From Modhex, From Morse Code, From Octal, From Punycode, From Quoted Printable, Microsoft Script Decoder, ROT13, To Base, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Base92, To Bech32, To Binary, To Braille, To COBS, To Charcode, To Decimal, To Float, To HTML Entity, To Hex, To Hex Content, To Hexdump, To Modhex, To Morse Code, To Octal, To Punycode, To Quoted Printable, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
 | Flow control | Comment, Fork, Merge |
 | Hashing | HMAC, Keccak, MD2, MD4, MD5, MurmurHash3, NT Hash, RIPEMD, SHA0, SHA1, SHA2, SHA3, SM3, Shake, Whirlpool |
@@ -234,6 +234,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
 | Shaping | Split, To Table, Unique |
 | Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Case Insensitive Regex, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
+| Time | UNIX Timestamp to Windows Filetime, Windows Filetime to UNIX Timestamp |
 <!-- catalog:end -->
 
 Full alias tables, argument shapes, and intentional divergences from the

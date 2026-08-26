@@ -60,10 +60,13 @@ use crate::{
     ExtractFilePaths, ExtractHashes, ExtractIpAddresses, ExtractMacAddresses, ExtractUrls, FangUrl,
     FindReplace, Strings,
 };
+#[cfg(feature = "bignum")]
+use crate::{
+    FiletimeToUnix, FromBase, FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase,
+    ToBase62, UnixToFiletime,
+};
 #[cfg(feature = "hash")]
 use crate::{FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake};
-#[cfg(feature = "bignum")]
-use crate::{FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase62};
 #[cfg(feature = "analysis")]
 use crate::{SuggestRecipe, XorBruteForce};
 
@@ -169,6 +172,16 @@ pub(crate) const FAMILIES: &[Family] = &[
         categories: &["Text", "Shaping"],
         register: register_text,
     },
+    Family {
+        // Converting between epochs, which is arithmetic on a number that
+        // happens to mean a moment. It is its own family rather than a merge
+        // into `arithmetic` because the reference has a whole category here
+        // and this is the first two of it -- a reader porting the next one
+        // should find somewhere obvious to put it.
+        name: "time",
+        categories: &["Time"],
+        register: register_time,
+    },
 ];
 
 /// Creates a validated registry containing every enabled built-in operation.
@@ -234,6 +247,24 @@ fn register_arithmetic(registry: &mut OperationRegistry) -> Result<(), RegistryE
         registry.register(ExtendedGcd::new())?;
         registry.register(Mod::new())?;
         registry.register(ModularInverse::new())?;
+    }
+    Ok(())
+}
+
+/// Converting between epochs.
+#[cfg_attr(
+    not(feature = "bignum"),
+    expect(
+        unused_variables,
+        clippy::unnecessary_wraps,
+        reason = "the bignum pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
+    )
+)]
+fn register_time(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    #[cfg(feature = "bignum")]
+    {
+        registry.register(FiletimeToUnix::new())?;
+        registry.register(UnixToFiletime::new())?;
     }
     Ok(())
 }
@@ -407,7 +438,9 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     // precision and the rest of this family does not.
     #[cfg(feature = "bignum")]
     {
+        registry.register(FromBase::new())?;
         registry.register(FromBase62::new())?;
+        registry.register(ToBase::new())?;
         registry.register(ToBase62::new())?;
     }
     Ok(())

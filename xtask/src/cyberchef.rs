@@ -202,7 +202,10 @@ fn generate(profile: &Profile) -> ExitCode {
 /// differs, so that is what gets committed; the full generated files stay out
 /// of the tree.
 fn overlay(profile: &Profile) -> ExitCode {
-    let path = oracle_dir().join("overlay.mjs").to_string_lossy().to_string();
+    let path = oracle_dir()
+        .join("overlay.mjs")
+        .to_string_lossy()
+        .to_string();
     if run_streaming("node", &[&path, "--profile", profile.version], None) {
         ExitCode::SUCCESS
     } else {

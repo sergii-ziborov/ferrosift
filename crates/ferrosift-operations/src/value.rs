@@ -19,7 +19,7 @@
 use alloc::{string::String, vec::Vec};
 
 use ferrosift_core::OperationError;
-use ferrosift_model::{TextEncoding, TextValue, Value};
+use ferrosift_model::{DecimalValue, TextEncoding, TextValue, Value, ValueKind};
 
 use crate::jscompat::string;
 
@@ -102,4 +102,18 @@ pub(crate) fn text(value: String) -> Value {
 /// Wraps bytes as an output value.
 pub(crate) const fn bytes(value: Vec<u8>) -> Value {
     Value::Bytes(value)
+}
+
+/// Unwraps a decimal input, reading one from bytes or text when that arrived.
+///
+/// The runner adapts a value to the declared constraint before an operation
+/// sees it, so this is usually a move rather than a conversion. Where it does
+/// convert, it goes through the model's own projection -- which is the
+/// reference's dish, and therefore *reads* rather than refusing: the dish
+/// catches the constructor's exception and substitutes not-a-number.
+pub(crate) fn take_decimal(input: Value) -> Result<DecimalValue, OperationError> {
+    match input.reinterpret(ValueKind::Decimal) {
+        Some(Value::Decimal(value)) => Ok(value),
+        _ => Err(OperationError::InvalidArguments),
+    }
 }

@@ -1,8 +1,15 @@
 # Operations not implemented
 
-FerroSift covers 224 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 279 are waiting on, so that "not done yet" is a list
+FerroSift covers 228 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 275 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
+
+The grouping below is by *import*, which is a proxy and not the thing itself.
+`To Base` sat in the no-dependency list for three revisions because it never
+imports `bignumber.js` — it receives a `BigNumber` from the dish and calls a
+method on it. Reading the imports found nothing to port; reading the operation
+found an arbitrary-precision rendering. Where a listing here and the code
+disagree, the code is right.
 
 The rule that decides everything here is the one the rest of the project runs
 on: a compatibility claim must be backed by a pinned differential corpus. An
@@ -11,8 +18,9 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-177 of the 287 are built on a JavaScript library, and 21 more reach one
-through an internal library of the reference's own. The obstacle is **not** that
+168 of the 275 are built on a JavaScript library, and 21 more reach one
+through an internal library of the reference's own. The three headings below
+partition the 275 exactly: 168 plus 21 plus 86. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
@@ -41,7 +49,7 @@ only ordering that matters when choosing what to do next.
 | Library | Operations | Rust starting point | Verdict |
 |---|---|---|---|
 | `jimp` | 23 | `image` | Pixel-exact re-encoding is the hard part, not decoding. |
-| `bignumber.js` | 8 | `num-bigint`, already a dependency | **Half done.** The arithmetic layer is built and pinned; what remains needs a second thing each. |
+| `bignumber.js` | 5 | `num-bigint`, already a dependency | **Mostly done.** The arithmetic and base conversions are built and pinned; each of the rest needs a second thing as well. |
 | `node-forge` | 15 | `rsa`, `x509-cert` | PKI structure is standardised; the text rendering is not. |
 | `jsrsasign` | 12 | `x509-parser` | As above. |
 | `es6-promisify` | 7 | none needed | A promise shim; the operations behind it may be portable once read. |
@@ -56,7 +64,7 @@ list rather than a search.
 
 | Library | Count | Operations |
 |---|---|---|| `jimp` | 23 | Add Text To Image, Blur Image, Contain Image, Convert Image Format, Cover Image, Crop Image, Dither Image, Extract LSB, Extract RGBA, Flip Image, Generate Image, Image Brightness / Contrast, Image Filter, Image Hue/Saturation/Lightness, Image Opacity, Invert Image, Normalise Image, Randomize Colour Palette, Resize Image, Rotate Image, Sharpen Image, Split Colour Channels, View Bit Plane |
-| `bignumber.js` | 8 | From Base, From BCD, Parse IPv6 address, Parse TCP, Pseudo-Random Number Generator, To BCD, UNIX Timestamp to Windows Filetime, Windows Filetime to UNIX Timestamp |
+| `bignumber.js` | 5 | From BCD, Parse IPv6 address, Parse TCP, Pseudo-Random Number Generator, To BCD |
 | `node-forge` | 15 | Blowfish Decrypt, Blowfish Encrypt, CMAC, DES Decrypt, DES Encrypt, Generate RSA Key Pair, Pseudo-Random Integer Generator, RC2 Decrypt, RC2 Encrypt, RSA Decrypt, RSA Encrypt, RSA Sign, RSA Verify, Triple DES Decrypt, Triple DES Encrypt |
 | `jsrsasign` | 12 | ECDSA Sign, ECDSA Signature Conversion, ECDSA Verify, Generate ECDSA Key Pair, JWK to PEM, Parse ASN.1 hex string, Parse CSR, Parse X.509 certificate, Parse X.509 CRL, PEM to JWK, Public Key from Certificate, Public Key from Private Key |
 | `es6-promisify` | 7 | Generate PGP Key Pair, PGP Decrypt, PGP Decrypt and Verify, PGP Encrypt, PGP Encrypt and Sign, PGP Sign, PGP Verify |
@@ -157,7 +165,15 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 88 import nothing outside the reference's own source, transitively.
+These 86 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, Convert area, Convert data units, Convert distance, Convert mass, Convert speed, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, LZNT1 Decompress, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, Parse TLV, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, To Base, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
+
+Three left this list at once, for three reasons, and only one was a port.
+`To Base` moved to the arbitrary-precision group: it never imported
+`bignumber.js`, it was handed one, so reading the imports had missed it.
+`LZNT1 Decompress` and `Parse TLV` had been implemented and never struck off —
+which is why the counts above now claim to partition the total exactly, a
+claim that fails loudly the next time one of them drifts.
+
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, Convert area, Convert data units, Convert distance, Convert mass, Convert speed, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
