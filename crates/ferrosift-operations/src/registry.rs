@@ -32,7 +32,7 @@ use crate::{
     FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
-    HexToPem, HtmlToText, Identity, LevenshteinDistance, LuhnChecksum, Merge, MurmurHash3,
+    HexToPem, HtmlToText, Identity, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
     PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
@@ -242,6 +242,8 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     registry.register(BaconEncode::new())?;
     registry.register(BifidCipher::decode())?;
     registry.register(BifidCipher::encode())?;
+    registry.register(Ls47Encrypt::new())?;
+    registry.register(Ls47Decrypt::new())?;
     registry.register(ClassicalCipher::a1z26_decode())?;
     registry.register(ClassicalCipher::a1z26_encode())?;
     registry.register(ClassicalCipher::affine_decode())?;

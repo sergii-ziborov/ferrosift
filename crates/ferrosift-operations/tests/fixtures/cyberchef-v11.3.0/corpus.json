@@ -69833,6 +69833,1314 @@
     ""
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_0",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6174757729283833747175326675366d39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_1",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612d7866"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_2",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_3",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "742e2c32667775756b70663838786d312c2f3468272c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_4",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "306128283277336f786e6c6a71"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_5",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2c7563296c272b6e3332346a792a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_6",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f2c753f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_7",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f72332177636779642f2e386d2873712e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_8",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f32672e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_9",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2c753f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_10",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "737a21756734306d7a776f2e69716974392e303f3662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_11",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36662f6368377762667271643f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_12",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "392e3a376f27306a6e7577773935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_13",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66317370"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_14",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "75766d373669703139347a3f5f3f376474"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_15",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "752a356d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_16",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c346b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_17",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64282d3a71733f767234677a78767530682c6d337168"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_18",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322131273664632f2c625f2b6c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_19",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d626d3f273076705f6f39786136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_20",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2a217236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_21",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f31646c7927213f6d645f622869657130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_22",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f5f2a74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_23",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "346a7a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_24",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28676b5f31283a27673a297a2e75387834372c31666c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_25",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "70786d6378273f6b31727a2d7a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_26",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "276469642c6d7a30317630787274"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_27",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "316c6b64"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_28",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "362c6a7a6c792a637475612f72336b7261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_29",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "366c6379"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_30",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "743672"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_31",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "27213f695f39313f297a37702a7a762c61307674333f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_32",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "67326361786935702c676b7764"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_33",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "73356666296f723031217035383a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_34",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "zzz",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35396177"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_35",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2775273530696d3037613965342c6c3221"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_36",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "273f326b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_37",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64363a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_38",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3f6a286f69766c297a367468302f7828372e767a74"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_39",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66787869383a2c333a78712e65"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_40",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "362c70765f3934646e2d29767879"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_41",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "0123456789",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "213a3270"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_42",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74287967276b2c2777777938756568617a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_43",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74737735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_44",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f616e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_45",
+   "input": {
+    "kind": "text",
+    "value": "the_quick_brown_fox"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3534773a30697733346271765f782f6861386f382d2e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_46",
+   "input": {
+    "kind": "text",
+    "value": "0123456789"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36636267697564763275773738"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_47",
+   "input": {
+    "kind": "text",
+    "value": ",-+*/:?!'()"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "662a78706162302a3a2e3331672a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_enc_48",
+   "input": {
+    "kind": "text",
+    "value": "_"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "-+*/",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "73726373"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_sig_49",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "75766d373669703139347a3f5f3f376474"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_sig_50",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      "alice"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "75766d373669703139347a3f5f3f376474793a6f2d33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_sig_51",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      "bob_1"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "75766d373669703139347a3f5f3f3764742a2b376b77"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_dec_52",
+   "input": {
+    "kind": "text",
+    "value": "gpc.jyqvu-h'_kbxw"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "secret",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b6c672e3f32697163776b2b6a6177352b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_dec_53",
+   "input": {
+    "kind": "text",
+    "value": "gpc.jyqvu-h'_kbxw"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "secret",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c672e3f32697163776b2b6a6177352b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_dec_54",
+   "input": {
+    "kind": "text",
+    "value": "gpc.jyqvu-h'_kbxw"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "secret",
+      5
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32697163776b2b6a6177352b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_dec_55",
+   "input": {
+    "kind": "text",
+    "value": "gpc.jyqvu-h'_kbxw"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "secret",
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b2b6a6177352b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_dec_56",
+   "input": {
+    "kind": "text",
+    "value": "gpc.jyqvu-h'_kbxw"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "secret",
+      100
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ls47_round_57",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "",
+      0,
+      ""
+     ]
+    },
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6174757729283833747175326675366d39",
+    "61747461636b5f61745f6461776e2d2d2d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "ls47_round_58",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "a",
+      0,
+      ""
+     ]
+    },
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "a",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f72332177636779642f2e386d2873712e",
+    "61747461636b5f61745f6461776e2d2d2d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "ls47_round_59",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "secret",
+      0,
+      ""
+     ]
+    },
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "secret",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "75766d373669703139347a3f5f3f376474",
+    "61747461636b5f61745f6461776e2d2d2d"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "ls47_round_60",
+   "input": {
+    "kind": "text",
+    "value": "attack_at_dawn"
+   },
+   "recipe": [
+    {
+     "op": "LS47 Encrypt",
+     "args": [
+      "hello_world",
+      0,
+      ""
+     ]
+    },
+    {
+     "op": "LS47 Decrypt",
+     "args": [
+      "hello_world",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f31646c7927213f6d645f622869657130",
+    "61747461636b5f61745f6461776e2d2d2d"
+   ],
+   "stopped_after": 2
   }
  ]
 }

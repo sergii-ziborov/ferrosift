@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 204,
-    "aliased": 202,
-    "exact": 198,
+    "operations": 206,
+    "aliased": 204,
+    "exact": 200,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3812
+    "pinned_cases": 3877
   },
   "operations": [
     {
@@ -630,6 +630,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.ls47.decrypt@1",
+      "display_name": "LS47 Decrypt",
+      "category": "Ciphers",
+      "reference_alias": "LS47 Decrypt",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 9,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.ls47.encrypt@1",
+      "display_name": "LS47 Encrypt",
+      "category": "Ciphers",
+      "reference_alias": "LS47 Encrypt",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 56,
       "status": "exact"
     },
     {

@@ -62,6 +62,7 @@ import * as unixperms from "./corpus/unixperms.mjs";
 import * as rc4drop from "./corpus/rc4drop.mjs";
 import * as punycode from "./corpus/punycode.mjs";
 import * as bech32 from "./corpus/bech32.mjs";
+import * as ls47 from "./corpus/ls47.mjs";
 
 const profile = selectedProfile();
 const chef = await loadChef(profile);
@@ -75,7 +76,7 @@ const builder = createBuilder({
 // Order is part of the fixture: it fixes the PRNG draw order, so a new family
 // is appended rather than inserted. Inserting one would re-draw every sample
 // after it and rewrite fixtures that nothing about the change had touched.
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47]) {
     await family.add(builder);
 }
 
