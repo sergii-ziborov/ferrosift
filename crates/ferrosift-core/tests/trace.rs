@@ -22,7 +22,7 @@ fn summaries_measure_logical_payloads_without_retaining_values() {
             8,
         ),
         (
-            Value::Structured(StructuredValue::Object(BTreeMap::from([
+            Value::Structured(StructuredValue::Object(Vec::from([
                 ("a".into(), StructuredValue::Boolean(true)),
                 (
                     "items".into(),

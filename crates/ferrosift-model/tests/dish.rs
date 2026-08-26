@@ -156,3 +156,51 @@ fn the_table_and_the_conversion_agree() {
         }
     }
 }
+
+/// The JavaScript property order, checked against the engine that defines it.
+#[test]
+fn object_keys_enumerate_the_way_the_reference_enumerates_them() {
+    // Recorded from a real engine rather than read out of the specification:
+    // integer-like keys ascend first, everything else follows in insertion
+    // order, and "integer-like" is narrower than "looks numeric" -- a leading
+    // zero, a sign, or a fraction disqualifies a key.
+    for (built, expected) in [
+        (vec!["10", "2", "b", "a"], vec!["2", "10", "b", "a"]),
+        (vec!["b", "a", "0"], vec!["0", "b", "a"]),
+        (vec!["01", "1"], vec!["1", "01"]),
+        (vec!["-1", "1.5", "2"], vec!["2", "-1", "1.5"]),
+        (vec!["", "0"], vec!["0", ""]),
+        (
+            vec!["key", "length", "value"],
+            vec!["key", "length", "value"],
+        ),
+    ] {
+        let entries: Vec<(String, StructuredValue)> = built
+            .iter()
+            .map(|key| ((*key).to_owned(), StructuredValue::Null))
+            .collect();
+        let ordered: Vec<&str> = StructuredValue::enumeration_order(&entries)
+            .into_iter()
+            .map(|index| entries[index].0.as_str())
+            .collect();
+        assert_eq!(ordered, expected, "enumerating {built:?}");
+    }
+}
+
+/// A sorted map would have written these in the wrong order.
+#[test]
+fn a_rendering_follows_the_enumeration_rather_than_the_alphabet() {
+    let value = Value::Structured(StructuredValue::Object(vec![
+        ("10".to_owned(), StructuredValue::Integer(1)),
+        ("2".to_owned(), StructuredValue::Integer(2)),
+        ("b".to_owned(), StructuredValue::Integer(3)),
+        ("a".to_owned(), StructuredValue::Integer(4)),
+    ]));
+    let Some(Value::Text(text)) = value.reinterpret(ValueKind::Text) else {
+        panic!("a structure reads as text");
+    };
+    assert_eq!(
+        text.text, "{\n    \"2\": 2,\n    \"10\": 1,\n    \"b\": 3,\n    \"a\": 4\n}",
+        "sorted order would have put 10 before 2 and a before b"
+    );
+}

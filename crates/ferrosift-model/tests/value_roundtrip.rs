@@ -52,16 +52,20 @@ fn text_round_trip_preserves_named_encoding() {
 
 #[test]
 fn nested_structured_value_round_trips_deterministically() {
-    let mut object = BTreeMap::new();
-    object.insert("enabled".into(), StructuredValue::Boolean(true));
-    object.insert("count".into(), StructuredValue::Integer(-7));
-    object.insert(
-        "items".into(),
-        StructuredValue::List(vec![
-            StructuredValue::Null,
-            StructuredValue::Text("x".into()),
-        ]),
-    );
+    // Built in this order on purpose: the members are written in the order
+    // they were added, so the round trip has to preserve it rather than
+    // recover it from a sort.
+    let object = vec![
+        ("enabled".into(), StructuredValue::Boolean(true)),
+        ("count".into(), StructuredValue::Integer(-7)),
+        (
+            "items".into(),
+            StructuredValue::List(vec![
+                StructuredValue::Null,
+                StructuredValue::Text("x".into()),
+            ]),
+        ),
+    ];
     let value = Value::Structured(StructuredValue::Object(object));
 
     let first = serde_json::to_string(&value).expect("value should serialize");

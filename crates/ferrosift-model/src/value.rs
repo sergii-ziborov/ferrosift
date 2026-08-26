@@ -210,8 +210,57 @@ pub enum StructuredValue {
     Bytes(Vec<u8>),
     /// An ordered list of structured values.
     List(Vec<Self>),
-    /// A key-sorted map of structured values.
-    Object(BTreeMap<String, Self>),
+    /// Named members, in the order they were added.
+    ///
+    /// Insertion order rather than a sorted map, because the reference
+    /// enumerates an object's properties in a specific order and sorting is
+    /// not it: integer-like keys come first in numeric order, and every other
+    /// key follows in the order it was added. A sorted map cannot express
+    /// that, and a rendering built from one puts `10` before `2` and `a`
+    /// before `b` -- neither of which is what the reference writes.
+    Object(Vec<(String, Self)>),
+}
+
+impl StructuredValue {
+    /// The keys of an object in the order the reference enumerates them.
+    ///
+    /// Integer-like keys first, ascending, then the rest in insertion order.
+    /// "Integer-like" is narrower than "parses as a number": a leading zero,
+    /// a sign, or a fraction disqualifies a key, so `01` and `-1` are ordinary
+    /// keys while `1` is an index. That is checked against the real engine in
+    /// `tests/dish.rs` rather than taken from the specification's wording.
+    #[must_use]
+    pub fn enumeration_order(entries: &[(String, Self)]) -> Vec<usize> {
+        let mut indexed: Vec<(u64, usize)> = Vec::new();
+        let mut named: Vec<usize> = Vec::new();
+        for (position, (key, _)) in entries.iter().enumerate() {
+            match integer_index(key) {
+                Some(index) => indexed.push((index, position)),
+                None => named.push(position),
+            }
+        }
+        indexed.sort_unstable();
+        let mut order: Vec<usize> = indexed.into_iter().map(|(_, position)| position).collect();
+        order.extend(named);
+        order
+    }
+}
+
+/// The number a key stands for, when the key is a canonical integer index.
+///
+/// Canonical means the key is exactly how the number prints: no sign, no
+/// leading zero unless the key *is* `0`, no fraction. Anything else is an
+/// ordinary key however numeric it looks.
+fn integer_index(key: &str) -> Option<u64> {
+    if key.is_empty() || !key.bytes().all(|byte| byte.is_ascii_digit()) {
+        return None;
+    }
+    if key.len() > 1 && key.starts_with('0') {
+        return None;
+    }
+    // The reference treats a canonical integer up to 2^53 - 1 as an index,
+    // which is the largest whole number its one numeric type can hold exactly.
+    key.parse::<u64>().ok().filter(|value| *value < (1 << 53))
 }
 
 /// An in-memory file carried as a value without granting filesystem access.
@@ -562,7 +611,13 @@ fn render_structured(value: &StructuredValue, indent: usize) -> String {
                 return String::from("{}");
             }
             let mut output = String::from("{\n");
-            for (position, (key, value)) in entries.iter().enumerate() {
+            // Written in the order the reference enumerates them, which is
+            // neither insertion order nor sorted order but a mixture of both.
+            for (position, entry) in StructuredValue::enumeration_order(entries)
+                .into_iter()
+                .enumerate()
+            {
+                let (key, value) = &entries[entry];
                 if position > 0 {
                     output.push_str(",\n");
                 }

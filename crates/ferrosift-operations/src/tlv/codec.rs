@@ -188,12 +188,15 @@ pub(super) fn parse(
 /// instead of emitting it. A length that overran the input is `NaN` there,
 /// which has no JSON spelling and is written as null -- so it is null here.
 fn structure(record: Record) -> StructuredValue {
-    let mut entries = alloc::collections::BTreeMap::new();
+    // Pushed in the order the reference sets them, which is now the order they
+    // are written: a sorted map used to make this agree by luck, because
+    // `key`, `length`, `value` happens to sort the way it is built.
+    let mut entries = Vec::new();
     if let Some(key) = record.key {
-        entries.insert(String::from("key"), bytes(&key));
+        entries.push((String::from("key"), bytes(&key)));
     }
-    entries.insert(String::from("length"), narrow(record.length));
-    entries.insert(String::from("value"), bytes(&record.value));
+    entries.push((String::from("length"), narrow(record.length)));
+    entries.push((String::from("value"), bytes(&record.value)));
     StructuredValue::Object(entries)
 }
 
