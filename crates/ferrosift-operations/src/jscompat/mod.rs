@@ -27,6 +27,11 @@
 //! - [`delim`] — delimiter tokens and the JavaScript definition of
 //!   whitespace, which is wider than `char::is_whitespace`.
 
+// Public where its siblings are crate-private, because `jscompat_testing`
+// re-exports it and a re-export cannot widen what it points at. The module
+// stays unreachable except through that door.
+#[cfg(feature = "bignum")]
+pub mod bignumber;
 pub(crate) mod delim;
 pub(crate) mod double;
 pub(crate) mod escape;

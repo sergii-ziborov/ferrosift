@@ -303,6 +303,14 @@ pub mod registry_testing {
 /// contract — the surface a caller uses is the operation catalog.
 #[doc(hidden)]
 pub mod jscompat_testing {
+    /// Arbitrary-precision arithmetic with the reference library's rules.
+    ///
+    /// Exposed so `tests/bignumber.rs` can replay the recorded answers
+    /// directly, rather than only through whichever operations happen to use
+    /// it -- an arithmetic rule nobody called would otherwise go unchecked.
+    #[cfg(feature = "bignum")]
+    pub use crate::jscompat::bignumber;
+
     use alloc::{string::String, vec::Vec};
 
     /// Whether JavaScript's `\s` matches this character.

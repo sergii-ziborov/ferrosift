@@ -67,6 +67,59 @@ impl DecimalValue {
         self.special == Some(DecimalSpecial::NotANumber)
     }
 
+    /// Whether this is an infinity, of either sign.
+    #[must_use]
+    pub fn is_infinite(&self) -> bool {
+        self.special == Some(DecimalSpecial::Infinite)
+    }
+
+    /// Whether the value carries a minus sign.
+    ///
+    /// False for zero, which the reference renders without one however it was
+    /// written.
+    #[must_use]
+    pub const fn is_negative(&self) -> bool {
+        self.negative
+    }
+
+    /// Whether the value is exactly zero.
+    #[must_use]
+    pub fn is_zero(&self) -> bool {
+        self.special.is_none() && self.digits.is_empty()
+    }
+
+    /// The sign, the coefficient's digits, and its power of ten.
+    ///
+    /// `None` for a value that is not an ordinary number. Exposed so that an
+    /// arithmetic backend can work on the coefficient rather than on the
+    /// rendering: going through `to_fixed` would turn a value with a large
+    /// exponent into millions of characters before doing anything with it.
+    #[must_use]
+    pub fn parts(&self) -> Option<(bool, &str, i64)> {
+        if self.special.is_some() {
+            return None;
+        }
+        Some((self.negative, self.digits.as_str(), self.exponent))
+    }
+
+    /// Builds a value from a sign, digits, and a power of ten.
+    ///
+    /// The result is normalised and range-checked exactly as parsed input is,
+    /// so an arithmetic backend cannot produce a value the parser could not.
+    #[must_use]
+    pub fn from_parts(negative: bool, digits: &str, exponent: i64) -> Self {
+        if !digits.bytes().all(|byte| byte.is_ascii_digit()) {
+            return Self::not_a_number();
+        }
+        Self::normalised(negative, digits, exponent)
+    }
+
+    /// Positive or negative infinity, for a backend that produced one.
+    #[must_use]
+    pub fn infinity(negative: bool) -> Self {
+        Self::infinite(negative)
+    }
+
     /// Reads a decimal, answering not-a-number for anything unreadable.
     ///
     /// The reference's constructor *throws* on input it cannot read; the dish
@@ -148,7 +201,12 @@ impl DecimalValue {
     /// Not a detail. Without the clamp a three-character source could describe
     /// a number whose rendering is unbounded, and the budget that is supposed
     /// to refuse it would have to render it to find out.
-    const EXPONENT_LIMIT: i64 = 10_000_000;
+    ///
+    /// Public because arithmetic wants to know the range *before* it works.
+    /// A quotient whose scale lands outside this is infinite or zero whatever
+    /// its digits are, and computing those digits first would mean building a
+    /// power of ten with millions of them only to throw it away.
+    pub const EXPONENT_LIMIT: i64 = 10_000_000;
 
     /// Builds a value with its coefficient reduced to canonical form.
     fn normalised(negative: bool, digits: &str, exponent: i64) -> Self {
