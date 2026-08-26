@@ -19,7 +19,7 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 4083 |
+| Pinned cases | 4095 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -36,7 +36,7 @@ does.
 |---|---|---|---|---:|
 | `analysis.chi_square@1` | Chi Square | core | exact | 14 |
 | `analysis.index_of_coincidence@1` | Index of Coincidence | core | exact | 11 |
-| `analysis.offset_checker@1` | Offset checker | core | exact | 23 |
+| `analysis.offset_checker@1` | Offset checker | core | exact | 29 |
 | `analysis.suggest@1` | — | analysis | native | 0 |
 | `asn1.oid.decode@1` | Hex to Object Identifier | core | exact | 30 |
 | `asn1.oid.encode@1` | Object Identifier to Hex | core | exact | 41 |
@@ -139,7 +139,7 @@ does.
 | `encoding.float.decode@1` | From Float | core | exact | 87 |
 | `encoding.float.encode@1` | To Float | core | exact | 59 |
 | `encoding.hex.decode@1` | From Hex | core | exact | 27 |
-| `encoding.hex.encode@1` | To Hex | core | exact | 49 |
+| `encoding.hex.encode@1` | To Hex | core | exact | 52 |
 | `encoding.hex_content.decode@1` | From Hex Content | core | exact | 10 |
 | `encoding.hex_content.encode@1` | To Hex Content | core | exact | 26 |
 | `encoding.hexdump.decode@1` | From Hexdump | core | exact | 6 |
@@ -231,7 +231,7 @@ does.
 | `text.case.alternating@1` | Alternating Caps | core | exact | 9 |
 | `text.case.lower@1` | To Lower case | core | exact | 9 |
 | `text.case.swap@1` | Swap case | core | exact | 9 |
-| `text.case.upper@1` | To Upper case | core | exact | 16 |
+| `text.case.upper@1` | To Upper case | core | exact | 19 |
 | `text.count@1` | Count occurrences | text | exact | 14 |
 | `text.debruijn@1` | Generate De Bruijn Sequence | core | exact | 9 |
 | `text.escape.unescape@1` | Unescape string | core | exact | 11 |

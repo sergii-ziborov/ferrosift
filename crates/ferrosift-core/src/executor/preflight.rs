@@ -239,20 +239,17 @@ fn find_merge_for_prepared(fork_index: usize, prepared: &[PreparedStep<'_>]) -> 
 }
 
 fn output_satisfies_input(output: &ValueConstraint, input: &ValueConstraint) -> bool {
-    const ALL_VALUE_KINDS: [ValueKind; 7] = [
-        ValueKind::Empty,
-        ValueKind::Bytes,
-        ValueKind::Text,
-        ValueKind::Boolean,
-        ValueKind::Integer,
-        ValueKind::Structured,
-        ValueKind::Files,
-    ];
-
-    ALL_VALUE_KINDS
-        .iter()
-        .copied()
-        .all(|kind| !output.accepts(kind) || input.accepts(kind))
+    // A kind flows into a step when the step accepts it outright, or when the
+    // model defines a conversion into something the step does accept. The
+    // reference converts between dish types rather than refusing, and a check
+    // that demanded an exact match would reject recipes that run there.
+    ValueKind::ALL.iter().copied().all(|kind| {
+        !output.accepts(kind)
+            || ValueKind::ALL
+                .iter()
+                .copied()
+                .any(|target| kind.converts_to(target) && input.accepts(target))
+    })
 }
 
 fn resolve_arguments(

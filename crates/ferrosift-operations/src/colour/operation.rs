@@ -1,9 +1,7 @@
 use alloc::vec::Vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
-use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
-};
+use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::spec::{SpecDefinition, build};
 
@@ -26,7 +24,7 @@ impl ParseColourCode {
                 description: "Converts a colour between hex, RGB, HSL, and CMYK notations.",
                 cyberchef_alias: Some("Parse colour code"),
                 input: ValueConstraint::Exact(ValueKind::Text),
-                output: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Markup),
                 arguments: Vec::new(),
                 inverse: None,
                 classifications: None,
@@ -54,9 +52,6 @@ impl Operation for ParseColourCode {
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
         let input = crate::value::take_text_value(input)?;
-        Ok(Value::Text(TextValue {
-            text: codec::parse(&input.text),
-            encoding: TextEncoding::Utf8,
-        }))
+        Ok(Value::Markup(codec::parse(&input.text)))
     }
 }

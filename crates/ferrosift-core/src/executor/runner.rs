@@ -3,7 +3,7 @@
 use alloc::vec::Vec;
 use core::mem;
 
-use ferrosift_model::{ArgumentValue, CapabilitySet, Value};
+use ferrosift_model::{ArgumentValue, CapabilitySet, Value, ValueConstraint, ValueKind};
 
 use crate::{
     Cancellation, ExecutionBudget, ExecutionResult, ExecutionStatus, ExecutionTrace,
@@ -174,7 +174,14 @@ impl Runner<'_> {
             return Err(self.fail(ExecutionFailure::UnknownOperation, location));
         };
         let input_summary = ValueSummary::from_value(&self.value);
-        if !operation.spec().input.accepts(input_summary.kind) {
+        // Accepted outright, or convertible into something accepted. The
+        // second half is what lets markup reach an operation that wants text:
+        // the reference converts there rather than refusing, and refusing
+        // would reject a recipe that runs against it.
+        let accepted = ValueKind::ALL.iter().copied().any(|target| {
+            operation.spec().input.accepts(target) && input_summary.kind.converts_to(target)
+        });
+        if !accepted {
             return Err(self.fail(ExecutionFailure::InputKindMismatch, location));
         }
         self.count_invocation(&location)?;
@@ -188,6 +195,15 @@ impl Runner<'_> {
         let mut context =
             OperationContext::new(self.budget, self.cancellation, self.capabilities.clone());
         let input = mem::replace(&mut self.value, Value::Empty);
+        // Re-read the value as the step expects it before handing it over.
+        // The reference does this whenever a dish is asked for another type,
+        // and two of those conversions lose information -- markup arrives with
+        // its tags removed, a number as the digits JavaScript prints. Passing
+        // the value through untouched would run a different recipe than the
+        // same steps run there. Preflight has already agreed a conversion
+        // exists, so a value that cannot convert is left as it is and the
+        // operation reports the mismatch itself.
+        let input = adapt(input, &operation.spec().input);
         let output = match operation.execute(input, &prepared.arguments, &mut context) {
             Ok(output) => output,
             Err(error) => {
@@ -270,4 +286,25 @@ impl Runner<'_> {
             trace: self.trace,
         }
     }
+}
+
+/// Re-reads a value as the constraint asks for, when the model defines how.
+///
+/// Left untouched when the constraint already accepts what the value is, or
+/// when no conversion exists -- the operation is then the one that reports the
+/// mismatch, with the kind it actually received.
+fn adapt(value: Value, constraint: &ValueConstraint) -> Value {
+    if constraint.accepts(value.kind()) {
+        return value;
+    }
+    let kind = value.kind();
+    for target in ValueKind::ALL {
+        if !constraint.accepts(target) || !kind.converts_to(target) {
+            continue;
+        }
+        if let Some(converted) = value.clone().reinterpret(target) {
+            return converted;
+        }
+    }
+    value
 }

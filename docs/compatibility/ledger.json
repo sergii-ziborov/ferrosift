@@ -13,7 +13,7 @@
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4083
+    "pinned_cases": 4095
   },
   "operations": [
     {
@@ -52,7 +52,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 23,
+      "conformance_cases": 29,
       "status": "exact"
     },
     {
@@ -1396,7 +1396,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 49,
+      "conformance_cases": 52,
       "status": "exact"
     },
     {
@@ -2595,7 +2595,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 16,
+      "conformance_cases": 19,
       "status": "exact"
     },
     {

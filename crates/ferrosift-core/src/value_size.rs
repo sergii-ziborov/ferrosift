@@ -9,6 +9,15 @@ pub(crate) fn logical_size(value: &Value) -> u64 {
         Value::Text(text) => size_of_len(text.text.len()),
         Value::Boolean(_) => 1,
         Value::Integer(_) => 16,
+        // Eight bytes because that is what the number occupies, not what its
+        // digits would: a budget counts the payload carried between steps, and
+        // rendering it is the next step's cost rather than this one's.
+        Value::Number(_) => 8,
+        // Measured as the markup it holds rather than as the text it would
+        // become. The stripped form is shorter, and a budget that counted it
+        // would let a value through on the strength of a size it does not have
+        // until something asks for it.
+        Value::Markup(markup) => size_of_len(markup.len()),
         Value::Structured(value) => structured_size(value),
         Value::Files(files) => saturated_sum(files.iter().map(file_size)),
     }

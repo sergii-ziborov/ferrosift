@@ -1,9 +1,7 @@
 use alloc::vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
-use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
-};
+use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::args::{text_argument, text_value};
 use crate::jscompat::escape::parse_escaped_chars;
@@ -28,7 +26,7 @@ impl OffsetChecker {
                 description: "Highlights characters shared by every sample at the same offset.",
                 cyberchef_alias: Some("Offset checker"),
                 input: ValueConstraint::Exact(ValueKind::Text),
-                output: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Markup),
                 arguments: vec![text_argument(
                     "sample_delimiter",
                     "Separator between samples, with backslash escapes.",
@@ -61,9 +59,10 @@ impl Operation for OffsetChecker {
         context.ensure_active()?;
         let input = crate::value::take_text_value(input)?;
         let delimiter = parse_escaped_chars(text_value(arguments, "sample_delimiter")?);
-        Ok(Value::Text(TextValue {
-            text: codec::check(&input.text, &delimiter, context)?,
-            encoding: TextEncoding::Utf8,
-        }))
+        Ok(Value::Markup(codec::check(
+            &input.text,
+            &delimiter,
+            context,
+        )?))
     }
 }

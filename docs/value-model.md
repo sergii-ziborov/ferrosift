@@ -15,8 +15,8 @@ and the order it is being closed in.
 |---|---|---|
 | `byteArray`, `ArrayBuffer` | `Bytes` | matches |
 | `string` | `Text` | matches |
-| `number` | *none* -- reported as `Text` | **owed** |
-| `html` | *none* -- reported as `Text` | **owed** |
+| `number` | `Number` | kind exists; three operations still declare `Text` |
+| `html` | `Markup` | **done** |
 | `JSON` | *none* -- reported as `Text` | **owed** |
 | `BigNumber` | *none* | **owed**, and blocks 16 operations |
 | `File`, `List<File>` | `Files` | matches |
@@ -61,9 +61,10 @@ divergence, not a fix for one, and it should be deleted once `Markup` exists.
 Markup first, because it is the only one where a chained recipe is *provably*
 wrong today and the proof is a corpus case rather than an argument.
 
-1. **`Markup`** -- three operations, and it retires the harness rule. The
-   projection to text is the reference's strip-and-unescape, so a chained case
-   becomes pinnable and proves the mechanism end to end.
+1. ~~**Markup**~~ -- **done**. Three operations declare it, the harness rule
+   is gone, and offset_chain_upper_23 pins a recipe whose second step
+   receives `ABCDEF` where the first produced `<span class='hl5'>abc</span>...`.
+   Before the kind existed FerroSift passed the tags on and produced`n   `<SPAN CLASS='HL5'>` -- different bytes, and unpinnable.
 2. **`Number`** -- six operations. The projection is the JavaScript rendering
    already written as `jscompat::float::to_js_string`.
 3. **`Structured` as the JSON dish** -- one operation today. The kind exists;

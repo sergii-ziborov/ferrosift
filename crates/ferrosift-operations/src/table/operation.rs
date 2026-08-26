@@ -1,9 +1,7 @@
 use alloc::vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
-use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
-};
+use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::args::{boolean_argument, boolean_value, text_argument, text_value};
 use crate::jscompat::escape::parse_escaped_chars;
@@ -28,7 +26,7 @@ impl ToTable {
                 description: "Renders delimited text as an ASCII, HTML, or Markdown table.",
                 cyberchef_alias: Some("To Table"),
                 input: ValueConstraint::Exact(ValueKind::Text),
-                output: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Markup),
                 arguments: vec![
                     text_argument("cell_delimiters", "Characters that end a cell.", ","),
                     text_argument("row_delimiters", "Characters that end a row.", "\\r\\n"),
@@ -68,9 +66,13 @@ impl Operation for ToTable {
         let header = boolean_value(arguments, "first_row_header")?;
         let format = codec::format(text_value(arguments, "format")?);
 
-        Ok(Value::Text(TextValue {
-            text: codec::render(&input.text, &cells, &rows, header, format, context)?,
-            encoding: TextEncoding::Utf8,
-        }))
+        Ok(Value::Markup(codec::render(
+            &input.text,
+            &cells,
+            &rows,
+            header,
+            format,
+            context,
+        )?))
     }
 }

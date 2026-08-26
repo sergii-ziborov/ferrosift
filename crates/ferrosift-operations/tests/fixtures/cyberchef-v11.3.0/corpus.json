@@ -72090,6 +72090,165 @@
    "stopped_after": 1
   },
   {
+   "name": "offset_chain_upper_23",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e",
+    "4142434445460a0a414243584546"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "offset_chain_hex_24",
+   "input": {
+    "kind": "text",
+    "value": "abcdef\n\nabcXef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e",
+    "3631203632203633203634203635203636203061203061203631203632203633203538203635203636"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "offset_chain_upper_25",
+   "input": {
+    "kind": "text",
+    "value": "&<>\"'`\n\n&<>\"'`"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e26616d703b266c743b2667743b2671756f743b26237832373b26237836303b3c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e26616d703b266c743b2667743b2671756f743b26237832373b26237836303b3c2f7370616e3e3c2f7370616e3e",
+    "263c3e2227600a0a263c3e222760"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "offset_chain_hex_26",
+   "input": {
+    "kind": "text",
+    "value": "&<>\"'`\n\n&<>\"'`"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e26616d703b266c743b2667743b2671756f743b26237832373b26237836303b3c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e26616d703b266c743b2667743b2671756f743b26237832373b26237836303b3c2f7370616e3e3c2f7370616e3e",
+    "3236203363203365203232203237203630203061203061203236203363203365203232203237203630"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "offset_chain_upper_27",
+   "input": {
+    "kind": "text",
+    "value": "abc\n\nabcdef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e646566",
+    "4142430a0a414243444546"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "offset_chain_hex_28",
+   "input": {
+    "kind": "text",
+    "value": "abc\n\nabcdef"
+   },
+   "recipe": [
+    {
+     "op": "Offset checker",
+     "args": [
+      "\n\n"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e3c2f7370616e3e0a0a3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e646566",
+    "3631203632203633203061203061203631203632203633203634203635203636"
+   ],
+   "stopped_after": 2
+  },
+  {
    "name": "table_0",
    "input": {
     "kind": "text",

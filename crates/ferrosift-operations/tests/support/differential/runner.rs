@@ -113,6 +113,11 @@ fn normalize(value: Value) -> Vec<u8> {
         // than as text is what stops the caller parsing a number back out of a
         // string to use it.
         Value::Integer(number) => number.to_string().into_bytes(),
+        // A markup value is compared as the markup itself, because that is
+        // what the reference's dish holds and what the harness now pins. The
+        // stripped form is what a *later* step would receive, and pinning that
+        // here would have let an operation emitting no tags at all pass.
+        Value::Markup(markup) => encode_text_like_reference(&markup),
         other => panic!(
             "reference normalization does not support {:?}",
             other.kind()

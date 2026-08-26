@@ -93,22 +93,11 @@ for (const testCase of cases) {
     testCase.outputs_hex = [];
     for (let length = 1; length <= testCase.recipe.length; length += 1) {
         try {
-            const {hex, html} = await bakeOutput(
+            const {hex} = await bakeOutput(
                 chef,
                 makeInput(testCase.input),
                 testCase.recipe.slice(0, length),
             );
-            // An HTML operation may only be the last step. FerroSift passes
-            // its markup on as text; the reference passes the stripped form.
-            // Chaining past one would pin a divergence that says nothing about
-            // either operation, so it is refused here rather than explained
-            // later.
-            if (html && length < testCase.recipe.length) {
-                throw new Error(
-                    `step ${length} produces HTML and is not last; ` +
-                        "an HTML operation may only end a recipe",
-                );
-            }
             testCase.outputs_hex.push(hex);
         } catch (error) {
             failures += 1;

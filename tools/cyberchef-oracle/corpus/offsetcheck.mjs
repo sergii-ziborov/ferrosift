@@ -1,11 +1,17 @@
 // Comparing samples position by position.
 //
-// This is the first family whose output is markup. What is pinned here is the
+// This is the first family whose output is markup. What is pinned is the
 // markup itself, which the harness reads from the dish's own value -- every
 // `get` translates by way of an ArrayBuffer, and the HTML dish's conversion to
 // one strips the tags, so asking for bytes returns the highlighting with the
 // highlighting taken out. Pinned that way, a port that emitted no spans at all
 // would have passed.
+//
+// The chained cases at the end are the ones that prove the value model rather
+// than the operation. A step *after* a markup operation receives the stripped
+// and unescaped text, not the markup -- so `Offset checker` into `To Upper
+// case` has no `SPAN` in it. Until markup was its own kind, FerroSift passed
+// the tags on and the harness had to refuse to pin such a recipe at all.
 //
 // The highlighting is driven by a single `inMatch` flag that is mutated inside
 // the loop over samples but only updated while writing the *last* one. Earlier
@@ -70,6 +76,20 @@ export function add({addCase}) {
     for (const delimiter of DELIMITERS) {
         addCase(`offset_delim_${index++}`, `abcdef${delimiter}abcXef`, [
             {op: "Offset checker", args: [delimiter]},
+        ]);
+    }
+
+    // Chained past the markup operation: the next step must receive the
+    // stripped, unescaped text rather than the tags. This is what the value
+    // model buys, and what the harness previously refused to pin.
+    for (const sample of ["abcdef\n\nabcXef", "&<>\"'`\n\n&<>\"'`", "abc\n\nabcdef"]) {
+        addCase(`offset_chain_upper_${index++}`, sample, [
+            {op: "Offset checker", args: ["\n\n"]},
+            {op: "To Upper case", args: ["All"]},
+        ]);
+        addCase(`offset_chain_hex_${index++}`, sample, [
+            {op: "Offset checker", args: ["\n\n"]},
+            {op: "To Hex", args: ["Space", 0]},
         ]);
     }
 }
