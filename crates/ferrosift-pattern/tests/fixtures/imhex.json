@@ -1,0 +1,80 @@
+{
+ "reference": {
+  "name": "ImHex PatternLanguage",
+  "commit": "2751a95c94efc788512675d997e534ef9e0aba11"
+ },
+ "cases": [
+  {
+   "name": "scalar_widths",
+   "pattern": "struct S {\n    u8 a;\n    u16 b;\n    u32 c;\n    u64 d;\n};\nS s @ 0x00;",
+   "data": "0102030405060708090a0b0c0d0e0f",
+   "json": "{\n    \"s\": {\n        \"a\": 1,\n        \"b\": 770,\n        \"c\": 117835012,\n        \"d\": 1084818905618843912\n    }\n}"
+  },
+  {
+   "name": "endianness_prefix",
+   "pattern": "struct S {\n    be u16 big;\n    le u16 little;\n};\nS s @ 0x00;",
+   "data": "cafebabe",
+   "json": "{\n    \"s\": {\n        \"big\": 51966,\n        \"little\": 48826\n    }\n}"
+  },
+  {
+   "name": "signed_widths",
+   "pattern": "struct S {\n    s8 a;\n    s16 b;\n    s32 c;\n};\nS s @ 0x00;",
+   "data": "fffffefffffffd",
+   "json": "{\n    \"s\": {\n        \"a\": -1,\n        \"b\": -257,\n        \"c\": -33554433\n    }\n}"
+  },
+  {
+   "name": "fixed_array",
+   "pattern": "struct S {\n    u8 items[4];\n};\nS s @ 0x00;",
+   "data": "11223344",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            17,\n            34,\n            51,\n            68\n        ]\n    }\n}"
+  },
+  {
+   "name": "enum_named_and_unnamed",
+   "pattern": "enum Kind : u8 { None = 0, Alpha = 1, Beta = 2 };\nstruct S {\n    Kind known;\n    Kind unknown;\n};\nS s @ 0x00;",
+   "data": "027f",
+   "json": "{\n    \"s\": {\n        \"known\": \"Kind::Beta\",\n        \"unknown\": \"Kind::???\"\n    }\n}"
+  },
+  {
+   "name": "bitfield_member_order",
+   "pattern": "bitfield Flags {\n    low  : 3;\n    high : 5;\n};\nFlags flags @ 0x00;",
+   "data": "a5",
+   "json": "{\n    \"flags\": {\n        \"low\": 5,\n        \"high\": 20\n    }\n}"
+  },
+  {
+   "name": "bitfield_across_two_bytes",
+   "pattern": "bitfield Wide {\n    a : 4;\n    b : 8;\n    c : 4;\n};\nWide wide @ 0x00;",
+   "data": "1234",
+   "json": "{\n    \"wide\": {\n        \"a\": 2,\n        \"b\": 65,\n        \"c\": 3\n    }\n}"
+  },
+  {
+   "name": "char_and_bool",
+   "pattern": "struct S {\n    char letter;\n    bool yes;\n    bool no;\n};\nS s @ 0x00;",
+   "data": "410100",
+   "json": "{\n    \"s\": {\n        \"letter\": \"A\",\n        \"yes\": true,\n        \"no\": false\n    }\n}"
+  },
+  {
+   "name": "nested_struct",
+   "pattern": "struct Inner { u8 x; u8 y; };\nstruct Outer { Inner first; Inner second; };\nOuter outer @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"outer\": {\n        \"first\": {\n            \"x\": 1,\n            \"y\": 2\n        },\n        \"second\": {\n            \"x\": 3,\n            \"y\": 4\n        }\n    }\n}"
+  },
+  {
+   "name": "placement_offset",
+   "pattern": "struct S { u8 v; };\nS first  @ 0x00;\nS second @ 0x03;",
+   "data": "aabbccdd",
+   "json": "{\n    \"first\": {\n        \"v\": 170\n    },\n    \"second\": {\n        \"v\": 221\n    }\n}"
+  },
+  {
+   "name": "using_alias",
+   "pattern": "using Word = be u16;\nstruct S { Word a; Word b; };\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"a\": 258,\n        \"b\": 772\n    }\n}"
+  },
+  {
+   "name": "float_and_double",
+   "pattern": "struct S {\n    float f;\n    double d;\n};\nS s @ 0x00;",
+   "data": "0000803f000000000000f03f",
+   "json": "{\n    \"s\": {\n        \"f\": 1,\n        \"d\": 1\n    }\n}"
+  }
+ ]
+}

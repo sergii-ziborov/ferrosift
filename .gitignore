@@ -6,6 +6,7 @@ target/
 # The pinned reference checkout is fetched by `cargo xtask cyberchef setup`,
 # never committed: it is large and belongs to upstream.
 tools/cyberchef-oracle/vendor/
+tools/pattern-oracle/vendor/
 
 # Non-baseline profiles are committed as deltas against the baseline
 # (`*.overlay.json`), not as second copies of a million bytes that agree.

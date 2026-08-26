@@ -18,19 +18,44 @@ which left every grammar decision looking arbitrary rather than inherited.
 
 ## Compatibility status
 
-**No upstream compatibility is claimed.** FerroSift's rule is that a
-compatibility claim must be backed by a pinned differential corpus, the way
-[CyberChef 11.3.0 compatibility](compatibility/cyberchef-v11.3.0.md) is backed
-by its pinned cases. No pattern-language runtime is vendored in this
-repository and no such corpus exists, so this page documents *what this crate
-does* and nothing more. Naming the inspiration above is not a claim of
-agreement with it: where this crate has had to decide something the grammar
-alone does not settle — bitfield bit order is the clearest case — the choice
-is marked as this crate's own.
+**No upstream compatibility is claimed yet, and now there is evidence about
+why.** Until this commit the crate had sixty-six tests and every one of them
+asked the crate what the crate does. That is not evidence about any other
+implementation.
 
-The claim will be made only once the evidence exists, and this page will then
-state the pinned reference and case count exactly as the CyberChef ledger
-does.
+There is now an oracle: `tools/pattern-oracle` builds ImHex's own `plcli` from
+a pinned checkout and records what it answers for the same source and the same
+bytes, exactly as `tools/cyberchef-oracle` does for the catalog. The pinned
+reference is commit `2751a95c94efc788512675d997e534ef9e0aba11` of
+`WerWolv/PatternLanguage`.
+
+The first run found three divergences. They are listed below rather than
+quietly fixed, because a claim needs the corpus to be replayed in CI before it
+means anything, and that replay is not written yet.
+
+### What the oracle found
+
+**Bitfields disagree, in two ways at once.** This page already said the layout
+was "the layout *this crate defines*, not a claim about another
+implementation", and now the difference has numbers. For `bitfield Flags { low : 3; high : 5; }`
+over the single byte `0xA5`, the reference answers `low = 5, high = 20`; this
+crate answers `low = 5, high = 5`. The reference reads members from the
+*least* significant bit; this crate reads from the most significant. And for a
+bitfield spanning two bytes the reference reads the span *little-endian*,
+where this crate reads it big-endian -- so `a : 4; b : 8; c : 4` over `0x1234`
+is `2, 65, 3` there and `1, 35, 4` here.
+
+**An unmatched enum value is rendered.** The reference writes
+`"Kind::???"` for a value with no matching constant; this crate carries the
+value with no name and leaves the rendering to a caller.
+
+**An integral float prints without a point.** The reference renders `1.0` as
+`1`, which is the JavaScript-style rendering rather than Rust's.
+
+None of these is a bug in the sense of a mistake nobody meant. The bitfield
+layout was documented as this crate's own choice. What has changed is that the
+choice is now measurable, and measurable is the precondition for deciding
+whether to keep it.
 
 ## Supported grammar
 
