@@ -22,6 +22,12 @@
 //   - **The reference's own time is what is reported.** No attempt is made to
 //     subtract Dish translation or argument handling, because FerroSift pays
 //     for its equivalents and does not subtract them either.
+//   - **Every verdict is a floor.** A row states what survives reading both
+//     sides as unfavourably as the data allows -- the reference at its fastest
+//     batch against FerroSift at the slow end of its interval. The ratio of
+//     the medians is always larger than the number printed, and is not
+//     printed. Where the two ranges touch at all there is no verdict, however
+//     tight the batches happened to be.
 
 import {readFileSync, existsSync, writeFileSync} from "node:fs";
 import path from "node:path";
@@ -129,10 +135,25 @@ async function measure(chef, input, recipe) {
     means.sort((a, b) => a - b);
     const median = means[Math.floor(means.length / 2)];
     const spread = (means[means.length - 1] - means[0]) / median;
-    return {nanoseconds: median, spread, noisy: spread > NOISE_LIMIT};
+    return {
+        nanoseconds: median,
+        // The extremes, not only the middle. A spread is what a row *cannot*
+        // pin down, and the verdict below needs to know how far the truth
+        // could be from the median in each direction.
+        fastest: means[0],
+        slowest: means[means.length - 1],
+        spread,
+        noisy: spread > NOISE_LIMIT,
+    };
 }
 
-/** FerroSift's own median for one arm and size, if a run recorded it. */
+/**
+ * FerroSift's own estimate for one arm and size, if a run recorded it.
+ *
+ * The confidence interval comes back with the median, because a verdict that
+ * used only the point estimate would be comparing a noisy number against a
+ * precise-looking one.
+ */
 function ferrosift(arm, size) {
     const file = path.join(
         criterionDir,
@@ -143,7 +164,46 @@ function ferrosift(arm, size) {
         "estimates.json",
     );
     if (!existsSync(file)) return null;
-    return JSON.parse(readFileSync(file, "utf8")).median.point_estimate;
+    const {median} = JSON.parse(readFileSync(file, "utf8"));
+    return {
+        median: median.point_estimate,
+        lower: median.confidence_interval.lower_bound,
+        upper: median.confidence_interval.upper_bound,
+    };
+}
+
+/**
+ * What the measurement supports even read as unfavourably as it allows.
+ *
+ * The first version of this refused any row whose batches disagreed by more
+ * than fifteen percent, and on a loaded machine that discarded nineteen rows
+ * of twenty. It was also the wrong test. The spread says how repeatable *one*
+ * arm was; the question is whether the two arms overlap. Where one side is a
+ * hundred times the other, a fifty-percent spread cannot reach across the gap,
+ * and refusing to say so is not caution -- it is discarding a fact.
+ *
+ * So the rule is now the stricter one it should always have been: take the
+ * reference at its fastest batch and FerroSift at the slow end of its
+ * interval, and see whether the order still holds. If it does, the ratio of
+ * those two is reported -- a floor, not the headline number, and always
+ * smaller than the ratio of the medians. If the ranges touch at all, there is
+ * no verdict, however narrow the spreads happened to be.
+ *
+ * This cuts both ways by construction: the same comparison runs in the other
+ * direction, so a row where FerroSift is slower is stated on exactly the same
+ * terms.
+ */
+function verdict(reference, ours) {
+    if (ours === null) return {kind: "missing"};
+    // The reference at its best against FerroSift at its worst.
+    if (reference.fastest > ours.upper) {
+        return {kind: "faster", ratio: reference.fastest / ours.upper};
+    }
+    // And the reverse, on the same terms.
+    if (reference.slowest < ours.lower) {
+        return {kind: "slower", ratio: ours.lower / reference.slowest};
+    }
+    return {kind: "overlap"};
 }
 
 function duration(nanoseconds) {
@@ -171,13 +231,19 @@ for (const arm of ARMS) {
             process.stderr.write(`skipped ${arm.group} at ${size}: ${error?.message ?? error}\n`);
             continue;
         }
+        const ours = ferrosift(arm, size);
         rows.push({
             group: arm.group,
             size,
             reference: measured.nanoseconds,
+            reference_fastest: measured.fastest,
+            reference_slowest: measured.slowest,
             spread: measured.spread,
             noisy: measured.noisy,
-            ferrosift: ferrosift(arm, size),
+            ferrosift: ours === null ? null : ours.median,
+            ferrosift_lower: ours === null ? null : ours.lower,
+            ferrosift_upper: ours === null ? null : ours.upper,
+            verdict: verdict(measured, ours),
         });
     }
 }
@@ -193,20 +259,27 @@ for (const row of rows) {
         lastGroup = row.group;
     }
     const ours = row.ferrosift;
-    let verdict;
-    if (row.noisy) {
-        // The batches disagreed by more than the limit, so there is no number
-        // here worth a ratio -- saying so is the report, not a gap in it.
-        verdict = `*noisy (${(row.spread * 100).toFixed(0)}% spread)*`;
-    } else if (ours === null) {
-        verdict = "*no FerroSift measurement*";
-    } else {
-        const ratio = row.reference / ours;
-        verdict = ratio >= 1 ? `${ratio.toFixed(2)}× faster` : `${(1 / ratio).toFixed(2)}× slower`;
+    // The spread is printed whatever the verdict, because a floor drawn from
+    // noisy batches and one drawn from tight batches are not the same claim
+    // even when they read alike.
+    const noise = row.noisy ? ` *(±${(row.spread * 100).toFixed(0)}%)*` : "";
+    let said;
+    switch (row.verdict.kind) {
+        case "faster":
+            said = `at least ${row.verdict.ratio.toFixed(1)}× faster${noise}`;
+            break;
+        case "slower":
+            said = `at least ${row.verdict.ratio.toFixed(1)}× slower${noise}`;
+            break;
+        case "missing":
+            said = "*no FerroSift measurement*";
+            break;
+        default:
+            said = `*no verdict — the ranges overlap*${noise}`;
     }
     table += `| ${bytes(row.size)} | ${duration(row.reference)} | ${
         ours === null ? "—" : duration(ours)
-    } | ${verdict} |\n`;
+    } | ${said} |\n`;
 }
 
 process.stdout.write(table);

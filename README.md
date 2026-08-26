@@ -131,6 +131,13 @@ against the fastest available competitor rather than a convenient one, and
 ships the raw estimates so a reader can recompute every ratio. `cargo xtask
 bench all` reproduces it.
 
+It is faster than the reference it ports — at least 12× on every operation and
+size measured, and usually far more. That is the weaker of the two findings
+and the one worth less: beating a JavaScript implementation with a Rust one is
+the least a port should manage. Every figure there is a floor, computed by
+reading both sides as unfavourably as the data allows, and `cargo xtask bench
+reference` reproduces it against the pinned checkout.
+
 Precision came first and it cost speed: the ports iterate characters where
 bytes would do, and carry validation the specialist crates do not. Those are
 reasons, not defences — the harness exists to close them, and has already

@@ -3,162 +3,322 @@
   {
    "group": "base64/encode",
    "size": 16,
-   "reference": 56463.6,
-   "spread": 0.24403686622886256,
+   "reference": 47193.4,
+   "reference_fastest": 45473.8,
+   "reference_slowest": 61645.6,
+   "spread": 0.34267079718774224,
    "noisy": true,
-   "ferrosift": 1042.256232977163
+   "ferrosift": 1366.7995397459683,
+   "ferrosift_lower": 1323.4758347783559,
+   "ferrosift_upper": 1407.70702166051,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 32.30345469638973
+   }
   },
   {
    "group": "base64/encode",
    "size": 256,
-   "reference": 62508.6,
-   "spread": 0.16060190117839784,
-   "noisy": true,
-   "ferrosift": 1863.5148460410558
-  },
-  {
-   "group": "base64/encode",
-   "size": 4096,
-   "reference": 188935,
-   "spread": 0.367277635165533,
-   "noisy": true,
-   "ferrosift": 3158.423089651734
-  },
-  {
-   "group": "base64/encode",
-   "size": 65536,
-   "reference": 3110735,
-   "spread": 0.41252308538014326,
-   "noisy": true,
-   "ferrosift": 70428.8552631579
-  },
-  {
-   "group": "base64/encode",
-   "size": 1048576,
-   "reference": 89566410,
-   "spread": 0.16907387490466572,
-   "noisy": true,
-   "ferrosift": 1454900.8731617648
-  },
-  {
-   "group": "hex/encode",
-   "size": 16,
-   "reference": 108317.4,
-   "spread": 0.37727641173071,
-   "noisy": true,
-   "ferrosift": 388.89841506995464
-  },
-  {
-   "group": "hex/encode",
-   "size": 256,
-   "reference": 109563.4,
-   "spread": 0.5330813026977987,
-   "noisy": true,
-   "ferrosift": 534.6647506854301
-  },
-  {
-   "group": "hex/encode",
-   "size": 4096,
-   "reference": 524678,
-   "spread": 0.1711083750414541,
-   "noisy": true,
-   "ferrosift": 3255.9098943478084
-  },
-  {
-   "group": "hex/encode",
-   "size": 65536,
-   "reference": 8146030,
-   "spread": 0.2548885776261565,
-   "noisy": true,
-   "ferrosift": 48241.0835401158
-  },
-  {
-   "group": "hex/encode",
-   "size": 1048576,
-   "reference": 148617615,
-   "spread": 0.8760837334120858,
-   "noisy": true,
-   "ferrosift": 1254818.7264150945
-  },
-  {
-   "group": "overhead/md5",
-   "size": 16,
-   "reference": 49091.6,
-   "spread": 1.2576204483048015,
-   "noisy": true,
-   "ferrosift": 1059.514082359991
-  },
-  {
-   "group": "overhead/md5",
-   "size": 256,
-   "reference": 66622.4,
-   "spread": 0.3598009078027811,
-   "noisy": true,
-   "ferrosift": 1099.061323815704
-  },
-  {
-   "group": "overhead/md5",
-   "size": 4096,
-   "reference": 376339,
-   "spread": 0.2798928625521139,
-   "noisy": true,
-   "ferrosift": 6184.261719233147
-  },
-  {
-   "group": "overhead/md5",
-   "size": 65536,
-   "reference": 7021465,
-   "spread": 0.1284147966271996,
+   "reference": 50803.4,
+   "reference_fastest": 49455.6,
+   "reference_slowest": 53937.2,
+   "spread": 0.08821456831629376,
    "noisy": false,
-   "ferrosift": 111486.76984126984
+   "ferrosift": 1628.2608695652175,
+   "ferrosift_lower": 1539.6150906970197,
+   "ferrosift_upper": 1675.0373585711236,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 29.525072827144392
+   }
+  },
+  {
+   "group": "base64/encode",
+   "size": 4096,
+   "reference": 144011,
+   "reference_fastest": 132211.2,
+   "reference_slowest": 154334,
+   "spread": 0.15361882078452332,
+   "noisy": true,
+   "ferrosift": 4666.82643172518,
+   "ferrosift_lower": 4567.123051752346,
+   "ferrosift_upper": 4779.433496234238,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 27.66252529806524
+   }
+  },
+  {
+   "group": "base64/encode",
+   "size": 65536,
+   "reference": 2165120,
+   "reference_fastest": 1936580,
+   "reference_slowest": 2293270,
+   "spread": 0.16474375554241796,
+   "noisy": true,
+   "ferrosift": 49992.19977553311,
+   "ferrosift_lower": 48868.75,
+   "ferrosift_upper": 51237.07960834398,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 37.79645551235959
+   }
+  },
+  {
+   "group": "base64/encode",
+   "size": 1048576,
+   "reference": 50197775,
+   "reference_fastest": 48595740,
+   "reference_slowest": 51777780,
+   "spread": 0.06339006061523643,
+   "noisy": false,
+   "ferrosift": 1684669.412878788,
+   "ferrosift_lower": 1640916.6666666665,
+   "ferrosift_upper": 1762707.142857143,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 27.568810960413973
+   }
+  },
+  {
+   "group": "hex/encode",
+   "size": 16,
+   "reference": 45657.8,
+   "reference_fastest": 41706.4,
+   "reference_slowest": 73421.2,
+   "spread": 0.6946195392682082,
+   "noisy": true,
+   "ferrosift": 714.0183828907907,
+   "ferrosift_lower": 683.4624726327313,
+   "ferrosift_upper": 741.6358159117306,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 56.23568752370489
+   }
+  },
+  {
+   "group": "hex/encode",
+   "size": 256,
+   "reference": 60168.6,
+   "reference_fastest": 58021.2,
+   "reference_slowest": 71394.4,
+   "spread": 0.22226211013718114,
+   "noisy": true,
+   "ferrosift": 925.6903946522494,
+   "ferrosift_lower": 897.3367237687366,
+   "ferrosift_upper": 968.9015736268115,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 59.883482057742874
+   }
+  },
+  {
+   "group": "hex/encode",
+   "size": 4096,
+   "reference": 322471.4,
+   "reference_fastest": 313644.8,
+   "reference_slowest": 329275.2,
+   "spread": 0.048470655072046766,
+   "noisy": false,
+   "ferrosift": 4302.585794366967,
+   "ferrosift_lower": 4175.579710144928,
+   "ferrosift_upper": 4683.668750908827,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 66.96562389027615
+   }
+  },
+  {
+   "group": "hex/encode",
+   "size": 65536,
+   "reference": 5372465,
+   "reference_fastest": 5155535,
+   "reference_slowest": 5684225,
+   "spread": 0.09840734188124073,
+   "noisy": false,
+   "ferrosift": 72676.71957671957,
+   "ferrosift_lower": 68436.00288600288,
+   "ferrosift_upper": 76809.39728163992,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 67.1211490059739
+   }
+  },
+  {
+   "group": "hex/encode",
+   "size": 1048576,
+   "reference": 138158555,
+   "reference_fastest": 136784410,
+   "reference_slowest": 140221460,
+   "spread": 0.02487757634697323,
+   "noisy": false,
+   "ferrosift": 2083204.9810645906,
+   "ferrosift_lower": 1994854.0229885057,
+   "ferrosift_upper": 2169657.8754578754,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 63.04422994391851
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 16,
+   "reference": 26011,
+   "reference_fastest": 23437.2,
+   "reference_slowest": 44477.8,
+   "spread": 0.8089116143170199,
+   "noisy": true,
+   "ferrosift": 1423.819546323464,
+   "ferrosift_lower": 1275.7327880027267,
+   "ferrosift_upper": 1554.6854985505292,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 15.075203326879338
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 256,
+   "reference": 41414.8,
+   "reference_fastest": 38285,
+   "reference_slowest": 45229.6,
+   "spread": 0.167684016341984,
+   "noisy": true,
+   "ferrosift": 2079.2578844038685,
+   "ferrosift_lower": 1998.6682378363678,
+   "ferrosift_upper": 2161.732581462059,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 17.710331207621643
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 4096,
+   "reference": 241296,
+   "reference_fastest": 236811.4,
+   "reference_slowest": 245429.2,
+   "spread": 0.03571464093892985,
+   "noisy": false,
+   "ferrosift": 10340.749272345754,
+   "ferrosift_lower": 9967.719734660033,
+   "ferrosift_upper": 10916.091417910447,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 21.6937904726095
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 65536,
+   "reference": 4340660,
+   "reference_fastest": 4190480,
+   "reference_slowest": 4522100,
+   "spread": 0.07639852004073114,
+   "noisy": false,
+   "ferrosift": 158546.89608636976,
+   "ferrosift_lower": 151594.87179487178,
+   "ferrosift_upper": 164148,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 25.52866924970149
+   }
   },
   {
    "group": "overhead/md5",
    "size": 1048576,
-   "reference": 125676770,
-   "spread": 0.1355043975111709,
+   "reference": 67866680,
+   "reference_fastest": 67199465,
+   "reference_slowest": 70033170,
+   "spread": 0.04175399474381243,
    "noisy": false,
-   "ferrosift": 1725765.2173913042
+   "ferrosift": 2539348.8132557096,
+   "ferrosift_lower": 2364017.5,
+   "ferrosift_upper": 2681402.1739130435,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 25.06131517822035
+   }
   },
   {
    "group": "overhead/sha256",
    "size": 16,
-   "reference": 87958.2,
-   "spread": 0.4994258636488696,
-   "noisy": true,
-   "ferrosift": 1100.6462235649547
+   "reference": 32795,
+   "reference_fastest": 31807.8,
+   "reference_slowest": 36596.2,
+   "spread": 0.14601006250952883,
+   "noisy": false,
+   "ferrosift": 2487.1750271072306,
+   "ferrosift_lower": 2362.0356944444447,
+   "ferrosift_upper": 2601.294736842105,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 12.227680143086642
+   }
   },
   {
    "group": "overhead/sha256",
    "size": 256,
-   "reference": 102861.2,
-   "spread": 0.9950690833861554,
-   "noisy": true,
-   "ferrosift": 1052.1912032049556
+   "reference": 42814,
+   "reference_fastest": 41368.2,
+   "reference_slowest": 45210.6,
+   "spread": 0.08974634465361801,
+   "noisy": false,
+   "ferrosift": 1694.9596436313705,
+   "ferrosift_lower": 1606.552348668783,
+   "ferrosift_upper": 1801.8099547511313,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 22.959247112004014
+   }
   },
   {
    "group": "overhead/sha256",
    "size": 4096,
-   "reference": 385769.6,
-   "spread": 0.4375098504392259,
-   "noisy": true,
-   "ferrosift": 3140.0585783485412
+   "reference": 215833.6,
+   "reference_fastest": 210539.4,
+   "reference_slowest": 225722.8,
+   "spread": 0.07034771231170676,
+   "noisy": false,
+   "ferrosift": 4847.054735429449,
+   "ferrosift_lower": 4601.688769881081,
+   "ferrosift_upper": 5154.625443978043,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 40.8447524050395
+   }
   },
   {
    "group": "overhead/sha256",
    "size": 65536,
-   "reference": 7888730,
-   "spread": 0.2571231364237336,
-   "noisy": true,
-   "ferrosift": 30766.764106172974
+   "reference": 3777740,
+   "reference_fastest": 3673400,
+   "reference_slowest": 4008140,
+   "spread": 0.08860853314415497,
+   "noisy": false,
+   "ferrosift": 43129.51744848296,
+   "ferrosift_lower": 38642.70270270271,
+   "ferrosift_upper": 47636.19925808161,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 77.11362487377282
+   }
   },
   {
    "group": "overhead/sha256",
    "size": 1048576,
-   "reference": 114042380,
-   "spread": 0.2311068920168099,
-   "noisy": true,
-   "ferrosift": 813125.5555555555
+   "reference": 61242715,
+   "reference_fastest": 60588705,
+   "reference_slowest": 62298010,
+   "spread": 0.027910340029830488,
+   "noisy": false,
+   "ferrosift": 887807.4682203389,
+   "ferrosift_lower": 845393.5,
+   "ferrosift_upper": 932862.6313813814,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 64.94922506465967
+   }
   }
  ]
 }

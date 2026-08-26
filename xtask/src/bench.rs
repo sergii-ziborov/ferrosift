@@ -22,6 +22,11 @@ pub fn run(arguments: &[&str]) -> ExitCode {
         ["report"] => report(),
         ["check"] => check(),
         ["stale"] => rerun_stale(),
+        // The comparison against the reference is a separate verb because it
+        // needs the pinned CyberChef checkout, which a contributor measuring
+        // one batch will not have. It was previously only a script beside the
+        // others, and went unpublished for three revisions as a result.
+        ["reference"] => reference(),
         ["all"] => {
             if measure(&[]) == ExitCode::SUCCESS {
                 report()
@@ -31,7 +36,7 @@ pub fn run(arguments: &[&str]) -> ExitCode {
         }
         other => {
             eprintln!("unknown bench task: {}", other.join(" "));
-            eprintln!("expected: run [batch...] | stale | report | check | all");
+            eprintln!("expected: run [batch...] | stale | reference | report | check | all");
             ExitCode::FAILURE
         }
     }
@@ -324,6 +329,24 @@ fn read_proc_cpuinfo() -> Option<String> {
         .find(|line| line.starts_with("model name"))
         .and_then(|line| line.split_once(':'))
         .map(|(_, value)| value.trim().to_owned())
+}
+
+/// Measures the reference itself, for the section the report builds from it.
+///
+/// Needs the pinned checkout, so it is separate from `run` rather than part of
+/// it: a batch measurement should not require cloning CyberChef.
+fn reference() -> ExitCode {
+    let script = repo_root()
+        .join("tools")
+        .join("bench")
+        .join("cyberchef.mjs")
+        .to_string_lossy()
+        .to_string();
+    if run_streaming("node", &[&script], None) {
+        ExitCode::SUCCESS
+    } else {
+        ExitCode::FAILURE
+    }
 }
 
 fn report() -> ExitCode {

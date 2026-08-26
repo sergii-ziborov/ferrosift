@@ -378,6 +378,13 @@ export function render(results, environment) {
         "`cargo xtask bench run encoding` measures one batch by name, and",
         "`cargo xtask bench all` still does everything.",
         "",
+        "The comparison against the reference is a separate step, because it",
+        "needs the pinned CyberChef checkout that the corpus already uses:",
+        "",
+        "```bash",
+        "cargo xtask bench reference   # measure CyberChef, then rebuild this file",
+        "```",
+        "",
         "The toolchain is pinned in `bench/rust-toolchain.toml`, every",
         "comparison crate is pinned to an exact version, `bench/Cargo.lock` is",
         "committed, and the optimisation settings are written out in",
@@ -417,10 +424,19 @@ export function render(results, environment) {
         "",
         "## Where this stands",
         "",
+        "Two findings, and they point opposite ways. Both are stated here",
+        "rather than left for a reader to assemble from the tables.",
+        "",
         "**FerroSift is not currently faster than any best-in-class specialist",
         "crate, at any size measured.** Every competitive comparison below is a",
-        "loss. That is the finding, and it is stated here rather than left for",
-        "a reader to assemble from the tables.",
+        "loss.",
+        "",
+        "**FerroSift is faster than the reference it ports, by more than an",
+        "order of magnitude everywhere it was measured.** That is the weaker",
+        "claim of the two and the one worth less: beating a JavaScript",
+        "implementation with a Rust one is the least a port should manage, and",
+        "it says nothing about whether the Rust is good. The specialist crates",
+        "answer that question, and they answer it unfavourably.",
         "",
         "An earlier version of this file claimed a win over the `hex` crate at",
         "64 KiB and above. The claim was arithmetically true and worthless:",
@@ -455,15 +471,101 @@ export function render(results, environment) {
         "from 118× to 7×. The corpus confirmed the output did not change. That",
         "is the loop this file is here to run.",
         "",
-        "## Results",
+        "One caution about the `overhead` rows, learned by re-running them. An",
+        "earlier report put the cost of going through a recipe at 1.07× to",
+        "1.71× above calling the digest directly, and read that as evidence",
+        "the library layer is thin. A second run on the same code could not",
+        "reproduce it: most of those rows came back noisy or as no measurable",
+        "difference. Gaps that small are at this machine's noise floor, and a",
+        "single run cannot settle them. The large gaps in every other group",
+        "reproduced without trouble.",
         "",
     ];
+    lines.push(...renderReference());
+    // `renderClaims` closes with the `## Results` heading the group tables sit
+    // under, so nothing adds one here -- a second push left an empty heading
+    // above the claims table for three revisions.
     lines.push(...renderClaims(groups));
     for (const [name, sizes] of [...groups].sort()) {
         lines.push(...renderGroup(name, sizes));
     }
     // The blank strings above come from the optional environment block.
     return `${lines.filter((line, index) => line !== "" || lines[index - 1] !== "").join("\n")}\n`;
+}
+
+/**
+ * Renders the comparison against the reference itself.
+ *
+ * Kept in this file rather than left in the other script's console output,
+ * which is where it used to stop. The measurement existed, was careful, and
+ * reached nobody: the published document said nothing about the reference for
+ * three revisions while `tools/bench/cyberchef.mjs` sat beside it. A number
+ * that is not published is not a result, so an absent file now says so here
+ * instead of leaving a silence that reads like an absent comparison.
+ */
+function renderReference() {
+    const file = path.join(repoRoot, "docs/benchmarks-cyberchef.json");
+    const heading = ["## Against the reference itself", ""];
+    if (!existsSync(file)) {
+        return [
+            ...heading,
+            "Not measured for this report. Run `node tools/bench/cyberchef.mjs`",
+            "after `cargo xtask bench run`, which needs the pinned CyberChef",
+            "checkout. Until then this section is a gap and says so, rather than",
+            "reading as though the comparison had been made and gone unmentioned.",
+            "",
+        ];
+    }
+
+    const {rows} = JSON.parse(readFileSync(file, "utf8"));
+    const lines = [
+        ...heading,
+        "Every figure here is a **floor**, not a headline. A row states what",
+        "survives reading both sides as unfavourably as the data allows — the",
+        "reference at its fastest batch against FerroSift at the slow end of",
+        "its interval. The ratio of the medians is larger than the number",
+        "printed, and is not printed. Where the two ranges touch at all there",
+        "is no verdict, however tight the batches happened to be.",
+        "",
+        "Node is far noisier than criterion, so a spread is shown wherever the",
+        "reference's own batches disagreed by more than 15%. A floor drawn from",
+        "noisy batches and one drawn from tight batches are not the same claim",
+        "even when they read alike.",
+        "",
+        "This is the comparison that answers *is the port worth having*. It is",
+        "not evidence that the code is fast — the specialist crates below say",
+        "it is not — only that a Rust library beats a JavaScript one at the",
+        "same work, which is the least one should expect of a port.",
+        "",
+    ];
+
+    let group = null;
+    for (const row of rows) {
+        if (row.group !== group) {
+            if (group !== null) lines.push("");
+            lines.push(
+                `### ${row.group}`,
+                "",
+                "| Size | CyberChef | FerroSift | Verdict |",
+                "|---:|---:|---:|---|",
+            );
+            group = row.group;
+        }
+        const noise = row.noisy ? ` *(±${(row.spread * 100).toFixed(0)}%)*` : "";
+        const said =
+            row.verdict?.kind === "faster"
+                ? `at least ${row.verdict.ratio.toFixed(1)}× faster${noise}`
+                : row.verdict?.kind === "slower"
+                  ? `at least ${row.verdict.ratio.toFixed(1)}× slower${noise}`
+                  : `*no verdict — the ranges overlap*${noise}`;
+        lines.push(
+            `| ${bytes(row.size)} | ${duration(row.reference)} | ${
+                row.ferrosift === null ? "—" : duration(row.ferrosift)
+            } | ${said} |`,
+        );
+    }
+    lines.push("");
+    return lines;
 }
 
 /**
