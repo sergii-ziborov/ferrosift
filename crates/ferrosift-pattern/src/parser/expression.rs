@@ -12,9 +12,7 @@ use alloc::vec;
 use alloc::vec::Vec;
 
 use super::cursor::{Cursor, EXPECTED_TYPE, UNEXPECTED_TOKEN};
-use crate::ast::{
-    BinaryOperator, Builtin, Expression, SizeOfTarget, UnaryOperator,
-};
+use crate::ast::{BinaryOperator, Builtin, Expression, SizeOfTarget, UnaryOperator};
 use crate::error::PatternError;
 use crate::lexer::{Keyword, Symbol, TokenKind};
 

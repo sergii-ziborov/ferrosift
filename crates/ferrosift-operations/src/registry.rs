@@ -23,29 +23,25 @@ use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
     AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BifidCipher, BitShift, Bitwise,
-    CaretMDecode, Checksum, ChiSquare, CitrixCtx1Decode,
-    CitrixCtx1Encode, ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
-    DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
-    ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
-    FromBase85, FromBech32, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode,
-    FromCobs,
-    FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
-    FromModhex, FromMorseCode,
-    FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
-    HexToPem, HtmlToText, Identity, IndexOfCoincidence, Lznt1Decompress, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
-    MicrosoftScriptDecoder, OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseTlv, ParseUnixFilePermissions, Punycode,
-    PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
-    RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
-    SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
-    SwapEndianness,
-    Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
-    ToBech32,
+    CaretMDecode, Checksum, ChiSquare, CitrixCtx1Decode, CitrixCtx1Encode, ClassicalCipher,
+    Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
+    EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
+    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBase92, FromBech32, FromBinary,
+    FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs, FromDecimal, FromFloat, FromHex,
+    FromHexContent, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
+    FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head, HexToPem,
+    HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt,
+    LuhnChecksum, Lznt1Decompress, Merge, MicrosoftScriptDecoder, MurmurHash3, OffsetChecker,
+    PadLines, ParityBit, ParseColourCode, ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet,
+    Punycode, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse,
+    Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split,
+    StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail,
+    TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBech32,
     ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
-    ToHexContent, ToHexdump,
-    ToHtmlEntity, ToLowerCase, ToTable,
-    ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
-    UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
-    VarIntEncode, Wrap, XkcdRandomNumber, Xor, Xxtea,
+    ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal,
+    ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters,
+    UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap,
+    XkcdRandomNumber, Xor, Xxtea,
 };
 
 #[cfg(feature = "crypto")]
@@ -195,7 +191,11 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
 /// Recipe suggestion and brute-force search.
 #[cfg_attr(
     not(feature = "analysis"),
-    expect(unused_variables, reason = "the analysis pack is not enabled")
+    expect(
+        unused_variables,
+        clippy::unnecessary_wraps,
+        reason = "the analysis pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
+    )
 )]
 fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     // Outside the feature gate: both are arithmetic over the input and pull
@@ -215,7 +215,11 @@ fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryErr
 /// Arbitrary-precision integer arithmetic.
 #[cfg_attr(
     not(feature = "arithmetic"),
-    expect(unused_variables, reason = "the arithmetic pack is not enabled")
+    expect(
+        unused_variables,
+        clippy::unnecessary_wraps,
+        reason = "the arithmetic pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
+    )
 )]
 fn register_arithmetic(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "arithmetic")]
@@ -280,7 +284,7 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
         registry.register(AesKeyUnwrap::new())?;
         registry.register(AesKeyWrap::new())?;
         registry.register(Rc4::new())?;
-    registry.register(Rc4Drop::new())?;
+        registry.register(Rc4Drop::new())?;
         registry.register(DerivePbkdf2Key::new())?;
         registry.register(Scrypt::new())?;
     }
@@ -290,7 +294,11 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
 /// Compressors and their inverses.
 #[cfg_attr(
     not(feature = "compression"),
-    expect(unused_variables, reason = "the compression pack is not enabled")
+    expect(
+        unused_variables,
+        clippy::unnecessary_wraps,
+        reason = "the compression pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
+    )
 )]
 fn register_compression(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     // Outside the feature gate: the decoder is a loop over the input and
@@ -400,7 +408,11 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
 /// Pulling indicators out of text, and putting them back safely.
 #[cfg_attr(
     not(feature = "text"),
-    expect(unused_variables, reason = "the text pack is not enabled")
+    expect(
+        unused_variables,
+        clippy::unnecessary_wraps,
+        reason = "the text pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
+    )
 )]
 fn register_extractors(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "text")]
@@ -431,7 +443,11 @@ fn register_flow(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 /// Digests and message authentication.
 #[cfg_attr(
     not(feature = "hash"),
-    expect(unused_variables, reason = "the hash pack is not enabled")
+    expect(
+        unused_variables,
+        clippy::unnecessary_wraps,
+        reason = "the hash pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
+    )
 )]
 fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     // SHA-0 and MurmurHash3 need no dependency, so they are not behind the

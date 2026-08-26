@@ -8,15 +8,16 @@ extern crate alloc;
 use core::fmt;
 
 mod argument;
+mod decimal;
 mod error;
 mod operation_id;
 mod recipe;
 mod spec;
 mod step_id;
-mod decimal;
 mod value;
 
 pub use argument::{ArgumentValue, Arguments};
+pub use decimal::{DecimalSpecial, DecimalValue};
 pub use error::{ModelError, ValueError};
 pub use operation_id::OperationId;
 pub use recipe::{Recipe, RecipeMetadata, RecipeStep};
@@ -27,7 +28,6 @@ pub use spec::{
     TargetSet, ValueConstraint,
 };
 pub use step_id::StepId;
-pub use decimal::{DecimalSpecial, DecimalValue};
 pub use value::{
     NumberValue, StructuredValue, TextEncoding, TextValue, Value, ValueKind, VirtualFile,
 };

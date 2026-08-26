@@ -122,7 +122,13 @@ pub(super) fn encode(
             Slot::Upper | Slot::Lower => {
                 let row = stream.get(count * 2).copied().unwrap_or(0);
                 let column = stream.get(count * 2 + 1).copied().unwrap_or(0);
-                push_letter(&mut output, &square, row, column, matches!(slot, Slot::Upper));
+                push_letter(
+                    &mut output,
+                    &square,
+                    row,
+                    column,
+                    matches!(slot, Slot::Upper),
+                );
                 count += 1;
             }
         }
@@ -165,7 +171,13 @@ pub(super) fn decode(
             Slot::Upper | Slot::Lower => {
                 let row = stream.get(count).copied().unwrap_or(0);
                 let column = stream.get(count + half).copied().unwrap_or(0);
-                push_letter(&mut output, &square, row, column, matches!(slot, Slot::Upper));
+                push_letter(
+                    &mut output,
+                    &square,
+                    row,
+                    column,
+                    matches!(slot, Slot::Upper),
+                );
                 count += 1;
             }
         }

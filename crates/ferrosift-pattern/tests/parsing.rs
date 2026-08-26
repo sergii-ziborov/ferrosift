@@ -228,7 +228,12 @@ fn parses_conditional_members_including_else_if_chains() {
 
     // `else if` nests as a conditional inside the false arm rather than
     // flattening, so the chain keeps the shape it was written in.
-    let [Member::Conditional { when_false: tail, .. }] = &when_false[..] else {
+    let [
+        Member::Conditional {
+            when_false: tail, ..
+        },
+    ] = &when_false[..]
+    else {
         panic!("expected the else arm to hold one conditional");
     };
     assert_eq!(fields(tail)[0].name, "c");
@@ -324,8 +329,14 @@ fn malformed_sources_report_stable_codes() {
             "pattern.parse.invalid_bit_width",
         ),
         ("union U { u8 a; ", "pattern.parse.unexpected_token"),
-        ("struct S { if (1) { u8 a; }", "pattern.parse.unexpected_token"),
-        ("struct S { u8 a; }; union S { u8 b; };", "pattern.parse.duplicate_declaration"),
+        (
+            "struct S { if (1) { u8 a; }",
+            "pattern.parse.unexpected_token",
+        ),
+        (
+            "struct S { u8 a; }; union S { u8 b; };",
+            "pattern.parse.duplicate_declaration",
+        ),
         (
             "struct S { u8 a; }; struct S { u8 b; };",
             "pattern.parse.duplicate_declaration",
@@ -351,4 +362,3 @@ fn errors_carry_a_one_based_source_position() {
     assert_eq!(error.position().line, 3);
     assert_eq!(error.position().column, 1);
 }
-

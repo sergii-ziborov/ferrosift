@@ -156,6 +156,54 @@ impl DecimalValue {
         }
     }
 
+    /// How many bytes [`DecimalValue::to_fixed`] would produce, without
+    /// producing them.
+    ///
+    /// This exists because measuring must not cost what it measures. A budget
+    /// asks for the size of a value before deciding whether to allow it, and
+    /// `1e100000000` is a tiny value -- one digit and an exponent -- whose
+    /// rendering is a hundred megabytes. Measuring it by rendering it would
+    /// make the allocation the budget exists to prevent, in order to discover
+    /// that the budget forbids it.
+    ///
+    /// The arithmetic mirrors `to_fixed` branch for branch, so the two cannot
+    /// drift apart without a test noticing.
+    #[must_use]
+    pub fn rendered_len(&self) -> u64 {
+        match self.special {
+            Some(DecimalSpecial::NotANumber) => return 3,
+            Some(DecimalSpecial::Infinite) => {
+                return if self.negative { 9 } else { 8 };
+            }
+            None => {}
+        }
+        if self.digits.is_empty() {
+            return 1;
+        }
+
+        let digits = u64::try_from(self.digits.len()).unwrap_or(u64::MAX);
+        let sign = u64::from(self.negative);
+        if self.exponent >= 0 {
+            // The digits, then that many zeros after them.
+            return sign
+                .saturating_add(digits)
+                .saturating_add(self.exponent.unsigned_abs());
+        }
+
+        // A negative exponent moves the point left by that many places.
+        let places = self.exponent.unsigned_abs();
+        if places >= digits {
+            // The point lands at or before the first digit, so the rendering is
+            // `0.`, then the zeros that separate it from the digits.
+            return sign
+                .saturating_add(2)
+                .saturating_add(places - digits)
+                .saturating_add(digits);
+        }
+        // The point lands inside the digits, adding one character.
+        sign.saturating_add(digits).saturating_add(1)
+    }
+
     /// Renders the value the way the reference's dish does.
     ///
     /// The dish converts with `toFixed()` and no argument, which never uses
@@ -167,7 +215,11 @@ impl DecimalValue {
         match self.special {
             Some(DecimalSpecial::NotANumber) => return String::from("NaN"),
             Some(DecimalSpecial::Infinite) => {
-                return String::from(if self.negative { "-Infinity" } else { "Infinity" });
+                return String::from(if self.negative {
+                    "-Infinity"
+                } else {
+                    "Infinity"
+                });
             }
             None => {}
         }

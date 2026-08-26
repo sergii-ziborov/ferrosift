@@ -48,11 +48,7 @@ impl Rc4Drop {
                         "Output format: Latin1, UTF8, Hex, or Base64.",
                         "Latin1",
                     ),
-                    integer_argument(
-                        "drop",
-                        "Number of 32-bit keystream words to discard.",
-                        192,
-                    ),
+                    integer_argument("drop", "Number of 32-bit keystream words to discard.", 192),
                 ],
                 inverse: Some("crypto.rc4_drop@1"),
                 classifications: Some(&[

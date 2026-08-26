@@ -163,9 +163,7 @@ fn walk(
                 } else {
                     when_true
                 };
-                walk(
-                    evaluator, taken, endian, base, depth, layout, children, end,
-                )?;
+                walk(evaluator, taken, endian, base, depth, layout, children, end)?;
             }
             Member::Padding(count) => {
                 let scope = Scope {
@@ -274,4 +272,3 @@ pub(super) fn bitfield(
 fn bit_width_name(bits: u32) -> alloc::string::String {
     alloc::format!("{bits} bits")
 }
-

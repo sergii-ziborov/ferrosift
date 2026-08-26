@@ -132,7 +132,8 @@ impl Operation for Ls47Decrypt {
         let input = crate::value::take_text_value(input)?;
         let key = codec::derive_key(text_value(arguments, "password")?)?;
         let padding = integer_value(arguments, "padding")?;
-        let padding = i64::try_from(padding).unwrap_or(if padding < 0 { i64::MIN } else { i64::MAX });
+        let padding =
+            i64::try_from(padding).unwrap_or(if padding < 0 { i64::MIN } else { i64::MAX });
         let text: String = codec::decrypt_padded(&key, &input.text, padding, context)?;
         Ok(Value::Text(TextValue {
             text,

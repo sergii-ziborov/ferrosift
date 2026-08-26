@@ -159,7 +159,11 @@ impl FromBech32 {
                 input: ValueConstraint::Exact(ValueKind::Text),
                 output: ValueConstraint::Exact(ValueKind::Text),
                 arguments: vec![
-                    text_argument("encoding", "Auto-detect, Bech32, or Bech32m.", "Auto-detect"),
+                    text_argument(
+                        "encoding",
+                        "Auto-detect, Bech32, or Bech32m.",
+                        "Auto-detect",
+                    ),
                     text_argument(
                         "output_format",
                         "Raw, Hex, Bitcoin scriptPubKey, HRP: Hex, or JSON.",

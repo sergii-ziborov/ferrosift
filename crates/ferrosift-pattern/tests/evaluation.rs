@@ -316,7 +316,10 @@ fn a_conditional_chooses_which_fields_exist() {
 
     let other = run(source, &[0, 0xab]);
     assert!(other[0].child("word").is_none());
-    assert_eq!(other[0].child("byte").expect("field").value, NodeValue::Unsigned(0xab));
+    assert_eq!(
+        other[0].child("byte").expect("field").value,
+        NodeValue::Unsigned(0xab)
+    );
     assert_eq!(other[0].size, 2);
 }
 
@@ -570,7 +573,6 @@ fn conditionals_nest_inside_a_union_and_stay_overlaid() {
     assert_eq!(nodes[0].size, 2);
 }
 
-
 #[test]
 fn a_realistic_container_format_parses_end_to_end() {
     // The expression layer exercised the way a real pattern would use it: a
@@ -603,10 +605,8 @@ fn a_realistic_container_format_parses_end_to_end() {
 
     let data = [
         // header: magic, name length 3, `abc`, two records
-        0xca, 0xfe, 3, b'a', b'b', b'c', 2,
-        // record 0: Text, length 2, `hi`
-        1, 2, b'h', b'i',
-        // record 1: Number, length 4, 42 big-endian
+        0xca, 0xfe, 3, b'a', b'b', b'c', 2, // record 0: Text, length 2, `hi`
+        1, 2, b'h', b'i', // record 1: Number, length 4, 42 big-endian
         2, 4, 0x00, 0x00, 0x00, 0x2a,
     ];
 

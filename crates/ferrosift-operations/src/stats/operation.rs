@@ -2,9 +2,7 @@ use alloc::collections::BTreeSet;
 use alloc::vec::Vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
-use ferrosift_model::{
-    Arguments, NumberValue, OperationSpec, Value, ValueConstraint, ValueKind,
-};
+use ferrosift_model::{Arguments, NumberValue, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::spec::{SpecDefinition, build};
 

@@ -34,7 +34,11 @@ impl BaconEncode {
                         "\"Standard (I=J and U=V)\" or \"Complete\".",
                         "Standard (I=J and U=V)",
                     ),
-                    text_argument("translation", "Symbols to write: \"0/1\" or \"A/B\".", "0/1"),
+                    text_argument(
+                        "translation",
+                        "Symbols to write: \"0/1\" or \"A/B\".",
+                        "0/1",
+                    ),
                     boolean_argument("keep", "Keep characters that are not letters.", false),
                     boolean_argument("invert", "Swap the two symbols.", false),
                 ],

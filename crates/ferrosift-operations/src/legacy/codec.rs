@@ -155,10 +155,8 @@ fn compress(state: &mut [u32; 5], block: &[u8]) {
     for index in 16..80 {
         // SHA-1 rotates this left by one. SHA-0 does not, and that is the
         // whole difference between them.
-        schedule[index] = schedule[index - 3]
-            ^ schedule[index - 8]
-            ^ schedule[index - 14]
-            ^ schedule[index - 16];
+        schedule[index] =
+            schedule[index - 3] ^ schedule[index - 8] ^ schedule[index - 14] ^ schedule[index - 16];
     }
 
     // The five working variables carry the names the specification gives them.

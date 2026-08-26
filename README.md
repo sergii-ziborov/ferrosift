@@ -31,11 +31,15 @@ table, and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
 for every intentional divergence.
 
-The value model still owes the reference four dish kinds, and ten shipped
-operations declare Text where the reference declares something else:
-[docs/value-model.md](docs/value-model.md) records what that costs, why it
-shows on the second step of a recipe rather than the first, and the order it
-is being closed in.
+The value model reproduces the reference's *conversions*, not only its
+operations. A dish does not become bytes by printing itself: markup loses its
+tags and entities when a later step reads it, a number prints the way
+JavaScript prints one, a decimal renders through `toFixed`, and a structure
+renders through `JSON.stringify(value, null, 4)`. Those differences show on the
+second step of a recipe rather than the first, which is why they survived ten
+operations before anything caught them.
+[docs/value-model.md](docs/value-model.md) records each conversion, how it was
+checked, and the one limit that remains — key order inside a JSON object.
 
 What is *not* covered is a list rather than a number:
 [operations not implemented](docs/compatibility/not-implemented.md) groups the

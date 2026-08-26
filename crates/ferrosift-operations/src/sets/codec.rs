@@ -236,11 +236,9 @@ pub(super) fn levenshtein(
     // Overflow is ruled out rather than hoped for. Each cost is refused above
     // `MAX_COST`, and both strings are bounded by the executor's input ceiling,
     // so the largest reachable total is far inside `i64`.
-    let (Some(insertion), Some(deletion), Some(substitution)) = (
-        narrow(insertion),
-        narrow(deletion),
-        narrow(substitution),
-    ) else {
+    let (Some(insertion), Some(deletion), Some(substitution)) =
+        (narrow(insertion), narrow(deletion), narrow(substitution))
+    else {
         return Err(failed(COST_TOO_LARGE));
     };
 
@@ -248,7 +246,11 @@ pub(super) fn levenshtein(
     // second row was keeping, and carrying it in a register removes an array
     // read, an array write, and the swap between rows.
     let mut row: Vec<i64> = (0..=source.len())
-        .map(|index| i64::try_from(index).unwrap_or(i64::MAX).saturating_mul(deletion))
+        .map(|index| {
+            i64::try_from(index)
+                .unwrap_or(i64::MAX)
+                .saturating_mul(deletion)
+        })
         .collect();
 
     for (index, letter) in target.iter().enumerate() {

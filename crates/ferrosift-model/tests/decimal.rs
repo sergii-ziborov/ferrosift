@@ -124,3 +124,45 @@ fn an_integer_becomes_the_same_number() {
         );
     }
 }
+
+#[test]
+fn a_huge_exponent_is_measured_without_being_rendered() {
+    // The value is three characters of source and would render as a hundred
+    // million. If measuring allocated, this test would not finish in a
+    // reasonable time or space -- which is the whole point of it.
+    let value = DecimalValue::parse("1e100000000");
+    assert_eq!(value.rendered_len(), 100_000_001);
+}
+
+#[test]
+fn the_measured_length_is_the_rendered_length() {
+    // The arithmetic mirrors `to_fixed` branch for branch, so every branch is
+    // checked against the thing it predicts.
+    for input in [
+        "0",
+        "-0",
+        "1",
+        "-1",
+        "42",
+        "1.5",
+        "-1.5",
+        "0.001",
+        "-0.001",
+        "1e10",
+        "-1e10",
+        "1e-10",
+        "-1e-10",
+        "123456789012345678901234567890",
+        "NaN",
+        "Infinity",
+        "-Infinity",
+        "abc",
+    ] {
+        let value = DecimalValue::parse(input);
+        assert_eq!(
+            value.rendered_len(),
+            value.to_fixed().len() as u64,
+            "the predicted length disagreed with the rendering for {input:?}"
+        );
+    }
+}

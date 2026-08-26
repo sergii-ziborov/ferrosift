@@ -225,4 +225,3 @@ fn bytes(values: &[Option<u8>]) -> StructuredValue {
             .collect(),
     )
 }
-

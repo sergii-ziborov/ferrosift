@@ -1,4 +1,4 @@
-# The value model, and what it still owes the reference
+# The value model
 
 FerroSift carries a value between recipe steps as one of a small set of kinds.
 The reference carries one as a *Dish*, which has more kinds than this does --
@@ -6,8 +6,8 @@ and, more importantly, defines a conversion for every pair of them. Where the
 two disagree, a recipe that runs in both produces different bytes from the
 second step onwards.
 
-This page records the disagreement that exists today, why it is not cosmetic,
-and the order it is being closed in.
+This page records what each conversion is, how it was checked, and what still
+disagrees.
 
 ## The kinds, side by side
 
@@ -21,11 +21,9 @@ and the order it is being closed in.
 | `BigNumber` | `Decimal` | kind and rendering **done**; the 16 operations still need porting |
 | `File`, `List<File>` | `Files` | matches |
 
-Ten shipped operations already declare `Text` where the reference declares
-something else: six `number` (Chi Square, Count occurrences, Index of
-Coincidence, Levenshtein Distance, `MurmurHash3`, XKCD Random Number), three
-`html` (Offset checker, Parse colour code, To Table), and one `JSON` (Parse
-TLV).
+Ten shipped operations used to declare `Text` where the reference declared
+something else. All ten now declare their own kind: six carry a number, three
+carry markup, and one carries a structure.
 
 ## Why the label is not cosmetic
 

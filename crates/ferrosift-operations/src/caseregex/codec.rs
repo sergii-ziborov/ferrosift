@@ -240,9 +240,7 @@ fn match_at(source: &[char], index: usize, pass: Pass) -> Option<usize> {
     if !pass.high.holds(high) {
         return None;
     }
-    if pass.low == Class::EitherLetter
-        && low.is_ascii_uppercase() != high.is_ascii_uppercase()
-    {
+    if pass.low == Class::EitherLetter && low.is_ascii_uppercase() != high.is_ascii_uppercase() {
         return None;
     }
     Some(length + 1)

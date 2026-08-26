@@ -30,7 +30,11 @@ impl ToTable {
                 arguments: vec![
                     text_argument("cell_delimiters", "Characters that end a cell.", ","),
                     text_argument("row_delimiters", "Characters that end a row.", "\\r\\n"),
-                    boolean_argument("first_row_header", "Treat the first row as a header.", false),
+                    boolean_argument(
+                        "first_row_header",
+                        "Treat the first row as a header.",
+                        false,
+                    ),
                     text_argument("format", "ASCII, HTML, or Markdown.", "ASCII"),
                 ],
                 inverse: None,

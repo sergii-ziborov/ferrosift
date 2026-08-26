@@ -33,7 +33,11 @@ impl Comment {
                 cyberchef_alias: Some("Comment"),
                 input: ValueConstraint::Any,
                 output: ValueConstraint::Any,
-                arguments: vec![text_argument("comment", "Text to record in the recipe.", "")],
+                arguments: vec![text_argument(
+                    "comment",
+                    "Text to record in the recipe.",
+                    "",
+                )],
                 inverse: Some("flow.comment@1"),
                 classifications: None,
             }),

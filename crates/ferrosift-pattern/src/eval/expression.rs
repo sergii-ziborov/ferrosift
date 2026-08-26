@@ -58,9 +58,8 @@ pub(crate) fn fold(expression: &Expression) -> Result<i128, PatternError> {
 /// Computes `expression` in `scope`.
 pub(super) fn evaluate(expression: &Expression, scope: Scope<'_>) -> Result<i128, PatternError> {
     match expression {
-        Expression::Integer(value) => {
-            i128::try_from(*value).map_err(|_| fail(ARITHMETIC_OVERFLOW, "literal exceeds 127 bits"))
-        }
+        Expression::Integer(value) => i128::try_from(*value)
+            .map_err(|_| fail(ARITHMETIC_OVERFLOW, "literal exceeds 127 bits")),
         Expression::Bool(value) => Ok(i128::from(*value)),
         Expression::Char(value) => Ok(i128::from(u32::from(*value))),
         Expression::Offset => Ok(i128::from(scope.offset)),
@@ -134,12 +133,8 @@ fn binary(
     let overflow = || fail(ARITHMETIC_OVERFLOW, "arithmetic overflows 128 bits");
     Ok(match operator {
         BinaryOperator::Multiply => a.checked_mul(b).ok_or_else(overflow)?,
-        BinaryOperator::Divide => a
-            .checked_div(b)
-            .ok_or_else(|| divide_failure(b))?,
-        BinaryOperator::Remainder => a
-            .checked_rem(b)
-            .ok_or_else(|| divide_failure(b))?,
+        BinaryOperator::Divide => a.checked_div(b).ok_or_else(|| divide_failure(b))?,
+        BinaryOperator::Remainder => a.checked_rem(b).ok_or_else(|| divide_failure(b))?,
         BinaryOperator::Add => a.checked_add(b).ok_or_else(overflow)?,
         BinaryOperator::Subtract => a.checked_sub(b).ok_or_else(overflow)?,
         BinaryOperator::ShiftLeft => shift(a, b, true)?,
@@ -211,12 +206,14 @@ fn enum_constant(
         .iter()
         .find(|entry| entry.name == constant)
         .ok_or_else(|| fail(UNKNOWN_CONSTANT, "that enum declares no such constant"))?;
-    i128::try_from(entry.value)
-        .map_err(|_| fail(ARITHMETIC_OVERFLOW, "constant exceeds 127 bits"))
+    i128::try_from(entry.value).map_err(|_| fail(ARITHMETIC_OVERFLOW, "constant exceeds 127 bits"))
 }
 
 /// Walks a dotted path through the fields already read.
-fn resolve<'a>(segments: &[alloc::string::String], scope: Scope<'a>) -> Result<&'a Node, PatternError> {
+fn resolve<'a>(
+    segments: &[alloc::string::String],
+    scope: Scope<'a>,
+) -> Result<&'a Node, PatternError> {
     let mut names = segments.iter();
     let first = names
         .next()
@@ -237,8 +234,9 @@ fn resolve<'a>(segments: &[alloc::string::String], scope: Scope<'a>) -> Result<&
 /// Reads a node as a number, or explains why it is not one.
 fn number(node: &Node) -> Result<i128, PatternError> {
     match &node.value {
-        NodeValue::Unsigned(value) | NodeValue::Enumerator { value, .. } => i128::try_from(*value)
-            .map_err(|_| fail(ARITHMETIC_OVERFLOW, "value exceeds 127 bits")),
+        NodeValue::Unsigned(value) | NodeValue::Enumerator { value, .. } => {
+            i128::try_from(*value).map_err(|_| fail(ARITHMETIC_OVERFLOW, "value exceeds 127 bits"))
+        }
         NodeValue::Signed(value) => Ok(*value),
         NodeValue::Bool(value) => Ok(i128::from(*value)),
         NodeValue::Char(value) => Ok(i128::from(u32::from(*value))),

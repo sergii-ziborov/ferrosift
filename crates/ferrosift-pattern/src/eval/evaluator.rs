@@ -193,9 +193,7 @@ impl Evaluator<'_> {
             Declaration::Struct(structure) => {
                 composite::structure(self, name, structure, endian, offset, depth)
             }
-            Declaration::Union(union) => {
-                composite::union(self, name, union, endian, offset, depth)
-            }
+            Declaration::Union(union) => composite::union(self, name, union, endian, offset, depth),
             Declaration::Enum(enumeration) => {
                 composite::enumeration(self, name, enumeration, endian, offset)
             }
@@ -290,4 +288,3 @@ fn truncate_u32(value: u128) -> u32 {
 fn truncate_u64(value: u128) -> u64 {
     u64::try_from(value & u128::from(u64::MAX)).unwrap_or(0)
 }
-

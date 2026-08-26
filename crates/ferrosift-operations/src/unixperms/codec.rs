@@ -144,8 +144,12 @@ fn from_octal(rest: &[char]) -> Perms {
 /// each field is guarded on length instead of the whole form being validated
 /// up front.
 fn from_textual(rest: &[char]) -> Perms {
-    let field: alloc::vec::Vec<char> =
-        rest.iter().copied().take_while(|c| is_textual(*c)).take(10).collect();
+    let field: alloc::vec::Vec<char> = rest
+        .iter()
+        .copied()
+        .take_while(|c| is_textual(*c))
+        .take(10)
+        .collect();
     let at = |index: usize| field.get(index).copied();
     let mut perms = Perms::default();
 
@@ -233,11 +237,29 @@ fn render(perms: &Perms, textual: bool) -> String {
     output.push_str(RULE);
     output.push_str(" |         | User  | Group | Other |\n");
     output.push_str(RULE);
-    push_row(&mut output, "    Read", perms.read_user, perms.read_group, perms.read_other);
+    push_row(
+        &mut output,
+        "    Read",
+        perms.read_user,
+        perms.read_group,
+        perms.read_other,
+    );
     output.push_str(RULE);
-    push_row(&mut output, "   Write", perms.write_user, perms.write_group, perms.write_other);
+    push_row(
+        &mut output,
+        "   Write",
+        perms.write_user,
+        perms.write_group,
+        perms.write_other,
+    );
     output.push_str(RULE);
-    push_row(&mut output, " Execute", perms.exec_user, perms.exec_group, perms.exec_other);
+    push_row(
+        &mut output,
+        " Execute",
+        perms.exec_user,
+        perms.exec_group,
+        perms.exec_other,
+    );
     output.push_str(" +---------+-------+-------+-------+");
     output
 }

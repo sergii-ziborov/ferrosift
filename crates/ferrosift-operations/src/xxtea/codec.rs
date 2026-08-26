@@ -75,7 +75,11 @@ fn rounds(length: usize) -> u32 {
 }
 
 /// Encrypts in place.
-fn encrypt_words(words: &mut [u32], key: &[u32], context: &OperationContext<'_>) -> Result<(), OperationError> {
+fn encrypt_words(
+    words: &mut [u32],
+    key: &[u32],
+    context: &OperationContext<'_>,
+) -> Result<(), OperationError> {
     let length = words.len();
     let last = length - 1;
     let mut z = words[last];
@@ -97,7 +101,11 @@ fn encrypt_words(words: &mut [u32], key: &[u32], context: &OperationContext<'_>)
 }
 
 /// Decrypts in place, unwinding the rounds in the order they were applied.
-fn decrypt_words(words: &mut [u32], key: &[u32], context: &OperationContext<'_>) -> Result<(), OperationError> {
+fn decrypt_words(
+    words: &mut [u32],
+    key: &[u32],
+    context: &OperationContext<'_>,
+) -> Result<(), OperationError> {
     let length = words.len();
     let last = length - 1;
     let mut y = words[0];

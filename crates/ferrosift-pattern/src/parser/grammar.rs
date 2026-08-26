@@ -85,10 +85,7 @@ fn body(cursor: &mut Cursor, what: &'static str) -> Result<Vec<Member>, PatternE
     let mut members = Vec::new();
     while !cursor.eat(Symbol::BraceClose) {
         if cursor.at_end() {
-            return Err(cursor.fail(
-                UNEXPECTED_TOKEN,
-                format!("{what} body is never closed"),
-            ));
+            return Err(cursor.fail(UNEXPECTED_TOKEN, format!("{what} body is never closed")));
         }
         members.push(member(cursor)?);
     }
@@ -264,8 +261,7 @@ fn constant(
     let value = expression(cursor)?;
     let folded = crate::eval::fold(&value)
         .map_err(|_| cursor.fail(code, format!("{what} must be a constant expression")))?;
-    u128::try_from(folded)
-        .map_err(|_| cursor.fail(code, format!("{what} must not be negative")))
+    u128::try_from(folded).map_err(|_| cursor.fail(code, format!("{what} must not be negative")))
 }
 
 fn type_reference(cursor: &mut Cursor) -> Result<TypeReference, PatternError> {

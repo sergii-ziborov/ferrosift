@@ -102,7 +102,11 @@ pub(super) fn encode(
             Some(letter) => {
                 let code = alphabet.code(letter);
                 for position in (0..5).rev() {
-                    output.push(if (code >> position) & 1 == 1 { '1' } else { '0' });
+                    output.push(if (code >> position) & 1 == 1 {
+                        '1'
+                    } else {
+                        '0'
+                    });
                 }
             }
             None => output.push(character),

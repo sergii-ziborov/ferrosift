@@ -68,10 +68,7 @@ fn add(a: Position, b: Position) -> Position {
 /// is that workaround without leaving unsigned arithmetic: both coordinates
 /// are already below `SIDE`, so one turn is always enough to stay positive.
 fn subtract(a: Position, b: Position) -> Position {
-    (
-        (a.0 + SIDE - b.0) % SIDE,
-        (a.1 + SIDE - b.1) % SIDE,
-    )
+    ((a.0 + SIDE - b.0) % SIDE, (a.1 + SIDE - b.1) % SIDE)
 }
 
 /// Rotates one row, moving its contents towards higher columns.

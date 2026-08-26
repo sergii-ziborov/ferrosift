@@ -83,8 +83,7 @@ fn hex_pair(high: u8, low: u8) -> u8 {
 
 /// `rgb(r, g, b)` or `rgba(r, g, b, a)`.
 fn read_rgb(input: &str) -> Option<Colour> {
-    let numbers = read_call(input, "rgba")
-        .or_else(|| read_call(input, "rgb"))?;
+    let numbers = read_call(input, "rgba").or_else(|| read_call(input, "rgb"))?;
     Some(Colour {
         red: *numbers.first()?,
         green: *numbers.get(1)?,
@@ -95,8 +94,7 @@ fn read_rgb(input: &str) -> Option<Colour> {
 
 /// `hsl(h, s%, l%)` or `hsla(h, s%, l%, a)`.
 fn read_hsl(input: &str) -> Option<Colour> {
-    let numbers = read_call(input, "hsla")
-        .or_else(|| read_call(input, "hsl"))?;
+    let numbers = read_call(input, "hsla").or_else(|| read_call(input, "hsl"))?;
     let hue = numbers.first()? / 360.0;
     let saturation = numbers.get(1)? / 100.0;
     let lightness = numbers.get(2)? / 100.0;
@@ -227,7 +225,10 @@ fn render(colour: &Colour) -> String {
     let saturation = js_round(saturation * 100.0);
     let lightness = js_round(lightness * 100.0);
 
-    let black = 1.0 - (colour.red / 255.0).max(colour.green / 255.0).max(colour.blue / 255.0);
+    let black = 1.0
+        - (colour.red / 255.0)
+            .max(colour.green / 255.0)
+            .max(colour.blue / 255.0);
     // A fully black colour leaves `1 - k` at zero, so each of these is a
     // division by zero. The reference tests the result rather than the divisor
     // and prints a bare `0`, which is not the two-decimal form the others get.

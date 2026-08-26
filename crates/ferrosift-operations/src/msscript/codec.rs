@@ -67,10 +67,8 @@ pub(super) fn decode(
             }
             started = true;
         }
-        let substitutable = (code == 9 || (32..128).contains(&code))
-            && code != 60
-            && code != 62
-            && code != 64;
+        let substitutable =
+            (code == 9 || (32..128).contains(&code)) && code != 60 && code != 62 && code != 64;
         if substitutable && started {
             let row = usize::try_from(code).unwrap_or(0);
             let column = COMBINATION[position % 64];
@@ -257,5 +255,6 @@ const DECODE: [[u8; 3]; 128] = [
 
 /// Which of the three substitutions each position in the 64-long cycle uses.
 const COMBINATION: [usize; 64] = [
-    0, 1, 2, 0, 1, 2, 1, 2, 2, 1, 2, 1, 0, 2, 1, 2, 0, 2, 1, 2, 0, 0, 1, 2, 2, 1, 0, 2, 1, 2, 2, 1, 0, 0, 2, 1, 2, 1, 2, 0, 2, 0, 0, 1, 2, 0, 2, 1, 0, 2, 1, 2, 0, 0, 1, 2, 2, 0, 0, 1, 2, 0, 2, 1,
+    0, 1, 2, 0, 1, 2, 1, 2, 2, 1, 2, 1, 0, 2, 1, 2, 0, 2, 1, 2, 0, 0, 1, 2, 2, 1, 0, 2, 1, 2, 2, 1,
+    0, 0, 2, 1, 2, 1, 2, 0, 2, 0, 0, 1, 2, 0, 2, 1, 0, 2, 1, 2, 0, 0, 1, 2, 2, 0, 0, 1, 2, 0, 2, 1,
 ];

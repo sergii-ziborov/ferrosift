@@ -100,7 +100,10 @@ pub(super) fn decode(
     let characters: Vec<char> = input.chars().collect();
     // Everything before the last hyphen is literal. Using the last one rather
     // than the first is what allows a literal hyphen inside the basic part.
-    let split = characters.iter().rposition(|c| *c == DELIMITER).unwrap_or(0);
+    let split = characters
+        .iter()
+        .rposition(|c| *c == DELIMITER)
+        .unwrap_or(0);
 
     let mut output: Vec<u32> = Vec::with_capacity(characters.len());
     for character in &characters[..split] {
@@ -139,7 +142,9 @@ pub(super) fn decode(
 
         let length = u32::try_from(output.len() + 1).map_err(|_| overflow())?;
         bias = adapt(insertion - previous, length, previous == 0);
-        boundary = boundary.checked_add(insertion / length).ok_or_else(overflow)?;
+        boundary = boundary
+            .checked_add(insertion / length)
+            .ok_or_else(overflow)?;
         insertion %= length;
 
         let position = usize::try_from(insertion).map_err(|_| overflow())?;
@@ -149,7 +154,9 @@ pub(super) fn decode(
 
     output
         .into_iter()
-        .map(|point| char::from_u32(point).ok_or_else(|| failed("encoding.punycode.not_a_character")))
+        .map(|point| {
+            char::from_u32(point).ok_or_else(|| failed("encoding.punycode.not_a_character"))
+        })
         .collect()
 }
 
