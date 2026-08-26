@@ -11,7 +11,8 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-177 of the 289 are built on a JavaScript library. The obstacle is **not** that
+177 of the 289 are built on a JavaScript library, and 21 more reach one
+through an internal library of the reference's own. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
@@ -118,9 +119,45 @@ list rather than a search.
 | `jsonpath-plus` | 1 | JPath expression |
 | `escodegen` | 1 | JavaScript Beautify |
 
+## Blocked through an internal library
+
+These 21 import nothing outside the reference's own source *directly*, and are
+blocked anyway: a library under `src/core/lib` that they reach for pulls a
+package of its own, or reaches a third that does.
+
+The taint is transitive and needs a fixpoint, not a single lookup. `JA4` is the
+case that proves it: nothing in the operation or in `lib/JA4` names a package,
+but `lib/JA4` calls `runHash` from `lib/Hash`, and that is where `crypto-api`
+enters. Checking one level below the operation puts JA4 in the reachable
+column; checking the closure does not.
+
+| Operation | Internal library | What it pulls |
+|---|---|---|
+| Convert co-ordinate format | `lib/ConvertCoordinates` | `geodesy` |
+| Show on map | `lib/ConvertCoordinates` | `geodesy` |
+| HAS-160 | `lib/Hash` | `crypto-api/src/crypto-api.mjs` |
+| HASSH Client Fingerprint | `lib/Hash` | `crypto-api/src/crypto-api.mjs` |
+| HASSH Server Fingerprint | `lib/Hash` | `crypto-api/src/crypto-api.mjs` |
+| JA3 Fingerprint | `lib/Hash` | `crypto-api/src/crypto-api.mjs` |
+| JA3S Fingerprint | `lib/Hash` | `crypto-api/src/crypto-api.mjs` |
+| Snefru | `lib/Hash` | `crypto-api/src/crypto-api.mjs` |
+| JA4 Fingerprint | `lib/JA4` | `crypto-api/src/crypto-api.mjs` |
+| JA4Server Fingerprint | `lib/JA4` | `crypto-api/src/crypto-api.mjs` |
+| LZString Compress | `lib/LZString` | `lz-string` |
+| LZString Decompress | `lib/LZString` | `lz-string` |
+| Magic | `lib/Magic` | `chi-squared` |
+| Protobuf Decode | `lib/Protobuf` | `protobufjs` |
+| Protobuf Encode | `lib/Protobuf` | `protobufjs` |
+| Parse TLS record | `lib/Protocol` | `bignumber.js` |
+| Parse UDP | `lib/Protocol` | `bignumber.js` |
+| Generate QR Code | `lib/QRCode` | `jimp` |
+| Parse QR Code | `lib/QRCode` | `jimp` |
+| SM2 Decrypt | `lib/SM2` | `crypto-api/src/encoder/hex.mjs` |
+| SM2 Encrypt | `lib/SM2` | `crypto-api/src/encoder/hex.mjs` |
+
 ## Reachable without any port
 
-These 111 operations import nothing outside the reference's own source. They
-are limited by effort, not by a dependency, and are where the catalog grows
-next.
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, Convert area, Convert co-ordinate format, Convert data units, Convert distance, Convert mass, Convert speed, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generate QR Code, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, HAS-160, HASSH Client Fingerprint, HASSH Server Fingerprint, Haversine distance, HTTP request, IPv6 Transition Addresses, JA3 Fingerprint, JA3S Fingerprint, JA4 Fingerprint, JA4Server Fingerprint, Jump, Label, Lorenz, LZNT1 Decompress, LZString Compress, LZString Decompress, Magic, Multiple Bombe, Numberwang, Parse colour code, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse QR Code, Parse SSH Host Key, Parse TLS record, Parse TLV, Parse UDP, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Protobuf Decode, Protobuf Encode, Pseudo-Random Prime Generator, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Show on map, Shuffle, SIGABA, Sleep, SM2 Decrypt, SM2 Encrypt, SM4 Decrypt, SM4 Encrypt, Snefru, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, To Base, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt, XXTEA Decrypt, XXTEA Encrypt
+These 90 import nothing outside the reference's own source, transitively.
+They are limited by effort, not by a dependency, and are where the catalog
+grows next.
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, Convert area, Convert data units, Convert distance, Convert mass, Convert speed, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, LZNT1 Decompress, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, Parse TLV, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, To Base, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
