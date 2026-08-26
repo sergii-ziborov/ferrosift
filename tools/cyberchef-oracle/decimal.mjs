@@ -6,11 +6,18 @@
 // every pair below is what the real `BigNumber` produced, not what a reading
 // of the spec suggested it would.
 //
-// The dish converts with `toFixed()` and no argument, which is *not*
-// `toString()`. `toFixed()` never uses exponential notation, whatever the
-// exponent -- so a value that `toString` would write as `1e+25` is written out
-// in full here. Reproducing `toString` instead would be wrong in exactly the
-// cases that are hardest to notice: the very large and the very small.
+// Both renderings are recorded, because the reference uses both. The dish
+// converts with `toFixed()` and no argument, which never uses exponential
+// notation whatever the exponent -- so a value that `toString` would write as
+// `1e+25` is written out in full. But an operation that joins numbers into a
+// string of its own gets `toString`, which does use it: MOD is one, and a port
+// carrying only `toFixed` would be right about a remainder of `2.5` and wrong
+// about a remainder of `1e-8`.
+//
+// The thresholds at which `toString` switches are recorded too. The library's
+// documentation gives the positive one as twenty; the value below is what the
+// library actually reports, and the cases either side of it show which is
+// right.
 
 import {writeFileSync} from "node:fs";
 import path from "node:path";
@@ -69,6 +76,15 @@ const INPUTS = [
 
     // Other bases, which the single-argument constructor may or may not read.
     "0x1f", "0b101", "0o17",
+
+    // Either side of the thresholds where `toString` turns exponential, which
+    // `toFixed` never does. The positive one is the interesting half: the
+    // documentation says twenty, so `1e20` and `1e21` are the pair that
+    // settles it.
+    "1e19", "1e21", "1e22", "1.5e20", "1.5e21", "-1e21",
+    "1e-6", "1e-7", "1e-8", "1.5e-7", "-1e-8",
+    "1234567890123456789012345",
+    "0.0000001", "0.00000001",
 ];
 
 // The constructor *throws* on input it cannot read -- it does not return NaN,
@@ -84,7 +100,15 @@ const cases = INPUTS.map(input => {
         threw = true;
         value = new BigNumber(NaN);
     }
-    return {input, fixed: value.toFixed(), nan: value.isNaN(), rejected: threw};
+    return {
+        input,
+        fixed: value.toFixed(),
+        // `String(value)` rather than `value.toString()`, because that is what
+        // `Array.prototype.join` actually calls.
+        written: String(value),
+        nan: value.isNaN(),
+        rejected: threw,
+    };
 });
 
 const output = path.resolve(
@@ -93,7 +117,16 @@ const output = path.resolve(
 );
 writeFileSync(
     output,
-    `${JSON.stringify({library: "bignumber.js", method: "toFixed()", cases}, null, 1)}\n`,
+    `${JSON.stringify(
+        {
+            library: "bignumber.js",
+            methods: ["toFixed()", "toString()"],
+            exponential_at: BigNumber.config().EXPONENTIAL_AT,
+            cases,
+        },
+        null,
+        1,
+    )}\n`,
     "utf8",
 );
 process.stdout.write(`wrote ${cases.length} decimal cases to ${output}\n`);

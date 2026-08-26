@@ -1,6 +1,6 @@
 //! Representation-preserving values used by recipes and operations.
 
-use alloc::{collections::BTreeMap, string::String, vec::Vec};
+use alloc::{string::String, vec::Vec};
 use core::fmt;
 
 use serde::{Deserialize, Serialize};

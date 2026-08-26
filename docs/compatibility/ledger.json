@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 216,
-    "aliased": 214,
-    "exact": 210,
+    "operations": 224,
+    "aliased": 222,
+    "exact": 218,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4095
+    "pinned_cases": 4349
   },
   "operations": [
     {
@@ -1396,7 +1396,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 52,
+      "conformance_cases": 53,
       "status": "exact"
     },
     {
@@ -2313,6 +2313,19 @@
       "status": "exact"
     },
     {
+      "id": "math.divide@1",
+      "display_name": "Divide",
+      "category": "Arithmetic",
+      "reference_alias": "Divide",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 33,
+      "status": "exact"
+    },
+    {
       "id": "math.egcd@1",
       "display_name": "Extended GCD",
       "category": "Arithmetic",
@@ -2326,6 +2339,45 @@
       "status": "exact"
     },
     {
+      "id": "math.mean@1",
+      "display_name": "Mean",
+      "category": "Arithmetic",
+      "reference_alias": "Mean",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 33,
+      "status": "exact"
+    },
+    {
+      "id": "math.median@1",
+      "display_name": "Median",
+      "category": "Arithmetic",
+      "reference_alias": "Median",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 32,
+      "status": "exact"
+    },
+    {
+      "id": "math.mod@1",
+      "display_name": "MOD",
+      "category": "Arithmetic",
+      "reference_alias": "MOD",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 18,
+      "status": "exact"
+    },
+    {
       "id": "math.modinv@1",
       "display_name": "Modular Inverse",
       "category": "Arithmetic",
@@ -2336,6 +2388,58 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 25,
+      "status": "exact"
+    },
+    {
+      "id": "math.multiply@1",
+      "display_name": "Multiply",
+      "category": "Arithmetic",
+      "reference_alias": "Multiply",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 32,
+      "status": "exact"
+    },
+    {
+      "id": "math.stddev@1",
+      "display_name": "Standard Deviation",
+      "category": "Arithmetic",
+      "reference_alias": "Standard Deviation",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 32,
+      "status": "exact"
+    },
+    {
+      "id": "math.subtract@1",
+      "display_name": "Subtract",
+      "category": "Arithmetic",
+      "reference_alias": "Subtract",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 32,
+      "status": "exact"
+    },
+    {
+      "id": "math.sum@1",
+      "display_name": "Sum",
+      "category": "Arithmetic",
+      "reference_alias": "Sum",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 40,
       "status": "exact"
     },
     {
@@ -2595,7 +2699,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 19,
+      "conformance_cases": 20,
       "status": "exact"
     },
     {

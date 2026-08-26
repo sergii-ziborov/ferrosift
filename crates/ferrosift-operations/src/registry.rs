@@ -48,6 +48,8 @@ use crate::{
 use crate::{
     AesDecrypt, AesEncrypt, AesKeyUnwrap, AesKeyWrap, DerivePbkdf2Key, Rc4, Rc4Drop, Scrypt,
 };
+#[cfg(feature = "arithmetic")]
+use crate::{Aggregate, ExtendedGcd, Mod, ModularInverse};
 #[cfg(feature = "compression")]
 use crate::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
@@ -58,8 +60,6 @@ use crate::{
     ExtractFilePaths, ExtractHashes, ExtractIpAddresses, ExtractMacAddresses, ExtractUrls, FangUrl,
     FindReplace, Strings,
 };
-#[cfg(feature = "arithmetic")]
-use crate::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "hash")]
 use crate::{FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake};
 #[cfg(feature = "bignum")]
@@ -212,7 +212,7 @@ fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     Ok(())
 }
 
-/// Arbitrary-precision integer arithmetic.
+/// Arbitrary-precision arithmetic, over integers and over decimals.
 #[cfg_attr(
     not(feature = "arithmetic"),
     expect(
@@ -224,7 +224,15 @@ fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryErr
 fn register_arithmetic(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     #[cfg(feature = "arithmetic")]
     {
+        registry.register(Aggregate::divide())?;
+        registry.register(Aggregate::mean())?;
+        registry.register(Aggregate::median())?;
+        registry.register(Aggregate::multiply())?;
+        registry.register(Aggregate::standard_deviation())?;
+        registry.register(Aggregate::subtract())?;
+        registry.register(Aggregate::sum())?;
         registry.register(ExtendedGcd::new())?;
+        registry.register(Mod::new())?;
         registry.register(ModularInverse::new())?;
     }
     Ok(())

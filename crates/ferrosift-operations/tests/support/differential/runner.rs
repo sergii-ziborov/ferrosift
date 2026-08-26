@@ -126,6 +126,16 @@ fn normalize(value: Value) -> Vec<u8> {
             Some(Value::Text(text)) => encode_text_like_reference(&text.text),
             _ => Vec::new(),
         },
+        // A decimal is compared as the dish writes it, which is `toFixed` and
+        // never exponential notation. An operation that joins numbers into a
+        // string of its own gets `toString` instead and does its own
+        // rendering, so it arrives here as text and never reaches this arm --
+        // which is the point: the two renderings are pinned in the places they
+        // are actually used, not swapped for one another.
+        Value::Decimal(number) => match Value::Decimal(number).reinterpret(ValueKind::Text) {
+            Some(Value::Text(text)) => encode_text_like_reference(&text.text),
+            _ => Vec::new(),
+        },
         // Rendered through the same projection a later step would see, which
         // is `JSON.stringify(value, null, 4)` -- so the four spaces are part
         // of what is compared.

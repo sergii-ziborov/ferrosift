@@ -1,7 +1,7 @@
 # Operations not implemented
 
-FerroSift covers 216 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 287 are waiting on, so that "not done yet" is a list
+FerroSift covers 224 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 279 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The rule that decides everything here is the one the rest of the project runs
@@ -41,7 +41,7 @@ only ordering that matters when choosing what to do next.
 | Library | Operations | Rust starting point | Verdict |
 |---|---|---|---|
 | `jimp` | 23 | `image` | Pixel-exact re-encoding is the hard part, not decoding. |
-| `bignumber.js` | 16 | `num-bigint`, already a dependency | **The most tractable group.** Decimal formatting rules are small and specified. |
+| `bignumber.js` | 8 | `num-bigint`, already a dependency | **Half done.** The arithmetic layer is built and pinned; what remains needs a second thing each. |
 | `node-forge` | 15 | `rsa`, `x509-cert` | PKI structure is standardised; the text rendering is not. |
 | `jsrsasign` | 12 | `x509-parser` | As above. |
 | `es6-promisify` | 7 | none needed | A promise shim; the operations behind it may be portable once read. |
@@ -56,7 +56,7 @@ list rather than a search.
 
 | Library | Count | Operations |
 |---|---|---|| `jimp` | 23 | Add Text To Image, Blur Image, Contain Image, Convert Image Format, Cover Image, Crop Image, Dither Image, Extract LSB, Extract RGBA, Flip Image, Generate Image, Image Brightness / Contrast, Image Filter, Image Hue/Saturation/Lightness, Image Opacity, Invert Image, Normalise Image, Randomize Colour Palette, Resize Image, Rotate Image, Sharpen Image, Split Colour Channels, View Bit Plane |
-| `bignumber.js` | 16 | Divide, From Base, From BCD, Mean, Median, MOD, Multiply, Parse IPv6 address, Parse TCP, Pseudo-Random Number Generator, Standard Deviation, Subtract, Sum, To BCD, UNIX Timestamp to Windows Filetime, Windows Filetime to UNIX Timestamp |
+| `bignumber.js` | 8 | From Base, From BCD, Parse IPv6 address, Parse TCP, Pseudo-Random Number Generator, To BCD, UNIX Timestamp to Windows Filetime, Windows Filetime to UNIX Timestamp |
 | `node-forge` | 15 | Blowfish Decrypt, Blowfish Encrypt, CMAC, DES Decrypt, DES Encrypt, Generate RSA Key Pair, Pseudo-Random Integer Generator, RC2 Decrypt, RC2 Encrypt, RSA Decrypt, RSA Encrypt, RSA Sign, RSA Verify, Triple DES Decrypt, Triple DES Encrypt |
 | `jsrsasign` | 12 | ECDSA Sign, ECDSA Signature Conversion, ECDSA Verify, Generate ECDSA Key Pair, JWK to PEM, Parse ASN.1 hex string, Parse CSR, Parse X.509 certificate, Parse X.509 CRL, PEM to JWK, Public Key from Certificate, Public Key from Private Key |
 | `es6-promisify` | 7 | Generate PGP Key Pair, PGP Decrypt, PGP Decrypt and Verify, PGP Encrypt, PGP Encrypt and Sign, PGP Sign, PGP Verify |

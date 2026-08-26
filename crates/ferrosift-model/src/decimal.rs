@@ -345,6 +345,60 @@ impl DecimalValue {
         }
         output
     }
+
+    /// The exponents at which the reference's `toString` turns exponential:
+    /// at or below the first, at or above the second.
+    ///
+    /// Read from the library rather than from its documentation, which gives
+    /// the positive threshold as twenty where the code uses twenty-one -- the
+    /// same kind of error as the exponent range, which the documentation puts
+    /// at a billion and the code at ten million. `1e20` is written out in full
+    /// and `1e21` is not.
+    const NOTATION_RANGE: (i64, i64) = (-7, 21);
+
+    /// Renders the value the way the reference's `toString` does.
+    ///
+    /// Not the same as [`Self::to_fixed`], and the difference is why both
+    /// exist. The dish converts with `toFixed`, which never uses exponential
+    /// notation whatever the exponent. An operation that *joins* numbers into
+    /// a string of its own gets `toString`, which does -- so a port carrying
+    /// only one of these would be right about a remainder of `2.5` and wrong
+    /// about a remainder of `1e-8`, in an operation whose other answers all
+    /// looked correct.
+    #[must_use]
+    pub fn to_notation(&self) -> String {
+        // The specials and zero read the same either way.
+        if self.special.is_some() || self.digits.is_empty() {
+            return self.to_fixed();
+        }
+
+        let length = i64::try_from(self.digits.len()).unwrap_or(i64::MAX);
+        // The exponent beside a single leading digit, which is the quantity
+        // the thresholds apply to.
+        let normalised = self.exponent.saturating_add(length).saturating_sub(1);
+        let (negative_at, positive_at) = Self::NOTATION_RANGE;
+        if normalised > negative_at && normalised < positive_at {
+            return self.to_fixed();
+        }
+
+        let mut output = String::new();
+        if self.negative {
+            output.push('-');
+        }
+        output.push_str(&self.digits[..1]);
+        if self.digits.len() > 1 {
+            output.push('.');
+            output.push_str(&self.digits[1..]);
+        }
+        output.push('e');
+        // A negative exponent brings its own sign; a positive one is written
+        // with a plus, which `toString` includes and a bare number would not.
+        if normalised >= 0 {
+            output.push('+');
+        }
+        output.push_str(&normalised.to_string());
+        output
+    }
 }
 
 /// Trims what the reference trims, which is not what Rust calls whitespace.

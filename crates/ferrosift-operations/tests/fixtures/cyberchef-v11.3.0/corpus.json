@@ -75390,6 +75390,4815 @@
     "5b0a202020207b0a2020202020202020226b6579223a205b0a202020202020202020202020310a20202020202020205d2c0a2020202020202020226c656e677468223a20322c0a20202020202020202276616c7565223a205b0a202020202020202020202020342c0a202020202020202020202020350a20202020202020205d0a202020207d2c0a202020207b0a2020202020202020226b6579223a205b0a202020202020202020202020360a20202020202020205d2c0a2020202020202020226c656e677468223a20372c0a20202020202020202276616c7565223a205b0a2020202020202020202020206e756c6c0a20202020202020205d0a202020207d0a5d"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_0",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_1",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_2",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_3",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_4",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5 .5"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_5",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 1 .5"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_documented_6",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3038393238313338323132383433323338323133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "352e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393934"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3138303134333938353039343831393836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233343536373839303132333435363738393032323232323232323131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_sum_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d352e33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393932"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233343536373839303132333435363738393030323436393133353639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d39393939393939393939393939393939393939392e3939393939393939393939393939393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_subtract_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Subtract",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39393939393939393939393939393939393939392e3939393939393939393939393939393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303336323838"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393933"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3831313239363338343134363036363939373130313837353134363236303439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313231393332363331313234383238353332313132343832383533323131313236333532363930"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_multiply_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Multiply",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32372e3535373331393232333938353839303635323634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393933"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132343939393939383837333433373439393930312e35383230333132333938353532323436303935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30393532333830393532333830393532333831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d322e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d322e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e3136363636363636363636363636363636363637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3136363636363636363636363636363636363637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3133333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3230383333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3136363636363636363636363636363636363637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_divide_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34353033353939363237333730343937"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393933"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36313732383339343530363137323833393435313131313131313130352e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "362e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "496e66696e697479"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35303030303030303030303030303030303030302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mean_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35303030303030303030303030303030303030302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34353033353939363237333730343937"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39303037313939323534373430393933"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36313732383339343530363137323833393435313131313131313130352e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "362e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35303030303030303030303030303030303030302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_median_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Median",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35303030303030303030303030303030303030302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_0",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_1",
+   "input": {
+    "kind": "text",
+    "value": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3238373232383133323332363930313433323939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_2",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 1"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34353033353939363237333730343936"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_3",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_4",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890 987654321"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36313732383339343530363137323833393435303132333435363738342e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_5",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_6",
+   "input": {
+    "kind": "text",
+    "value": "2 3 7"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e3136303234363839393436393238363734333636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_7",
+   "input": {
+    "kind": "text",
+    "value": "10 3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_8",
+   "input": {
+    "kind": "text",
+    "value": "-7 3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_9",
+   "input": {
+    "kind": "text",
+    "value": "7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_10",
+   "input": {
+    "kind": "text",
+    "value": "-7 -3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_11",
+   "input": {
+    "kind": "text",
+    "value": "-1 -2 -3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3831363439363538303932373732363033323733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_12",
+   "input": {
+    "kind": "text",
+    "value": "0 5"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_13",
+   "input": {
+    "kind": "text",
+    "value": "5 0"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_14",
+   "input": {
+    "kind": "text",
+    "value": "0 0"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_15",
+   "input": {
+    "kind": "text",
+    "value": "42"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_16",
+   "input": {
+    "kind": "text",
+    "value": "-42"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_17",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_18",
+   "input": {
+    "kind": "text",
+    "value": "1 apples 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3831363439363538303932373732363033323733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_19",
+   "input": {
+    "kind": "text",
+    "value": "apples pears"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_20",
+   "input": {
+    "kind": "text",
+    "value": "1 NaN 2"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_21",
+   "input": {
+    "kind": "text",
+    "value": "1 Infinity 2"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_22",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101 0o17"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3038323438323930343633383633303136333636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_23",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e353831313338383330303834313839363636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_24",
+   "input": {
+    "kind": "text",
+    "value": "5 1 4 2 3"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e34313432313335363233373330393530343838"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_25",
+   "input": {
+    "kind": "text",
+    "value": "1 2 10"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3032373638313939313139383139303638393433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_26",
+   "input": {
+    "kind": "text",
+    "value": "10 2 1"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3032373638313939313139383139303638393433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_27",
+   "input": {
+    "kind": "text",
+    "value": "   "
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e614e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_28",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 "
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3831363439363538303932373732363033323733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_29",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34393939393939393939393939393939393939392e3939393939393939393939393939393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_standard_deviation_30",
+   "input": {
+    "kind": "text",
+    "value": "1e20 1e-20"
+   },
+   "recipe": [
+    {
+     "op": "Standard Deviation",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34393939393939393939393939393939393939392e3939393939393939393939393939393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_0",
+   "input": {
+    "kind": "text",
+    "value": "0x0a\n8\n.5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_mod_0",
+   "input": {
+    "kind": "text",
+    "value": "15\n4\n7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Line feed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_1",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 8 .5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_mod_1",
+   "input": {
+    "kind": "text",
+    "value": "15 4 7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_2",
+   "input": {
+    "kind": "text",
+    "value": "0x0a,8,.5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_mod_2",
+   "input": {
+    "kind": "text",
+    "value": "15,4,7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Comma"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_3",
+   "input": {
+    "kind": "text",
+    "value": "0x0a;8;.5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Semi-colon"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_mod_3",
+   "input": {
+    "kind": "text",
+    "value": "15;4;7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Semi-colon"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_4",
+   "input": {
+    "kind": "text",
+    "value": "0x0a:8:.5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Colon"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_mod_4",
+   "input": {
+    "kind": "text",
+    "value": "15:4:7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Colon"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_5",
+   "input": {
+    "kind": "text",
+    "value": "0x0a\r\n8\r\n.5"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "CRLF"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31382e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_delim_mod_5",
+   "input": {
+    "kind": "text",
+    "value": "15\r\n4\r\n7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "CRLF"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_0",
+   "input": {
+    "kind": "text",
+    "value": "15 4 7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_1",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 4 5"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      2,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312030203120302031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_2",
+   "input": {
+    "kind": "text",
+    "value": "-1 -6 -11"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      5,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d31202d31202d31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_3",
+   "input": {
+    "kind": "text",
+    "value": "0.5 1.5 2.5"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      7,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3520312e3520322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_4",
+   "input": {
+    "kind": "text",
+    "value": "0.00000001 0.0000001 0.000001"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652d382031652d3720302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_5",
+   "input": {
+    "kind": "text",
+    "value": "1e-8 2e-9"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      3,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31652d382032652d39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993 123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      1000000,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37343039393320353637383930"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      2,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_8",
+   "input": {
+    "kind": "text",
+    "value": "apples"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      2,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_9",
+   "input": {
+    "kind": "text",
+    "value": "0x0a 0b101"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      4,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_10",
+   "input": {
+    "kind": "text",
+    "value": "15 4 7"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      -3,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020312031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_mod_11",
+   "input": {
+    "kind": "text",
+    "value": "5 5.5 -5.5"
+   },
+   "recipe": [
+    {
+     "op": "MOD",
+     "args": [
+      1,
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3020302e35202d302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "arith_chain_sum_to_hex",
+   "input": {
+    "kind": "text",
+    "value": "1e-20 1e20"
+   },
+   "recipe": [
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "Space",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030302e3030303030303030303030303030303030303031",
+    "3331203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203265203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203330203331"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "arith_chain_divide_to_upper",
+   "input": {
+    "kind": "text",
+    "value": "1 3"
+   },
+   "recipe": [
+    {
+     "op": "Divide",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3333333333333333333333333333333333333333",
+    "302e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "arith_chain_mean_to_sum",
+   "input": {
+    "kind": "text",
+    "value": "1 2 3 4"
+   },
+   "recipe": [
+    {
+     "op": "Mean",
+     "args": [
+      "Space"
+     ]
+    },
+    {
+     "op": "Sum",
+     "args": [
+      "Space"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e35",
+    "322e35"
+   ],
+   "stopped_after": 2
   }
  ]
 }

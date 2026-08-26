@@ -6,10 +6,12 @@
 //! `num-bigint` supplies the arithmetic, with default features off so the pack
 //! still reaches both bare-metal targets.
 //!
-//! Everything in this module is exact. The reference's *decimal* operations —
-//! Sum, Divide, Mean and the rest — are not here: those need `bignumber.js`'s
+//! Everything in this module is exact, which is what separates it from its
+//! neighbour. The reference's *decimal* operations — Sum, Divide, Mean and the
+//! rest — live in [`crate::arith`], because they need `bignumber.js`'s
 //! rounding mode, precision, and exponential-notation thresholds reproduced as
-//! well as its arithmetic, which is a larger and separate piece of work.
+//! well as its arithmetic. Those rules are in [`crate::jscompat::bignumber`],
+//! pinned against the library itself.
 
 mod codec;
 mod operation;

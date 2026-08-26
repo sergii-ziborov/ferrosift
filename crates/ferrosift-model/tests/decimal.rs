@@ -10,7 +10,8 @@
 
 use ferrosift_model::DecimalValue;
 
-/// Every pair the reference produced, as `input`, `fixed`, `nan`, `rejected`.
+/// Every case the reference produced, as `input`, both renderings, and whether
+/// the constructor answered not-a-number or refused the input outright.
 const FIXTURE: &str = include_str!("fixtures/decimal.json");
 
 /// One recorded case.
@@ -18,12 +19,14 @@ const FIXTURE: &str = include_str!("fixtures/decimal.json");
 struct Case {
     input: String,
     fixed: String,
+    written: String,
     #[serde(rename = "nan")]
     not_a_number: bool,
 }
 
 #[derive(serde::Deserialize)]
 struct Fixture {
+    exponential_at: (i64, i64),
     cases: Vec<Case>,
 }
 
@@ -34,9 +37,12 @@ struct Fixture {
 /// unrelated to decimals: it resolved `\n` and `\t` and not `\r`, so a case
 /// carrying a carriage return was compared against text the fixture never
 /// held. A real parser is the smaller risk.
+fn fixture() -> Fixture {
+    serde_json::from_str(FIXTURE).expect("the oracle's fixture parses")
+}
+
 fn cases() -> Vec<Case> {
-    let fixture: Fixture = serde_json::from_str(FIXTURE).expect("the oracle's fixture parses");
-    fixture.cases
+    fixture().cases
 }
 
 #[test]
@@ -56,10 +62,59 @@ fn renders_every_recorded_value_exactly() {
             case.input
         );
         assert_eq!(
+            parsed.to_notation(),
+            case.written,
+            "writing {:?} disagreed with the reference",
+            case.input
+        );
+        assert_eq!(
             parsed.is_not_a_number(),
             case.not_a_number,
             "not-a-number disagreed for {:?}",
             case.input
+        );
+    }
+}
+
+#[test]
+fn the_two_renderings_part_company_where_the_reference_says_they_do() {
+    // The thresholds carried by the fixture, not the ones the library's
+    // documentation gives: it says the positive one is twenty, and the pair
+    // below shows it is twenty-one. Reading this from the fixture means a
+    // reconfigured reference fails here, in one line, rather than as a
+    // scattering of rendering mismatches.
+    assert_eq!(
+        fixture().exponential_at,
+        (-7, 21),
+        "the reference's exponential thresholds moved"
+    );
+
+    assert_eq!(
+        DecimalValue::parse("1e20").to_notation(),
+        "100000000000000000000"
+    );
+    assert_eq!(DecimalValue::parse("1e21").to_notation(), "1e+21");
+    assert_eq!(DecimalValue::parse("1e-6").to_notation(), "0.000001");
+    assert_eq!(DecimalValue::parse("1e-7").to_notation(), "1e-7");
+
+    // And where they agree, they agree exactly: a value inside the thresholds
+    // is written the same by both, which is what makes the difference easy to
+    // miss until it matters.
+    for input in [
+        "0",
+        "-0",
+        "2.5",
+        "-1",
+        "NaN",
+        "Infinity",
+        "-Infinity",
+        "1e19",
+    ] {
+        let value = DecimalValue::parse(input);
+        assert_eq!(
+            value.to_notation(),
+            value.to_fixed(),
+            "the renderings disagreed for {input:?}, which is inside the thresholds"
         );
     }
 }

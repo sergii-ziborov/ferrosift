@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 216 |
-| Reference-aliased | 214 |
-| Byte-pinned (`exact`) | 210 |
+| Registered operations | 224 |
+| Reference-aliased | 222 |
+| Byte-pinned (`exact`) | 218 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 4095 |
+| Pinned cases | 4349 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -139,7 +139,7 @@ does.
 | `encoding.float.decode@1` | From Float | core | exact | 87 |
 | `encoding.float.encode@1` | To Float | core | exact | 59 |
 | `encoding.hex.decode@1` | From Hex | core | exact | 27 |
-| `encoding.hex.encode@1` | To Hex | core | exact | 52 |
+| `encoding.hex.encode@1` | To Hex | core | exact | 53 |
 | `encoding.hex_content.decode@1` | From Hex Content | core | exact | 10 |
 | `encoding.hex_content.encode@1` | To Hex Content | core | exact | 26 |
 | `encoding.hexdump.decode@1` | From Hexdump | core | exact | 6 |
@@ -210,8 +210,16 @@ does.
 | `logic.sub@1` | SUB | core | exact | 31 |
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
+| `math.divide@1` | Divide | core | exact | 33 |
 | `math.egcd@1` | Extended GCD | core | exact | 43 |
+| `math.mean@1` | Mean | core | exact | 33 |
+| `math.median@1` | Median | core | exact | 32 |
+| `math.mod@1` | MOD | core | exact | 18 |
 | `math.modinv@1` | Modular Inverse | core | exact | 25 |
+| `math.multiply@1` | Multiply | core | exact | 32 |
+| `math.stddev@1` | Standard Deviation | core | exact | 32 |
+| `math.subtract@1` | Subtract | core | exact | 32 |
+| `math.sum@1` | Sum | core | exact | 40 |
 | `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
 | `network.strip.ipv4@1` | Strip IPv4 header | core | exact | 2 |
 | `network.strip.tcp@1` | Strip TCP header | core | exact | 2 |
@@ -231,7 +239,7 @@ does.
 | `text.case.alternating@1` | Alternating Caps | core | exact | 9 |
 | `text.case.lower@1` | To Lower case | core | exact | 9 |
 | `text.case.swap@1` | Swap case | core | exact | 9 |
-| `text.case.upper@1` | To Upper case | core | exact | 19 |
+| `text.case.upper@1` | To Upper case | core | exact | 20 |
 | `text.count@1` | Count occurrences | text | exact | 14 |
 | `text.debruijn@1` | Generate De Bruijn Sequence | core | exact | 9 |
 | `text.escape.unescape@1` | Unescape string | core | exact | 11 |

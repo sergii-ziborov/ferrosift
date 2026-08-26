@@ -18,7 +18,7 @@ disagrees.
 | `number` | `Number`, and `Integer` where the value is whole | **done** |
 | `html` | `Markup` | **done** |
 | `JSON` | `Structured` | **done**, with one named limit below |
-| `BigNumber` | `Decimal` | kind and rendering **done**; the 16 operations still need porting |
+| `BigNumber` | `Decimal` | **done**, both renderings and the arithmetic; 8 of 16 operations ported |
 | `File`, `List<File>` | `Files` | matches |
 
 Ten shipped operations used to declare `Text` where the reference declared
@@ -75,10 +75,10 @@ wrong today and the proof is a corpus case rather than an argument.
    `JSON.stringify(value, null, 4)`, so the four spaces are bytes rather than a
    display choice, and Parse TLV carries the structure rather than a string it
    built by hand.
-4. ~~**Decimal**~~ -- the kind, the canonical form, and the rendering are
-   **done** and pinned against the real library. The sixteen operations that
-   need it are still unported: what is finished is the representation they
-   would land in, not the operations.
+4. ~~**Decimal**~~ -- **done**, and now carrying operations. The kind, the
+   canonical form, both renderings, and the arithmetic are pinned against the
+   real library. Eight of the sixteen operations that needed it are ported;
+   the rest each wait on a second thing as well as on this.
 
 ## What `Decimal` is
 
@@ -94,6 +94,28 @@ That is enough to render exactly what the reference renders, and enough for a
 backend to load into whatever it uses. Putting a crate in the model instead
 would make every consumer of a value depend on a choice only arithmetic cares
 about.
+
+### Two renderings, not one
+
+The reference writes a `BigNumber` two different ways, and both are reachable
+from a recipe:
+
+| Method | Exponential notation | Where it is used |
+|---|---|---|
+| `toFixed()` | never | the dish, so every operation that *hands back* a number |
+| `toString()` | at or below `1e-7`, at or above `1e21` | an operation that joins numbers into a string itself |
+
+`DecimalValue::to_fixed` and `DecimalValue::to_notation` are those two. MOD is
+the operation that needs the second: it joins its remainders with
+`Array.prototype.join`, which calls `toString`. A port carrying only `to_fixed`
+would be right about a remainder of `2.5` and wrong about a remainder of
+`1e-8` — in an operation whose other answers all looked correct.
+
+The positive threshold is `21`, read from the library rather than from its
+documentation, which says `20`. That is the same kind of error as the exponent
+range, where the documentation says a billion and the code says ten million.
+Both are recorded in `tests/fixtures/decimal.json` along with the cases either
+side of them.
 
 ## The mechanism, now built
 

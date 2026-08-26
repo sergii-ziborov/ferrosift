@@ -97,6 +97,8 @@ mod aes_kw;
 #[cfg(feature = "crypto")]
 mod aes_op;
 #[cfg(feature = "arithmetic")]
+mod arith;
+#[cfg(feature = "arithmetic")]
 mod bigint;
 #[cfg(feature = "crypto")]
 mod codec_bytes;
@@ -208,6 +210,8 @@ pub use xxtea::Xxtea;
 pub use aes_kw::{AesKeyUnwrap, AesKeyWrap};
 #[cfg(feature = "crypto")]
 pub use aes_op::{AesDecrypt, AesEncrypt};
+#[cfg(feature = "arithmetic")]
+pub use arith::{Aggregate, Mod};
 #[cfg(feature = "arithmetic")]
 pub use bigint::{ExtendedGcd, ModularInverse};
 #[cfg(feature = "compression")]
