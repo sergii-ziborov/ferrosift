@@ -126,6 +126,13 @@ fn normalize(value: Value) -> Vec<u8> {
             Some(Value::Text(text)) => encode_text_like_reference(&text.text),
             _ => Vec::new(),
         },
+        // Rendered through the same projection a later step would see, which
+        // is `JSON.stringify(value, null, 4)` -- so the four spaces are part
+        // of what is compared.
+        Value::Structured(value) => match Value::Structured(value).reinterpret(ValueKind::Text) {
+            Some(Value::Text(text)) => encode_text_like_reference(&text.text),
+            _ => Vec::new(),
+        },
         other => panic!(
             "reference normalization does not support {:?}",
             other.kind()

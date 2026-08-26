@@ -17,7 +17,7 @@ and the order it is being closed in.
 | `string` | `Text` | matches |
 | `number` | `Number`, and `Integer` where the value is whole | **done** |
 | `html` | `Markup` | **done** |
-| `JSON` | *none* -- reported as `Text` | **owed** |
+| `JSON` | `Structured` | **done**, with one named limit below |
 | `BigNumber` | `Decimal` | kind and rendering **done**; the 16 operations still need porting |
 | `File`, `List<File>` | `Files` | matches |
 
@@ -73,8 +73,10 @@ wrong today and the proof is a corpus case rather than an argument.
    kinds where the reference has one, and that is deliberate: a caller gets a
    count as a count rather than having to parse one back out of a string, and
    the conversion table is what keeps the printed bytes identical.
-3. **`Structured` as the JSON dish** -- one operation today. The kind exists;
-   what is missing is the four-space projection.
+3. ~~**Structured as the JSON dish**~~ -- **done**. The projection renders
+   `JSON.stringify(value, null, 4)`, so the four spaces are bytes rather than a
+   display choice, and Parse TLV carries the structure rather than a string it
+   built by hand.
 4. ~~**Decimal**~~ -- the kind, the canonical form, and the rendering are
    **done** and pinned against the real library. The sixteen operations that
    need it are still unported: what is finished is the representation they
@@ -118,3 +120,18 @@ out of that which reading the documentation would not have given:
   not-a-number, which is what the documentation's talk of NaN values suggests.
   The dish catches and substitutes, so what a recipe observes is the
   substitution -- and that is what `DecimalValue::parse` reproduces.
+
+## The one limit left in the JSON projection
+
+`StructuredValue::Object` is a **sorted** map, and `JSON.stringify` writes keys
+in **insertion order**. The two agree only where a value's keys happen to sort
+into the order they were added.
+
+They do for Parse TLV -- `key`, `length`, `value` is both -- so nothing shipped
+today is wrong. An operation whose keys do not sort that way would need an
+order-preserving map before it could claim compatibility, and that is a change
+to the model rather than to the operation.
+
+This is recorded rather than fixed because no operation needs it yet, and
+because a limitation nobody has written down is the kind that gets discovered
+by a user.

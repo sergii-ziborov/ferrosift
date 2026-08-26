@@ -4,9 +4,9 @@ use alloc::string::String;
 use alloc::vec::Vec;
 
 use ferrosift_core::{OperationContext, OperationError};
+use ferrosift_model::StructuredValue;
 
 use crate::failure::failed;
-use crate::jscompat::float::to_js_string;
 
 /// One parsed record.
 struct Record {
@@ -138,14 +138,14 @@ fn power_of_256(exponent: i64) -> f64 {
     result
 }
 
-/// Parses the input and renders it the way the reference's JSON dish does.
+/// Parses the input into the structure the reference's JSON dish holds.
 pub(super) fn parse(
     input: &[u8],
     key_size: i64,
     length_size: i64,
     ber: bool,
     context: &OperationContext<'_>,
-) -> Result<String, OperationError> {
+) -> Result<StructuredValue, OperationError> {
     context.ensure_active()?;
     if key_size <= 0 && length_size <= 0 {
         return Err(failed("parsing.tlv.no_field_size"));
@@ -176,77 +176,53 @@ pub(super) fn parse(
         }
     }
 
-    Ok(render(&records))
+    Ok(StructuredValue::List(
+        records.into_iter().map(structure).collect(),
+    ))
 }
 
-/// Renders the records as `JSON.stringify(value, null, 4)` writes them.
-fn render(records: &[Record]) -> String {
-    if records.is_empty() {
-        return String::from("[]");
-    }
-    let mut output = String::from("[\n");
-    for (index, record) in records.iter().enumerate() {
-        if index > 0 {
-            output.push_str(",\n");
-        }
-        output.push_str("    {\n");
-        let mut first = true;
-        // An absent key is not written as null: `JSON.stringify` drops an
-        // object property whose value is `undefined` rather than emitting it.
-        if let Some(key) = &record.key {
-            output.push_str("        \"key\": ");
-            output.push_str(&bytes(key, 8));
-            first = false;
-        }
-        if !first {
-            output.push_str(",\n");
-        }
-        output.push_str("        \"length\": ");
-        output.push_str(&number(record.length));
-        output.push_str(",\n        \"value\": ");
-        output.push_str(&bytes(&record.value, 8));
-        output.push_str("\n    }");
-    }
-    output.push_str("\n]");
-    output
-}
-
-/// A byte list, indented to sit inside its property.
-fn bytes(values: &[Option<u8>], indent: usize) -> String {
-    if values.is_empty() {
-        return String::from("[]");
-    }
-    let inner = indent + 4;
-    let mut output = String::from("[\n");
-    for (index, value) in values.iter().enumerate() {
-        if index > 0 {
-            output.push_str(",\n");
-        }
-        for _ in 0..inner {
-            output.push(' ');
-        }
-        match value {
-            Some(byte) => output.push_str(&to_js_string(f64::from(*byte))),
-            // A byte read past the end is `undefined`, and `JSON.stringify`
-            // writes that as `null` when it sits in an array.
-            None => output.push_str("null"),
-        }
-    }
-    output.push('\n');
-    for _ in 0..indent {
-        output.push(' ');
-    }
-    output.push(']');
-    output
-}
-
-/// A number, or `null` where the reference would have written `NaN`.
+/// One record as the object the reference builds.
 ///
-/// `JSON.stringify` has no spelling for `NaN` and emits `null` instead, so a
-/// length that overran the input is reported as no length at all.
-fn number(value: f64) -> String {
-    if value.is_nan() || value.is_infinite() {
-        return String::from("null");
+/// An absent key is left out rather than written as null: the reference sets
+/// the property to `undefined`, and `JSON.stringify` drops such a property
+/// instead of emitting it. A length that overran the input is `NaN` there,
+/// which has no JSON spelling and is written as null -- so it is null here.
+fn structure(record: Record) -> StructuredValue {
+    let mut entries = alloc::collections::BTreeMap::new();
+    if let Some(key) = record.key {
+        entries.insert(String::from("key"), bytes(&key));
     }
-    to_js_string(value)
+    entries.insert(String::from("length"), narrow(record.length));
+    entries.insert(String::from("value"), bytes(&record.value));
+    StructuredValue::Object(entries)
 }
+
+/// A length as the structure holds it, or null where the reference had `NaN`.
+///
+/// `JSON.stringify` has no spelling for `NaN` and writes null, so a length
+/// that overran the input is reported as no length at all. The narrowing is
+/// reached only for a finite value, and a length is bounded by the input.
+#[expect(
+    clippy::cast_possible_truncation,
+    reason = "only finite lengths reach the cast, and a length is bounded by the input"
+)]
+fn narrow(length: f64) -> StructuredValue {
+    if length.is_nan() || length.is_infinite() {
+        return StructuredValue::Null;
+    }
+    StructuredValue::Integer(length as i128)
+}
+
+/// A byte list, where a byte read past the end is null.
+fn bytes(values: &[Option<u8>]) -> StructuredValue {
+    StructuredValue::List(
+        values
+            .iter()
+            .map(|value| match value {
+                Some(byte) => StructuredValue::Integer(i128::from(*byte)),
+                None => StructuredValue::Null,
+            })
+            .collect(),
+    )
+}
+

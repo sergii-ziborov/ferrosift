@@ -103,15 +103,22 @@ fn every_variant_renders_a_message_and_a_code() {
 }
 
 #[test]
-fn structured_input_is_left_for_the_engine_to_reject() {
-    // Adaptation only converts between bytes and UTF-8 text; anything else is
-    // passed through so the executor reports the real mismatch.
+fn structured_input_reaches_a_byte_step_as_its_json() {
+    // This used to be a mismatch, and the mismatch was FerroSift's own: the
+    // reference's JSON dish converts to bytes through
+    // `JSON.stringify(value, null, 4)`, so a structured value feeding a
+    // byte-taking step is a recipe that runs there. Refusing it rejected a
+    // recipe the reference accepts.
     let value = Value::Structured(ferrosift::StructuredValue::Integer(7));
-    let error = pipeline()
+    let output = pipeline()
         .to_hex()
         .run(value)
-        .expect_err("structured input is not bytes");
-    assert_eq!(error.code(), "core.executor.input_kind_mismatch");
+        .expect("a structured value converts to bytes");
+    // `7` stringifies to one character, whose hex is its ASCII code.
+    let Value::Text(text) = output else {
+        panic!("To Hex answers with text");
+    };
+    assert_eq!(text.text, "37");
 }
 
 #[test]

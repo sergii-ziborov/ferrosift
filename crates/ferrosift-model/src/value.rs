@@ -78,7 +78,7 @@ impl ValueKind {
             || matches!(
                 (self, other),
                 (
-                    Self::Markup | Self::Number | Self::Integer | Self::Decimal,
+                    Self::Markup | Self::Number | Self::Integer | Self::Decimal | Self::Structured,
                     Self::Text | Self::Bytes,
                 ) | (Self::Integer, Self::Number | Self::Decimal)
                     | (Self::Text, Self::Bytes | Self::Decimal)
@@ -294,6 +294,13 @@ impl Value {
             (Self::Text(text), ValueKind::Decimal) => {
                 Some(Self::Decimal(DecimalValue::parse(&text.text)))
             }
+            (Self::Structured(value), ValueKind::Text) => Some(Self::Text(TextValue {
+                text: render_structured(&value, 0),
+                encoding: TextEncoding::Utf8,
+            })),
+            (Self::Structured(value), ValueKind::Bytes) => {
+                Some(Self::Bytes(render_structured(&value, 0).into_bytes()))
+            }
             (Self::Text(text), ValueKind::Bytes) => Some(Self::Bytes(text.text.into_bytes())),
             _ => None,
         }
@@ -432,4 +439,113 @@ impl fmt::Display for ValueKind {
             Self::Files => "files",
         })
     }
+}
+
+/// Renders a structured value as `JSON.stringify(value, null, 4)` writes it.
+///
+/// The four spaces are bytes rather than a display choice: the reference's
+/// JSON dish converts with that indent, so a recipe reading the output of one
+/// sees them.
+///
+/// **Key order is a known divergence.** `StructuredValue::Object` is a sorted
+/// map and `JSON.stringify` writes keys in insertion order, so the two agree
+/// only where a value's keys happen to sort into the order they were added.
+/// They do for every operation that uses this today, and an operation whose
+/// keys do not would need an order-preserving map before it could claim
+/// compatibility. That is recorded in `docs/value-model.md` rather than left
+/// to be discovered.
+fn render_structured(value: &StructuredValue, indent: usize) -> String {
+    let inner = indent + 4;
+    match value {
+        StructuredValue::Null => String::from("null"),
+        StructuredValue::Boolean(flag) => String::from(if *flag { "true" } else { "false" }),
+        StructuredValue::Integer(number) => render_number(integer_to_float(*number)),
+        StructuredValue::Text(text) => render_json_string(text),
+        // A byte run has no JSON spelling of its own, so it is written as the
+        // numbers it holds -- the same shape a list of them would take.
+        StructuredValue::Bytes(bytes) => render_list(
+            &bytes
+                .iter()
+                .map(|byte| StructuredValue::Integer(i128::from(*byte)))
+                .collect::<Vec<_>>(),
+            indent,
+            inner,
+        ),
+        StructuredValue::List(values) => render_list(values, indent, inner),
+        StructuredValue::Object(entries) => {
+            if entries.is_empty() {
+                return String::from("{}");
+            }
+            let mut output = String::from("{\n");
+            for (position, (key, value)) in entries.iter().enumerate() {
+                if position > 0 {
+                    output.push_str(",\n");
+                }
+                for _ in 0..inner {
+                    output.push(' ');
+                }
+                output.push_str(&render_json_string(key));
+                output.push_str(": ");
+                output.push_str(&render_structured(value, inner));
+            }
+            output.push('\n');
+            for _ in 0..indent {
+                output.push(' ');
+            }
+            output.push('}');
+            output
+        }
+    }
+}
+
+/// A JSON array, or `[]` when it holds nothing.
+fn render_list(values: &[StructuredValue], indent: usize, inner: usize) -> String {
+    if values.is_empty() {
+        return String::from("[]");
+    }
+    let mut output = String::from("[\n");
+    for (position, value) in values.iter().enumerate() {
+        if position > 0 {
+            output.push_str(",\n");
+        }
+        for _ in 0..inner {
+            output.push(' ');
+        }
+        output.push_str(&render_structured(value, inner));
+    }
+    output.push('\n');
+    for _ in 0..indent {
+        output.push(' ');
+    }
+    output.push(']');
+    output
+}
+
+/// A JSON string, escaped the way `JSON.stringify` escapes one.
+fn render_json_string(text: &str) -> String {
+    let mut output = String::with_capacity(text.len() + 2);
+    output.push('"');
+    for character in text.chars() {
+        match character {
+            '"' => output.push_str("\\\""),
+            '\\' => output.push_str("\\\\"),
+            '\n' => output.push_str("\\n"),
+            '\r' => output.push_str("\\r"),
+            '\t' => output.push_str("\\t"),
+            '\u{08}' => output.push_str("\\b"),
+            '\u{0c}' => output.push_str("\\f"),
+            // Everything below a space has no literal spelling and is written
+            // as a four-digit escape, lower-case as the reference writes it.
+            control if control < ' ' => {
+                use core::fmt::Write as _;
+                // Ignoring the result on purpose: writing into a `String`
+                // cannot fail, and the only alternative is to allocate a
+                // second one just to discard it.
+                let _ = write!(output, "\\u{:04x}", u32::from(control));
+            }
+            other => output.push(other),
+        }
+    }
+    output.push('"');
+    output
 }

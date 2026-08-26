@@ -1,9 +1,7 @@
 use alloc::vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
-use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
-};
+use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::args::{boolean_argument, boolean_value, integer_argument, integer_value};
 use crate::spec::{SpecDefinition, build};
@@ -27,7 +25,7 @@ impl ParseTlv {
                 description: "Reads Type-Length-Value records into a JSON list.",
                 cyberchef_alias: Some("Parse TLV"),
                 input: ValueConstraint::Exact(ValueKind::Bytes),
-                output: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Structured),
                 arguments: vec![
                     integer_argument("key_size", "Bytes of type or key; zero omits it.", 1),
                     integer_argument("length_size", "Bytes of length.", 1),
@@ -62,9 +60,12 @@ impl Operation for ParseTlv {
         let key_size = i64::try_from(integer_value(arguments, "key_size")?).unwrap_or(0);
         let length_size = i64::try_from(integer_value(arguments, "length_size")?).unwrap_or(0);
         let ber = boolean_value(arguments, "use_ber")?;
-        Ok(Value::Text(TextValue {
-            text: codec::parse(&input, key_size, length_size, ber, context)?,
-            encoding: TextEncoding::Utf8,
-        }))
+        Ok(Value::Structured(codec::parse(
+            &input,
+            key_size,
+            length_size,
+            ber,
+            context,
+        )?))
     }
 }
