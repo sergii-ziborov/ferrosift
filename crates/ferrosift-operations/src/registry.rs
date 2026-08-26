@@ -32,7 +32,7 @@ use crate::{
     FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
-    HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
+    HexToPem, HtmlToText, Identity, IndexOfCoincidence, Lznt1Decompress, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
     MicrosoftScriptDecoder, OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseUnixFilePermissions, Punycode,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
@@ -293,6 +293,10 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     expect(unused_variables, reason = "the compression pack is not enabled")
 )]
 fn register_compression(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    // Outside the feature gate: the decoder is a loop over the input and
+    // pulls nothing, unlike the DEFLATE and bzip2 pair beside it.
+    registry.register(Lznt1Decompress::new())?;
+
     #[cfg(feature = "compression")]
     {
         registry.register(Bzip2Compress::new())?;

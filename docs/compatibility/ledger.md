@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 214 |
-| Reference-aliased | 212 |
-| Byte-pinned (`exact`) | 208 |
+| Registered operations | 215 |
+| Reference-aliased | 213 |
+| Byte-pinned (`exact`) | 209 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 4058 |
+| Pinned cases | 4066 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -75,6 +75,7 @@ does.
 | `compression.bzip2.decompress@1` | Bzip2 Decompress | compression | exact (no Node bzip2 compressor to sample fresh inputs; pinned in differential.json) | 1 |
 | `compression.gunzip@1` | Gunzip | compression | exact | 5 |
 | `compression.gzip@1` | Gzip | compression | interoperable (compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned) | 0 |
+| `compression.lznt1.decompress@1` | LZNT1 Decompress | core | exact | 8 |
 | `compression.raw.deflate@1` | Raw Deflate | compression | interoperable (compressor output is interoperable; Raw Inflate is corpus-pinned) | 0 |
 | `compression.raw.inflate@1` | Raw Inflate | compression | exact | 5 |
 | `compression.zlib.deflate@1` | Zlib Deflate | compression | interoperable (compressor output is interoperable; Zlib Inflate is corpus-pinned) | 0 |

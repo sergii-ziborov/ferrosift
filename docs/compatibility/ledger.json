@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 214,
-    "aliased": 212,
-    "exact": 208,
+    "operations": 215,
+    "aliased": 213,
+    "exact": 209,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4058
+    "pinned_cases": 4066
   },
   "operations": [
     {
@@ -551,6 +551,19 @@
       "conformance_cases": 0,
       "status": "interoperable",
       "note": "compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned"
+    },
+    {
+      "id": "compression.lznt1.decompress@1",
+      "display_name": "LZNT1 Decompress",
+      "category": "Compression",
+      "reference_alias": "LZNT1 Decompress",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 8,
+      "status": "exact"
     },
     {
       "id": "compression.raw.deflate@1",

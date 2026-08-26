@@ -1,7 +1,7 @@
 # Operations not implemented
 
-FerroSift covers 214 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 289 are waiting on, so that "not done yet" is a list
+FerroSift covers 215 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 288 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The rule that decides everything here is the one the rest of the project runs
@@ -11,7 +11,7 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-177 of the 289 are built on a JavaScript library, and 21 more reach one
+177 of the 288 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
@@ -157,7 +157,7 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 90 import nothing outside the reference's own source, transitively.
+These 89 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
 Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, Convert area, Convert data units, Convert distance, Convert mass, Convert speed, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, LZNT1 Decompress, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, Parse TLV, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, To Base, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt

@@ -3,7 +3,7 @@
 use alloc::format;
 use alloc::string::String;
 
-use crate::jscompat::float::to_js_string;
+use crate::jscompat::float::{js_round, to_js_string};
 
 /// A colour, held as the reference holds it: channels that may be fractional.
 ///
@@ -117,9 +117,9 @@ fn read_cmyk(input: &str) -> Option<Colour> {
     let yellow = *numbers.get(2)?;
     let black = *numbers.get(3)?;
     Some(Colour {
-        red: (255.0 * (1.0 - cyan) * (1.0 - black)).round(),
-        green: (255.0 * (1.0 - magenta) * (1.0 - black)).round(),
-        blue: (255.0 * (1.0 - yellow) * (1.0 - black)).round(),
+        red: js_round(255.0 * (1.0 - cyan) * (1.0 - black)),
+        green: js_round(255.0 * (1.0 - magenta) * (1.0 - black)),
+        blue: js_round(255.0 * (1.0 - yellow) * (1.0 - black)),
         alpha: 1.0,
     })
 }
@@ -145,7 +145,7 @@ fn read_call(input: &str, name: &str) -> Option<alloc::vec::Vec<f64>> {
 /// The reference's HSL-to-RGB, which rounds each channel on the way out.
 fn hsl_to_rgb(hue: f64, saturation: f64, lightness: f64) -> (f64, f64, f64) {
     if saturation == 0.0 {
-        let grey = (lightness * 255.0).round();
+        let grey = js_round(lightness * 255.0);
         return (grey, grey, grey);
     }
     let q = if lightness < 0.5 {
@@ -155,9 +155,9 @@ fn hsl_to_rgb(hue: f64, saturation: f64, lightness: f64) -> (f64, f64, f64) {
     };
     let p = 2.0 * lightness - q;
     (
-        (hue_to_channel(p, q, hue + 1.0 / 3.0) * 255.0).round(),
-        (hue_to_channel(p, q, hue) * 255.0).round(),
-        (hue_to_channel(p, q, hue - 1.0 / 3.0) * 255.0).round(),
+        js_round(hue_to_channel(p, q, hue + 1.0 / 3.0) * 255.0),
+        js_round(hue_to_channel(p, q, hue) * 255.0),
+        js_round(hue_to_channel(p, q, hue - 1.0 / 3.0) * 255.0),
     )
 }
 
@@ -223,9 +223,9 @@ fn rgb_to_hsl(red: f64, green: f64, blue: f64) -> (f64, f64, f64) {
 /// Renders every notation, plus the picker the reference embeds.
 fn render(colour: &Colour) -> String {
     let (hue, saturation, lightness) = rgb_to_hsl(colour.red, colour.green, colour.blue);
-    let hue = (hue * 360.0).round();
-    let saturation = (saturation * 100.0).round();
-    let lightness = (lightness * 100.0).round();
+    let hue = js_round(hue * 360.0);
+    let saturation = js_round(saturation * 100.0);
+    let lightness = js_round(lightness * 100.0);
 
     let black = 1.0 - (colour.red / 255.0).max(colour.green / 255.0).max(colour.blue / 255.0);
     // A fully black colour leaves `1 - k` at zero, so each of these is a
@@ -305,7 +305,7 @@ fn fixed2(value: f64) -> String {
     reason = "the value is clamped into 0..=255 on the lines above"
 )]
 fn channel_byte(value: f64) -> u8 {
-    let rounded = value.round();
+    let rounded = js_round(value);
     if rounded <= 0.0 {
         0
     } else if rounded >= 255.0 {

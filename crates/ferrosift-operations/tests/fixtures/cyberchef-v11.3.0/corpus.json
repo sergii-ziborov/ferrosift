@@ -74738,6 +74738,142 @@
     "9bdc8f435401eebfb8e1656f86d6494f2b"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "lznt1_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "030061626364"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61626364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "04800061626364"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61626364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "038002610400"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6161616161616161"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "030061626364030065666768"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "6162636465666768"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "0300616263640000ffffffff"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "61626364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_5",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "03"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "lznt1_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "1180000011223344556677008899aabbccddeeff"
+   },
+   "recipe": [
+    {
+     "op": "LZNT1 Decompress",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "00112233445566778899aabbccddeeff"
+   ],
+   "stopped_after": 1
   }
  ]
 }
