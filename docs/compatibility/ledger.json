@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 228,
-    "aliased": 226,
-    "exact": 222,
+    "operations": 230,
+    "aliased": 228,
+    "exact": 224,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 4795
+    "pinned_cases": 5132
   },
   "operations": [
     {
@@ -1150,6 +1150,32 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 8,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.bcd.decode@1",
+      "display_name": "From BCD",
+      "category": "Encoding",
+      "reference_alias": "From BCD",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 37,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.bcd.encode@1",
+      "display_name": "To BCD",
+      "category": "Encoding",
+      "reference_alias": "To BCD",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 300,
       "status": "exact"
     },
     {

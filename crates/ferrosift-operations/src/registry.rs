@@ -26,22 +26,22 @@ use crate::{
     CaretMDecode, Checksum, ChiSquare, CitrixCtx1Decode, CitrixCtx1Encode, ClassicalCipher,
     Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
     EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
-    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBase92, FromBech32, FromBinary,
-    FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs, FromDecimal, FromFloat, FromHex,
-    FromHexContent, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode, FromOctal,
-    FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head, HexToPem,
-    HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt,
-    LuhnChecksum, Lznt1Decompress, Merge, MicrosoftScriptDecoder, MurmurHash3, OffsetChecker,
-    PadLines, ParityBit, ParseColourCode, ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet,
-    Punycode, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse,
-    Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split,
-    StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail,
-    TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBech32,
-    ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
-    ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal,
-    ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters,
-    UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap,
-    XkcdRandomNumber, Xor, Xxtea,
+    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBase92, FromBcd, FromBech32,
+    FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs, FromDecimal,
+    FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode,
+    FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
+    HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt,
+    Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge, MicrosoftScriptDecoder, MurmurHash3,
+    OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseTlv, ParseUnixFilePermissions,
+    PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
+    RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
+    SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
+    SwapEndianness, Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64,
+    ToBase85, ToBase92, ToBcd, ToBech32, ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode,
+    ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase,
+    ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString,
+    UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
+    VarIntEncode, Wrap, XkcdRandomNumber, Xor, Xxtea,
 };
 
 #[cfg(feature = "crypto")]
@@ -381,6 +381,8 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     registry.register(FromBech32::new())?;
     registry.register(FromBase32::new())?;
     registry.register(ToBase32::new())?;
+    registry.register(FromBcd::new())?;
+    registry.register(ToBcd::new())?;
     registry.register(FromBase45::new())?;
     registry.register(ToBase45::new())?;
     registry.register(FromBase58::new())?;

@@ -88801,6 +88801,7276 @@
     "31"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "bcd_out_0",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_2",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_3",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_4",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_5",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_6",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303020303030302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_7",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030203030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_8",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "000d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_9",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_10",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_11",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303131313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_24",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030312031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_25",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303131313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_26",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_27",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_28",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_29",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "90"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_30",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203130303120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_31",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_32",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "090c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_33",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302031303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_34",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_35",
+   "input": {
+    "kind": "text",
+    "value": "9"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "09"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_36",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303031302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_37",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030313031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_38",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "012c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_39",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_40",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_41",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "12"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_42",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303030203030313020303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_43",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_44",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_45",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_46",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_47",
+   "input": {
+    "kind": "text",
+    "value": "12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0102"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_48",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_49",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313131313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_50",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "123c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_51",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_52",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_53",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_54",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030303020303031302030303030203030313120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_55",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_56",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0102030c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_57",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303030203030313020303030302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_58",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_59",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_60",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303130203030313120303130302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_61",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030313030303131203031303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_62",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_63",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_64",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_65",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_66",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302030303130203030303020303031312030303030203031303020303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_67",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_68",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010203040c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_69",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030303020303031302030303030203030313120303030302030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_70",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_71",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020304"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_72",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131203031303020303130312031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_73",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303131313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_74",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "12345c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_75",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312030303130203030313120303130302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_76",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_77",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "123450"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_78",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303030203030313020303030302030303131203030303020303130302030303030203031303120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_79",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_80",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020304050c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_81",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302030303130203030303020303031312030303030203031303020303030302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_82",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030203030303030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_83",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0102030405"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_84",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_85",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303131313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_86",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_87",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_88",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_89",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_90",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_91",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_92",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_93",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_94",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_95",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_96",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303031302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_97",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030313031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_98",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "012d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_99",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_100",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_101",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "12"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_102",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303030203030313020303030302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_103",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_104",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_105",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_106",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_107",
+   "input": {
+    "kind": "text",
+    "value": "-12"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0102"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_108",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_109",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313131313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_110",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "123d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_111",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_112",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_113",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_114",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030303020303031302030303030203030313120303030302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_115",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_116",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0102030d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_117",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303030203030313020303030302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_118",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_119",
+   "input": {
+    "kind": "text",
+    "value": "-123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_120",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303130203030313120303130302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_121",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030313030303131203031303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_122",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_123",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_124",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_125",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_126",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302030303130203030303020303031312030303030203031303020303030302031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_127",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030203030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_128",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010203040d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_129",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030303020303031302030303030203030313120303030302030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_130",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_131",
+   "input": {
+    "kind": "text",
+    "value": "-1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020304"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_132",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303130312031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_133",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303131313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_134",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_135",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_136",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_137",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "50"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_138",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203031303120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_139",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030313031203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_140",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "050c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_141",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_142",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_143",
+   "input": {
+    "kind": "text",
+    "value": "+5"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "05"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_144",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303120303030302030303130203030303120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_145",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303130303030203030313030303031203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_146",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "90210c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_147",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030312030303030203030313020303030312030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_148",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303130303030203030313030303031203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_149",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "902100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_150",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020313030312030303030203030303020303030302030303130203030303020303030312030303030203030303020303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_151",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031203030303030303030203030303030303130203030303030303031203030303030303030203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_152",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "09000201000c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_153",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203130303120303030302030303030203030303020303031302030303030203030303120303030302030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_154",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031203030303030303030203030303030303130203030303030303031203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_155",
+   "input": {
+    "kind": "text",
+    "value": "90210"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0900020100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_156",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312030303030203030303020303030302030303030203030303020303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_157",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303030203030303030303030203030303030303030203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_158",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1000000c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_159",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030303020303030302030303030203030303020303030302030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_160",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303030203030303030303030203030303030303030203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_161",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "10000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_162",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203030303120303030302030303030203030303020303030302030303030203030303020303030302030303030203030303020303030302030303030203030303020303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_163",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303030203030303030303030203030303030303030203030303030303030203030303030303030203030303030303030203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_164",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010000000000000c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_165",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030303020303030302030303030203030303020303030302030303030203030303020303030302030303030203030303020303030302030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_166",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303030203030303030303030203030303030303030203030303030303030203030303030303030203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_167",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_168",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020313030312030303030203030303020303131312030303031203130303120313030312030303130203031303120303130302030313131203031303020303030302031303031203130303120303031312031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_169",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031203030303030303030203031313130303031203130303131303031203030313030313031203031303030313131203031303030303030203130303131303031203030313131313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_170",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "09007199254740993c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_171",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303031203030303020303030302030313131203030303120313030312031303031203030313020303130312030313030203031313120303130302030303030203130303120313030312030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_172",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303130303030203030303030313131203030303131303031203130303130303130203031303130313030203031313130313030203030303031303031203130303130303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_173",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "9007199254740993"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_174",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030203130303120303030302030303030203030303020303030302030303030203031313120303030302030303031203030303020313030312030303030203130303120303030302030303130203030303020303130312030303030203031303020303030302030313131203030303020303130302030303030203030303020303030302031303031203030303020313030312030303030203030313120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_175",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031203030303030303030203030303030303030203030303030313131203030303030303031203030303031303031203030303031303031203030303030303130203030303030313031203030303030313030203030303030313131203030303030313030203030303030303030203030303031303031203030303031303031203030303030303131203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_176",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "090000070109090205040704000909030c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_177",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302031303031203030303020303030302030303030203030303020303030302030313131203030303020303030312030303030203130303120303030302031303031203030303020303031302030303030203031303120303030302030313030203030303020303131312030303030203031303020303030302030303030203030303020313030312030303030203130303120303030302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_178",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303031303031203030303030303030203030303030303030203030303030313131203030303030303031203030303031303031203030303031303031203030303030303130203030303030313031203030303030313030203030303030313131203030303030313030203030303030303030203030303031303031203030303031303031203030303030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_179",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "09000007010909020504070400090903"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_180",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030313020303031312030313030203031303120303131302030313131203130303020313030312030303030203030303120303031302030303131203031303020303130312030313130203031313120313030302031303031203030303020303030312030303130203030313120303130302030313031203031313020303131312031303030203130303120303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_181",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030313030303131203031303030313031203031313030313131203130303031303031203030303030303031203030313030303131203031303030313031203031313030313131203130303031303031203030303030303031203030313030303131203031303030313031203031313030313131203130303031303031203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_182",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0123456789012345678901234567890c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_183",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131203031303020303130312030313130203031313120313030302031303031203030303020303030312030303130203030313120303130302030313031203031313020303131312031303030203130303120303030302030303031203030313020303031312030313030203031303120303131302030313131203130303020313030312030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_184",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303130313130203031313131303030203130303130303030203030303130303130203030313130313030203031303130313130203031313131303030203130303130303030203030303130303130203030313130313030203031303130313130203031313131303030203130303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_185",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "123456789012345678901234567890"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_186",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030302030303031203030303020303031302030303030203030313120303030302030313030203030303020303130312030303030203031313020303030302030313131203030303020313030302030303030203130303120303030302030303030203030303020303030312030303030203030313020303030302030303131203030303020303130302030303030203031303120303030302030313130203030303020303131312030303030203130303020303030302031303031203030303020303030302030303030203030303120303030302030303130203030303020303031312030303030203031303020303030302030313031203030303020303131302030303030203031313120303030302031303030203030303020313030312030303030203030303020303030302031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_187",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303030313130203030303030313131203030303031303030203030303031303031203030303030303030203030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303030313130203030303030313131203030303031303030203030303031303031203030303030303030203030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303030313130203030303030313131203030303031303030203030303031303031203030303030303030203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_188",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0102030405060708090001020304050607080900010203040506070809000c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_189",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303030203030313020303030302030303131203030303020303130302030303030203031303120303030302030313130203030303020303131312030303030203130303020303030302031303031203030303020303030302030303030203030303120303030302030303130203030303020303031312030303030203031303020303030302030313031203030303020303131302030303030203031313120303030302031303030203030303020313030312030303030203030303020303030302030303031203030303020303031302030303030203030313120303030302030313030203030303020303130312030303030203031313020303030302030313131203030303020313030302030303030203130303120303030302030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_190",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303030313130203030303030313131203030303031303030203030303031303031203030303030303030203030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303030313130203030303030313131203030303031303030203030303031303031203030303030303030203030303030303031203030303030303130203030303030303131203030303030313030203030303030313031203030303030313130203030303030313131203030303031303030203030303031303031203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_out_191",
+   "input": {
+    "kind": "text",
+    "value": "123456789012345678901234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "010203040506070809000102030405060708090001020304050607080900"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_0_true",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030203030303030303030203030303030303030203030303030303030203030303031313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_0_false",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030203030303030303030203030303030303030203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_1_true",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "000000000c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_1_false",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_2_true",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_2_false",
+   "input": {
+    "kind": "text",
+    "value": "Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_3_true",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030203030303030303030203030303030303030203030303030303030203030303031313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_3_false",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030203030303030303030203030303030303030203030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_4_true",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "000000000d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_4_false",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_5_true",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00000000000000000d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_infinite_5_false",
+   "input": {
+    "kind": "text",
+    "value": "-Infinity"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0000000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_0",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030203031303120303131302030313131203130303020313030312030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_1",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303130313130203031313131303030203130303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_2",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1234567890"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_3",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_4",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_5",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_6",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_7",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_8",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_9",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303130302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_10",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_11",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_12",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030203031303120303131302031303030203130303120313031302030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_13",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303130313130203130303031303031203130313030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_14",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "12345689a0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_15",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_16",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_17",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_18",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_19",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_20",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_21",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303130302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_22",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_23",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_24",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203031303020303130312031303030203130303120313130302031313031203131313020313131312030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_25",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130313030203031303131303030203130303131313030203131303131313130203131313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_26",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "14589cdef0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_27",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303130302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_28",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130313030203031303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_29",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1450"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_30",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_31",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_32",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_33",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030302031303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_34",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303031303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_35",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "4 2 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "89"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_36",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030203130313120313130302031313031203131313020313131312030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_37",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203130313131313030203131303131313130203131313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_38",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1234bcdef0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_39",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_40",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_41",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_42",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_43",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_44",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_45",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303130302031303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_46",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303031303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_47",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_48",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313131203031313020303130312030313030203130313120313031302031303031203130303020313131312030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_49",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031313130313130203031303130313030203130313131303130203130303131303030203131313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_50",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7654ba98f0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_51",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031313120303131302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_52",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031313130313130203031303130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_53",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7650"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_54",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_55",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_56",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_57",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303130302031303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_58",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303031303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_59",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 -2 -1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_60",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313030203031303120303131302030313131203130303020313030312031303130203130313120313130302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_61",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303030313031203031313030313131203130303031303031203130313031303131203131303030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_62",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "456789abc3"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_63",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303020303130312030313130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_64",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303030313031203031313030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_65",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4560"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_66",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_67",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_68",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_69",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303131312031303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_70",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031313131303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_71",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "Excess-3",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "78"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_72",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030203031303120303131302030313131203130303020313030312031303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_73",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303130313130203031313131303030203130303131303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_74",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "123456789a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_75",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_76",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_77",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_78",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_79",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130313030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_80",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "a0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_81",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303130302030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_82",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031303030313031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_scheme_83",
+   "input": {
+    "kind": "text",
+    "value": "-45"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_0",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_1",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_3",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_4",
+   "input": {
+    "kind": "text",
+    "value": "0000 0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_5",
+   "input": {
+    "kind": "text",
+    "value": "0000 0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_6",
+   "input": {
+    "kind": "text",
+    "value": "0000 0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_7",
+   "input": {
+    "kind": "text",
+    "value": "0000 0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_8",
+   "input": {
+    "kind": "text",
+    "value": "00010010 00110100"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_9",
+   "input": {
+    "kind": "text",
+    "value": "00010010 00110100"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_10",
+   "input": {
+    "kind": "text",
+    "value": "00010010 00110100"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_11",
+   "input": {
+    "kind": "text",
+    "value": "00010010 00110100"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_12",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011 1101"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_14",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011 1101"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_16",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011 1100"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_18",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011 1100"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_20",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 001"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_21",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 001"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_23",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 001"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_24",
+   "input": {
+    "kind": "text",
+    "value": "0001001"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_25",
+   "input": {
+    "kind": "text",
+    "value": "0001001"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_27",
+   "input": {
+    "kind": "text",
+    "value": "0001001"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      false,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_scheme_0",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_scheme_1",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "7 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_scheme_3",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "2 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_in_scheme_6",
+   "input": {
+    "kind": "text",
+    "value": "0001 0010 0011"
+   },
+   "recipe": [
+    {
+     "op": "From BCD",
+     "args": [
+      "IBM 8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "bcd_round_trip_0_true",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303120303031302030303131203031303020303130312031313030",
+    "3132333435"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_even_0_true",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303020303030312030303130203030313120303130302031313030",
+    "31323334"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_0_false",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303030312030303130203030313120303130302030313031",
+    "3132333435"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_even_0_false",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30303031203030313020303031312030313030",
+    "31323334"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_1_true",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303131313030",
+    "3132333435"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_even_1_true",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303030303031203030313030303131203031303031313030",
+    "31323334"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_1_false",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030203031303130303030",
+    "313233343530"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_even_1_false",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Bytes"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3030303130303130203030313130313030",
+    "31323334"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_2_true",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "12345c",
+    "3132333435"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_even_2_true",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      true,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01234c",
+    "31323334"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_2_false",
+   "input": {
+    "kind": "text",
+    "value": "12345"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "123450",
+    "313233343530"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "bcd_round_trip_even_2_false",
+   "input": {
+    "kind": "text",
+    "value": "1234"
+   },
+   "recipe": [
+    {
+     "op": "To BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    },
+    {
+     "op": "From BCD",
+     "args": [
+      "8 4 2 1",
+      true,
+      false,
+      "Raw"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "1234",
+    "31323334"
+   ],
+   "stopped_after": 2
   }
  ]
 }

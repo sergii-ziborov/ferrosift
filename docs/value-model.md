@@ -18,7 +18,7 @@ disagrees.
 | `number` | `Number`, and `Integer` where the value is whole | **done** |
 | `html` | `Markup` | **done** |
 | `JSON` | `Structured` | **done**, with one named limit below |
-| `BigNumber` | `Decimal` | **done** — all three renderings, both readings, the arithmetic; 11 of the 16 blocked operations ported, plus `To Base` |
+| `BigNumber` | `Decimal` | **done** — all three renderings, both readings, the arithmetic; 13 of the 16 blocked operations ported, plus `To Base` |
 | `File`, `List<File>` | `Files` | matches |
 
 Ten shipped operations used to declare `Text` where the reference declared
@@ -77,11 +77,16 @@ wrong today and the proof is a corpus case rather than an argument.
    built by hand.
 4. ~~**Decimal**~~ -- **done**, and now carrying operations. The kind, the
    canonical form, all three renderings, both readings, the arithmetic and the
-   base conversions are pinned against the real library. Eleven of the sixteen
-   operations that were blocked on it are ported, and so is `To Base`, which
-   the dependency scan had missed because it never imported the library — it
-   was handed a number by the dish. The five that remain each wait on a second
-   thing as well as on this.
+   base conversions are pinned against the real library. Thirteen of the
+   sixteen operations that were blocked on it are ported, and so is `To Base`,
+   which the dependency scan had missed because it never imported the library
+   — it was handed a number by the dish. The three that remain each wait on a
+   second thing as well as on this.
+
+   Two of the thirteen turned out not to need the arithmetic at all. `To BCD`
+   and `From BCD` never add anything: they read the digits the dish already
+   rendered and hand digits back. What blocked them was the value *kind*, not
+   the library behind it, so they ship with no feature gate.
 
 ## What `Decimal` is
 
