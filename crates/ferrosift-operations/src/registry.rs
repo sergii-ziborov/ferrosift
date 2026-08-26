@@ -49,7 +49,7 @@ use crate::{
     AesDecrypt, AesEncrypt, AesKeyUnwrap, AesKeyWrap, DerivePbkdf2Key, Rc4, Rc4Drop, Scrypt,
 };
 #[cfg(feature = "arithmetic")]
-use crate::{Aggregate, ExtendedGcd, Mod, ModularInverse};
+use crate::{Aggregate, ConvertUnits, ExtendedGcd, Mod, ModularInverse};
 #[cfg(feature = "compression")]
 use crate::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
@@ -238,6 +238,11 @@ fn register_arithmetic(registry: &mut OperationRegistry) -> Result<(), RegistryE
     #[cfg(feature = "arithmetic")]
     {
         registry.register(Aggregate::divide())?;
+        registry.register(ConvertUnits::area())?;
+        registry.register(ConvertUnits::data())?;
+        registry.register(ConvertUnits::distance())?;
+        registry.register(ConvertUnits::mass())?;
+        registry.register(ConvertUnits::speed())?;
         registry.register(Aggregate::mean())?;
         registry.register(Aggregate::median())?;
         registry.register(Aggregate::multiply())?;

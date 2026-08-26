@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 230,
-    "aliased": 228,
-    "exact": 224,
+    "operations": 235,
+    "aliased": 233,
+    "exact": 229,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 5132
+    "pinned_cases": 5590
   },
   "operations": [
     {
@@ -2362,6 +2362,71 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 3,
+      "status": "exact"
+    },
+    {
+      "id": "math.convert.area@1",
+      "display_name": "Convert area",
+      "category": "Arithmetic",
+      "reference_alias": "Convert area",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 86,
+      "status": "exact"
+    },
+    {
+      "id": "math.convert.data@1",
+      "display_name": "Convert data units",
+      "category": "Arithmetic",
+      "reference_alias": "Convert data units",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 92,
+      "status": "exact"
+    },
+    {
+      "id": "math.convert.distance@1",
+      "display_name": "Convert distance",
+      "category": "Arithmetic",
+      "reference_alias": "Convert distance",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 68,
+      "status": "exact"
+    },
+    {
+      "id": "math.convert.mass@1",
+      "display_name": "Convert mass",
+      "category": "Arithmetic",
+      "reference_alias": "Convert mass",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 146,
+      "status": "exact"
+    },
+    {
+      "id": "math.convert.speed@1",
+      "display_name": "Convert speed",
+      "category": "Arithmetic",
+      "reference_alias": "Convert speed",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 66,
       "status": "exact"
     },
     {

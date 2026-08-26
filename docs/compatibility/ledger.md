@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 230 |
-| Reference-aliased | 228 |
-| Byte-pinned (`exact`) | 224 |
+| Registered operations | 235 |
+| Reference-aliased | 233 |
+| Byte-pinned (`exact`) | 229 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 5132 |
+| Pinned cases | 5590 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -214,6 +214,11 @@ does.
 | `logic.sub@1` | SUB | core | exact | 31 |
 | `logic.xor@1` | XOR | core | exact | 23 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
+| `math.convert.area@1` | Convert area | core | exact | 86 |
+| `math.convert.data@1` | Convert data units | core | exact | 92 |
+| `math.convert.distance@1` | Convert distance | core | exact | 68 |
+| `math.convert.mass@1` | Convert mass | core | exact | 146 |
+| `math.convert.speed@1` | Convert speed | core | exact | 66 |
 | `math.divide@1` | Divide | core | exact | 33 |
 | `math.egcd@1` | Extended GCD | core | exact | 43 |
 | `math.mean@1` | Mean | core | exact | 33 |

@@ -96071,6 +96071,9106 @@
     "31323334"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "convert_ConvertArea_out_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square kilometre (sq km)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square kilometre (sq km)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Centiare (ca)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Centiare (ca)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Deciare (da)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Deciare (da)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Are (a)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Are (a)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Decare (daa)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Decare (daa)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Hectare (ha)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Hectare (ha)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square inch (sq in)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313535302e3030333130303030363230303031323430303032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square inch (sq in)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303634353136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square foot (sq ft)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31302e3736333931303431363730393732323330383333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square foot (sq ft)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3039323930333034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square yard (sq yd)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e3139353939303034363330313038303235363438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square yard (sq yd)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3833363132373336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square mile (sq mi)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303338363130323135383534323435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square mile (sq mi)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323538393938382e313130333336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Perch (sq per)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3032333639313036383436373138373837303137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Perch (sq per)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34322e3231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Rood (ro)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303938393131393638333438313730313239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Rood (ro)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "International acre (ac)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303234373130353338313436373136353334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "International acre (ac)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "343034362e38353634323234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "US survey acre (ac)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303234373130343339333033383934393635"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "US survey acre (ac)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "343034362e3837323631"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "US survey square mile (sq mi)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303338363130303631343133373439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "US survey square mile (sq mi)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323538393939382e343730333035323339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "US survey township"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303031303732353031373035393337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "US survey township",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39333233393934342e39333039383836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Yoctobarn (yb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Yoctobarn (yb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Zeptobarn (zb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Zeptobarn (zb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Attobarn (ab)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Attobarn (ab)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Femtobarn (fb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Femtobarn (fb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Picobarn (pb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Picobarn (pb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Nanobarn (nb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Nanobarn (nb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Microbarn (μb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Microbarn (μb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Millibarn (mb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Millibarn (mb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Barn (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Barn (b)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_26",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Kilobarn (kb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_26",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Kilobarn (kb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_27",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Megabarn (Mb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_27",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Megabarn (Mb)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_28",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Planck area"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333834363135333834363135333834363135333834363135333834363135333834363135333834363135333834363135333834363135333834363135333834363135333834362e3135333834363135333834363135333834363135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_28",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Planck area",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_29",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Shed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_29",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Shed",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_30",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Outhouse"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_30",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Outhouse",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_31",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Washington D.C."
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030353637373937323931393734"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_31",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Washington D.C.",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3137363131393139312e353032383438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_32",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Isle of Wight"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030323633313537383934373337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_32",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Isle of Wight",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333830303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_33",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Wales"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303034383132353531313333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_33",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Wales",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230373739303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_out_34",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030313433363238343238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_in_34",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363936323431303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030313433363238343238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363936323431303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e3030303030303030303030313433363238343238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d363936323431303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030333539303731303639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31373430363032353030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030313433363238343237353132383837"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363936323431303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030313434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363936323431"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_q6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Texas"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323933362e3839383635323533363937303637353338333935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_r6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Texas",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36323731313831343136333230313233373037333133303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertArea_chained",
+   "input": {
+    "kind": "text",
+    "value": "1000"
+   },
+   "recipe": [
+    {
+     "op": "Convert area",
+     "args": [
+      "Square metre (sq m)",
+      "Square kilometre (sq km)"
+     ]
+    },
+    {
+     "op": "Convert area",
+     "args": [
+      "Square kilometre (sq km)",
+      "Square metre (sq m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031",
+    "31303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Nibbles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Nibbles",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Octets"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Octets",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Kibibits (Kib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303738313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Kibibits (Kib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Mebibits (Mib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030373632393339343533313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Mebibits (Mib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313331303732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Gibibits (Gib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030373435303538303539363932"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Gibibits (Gib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313334323137373238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Tebibits (Tib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030373237353935373631"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Tebibits (Tib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313337343338393533343732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Pebibits (Pib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030373130353433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Pebibits (Pib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313430373337343838333535333238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Exbibits (Eib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030363934"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Exbibits (Eib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313434313135313838303735383535383735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Zebibits (Zib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Zebibits (Zib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313437353733393532353839363736343132353030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Yobibits (Yib)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yobibits (Yib)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313531313135373237343531383238363530303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Decabits"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Decabits",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e3235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Hectobits"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Hectobits",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31322e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Kilobits (Kb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Kilobits (Kb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Megabits (Mb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Megabits (Mb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Gigabits (Gb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Gigabits (Gb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Terabits (Tb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Terabits (Tb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Petabits (Pb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Petabits (Pb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Exabits (Eb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303030303038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Exabits (Eb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Zettabits (Zb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Zettabits (Zb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Yottabits (Yb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabits (Yb)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313235303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Kibibytes (KiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303039373635363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Kibibytes (KiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Mebibytes (MiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303935333637343331363430363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Mebibytes (MiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303438353736"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Gibibytes (GiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303933313332323537343632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Gibibytes (GiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303733373431383234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Tebibytes (TiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303030303030303030303039303934393437"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Tebibytes (TiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303939353131363237373736"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_26",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Pebibytes (PiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303838383138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_26",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Pebibytes (PiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313235383939393036383432363234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_27",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Exbibytes (EiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030303837"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_27",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Exbibytes (EiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313532393231353034363036383437303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_28",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Zebibytes (ZiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_28",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Zebibytes (ZiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313830353931363230373137343131323530303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_29",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Yobibytes (YiB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_29",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yobibytes (YiB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323038393235383139363134363239313235303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_30",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Kilobytes (KB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_30",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Kilobytes (KB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_31",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Megabytes (MB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_31",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Megabytes (MB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_32",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Gigabytes (GB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_32",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Gigabytes (GB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_33",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Terabytes (TB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_33",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Terabytes (TB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_34",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Petabytes (PB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_34",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Petabytes (PB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_35",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Exabytes (EB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_35",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Exabytes (EB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_36",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Zettabytes (ZB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_36",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Zettabytes (ZB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_out_37",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_in_37",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d38303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030303133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_q6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bits (b)",
+      "Yottabytes (YB)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030313132353839393930363834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_r6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Yottabytes (YB)",
+      "Bits (b)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3732303537353934303337393237393434303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDataUnits_chained",
+   "input": {
+    "kind": "text",
+    "value": "1000"
+   },
+   "recipe": [
+    {
+     "op": "Convert data units",
+     "args": [
+      "Bytes (B)",
+      "Nibbles"
+     ]
+    },
+    {
+     "op": "Convert data units",
+     "args": [
+      "Nibbles",
+      "Bytes (B)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32303030",
+    "31303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "convert_ConvertDistance_out_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Micrometres (µm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Micrometres (µm)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Millimetres (mm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Millimetres (mm)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Centimetres (cm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Centimetres (cm)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Kilometers (km)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Kilometers (km)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Thou (th)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33393337302e3037383734303135373438303331343936303633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Thou (th)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303030323534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Inches (in)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33392e3337303037383734303135373438303331343936"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Inches (in)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30323534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Feet (ft)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e3238303833393839353031333132333335393538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Feet (ft)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e33303438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Yards (yd)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e3039333631333239383333373730373738363533"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Yards (yd)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e39313434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Chains (ch)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3034393730393639353337383938363731373537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Chains (ch)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32302e31313638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Furlongs (fur)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030343937303936393533373839383637313736"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Furlongs (fur)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230312e313638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Miles (mi)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303632313337313139323233373333333937"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Miles (mi)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313630392e333434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Leagues (lea)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303230373132333733303734353737373939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Leagues (lea)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "343832382e303332"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Fathoms (ftm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3533393631313832343833373638343736333039"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Fathoms (ftm)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e383533313834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Cables"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030353339363131383234383337363834373633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Cables",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3138352e33313834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Nautical miles"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303533393631313832343833373638343736"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nautical miles",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313835332e313834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Cars (4m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Cars (4m)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Buses (8.4m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3131393034373631393034373631393034373632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Buses (8.4m)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "382e34"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "American football fields (91m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031303938393031303938393031303938393031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "American football fields (91m)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Football pitches (105m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030393532333830393532333830393532333831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Football pitches (105m)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Earth-to-Moons"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030323633313537383934373337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Earth-to-Moons",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333830303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Earth's equators"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303032343935333230323333363339"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Earth's equators",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34303037353031362e363836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Astronomical units (au)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030363638343538373132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Astronomical units (au)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313439353937383730373030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Light-years (ly)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303030303030303030303030303031303537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Light-years (ly)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39343630373330343732353830383030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_out_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303033323431"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_in_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330383536373736303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330383536373736303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d3330383536373736303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3737313431393430303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030303030303033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330383536373736303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3330383536373736303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_q6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Nanometres (nm)",
+      "Parsecs (pc)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303239313930333434363236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_r6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Parsecs (pc)",
+      "Nanometres (nm)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323737393333313239373930393039373539303138353638303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertDistance_chained",
+   "input": {
+    "kind": "text",
+    "value": "1000"
+   },
+   "recipe": [
+    {
+     "op": "Convert distance",
+     "args": [
+      "Metres (m)",
+      "Micrometres (µm)"
+     ]
+    },
+    {
+     "op": "Convert distance",
+     "args": [
+      "Micrometres (µm)",
+      "Metres (m)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030",
+    "31303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "convert_ConvertMass_out_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Zeptogram (zg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Zeptogram (zg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Attogram (ag)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Attogram (ag)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Femtogram (fg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Femtogram (fg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Picogram (pg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Picogram (pg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Nanogram (ng)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Nanogram (ng)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Microgram (μg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Microgram (μg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Milligram (mg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Milligram (mg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Centigram (cg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Centigram (cg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Decigram (dg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Decigram (dg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Gram (g)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Gram (g)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Decagram (dag)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Decagram (dag)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Hectogram (hg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Hectogram (hg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Megagram (Mg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Megagram (Mg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Tonne (t)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Tonne (t)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Gigagram (Gg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Gigagram (Gg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Teragram (Tg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Teragram (Tg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Petagram (Pg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Petagram (Pg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Exagram (Eg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Exagram (Eg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Zettagram (Zg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303030303030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Zettagram (Zg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Yottagram (Yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yottagram (Yg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Grain (gr)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31353433322e3335383335323934313433303635303630383137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Grain (gr)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303036343739383931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Dram (dr)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3536342e3338333339313139333238363630363635303831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Dram (dr)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303137373138343531393533313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Ounce (oz)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33352e3237333936313934393538303431323931353638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Ounce (oz)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303238333439353233313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Pound (lb)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e3230343632323632313834383737353830373233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_25",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Pound (lb)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3435333539323337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_26",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Nail"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3331343934363038383833353533393430313033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_26",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Nail",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e3137353134363539"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_27",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Stone (st)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3135373437333034343431373736393730303532"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_27",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Stone (st)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "362e3335303239333138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_28",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Quarter (gr)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3037383733363532323230383838343835303236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_28",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Quarter (gr)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31322e3730303538363336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_29",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Tod"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3037383733363532323230383838343835303236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_29",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Tod",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31322e3730303538363336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_30",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "US hundredweight (cwt)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3032323034363232363231383438373735383037"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_30",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "US hundredweight (cwt)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34352e333539323337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_31",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Imperial hundredweight (cwt)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031393638343133303535323232313231323536"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_31",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Imperial hundredweight (cwt)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35302e3830323334353434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_32",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "US ton (t)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303131303233313133313039323433383739"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_32",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "US ton (t)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3930372e3138343734"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_33",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Imperial ton (t)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303938343230363532373631313036303633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_33",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Imperial ton (t)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313031362e30343639303838"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_34",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Pennyweight (dwt)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3634332e3031343933313337323535393631303434323031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_34",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Pennyweight (dwt)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030313535353137333834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_35",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Troy dram (dr t)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3235372e32303539373235343930323338343431373638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_35",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Troy dram (dr t)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303338383739333436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_36",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Troy ounce (oz t)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33322e31353037343635363836323739383035323231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_36",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Troy ounce (oz t)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30333131303334373638"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_37",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Troy pound (lb t)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e3637393232383838303731383939383337363834"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_37",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Troy pound (lb t)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e33373332343137323136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_38",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Mark"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "342e3031383834333332313037383439373536353236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_38",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Mark",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e32343838323738313434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_39",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Wey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031333037313839353432343833363630313331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_39",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Wey",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37362e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_40",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Wool wey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030393833323834313639313234383737303839"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_40",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Wool wey",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3130312e37"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_41",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Suffolk wey"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030363139313935303436343339363238343833"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_41",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Suffolk wey",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3136312e35"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_42",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Wool sack"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030363533353934373731323431383330303635"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_42",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Wool sack",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313533"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_43",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Coal sack"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031393638343133303535323232313231323536"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_43",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Coal sack",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35302e3830323334353434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_44",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Load"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030313038393332343631383733363338333434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_44",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Load",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "393138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_45",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Last"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303534343636323330393336383139313732"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_45",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Last",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31383336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_46",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Flax or feather last"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303132393837303132393837303132393837"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_46",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Flax or feather last",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373730"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_47",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Gunpowder last"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303931373433313139323636303535303436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_47",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Gunpowder last",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303930"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_48",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Picul"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3031363533343636393834363132393335343439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_48",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Picul",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36302e343738393832"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_49",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Rice last"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303833333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_49",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Rice last",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_50",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Big Ben (14 tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303037313432383537313432383537313433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_50",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Big Ben (14 tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3134303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_51",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Blue whale (180 tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030353535353535353535353535353536"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_51",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Blue whale (180 tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313830303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_52",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "International Space Station (417 tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030323339383038313533343737323138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_52",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "International Space Station (417 tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "343137303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_53",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Space Shuttle (2,041 tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303438393935353930333936383634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_53",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Space Shuttle (2,041 tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32303431303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_54",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "RMS Titanic (52,000 tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303031393233303736393233303737"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_54",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "RMS Titanic (52,000 tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3532303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_55",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Great Pyramid of Giza (6,000,000 tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303136363636363636363637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_55",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Great Pyramid of Giza (6,000,000 tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_56",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Earth's oceans (1.4 yottagrams)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_56",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Earth's oceans (1.4 yottagrams)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31343030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_57",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "A teaspoon of neutron star (5,500 million tonnes)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303138313831383138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_57",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "A teaspoon of neutron star (5,500 million tonnes)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35353030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_58",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Lunar mass (ML)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_58",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Lunar mass (ML)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3733343230303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_59",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Earth mass (M⊕)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_59",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Earth mass (M⊕)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35393732313930303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_60",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Jupiter mass (MJ)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_60",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Jupiter mass (MJ)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31383938313431313437363939393939373030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_61",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Solar mass (M☉)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_61",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Solar mass (M☉)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31393838353530303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_62",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Sagittarius A* (7.5 x 10^36 kgs-ish)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_62",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Sagittarius A* (7.5 x 10^36 kgs-ish)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37353030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_63",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Milky Way galaxy (1.2 x 10^42 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_63",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Milky Way galaxy (1.2 x 10^42 kgs)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31323030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_out_64",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_in_64",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313435303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313435303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d313435303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333632353030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313435303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313435303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_q6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Yoctogram (yg)",
+      "The observable universe (1.45 x 10^53 kgs)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_r6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "The observable universe (1.45 x 10^53 kgs)",
+      "Yoctogram (yg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31333036303433383931393337343433393835303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertMass_chained",
+   "input": {
+    "kind": "text",
+    "value": "1000"
+   },
+   "recipe": [
+    {
+     "op": "Convert mass",
+     "args": [
+      "Kilogram (kg)",
+      "Zeptogram (zg)"
+     ]
+    },
+    {
+     "op": "Convert mass",
+     "args": [
+      "Zeptogram (zg)",
+      "Kilogram (kg)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31303030303030303030303030303030303030303030303030303030",
+    "31303030"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "convert_ConvertSpeed_out_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Kilometres per hour (km/h)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "332e3539393731323032333033383135363934373434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_1",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Kilometres per hour (km/h)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e32373738"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Miles per hour (mph)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "322e3233363933363239323035343430323239303632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_2",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Miles per hour (mph)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3434373034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Knots (kn)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "312e3934343031323434313637393632363734393631"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_3",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Knots (kn)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e35313434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Human hair growth rate"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3230383333333333332e3333333333333333333333333333333333333333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_4",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Human hair growth rate",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303030303030303438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Bamboo growth rate"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37313432382e3537313432383537313432383537313432383537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_5",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Bamboo growth rate",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "World's fastest snail"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3336332e3633363336333633363336333633363336333634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_6",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "World's fastest snail",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030323735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Usain Bolt's top speed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3038303531353239373930363630323235343433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_7",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Usain Bolt's top speed",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31322e3432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Jet airliner cruising speed"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303034"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_8",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Jet airliner cruising speed",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323530"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Concorde"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030313635383337343739323730333135303931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_9",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Concorde",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "SR-71 Blackbird"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030313031393336373939313834353035363037"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_10",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "SR-71 Blackbird",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "393831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Space Shuttle"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303731343238353731343238353731343239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_11",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Space Shuttle",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31343030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "International Space Station"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303132393837303132393837303132393837"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_12",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "International Space Station",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37373030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Sound in standard atmosphere"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030323933383538333630323730333439363931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_13",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Sound in standard atmosphere",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3334302e33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Sound in water"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303636363636363636363636363636363637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_14",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Sound in water",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31353030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Lunar escape velocity"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303432313035323633313537383934373337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_15",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Lunar escape velocity",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32333735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Earth escape velocity"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303038393238353731343238353731343239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_16",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Earth escape velocity",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3131323030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Earth's solar orbit"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303033333535373034363937393836353737"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_17",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Earth's solar orbit",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3239383030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Solar system's Milky Way orbit"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_18",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Solar system's Milky Way orbit",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Milky Way relative to the cosmic microwave background"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030313831313539343230323839383535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_19",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Milky Way relative to the cosmic microwave background",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353532303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Solar escape velocity"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030313631383930383835353433313434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_20",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Solar escape velocity",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363137373030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Neutron star escape velocity (0.3c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_21",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Neutron star escape velocity (0.3c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light in a diamond (0.4136c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030383036343531363132393033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_22",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light in a diamond (0.4136c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313234303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Signal in an optical fibre (0.667c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e303030303030303035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_23",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Signal in an optical fibre (0.667c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323030303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_out_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030333333353634303935313938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_in_24",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323939373932343538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030333333353634303935313938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r0",
+   "input": {
+    "kind": "text",
+    "value": "1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323939373932343538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r1",
+   "input": {
+    "kind": "text",
+    "value": "0"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d302e3030303030303030333333353634303935313938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r2",
+   "input": {
+    "kind": "text",
+    "value": "-1"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d323939373932343538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030383333393130323337393935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r3",
+   "input": {
+    "kind": "text",
+    "value": "2.5"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373439343831313435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e30303333333536343039353139383135323035"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r4",
+   "input": {
+    "kind": "text",
+    "value": "1000000"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "323939373932343538303030303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "302e3030303030303030303030303030333333353634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r5",
+   "input": {
+    "kind": "text",
+    "value": "0.000001"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3239392e373932343538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_q6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Light (c)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33303034343738322e3639363737313438373832373038383639383831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_r6",
+   "input": {
+    "kind": "text",
+    "value": "9007199254740993"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Light (c)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32373030323930343034323734353730343434383330373934"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "convert_ConvertSpeed_chained",
+   "input": {
+    "kind": "text",
+    "value": "1000"
+   },
+   "recipe": [
+    {
+     "op": "Convert speed",
+     "args": [
+      "Metres per second (m/s)",
+      "Kilometres per hour (km/h)"
+     ]
+    },
+    {
+     "op": "Convert speed",
+     "args": [
+      "Kilometres per hour (km/h)",
+      "Metres per second (m/s)"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333539392e37313230323330333831353639343734343432",
+    "31303030"
+   ],
+   "stopped_after": 2
   }
  ]
 }

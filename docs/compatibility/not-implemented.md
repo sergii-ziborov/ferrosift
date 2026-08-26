@@ -1,7 +1,7 @@
 # Operations not implemented
 
-FerroSift covers 230 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 273 are waiting on, so that "not done yet" is a list
+FerroSift covers 235 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 268 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The grouping below is by *import*, which is a proxy and not the thing itself.
@@ -18,9 +18,9 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-166 of the 273 are built on a JavaScript library, and 21 more reach one
+166 of the 268 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The three headings below
-partition the 273 exactly: 166 plus 21 plus 86. The obstacle is **not** that
+partition the 268 exactly: 166 plus 21 plus 81. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
@@ -165,7 +165,7 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 86 import nothing outside the reference's own source, transitively.
+These 81 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
 
@@ -176,4 +176,4 @@ Three left this list at once, for three reasons, and only one was a port.
 which is why the counts above now claim to partition the total exactly, a
 claim that fails loudly the next time one of them drifts.
 
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, Convert area, Convert data units, Convert distance, Convert mass, Convert speed, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, Change IP format, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Text-Integer Conversion, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt

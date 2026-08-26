@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 230 | 228 | **224** | **5132** |
+| 235 | 233 | **229** | **5590** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -222,7 +222,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Family | Operations |
 |---|---|
 | Analysis | Chi Square, Index of Coincidence, Offset checker, Suggest recipe |
-| Arithmetic | Divide, Extended GCD, MOD, Mean, Median, Modular Inverse, Multiply, Standard Deviation, Subtract, Sum |
+| Arithmetic | Convert area, Convert data units, Convert distance, Convert mass, Convert speed, Divide, Extended GCD, MOD, Mean, Median, Modular Inverse, Multiply, Standard Deviation, Subtract, Sum |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
 | Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Bacon Cipher Decode, Bacon Cipher Encode, Bifid Cipher Decode, Bifid Cipher Encode, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, LS47 Decrypt, LS47 Encrypt, RC4, RC4 Drop, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode, XXTEA Decrypt, XXTEA Encrypt |
 | Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, LZNT1 Decompress, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |

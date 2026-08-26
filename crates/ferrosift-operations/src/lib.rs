@@ -105,6 +105,8 @@ mod bigint;
 mod codec_bytes;
 #[cfg(feature = "compression")]
 mod compress;
+#[cfg(feature = "arithmetic")]
+mod convert;
 #[cfg(feature = "text")]
 mod count;
 #[cfg(feature = "compression")]
@@ -224,6 +226,8 @@ pub use bigint::{ExtendedGcd, ModularInverse};
 pub use compress::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
 };
+#[cfg(feature = "arithmetic")]
+pub use convert::ConvertUnits;
 #[cfg(feature = "text")]
 pub use count::CountOccurrences;
 #[cfg(feature = "text")]
