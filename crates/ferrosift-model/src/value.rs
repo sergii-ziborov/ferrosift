@@ -70,8 +70,10 @@ impl ValueKind {
         self == other
             || matches!(
                 (self, other),
-                (Self::Markup | Self::Number, Self::Text | Self::Bytes)
-                    | (Self::Integer, Self::Number)
+                (
+                    Self::Markup | Self::Number | Self::Integer,
+                    Self::Text | Self::Bytes,
+                ) | (Self::Integer, Self::Number)
                     | (Self::Text, Self::Bytes)
             )
     }
@@ -255,6 +257,15 @@ impl Value {
             (Self::Integer(number), ValueKind::Number) => {
                 Some(Self::Number(NumberValue::new(integer_to_float(number))))
             }
+            // An integer prints as the reference prints a number, because the
+            // reference has no separate integer type to print differently.
+            (Self::Integer(number), ValueKind::Text) => Some(Self::Text(TextValue {
+                text: render_number(integer_to_float(number)),
+                encoding: TextEncoding::Utf8,
+            })),
+            (Self::Integer(number), ValueKind::Bytes) => Some(Self::Bytes(
+                render_number(integer_to_float(number)).into_bytes(),
+            )),
             (Self::Text(text), ValueKind::Bytes) => Some(Self::Bytes(text.text.into_bytes())),
             _ => None,
         }

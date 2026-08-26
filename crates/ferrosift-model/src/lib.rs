@@ -26,7 +26,9 @@ pub use spec::{
     TargetSet, ValueConstraint,
 };
 pub use step_id::StepId;
-pub use value::{StructuredValue, TextEncoding, TextValue, Value, ValueKind, VirtualFile};
+pub use value::{
+    NumberValue, StructuredValue, TextEncoding, TextValue, Value, ValueKind, VirtualFile,
+};
 
 /// Version of `FerroSift`'s serialized recipe and value schema.
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]

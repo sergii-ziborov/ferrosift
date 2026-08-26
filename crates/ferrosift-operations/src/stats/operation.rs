@@ -3,10 +3,9 @@ use alloc::vec::Vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
+    Arguments, NumberValue, OperationSpec, Value, ValueConstraint, ValueKind,
 };
 
-use crate::jscompat::float::to_js_string;
 use crate::spec::{SpecDefinition, build};
 
 /// Widens a count to the type the arithmetic runs in.
@@ -39,7 +38,7 @@ impl ChiSquare {
                 description: "Measures how far the byte distribution is from uniform.",
                 cyberchef_alias: Some("Chi Square"),
                 input: ValueConstraint::OneOf(BTreeSet::from([ValueKind::Bytes, ValueKind::Text])),
-                output: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Number),
                 arguments: Vec::new(),
                 inverse: None,
                 classifications: None,
@@ -86,10 +85,7 @@ impl Operation for ChiSquare {
             }
         }
 
-        Ok(Value::Text(TextValue {
-            text: to_js_string(total),
-            encoding: TextEncoding::Utf8,
-        }))
+        Ok(Value::Number(NumberValue::new(total)))
     }
 }
 
@@ -110,7 +106,7 @@ impl IndexOfCoincidence {
                 description: "The probability that two letters drawn from the text match.",
                 cyberchef_alias: Some("Index of Coincidence"),
                 input: ValueConstraint::Exact(ValueKind::Text),
-                output: ValueConstraint::Exact(ValueKind::Text),
+                output: ValueConstraint::Exact(ValueKind::Number),
                 arguments: Vec::new(),
                 inverse: None,
                 classifications: None,
@@ -161,9 +157,6 @@ impl Operation for IndexOfCoincidence {
         let density = if density < 2 { 2.0 } else { widen(density) };
         let result = coincidence / (density * (density - 1.0));
 
-        Ok(Value::Text(TextValue {
-            text: to_js_string(result),
-            encoding: TextEncoding::Utf8,
-        }))
+        Ok(Value::Number(NumberValue::new(result)))
     }
 }

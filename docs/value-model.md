@@ -15,7 +15,7 @@ and the order it is being closed in.
 |---|---|---|
 | `byteArray`, `ArrayBuffer` | `Bytes` | matches |
 | `string` | `Text` | matches |
-| `number` | `Number` | kind exists; three operations still declare `Text` |
+| `number` | `Number`, and `Integer` where the value is whole | **done** |
 | `html` | `Markup` | **done** |
 | `JSON` | *none* -- reported as `Text` | **owed** |
 | `BigNumber` | *none* | **owed**, and blocks 16 operations |
@@ -53,20 +53,26 @@ hands the next operation the markup, and the reference hands it the stripped
 text.
 
 The harness was given a rule -- *an HTML operation may only end a recipe* --
-and that rule is a placeholder for this page. It is a guard against pinning a
-divergence, not a fix for one, and it should be deleted once `Markup` exists.
+which guarded against pinning a divergence rather than fixing one. That rule
+is gone: `Markup` exists, the conversion runs at the step boundary, and the
+chained recipe is pinned instead of refused.
 
 ## The order this is being closed in
 
 Markup first, because it is the only one where a chained recipe is *provably*
 wrong today and the proof is a corpus case rather than an argument.
 
-1. ~~**Markup**~~ -- **done**. Three operations declare it, the harness rule
-   is gone, and offset_chain_upper_23 pins a recipe whose second step
-   receives `ABCDEF` where the first produced `<span class='hl5'>abc</span>...`.
-   Before the kind existed FerroSift passed the tags on and produced`n   `<SPAN CLASS='HL5'>` -- different bytes, and unpinnable.
-2. **`Number`** -- six operations. The projection is the JavaScript rendering
-   already written as `jscompat::float::to_js_string`.
+1. ~~**Markup**~~ -- **done**. Three operations declare it, and
+   `offset_chain_upper_23` pins a recipe whose second step receives `ABCDEF`
+   where the first produced `<span class='hl5'>abc</span>d...`. Passing the
+   tags forward would have produced `<SPAN class='hl5'>ABC</SPAN>` instead --
+   different bytes at every later step.
+2. ~~**Number**~~ -- **done**. Chi Square and Index of Coincidence carry the
+   number itself; the four whose answer is a count keep `Integer`, which
+   converts through the same rendering. FerroSift therefore has two numeric
+   kinds where the reference has one, and that is deliberate: a caller gets a
+   count as a count rather than having to parse one back out of a string, and
+   the conversion table is what keeps the printed bytes identical.
 3. **`Structured` as the JSON dish** -- one operation today. The kind exists;
    what is missing is the four-space projection.
 4. **`Decimal`** -- no operations yet, and the largest prize: sixteen are
@@ -87,13 +93,11 @@ backend to load into whatever it uses. Putting a crate in the model instead
 would make every consumer of a value depend on a choice only arithmetic cares
 about.
 
-## The mechanism this needs
+## The mechanism, now built
 
-Today the executor checks in preflight that one step's declared output
-satisfies the next step's declared input, and nothing converts between them.
-The reference converts. So the model needs one place that projects a value of
-kind A into kind B, reproducing the dish's own conversion -- and preflight
-should accept a pair when a projection exists rather than only when the kinds
-already match.
+`Value::reinterpret` performs The dish's own conversion, ``ValueKind::converts_to`is the single table both it and preflight read, and the executor applies it
+before handing a value to an operation. Preflight accepts a pair when a
+conversion exists rather than only when the kinds already match.
 
-That projection layer, not the extra variants, is the substance of this work.
+The projection layer, not the extra variants, was the substance of this work.
+What remains is to route the kinds that still travel as `Text` through it.

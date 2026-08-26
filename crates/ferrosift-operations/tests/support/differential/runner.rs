@@ -1,6 +1,6 @@
 use ferrosift_compat::cyberchef::import_recipe;
 use ferrosift_core::{ExecutionStatus, Executor, NeverCancelled, TraceEventKind};
-use ferrosift_model::{CapabilitySet, TextEncoding, Value};
+use ferrosift_model::{CapabilitySet, TextEncoding, Value, ValueKind};
 
 use super::fixture::{Case, UnsupportedCase, decode_hex};
 
@@ -118,6 +118,14 @@ fn normalize(value: Value) -> Vec<u8> {
         // stripped form is what a *later* step would receive, and pinning that
         // here would have let an operation emitting no tags at all pass.
         Value::Markup(markup) => encode_text_like_reference(&markup),
+        // A number is compared as the digits the reference prints. Rendering
+        // happens here rather than in the operation so that a caller receives
+        // the number itself and does not have to parse one back out of a
+        // string to use it.
+        Value::Number(number) => match Value::Number(number).reinterpret(ValueKind::Text) {
+            Some(Value::Text(text)) => encode_text_like_reference(&text.text),
+            _ => Vec::new(),
+        },
         other => panic!(
             "reference normalization does not support {:?}",
             other.kind()
