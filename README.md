@@ -31,6 +31,12 @@ table, and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
 for every intentional divergence.
 
+The value model still owes the reference four dish kinds, and ten shipped
+operations declare Text where the reference declares something else:
+[docs/value-model.md](docs/value-model.md) records what that costs, why it
+shows on the second step of a recipe rather than the first, and the order it
+is being closed in.
+
 What is *not* covered is a list rather than a number:
 [operations not implemented](docs/compatibility/not-implemented.md) groups the
 remaining catalog by what each one is waiting on, and says why an equivalent
