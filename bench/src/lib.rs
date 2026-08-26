@@ -31,6 +31,30 @@ pub fn sample(length: usize) -> Vec<u8> {
         .collect()
 }
 
+/// The same draw, folded into printable ASCII.
+///
+/// For operations that read their input as *text* rather than as bytes. The
+/// two ports disagree about which those are: rx-chef's ROT13 converts through
+/// a lossy UTF-8 reading where `FerroSift`'s works on bytes, so a random draw
+/// makes the two do different work — and a comparison of different work is not
+/// a comparison. Letters and digits are what ROT13 is for, and both sides
+/// agree on them.
+///
+/// Digits are included deliberately. The benchmark asks both sides *not* to
+/// rotate them, so their presence checks an agreement rather than assuming it.
+///
+/// The alphabet is sixty-four characters and a byte is drawn from two hundred
+/// and fifty-six, so the fold is uniform rather than biased toward its first
+/// sixteen entries.
+#[must_use]
+pub fn sample_text(length: usize) -> Vec<u8> {
+    const ALPHABET: &[u8; 64] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .";
+    sample(length)
+        .into_iter()
+        .map(|byte| ALPHABET[usize::from(byte) % ALPHABET.len()])
+        .collect()
+}
+
 /// The input sizes every benchmark sweeps.
 ///
 /// The small sizes are where per-call overhead dominates and a library with a

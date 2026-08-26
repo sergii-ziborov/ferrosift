@@ -39,10 +39,21 @@ ferrosift-operations = { path = "../crates/ferrosift-operations" }
 # published to crates.io.
 rxchef = { git = "https://github.com/MichaelWeissDEV/rx-chef", rev = "99e26de96e28faed5b850a32825afcc7cfd9cd22", optional = true }
 
+# Declared so that OpenSSL is *obtained* without a system install, not to be
+# used: nothing in this crate calls it. rx-chef asks for a vendored OpenSSL on
+# Windows and a system one everywhere else, and a benchmark should not require
+# `libssl-dev` to be present before it will build. Cargo unifies features, so
+# asking for `vendored` here is what makes the Unix build self-contained too.
+#
+# It changes where OpenSSL comes from and nothing about what is measured:
+# no arm in `benches/peer.rs` touches it.
+[target.'cfg(unix)'.dependencies]
+openssl = { version = "0.10", features = ["vendored"], optional = true }
+
 [features]
 # The peer comparison against rx-chef. Off by default because building it
 # needs a system OpenSSL toolchain; see the dependency note below.
-peer = ["dep:rxchef"]
+peer = ["dep:rxchef", "dep:openssl"]
 
 [dev-dependencies]
 criterion = { version = "=0.5.1", default-features = false, features = ["cargo_bench_support"] }
