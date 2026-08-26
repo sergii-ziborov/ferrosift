@@ -13,59 +13,30 @@ use ferrosift_model::DecimalValue;
 /// Every pair the reference produced, as `input`, `fixed`, `nan`, `rejected`.
 const FIXTURE: &str = include_str!("fixtures/decimal.json");
 
-/// One recorded case, read without a JSON library so the test has no
-/// dependency the model itself does not carry.
+/// One recorded case.
+#[derive(serde::Deserialize)]
 struct Case {
     input: String,
     fixed: String,
+    #[serde(rename = "nan")]
     not_a_number: bool,
+}
+
+#[derive(serde::Deserialize)]
+struct Fixture {
+    cases: Vec<Case>,
 }
 
 /// Reads the fixture's cases.
 ///
-/// A hand-written reader rather than `serde_json`: the fixture's shape is
-/// fixed by the generator beside it, and adding a parser here would mean the
-/// test could fail for a reason that has nothing to do with decimals.
+/// This was a hand-written reader, on the reasoning that a parser here could
+/// fail for a reason unrelated to decimals. It then failed for a reason
+/// unrelated to decimals: it resolved `\n` and `\t` and not `\r`, so a case
+/// carrying a carriage return was compared against text the fixture never
+/// held. A real parser is the smaller risk.
 fn cases() -> Vec<Case> {
-    let mut cases = Vec::new();
-    for chunk in FIXTURE.split("\"input\":").skip(1) {
-        let input = field(chunk, "").expect("every case has an input");
-        let fixed = field(chunk, "\"fixed\":").expect("every case has a rendering");
-        let not_a_number = chunk
-            .split("\"nan\":")
-            .nth(1)
-            .is_some_and(|tail| tail.trim_start().starts_with("true"));
-        cases.push(Case {
-            input,
-            fixed,
-            not_a_number,
-        });
-    }
-    cases
-}
-
-/// The next JSON string after `marker`, with its escapes resolved.
-fn field(chunk: &str, marker: &str) -> Option<String> {
-    let tail = if marker.is_empty() {
-        chunk
-    } else {
-        chunk.split(marker).nth(1)?
-    };
-    let start = tail.find('"')? + 1;
-    let mut output = String::new();
-    let mut characters = tail[start..].chars();
-    while let Some(character) = characters.next() {
-        match character {
-            '"' => return Some(output),
-            '\\' => match characters.next()? {
-                'n' => output.push('\n'),
-                't' => output.push('\t'),
-                other => output.push(other),
-            },
-            other => output.push(other),
-        }
-    }
-    None
+    let fixture: Fixture = serde_json::from_str(FIXTURE).expect("the oracle's fixture parses");
+    fixture.cases
 }
 
 #[test]
@@ -126,12 +97,23 @@ fn an_integer_becomes_the_same_number() {
 }
 
 #[test]
-fn a_huge_exponent_is_measured_without_being_rendered() {
-    // The value is three characters of source and would render as a hundred
-    // million. If measuring allocated, this test would not finish in a
-    // reasonable time or space -- which is the whole point of it.
-    let value = DecimalValue::parse("1e100000000");
-    assert_eq!(value.rendered_len(), 100_000_001);
+fn an_exponent_past_the_range_becomes_infinite_rather_than_enormous() {
+    // The reference keeps a normalised exponent up to ten million and answers
+    // infinity beyond it, so the largest thing it will ever render is bounded.
+    // Without the clamp, eleven characters of source would describe a number
+    // whose rendering is a hundred megabytes.
+    assert_eq!(DecimalValue::parse("1e100000000").to_fixed(), "Infinity");
+    assert_eq!(DecimalValue::parse("-1e100000000").to_fixed(), "-Infinity");
+    assert_eq!(DecimalValue::parse("1e-100000000").to_fixed(), "0");
+}
+
+#[test]
+fn a_large_value_is_measured_without_being_rendered() {
+    // Inside the range and still far too large to build while measuring: a
+    // budget asks for the size before deciding, and rendering it to answer
+    // would make the allocation the budget exists to refuse.
+    let value = DecimalValue::parse("1e9999999");
+    assert_eq!(value.rendered_len(), 10_000_000);
 }
 
 #[test]

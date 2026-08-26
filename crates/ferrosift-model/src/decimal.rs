@@ -75,7 +75,7 @@ impl DecimalValue {
     /// would report an error the reference never surfaces.
     #[must_use]
     pub fn parse(input: &str) -> Self {
-        let trimmed = input.trim();
+        let trimmed = trim_like_the_reference(input);
         match trimmed {
             "NaN" => return Self::not_a_number(),
             "Infinity" | "+Infinity" => return Self::infinite(false),
@@ -87,6 +87,13 @@ impl DecimalValue {
             Some(rest) => (true, rest),
             None => (false, trimmed.strip_prefix('+').unwrap_or(trimmed)),
         };
+
+        // A base prefix is read by the single-argument constructor, so `0x1f`
+        // is thirty-one rather than unreadable. Checked before the exponent
+        // split, because `0b101` contains no `e` but `0xe` does.
+        if let Some(value) = parse_prefixed_base(negative, rest) {
+            return value;
+        }
 
         let (mantissa, exponent_text) = match rest.find(['e', 'E']) {
             Some(at) => (&rest[..at], Some(&rest[at + 1..])),
@@ -131,6 +138,18 @@ impl DecimalValue {
         }
     }
 
+    /// The largest and smallest exponent the reference keeps.
+    ///
+    /// Beyond it the value becomes infinite, and below it zero. The limit is
+    /// on the *normalised* exponent -- the power of ten beside a single
+    /// leading digit -- so `100e9999998` and `1e10000000` are the same value
+    /// and both survive, while `1e10000001` does not.
+    ///
+    /// Not a detail. Without the clamp a three-character source could describe
+    /// a number whose rendering is unbounded, and the budget that is supposed
+    /// to refuse it would have to render it to find out.
+    const EXPONENT_LIMIT: i64 = 10_000_000;
+
     /// Builds a value with its coefficient reduced to canonical form.
     fn normalised(negative: bool, digits: &str, exponent: i64) -> Self {
         let trimmed = digits.trim_start_matches('0');
@@ -148,6 +167,18 @@ impl DecimalValue {
         if kept.is_empty() {
             return Self::zero();
         }
+
+        // The normalised exponent: the power of ten beside a single leading
+        // digit, which is what the reference's range applies to.
+        let length = i64::try_from(kept.len()).unwrap_or(i64::MAX);
+        let normalised = exponent.saturating_add(length).saturating_sub(1);
+        if normalised > Self::EXPONENT_LIMIT {
+            return Self::infinite(negative);
+        }
+        if normalised < -Self::EXPONENT_LIMIT {
+            return Self::zero();
+        }
+
         Self {
             negative,
             digits: String::from_utf8(kept).unwrap_or_default(),
@@ -256,6 +287,73 @@ impl DecimalValue {
         }
         output
     }
+}
+
+/// Trims what the reference trims, which is not what Rust calls whitespace.
+///
+/// The two sets overlap but neither contains the other, and both differences
+/// are reachable. A next-line character (U+0085) has the Unicode `White_Space`
+/// property, so `str::trim` removes it -- and the reference does not, which
+/// makes such input not-a-number there and a valid number here. A byte-order
+/// mark does not have the property, so `str::trim` keeps it -- and the
+/// reference removes it, which makes a spreadsheet's export readable there and
+/// unreadable here.
+fn trim_like_the_reference(input: &str) -> &str {
+    input.trim_matches(is_reference_space)
+}
+
+/// One character of what the reference treats as leading or trailing space.
+fn is_reference_space(character: char) -> bool {
+    matches!(
+        character,
+        // Tab, line feed, vertical tab, form feed, carriage return, space.
+        '\u{09}'..='\u{0d}' | '\u{20}'
+        // No-break space, and the byte-order mark, which is not `White_Space`.
+        | '\u{a0}' | '\u{feff}'
+        // The two separators, and the space characters of category Zs.
+        | '\u{2028}' | '\u{2029}'
+        | '\u{1680}' | '\u{2000}'..='\u{200a}' | '\u{202f}' | '\u{205f}' | '\u{3000}'
+    )
+}
+
+/// Reads `0x`, `0b`, or `0o` the way the single-argument constructor does.
+///
+/// Returns `None` when the text carries no such prefix, which leaves the
+/// decimal path to read it.
+fn parse_prefixed_base(negative: bool, rest: &str) -> Option<DecimalValue> {
+    let (radix, digits) = match rest.get(..2)? {
+        "0x" | "0X" => (16, &rest[2..]),
+        "0b" | "0B" => (2, &rest[2..]),
+        "0o" | "0O" => (8, &rest[2..]),
+        _ => return None,
+    };
+    if digits.is_empty() {
+        return Some(DecimalValue::not_a_number());
+    }
+    let mut decimal: Vec<u8> = alloc::vec![0];
+    for character in digits.chars() {
+        let Some(value) = character.to_digit(radix) else {
+            return Some(DecimalValue::not_a_number());
+        };
+        // Long multiplication in base ten, least significant digit first, so
+        // the result is exact however many digits the source carries.
+        let mut carry = value;
+        for slot in &mut decimal {
+            let product = u32::from(*slot) * radix + carry;
+            *slot = u8::try_from(product % 10).unwrap_or(0);
+            carry = product / 10;
+        }
+        while carry > 0 {
+            decimal.push(u8::try_from(carry % 10).unwrap_or(0));
+            carry /= 10;
+        }
+    }
+    let text: String = decimal
+        .iter()
+        .rev()
+        .map(|digit| char::from(b'0' + *digit))
+        .collect();
+    Some(DecimalValue::normalised(negative, &text, 0))
 }
 
 impl core::fmt::Display for DecimalValue {

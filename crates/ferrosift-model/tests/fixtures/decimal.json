@@ -187,6 +187,186 @@
    "fixed": "NaN",
    "nan": true,
    "rejected": true
+  },
+  {
+   "input": " 1 ",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "\t1\t",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "\n1\n",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "\r\n1\r\n",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": " 1 ",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "﻿1",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1",
+   "fixed": "NaN",
+   "nan": true,
+   "rejected": true
+  },
+  {
+   "input": " 1",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "　1",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "\u000b1",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "\f1",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": " ",
+   "fixed": "NaN",
+   "nan": true,
+   "rejected": true
+  },
+  {
+   "input": "1e999999999",
+   "fixed": "Infinity",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1e1000000000",
+   "fixed": "Infinity",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1e-1000000000",
+   "fixed": "0",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1e9007199254740992",
+   "fixed": "Infinity",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1e-9007199254740992",
+   "fixed": "0",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1e+",
+   "fixed": "NaN",
+   "nan": true,
+   "rejected": true
+  },
+  {
+   "input": "1e",
+   "fixed": "NaN",
+   "nan": true,
+   "rejected": true
+  },
+  {
+   "input": "1e+0",
+   "fixed": "1",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1E5",
+   "fixed": "100000",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "1e05",
+   "fixed": "100000",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": ".",
+   "fixed": "NaN",
+   "nan": true,
+   "rejected": true
+  },
+  {
+   "input": ".5",
+   "fixed": "0.5",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "5.",
+   "fixed": "5",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "-.5",
+   "fixed": "-0.5",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "+.5",
+   "fixed": "0.5",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "0x1f",
+   "fixed": "31",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "0b101",
+   "fixed": "5",
+   "nan": false,
+   "rejected": false
+  },
+  {
+   "input": "0o17",
+   "fixed": "15",
+   "nan": false,
+   "rejected": false
   }
  ]
 }

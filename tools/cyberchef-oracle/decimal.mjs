@@ -41,6 +41,34 @@ const INPUTS = [
     "NaN", "Infinity", "-Infinity",
     // Rejected input becomes NaN rather than an error.
     "", "abc", "1.2.3", "--5",
+
+    // Whitespace, which is the likeliest place for a port to drift. Rust's
+    // `trim` removes every character with the Unicode White_Space property;
+    // whatever the reference accepts is a different set, and the difference is
+    // invisible until a value carries one of the characters they disagree on.
+    " 1 ", "\t1\t", "\n1\n", "\r\n1\r\n",
+    " 1 ",   // no-break space
+    "﻿1",         // byte-order mark, which Rust does not call whitespace
+    "1",         // next line
+    " 1",         // line separator
+    "　1",         // ideographic space
+    "1", "1",
+    " ",               // whitespace and nothing else
+
+    // The exponent range. The library clamps beyond its own limit rather than
+    // carrying the exponent, so a port that kept it would render a number the
+    // reference calls infinite -- or spend the memory trying.
+    "1e999999999", "1e1000000000", "1e-1000000000",
+    "1e9007199254740992", "1e-9007199254740992",
+
+    // Signs on the exponent, and an exponent with no digits.
+    "1e+", "1e", "1e+0", "1E5", "1e05",
+
+    // A lone point, and a point with digits on only one side.
+    ".", ".5", "5.", "-.5", "+.5",
+
+    // Other bases, which the single-argument constructor may or may not read.
+    "0x1f", "0b101", "0o17",
 ];
 
 // The constructor *throws* on input it cannot read -- it does not return NaN,
