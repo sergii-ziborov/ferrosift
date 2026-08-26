@@ -23,7 +23,7 @@ use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
     AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BifidCipher, BitShift, Bitwise,
-    CaretMDecode, Checksum, CitrixCtx1Decode,
+    CaretMDecode, Checksum, ChiSquare, CitrixCtx1Decode,
     CitrixCtx1Encode, ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes,
     DropNthBytes, EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters,
     ExpandAlphabetRange, Fork, FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64,
@@ -32,8 +32,8 @@ use crate::{
     FromBase92, FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity,
     FromModhex, FromMorseCode,
     FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
-    HexToPem, HtmlToText, Identity, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
-    PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
+    HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Merge, MurmurHash3,
+    MicrosoftScriptDecoder, PadLines, ParityBit, ParseUnixFilePermissions, Punycode,
     PemToHex, PowerSet, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
     RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
     SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
@@ -198,6 +198,12 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     expect(unused_variables, reason = "the analysis pack is not enabled")
 )]
 fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    // Outside the feature gate: both are arithmetic over the input and pull
+    // nothing, so gating them would remove an operation for a cost it does
+    // not have.
+    registry.register(ChiSquare::new())?;
+    registry.register(IndexOfCoincidence::new())?;
+
     #[cfg(feature = "analysis")]
     {
         registry.register(SuggestRecipe::new())?;
@@ -316,6 +322,7 @@ fn register_data(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(Punycode::encode())?;
     registry.register(Punycode::decode())?;
+    registry.register(MicrosoftScriptDecoder::new())?;
     registry.register(ToBech32::new())?;
     registry.register(FromBech32::new())?;
     registry.register(FromBase32::new())?;

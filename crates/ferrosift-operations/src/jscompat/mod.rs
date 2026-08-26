@@ -30,6 +30,7 @@
 pub(crate) mod delim;
 pub(crate) mod double;
 pub(crate) mod escape;
+pub(crate) mod float;
 pub(crate) mod number;
 pub(crate) mod object;
 pub(crate) mod string;

@@ -71141,6 +71141,516 @@
     "61747461636b5f61745f6461776e2d2d2d"
    ],
    "stopped_after": 2
+  },
+  {
+   "name": "ioc_0",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e303231383438373339343935373938333138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_1",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3635302e39383231393437363734343231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_2",
+   "input": {
+    "kind": "text",
+    "value": "aaaaaaaaaaaaaaaaaaaa"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_3",
+   "input": {
+    "kind": "text",
+    "value": "aaaaaaaaaaaaaaaaaaaa"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "353038302e303738313235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_4",
+   "input": {
+    "kind": "text",
+    "value": "abcdefghijklmnopqrstuvwxyz"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_5",
+   "input": {
+    "kind": "text",
+    "value": "abcdefghijklmnopqrstuvwxyz"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3230362e36343036323439393939393939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_6",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_8",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_9",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3235342e3030333930363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_10",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_11",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3235322e303135363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_12",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn!"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e3133363336333633363336333633363335"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_13",
+   "input": {
+    "kind": "text",
+    "value": "Attack at dawn!"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3436352e3531393237303833333333333334"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_14",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_15",
+   "input": {
+    "kind": "text",
+    "value": "1234567890"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3233362e3339303632343939393939393937"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_16",
+   "input": {
+    "kind": "text",
+    "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "302e3035393230343434303333333032343938"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_17",
+   "input": {
+    "kind": "text",
+    "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3932322e35323137333239353435343534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_18",
+   "input": {
+    "kind": "text",
+    "value": "ZZZZ zzzz"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "31"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_19",
+   "input": {
+    "kind": "text",
+    "value": "ZZZZ zzzz"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3932302e37373231333534313636363636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "ioc_20",
+   "input": {
+    "kind": "text",
+    "value": "éèê"
+   },
+   "recipe": [
+    {
+     "op": "Index of Coincidence",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_21",
+   "input": {
+    "kind": "text",
+    "value": "éèê"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3235302e3033353135363235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_bytes_22",
+   "input": {
+    "kind": "bytes",
+    "hex": "3b4fe187dcb54270a69da757fbf1fc42"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "3235362e39333735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_bytes_23",
+   "input": {
+    "kind": "bytes",
+    "hex": "0b5bc7b20d1360cea64bc523006fe9b16ada426baf2720f26d10e7d24eaa7847030ac3560655e3ca868eb079cc4d8bb3a9aed800034c71e0f01b7af0634d598e6f8ce54c15a452118d08fb23ab7e8244809f856eff8161c26363ec095d873850f956e74b59dbe4b76f6fae870a05364392d2da5fb05f70a0171ca32f784a5fa2bf842f0ef3fd65f0f9a0882a8f94acf7a8864cf24996afb9408d2198e9bd2047c66de9621c3a0f68a52fb4bc9d9d6f802d3d1cf68909cde84d895cb050122e595ebbb319372b5264f5962eb6e4675a80136a37f813c247c263b397ce949fc81f343b250126eeac88a11a07030f7fb47be754788c4e7b339bda60a596583a2a92"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "313432"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "chisq_bytes_24",
+   "input": {
+    "kind": "bytes",
+    "hex": "d8da257fc32cff89d8239adebf91c951636ad00a2a6c20aa152591e3159accc76a47ec80c430bf60292ca4c4cd8740fbb2dba093a779037d472d4babfcde83e474245bfdb9dfa059230c01ef1d2caad71f1d7e819dc2e574ca9d4e68c57078fe18f1da8b6f0e30f90bf093979850b00020c11651ce97b945b637c9cd14838073b71c5327010231362206cab5c66a00fc36cfe51bd115b0dff8d0987a5506e0ef89a08d9e0da2da50e369e936f44588c04588f575fef5a08935e7caeb65f081d071b7c2692fa69f9399d524d8b24bd733c6d7019e89bdbf33df2d5b5943987974a3e1b4bf1c9be9afe1ab0185db8b8be5340dbb85d6336e6f7efcb604347c78df592b88e318f36d496066d9a2480dbcadaabf9f41a64f5ae15100fc763d830a90cbd14ceeb71c5b1decda31a811916d35b2aba1e0172bee500f599f91246f4dd3c4e973a295594b87881971c349ea4e5a6f25b08f32ec71836fa91c5d08e2d3e146bad124e94182101367d2ff785efd0862c2606c9e9b79c5f86c260abef6a8229d6248d8dabf8ac898fe80b62cc2a3806ae1922b459f18e7562d7e6b1504e61348bbe30a3a3e759c0cbf35ed366a198bfcbbbbaab24dedbdd9d0ac52afcec1b6456640f560277df2b1b52ecba4c457e622d62e8ac9eea029c1b7023cac42852a695dea733f0579bedec08d49830fde9c64646905cc4f7827568181b9caa978801901a4b716522dc7e1671963d445dd49332187a4c95a4dc049b5cfe68585405356588ef5423f36f60c4987b4b85cf2a8861b6ef3424966d40fb7230a9ce3b88cfef7e1c747e1680eb6ba0bcc6883b8dd147665b82f1a15e3b0f65491df8a7870d7c68275b8e688cae8b92dbd41fbb7db90473c21f300ef50dfbbcc3d6b0ca10b236b6d65a82924b08ae6089062ec38418c5ee668eaa14ae471c9816bf0f22aca039128cd7594fa996316dd8d4f0f894b7a0c2109fe932d11af4835bca792931b648ce847c789ec9b2eed48db86b80ff6fa5aa495cbc0145487acc96fb4999651fc7d631eada14e341c7189399bc710ef8955a5f9501414988b4adc6d22ed3ceb71aaab47e6b09628e16a4dc37ac2cb7010a73799089ca65dff3ea11579be23a2ab33c85761b220cc3bdf561ec240fce8763e2d2132c2ceb41695312e5764a0e182050ec5408bd23d3a34de46901ee4f4690a73f6c6f6180d7e8fa07627a5418acbd6c243175daca41ad58f27b0b5bb1328816712d8dd3c45996f6d68a4bb38c7eb8a38250ae9bc8f2c5fcb772af182a2f0c70297ba29fca520d65c772f6a6669e966097f23c2dfa988726723c04b487d24f6321eb48f4c45eb10adbd0cfce46a90aa5cd05e5cf7e2cf976532254095e9d29d992c7870c5a815ac9e7028662eaeac6ea7166ae5ccbaa6d49c870614d6dd6b5bd13ed0ca1f24fe66c84e5ed7ee20"
+   },
+   "recipe": [
+    {
+     "op": "Chi Square",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "323032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "msscript_25",
+   "input": {
+    "kind": "text",
+    "value": "#@~^RQAAAA==-mD~sX|:/TP{~J:+dYbxL~@!F@*@!+@*@!&@*eEI@#@&@#@&.jm.raY 214Wv:zms/obI0xEAAA==^#~@"
+   },
+   "recipe": [
+    {
+     "op": "Microsoft Script Decoder",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "766172206d795f6d7367203d202254657374696e67203c313e3c323e3c333e21223b0d0a0d0a565363726970742e4563686f286d795f6d7367293b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "msscript_26",
+   "input": {
+    "kind": "text",
+    "value": "no markers here at all"
+   },
+   "recipe": [
+    {
+     "op": "Microsoft Script Decoder",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "msscript_27",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Microsoft Script Decoder",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "msscript_28",
+   "input": {
+    "kind": "text",
+    "value": "#@~^AAAAAA==AAAAAA==^#~@"
+   },
+   "recipe": [
+    {
+     "op": "Microsoft Script Decoder",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "msscript_29",
+   "input": {
+    "kind": "text",
+    "value": "prefix #@~^RQAAAA==-mD~sX|:/TP{~J:+dYbxL~@!F@*@!+@*@!&@*eEI@#@&@#@&.jm.raY 214Wv:zms/obI0xEAAA==^#~@ suffix"
+   },
+   "recipe": [
+    {
+     "op": "Microsoft Script Decoder",
+     "args": []
+    }
+   ],
+   "outputs_hex": [
+    "766172206d795f6d7367203d202254657374696e67203c313e3c323e3c333e21223b0d0a0d0a565363726970742e4563686f286d795f6d7367293b"
+   ],
+   "stopped_after": 1
   }
  ]
 }

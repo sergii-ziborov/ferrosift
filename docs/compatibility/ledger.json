@@ -7,15 +7,41 @@
     ]
   },
   "totals": {
-    "operations": 206,
-    "aliased": 204,
-    "exact": 200,
+    "operations": 209,
+    "aliased": 207,
+    "exact": 203,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3877
+    "pinned_cases": 3907
   },
   "operations": [
+    {
+      "id": "analysis.chi_square@1",
+      "display_name": "Chi Square",
+      "category": "Analysis",
+      "reference_alias": "Chi Square",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 14,
+      "status": "exact"
+    },
+    {
+      "id": "analysis.index_of_coincidence@1",
+      "display_name": "Index of Coincidence",
+      "category": "Analysis",
+      "reference_alias": "Index of Coincidence",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 11,
+      "status": "exact"
+    },
     {
       "id": "analysis.suggest@1",
       "display_name": "Suggest recipe",
@@ -1391,6 +1417,19 @@
       "display_name": "To HTML Entity",
       "category": "Encoding",
       "reference_alias": "To HTML Entity",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 5,
+      "status": "exact"
+    },
+    {
+      "id": "encoding.microsoft_script.decode@1",
+      "display_name": "Microsoft Script Decoder",
+      "category": "Encoding",
+      "reference_alias": "Microsoft Script Decoder",
       "feature": "core",
       "targets": [
         "Native",

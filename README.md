@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 206 | 204 | **200** | **3877** |
+| 209 | 207 | **203** | **3907** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -175,7 +175,7 @@ has a `std`. One pack does not yet reach bare metal;
 <!-- catalog:begin -->
 | Family | Operations |
 |---|---|
-| Analysis | Suggest recipe |
+| Analysis | Chi Square, Index of Coincidence, Suggest recipe |
 | Arithmetic | Extended GCD, Modular Inverse |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
 | Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Bacon Cipher Decode, Bacon Cipher Encode, Bifid Cipher Decode, Bifid Cipher Encode, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, LS47 Decrypt, LS47 Encrypt, RC4, RC4 Drop, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, Vigenère Decode, Vigenère Encode |
@@ -184,7 +184,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
 | Defang | Defang IP Addresses, Defang URL, Fang URL |
 | Distance | Hamming Distance, Levenshtein Distance |
-| Encoding | Caret/M-decode, Citrix CTX1 Decode, Citrix CTX1 Encode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Base92, From Bech32, From Binary, From Braille, From COBS, From Charcode, From Decimal, From Float, From HTML Entity, From Hex, From Hex Content, From Hexdump, From Modhex, From Morse Code, From Octal, From Punycode, From Quoted Printable, ROT13, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Base92, To Bech32, To Binary, To Braille, To COBS, To Charcode, To Decimal, To Float, To HTML Entity, To Hex, To Hex Content, To Hexdump, To Modhex, To Morse Code, To Octal, To Punycode, To Quoted Printable, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
+| Encoding | Caret/M-decode, Citrix CTX1 Decode, Citrix CTX1 Encode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Base92, From Bech32, From Binary, From Braille, From COBS, From Charcode, From Decimal, From Float, From HTML Entity, From Hex, From Hex Content, From Hexdump, From Modhex, From Morse Code, From Octal, From Punycode, From Quoted Printable, Microsoft Script Decoder, ROT13, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Base92, To Bech32, To Binary, To Braille, To COBS, To Charcode, To Decimal, To Float, To HTML Entity, To Hex, To Hex Content, To Hexdump, To Modhex, To Morse Code, To Octal, To Punycode, To Quoted Printable, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
 | Flow control | Comment, Fork, Merge |
 | Hashing | HMAC, Keccak, MD2, MD4, MD5, MurmurHash3, NT Hash, RIPEMD, SHA0, SHA1, SHA2, SHA3, SM3, Shake, Whirlpool |

@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 206 |
-| Reference-aliased | 204 |
-| Byte-pinned (`exact`) | 200 |
+| Registered operations | 209 |
+| Reference-aliased | 207 |
+| Byte-pinned (`exact`) | 203 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3877 |
+| Pinned cases | 3907 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -34,6 +34,8 @@ does.
 
 | Operation | Alias | Pack | Status | Cases |
 |---|---|---|---|---:|
+| `analysis.chi_square@1` | Chi Square | core | exact | 14 |
+| `analysis.index_of_coincidence@1` | Index of Coincidence | core | exact | 11 |
 | `analysis.suggest@1` | — | analysis | native | 0 |
 | `asn1.oid.decode@1` | Hex to Object Identifier | core | exact | 30 |
 | `asn1.oid.encode@1` | Object Identifier to Hex | core | exact | 41 |
@@ -140,6 +142,7 @@ does.
 | `encoding.hexdump.encode@1` | To Hexdump | core | exact | 12 |
 | `encoding.html.decode@1` | From HTML Entity | core | exact | 5 |
 | `encoding.html.encode@1` | To HTML Entity | core | exact | 5 |
+| `encoding.microsoft_script.decode@1` | Microsoft Script Decoder | core | exact | 5 |
 | `encoding.modhex.decode@1` | From Modhex | core | exact | 70 |
 | `encoding.modhex.encode@1` | To Modhex | core | exact | 120 |
 | `encoding.morse.decode@1` | From Morse Code | core | exact | 29 |
