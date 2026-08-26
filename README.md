@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 210 | 208 | **204** | **3930** |
+| 211 | 209 | **205** | **4003** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -30,6 +30,11 @@ and a documented exemption, reading the same
 table, and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
 for every intentional divergence.
+
+What is *not* covered is a list rather than a number:
+[operations not implemented](docs/compatibility/not-implemented.md) groups the
+remaining catalog by what each one is waiting on, and says why an equivalent
+Rust library is not a substitute for the one the reference used.
 
 ### Ecosystem place (transform runtime — not lost)
 
@@ -193,7 +198,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Networking | Format MAC addresses, Strip IPv4 header, Strip TCP header, Strip UDP header |
 | Parsing | Hex to Object Identifier, Hex to PEM, Object Identifier to Hex, PEM to Hex, Parse UNIX file permissions |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
-| Shaping | Split, Unique |
+| Shaping | Split, To Table, Unique |
 | Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Case Insensitive Regex, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
 <!-- catalog:end -->
 

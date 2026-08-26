@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 210,
-    "aliased": 208,
-    "exact": 204,
+    "operations": 211,
+    "aliased": 209,
+    "exact": 205,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 3930
+    "pinned_cases": 4003
   },
   "operations": [
     {
@@ -2427,6 +2427,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
+      "status": "exact"
+    },
+    {
+      "id": "shaping.to_table@1",
+      "display_name": "To Table",
+      "category": "Shaping",
+      "reference_alias": "To Table",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 73,
       "status": "exact"
     },
     {

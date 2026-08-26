@@ -42,7 +42,7 @@ use crate::{
     ToBech32,
     ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
     ToHexContent, ToHexdump,
-    ToHtmlEntity, ToLowerCase,
+    ToHtmlEntity, ToLowerCase, ToTable,
     ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToUpperCase, UnescapeString,
     UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
     VarIntEncode, Wrap, XkcdRandomNumber, Xor,
@@ -516,6 +516,7 @@ fn register_sets(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 
 /// Reading, reshaping, and re-casing text.
 fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
+    registry.register(ToTable::new())?;
     registry.register(ToLowerCase::new())?;
     registry.register(ToUpperCase::new())?;
     registry.register(SwapCase::new())?;

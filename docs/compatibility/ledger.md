@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 210 |
-| Reference-aliased | 208 |
-| Byte-pinned (`exact`) | 204 |
+| Registered operations | 211 |
+| Reference-aliased | 209 |
+| Byte-pinned (`exact`) | 205 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 3930 |
+| Pinned cases | 4003 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -219,6 +219,7 @@ does.
 | `sets.power@1` | Power Set | core | exact | 10 |
 | `sets.symmetric_difference@1` | Symmetric Difference | core | exact | 9 |
 | `sets.union@1` | Set Union | core | exact | 10 |
+| `shaping.to_table@1` | To Table | core | exact | 73 |
 | `text.alphabet.expand@1` | Expand alphabet range | core | exact | 14 |
 | `text.ansi.strip@1` | Remove ANSI Escape Codes | core | exact | 9 |
 | `text.case.all@1` | Get All Casings | core | exact | 4 |

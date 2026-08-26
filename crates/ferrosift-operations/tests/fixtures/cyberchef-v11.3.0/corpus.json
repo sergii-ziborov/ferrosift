@@ -72088,6 +72088,1612 @@
     "3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e643c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e7c7c3c7370616e20636c6173733d27686c35273e6162633c2f7370616e3e583c7370616e20636c6173733d27686c35273e65663c2f7370616e3e3c2f7370616e3e"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "table_0",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd,e,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c2063207c0a7c2064207c2065207c2066207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_1",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd,e,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c2063207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2064207c2065207c2066207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_2",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd,e,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e613c2f74643e3c74643e623c2f74643e3c74643e633c2f74643e3c2f74723e3c74723e3c74643e643c2f74643e3c74643e653c2f74643e3c74643e663c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_3",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd,e,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e613c2f74683e3c74683e623c2f74683e3c74683e633c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e643c2f74643e3c74643e653c2f74643e3c74643e663c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_4",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd,e,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c2063207c0a7c202d207c202d207c202d207c0a7c2064207c2065207c2066207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_5",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd,e,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c2063207c0a7c202d207c202d207c202d207c0a7c2064207c2065207c2066207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_6",
+   "input": {
+    "kind": "text",
+    "value": "name,age\r\nalice,30\r\nbob,4"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2b2d2d2d2d2d2b0a7c206e616d6520207c20616765207c0a7c20616c696365207c20333020207c0a7c20626f622020207c20342020207c0a2b2d2d2d2d2d2d2d2b2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_7",
+   "input": {
+    "kind": "text",
+    "value": "name,age\r\nalice,30\r\nbob,4"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2b2d2d2d2d2d2b0a7c206e616d6520207c20616765207c0a2b2d2d2d2d2d2d2d2b2d2d2d2d2d2b0a7c20616c696365207c20333020207c0a7c20626f622020207c20342020207c0a2b2d2d2d2d2d2d2d2b2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_8",
+   "input": {
+    "kind": "text",
+    "value": "name,age\r\nalice,30\r\nbob,4"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e6e616d653c2f74643e3c74643e6167653c2f74643e3c2f74723e3c74723e3c74643e616c6963653c2f74643e3c74643e33303c2f74643e3c2f74723e3c74723e3c74643e626f623c2f74643e3c74643e343c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_9",
+   "input": {
+    "kind": "text",
+    "value": "name,age\r\nalice,30\r\nbob,4"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e6e616d653c2f74683e3c74683e6167653c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e616c6963653c2f74643e3c74643e33303c2f74643e3c2f74723e3c74723e3c74643e626f623c2f74643e3c74643e343c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_10",
+   "input": {
+    "kind": "text",
+    "value": "name,age\r\nalice,30\r\nbob,4"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c206e616d6520207c20616765207c0a7c202d2d2d2d2d207c202d2d2d207c0a7c20616c696365207c20333020207c0a7c20626f622020207c20342020207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_11",
+   "input": {
+    "kind": "text",
+    "value": "name,age\r\nalice,30\r\nbob,4"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c206e616d6520207c20616765207c0a7c202d2d2d2d2d207c202d2d2d207c0a7c20616c696365207c20333020207c0a7c20626f622020207c20342020207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_12",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd\r\ne,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c2063207c0a7c2064207c0a7c2065207c2066207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_13",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd\r\ne,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c2063207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2064207c0a7c2065207c2066207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_14",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd\r\ne,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e613c2f74643e3c74643e623c2f74643e3c74643e633c2f74643e3c2f74723e3c74723e3c74643e643c2f74643e3c2f74723e3c74723e3c74643e653c2f74643e3c74643e663c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_15",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd\r\ne,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e613c2f74683e3c74683e623c2f74683e3c74683e633c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e643c2f74643e3c2f74723e3c74723e3c74643e653c2f74643e3c74643e663c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_16",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd\r\ne,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c2063207c0a7c202d207c202d207c202d207c0a7c2064207c0a7c2065207c2066207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_17",
+   "input": {
+    "kind": "text",
+    "value": "a,b,c\r\nd\r\ne,f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c2063207c0a7c202d207c202d207c202d207c0a7c2064207c0a7c2065207c2066207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_18",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_19",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_20",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_21",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_22",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_23",
+   "input": {
+    "kind": "text",
+    "value": "abcdef"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_24",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\n"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_25",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\n"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c0a2b2d2d2d2b2d2d2d2b0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_26",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\n"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e613c2f74643e3c74643e623c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_27",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\n"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e613c2f74683e3c74683e623c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_28",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\n"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c0a7c202d207c202d207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_29",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\n"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c0a7c202d207c202d207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_30",
+   "input": {
+    "kind": "text",
+    "value": ",,\r\n,,"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2b2d2d2b2d2d2b0a7c20207c20207c20207c0a7c20207c20207c20207c0a2b2d2d2b2d2d2b2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_31",
+   "input": {
+    "kind": "text",
+    "value": ",,\r\n,,"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2b2d2d2b2d2d2b0a7c20207c20207c20207c0a2b2d2d2b2d2d2b2d2d2b0a7c20207c20207c20207c0a2b2d2d2b2d2d2b2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_32",
+   "input": {
+    "kind": "text",
+    "value": ",,\r\n,,"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e3c2f74643e3c74643e3c2f74643e3c74643e3c2f74643e3c2f74723e3c74723e3c74643e3c2f74643e3c74643e3c2f74643e3c74643e3c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_33",
+   "input": {
+    "kind": "text",
+    "value": ",,\r\n,,"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e3c2f74683e3c74683e3c2f74683e3c74683e3c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e3c2f74643e3c74643e3c2f74643e3c74643e3c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_34",
+   "input": {
+    "kind": "text",
+    "value": ",,\r\n,,"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c20207c20207c20207c0a7c20207c20207c20207c0a7c20207c20207c20207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_35",
+   "input": {
+    "kind": "text",
+    "value": ",,\r\n,,"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c20207c20207c20207c0a7c20207c20207c20207c0a7c20207c20207c20207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_36",
+   "input": {
+    "kind": "text",
+    "value": "\"a,b\",c\r\nd,e"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2d2b2d2d2d2b0a7c202671756f743b61207c20622671756f743b207c2063207c0a7c2064202020202020207c2065202020202020207c0a2b2d2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_37",
+   "input": {
+    "kind": "text",
+    "value": "\"a,b\",c\r\nd,e"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2d2b2d2d2d2b0a7c202671756f743b61207c20622671756f743b207c2063207c0a2b2d2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2d2b2d2d2d2b0a7c2064202020202020207c2065202020202020207c0a2b2d2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_38",
+   "input": {
+    "kind": "text",
+    "value": "\"a,b\",c\r\nd,e"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e2671756f743b613c2f74643e3c74643e622671756f743b3c2f74643e3c74643e633c2f74643e3c2f74723e3c74723e3c74643e643c2f74643e3c74643e653c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_39",
+   "input": {
+    "kind": "text",
+    "value": "\"a,b\",c\r\nd,e"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e2671756f743b613c2f74683e3c74683e622671756f743b3c2f74683e3c74683e633c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e643c2f74643e3c74643e653c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_40",
+   "input": {
+    "kind": "text",
+    "value": "\"a,b\",c\r\nd,e"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c202671756f743b61207c20622671756f743b207c2063207c0a7c202d2d2d2d2d2d2d207c202d2d2d2d2d2d2d207c202d207c0a7c2064202020202020207c2065202020202020207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_41",
+   "input": {
+    "kind": "text",
+    "value": "\"a,b\",c\r\nd,e"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c202671756f743b61207c20622671756f743b207c2063207c0a7c202d2d2d2d2d2d2d207c202d2d2d2d2d2d2d207c202d207c0a7c2064202020202020207c2065202020202020207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_42",
+   "input": {
+    "kind": "text",
+    "value": "&,<,>\r\n\",',`"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b0a7c2026616d703b20207c20266c743b2020207c202667743b2020207c0a7c202671756f743b207c2026237832373b207c2026237836303b207c0a2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_43",
+   "input": {
+    "kind": "text",
+    "value": "&,<,>\r\n\",',`"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b0a7c2026616d703b20207c20266c743b2020207c202667743b2020207c0a2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b0a7c202671756f743b207c2026237832373b207c2026237836303b207c0a2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b2d2d2d2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_44",
+   "input": {
+    "kind": "text",
+    "value": "&,<,>\r\n\",',`"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e26616d703b3c2f74643e3c74643e266c743b3c2f74643e3c74643e2667743b3c2f74643e3c2f74723e3c74723e3c74643e2671756f743b3c2f74643e3c74643e26237832373b3c2f74643e3c74643e26237836303b3c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_45",
+   "input": {
+    "kind": "text",
+    "value": "&,<,>\r\n\",',`"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e26616d703b3c2f74683e3c74683e266c743b3c2f74683e3c74683e2667743b3c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e2671756f743b3c2f74643e3c74643e26237832373b3c2f74643e3c74643e26237836303b3c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_46",
+   "input": {
+    "kind": "text",
+    "value": "&,<,>\r\n\",',`"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2026616d703b20207c20266c743b2020207c202667743b2020207c0a7c202d2d2d2d2d2d207c202d2d2d2d2d2d207c202d2d2d2d2d2d207c0a7c202671756f743b207c2026237832373b207c2026237836303b207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_47",
+   "input": {
+    "kind": "text",
+    "value": "&,<,>\r\n\",',`"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2026616d703b20207c20266c743b2020207c202667743b2020207c0a7c202d2d2d2d2d2d207c202d2d2d2d2d2d207c202d2d2d2d2d2d207c0a7c202671756f743b207c2026237832373b207c2026237836303b207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_48",
+   "input": {
+    "kind": "text",
+    "value": "é,à\r\nb,c"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c20e9207c20e0207c0a7c2062207c2063207c0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_49",
+   "input": {
+    "kind": "text",
+    "value": "é,à\r\nb,c"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c20e9207c20e0207c0a2b2d2d2d2b2d2d2d2b0a7c2062207c2063207c0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_50",
+   "input": {
+    "kind": "text",
+    "value": "é,à\r\nb,c"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643ee93c2f74643e3c74643ee03c2f74643e3c2f74723e3c74723e3c74643e623c2f74643e3c74643e633c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_51",
+   "input": {
+    "kind": "text",
+    "value": "é,à\r\nb,c"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683ee93c2f74683e3c74683ee03c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e623c2f74643e3c74643e633c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_52",
+   "input": {
+    "kind": "text",
+    "value": "é,à\r\nb,c"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c20e9207c20e0207c0a7c202d207c202d207c0a7c2062207c2063207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_53",
+   "input": {
+    "kind": "text",
+    "value": "é,à\r\nb,c"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c20e9207c20e0207c0a7c202d207c202d207c0a7c2062207c2063207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_54",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2b2d2d2d2d2d2b2d2d2d2d2d2d2d2b0a7c206f6e65207c2074776f207c207468726565207c0a2b2d2d2d2d2d2b2d2d2d2d2d2b2d2d2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_55",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2b2d2d2d2d2d2b2d2d2d2d2d2d2d2b0a7c206f6e65207c2074776f207c207468726565207c0a2b2d2d2d2d2d2b2d2d2d2d2d2b2d2d2d2d2d2d2d2b0a2b2d2d2d2d2d2b2d2d2d2d2d2b2d2d2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_56",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e6f6e653c2f74643e3c74643e74776f3c2f74643e3c74643e74687265653c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_57",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e6f6e653c2f74683e3c74683e74776f3c2f74683e3c74683e74687265653c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_58",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c206f6e65207c2074776f207c207468726565207c0a7c202d2d2d207c202d2d2d207c202d2d2d2d2d207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_59",
+   "input": {
+    "kind": "text",
+    "value": "one,two,three"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c206f6e65207c2074776f207c207468726565207c0a7c202d2d2d207c202d2d2d207c202d2d2d2d2d207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_60",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b0a7c2061207c0a7c2062207c0a2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_61",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b0a7c2061207c0a2b2d2d2d2b0a7c2062207c0a2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_62",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c74626f64793e3c74723e3c74643e613c2f74643e3c2f74723e3c74723e3c74643e623c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_63",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "HTML"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c7461626c6520636c6173733d277461626c65207461626c652d686f766572207461626c652d736d207461626c652d626f726465726564207461626c652d6e6f6e666c756964273e3c746865616420636c6173733d2774686561642d6c69676874273e3c74723e3c74683e613c2f74683e3c2f74723e3c2f74686561643e3c74626f64793e3c74723e3c74643e623c2f74643e3c2f74723e3c2f74626f64793e3c2f7461626c653e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_64",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c0a7c202d207c0a7c2062207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_65",
+   "input": {
+    "kind": "text",
+    "value": "a\r\nb\r\nc"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c0a7c202d207c0a7c2062207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_multi_66",
+   "input": {
+    "kind": "text",
+    "value": "a,b;c\r\nd,e;f"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",;",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c2063207c0a7c2064207c2065207c2066207c0a2b2d2d2d2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_tsv_67",
+   "input": {
+    "kind": "text",
+    "value": "a\tb\r\nc\td"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      "\t",
+      "\r\n",
+      true,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c0a2b2d2d2d2b2d2d2d2b0a7c2063207c2064207c0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_psv_68",
+   "input": {
+    "kind": "text",
+    "value": "a|b\r\nc|d"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      "|",
+      "\r\n",
+      true,
+      "Markdown"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c2061207c2062207c0a7c202d207c202d207c0a7c2063207c2064207c0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_lf_69",
+   "input": {
+    "kind": "text",
+    "value": "a,b\r\nc,d"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2d2b0a7c2061207c20620d207c0a7c2063207c206420207c0a2b2d2d2d2b2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_blank_70",
+   "input": {
+    "kind": "text",
+    "value": "a,b\n\nc,d"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c0a7c2020207c0a7c2063207c2064207c0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_escaped_delim_71",
+   "input": {
+    "kind": "text",
+    "value": "a<b\r\nc<d"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      "<",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2d2d2d2d2d2b0a7c2061266c743b62207c0a2b2d2d2d2d2d2d2d2d2b0a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "table_bom_72",
+   "input": {
+    "kind": "text",
+    "value": "﻿a,b\r\nc,d"
+   },
+   "recipe": [
+    {
+     "op": "To Table",
+     "args": [
+      ",",
+      "\r\n",
+      false,
+      "ASCII"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b2d2d2d2b2d2d2d2b0a7c2061207c2062207c0a7c2063207c2064207c0a2b2d2d2d2b2d2d2d2b0a"
+   ],
+   "stopped_after": 1
   }
  ]
 }
