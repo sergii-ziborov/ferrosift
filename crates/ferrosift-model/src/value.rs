@@ -5,7 +5,7 @@ use core::fmt;
 
 use serde::{Deserialize, Serialize};
 
-use crate::ValueError;
+use crate::{DecimalValue, ValueError};
 
 /// The representation carried by a [`Value`].
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
@@ -27,6 +27,12 @@ pub enum ValueKind {
     /// numeric type and it is a float: an operation that can answer 0.5 is
     /// not an integer operation whose answer happened to round.
     Number,
+    /// A decimal of unbounded size and precision.
+    ///
+    /// Separate from [`ValueKind::Number`] because the reference has both and
+    /// they disagree: a float loses digits above 2^53 and a decimal does not,
+    /// so an operation that answers with one is not answering with the other.
+    Decimal,
     /// Markup, which loses its tags when it is read as anything else.
     ///
     /// Not a flavour of [`ValueKind::Text`]. The reference strips the tags and
@@ -47,13 +53,14 @@ impl ValueKind {
     /// Kept here rather than written out where it is needed: the type-flow
     /// check held its own array of seven, which was correct until it was not,
     /// and nothing would have reported the omission.
-    pub const ALL: [Self; 9] = [
+    pub const ALL: [Self; 10] = [
         Self::Empty,
         Self::Bytes,
         Self::Text,
         Self::Boolean,
         Self::Integer,
         Self::Number,
+        Self::Decimal,
         Self::Markup,
         Self::Structured,
         Self::Files,
@@ -71,10 +78,10 @@ impl ValueKind {
             || matches!(
                 (self, other),
                 (
-                    Self::Markup | Self::Number | Self::Integer,
+                    Self::Markup | Self::Number | Self::Integer | Self::Decimal,
                     Self::Text | Self::Bytes,
-                ) | (Self::Integer, Self::Number)
-                    | (Self::Text, Self::Bytes)
+                ) | (Self::Integer, Self::Number | Self::Decimal)
+                    | (Self::Text, Self::Bytes | Self::Decimal)
             )
     }
 }
@@ -95,6 +102,8 @@ pub enum Value {
     Integer(i128),
     /// A number that need not be whole.
     Number(NumberValue),
+    /// A decimal of unbounded size and precision.
+    Decimal(DecimalValue),
     /// Markup, whose tags are removed when it is read as text or bytes.
     Markup(String),
     /// A nested structured value independent of any concrete format parser.
@@ -213,6 +222,7 @@ impl Value {
             Self::Boolean(_) => ValueKind::Boolean,
             Self::Integer(_) => ValueKind::Integer,
             Self::Number(_) => ValueKind::Number,
+            Self::Decimal(_) => ValueKind::Decimal,
             Self::Markup(_) => ValueKind::Markup,
             Self::Structured(_) => ValueKind::Structured,
             Self::Files(_) => ValueKind::Files,
@@ -266,6 +276,24 @@ impl Value {
             (Self::Integer(number), ValueKind::Bytes) => Some(Self::Bytes(
                 render_number(integer_to_float(number)).into_bytes(),
             )),
+            // A decimal renders with the reference's `toFixed`, which never
+            // uses exponential notation whatever the exponent.
+            (Self::Decimal(decimal), ValueKind::Text) => Some(Self::Text(TextValue {
+                text: decimal.to_fixed(),
+                encoding: TextEncoding::Utf8,
+            })),
+            (Self::Decimal(decimal), ValueKind::Bytes) => {
+                Some(Self::Bytes(decimal.to_fixed().into_bytes()))
+            }
+            (Self::Integer(number), ValueKind::Decimal) => {
+                Some(Self::Decimal(DecimalValue::from(number)))
+            }
+            // Unreadable text becomes not-a-number rather than a failure,
+            // because the reference's dish catches its constructor's throw and
+            // substitutes exactly that.
+            (Self::Text(text), ValueKind::Decimal) => {
+                Some(Self::Decimal(DecimalValue::parse(&text.text)))
+            }
             (Self::Text(text), ValueKind::Bytes) => Some(Self::Bytes(text.text.into_bytes())),
             _ => None,
         }
@@ -398,6 +426,7 @@ impl fmt::Display for ValueKind {
             Self::Boolean => "boolean",
             Self::Integer => "integer",
             Self::Number => "number",
+            Self::Decimal => "decimal",
             Self::Markup => "markup",
             Self::Structured => "structured",
             Self::Files => "files",

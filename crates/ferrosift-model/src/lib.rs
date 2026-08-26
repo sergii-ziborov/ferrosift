@@ -13,6 +13,7 @@ mod operation_id;
 mod recipe;
 mod spec;
 mod step_id;
+mod decimal;
 mod value;
 
 pub use argument::{ArgumentValue, Arguments};
@@ -26,6 +27,7 @@ pub use spec::{
     TargetSet, ValueConstraint,
 };
 pub use step_id::StepId;
+pub use decimal::{DecimalSpecial, DecimalValue};
 pub use value::{
     NumberValue, StructuredValue, TextEncoding, TextValue, Value, ValueKind, VirtualFile,
 };

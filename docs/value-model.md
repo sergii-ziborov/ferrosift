@@ -18,7 +18,7 @@ and the order it is being closed in.
 | `number` | `Number`, and `Integer` where the value is whole | **done** |
 | `html` | `Markup` | **done** |
 | `JSON` | *none* -- reported as `Text` | **owed** |
-| `BigNumber` | *none* | **owed**, and blocks 16 operations |
+| `BigNumber` | `Decimal` | kind and rendering **done**; the 16 operations still need porting |
 | `File`, `List<File>` | `Files` | matches |
 
 Ten shipped operations already declare `Text` where the reference declares
@@ -75,14 +75,16 @@ wrong today and the proof is a corpus case rather than an argument.
    the conversion table is what keeps the printed bytes identical.
 3. **`Structured` as the JSON dish** -- one operation today. The kind exists;
    what is missing is the four-space projection.
-4. **`Decimal`** -- no operations yet, and the largest prize: sixteen are
-   blocked on `bignumber.js` alone.
+4. ~~**Decimal**~~ -- the kind, the canonical form, and the rendering are
+   **done** and pinned against the real library. The sixteen operations that
+   need it are still unported: what is finished is the representation they
+   would land in, not the operations.
 
-## What `Decimal` should be
+## What `Decimal` is
 
-A canonical representation rather than a dependency, so `ferrosift-model`
-stays free of an arbitrary-precision crate and the arithmetic backend is the
-only thing that has to agree with one:
+A canonical representation rather than a dependency, so `ferrosift-model` stays
+free of an arbitrary-precision crate and the arithmetic backend is the only
+thing that has to agree with one:
 
 ```text
 sign, coefficient (digits), exponent10, and an optional NaN / Infinity
@@ -101,3 +103,18 @@ conversion exists rather than only when the kinds already match.
 
 The projection layer, not the extra variants, was the substance of this work.
 What remains is to route the kinds that still travel as `Text` through it.
+
+### How the rendering is checked
+
+`tools/cyberchef-oracle/decimal.mjs` asks the real `bignumber.js` inside the
+pinned checkout what it renders for thirty-one inputs, and
+`crates/ferrosift-model/tests/decimal.rs` replays every answer. Two things came
+out of that which reading the documentation would not have given:
+
+- The dish converts with **`toFixed()`**, not `toString()`. `toFixed` never
+  uses exponential notation, so `1e+25` is written out in full. Reproducing
+  `toString` would have been wrong in exactly the cases hardest to notice.
+- The constructor **throws** on input it cannot read. It does not return
+  not-a-number, which is what the documentation's talk of NaN values suggests.
+  The dish catches and substitutes, so what a recipe observes is the
+  substitution -- and that is what `DecimalValue::parse` reproduces.

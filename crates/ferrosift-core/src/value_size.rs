@@ -13,6 +13,10 @@ pub(crate) fn logical_size(value: &Value) -> u64 {
         // digits would: a budget counts the payload carried between steps, and
         // rendering it is the next step's cost rather than this one's.
         Value::Number(_) => 8,
+        // Measured by the digits it carries, because that is what is unbounded
+        // about it: a decimal has no fixed width, and a budget that gave it one
+        // would let arbitrarily large input through under a fixed cost.
+        Value::Decimal(decimal) => size_of_len(decimal.to_fixed().len()),
         // Measured as the markup it holds rather than as the text it would
         // become. The stripped form is shorter, and a budget that counted it
         // would let a value through on the strength of a size it does not have
