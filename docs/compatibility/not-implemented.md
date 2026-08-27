@@ -1,8 +1,17 @@
 # Operations not implemented
 
-FerroSift covers 247 of CyberChef 11.3.0's 503 catalog operations. This page
+FerroSift covers 245 of CyberChef 11.3.0's 501 catalog operations. This page
 records what the other 256 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
+
+The catalog is larger than the coverage number twice over, and it is worth
+being exact about which number is which. FerroSift registers 247 operations;
+two of them — `core.identity@1` and `analysis.suggest@1` — are its own and have
+no reference alias, so they cover nothing here. This sentence used to read 247
+of 503, which was both sides inflated by exactly those two and therefore
+arithmetically consistent with everything below it. That is why nothing caught
+it: the check read the page against itself and against the count of *registered*
+operations, never against the reference's own catalog.
 
 The grouping below is by *import*, which is a proxy and not the thing itself.
 `To Base` sat in the no-dependency list for three revisions because it never

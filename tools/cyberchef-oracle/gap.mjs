@@ -64,22 +64,71 @@ if (extra.length) {
     );
 }
 
-// `--check` turns the extras from a note into a failure. An alias is the claim
-// "this operation is the reference's operation of that name", and an extra is
-// that claim made about a name this version of the reference does not have --
-// a typo, or an operation tagged with a profile it predates. Neither is visible
-// to `cargo test`: the replay gates demand evidence for the aliases a spec
-// carries, and a name the reference never had simply has no case to demand.
-// The vendored checkout is what can answer it, so this is where it is answered.
-if (process.argv.includes("--check")) {
-    if (extra.length) {
-        process.stderr.write(
-            `CyberChef ${profile.version} does not have ${extra.length} of the names ` +
-                `FerroSift claims for it\n`,
+/**
+ * What `not-implemented.md` says it covers, and of how large a catalog.
+ *
+ * The page names a version and two counts, and nothing in `cargo test` can
+ * check either against the thing they describe -- the reference checkout is not
+ * committed. Both were wrong for several revisions: each was inflated by the
+ * two FerroSift-native operations, which have no reference alias and cover
+ * nothing upstream, and inflating both kept every other number on the page
+ * consistent. The page's own check reads it against itself, so it saw nothing.
+ */
+function statedCoverage() {
+    const page = path.join(repoRoot, "docs/compatibility/not-implemented.md");
+    const text = readFileSync(page, "utf8");
+    const claim =
+        /covers (\d+) of CyberChef (\d+\.\d+\.\d+)'s (\d+) catalog operations/u.exec(text);
+    if (!claim) {
+        throw new Error(
+            "not-implemented.md no longer states its coverage in the form this check reads;" +
+                " update tools/cyberchef-oracle/gap.mjs alongside it",
         );
+    }
+    return {covered: Number(claim[1]), version: claim[2], catalog: Number(claim[3])};
+}
+
+// `--check` turns the extras from a note into a failure, and holds the page's
+// counts against the catalog they are about. An alias is the claim "this
+// operation is the reference's operation of that name", and an extra is that
+// claim made about a name this version of the reference does not have -- a
+// typo, or an operation tagged with a profile it predates. None of this is
+// visible to `cargo test`: the replay gates demand evidence for the aliases a
+// spec carries, and a name the reference never had simply has no case to
+// demand. The vendored checkout is what can answer it, so this is where it is
+// answered.
+if (process.argv.includes("--check")) {
+    const failures = extra.map(
+        name => `CyberChef ${profile.version} has no operation named "${name}"`,
+    );
+
+    // The page describes one profile. Checking it against a different one would
+    // report a disagreement that is only a difference of version.
+    const stated = statedCoverage();
+    if (stated.version === profile.version) {
+        if (stated.catalog !== reference.length) {
+            failures.push(
+                `not-implemented.md says ${profile.version} has ${stated.catalog} operations;` +
+                    ` it has ${reference.length}`,
+            );
+        }
+        if (stated.covered !== implemented.size) {
+            failures.push(
+                `not-implemented.md says ${stated.covered} are covered;` +
+                    ` ${implemented.size} carry a ${profile.version} alias`,
+            );
+        }
+    }
+
+    if (failures.length) {
+        for (const failure of failures) process.stderr.write(`  ${failure}\n`);
         process.exit(1);
     }
-    process.stdout.write(`every alias claimed for ${profile.version} exists in it\n`);
+    process.stdout.write(
+        `every alias claimed for ${profile.version} exists in it` +
+            (stated.version === profile.version ? `, and the page's counts match` : "") +
+            "\n",
+    );
 } else if (process.argv.includes("--json")) {
     process.stdout.write(`${JSON.stringify({missing, extra}, null, 2)}\n`);
 } else {

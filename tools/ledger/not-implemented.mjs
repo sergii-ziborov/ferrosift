@@ -161,11 +161,20 @@ if (stated.reachable !== reachable.length) {
 }
 
 // And the whole page must agree with the ledger about how much is left.
-const missing = stated.catalog - ledger.totals.operations;
-if (stated.covered !== ledger.totals.operations) {
+//
+// Coverage counts *aliases*, not registrations. The two differ by FerroSift's
+// own operations, which have no reference name and so cover nothing in
+// CyberChef's catalog -- and reading `totals.operations` here made the page
+// claim two operations of CyberChef's that it does not have. Nothing noticed,
+// because the catalog size on the page was inflated by the same two and every
+// other number on it stayed consistent. That size is checked where the catalog
+// exists, by `cargo xtask cyberchef gap --check`.
+const missing = stated.catalog - implemented.size;
+if (stated.covered !== implemented.size) {
     failures.push(
         `the page says ${stated.covered} operations are covered; the ledger has `
-            + `${ledger.totals.operations}`,
+            + `${implemented.size} reference aliases across ${ledger.totals.operations} `
+            + `registered operations`,
     );
 }
 if (stated.remaining !== missing) {
