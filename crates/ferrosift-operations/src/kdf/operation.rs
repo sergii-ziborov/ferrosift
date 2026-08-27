@@ -10,6 +10,7 @@ use crate::args::{
     toggle_string_default, toggle_string_parts,
 };
 use crate::codec_bytes::toggle_bytes;
+use crate::key::convert_to_byte_array;
 use crate::spec::{SpecDefinition, build};
 
 use super::codec;
@@ -82,8 +83,8 @@ impl Operation for DerivePbkdf2Key {
         context.ensure_active()?;
         let (pass_opt, pass_str) = toggle_string_parts(map_value(arguments, "passphrase")?)?;
         let (salt_opt, salt_str) = toggle_string_parts(map_value(arguments, "salt")?)?;
-        let passphrase = toggle_bytes(pass_opt, pass_str)?;
-        let salt = toggle_bytes(salt_opt, salt_str)?;
+        let passphrase = toggle_bytes(pass_opt, pass_str);
+        let salt = toggle_bytes(salt_opt, salt_str);
         let hex = codec::pbkdf2_key(
             &passphrase,
             integer_value(arguments, "key_size")?,
@@ -160,7 +161,11 @@ impl Operation for Scrypt {
             _ => return Err(OperationError::InvalidArguments),
         };
         let (salt_opt, salt_str) = toggle_string_parts(map_value(arguments, "salt")?)?;
-        let salt = toggle_bytes(salt_opt, salt_str)?;
+        // Scrypt is the exception among the key derivations here: it reads its
+        // salt with `convertToByteArray` while PBKDF2 beside it reads both of
+        // its fields with `convertToByteString`. See `key.rs` for what that
+        // changes.
+        let salt = convert_to_byte_array(salt_str, salt_opt, "crypto.scrypt.invalid_salt")?;
         let hex = codec::scrypt_key(
             &password,
             &salt,

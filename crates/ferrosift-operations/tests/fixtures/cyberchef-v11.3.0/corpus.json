@@ -117930,6 +117930,1158 @@
     "526f756e64733a204e614e0a53616c743a2061616161616161616161616161616161616161616161616161616161610a50617373776f726420686173683a20620a46756c6c20686173683a20616161616161616161616161616161616161616161616161616161616162616161616161616161616161616161616161616161616161616161616162"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "togglestring_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00112233001122330011223300112233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "0 1 2 3"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "00010203000102030001020300010203"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "abc"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ab0cab0cab0cab0cab0cab0cab0cab0c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "0x41 0x42"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424142414241424142414241424142"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "de:ad:be:ef"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "deadbeefdeadbeefdeadbeefdeadbeef"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "41-42-43"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424341424341424341424341424341"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b65796b65796b65796b65796b65796b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "é"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "c3a9c3a9c3a9c3a9c3a9c3a9c3a9c3a9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "日本"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e697a5e69cace697a5e69cace697a5e6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "key"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b65796b65796b65796b65796b65796b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "é"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e9e9e9e9e9e9e9e9e9e9e9e9e9e9e9e9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "日本"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e697a5e69cace697a5e69cace697a5e6"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "aÿz"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61ff7a61ff7a61ff7a61ff7a61ff7a61"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "QUJD"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424341424341424341424341424341"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_14",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "QUJD=="
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424341424341424341424341424341"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "QU"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41414141414141414141414141414141"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "Q U J D"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424341424341424341424341424341"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "!QUJD!"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424341424341424341424341424341"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Binary",
+       "string": "01000001 01000010"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424142414241424142414241424142"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_19",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Binary",
+       "string": "0100000101000010"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424142414241424142414241424142"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_20",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Binary",
+       "string": "0100 000101000010"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424142414241424142414241424142"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_21",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "1 2 3"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020301020301020301020301020301"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_22",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "1,2,3"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01020301020301020301020301020301"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_23",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "65;66;67"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41424341424341424341424341424341"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_24",
+   "input": {
+    "kind": "bytes",
+    "hex": "00000000000000000000000000000000"
+   },
+   "recipe": [
+    {
+     "op": "XOR",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "255 0 128"
+      },
+      "Standard",
+      false
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ff0080ff0080ff0080ff0080ff0080ff"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_0",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31356439646239303066663364303237333838366538316435323435663963333162373666333062306436356636373061393939623137633937396339636464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_1",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "0 1 2 3"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62363238336664636665313537623934613937613265623765616237383438333939623330303737626537646465313332393561316133373835363561616331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_2",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "abc"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313337306439383162326237383538643936643532313465343562393133626136356631653863363133396465666537303061626465346363303565353763"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_3",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "0x41 0x42"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34363937343837663939336363336466316238383966353030393464623266623266666533623232353762393838633230633565386164373636373736643262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_4",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "de:ad:be:ef"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32386363663636393033613662393330393738336134363764656131336366363264393061333433303536376235333237386332633433653565333132306435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_5",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "41-42-43"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33373336353230303562633839613031336262303733633439666435323737306634643231306335306266323165393365353562613433356636376339303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_6",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "key"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36653965663239623735666666633562376162616535323764353866646164623266653432653732313930313139373639313733343330363566353865643461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_7",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "é"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65336339303330363439633738333961386235366661366235366235306331303638636261666233313439633938376436343134626434616432613834623666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_8",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "UTF8",
+       "string": "日本"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37626262656563303630326636623062333534343134643166656164353739396638336462336430653861393638396162633636373435333037393937623031"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_9",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "key"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36653965663239623735666666633562376162616535323764353866646164623266653432653732313930313139373639313733343330363566353865643461"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_10",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "é"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36393366653564643739336466633335333035346363663635353661643336646336393062613732643239643235366334363432623239373836643061356238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_12",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Latin1",
+       "string": "aÿz"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38646261313234373939643837356537396634376266373630336562643962663966633935353130343762396266316135393038616262396363663937313364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_13",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "QUJD"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33373336353230303562633839613031336262303733633439666435323737306634643231306335306266323165393365353562613433356636376339303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_14",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "QUJD=="
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33373336353230303562633839613031336262303733633439666435323737306634643231306335306266323165393365353562613433356636376339303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_15",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "QU"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36646364326238393032666439326333613935623739613961643639656432316532363835313465336364353134336634366636363563336533346561616239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_16",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "Q U J D"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33373336353230303562633839613031336262303733633439666435323737306634643231306335306266323165393365353562613433356636376339303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_17",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Base64",
+       "string": "!QUJD!"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33373336353230303562633839613031336262303733633439666435323737306634643231306335306266323165393365353562613433356636376339303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_18",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Binary",
+       "string": "01000001 01000010"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34363937343837663939336363336466316238383966353030393464623266623266666533623232353762393838633230633565386164373636373736643262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_19",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Binary",
+       "string": "0100000101000010"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34363937343837663939336363336466316238383966353030393464623266623266666533623232353762393838633230633565386164373636373736643262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_20",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Binary",
+       "string": "0100 000101000010"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34363937343837663939336363336466316238383966353030393464623266623266666533623232353762393838633230633565386164373636373736643262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_21",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "1 2 3"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64303934316663393738626637373632326332313461303064363534393635393666366139393162613737393064666239323737326536323166323463363439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_22",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "1,2,3"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64303934316663393738626637373632326332313461303064363534393635393666366139393162613737393064666239323737326536323166323463363439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_23",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "65;66;67"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33373336353230303562633839613031336262303733633439666435323737306634643231306335306266323165393365353562613433356636376339303030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "togglestring_hmac_24",
+   "input": {
+    "kind": "text",
+    "value": "message"
+   },
+   "recipe": [
+    {
+     "op": "HMAC",
+     "args": [
+      {
+       "option": "Decimal",
+       "string": "255 0 128"
+      },
+      "SHA256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34333438346561666464663664353732303266353336333530323034626563633233343761376230383965303037623139366434386239653839666266343934"
+   ],
+   "stopped_after": 1
   }
  ]
 }

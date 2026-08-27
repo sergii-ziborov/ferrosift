@@ -8,7 +8,7 @@ use ferrosift_model::{
 use crate::args::{
     map_argument, map_value, text_argument, text_value, toggle_string_default, toggle_string_parts,
 };
-use crate::key::{XOR_INVALID_KEY, convert_to_byte_array};
+use crate::key::convert_to_byte_string;
 use crate::spec::{SpecDefinition, build};
 
 use super::codec;
@@ -70,7 +70,11 @@ impl Operation for Hmac {
         context.ensure_active()?;
         let input = crate::value::take_bytes(input)?;
         let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
-        let key = convert_to_byte_array(string, option, XOR_INVALID_KEY)?;
+        // The *byte string* reading. The reference's HMAC calls
+        // `convertToByteString`, not `convertToByteArray`, and the two differ
+        // for a Latin1 key whose characters do not fit in a byte: this one
+        // masks each code unit, the other UTF-8 encodes the whole string.
+        let key = convert_to_byte_string(string, option);
         let digest = codec::hmac(
             &input,
             &key,

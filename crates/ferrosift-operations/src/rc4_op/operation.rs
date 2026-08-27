@@ -77,7 +77,7 @@ impl Operation for Rc4 {
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
         let (opt, string) = toggle_string_parts(map_value(arguments, "passphrase")?)?;
-        let key = toggle_bytes(opt, string)?;
+        let key = toggle_bytes(opt, string);
         let input_format = text_value(arguments, "input_format")?;
         let output_format = text_value(arguments, "output_format")?;
         // Map CyberChef Latin1 input to Raw-style byte interpretation.

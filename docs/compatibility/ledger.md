@@ -19,7 +19,7 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 6230 |
+| Pinned cases | 6279 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -188,7 +188,7 @@ does.
 | `hash.blake2b@1` | BLAKE2b | hash | exact | 102 |
 | `hash.blake2s@1` | BLAKE2s | hash | exact | 61 |
 | `hash.blake3@1` | BLAKE3 | hash | exact | 73 |
-| `hash.hmac@1` | HMAC | hash | exact | 5 |
+| `hash.hmac@1` | HMAC | hash | exact | 29 |
 | `hash.keccak@1` | Keccak | hash | exact | 24 |
 | `hash.md2@1` | MD2 | hash | exact | 13 |
 | `hash.md4@1` | MD4 | hash | exact | 13 |
@@ -219,7 +219,7 @@ does.
 | `logic.shift.left@1` | Bit shift left | core | exact | 20 |
 | `logic.shift.right@1` | Bit shift right | core | exact | 70 |
 | `logic.sub@1` | SUB | core | exact | 31 |
-| `logic.xor@1` | XOR | core | exact | 23 |
+| `logic.xor@1` | XOR | core | exact | 48 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
 | `math.convert.area@1` | Convert area | core | exact | 86 |
 | `math.convert.data@1` | Convert data units | core | exact | 92 |

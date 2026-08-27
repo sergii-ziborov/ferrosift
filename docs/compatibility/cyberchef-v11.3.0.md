@@ -346,6 +346,57 @@ them:
 Both are pinned in the corpus. `tests/conformance_framing.rs` holds the
 refusals and states the rounding property.
 
+### A toggleString field is read two different ways
+
+`Utils.convertToByteArray` and `Utils.convertToByteString` are two functions,
+not one, and every toggleString field in the catalog goes through one or the
+other. They agree on Hex, Binary, Decimal, Base64 and UTF8. They disagree on
+**Latin1**, and on any option name neither recognises, which both treat as
+Latin1:
+
+| Field | Reads with | `Latin1` field `日本` becomes |
+|---|---|---|
+| XOR, AND, OR, ADD, SUB, XXTEA, BLAKE2, Scrypt salt | `convertToByteArray` | `e6 97 a5 e6 9c ac` — the string's UTF-8 |
+| AES, AES Key Wrap/Unwrap, PBKDF2, HMAC | `convertToByteString` | `e5 2c` — each code unit's low byte |
+
+The array reading is `strToByteArray`, which takes code units directly while
+every one fits in a byte and switches to UTF-8 encoding the *whole* string as
+soon as one does not. The string reading hands the string over untouched and
+leaves the masking to whichever library receives it. Both are reproduced;
+`key.rs` holds them and the `togglestring` corpus family pins the same twenty
+five fields through both readings so they cannot be collapsed back into one.
+
+Four properties of those readings are worth stating, because a stricter port
+is the natural thing to write and would be wrong in each:
+
+| Option | Field | Reference | A strict port |
+|---|---|---|---|
+| Hex | `abc` | `ab 0c` | refuses an odd digit |
+| Hex | `0x41 0x42` | `41 42` | refuses `x` |
+| Hex | `zz` | *(empty)* | refuses |
+| Base64 | `!QUJD!` | `41 42 43` | refuses `!` |
+| Binary | `0100 000101000010` | `41 42` | restarts at the gap |
+| Decimal | `1,2,3` | `01 02 03` | splits on spaces only |
+
+Note the third row against [From Hex](#from-hex-refuses-an-odd-number-of-digits)
+above: the *operation* refuses what this *field* accepts, deliberately. The
+operation is a decoder whose silence on garbage would be a bug; the field is a
+key, where the reference's own reading is the only thing that reproduces the
+reference's ciphertext.
+
+**One divergence remains, in HMAC alone.** `crypto-api` packs four characters
+into a thirty-two bit word with `charCodeAt(i) << 24 | charCodeAt(i+1) << 16 |
+…` and no mask, so a key character above 255 spills its high byte into the
+*previous* character's position. A `Latin1` key of `日本` produces a digest that
+is not the HMAC of any key under any encoding — reproducing it would mean
+reproducing that library's word packing rather than HMAC. FerroSift computes
+the HMAC of `e5 2c`, which is what the reading says the key is.
+
+This is reachable only through the `Latin1` option (or a misspelt one) with
+text outside the byte range; every other option produces characters that fit,
+where the two agree exactly. `tests/conformance_togglestring.rs` pins both the
+agreement and the divergence.
+
 ### Flow control: Fork / Merge
 
 `Fork` / `Merge` are first-class map/join control (not jump soup). The executor

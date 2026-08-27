@@ -8,32 +8,38 @@ use ferrosift_model::{TextEncoding, TextValue, Value};
 
 use crate::failure::failed;
 use crate::hex_util::to_hex_lower;
-use crate::key::{XOR_INVALID_KEY, convert_to_byte_array};
+use crate::key::convert_to_byte_string;
 
 const INVALID_FORMAT: &str = "crypto.invalid_format";
-const INVALID_HEX: &str = "crypto.invalid_hex";
 
 /// Parses a toggleString field into raw key/IV/tag bytes.
-pub(crate) fn toggle_bytes(option: &str, string: &str) -> Result<Vec<u8>, OperationError> {
-    convert_to_byte_array(string, option, XOR_INVALID_KEY).map_err(|_| failed(INVALID_FORMAT))
+///
+/// The *byte string* reading, because that is the one every caller's operation
+/// makes: AES, AES key wrapping and PBKDF2 all call `convertToByteString`.
+/// `key.rs` says what the other reading does differently and who uses it.
+pub(crate) fn toggle_bytes(option: &str, string: &str) -> Vec<u8> {
+    convert_to_byte_string(string, option)
 }
 
 /// Interprets an operation input as cipher bytes.
+///
+/// The same reading as the key beside it, and for the same reason: these
+/// operations pass their input through `convertToByteString` too, so `Raw` is
+/// each code unit masked to a byte rather than the text's UTF-8 encoding, and
+/// `Hex` is the permissive reading that skips whatever is not a digit.
 pub(crate) fn decode_input(input: Value, format: &str) -> Result<Vec<u8>, OperationError> {
-    let raw = match input {
-        Value::Bytes(bytes) => bytes,
-        Value::Text(text) => text.text.into_bytes(),
+    let text = match input {
+        // Bytes are already what a cipher wants; nothing is re-encoded on the
+        // way in.
+        Value::Bytes(bytes) if matches!(format, "Raw" | "Latin1" | "UTF8") => return Ok(bytes),
+        Value::Bytes(bytes) => crate::jscompat::string::byte_array_to_utf8(&bytes),
+        Value::Text(text) => text.text,
         _ => return Err(OperationError::InvalidArguments),
     };
     match format {
-        "Raw" | "Latin1" | "UTF8" => Ok(raw),
-        "Hex" => decode_hex_digits(core::str::from_utf8(&raw).unwrap_or("")),
-        "Base64" => convert_to_byte_array(
-            core::str::from_utf8(&raw).map_err(|_| failed(INVALID_FORMAT))?,
-            "Base64",
-            INVALID_FORMAT,
-        )
-        .map_err(|_| failed(INVALID_FORMAT)),
+        "Raw" | "Latin1" | "Hex" | "Base64" | "Binary" | "Decimal" | "UTF8" => {
+            Ok(convert_to_byte_string(&text, format))
+        }
         _ => Err(failed(INVALID_FORMAT)),
     }
 }
@@ -64,26 +70,6 @@ pub(crate) fn encode_output(bytes: &[u8], format: &str) -> Result<Value, Operati
         }
         _ => Err(failed(INVALID_FORMAT)),
     }
-}
-
-fn decode_hex_digits(input: &str) -> Result<Vec<u8>, OperationError> {
-    let mut digits = Vec::new();
-    for value in input.chars() {
-        if value.is_ascii_hexdigit() {
-            digits.push(value);
-        } else if !value.is_whitespace() {
-            return Err(failed(INVALID_HEX));
-        }
-    }
-    if !digits.len().is_multiple_of(2) {
-        return Err(failed(INVALID_HEX));
-    }
-    let mut output = Vec::with_capacity(digits.len() / 2);
-    for chunk in digits.chunks(2) {
-        let text: String = chunk.iter().collect();
-        output.push(u8::from_str_radix(&text, 16).map_err(|_| failed(INVALID_HEX))?);
-    }
-    Ok(output)
 }
 
 fn encode_base64(input: &[u8]) -> String {

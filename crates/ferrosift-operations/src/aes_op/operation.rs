@@ -90,9 +90,9 @@ impl Operation for AesEncrypt {
         let (iv_opt, iv_str) = toggle_string_parts(map_value(arguments, "iv")?)?;
         let (aad_opt, aad_str) =
             toggle_string_parts(map_value(arguments, "additional_authenticated_data")?)?;
-        let key = toggle_bytes(key_opt, key_str)?;
-        let iv = toggle_bytes(iv_opt, iv_str)?;
-        let aad = toggle_bytes(aad_opt, aad_str)?;
+        let key = toggle_bytes(key_opt, key_str);
+        let iv = toggle_bytes(iv_opt, iv_str);
+        let aad = toggle_bytes(aad_opt, aad_str);
         let mode = text_value(arguments, "mode")?;
         let input_format = text_value(arguments, "input")?;
         let output_format = text_value(arguments, "output")?;
@@ -212,10 +212,10 @@ impl Operation for AesDecrypt {
         let (tag_opt, tag_str) = toggle_string_parts(map_value(arguments, "gcm_tag")?)?;
         let (aad_opt, aad_str) =
             toggle_string_parts(map_value(arguments, "additional_authenticated_data")?)?;
-        let key = toggle_bytes(key_opt, key_str)?;
-        let mut iv = toggle_bytes(iv_opt, iv_str)?;
-        let tag = toggle_bytes(tag_opt, tag_str)?;
-        let aad = toggle_bytes(aad_opt, aad_str)?;
+        let key = toggle_bytes(key_opt, key_str);
+        let mut iv = toggle_bytes(iv_opt, iv_str);
+        let tag = toggle_bytes(tag_opt, tag_str);
+        let aad = toggle_bytes(aad_opt, aad_str);
         let mode = text_value(arguments, "mode")?;
         let input_format = text_value(arguments, "input")?;
         let output_format = text_value(arguments, "output")?;

@@ -76,8 +76,8 @@ impl Operation for AesKeyWrap {
         context.ensure_active()?;
         let (key_opt, key_str) = toggle_string_parts(map_value(arguments, "key")?)?;
         let (iv_opt, iv_str) = toggle_string_parts(map_value(arguments, "iv")?)?;
-        let kek = toggle_bytes(key_opt, key_str)?;
-        let iv = toggle_bytes(iv_opt, iv_str)?;
+        let kek = toggle_bytes(key_opt, key_str);
+        let iv = toggle_bytes(iv_opt, iv_str);
         let input_format = text_value(arguments, "input")?;
         let output_format = text_value(arguments, "output")?;
         let plaintext = decode_input(input, input_format)?;
@@ -145,8 +145,8 @@ impl Operation for AesKeyUnwrap {
         context.ensure_active()?;
         let (key_opt, key_str) = toggle_string_parts(map_value(arguments, "key")?)?;
         let (iv_opt, iv_str) = toggle_string_parts(map_value(arguments, "iv")?)?;
-        let kek = toggle_bytes(key_opt, key_str)?;
-        let iv = toggle_bytes(iv_opt, iv_str)?;
+        let kek = toggle_bytes(key_opt, key_str);
+        let iv = toggle_bytes(iv_opt, iv_str);
         let input_format = text_value(arguments, "input")?;
         let output_format = text_value(arguments, "output")?;
         let ciphertext = decode_input(input, input_format)?;
