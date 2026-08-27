@@ -15,272 +15,291 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 |---|---:|
 | Registered operations | 247 |
 | Reference-aliased | 245 |
-| Byte-pinned (`exact`) | 241 |
-| Interoperable, exempt from byte-pinning | 4 |
-| Aliased but unverified | 0 |
-| FerroSift-native, no reference alias | 2 |
 | Pinned cases | 6565 |
 
-`exact` means the reference bytes are pinned — by the case count shown,
-or, where that is zero, by the test named in the note. `interoperable`
-means the operation is deliberately not byte-pinned, because the
-reference output is one valid encoding among several rather than the
-only one. `native` means there is no reference alias to match.
+Two questions, asked separately, because one word was answering both
+and could only answer one. **Evidence** is how an operation was
+checked. **Parity** is how close it came. An operation can be pinned
+byte for byte across its whole corpus and still refuse one documented
+class of input outside it — a corpus covers the cases it holds, and
+cannot speak for the ones it does not.
 
-There is no fourth state on purpose. An alias with neither pinned bytes
-nor a recorded reason is a build failure, not a footnote: the corpus
-coverage gate refuses it, reading the same exemption list this table
-does.
+| Evidence | |
+|---|---:|
+| Differential-pinned against the reference | 237 |
+| Pinned by a named test instead of the corpus | 4 |
+| Checked through a pinned inverse | 4 |
+| No reference claim to evidence | 2 |
+| Aliased with no evidence | 0 |
 
-| Operation | Alias | Pack | Status | Cases |
-|---|---|---|---|---:|
-| `analysis.chi_square@1` | Chi Square | core | exact | 14 |
-| `analysis.index_of_coincidence@1` | Index of Coincidence | core | exact | 11 |
-| `analysis.offset_checker@1` | Offset checker | core | exact | 29 |
-| `analysis.suggest@1` | — | analysis | native | 0 |
-| `asn1.oid.decode@1` | Hex to Object Identifier | core | exact | 30 |
-| `asn1.oid.encode@1` | Object Identifier to Hex | core | exact | 41 |
-| `asn1.pem.decode@1` | PEM to Hex | core | exact | 17 |
-| `asn1.pem.encode@1` | Hex to PEM | core | exact | 9 |
-| `checksum.adler32@1` | Adler-32 Checksum | core | exact | 12 |
-| `checksum.fletcher16@1` | Fletcher-16 Checksum | core | exact | 12 |
-| `checksum.fletcher32@1` | Fletcher-32 Checksum | core | exact | 12 |
-| `checksum.fletcher64@1` | Fletcher-64 Checksum | core | exact | 12 |
-| `checksum.fletcher8@1` | Fletcher-8 Checksum | core | exact | 12 |
-| `checksum.luhn@1` | Luhn Checksum | core | exact | 14 |
-| `checksum.tcp_ip@1` | TCP/IP Checksum | core | exact | 12 |
-| `checksum.xor@1` | XOR Checksum | core | exact | 60 |
-| `cipher.a1z26.decode@1` | A1Z26 Cipher Decode | core | exact | 24 |
-| `cipher.a1z26.encode@1` | A1Z26 Cipher Encode | core | exact | 42 |
-| `cipher.affine.decode@1` | Affine Cipher Decode | core | exact | 35 |
-| `cipher.affine.encode@1` | Affine Cipher Encode | core | exact | 70 |
-| `cipher.atbash@1` | Atbash Cipher | core | exact | 7 |
-| `cipher.bacon.decode@1` | Bacon Cipher Decode | core | exact | 17 |
-| `cipher.bacon.encode@1` | Bacon Cipher Encode | core | exact | 16 |
-| `cipher.bifid.decode@1` | Bifid Cipher Decode | core | exact | 16 |
-| `cipher.bifid.encode@1` | Bifid Cipher Encode | core | exact | 16 |
-| `cipher.caesar_box@1` | Caesar Box Cipher | core | exact | 10 |
-| `cipher.cetacean.decode@1` | Cetacean Cipher Decode | core | exact | 7 |
-| `cipher.cetacean.encode@1` | Cetacean Cipher Encode | core | exact | 14 |
-| `cipher.rail_fence.decode@1` | Rail Fence Cipher Decode | core | exact | 12 |
-| `cipher.rail_fence.encode@1` | Rail Fence Cipher Encode | core | exact | 24 |
-| `cipher.rot13.brute@1` | ROT13 Brute Force | core | exact | 44 |
-| `cipher.rot47.brute@1` | ROT47 Brute Force | core | exact | 15 |
-| `cipher.rot47@1` | ROT47 | core | exact | 8 |
-| `cipher.rot8000@1` | ROT8000 | core | exact | 21 |
-| `cipher.substitute@1` | Substitute | core | exact | 10 |
-| `cipher.vigenere.decode@1` | Vigenère Decode | core | exact | 28 |
-| `cipher.vigenere.encode@1` | Vigenère Encode | core | exact | 56 |
-| `compression.bzip2.compress@1` | Bzip2 Compress | compression | interoperable (compressor output is interoperable; Bzip2 Decompress is differential-pinned) | 0 |
-| `compression.bzip2.decompress@1` | Bzip2 Decompress | compression | exact (no Node bzip2 compressor to sample fresh inputs; pinned in differential.json) | 1 |
-| `compression.gunzip@1` | Gunzip | compression | exact | 5 |
-| `compression.gzip@1` | Gzip | compression | interoperable (compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned) | 0 |
-| `compression.lznt1.decompress@1` | LZNT1 Decompress | core | exact | 8 |
-| `compression.raw.deflate@1` | Raw Deflate | compression | interoperable (compressor output is interoperable; Raw Inflate is corpus-pinned) | 0 |
-| `compression.raw.inflate@1` | Raw Inflate | compression | exact | 5 |
-| `compression.zlib.deflate@1` | Zlib Deflate | compression | interoperable (compressor output is interoperable; Zlib Inflate is corpus-pinned) | 0 |
-| `compression.zlib.inflate@1` | Zlib Inflate | compression | exact | 5 |
-| `core.identity@1` | — | core | native | 0 |
-| `crypto.aes.decrypt@1` | AES Decrypt | crypto | exact | 5 |
-| `crypto.aes.encrypt@1` | AES Encrypt | crypto | exact | 9 |
-| `crypto.aes_kw.unwrap@1` | AES Key Unwrap | crypto | exact | 1 |
-| `crypto.aes_kw.wrap@1` | AES Key Wrap | crypto | exact | 2 |
-| `crypto.ls47.decrypt@1` | LS47 Decrypt | core | exact | 9 |
-| `crypto.ls47.encrypt@1` | LS47 Encrypt | core | exact | 56 |
-| `crypto.pbkdf2@1` | Derive PBKDF2 key | crypto | exact | 2 |
-| `crypto.rc4@1` | RC4 | crypto | exact | 4 |
-| `crypto.rc4_drop@1` | RC4 Drop | crypto | exact | 34 |
-| `crypto.scrypt@1` | Scrypt | crypto | exact | 2 |
-| `crypto.tea.decrypt@1` | TEA Decrypt | core | exact | 85 |
-| `crypto.tea.encrypt@1` | TEA Encrypt | core | exact | 99 |
-| `crypto.xtea.decrypt@1` | XTEA Decrypt | core | exact | 45 |
-| `crypto.xtea.encrypt@1` | XTEA Encrypt | core | exact | 45 |
-| `crypto.xxtea.decrypt@1` | XXTEA Decrypt | core | exact | 8 |
-| `crypto.xxtea.encrypt@1` | XXTEA Encrypt | core | exact | 21 |
-| `data.drop_bytes@1` | Drop bytes | core | exact | 4 |
-| `data.head@1` | Head | core | exact | 5 |
-| `data.nth_bytes.drop@1` | Drop nth bytes | core | exact | 17 |
-| `data.nth_bytes.take@1` | Take nth bytes | core | exact | 17 |
-| `data.remove_null_bytes@1` | Remove null bytes | core | exact | 4 |
-| `data.reverse@1` | Reverse | core | exact | 14 |
-| `data.swap_endianness@1` | Swap endianness | core | exact | 38 |
-| `data.tail@1` | Tail | core | exact | 18 |
-| `data.take_bytes@1` | Take bytes | core | exact | 4 |
-| `defang.fang_url@1` | Fang URL | text | exact | 2 |
-| `defang.ip@1` | Defang IP Addresses | text | exact | 2 |
-| `defang.url@1` | Defang URL | text | exact | 3 |
-| `distance.hamming@1` | Hamming Distance | core | exact | 10 |
-| `distance.levenshtein@1` | Levenshtein Distance | core | exact | 25 |
-| `encoding.base32.decode@1` | From Base32 | core | exact | 28 |
-| `encoding.base32.encode@1` | To Base32 | core | exact | 29 |
-| `encoding.base45.decode@1` | From Base45 | core | exact | 13 |
-| `encoding.base45.encode@1` | To Base45 | core | exact | 13 |
-| `encoding.base58.decode@1` | From Base58 | core | exact | 25 |
-| `encoding.base58.encode@1` | To Base58 | core | exact | 25 |
-| `encoding.base62.decode@1` | From Base62 | core | exact | 12 |
-| `encoding.base62.encode@1` | To Base62 | core | exact | 15 |
-| `encoding.base64.decode@1` | From Base64 | core | exact | 41 |
-| `encoding.base64.encode@1` | To Base64 | core | exact | 52 |
-| `encoding.base85.decode@1` | From Base85 | core | exact | 26 |
-| `encoding.base85.encode@1` | To Base85 | core | exact | 27 |
-| `encoding.base92.decode@1` | From Base92 | core | exact | 7 |
-| `encoding.base92.encode@1` | To Base92 | core | exact | 8 |
-| `encoding.bcd.decode@1` | From BCD | core | exact | 37 |
-| `encoding.bcd.encode@1` | To BCD | core | exact | 300 |
-| `encoding.bech32.decode@1` | From Bech32 | core | exact | 51 |
-| `encoding.bech32.encode@1` | To Bech32 | core | exact | 34 |
-| `encoding.binary.decode@1` | From Binary | core | exact | 14 |
-| `encoding.binary.encode@1` | To Binary | core | exact | 13 |
-| `encoding.braille.decode@1` | From Braille | core | exact | 15 |
-| `encoding.braille.encode@1` | To Braille | core | exact | 10 |
-| `encoding.caret_m.decode@1` | Caret/M-decode | core | exact | 20 |
-| `encoding.charcode.decode@1` | From Charcode | core | exact | 13 |
-| `encoding.charcode.encode@1` | To Charcode | core | exact | 13 |
-| `encoding.cobs.decode@1` | From COBS | core | exact | 25 |
-| `encoding.cobs.encode@1` | To COBS | core | exact | 16 |
-| `encoding.ctx1.decode@1` | Citrix CTX1 Decode | core | exact | 9 |
-| `encoding.ctx1.encode@1` | Citrix CTX1 Encode | core | exact | 9 |
-| `encoding.decimal.decode@1` | From Decimal | core | exact | 14 |
-| `encoding.decimal.encode@1` | To Decimal | core | exact | 26 |
-| `encoding.float.decode@1` | From Float | core | exact | 87 |
-| `encoding.float.encode@1` | To Float | core | exact | 59 |
-| `encoding.hex.decode@1` | From Hex | core | exact | 27 |
-| `encoding.hex.encode@1` | To Hex | core | exact | 53 |
-| `encoding.hex_content.decode@1` | From Hex Content | core | exact | 10 |
-| `encoding.hex_content.encode@1` | To Hex Content | core | exact | 26 |
-| `encoding.hexdump.decode@1` | From Hexdump | core | exact | 6 |
-| `encoding.hexdump.encode@1` | To Hexdump | core | exact | 12 |
-| `encoding.html.decode@1` | From HTML Entity | core | exact | 5 |
-| `encoding.html.encode@1` | To HTML Entity | core | exact | 5 |
-| `encoding.microsoft_script.decode@1` | Microsoft Script Decoder | core | exact | 5 |
-| `encoding.modhex.decode@1` | From Modhex | core | exact | 70 |
-| `encoding.modhex.encode@1` | To Modhex | core | exact | 120 |
-| `encoding.morse.decode@1` | From Morse Code | core | exact | 29 |
-| `encoding.morse.encode@1` | To Morse Code | core | exact | 64 |
-| `encoding.netbios.decode@1` | Decode NetBIOS Name | core | exact | 12 |
-| `encoding.netbios.encode@1` | Encode NetBIOS Name | core | exact | 7 |
-| `encoding.octal.decode@1` | From Octal | core | exact | 14 |
-| `encoding.octal.encode@1` | To Octal | core | exact | 14 |
-| `encoding.punycode.decode@1` | From Punycode | core | exact | 14 |
-| `encoding.punycode.encode@1` | To Punycode | core | exact | 19 |
-| `encoding.quoted_printable.decode@1` | From Quoted Printable | core | exact | 31 |
-| `encoding.quoted_printable.encode@1` | To Quoted Printable | core | exact | 19 |
-| `encoding.radix.decode@1` | From Base | core | exact | 48 |
-| `encoding.radix.encode@1` | To Base | core | exact | 148 |
-| `encoding.rot13@1` | ROT13 | core | exact | 5 |
-| `encoding.text_integer@1` | Text-Integer Conversion | core | exact | 136 |
-| `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
-| `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
-| `encoding.url.decode@1` | URL Decode | core | exact | 26 |
-| `encoding.url.encode@1` | URL Encode | core | exact | 13 |
-| `encoding.varint.decode@1` | VarInt Decode | core | exact | 29 |
-| `encoding.varint.encode@1` | VarInt Encode | core | exact | 20 |
-| `extract.domain@1` | Extract domains | text | exact | 1 |
-| `extract.email@1` | Extract email addresses | text | exact | 2 |
-| `extract.file_paths@1` | Extract file paths | text | exact | 2 |
-| `extract.hashes@1` | Extract hashes | text | exact | 2 |
-| `extract.ip@1` | Extract IP addresses | text | exact | 2 |
-| `extract.mac@1` | Extract MAC addresses | text | exact | 2 |
-| `extract.strings@1` | Strings | text | exact | 2 |
-| `extract.url@1` | Extract URLs | text | exact | 2 |
-| `filesystem.unix_permissions@1` | Parse UNIX file permissions | core | exact | 32 |
-| `flow.comment@1` | Comment | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
-| `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
-| `flow.label@1` | Label | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
-| `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
-| `hash.bcrypt.parse@1` | Bcrypt parse | core | exact | 20 |
-| `hash.blake2b@1` | BLAKE2b | hash | exact | 104 |
-| `hash.blake2s@1` | BLAKE2s | hash | exact | 62 |
-| `hash.blake3@1` | BLAKE3 | hash | exact | 73 |
-| `hash.hmac@1` | HMAC | hash | exact | 29 |
-| `hash.keccak@1` | Keccak | hash | exact | 24 |
-| `hash.md2@1` | MD2 | hash | exact | 13 |
-| `hash.md4@1` | MD4 | hash | exact | 13 |
-| `hash.md5@1` | MD5 | hash | exact | 7 |
-| `hash.murmur3@1` | MurmurHash3 | core | exact | 48 |
-| `hash.nt@1` | NT Hash | hash | exact | 9 |
-| `hash.ripemd@1` | RIPEMD | hash | exact | 52 |
-| `hash.sha0@1` | SHA0 | core | exact | 9 |
-| `hash.sha1@1` | SHA1 | hash | exact | 7 |
-| `hash.sha2@1` | SHA2 | hash | exact | 13 |
-| `hash.sha3@1` | SHA3 | hash | exact | 13 |
-| `hash.shake@1` | Shake | hash | exact | 24 |
-| `hash.sm3@1` | SM3 | hash | exact | 13 |
-| `hash.streebog@1` | Streebog | hash | exact | 17 |
-| `hash.whirlpool@1` | Whirlpool | hash | exact | 13 |
-| `http.dechunk@1` | Dechunk HTTP response | core | exact | 7 |
-| `http.headers.strip@1` | Strip HTTP headers | core | exact | 6 |
-| `list.split@1` | Split | core | exact | 9 |
-| `list.unique@1` | Unique | core | exact | 30 |
-| `logic.add@1` | ADD | core | exact | 33 |
-| `logic.and@1` | AND | core | exact | 32 |
-| `logic.not@1` | NOT | core | exact | 7 |
-| `logic.or@1` | OR | core | exact | 31 |
-| `logic.parity@1` | Parity Bit | core | exact | 54 |
-| `logic.ror13@1` | ROR13 | core | exact | 5 |
-| `logic.rotate.left@1` | Rotate left | core | exact | 62 |
-| `logic.rotate.right@1` | Rotate right | core | exact | 62 |
-| `logic.shift.left@1` | Bit shift left | core | exact | 20 |
-| `logic.shift.right@1` | Bit shift right | core | exact | 70 |
-| `logic.sub@1` | SUB | core | exact | 33 |
-| `logic.xor@1` | XOR | core | exact | 50 |
-| `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
-| `math.convert.area@1` | Convert area | core | exact | 86 |
-| `math.convert.data@1` | Convert data units | core | exact | 92 |
-| `math.convert.distance@1` | Convert distance | core | exact | 68 |
-| `math.convert.mass@1` | Convert mass | core | exact | 146 |
-| `math.convert.speed@1` | Convert speed | core | exact | 66 |
-| `math.divide@1` | Divide | core | exact | 33 |
-| `math.egcd@1` | Extended GCD | core | exact | 43 |
-| `math.mean@1` | Mean | core | exact | 33 |
-| `math.median@1` | Median | core | exact | 32 |
-| `math.mod@1` | MOD | core | exact | 18 |
-| `math.modinv@1` | Modular Inverse | core | exact | 25 |
-| `math.multiply@1` | Multiply | core | exact | 32 |
-| `math.stddev@1` | Standard Deviation | core | exact | 32 |
-| `math.subtract@1` | Subtract | core | exact | 32 |
-| `math.sum@1` | Sum | core | exact | 42 |
-| `network.ip.format@1` | Change IP format | core | exact | 231 |
-| `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
-| `network.strip.ipv4@1` | Strip IPv4 header | core | exact | 2 |
-| `network.strip.tcp@1` | Strip TCP header | core | exact | 2 |
-| `network.strip.udp@1` | Strip UDP header | core | exact | 2 |
-| `parsing.colour_code@1` | Parse colour code | core | exact | 26 |
-| `parsing.tlv@1` | Parse TLV | core | exact | 17 |
-| `sets.cartesian_product@1` | Cartesian Product | core | exact | 10 |
-| `sets.difference@1` | Set Difference | core | exact | 9 |
-| `sets.intersection@1` | Set Intersection | core | exact | 10 |
-| `sets.power@1` | Power Set | core | exact | 10 |
-| `sets.symmetric_difference@1` | Symmetric Difference | core | exact | 9 |
-| `sets.union@1` | Set Union | core | exact | 10 |
-| `shaping.to_table@1` | To Table | core | exact | 73 |
-| `text.alphabet.expand@1` | Expand alphabet range | core | exact | 14 |
-| `text.ansi.strip@1` | Remove ANSI Escape Codes | core | exact | 9 |
-| `text.case.all@1` | Get All Casings | core | exact | 4 |
-| `text.case.alternating@1` | Alternating Caps | core | exact | 9 |
-| `text.case.lower@1` | To Lower case | core | exact | 9 |
-| `text.case.swap@1` | Swap case | core | exact | 9 |
-| `text.case.upper@1` | To Upper case | core | exact | 20 |
-| `text.count@1` | Count occurrences | text | exact | 14 |
-| `text.debruijn@1` | Generate De Bruijn Sequence | core | exact | 9 |
-| `text.escape.unescape@1` | Unescape string | core | exact | 11 |
-| `text.find_replace@1` | Find / Replace | text | exact | 4 |
-| `text.html.strip_tags@1` | Strip HTML tags | core | exact | 44 |
-| `text.html.to_text@1` | HTML To Text | core | exact | 6 |
-| `text.leet@1` | Convert Leet Speak | core | exact | 28 |
-| `text.line_numbers.add@1` | Add line numbers | core | exact | 24 |
-| `text.line_numbers.remove@1` | Remove line numbers | core | exact | 16 |
-| `text.nato@1` | Convert to NATO alphabet | core | exact | 7 |
-| `text.pad_lines@1` | Pad lines | core | exact | 20 |
-| `text.regex.case_fold@1` | From Case Insensitive Regex | core | exact | 12 |
-| `text.regex.case_widen@1` | To Case Insensitive Regex | core | exact | 16 |
-| `text.remove_whitespace@1` | Remove whitespace | core | exact | 6 |
-| `text.smart.escape@1` | Escape Smart Characters | core | exact | 33 |
-| `text.unicode.format@1` | Unicode Text Format | core | exact | 16 |
-| `text.wrap@1` | Wrap | core | exact | 28 |
-| `text.xkcd_random@1` | XKCD Random Number | core | exact | 1 |
-| `time.filetime.decode@1` | Windows Filetime to UNIX Timestamp | core | exact | 62 |
-| `time.filetime.encode@1` | UNIX Timestamp to Windows Filetime | core | exact | 186 |
+| Parity | |
+|---|---:|
+| Exact | 224 |
+| Documented divergence | 17 |
+| Interoperable rather than byte-identical | 4 |
+| FerroSift-native, no reference to match | 2 |
+
+`Aliased with no evidence` is a build failure rather than a footnote:
+an alias with neither pinned bytes nor a recorded reason is refused by
+the corpus coverage gate, which reads the same exemption list this
+table does. It is counted here so the zero is visible rather than
+implied.
+
+`documented divergence` names an operation that differs from the
+reference over a stated domain, listed in `divergences.json` with the
+domain, the reason, and the section of the compatibility page that
+argues it. Every one of them is byte-pinned over the inputs it covers;
+the divergence is what lies outside those inputs.
+
+| Operation | Alias | Pack | Evidence | Parity | Cases |
+|---|---|---|---|---|---:|
+| `analysis.chi_square@1` | Chi Square | core | differential_pinned | exact | 14 |
+| `analysis.index_of_coincidence@1` | Index of Coincidence | core | differential_pinned | exact | 11 |
+| `analysis.offset_checker@1` | Offset checker | core | differential_pinned | exact | 29 |
+| `analysis.suggest@1` | — | analysis | not_applicable | native | 0 |
+| `asn1.oid.decode@1` | Hex to Object Identifier | core | differential_pinned | documented_divergence (text the reference's bignum parser skips characters in) | 30 |
+| `asn1.oid.encode@1` | Object Identifier to Hex | core | differential_pinned | documented_divergence (text the reference's bignum parser skips characters in) | 41 |
+| `asn1.pem.decode@1` | PEM to Hex | core | differential_pinned | exact | 17 |
+| `asn1.pem.encode@1` | Hex to PEM | core | differential_pinned | exact | 9 |
+| `checksum.adler32@1` | Adler-32 Checksum | core | differential_pinned | exact | 12 |
+| `checksum.fletcher16@1` | Fletcher-16 Checksum | core | differential_pinned | exact | 12 |
+| `checksum.fletcher32@1` | Fletcher-32 Checksum | core | differential_pinned | exact | 12 |
+| `checksum.fletcher64@1` | Fletcher-64 Checksum | core | differential_pinned | exact | 12 |
+| `checksum.fletcher8@1` | Fletcher-8 Checksum | core | differential_pinned | exact | 12 |
+| `checksum.luhn@1` | Luhn Checksum | core | differential_pinned | exact | 14 |
+| `checksum.tcp_ip@1` | TCP/IP Checksum | core | differential_pinned | exact | 12 |
+| `checksum.xor@1` | XOR Checksum | core | differential_pinned | exact | 60 |
+| `cipher.a1z26.decode@1` | A1Z26 Cipher Decode | core | differential_pinned | exact | 24 |
+| `cipher.a1z26.encode@1` | A1Z26 Cipher Encode | core | differential_pinned | exact | 42 |
+| `cipher.affine.decode@1` | Affine Cipher Decode | core | differential_pinned | exact | 35 |
+| `cipher.affine.encode@1` | Affine Cipher Encode | core | differential_pinned | exact | 70 |
+| `cipher.atbash@1` | Atbash Cipher | core | differential_pinned | exact | 7 |
+| `cipher.bacon.decode@1` | Bacon Cipher Decode | core | differential_pinned | exact | 17 |
+| `cipher.bacon.encode@1` | Bacon Cipher Encode | core | differential_pinned | exact | 16 |
+| `cipher.bifid.decode@1` | Bifid Cipher Decode | core | differential_pinned | exact | 16 |
+| `cipher.bifid.encode@1` | Bifid Cipher Encode | core | differential_pinned | exact | 16 |
+| `cipher.caesar_box@1` | Caesar Box Cipher | core | differential_pinned | exact | 10 |
+| `cipher.cetacean.decode@1` | Cetacean Cipher Decode | core | differential_pinned | exact | 7 |
+| `cipher.cetacean.encode@1` | Cetacean Cipher Encode | core | differential_pinned | exact | 14 |
+| `cipher.rail_fence.decode@1` | Rail Fence Cipher Decode | core | differential_pinned | exact | 12 |
+| `cipher.rail_fence.encode@1` | Rail Fence Cipher Encode | core | differential_pinned | exact | 24 |
+| `cipher.rot13.brute@1` | ROT13 Brute Force | core | differential_pinned | exact | 44 |
+| `cipher.rot47.brute@1` | ROT47 Brute Force | core | differential_pinned | exact | 15 |
+| `cipher.rot47@1` | ROT47 | core | differential_pinned | exact | 8 |
+| `cipher.rot8000@1` | ROT8000 | core | differential_pinned | exact | 21 |
+| `cipher.substitute@1` | Substitute | core | differential_pinned | exact | 10 |
+| `cipher.vigenere.decode@1` | Vigenère Decode | core | differential_pinned | exact | 28 |
+| `cipher.vigenere.encode@1` | Vigenère Encode | core | differential_pinned | exact | 56 |
+| `compression.bzip2.compress@1` | Bzip2 Compress | compression | round_trip | interoperable (compressor output is interoperable; Bzip2 Decompress is differential-pinned) | 0 |
+| `compression.bzip2.decompress@1` | Bzip2 Decompress | compression | differential_pinned | exact (no Node bzip2 compressor to sample fresh inputs; pinned in differential.json) | 1 |
+| `compression.gunzip@1` | Gunzip | compression | differential_pinned | exact | 5 |
+| `compression.gzip@1` | Gzip | compression | round_trip | interoperable (compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned) | 0 |
+| `compression.lznt1.decompress@1` | LZNT1 Decompress | core | differential_pinned | exact | 8 |
+| `compression.raw.deflate@1` | Raw Deflate | compression | round_trip | interoperable (compressor output is interoperable; Raw Inflate is corpus-pinned) | 0 |
+| `compression.raw.inflate@1` | Raw Inflate | compression | differential_pinned | exact | 5 |
+| `compression.zlib.deflate@1` | Zlib Deflate | compression | round_trip | interoperable (compressor output is interoperable; Zlib Inflate is corpus-pinned) | 0 |
+| `compression.zlib.inflate@1` | Zlib Inflate | compression | differential_pinned | exact | 5 |
+| `core.identity@1` | — | core | not_applicable | native | 0 |
+| `crypto.aes.decrypt@1` | AES Decrypt | crypto | differential_pinned | exact | 5 |
+| `crypto.aes.encrypt@1` | AES Encrypt | crypto | differential_pinned | exact | 9 |
+| `crypto.aes_kw.unwrap@1` | AES Key Unwrap | crypto | differential_pinned | exact | 1 |
+| `crypto.aes_kw.wrap@1` | AES Key Wrap | crypto | differential_pinned | exact | 2 |
+| `crypto.ls47.decrypt@1` | LS47 Decrypt | core | differential_pinned | exact | 9 |
+| `crypto.ls47.encrypt@1` | LS47 Encrypt | core | differential_pinned | exact | 56 |
+| `crypto.pbkdf2@1` | Derive PBKDF2 key | crypto | differential_pinned | exact | 2 |
+| `crypto.rc4@1` | RC4 | crypto | differential_pinned | exact | 4 |
+| `crypto.rc4_drop@1` | RC4 Drop | crypto | differential_pinned | exact | 34 |
+| `crypto.scrypt@1` | Scrypt | crypto | differential_pinned | exact | 2 |
+| `crypto.tea.decrypt@1` | TEA Decrypt | core | differential_pinned | documented_divergence (`RANDOM` padding where padding is actually added) | 85 |
+| `crypto.tea.encrypt@1` | TEA Encrypt | core | differential_pinned | documented_divergence (`RANDOM` padding where padding is actually added) | 99 |
+| `crypto.xtea.decrypt@1` | XTEA Decrypt | core | differential_pinned | documented_divergence (`RANDOM` padding where padding is actually added) | 45 |
+| `crypto.xtea.encrypt@1` | XTEA Encrypt | core | differential_pinned | documented_divergence (`RANDOM` padding where padding is actually added) | 45 |
+| `crypto.xxtea.decrypt@1` | XXTEA Decrypt | core | differential_pinned | exact | 8 |
+| `crypto.xxtea.encrypt@1` | XXTEA Encrypt | core | differential_pinned | exact | 21 |
+| `data.drop_bytes@1` | Drop bytes | core | differential_pinned | exact | 4 |
+| `data.head@1` | Head | core | differential_pinned | exact | 5 |
+| `data.nth_bytes.drop@1` | Drop nth bytes | core | differential_pinned | exact | 17 |
+| `data.nth_bytes.take@1` | Take nth bytes | core | differential_pinned | exact | 17 |
+| `data.remove_null_bytes@1` | Remove null bytes | core | differential_pinned | exact | 4 |
+| `data.reverse@1` | Reverse | core | differential_pinned | exact | 14 |
+| `data.swap_endianness@1` | Swap endianness | core | differential_pinned | exact | 38 |
+| `data.tail@1` | Tail | core | differential_pinned | exact | 18 |
+| `data.take_bytes@1` | Take bytes | core | differential_pinned | exact | 4 |
+| `defang.fang_url@1` | Fang URL | text | differential_pinned | exact | 2 |
+| `defang.ip@1` | Defang IP Addresses | text | differential_pinned | exact | 2 |
+| `defang.url@1` | Defang URL | text | differential_pinned | exact | 3 |
+| `distance.hamming@1` | Hamming Distance | core | differential_pinned | exact | 10 |
+| `distance.levenshtein@1` | Levenshtein Distance | core | differential_pinned | exact | 25 |
+| `encoding.base32.decode@1` | From Base32 | core | differential_pinned | exact | 28 |
+| `encoding.base32.encode@1` | To Base32 | core | differential_pinned | exact | 29 |
+| `encoding.base45.decode@1` | From Base45 | core | differential_pinned | exact | 13 |
+| `encoding.base45.encode@1` | To Base45 | core | differential_pinned | exact | 13 |
+| `encoding.base58.decode@1` | From Base58 | core | differential_pinned | exact | 25 |
+| `encoding.base58.encode@1` | To Base58 | core | differential_pinned | exact | 25 |
+| `encoding.base62.decode@1` | From Base62 | core | differential_pinned | exact | 12 |
+| `encoding.base62.encode@1` | To Base62 | core | differential_pinned | exact | 15 |
+| `encoding.base64.decode@1` | From Base64 | core | differential_pinned | exact | 41 |
+| `encoding.base64.encode@1` | To Base64 | core | differential_pinned | exact | 52 |
+| `encoding.base85.decode@1` | From Base85 | core | differential_pinned | exact | 26 |
+| `encoding.base85.encode@1` | To Base85 | core | differential_pinned | exact | 27 |
+| `encoding.base92.decode@1` | From Base92 | core | differential_pinned | exact | 7 |
+| `encoding.base92.encode@1` | To Base92 | core | differential_pinned | exact | 8 |
+| `encoding.bcd.decode@1` | From BCD | core | differential_pinned | exact | 37 |
+| `encoding.bcd.encode@1` | To BCD | core | differential_pinned | exact | 300 |
+| `encoding.bech32.decode@1` | From Bech32 | core | differential_pinned | exact | 51 |
+| `encoding.bech32.encode@1` | To Bech32 | core | differential_pinned | exact | 34 |
+| `encoding.binary.decode@1` | From Binary | core | differential_pinned | exact | 14 |
+| `encoding.binary.encode@1` | To Binary | core | differential_pinned | exact | 13 |
+| `encoding.braille.decode@1` | From Braille | core | differential_pinned | exact | 15 |
+| `encoding.braille.encode@1` | To Braille | core | differential_pinned | exact | 10 |
+| `encoding.caret_m.decode@1` | Caret/M-decode | core | differential_pinned | exact | 20 |
+| `encoding.charcode.decode@1` | From Charcode | core | differential_pinned | exact | 13 |
+| `encoding.charcode.encode@1` | To Charcode | core | differential_pinned | exact | 13 |
+| `encoding.cobs.decode@1` | From COBS | core | differential_pinned | exact | 25 |
+| `encoding.cobs.encode@1` | To COBS | core | differential_pinned | exact | 16 |
+| `encoding.ctx1.decode@1` | Citrix CTX1 Decode | core | differential_pinned | exact | 9 |
+| `encoding.ctx1.encode@1` | Citrix CTX1 Encode | core | differential_pinned | exact | 9 |
+| `encoding.decimal.decode@1` | From Decimal | core | differential_pinned | exact | 14 |
+| `encoding.decimal.encode@1` | To Decimal | core | differential_pinned | exact | 26 |
+| `encoding.float.decode@1` | From Float | core | differential_pinned | exact | 87 |
+| `encoding.float.encode@1` | To Float | core | differential_pinned | exact | 59 |
+| `encoding.hex.decode@1` | From Hex | core | differential_pinned | documented_divergence (an odd number of hex digits, and text holding none) | 27 |
+| `encoding.hex.encode@1` | To Hex | core | differential_pinned | exact | 53 |
+| `encoding.hex_content.decode@1` | From Hex Content | core | differential_pinned | exact | 10 |
+| `encoding.hex_content.encode@1` | To Hex Content | core | differential_pinned | exact | 26 |
+| `encoding.hexdump.decode@1` | From Hexdump | core | differential_pinned | exact | 6 |
+| `encoding.hexdump.encode@1` | To Hexdump | core | differential_pinned | exact | 12 |
+| `encoding.html.decode@1` | From HTML Entity | core | differential_pinned | exact | 5 |
+| `encoding.html.encode@1` | To HTML Entity | core | differential_pinned | exact | 5 |
+| `encoding.microsoft_script.decode@1` | Microsoft Script Decoder | core | differential_pinned | exact | 5 |
+| `encoding.modhex.decode@1` | From Modhex | core | differential_pinned | exact | 70 |
+| `encoding.modhex.encode@1` | To Modhex | core | differential_pinned | exact | 120 |
+| `encoding.morse.decode@1` | From Morse Code | core | differential_pinned | exact | 29 |
+| `encoding.morse.encode@1` | To Morse Code | core | differential_pinned | exact | 64 |
+| `encoding.netbios.decode@1` | Decode NetBIOS Name | core | differential_pinned | exact | 12 |
+| `encoding.netbios.encode@1` | Encode NetBIOS Name | core | differential_pinned | exact | 7 |
+| `encoding.octal.decode@1` | From Octal | core | differential_pinned | exact | 14 |
+| `encoding.octal.encode@1` | To Octal | core | differential_pinned | exact | 14 |
+| `encoding.punycode.decode@1` | From Punycode | core | differential_pinned | exact | 14 |
+| `encoding.punycode.encode@1` | To Punycode | core | differential_pinned | exact | 19 |
+| `encoding.quoted_printable.decode@1` | From Quoted Printable | core | differential_pinned | exact | 31 |
+| `encoding.quoted_printable.encode@1` | To Quoted Printable | core | differential_pinned | exact | 19 |
+| `encoding.radix.decode@1` | From Base | core | differential_pinned | exact | 48 |
+| `encoding.radix.encode@1` | To Base | core | differential_pinned | exact | 148 |
+| `encoding.rot13@1` | ROT13 | core | differential_pinned | exact | 5 |
+| `encoding.text_integer@1` | Text-Integer Conversion | core | differential_pinned | exact | 136 |
+| `encoding.unicode.escape@1` | Escape Unicode Characters | core | differential_pinned | exact | 56 |
+| `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | differential_pinned | exact | 38 |
+| `encoding.url.decode@1` | URL Decode | core | differential_pinned | exact | 26 |
+| `encoding.url.encode@1` | URL Encode | core | differential_pinned | exact | 13 |
+| `encoding.varint.decode@1` | VarInt Decode | core | differential_pinned | exact | 29 |
+| `encoding.varint.encode@1` | VarInt Encode | core | differential_pinned | exact | 20 |
+| `extract.domain@1` | Extract domains | text | differential_pinned | documented_divergence (labels longer than 63 characters) | 1 |
+| `extract.email@1` | Extract email addresses | text | differential_pinned | exact | 2 |
+| `extract.file_paths@1` | Extract file paths | text | differential_pinned | exact | 2 |
+| `extract.hashes@1` | Extract hashes | text | differential_pinned | exact | 2 |
+| `extract.ip@1` | Extract IP addresses | text | differential_pinned | exact | 2 |
+| `extract.mac@1` | Extract MAC addresses | text | differential_pinned | exact | 2 |
+| `extract.strings@1` | Strings | text | differential_pinned | exact | 2 |
+| `extract.url@1` | Extract URLs | text | differential_pinned | exact | 2 |
+| `filesystem.unix_permissions@1` | Parse UNIX file permissions | core | differential_pinned | exact | 32 |
+| `flow.comment@1` | Comment | core | pinned_elsewhere | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
+| `flow.fork@1` | Fork | core | pinned_elsewhere | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
+| `flow.label@1` | Label | core | pinned_elsewhere | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
+| `flow.merge@1` | Merge | core | pinned_elsewhere | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
+| `hash.bcrypt.parse@1` | Bcrypt parse | core | differential_pinned | exact | 20 |
+| `hash.blake2b@1` | BLAKE2b | hash | differential_pinned | exact | 104 |
+| `hash.blake2s@1` | BLAKE2s | hash | differential_pinned | exact | 62 |
+| `hash.blake3@1` | BLAKE3 | hash | differential_pinned | exact | 73 |
+| `hash.hmac@1` | HMAC | hash | differential_pinned | documented_divergence (a `Latin1` key holding a character above the byte range) | 29 |
+| `hash.keccak@1` | Keccak | hash | differential_pinned | exact | 24 |
+| `hash.md2@1` | MD2 | hash | differential_pinned | documented_divergence (a reduced round count) | 13 |
+| `hash.md4@1` | MD4 | hash | differential_pinned | exact | 13 |
+| `hash.md5@1` | MD5 | hash | differential_pinned | exact | 7 |
+| `hash.murmur3@1` | MurmurHash3 | core | differential_pinned | exact | 48 |
+| `hash.nt@1` | NT Hash | hash | differential_pinned | exact | 9 |
+| `hash.ripemd@1` | RIPEMD | hash | differential_pinned | exact | 52 |
+| `hash.sha0@1` | SHA0 | core | differential_pinned | documented_divergence (a reduced round count) | 9 |
+| `hash.sha1@1` | SHA1 | hash | differential_pinned | documented_divergence (a reduced round count) | 7 |
+| `hash.sha2@1` | SHA2 | hash | differential_pinned | documented_divergence (a reduced round count) | 13 |
+| `hash.sha3@1` | SHA3 | hash | differential_pinned | documented_divergence (a reduced round count) | 13 |
+| `hash.shake@1` | Shake | hash | differential_pinned | exact | 24 |
+| `hash.sm3@1` | SM3 | hash | differential_pinned | documented_divergence (a reduced round count) | 13 |
+| `hash.streebog@1` | Streebog | hash | differential_pinned | exact | 17 |
+| `hash.whirlpool@1` | Whirlpool | hash | differential_pinned | documented_divergence (a reduced round count) | 13 |
+| `http.dechunk@1` | Dechunk HTTP response | core | differential_pinned | exact | 7 |
+| `http.headers.strip@1` | Strip HTTP headers | core | differential_pinned | exact | 6 |
+| `list.split@1` | Split | core | differential_pinned | exact | 9 |
+| `list.unique@1` | Unique | core | differential_pinned | exact | 30 |
+| `logic.add@1` | ADD | core | differential_pinned | exact | 33 |
+| `logic.and@1` | AND | core | differential_pinned | exact | 32 |
+| `logic.not@1` | NOT | core | differential_pinned | exact | 7 |
+| `logic.or@1` | OR | core | differential_pinned | exact | 31 |
+| `logic.parity@1` | Parity Bit | core | differential_pinned | exact | 54 |
+| `logic.ror13@1` | ROR13 | core | differential_pinned | exact | 5 |
+| `logic.rotate.left@1` | Rotate left | core | differential_pinned | exact | 62 |
+| `logic.rotate.right@1` | Rotate right | core | differential_pinned | exact | 62 |
+| `logic.shift.left@1` | Bit shift left | core | differential_pinned | exact | 20 |
+| `logic.shift.right@1` | Bit shift right | core | differential_pinned | exact | 70 |
+| `logic.sub@1` | SUB | core | differential_pinned | exact | 33 |
+| `logic.xor@1` | XOR | core | differential_pinned | exact | 50 |
+| `logic.xor_brute@1` | XOR Brute Force | analysis | differential_pinned | exact | 3 |
+| `math.convert.area@1` | Convert area | core | differential_pinned | exact | 86 |
+| `math.convert.data@1` | Convert data units | core | differential_pinned | exact | 92 |
+| `math.convert.distance@1` | Convert distance | core | differential_pinned | exact | 68 |
+| `math.convert.mass@1` | Convert mass | core | differential_pinned | exact | 146 |
+| `math.convert.speed@1` | Convert speed | core | differential_pinned | exact | 66 |
+| `math.divide@1` | Divide | core | differential_pinned | exact | 33 |
+| `math.egcd@1` | Extended GCD | core | differential_pinned | exact | 43 |
+| `math.mean@1` | Mean | core | differential_pinned | exact | 33 |
+| `math.median@1` | Median | core | differential_pinned | exact | 32 |
+| `math.mod@1` | MOD | core | differential_pinned | exact | 18 |
+| `math.modinv@1` | Modular Inverse | core | differential_pinned | exact | 25 |
+| `math.multiply@1` | Multiply | core | differential_pinned | exact | 32 |
+| `math.stddev@1` | Standard Deviation | core | differential_pinned | exact | 32 |
+| `math.subtract@1` | Subtract | core | differential_pinned | exact | 32 |
+| `math.sum@1` | Sum | core | differential_pinned | exact | 42 |
+| `network.ip.format@1` | Change IP format | core | differential_pinned | exact | 231 |
+| `network.mac.format@1` | Format MAC addresses | core | differential_pinned | exact | 63 |
+| `network.strip.ipv4@1` | Strip IPv4 header | core | differential_pinned | exact | 2 |
+| `network.strip.tcp@1` | Strip TCP header | core | differential_pinned | exact | 2 |
+| `network.strip.udp@1` | Strip UDP header | core | differential_pinned | exact | 2 |
+| `parsing.colour_code@1` | Parse colour code | core | differential_pinned | exact | 26 |
+| `parsing.tlv@1` | Parse TLV | core | differential_pinned | exact | 17 |
+| `sets.cartesian_product@1` | Cartesian Product | core | differential_pinned | exact | 10 |
+| `sets.difference@1` | Set Difference | core | differential_pinned | exact | 9 |
+| `sets.intersection@1` | Set Intersection | core | differential_pinned | exact | 10 |
+| `sets.power@1` | Power Set | core | differential_pinned | exact | 10 |
+| `sets.symmetric_difference@1` | Symmetric Difference | core | differential_pinned | exact | 9 |
+| `sets.union@1` | Set Union | core | differential_pinned | exact | 10 |
+| `shaping.to_table@1` | To Table | core | differential_pinned | exact | 73 |
+| `text.alphabet.expand@1` | Expand alphabet range | core | differential_pinned | exact | 14 |
+| `text.ansi.strip@1` | Remove ANSI Escape Codes | core | differential_pinned | exact | 9 |
+| `text.case.all@1` | Get All Casings | core | differential_pinned | exact | 4 |
+| `text.case.alternating@1` | Alternating Caps | core | differential_pinned | exact | 9 |
+| `text.case.lower@1` | To Lower case | core | differential_pinned | exact | 9 |
+| `text.case.swap@1` | Swap case | core | differential_pinned | exact | 9 |
+| `text.case.upper@1` | To Upper case | core | differential_pinned | exact | 20 |
+| `text.count@1` | Count occurrences | text | differential_pinned | exact | 14 |
+| `text.debruijn@1` | Generate De Bruijn Sequence | core | differential_pinned | exact | 9 |
+| `text.escape.unescape@1` | Unescape string | core | differential_pinned | exact | 11 |
+| `text.find_replace@1` | Find / Replace | text | differential_pinned | documented_divergence (regex mode with exotic Unicode property classes) | 4 |
+| `text.html.strip_tags@1` | Strip HTML tags | core | differential_pinned | exact | 44 |
+| `text.html.to_text@1` | HTML To Text | core | differential_pinned | exact | 6 |
+| `text.leet@1` | Convert Leet Speak | core | differential_pinned | exact | 28 |
+| `text.line_numbers.add@1` | Add line numbers | core | differential_pinned | exact | 24 |
+| `text.line_numbers.remove@1` | Remove line numbers | core | differential_pinned | exact | 16 |
+| `text.nato@1` | Convert to NATO alphabet | core | differential_pinned | exact | 7 |
+| `text.pad_lines@1` | Pad lines | core | differential_pinned | exact | 20 |
+| `text.regex.case_fold@1` | From Case Insensitive Regex | core | differential_pinned | exact | 12 |
+| `text.regex.case_widen@1` | To Case Insensitive Regex | core | differential_pinned | exact | 16 |
+| `text.remove_whitespace@1` | Remove whitespace | core | differential_pinned | exact | 6 |
+| `text.smart.escape@1` | Escape Smart Characters | core | differential_pinned | exact | 33 |
+| `text.unicode.format@1` | Unicode Text Format | core | differential_pinned | exact | 16 |
+| `text.wrap@1` | Wrap | core | differential_pinned | exact | 28 |
+| `text.xkcd_random@1` | XKCD Random Number | core | differential_pinned | exact | 1 |
+| `time.filetime.decode@1` | Windows Filetime to UNIX Timestamp | core | differential_pinned | exact | 62 |
+| `time.filetime.encode@1` | UNIX Timestamp to Windows Filetime | core | differential_pinned | exact | 186 |
 
 Operations the reference has and FerroSift does not are reported by
 `cargo xtask cyberchef gap`, which needs the pinned checkout and so is

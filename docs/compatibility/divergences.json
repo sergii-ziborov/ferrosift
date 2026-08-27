@@ -1,0 +1,143 @@
+{
+  "comment": [
+    "Aliased operations whose behaviour is known to differ from the reference",
+    "somewhere, with the domain of the difference named.",
+    "",
+    "This exists because `exact` was doing two jobs. It meant 'the reference",
+    "bytes are pinned', which is a statement about evidence, and it was being",
+    "read as 'this operation matches the reference everywhere', which is a",
+    "statement about behaviour. Those are different claims and an operation can",
+    "have the first without the second: every entry below is byte-pinned over",
+    "the inputs it covers and diverges outside them.",
+    "",
+    "Each of these is already written out in prose on cyberchef-v11.3.0.md.",
+    "`section` names the heading anchor, and tools/ledger/generate.mjs refuses",
+    "an entry whose section is not there or whose alias is not registered, so",
+    "this file cannot outlive what it points at.",
+    "",
+    "A resource limit is not a divergence. Every operation is bounded by the",
+    "execution budget, which the reference does not have at all; that is a",
+    "property of the runtime and is stated once under Limits."
+  ],
+  "divergences": [
+    {
+      "alias": "From Hex",
+      "domain": "an odd number of hex digits, and text holding none",
+      "reason": "the reference reads a trailing lone digit as a low nibble and decodes text with no digits to nothing; both are refused so a mistyped recipe complains instead of falling silent",
+      "section": "from-hex-refuses-an-odd-number-of-digits",
+      "pinned_by": "crates/ferrosift-operations/tests/safety.rs"
+    },
+    {
+      "alias": "Object Identifier to Hex",
+      "domain": "text the reference's bignum parser skips characters in",
+      "reason": "the reference answers a number derived from the letters of `NaN`; reproducing it would mean reproducing that library's digit table for output nobody should act on",
+      "section": "object-identifiers-refuse-where-the-reference-answers-nan",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_framing.rs"
+    },
+    {
+      "alias": "Hex to Object Identifier",
+      "domain": "text the reference's bignum parser skips characters in",
+      "reason": "the reference answers a number derived from the letters of `NaN`; reproducing it would mean reproducing that library's digit table for output nobody should act on",
+      "section": "object-identifiers-refuse-where-the-reference-answers-nan",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_framing.rs"
+    },
+    {
+      "alias": "TEA Encrypt",
+      "domain": "`RANDOM` padding where padding is actually added",
+      "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else",
+      "section": "tea-and-xtea-reproduce-two-of-the-references-own-bugs",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_tea.rs"
+    },
+    {
+      "alias": "TEA Decrypt",
+      "domain": "`RANDOM` padding where padding is actually added",
+      "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else",
+      "section": "tea-and-xtea-reproduce-two-of-the-references-own-bugs",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_tea.rs"
+    },
+    {
+      "alias": "XTEA Encrypt",
+      "domain": "`RANDOM` padding where padding is actually added",
+      "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else",
+      "section": "tea-and-xtea-reproduce-two-of-the-references-own-bugs",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_tea.rs"
+    },
+    {
+      "alias": "XTEA Decrypt",
+      "domain": "`RANDOM` padding where padding is actually added",
+      "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else",
+      "section": "tea-and-xtea-reproduce-two-of-the-references-own-bugs",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_tea.rs"
+    },
+    {
+      "alias": "HMAC",
+      "domain": "a `Latin1` key holding a character above the byte range",
+      "reason": "`crypto-api` packs four characters into a word with no mask, so a high character spills into the previous one's position; the digest is the HMAC of no key under any encoding",
+      "section": "a-togglestring-field-is-read-two-different-ways",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_togglestring.rs"
+    },
+    {
+      "alias": "Find / Replace",
+      "domain": "regex mode with exotic Unicode property classes",
+      "reason": "the portable automata engine is not XRegExp and has no lookaround; the simple and extended modes are unaffected",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/fixtures/cyberchef-v11.3.0/corpus.json"
+    },
+    {
+      "alias": "Extract domains",
+      "domain": "labels longer than 63 characters",
+      "reason": "the reference's `{1,63}` per-label cap needs lookaround the portable engine does not have; it does not arise for real domains",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/fixtures/cyberchef-v11.3.0/corpus.json"
+    },
+    {
+      "alias": "MD2",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds` rather than answered with a digest of a different function",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_digest.rs"
+    },
+    {
+      "alias": "SM3",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds` rather than answered with a digest of a different function",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_digest.rs"
+    },
+    {
+      "alias": "Whirlpool",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds` rather than answered with a digest of a different function",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_digest.rs"
+    },
+    {
+      "alias": "SHA0",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.sha0.unsupported_rounds`",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance.rs"
+    },
+    {
+      "alias": "SHA1",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds`",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance.rs"
+    },
+    {
+      "alias": "SHA2",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds`",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance.rs"
+    },
+    {
+      "alias": "SHA3",
+      "domain": "a reduced round count",
+      "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds`",
+      "section": "registered-operations",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance.rs"
+    }
+  ]
+}

@@ -9,11 +9,20 @@
   "totals": {
     "operations": 247,
     "aliased": 245,
-    "exact": 241,
-    "interoperable": 4,
-    "unverified": 0,
-    "native": 2,
-    "pinned_cases": 6565
+    "pinned_cases": 6565,
+    "evidence": {
+      "differential_pinned": 237,
+      "pinned_elsewhere": 4,
+      "round_trip": 4,
+      "none": 0,
+      "not_applicable": 2
+    },
+    "parity": {
+      "exact": 224,
+      "documented_divergence": 17,
+      "interoperable": 4,
+      "native": 2
+    }
   },
   "operations": [
     {
@@ -27,7 +36,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "analysis.index_of_coincidence@1",
@@ -40,7 +50,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 11,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "analysis.offset_checker@1",
@@ -53,7 +64,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 29,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "analysis.suggest@1",
@@ -66,7 +78,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "native"
+      "evidence": "not_applicable",
+      "parity": "native"
     },
     {
       "id": "asn1.oid.decode@1",
@@ -79,7 +92,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 30,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "text the reference's bignum parser skips characters in",
+        "reason": "the reference answers a number derived from the letters of `NaN`; reproducing it would mean reproducing that library's digit table for output nobody should act on"
+      }
     },
     {
       "id": "asn1.oid.encode@1",
@@ -92,7 +110,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 41,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "text the reference's bignum parser skips characters in",
+        "reason": "the reference answers a number derived from the letters of `NaN`; reproducing it would mean reproducing that library's digit table for output nobody should act on"
+      }
     },
     {
       "id": "asn1.pem.decode@1",
@@ -105,7 +128,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 17,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "asn1.pem.encode@1",
@@ -118,7 +142,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.adler32@1",
@@ -131,7 +156,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.fletcher16@1",
@@ -144,7 +170,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.fletcher32@1",
@@ -157,7 +184,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.fletcher64@1",
@@ -170,7 +198,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.fletcher8@1",
@@ -183,7 +212,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.luhn@1",
@@ -196,7 +226,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.tcp_ip@1",
@@ -209,7 +240,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "checksum.xor@1",
@@ -222,7 +254,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 60,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.a1z26.decode@1",
@@ -235,7 +268,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 24,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.a1z26.encode@1",
@@ -248,7 +282,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 42,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.affine.decode@1",
@@ -261,7 +296,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 35,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.affine.encode@1",
@@ -274,7 +310,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 70,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.atbash@1",
@@ -287,7 +324,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.bacon.decode@1",
@@ -300,7 +338,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 17,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.bacon.encode@1",
@@ -313,7 +352,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.bifid.decode@1",
@@ -326,7 +366,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.bifid.encode@1",
@@ -339,7 +380,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.caesar_box@1",
@@ -352,7 +394,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.cetacean.decode@1",
@@ -365,7 +408,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.cetacean.encode@1",
@@ -378,7 +422,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.rail_fence.decode@1",
@@ -391,7 +436,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.rail_fence.encode@1",
@@ -404,7 +450,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 24,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.rot13.brute@1",
@@ -417,7 +464,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 44,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.rot47.brute@1",
@@ -430,7 +478,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 15,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.rot47@1",
@@ -443,7 +492,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 8,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.rot8000@1",
@@ -456,7 +506,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 21,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.substitute@1",
@@ -469,7 +520,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.vigenere.decode@1",
@@ -482,7 +534,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 28,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "cipher.vigenere.encode@1",
@@ -495,7 +548,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 56,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "compression.bzip2.compress@1",
@@ -508,7 +562,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "interoperable",
+      "evidence": "round_trip",
+      "parity": "interoperable",
       "note": "compressor output is interoperable; Bzip2 Decompress is differential-pinned"
     },
     {
@@ -522,7 +577,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 1,
-      "status": "exact",
+      "evidence": "differential_pinned",
+      "parity": "exact",
       "note": "no Node bzip2 compressor to sample fresh inputs; pinned in differential.json"
     },
     {
@@ -536,7 +592,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "compression.gzip@1",
@@ -549,7 +606,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "interoperable",
+      "evidence": "round_trip",
+      "parity": "interoperable",
       "note": "compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned"
     },
     {
@@ -563,7 +621,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 8,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "compression.raw.deflate@1",
@@ -576,7 +635,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "interoperable",
+      "evidence": "round_trip",
+      "parity": "interoperable",
       "note": "compressor output is interoperable; Raw Inflate is corpus-pinned"
     },
     {
@@ -590,7 +650,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "compression.zlib.deflate@1",
@@ -603,7 +664,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "interoperable",
+      "evidence": "round_trip",
+      "parity": "interoperable",
       "note": "compressor output is interoperable; Zlib Inflate is corpus-pinned"
     },
     {
@@ -617,7 +679,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "core.identity@1",
@@ -630,7 +693,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "native"
+      "evidence": "not_applicable",
+      "parity": "native"
     },
     {
       "id": "crypto.aes.decrypt@1",
@@ -643,7 +707,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.aes.encrypt@1",
@@ -656,7 +721,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.aes_kw.unwrap@1",
@@ -669,7 +735,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 1,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.aes_kw.wrap@1",
@@ -682,7 +749,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.ls47.decrypt@1",
@@ -695,7 +763,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.ls47.encrypt@1",
@@ -708,7 +777,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 56,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.pbkdf2@1",
@@ -721,7 +791,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.rc4@1",
@@ -734,7 +805,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.rc4_drop@1",
@@ -747,7 +819,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 34,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.scrypt@1",
@@ -760,7 +833,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.tea.decrypt@1",
@@ -773,7 +847,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 85,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "`RANDOM` padding where padding is actually added",
+        "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else"
+      }
     },
     {
       "id": "crypto.tea.encrypt@1",
@@ -786,7 +865,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 99,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "`RANDOM` padding where padding is actually added",
+        "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else"
+      }
     },
     {
       "id": "crypto.xtea.decrypt@1",
@@ -799,7 +883,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 45,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "`RANDOM` padding where padding is actually added",
+        "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else"
+      }
     },
     {
       "id": "crypto.xtea.encrypt@1",
@@ -812,7 +901,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 45,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "`RANDOM` padding where padding is actually added",
+        "reason": "the reference fills those bytes with `Math.random()`, so there is no output to match; refused exactly where it would have been unpredictable and accepted everywhere else"
+      }
     },
     {
       "id": "crypto.xxtea.decrypt@1",
@@ -825,7 +919,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 8,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "crypto.xxtea.encrypt@1",
@@ -838,7 +933,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 21,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.drop_bytes@1",
@@ -851,7 +947,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.head@1",
@@ -864,7 +961,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.nth_bytes.drop@1",
@@ -877,7 +975,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 17,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.nth_bytes.take@1",
@@ -890,7 +989,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 17,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.remove_null_bytes@1",
@@ -903,7 +1003,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.reverse@1",
@@ -916,7 +1017,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.swap_endianness@1",
@@ -929,7 +1031,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 38,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.tail@1",
@@ -942,7 +1045,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 18,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "data.take_bytes@1",
@@ -955,7 +1059,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "defang.fang_url@1",
@@ -968,7 +1073,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "defang.ip@1",
@@ -981,7 +1087,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "defang.url@1",
@@ -994,7 +1101,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 3,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "distance.hamming@1",
@@ -1007,7 +1115,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "distance.levenshtein@1",
@@ -1020,7 +1129,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 25,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base32.decode@1",
@@ -1033,7 +1143,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 28,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base32.encode@1",
@@ -1046,7 +1157,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 29,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base45.decode@1",
@@ -1059,7 +1171,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base45.encode@1",
@@ -1072,7 +1185,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base58.decode@1",
@@ -1085,7 +1199,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 25,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base58.encode@1",
@@ -1098,7 +1213,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 25,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base62.decode@1",
@@ -1111,7 +1227,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base62.encode@1",
@@ -1124,7 +1241,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 15,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base64.decode@1",
@@ -1137,7 +1255,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 41,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base64.encode@1",
@@ -1150,7 +1269,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 52,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base85.decode@1",
@@ -1163,7 +1283,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 26,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base85.encode@1",
@@ -1176,7 +1297,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 27,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base92.decode@1",
@@ -1189,7 +1311,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.base92.encode@1",
@@ -1202,7 +1325,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 8,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.bcd.decode@1",
@@ -1215,7 +1339,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 37,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.bcd.encode@1",
@@ -1228,7 +1353,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 300,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.bech32.decode@1",
@@ -1241,7 +1367,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 51,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.bech32.encode@1",
@@ -1254,7 +1381,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 34,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.binary.decode@1",
@@ -1267,7 +1395,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.binary.encode@1",
@@ -1280,7 +1409,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.braille.decode@1",
@@ -1293,7 +1423,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 15,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.braille.encode@1",
@@ -1306,7 +1437,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.caret_m.decode@1",
@@ -1319,7 +1451,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.charcode.decode@1",
@@ -1332,7 +1465,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.charcode.encode@1",
@@ -1345,7 +1479,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.cobs.decode@1",
@@ -1358,7 +1493,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 25,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.cobs.encode@1",
@@ -1371,7 +1507,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.ctx1.decode@1",
@@ -1384,7 +1521,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.ctx1.encode@1",
@@ -1397,7 +1535,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.decimal.decode@1",
@@ -1410,7 +1549,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.decimal.encode@1",
@@ -1423,7 +1563,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 26,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.float.decode@1",
@@ -1436,7 +1577,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 87,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.float.encode@1",
@@ -1449,7 +1591,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 59,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.hex.decode@1",
@@ -1462,7 +1605,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 27,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "an odd number of hex digits, and text holding none",
+        "reason": "the reference reads a trailing lone digit as a low nibble and decodes text with no digits to nothing; both are refused so a mistyped recipe complains instead of falling silent"
+      }
     },
     {
       "id": "encoding.hex.encode@1",
@@ -1475,7 +1623,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 53,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.hex_content.decode@1",
@@ -1488,7 +1637,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.hex_content.encode@1",
@@ -1501,7 +1651,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 26,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.hexdump.decode@1",
@@ -1514,7 +1665,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 6,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.hexdump.encode@1",
@@ -1527,7 +1679,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.html.decode@1",
@@ -1540,7 +1693,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.html.encode@1",
@@ -1553,7 +1707,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.microsoft_script.decode@1",
@@ -1566,7 +1721,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.modhex.decode@1",
@@ -1579,7 +1735,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 70,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.modhex.encode@1",
@@ -1592,7 +1749,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 120,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.morse.decode@1",
@@ -1605,7 +1763,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 29,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.morse.encode@1",
@@ -1618,7 +1777,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 64,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.netbios.decode@1",
@@ -1631,7 +1791,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.netbios.encode@1",
@@ -1644,7 +1805,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.octal.decode@1",
@@ -1657,7 +1819,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.octal.encode@1",
@@ -1670,7 +1833,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.punycode.decode@1",
@@ -1683,7 +1847,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.punycode.encode@1",
@@ -1696,7 +1861,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 19,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.quoted_printable.decode@1",
@@ -1709,7 +1875,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 31,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.quoted_printable.encode@1",
@@ -1722,7 +1889,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 19,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.radix.decode@1",
@@ -1735,7 +1903,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 48,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.radix.encode@1",
@@ -1748,7 +1917,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 148,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.rot13@1",
@@ -1761,7 +1931,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.text_integer@1",
@@ -1774,7 +1945,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 136,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.unicode.escape@1",
@@ -1787,7 +1959,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 56,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.unicode.unescape@1",
@@ -1800,7 +1973,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 38,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.url.decode@1",
@@ -1813,7 +1987,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 26,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.url.encode@1",
@@ -1826,7 +2001,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.varint.decode@1",
@@ -1839,7 +2015,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 29,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "encoding.varint.encode@1",
@@ -1852,7 +2029,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.domain@1",
@@ -1865,7 +2043,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 1,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "labels longer than 63 characters",
+        "reason": "the reference's `{1,63}` per-label cap needs lookaround the portable engine does not have; it does not arise for real domains"
+      }
     },
     {
       "id": "extract.email@1",
@@ -1878,7 +2061,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.file_paths@1",
@@ -1891,7 +2075,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.hashes@1",
@@ -1904,7 +2089,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.ip@1",
@@ -1917,7 +2103,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.mac@1",
@@ -1930,7 +2117,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.strings@1",
@@ -1943,7 +2131,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "extract.url@1",
@@ -1956,7 +2145,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "filesystem.unix_permissions@1",
@@ -1969,7 +2159,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 32,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "flow.comment@1",
@@ -1982,7 +2173,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "exact",
+      "evidence": "pinned_elsewhere",
+      "parity": "exact",
       "note": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
     },
     {
@@ -1996,7 +2188,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "exact",
+      "evidence": "pinned_elsewhere",
+      "parity": "exact",
       "note": "flow-control map; pinned in conformance_fork.rs"
     },
     {
@@ -2010,7 +2203,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "exact",
+      "evidence": "pinned_elsewhere",
+      "parity": "exact",
       "note": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
     },
     {
@@ -2024,7 +2218,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 0,
-      "status": "exact",
+      "evidence": "pinned_elsewhere",
+      "parity": "exact",
       "note": "flow-control join; pinned in conformance_fork.rs"
     },
     {
@@ -2038,7 +2233,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.blake2b@1",
@@ -2051,7 +2247,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 104,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.blake2s@1",
@@ -2064,7 +2261,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 62,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.blake3@1",
@@ -2077,7 +2275,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 73,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.hmac@1",
@@ -2090,7 +2289,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 29,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a `Latin1` key holding a character above the byte range",
+        "reason": "`crypto-api` packs four characters into a word with no mask, so a high character spills into the previous one's position; the digest is the HMAC of no key under any encoding"
+      }
     },
     {
       "id": "hash.keccak@1",
@@ -2103,7 +2307,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 24,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.md2@1",
@@ -2116,7 +2321,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds` rather than answered with a digest of a different function"
+      }
     },
     {
       "id": "hash.md4@1",
@@ -2129,7 +2339,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.md5@1",
@@ -2142,7 +2353,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.murmur3@1",
@@ -2155,7 +2367,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 48,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.nt@1",
@@ -2168,7 +2381,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.ripemd@1",
@@ -2181,7 +2395,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 52,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.sha0@1",
@@ -2194,7 +2409,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.sha0.unsupported_rounds`"
+      }
     },
     {
       "id": "hash.sha1@1",
@@ -2207,7 +2427,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds`"
+      }
     },
     {
       "id": "hash.sha2@1",
@@ -2220,7 +2445,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds`"
+      }
     },
     {
       "id": "hash.sha3@1",
@@ -2233,7 +2463,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds`"
+      }
     },
     {
       "id": "hash.shake@1",
@@ -2246,7 +2481,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 24,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.sm3@1",
@@ -2259,7 +2495,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds` rather than answered with a digest of a different function"
+      }
     },
     {
       "id": "hash.streebog@1",
@@ -2272,7 +2513,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 17,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "hash.whirlpool@1",
@@ -2285,7 +2527,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a reduced round count",
+        "reason": "only the published full-round function is implemented; a reduced count is refused with `hash.unsupported_rounds` rather than answered with a digest of a different function"
+      }
     },
     {
       "id": "http.dechunk@1",
@@ -2298,7 +2545,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "http.headers.strip@1",
@@ -2311,7 +2559,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 6,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "list.split@1",
@@ -2324,7 +2573,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "list.unique@1",
@@ -2337,7 +2587,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 30,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.add@1",
@@ -2350,7 +2601,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 33,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.and@1",
@@ -2363,7 +2615,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 32,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.not@1",
@@ -2376,7 +2629,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.or@1",
@@ -2389,7 +2643,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 31,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.parity@1",
@@ -2402,7 +2657,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 54,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.ror13@1",
@@ -2415,7 +2671,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 5,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.rotate.left@1",
@@ -2428,7 +2685,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 62,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.rotate.right@1",
@@ -2441,7 +2699,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 62,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.shift.left@1",
@@ -2454,7 +2713,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.shift.right@1",
@@ -2467,7 +2727,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 70,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.sub@1",
@@ -2480,7 +2741,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 33,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.xor@1",
@@ -2493,7 +2755,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 50,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "logic.xor_brute@1",
@@ -2506,7 +2769,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 3,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.convert.area@1",
@@ -2519,7 +2783,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 86,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.convert.data@1",
@@ -2532,7 +2797,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 92,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.convert.distance@1",
@@ -2545,7 +2811,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 68,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.convert.mass@1",
@@ -2558,7 +2825,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 146,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.convert.speed@1",
@@ -2571,7 +2839,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 66,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.divide@1",
@@ -2584,7 +2853,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 33,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.egcd@1",
@@ -2597,7 +2867,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 43,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.mean@1",
@@ -2610,7 +2881,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 33,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.median@1",
@@ -2623,7 +2895,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 32,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.mod@1",
@@ -2636,7 +2909,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 18,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.modinv@1",
@@ -2649,7 +2923,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 25,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.multiply@1",
@@ -2662,7 +2937,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 32,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.stddev@1",
@@ -2675,7 +2951,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 32,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.subtract@1",
@@ -2688,7 +2965,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 32,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "math.sum@1",
@@ -2701,7 +2979,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 42,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "network.ip.format@1",
@@ -2714,7 +2993,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 231,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "network.mac.format@1",
@@ -2727,7 +3007,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 63,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "network.strip.ipv4@1",
@@ -2740,7 +3021,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "network.strip.tcp@1",
@@ -2753,7 +3035,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "network.strip.udp@1",
@@ -2766,7 +3049,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "parsing.colour_code@1",
@@ -2779,7 +3063,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 26,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "parsing.tlv@1",
@@ -2792,7 +3077,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 17,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "sets.cartesian_product@1",
@@ -2805,7 +3091,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "sets.difference@1",
@@ -2818,7 +3105,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "sets.intersection@1",
@@ -2831,7 +3119,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "sets.power@1",
@@ -2844,7 +3133,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "sets.symmetric_difference@1",
@@ -2857,7 +3147,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "sets.union@1",
@@ -2870,7 +3161,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 10,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "shaping.to_table@1",
@@ -2883,7 +3175,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 73,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.alphabet.expand@1",
@@ -2896,7 +3189,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.ansi.strip@1",
@@ -2909,7 +3203,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.case.all@1",
@@ -2922,7 +3217,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.case.alternating@1",
@@ -2935,7 +3231,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.case.lower@1",
@@ -2948,7 +3245,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.case.swap@1",
@@ -2961,7 +3259,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.case.upper@1",
@@ -2974,7 +3273,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.count@1",
@@ -2987,7 +3287,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 14,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.debruijn@1",
@@ -3000,7 +3301,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 9,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.escape.unescape@1",
@@ -3013,7 +3315,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 11,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.find_replace@1",
@@ -3026,7 +3329,12 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 4,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "regex mode with exotic Unicode property classes",
+        "reason": "the portable automata engine is not XRegExp and has no lookaround; the simple and extended modes are unaffected"
+      }
     },
     {
       "id": "text.html.strip_tags@1",
@@ -3039,7 +3347,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 44,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.html.to_text@1",
@@ -3052,7 +3361,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 6,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.leet@1",
@@ -3065,7 +3375,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 28,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.line_numbers.add@1",
@@ -3078,7 +3389,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 24,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.line_numbers.remove@1",
@@ -3091,7 +3403,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.nato@1",
@@ -3104,7 +3417,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 7,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.pad_lines@1",
@@ -3117,7 +3431,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 20,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.regex.case_fold@1",
@@ -3130,7 +3445,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 12,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.regex.case_widen@1",
@@ -3143,7 +3459,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.remove_whitespace@1",
@@ -3156,7 +3473,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 6,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.smart.escape@1",
@@ -3169,7 +3487,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 33,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.unicode.format@1",
@@ -3182,7 +3501,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 16,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.wrap@1",
@@ -3195,7 +3515,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 28,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "text.xkcd_random@1",
@@ -3208,7 +3529,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 1,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "time.filetime.decode@1",
@@ -3221,7 +3543,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 62,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "time.filetime.encode@1",
@@ -3234,7 +3557,8 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 186,
-      "status": "exact"
+      "evidence": "differential_pinned",
+      "parity": "exact"
     }
   ]
 }

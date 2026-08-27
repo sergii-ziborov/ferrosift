@@ -11,9 +11,9 @@ is replayed against both, and adding the newer profile did not retire the
 older: see [reference profiles](docs/compatibility/profiles.md).
 
 <!-- ledger:begin -->
-| Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
-|---:|---:|---:|---:|
-| 247 | 245 | **241** | **6565** |
+| Registered operations | CyberChef-aliased | Differential-pinned | Exact parity | Pinned cases |
+|---:|---:|---:|---:|---:|
+| 247 | 245 | 237 | **224** | **6565** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates

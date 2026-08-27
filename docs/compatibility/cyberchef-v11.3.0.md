@@ -247,6 +247,29 @@ tokens outside `0..=255`, alphabets of the wrong size, and corrupt gzip
 streams. These stable rejections are the only intentional divergences, and
 none of them occur for inputs CyberChef 11.3.0 processes successfully.
 
+## Where this page and the ledger meet
+
+Every divergence argued below is also recorded in
+[`divergences.json`](divergences.json), one entry per operation, naming the
+domain it applies to and the section here that argues it. The ledger reads that
+file to separate two questions it used to answer with one word:
+
+- **Evidence** — how an operation was checked. 237 are differential-pinned
+  against the reference, 4 by a named test the automatic corpus cannot reach,
+  4 through a pinned inverse, and none by nothing at all.
+- **Parity** — how close it came. 224 match the reference everywhere this
+  project knows of, 17 diverge over a stated domain, 4 are interoperable rather
+  than byte-identical, and 2 are FerroSift's own with no reference to match.
+
+The two are not the same claim and an operation can have the first without the
+second. A corpus covers the cases it holds; it cannot speak for the ones it
+does not, and `exact` was being read as though it could. Every operation listed
+as diverging is byte-pinned over its own corpus — the divergence is what lies
+outside it, which is exactly what a case count is unable to say.
+
+The generator refuses an entry whose alias is not registered or whose section
+is not on this page, so neither half can quietly outlive the other.
+
 ## Format boundaries
 
 ### Delimiter arguments are values, not spellings

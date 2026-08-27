@@ -48,5 +48,7 @@ if (stale) {
 
 process.stdout.write(
     `ledger current: ${ledger.totals.operations} operations, ` +
-        `${ledger.totals.exact} exact, ${ledger.totals.pinned_cases} pinned cases\n`,
+        `${ledger.totals.evidence.differential_pinned} differential-pinned, ` +
+        `${ledger.totals.parity.exact} exact parity, ` +
+        `${ledger.totals.pinned_cases} pinned cases\n`,
 );

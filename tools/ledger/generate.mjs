@@ -88,29 +88,69 @@ function exemptions() {
     return new Map(file.exemptions.map(entry => [entry.alias, entry]));
 }
 
+// The divergence list is read the same way the exemption list is, and for a
+// related reason: it names what a status word cannot say on its own.
+const divergencesPath = path.join(repoRoot, "docs/compatibility/divergences.json");
+
+/** Reads the recorded behavioural divergences, keyed by alias. */
+function divergences() {
+    const file = JSON.parse(readFileSync(divergencesPath, "utf8"));
+    return new Map(file.divergences.map(entry => [entry.alias, entry]));
+}
+
 /**
- * `exact` when the reference bytes are pinned, either by the fixtures or by an
- * `elsewhere` exemption naming where; `interoperable` when the operation is
- * deliberately not byte-pinned; `unverified` when an alias has neither, which
- * the corpus gate rejects.
+ * What backs the claim: how the operation was checked, not how well it did.
+ *
+ * `differential_pinned` is a replayed case count. `pinned_elsewhere` is a
+ * hand-written test named by an exemption, for operations the automatic corpus
+ * cannot sample. `round_trip` is an operation whose own bytes are one valid
+ * encoding among several, checked through the inverse that *is* pinned.
+ * `none` means an alias with nothing behind it, which the corpus gate rejects
+ * before this file is written — so it is always zero, and counted anyway so
+ * that the zero is visible. An operation with no alias is `not_applicable`
+ * rather than unevidenced: there is no reference claim to evidence.
  */
-function statusOf(alias, cases, exemption) {
+function evidenceOf(alias, cases, exemption) {
+    if (!alias) return "not_applicable";
+    if (cases > 0) return "differential_pinned";
+    if (exemption?.scope === "elsewhere") return "pinned_elsewhere";
+    if (exemption?.scope === "interoperable") return "round_trip";
+    return "none";
+}
+
+/**
+ * How close the behaviour is, which is a different question from how it was
+ * checked.
+ *
+ * These two were one word until now, and the word was `exact`. It meant "the
+ * reference bytes are pinned" and it was read as "this matches the reference
+ * everywhere" — a claim no case count can make, because a corpus can only
+ * cover the inputs it holds. An operation that is byte-pinned over its whole
+ * corpus and refuses one documented class of input outside it is honestly
+ * described by neither half alone.
+ */
+function parityOf(alias, exemption, divergence) {
     if (!alias) return "native";
-    if (cases > 0) return "exact";
-    if (exemption?.scope === "elsewhere") return "exact";
+    if (divergence) return "documented_divergence";
     if (exemption?.scope === "interoperable") return "interoperable";
-    return "unverified";
+    return "exact";
 }
 
 export function buildLedger() {
     const membership = packMembership();
     const cases = conformanceCases();
     const exempt = exemptions();
+    const diverge = divergences();
+    const page = readFileSync(
+        path.join(repoRoot, `docs/compatibility/cyberchef-v${REFERENCE.version}.md`),
+        "utf8",
+    );
     const entries = catalog("portable-full").map(operation => {
         const alias =
             operation.aliases.find(entry => entry.profile === "CyberChefV11_3")?.name ?? null;
         const count = alias ? (cases.get(alias) ?? 0) : 0;
         const exemption = alias ? (exempt.get(alias) ?? null) : null;
+        const divergence = alias ? (diverge.get(alias) ?? null) : null;
         const entry = {
             id: operation.id,
             display_name: operation.display_name,
@@ -119,9 +159,13 @@ export function buildLedger() {
             feature: membership.get(operation.id) ?? "core",
             targets: operation.targets,
             conformance_cases: count,
-            status: statusOf(alias, count, exemption),
+            evidence: evidenceOf(alias, count, exemption),
+            parity: parityOf(alias, exemption, divergence),
         };
         if (exemption) entry.note = exemption.reason;
+        if (divergence) {
+            entry.divergence = {domain: divergence.domain, reason: divergence.reason};
+        }
         return entry;
     });
 
@@ -137,20 +181,64 @@ export function buildLedger() {
         }
     }
 
-    const counted = status => entries.filter(entry => entry.status === status).length;
+    // A divergence that names nothing, or a section that is not on the page,
+    // is a claim about something that is no longer there.
+    for (const [alias, entry] of diverge) {
+        if (!aliases.has(alias)) {
+            throw new Error(`divergence \`${alias}\` names an operation that is not registered`);
+        }
+        if (!page.includes(`<a id="${entry.section}"`) && !headingAnchor(page, entry.section)) {
+            throw new Error(
+                `divergence \`${alias}\` points at section \`${entry.section}\`, `
+                    + `which cyberchef-v${REFERENCE.version}.md does not have`,
+            );
+        }
+        if (exempt.has(alias)) {
+            throw new Error(
+                `\`${alias}\` is both exempt from byte-pinning and recorded as diverging; `
+                    + "one of the two is wrong",
+            );
+        }
+    }
+
+    const by = (field, value) => entries.filter(entry => entry[field] === value).length;
     return {
         reference: REFERENCE,
         totals: {
             operations: entries.length,
             aliased: entries.filter(entry => entry.reference_alias).length,
-            exact: counted("exact"),
-            interoperable: counted("interoperable"),
-            unverified: counted("unverified"),
-            native: counted("native"),
             pinned_cases: [...cases.values()].reduce((sum, value) => sum + value, 0),
+            evidence: {
+                differential_pinned: by("evidence", "differential_pinned"),
+                pinned_elsewhere: by("evidence", "pinned_elsewhere"),
+                round_trip: by("evidence", "round_trip"),
+                none: by("evidence", "none"),
+                not_applicable: by("evidence", "not_applicable"),
+            },
+            parity: {
+                exact: by("parity", "exact"),
+                documented_divergence: by("parity", "documented_divergence"),
+                interoperable: by("parity", "interoperable"),
+                native: by("parity", "native"),
+            },
         },
         operations: entries,
     };
+}
+
+/** Whether the page has a heading GitHub would give this anchor. */
+function headingAnchor(page, anchor) {
+    for (const line of page.split(/\r?\n/u)) {
+        if (!line.startsWith("#")) continue;
+        const slug = line
+            .replace(/^#+\s*/u, "")
+            .toLowerCase()
+            .replace(/[^\w\s-]/gu, "")
+            .trim()
+            .replace(/\s+/gu, "-");
+        if (slug === anchor) return true;
+    }
+    return false;
 }
 
 /** Renders the human-readable table from the same data. */
@@ -175,31 +263,55 @@ export function renderMarkdown(ledger) {
         "|---|---:|",
         `| Registered operations | ${totals.operations} |`,
         `| Reference-aliased | ${totals.aliased} |`,
-        `| Byte-pinned (\`exact\`) | ${totals.exact} |`,
-        `| Interoperable, exempt from byte-pinning | ${totals.interoperable} |`,
-        `| Aliased but unverified | ${totals.unverified} |`,
-        `| FerroSift-native, no reference alias | ${totals.native} |`,
         `| Pinned cases | ${totals.pinned_cases} |`,
         "",
-        "`exact` means the reference bytes are pinned — by the case count shown,",
-        "or, where that is zero, by the test named in the note. `interoperable`",
-        "means the operation is deliberately not byte-pinned, because the",
-        "reference output is one valid encoding among several rather than the",
-        "only one. `native` means there is no reference alias to match.",
+        "Two questions, asked separately, because one word was answering both",
+        "and could only answer one. **Evidence** is how an operation was",
+        "checked. **Parity** is how close it came. An operation can be pinned",
+        "byte for byte across its whole corpus and still refuse one documented",
+        "class of input outside it — a corpus covers the cases it holds, and",
+        "cannot speak for the ones it does not.",
         "",
-        "There is no fourth state on purpose. An alias with neither pinned bytes",
-        "nor a recorded reason is a build failure, not a footnote: the corpus",
-        "coverage gate refuses it, reading the same exemption list this table",
-        "does.",
+        "| Evidence | |",
+        "|---|---:|",
+        `| Differential-pinned against the reference | ${totals.evidence.differential_pinned} |`,
+        `| Pinned by a named test instead of the corpus | ${totals.evidence.pinned_elsewhere} |`,
+        `| Checked through a pinned inverse | ${totals.evidence.round_trip} |`,
+        `| No reference claim to evidence | ${totals.evidence.not_applicable} |`,
+        `| Aliased with no evidence | ${totals.evidence.none} |`,
         "",
-        "| Operation | Alias | Pack | Status | Cases |",
-        "|---|---|---|---|---:|",
+        "| Parity | |",
+        "|---|---:|",
+        `| Exact | ${totals.parity.exact} |`,
+        `| Documented divergence | ${totals.parity.documented_divergence} |`,
+        `| Interoperable rather than byte-identical | ${totals.parity.interoperable} |`,
+        `| FerroSift-native, no reference to match | ${totals.parity.native} |`,
+        "",
+        "`Aliased with no evidence` is a build failure rather than a footnote:",
+        "an alias with neither pinned bytes nor a recorded reason is refused by",
+        "the corpus coverage gate, which reads the same exemption list this",
+        "table does. It is counted here so the zero is visible rather than",
+        "implied.",
+        "",
+        "`documented divergence` names an operation that differs from the",
+        "reference over a stated domain, listed in `divergences.json` with the",
+        "domain, the reason, and the section of the compatibility page that",
+        "argues it. Every one of them is byte-pinned over the inputs it covers;",
+        "the divergence is what lies outside those inputs.",
+        "",
+        "| Operation | Alias | Pack | Evidence | Parity | Cases |",
+        "|---|---|---|---|---|---:|",
     ];
     for (const entry of ledger.operations) {
         const alias = entry.reference_alias ?? "—";
-        const note = entry.note ? ` (${entry.note})` : "";
+        const detail = entry.divergence
+            ? ` (${entry.divergence.domain})`
+            : entry.note
+              ? ` (${entry.note})`
+              : "";
         lines.push(
-            `| \`${entry.id}\` | ${alias} | ${entry.feature} | ${entry.status}${note} | ${entry.conformance_cases} |`,
+            `| \`${entry.id}\` | ${alias} | ${entry.feature} | ${entry.evidence} `
+                + `| ${entry.parity}${detail} | ${entry.conformance_cases} |`,
         );
     }
     lines.push("");
@@ -238,9 +350,10 @@ function replaceBlock(current, marker, lines) {
 export function renderReadme(ledger, current) {
     const {totals} = ledger;
     const headline = [
-        "| Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |",
-        "|---:|---:|---:|---:|",
-        `| ${totals.operations} | ${totals.aliased} | **${totals.exact}** | **${totals.pinned_cases}** |`,
+        "| Registered operations | CyberChef-aliased | Differential-pinned | Exact parity | Pinned cases |",
+        "|---:|---:|---:|---:|---:|",
+        `| ${totals.operations} | ${totals.aliased} | ${totals.evidence.differential_pinned} `
+            + `| **${totals.parity.exact}** | **${totals.pinned_cases}** |`,
     ];
 
     const families = new Map();
@@ -264,6 +377,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     writeFileSync(readmePath, renderReadme(ledger, readFileSync(readmePath, "utf8")), "utf8");
     process.stdout.write(
         `ledger: ${ledger.totals.operations} operations, ` +
-            `${ledger.totals.exact} exact, ${ledger.totals.pinned_cases} pinned cases\n`,
+            `${ledger.totals.evidence.differential_pinned} differential-pinned, ` +
+            `${ledger.totals.parity.exact} exact parity, ` +
+            `${ledger.totals.pinned_cases} pinned cases\n`,
     );
 }
