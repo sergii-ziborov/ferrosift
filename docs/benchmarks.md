@@ -56,7 +56,7 @@ as a win.
 
 | Batch | Commit | Working tree |
 |---|---|---|
-| cipher | `0a5e398f` | **uncommitted changes present** |
+| cipher | `2ddbcf1f` | clean |
 | digest | `0a5e398f` | clean |
 | dispatch | `0a5e398f` | clean |
 | encoding | `0a5e398f` | clean |
@@ -465,26 +465,26 @@ comparison arm in this group.
 
 | Size | `ferrosift` | `ferrosift-per-call` | verdict |
 |---:|---:|---:|---|
-| 16 B | 1.68 µs | 2.85 µs | — |
-| 256 B | 4.52 µs | 5.39 µs | — |
-| 4 KiB | 46.82 µs | 46.95 µs | — |
-| 64 KiB | 752.16 µs | 734.30 µs | — |
-| 1 MiB | 12.47 ms | 12.51 ms | — |
+| 16 B | 3.32 µs | 5.17 µs | — |
+| 256 B | 7.61 µs | 10.02 µs | — |
+| 4 KiB | 68.77 µs | 68.50 µs | — |
+| 64 KiB | 1.12 ms | 1.12 ms | — |
+| 1 MiB | 17.49 ms | 18.58 ms | — |
 
 <details><summary>Confidence intervals</summary>
 
 | Size | Arm | Median | 95% interval |
 |---:|---|---:|---|
-| 16 B | `ferrosift` | 1.68 µs | 1.67 µs – 1.70 µs |
-| 16 B | `ferrosift-per-call` | 2.85 µs | 2.80 µs – 2.88 µs |
-| 256 B | `ferrosift` | 4.52 µs | 4.46 µs – 4.57 µs |
-| 256 B | `ferrosift-per-call` | 5.39 µs | 5.35 µs – 5.44 µs |
-| 4 KiB | `ferrosift` | 46.82 µs | 46.34 µs – 47.18 µs |
-| 4 KiB | `ferrosift-per-call` | 46.95 µs | 46.52 µs – 47.37 µs |
-| 64 KiB | `ferrosift` | 752.16 µs | 745.12 µs – 762.57 µs |
-| 64 KiB | `ferrosift-per-call` | 734.30 µs | 730.25 µs – 739.01 µs |
-| 1 MiB | `ferrosift` | 12.47 ms | 12.42 ms – 12.51 ms |
-| 1 MiB | `ferrosift-per-call` | 12.51 ms | 12.44 ms – 12.59 ms |
+| 16 B | `ferrosift` | 3.32 µs | 3.26 µs – 3.42 µs |
+| 16 B | `ferrosift-per-call` | 5.17 µs | 5.09 µs – 5.23 µs |
+| 256 B | `ferrosift` | 7.61 µs | 7.16 µs – 7.91 µs |
+| 256 B | `ferrosift-per-call` | 10.02 µs | 9.85 µs – 10.19 µs |
+| 4 KiB | `ferrosift` | 68.77 µs | 65.45 µs – 71.91 µs |
+| 4 KiB | `ferrosift-per-call` | 68.50 µs | 67.62 µs – 70.77 µs |
+| 64 KiB | `ferrosift` | 1.12 ms | 1.09 ms – 1.15 ms |
+| 64 KiB | `ferrosift-per-call` | 1.12 ms | 1.08 ms – 1.15 ms |
+| 1 MiB | `ferrosift` | 17.49 ms | 17.07 ms – 17.95 ms |
+| 1 MiB | `ferrosift-per-call` | 18.58 ms | 18.46 ms – 18.99 ms |
 
 </details>
 
@@ -492,26 +492,26 @@ comparison arm in this group.
 
 | Size | `ferrosift` | `ferrosift-per-call` | verdict |
 |---:|---:|---:|---|
-| 16 B | 1.80 µs | 2.98 µs | — |
-| 256 B | 4.64 µs | 5.90 µs | — |
-| 4 KiB | 48.88 µs | 48.97 µs | — |
-| 64 KiB | 770.07 µs | 772.58 µs | — |
-| 1 MiB | 12.83 ms | 13.03 ms | — |
+| 16 B | 3.91 µs | 6.17 µs | — |
+| 256 B | 8.58 µs | 11.28 µs | — |
+| 4 KiB | 47.62 µs | 75.02 µs | — |
+| 64 KiB | 744.77 µs | 727.50 µs | — |
+| 1 MiB | 17.53 ms | 17.72 ms | — |
 
 <details><summary>Confidence intervals</summary>
 
 | Size | Arm | Median | 95% interval |
 |---:|---|---:|---|
-| 16 B | `ferrosift` | 1.80 µs | 1.78 µs – 1.84 µs |
-| 16 B | `ferrosift-per-call` | 2.98 µs | 2.95 µs – 3.04 µs |
-| 256 B | `ferrosift` | 4.64 µs | 4.57 µs – 4.70 µs |
-| 256 B | `ferrosift-per-call` | 5.90 µs | 5.81 µs – 6.02 µs |
-| 4 KiB | `ferrosift` | 48.88 µs | 48.62 µs – 49.28 µs |
-| 4 KiB | `ferrosift-per-call` | 48.97 µs | 48.76 µs – 49.15 µs |
-| 64 KiB | `ferrosift` | 770.07 µs | 764.32 µs – 777.97 µs |
-| 64 KiB | `ferrosift-per-call` | 772.58 µs | 766.51 µs – 780.41 µs |
-| 1 MiB | `ferrosift` | 12.83 ms | 12.76 ms – 12.92 ms |
-| 1 MiB | `ferrosift-per-call` | 13.03 ms | 12.94 ms – 13.09 ms |
+| 16 B | `ferrosift` | 3.91 µs | 3.86 µs – 3.98 µs |
+| 16 B | `ferrosift-per-call` | 6.17 µs | 6.00 µs – 6.31 µs |
+| 256 B | `ferrosift` | 8.58 µs | 8.39 µs – 8.82 µs |
+| 256 B | `ferrosift-per-call` | 11.28 µs | 11.02 µs – 11.52 µs |
+| 4 KiB | `ferrosift` | 47.62 µs | 47.20 µs – 48.00 µs |
+| 4 KiB | `ferrosift-per-call` | 75.02 µs | 71.62 µs – 77.41 µs |
+| 64 KiB | `ferrosift` | 744.77 µs | 740.39 µs – 765.35 µs |
+| 64 KiB | `ferrosift-per-call` | 727.50 µs | 725.21 µs – 729.52 µs |
+| 1 MiB | `ferrosift` | 17.53 ms | 16.43 ms – 17.92 ms |
+| 1 MiB | `ferrosift-per-call` | 17.72 ms | 17.39 ms – 17.99 ms |
 
 </details>
 

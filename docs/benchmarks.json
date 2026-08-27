@@ -6,8 +6,8 @@
    "os": "windows",
    "arch": "x86_64",
    "cpu": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
-   "commit": "0a5e398f40bea7ba6727e0690dbfe14e0b2075cf",
-   "dirty": true
+   "commit": "2ddbcf1f5f4f0a47b2c2aa286bb5c8f243317709",
+   "dirty": false
   },
   "digest": {
    "batch": "digest",
@@ -362,161 +362,161 @@
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 12467723.128679562,
-   "low": 12418672.5,
-   "high": 12514636.842105262
+   "nanoseconds": 17492836,
+   "low": 17066204,
+   "high": 17945868
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 1676.2807274689535,
-   "low": 1665.407353291676,
-   "high": 1700.0273555325466
+   "nanoseconds": 3317.850466695167,
+   "low": 3258.5749286889545,
+   "high": 3415.507203227811
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 4521.761397149507,
-   "low": 4462.30736158219,
-   "high": 4565.88874120326
+   "nanoseconds": 7607.986201793332,
+   "low": 7156.72254789462,
+   "high": 7907.629171595512
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 46824.94142851888,
-   "low": 46341.00169779287,
-   "high": 47179.27412592648
+   "nanoseconds": 68769.2489114659,
+   "low": 65446.35176651306,
+   "high": 71907.84975606404
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 752158.6172816264,
-   "low": 745123.6790123456,
-   "high": 762573.9114380244
+   "nanoseconds": 1119416.7181069958,
+   "low": 1093217.8104575162,
+   "high": 1149043.9803439802
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 12506063.836898394,
-   "low": 12435843.28358209,
-   "high": 12588420.338983051
+   "nanoseconds": 18583189.182194617,
+   "low": 18457228.37837838,
+   "high": 18988453.333333332
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 2853.6205449059285,
-   "low": 2801.8799634869924,
-   "high": 2881.9488817891374
+   "nanoseconds": 5165.5559159560125,
+   "low": 5089.08907902485,
+   "high": 5233.656644034918
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 5387.486225196904,
-   "low": 5353.207289659602,
-   "high": 5441.668903278543
+   "nanoseconds": 10016.653073939768,
+   "low": 9853.005953787684,
+   "high": 10193.383615403483
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 46952.62030650313,
-   "low": 46515.241228070176,
-   "high": 47372.422723475356
+   "nanoseconds": 68499.44097222222,
+   "low": 67619.48914282753,
+   "high": 70771.53645833333
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 734302.9077723043,
-   "low": 730246.0451977401,
-   "high": 739011.4583333334
+   "nanoseconds": 1115387.9766316041,
+   "low": 1082450.2358490566,
+   "high": 1146947.1093017808
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 12834857.582688248,
-   "low": 12757631.666666668,
-   "high": 12916864.285714285
+   "nanoseconds": 17525558.88030888,
+   "low": 16428958.15920398,
+   "high": 17917900
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 1797.7108327727829,
-   "low": 1778.7646931251356,
-   "high": 1837.2277473123277
+   "nanoseconds": 3906.7650834403084,
+   "low": 3860.812091203619,
+   "high": 3977.943653479597
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 4639.273933531746,
-   "low": 4573.479166666667,
-   "high": 4699.58106884058
+   "nanoseconds": 8578.413208257178,
+   "low": 8394.847328244276,
+   "high": 8823.73383163698
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 48884.538332248965,
-   "low": 48619.19266253791,
-   "high": 49275.07183908046
+   "nanoseconds": 47620.69492888686,
+   "low": 47203.78962397117,
+   "high": 48004.228329809725
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 770066.9117647059,
-   "low": 764321.0884353742,
-   "high": 777970.3703703703
+   "nanoseconds": 744766.2873399715,
+   "low": 740392.3799884326,
+   "high": 765351.0683760684
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 13030803.94736842,
-   "low": 12938396.103896104,
-   "high": 13087433.449275363
+   "nanoseconds": 17724891.108499803,
+   "low": 17385935.714285713,
+   "high": 17994897.74853801
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 2977.294566058087,
-   "low": 2954.1897005090177,
-   "high": 3039.4001146277783
+   "nanoseconds": 6172.606146921818,
+   "low": 6003.236102133161,
+   "high": 6313.653490242251
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 5900.586888384911,
-   "low": 5809.117412022376,
-   "high": 6015.7045609258
+   "nanoseconds": 11283.579269668724,
+   "low": 11023.088475626937,
+   "high": 11516.26893944939
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 48965.35769400353,
-   "low": 48759.12930328278,
-   "high": 49154.27467292944
+   "nanoseconds": 75023.33428946801,
+   "low": 71619.21138120309,
+   "high": 77409.5924833388
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 772578.4090909092,
-   "low": 766511.1403508772,
-   "high": 780409.5064218482
+   "nanoseconds": 727496.1538461538,
+   "low": 725214.2011834319,
+   "high": 729522.1806020066
   },
   {
    "group": "distance_levenshtein",
