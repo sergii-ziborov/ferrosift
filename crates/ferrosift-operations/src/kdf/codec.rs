@@ -38,6 +38,18 @@ pub(super) fn pbkdf2_key(
         return Err(failed(INVALID_PARAMS));
     }
     ensure_budget(key_len, context)?;
+    // PBKDF2 derives one hash-sized block at a time and each block costs two
+    // compressions per iteration, because an HMAC is two hashes. The count
+    // comes straight from an argument that will accept four billion, and the
+    // answer is sixteen bytes either way -- so this is the only thing between
+    // a recipe and an hour of CPU nothing can interrupt.
+    let blocks = key_len.div_ceil(digest_bytes(hash)?);
+    context.ensure_work(
+        u64::try_from(blocks)
+            .unwrap_or(u64::MAX)
+            .saturating_mul(u64::from(iters))
+            .saturating_mul(2),
+    )?;
     let mut out = vec![0u8; key_len];
     match hash {
         "SHA1" => pbkdf2::<Hmac<Sha1>>(passphrase, salt, iters, &mut out)
@@ -77,11 +89,42 @@ pub(super) fn scrypt_key(
     if r_u32 == 0 || p_u32 == 0 {
         return Err(failed(INVALID_PARAMS));
     }
+    // scrypt takes both its memory and its time from arguments, and returns a
+    // key whose length says nothing about either. The memory is `128 * r * N`
+    // by construction -- that block is the algorithm, not an implementation
+    // detail -- and the work is proportional to `N * r * p`.
+    let n_units = u64::try_from(n).map_err(|_| failed(INVALID_PARAMS))?;
+    let r_units = u64::from(r_u32);
+    let p_units = u64::from(p_u32);
+    context.ensure_transient(
+        n_units
+            .saturating_mul(r_units)
+            .saturating_mul(128)
+            .saturating_add(key_len as u64),
+    )?;
+    context.ensure_work(n_units.saturating_mul(r_units).saturating_mul(p_units))?;
     let params = Params::new(log_n, r_u32, p_u32, key_len).map_err(|_| failed(INVALID_PARAMS))?;
     let mut out = vec![0u8; key_len];
     scrypt(password, salt, &params, &mut out).map_err(|_| failed(DERIVE_FAILED))?;
     context.ensure_active()?;
     Ok(to_hex_lower(&out))
+}
+
+/// How many bytes one block of the named hash produces.
+///
+/// PBKDF2 asks for `ceil(key_len / digest_len)` blocks, so this is what turns a
+/// key length into a block count. Reading it from the name rather than from the
+/// instantiated type keeps the estimate on the same side of the `match` as the
+/// argument that chose it.
+fn digest_bytes(hash: &str) -> Result<usize, OperationError> {
+    match hash {
+        "MD5" => Ok(16),
+        "SHA1" => Ok(20),
+        "SHA256" => Ok(32),
+        "SHA384" => Ok(48),
+        "SHA512" => Ok(64),
+        _ => Err(failed(INVALID_HASH)),
+    }
 }
 
 fn bits_to_bytes(bits: i128) -> Result<usize, OperationError> {

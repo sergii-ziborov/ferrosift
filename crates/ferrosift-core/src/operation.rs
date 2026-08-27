@@ -103,6 +103,22 @@ pub enum OperationError {
     Cancelled,
     /// Output would exceed an explicit execution ceiling.
     OutputLimitExceeded,
+    /// The operation would allocate more than the budget allows *while*
+    /// running, regardless of how large its answer is.
+    ///
+    /// Separate from [`Self::OutputLimitExceeded`] because it is a different
+    /// fact about a different quantity: scrypt with a large cost parameter
+    /// produces a thirty-two byte key and asks for gigabytes on the way there,
+    /// and an output limit that passed it would be answering the wrong
+    /// question.
+    TransientLimitExceeded,
+    /// The operation would perform more work than the budget allows.
+    ///
+    /// The one ceiling that is about time rather than memory. A key derivation
+    /// is *designed* to be slow and takes its cost from an argument, so the
+    /// only thing standing between a recipe and an hour of CPU is a bound on
+    /// the work it declares before starting.
+    WorkLimitExceeded,
     /// Operation-specific failure identified by a stable code.
     Failed {
         /// Namespaced stable code owned by the operation.
@@ -118,6 +134,8 @@ impl OperationError {
             Self::InvalidArguments => "core.operation.invalid_arguments",
             Self::Cancelled => "core.operation.cancelled",
             Self::OutputLimitExceeded => "core.operation.output_limit_exceeded",
+            Self::TransientLimitExceeded => "core.operation.transient_limit_exceeded",
+            Self::WorkLimitExceeded => "core.operation.work_limit_exceeded",
             Self::Failed { code } => code.as_str(),
         }
     }

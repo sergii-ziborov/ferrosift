@@ -20,6 +20,28 @@ pub struct ExecutionBudget {
     pub max_operation_invocations: u64,
     /// Maximum total bytes processed (branch inputs + operation inputs).
     pub max_total_bytes_processed: u64,
+    /// Maximum memory one operation may hold *while running*, beyond its
+    /// answer.
+    ///
+    /// Every other ceiling here measures something that crosses a boundary:
+    /// bytes in, bytes out, steps taken. This measures what an operation asks
+    /// for in the middle, which no boundary sees. scrypt is the case that made
+    /// it necessary — it takes its memory from an argument, `128 * r * N`, and
+    /// returns thirty-two bytes.
+    pub max_transient_bytes: u64,
+    /// Maximum work one operation may perform, in abstract units.
+    ///
+    /// A unit is roughly one compression-function call: one hash block, one
+    /// scrypt mixing round. The scale is chosen so estimates are comparable
+    /// across operations rather than accurate in seconds — what matters is
+    /// that a recipe cannot ask for a billion of them and be handed a
+    /// sixteen-byte answer.
+    ///
+    /// This is also the only bound on how long an operation is *unresponsive*.
+    /// Cancellation is cooperative and a library call cannot be interrupted
+    /// from outside, so bounding the work declared before the call is what
+    /// bounds the window in which nothing can stop it.
+    pub max_work_units: u64,
 }
 
 impl ExecutionBudget {
@@ -35,6 +57,16 @@ impl ExecutionBudget {
             max_flow_depth: 64,
             max_operation_invocations: 10_000_000,
             max_total_bytes_processed: 256 * 1024 * 1024,
+            // Enough for scrypt at `N = 2^17, r = 8` (128 MiB), which is far
+            // above any parameter a person picks, and short of the gigabytes
+            // the next power of two would ask for.
+            max_transient_bytes: 256 * 1024 * 1024,
+            // Sixty-seven million: PBKDF2 at about thirty million iterations
+            // for a single block, where the strongest published guidance asks
+            // for six hundred thousand. Generous by two orders of magnitude
+            // against real use, and two short of the four billion the argument
+            // will otherwise accept.
+            max_work_units: 1 << 26,
         }
     }
 

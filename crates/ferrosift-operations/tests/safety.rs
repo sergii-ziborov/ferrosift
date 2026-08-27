@@ -121,6 +121,8 @@ fn encoders_reject_outputs_above_the_operation_budget() {
         max_flow_depth: 8,
         max_operation_invocations: 1_000,
         max_total_bytes_processed: 1_048_576,
+        max_transient_bytes: 256 * 1024 * 1024,
+        max_work_units: 1 << 26,
     };
     let error = support::run_with_budget(
         "encoding.hex.encode@1",
@@ -149,6 +151,8 @@ fn encoders_reject_outputs_above_the_operation_budget() {
         max_flow_depth: 8,
         max_operation_invocations: 1_000,
         max_total_bytes_processed: 1_048_576,
+        max_transient_bytes: 256 * 1024 * 1024,
+        max_work_units: 1 << 26,
     };
     for encoder in [
         "encoding.base32.encode@1",
@@ -173,6 +177,110 @@ fn encoders_reject_outputs_above_the_operation_budget() {
             "{encoder}"
         );
     }
+}
+
+/// A key derivation takes its cost from an argument, so the argument is bounded.
+///
+/// Nothing else in the catalog is like this. An encoder's cost is its input and
+/// the budget already sees that; a KDF is *designed* to be slow, is told how
+/// slow, and returns the same short answer either way — so the output limit
+/// that governs everything else looks straight past it. PBKDF2 accepts an
+/// iteration count up to four thousand million and hands back sixteen bytes.
+///
+/// It is also the only bound on how long the operation is unresponsive.
+/// Cancellation is cooperative and a library call cannot be interrupted from
+/// outside, so bounding the work declared *before* the call is what bounds the
+/// window in which nothing can stop it.
+#[test]
+fn a_key_derivation_is_bounded_by_what_it_declares() {
+    let arguments = |iterations: i128| {
+        Arguments::from([
+            (
+                "passphrase".into(),
+                ArgumentValue::Map(Arguments::from([
+                    ("option".into(), ArgumentValue::Text("UTF8".into())),
+                    ("string".into(), ArgumentValue::Text("password".into())),
+                ])),
+            ),
+            (
+                "salt".into(),
+                ArgumentValue::Map(Arguments::from([
+                    ("option".into(), ArgumentValue::Text("Hex".into())),
+                    ("string".into(), ArgumentValue::Text("00112233".into())),
+                ])),
+            ),
+            ("key_size".into(), ArgumentValue::Integer(128)),
+            ("iterations".into(), ArgumentValue::Integer(iterations)),
+            (
+                "hashing_function".into(),
+                ArgumentValue::Text("SHA256".into()),
+            ),
+        ])
+    };
+
+    // Well above anything published guidance asks for, and still accepted.
+    support::run_with_budget(
+        "crypto.pbkdf2@1",
+        arguments(600_000),
+        support::text(""),
+        support::budget(),
+    )
+    .expect("a realistic iteration count must still derive a key");
+
+    // Four thousand million, which the argument type accepts and no caller
+    // means. Refused for what it is -- work -- rather than for its output.
+    let error = support::run_with_budget(
+        "crypto.pbkdf2@1",
+        arguments(4_000_000_000),
+        support::text(""),
+        support::budget(),
+    )
+    .expect_err("an unbounded iteration count must be refused");
+    assert_eq!(error.code(), "core.operation.work_limit_exceeded");
+}
+
+/// scrypt is bounded on memory as well, because that is what it takes.
+///
+/// `128 * r * N` is the algorithm rather than an implementation detail, so the
+/// cost parameter is a memory request with no relationship to the key it
+/// returns. `N = 2^24, r = 8` asks for sixteen gibibytes and answers with
+/// sixty-four bytes.
+#[test]
+fn scrypt_is_bounded_on_the_memory_its_parameters_ask_for() {
+    let arguments = |cost: i128| {
+        Arguments::from([
+            (
+                "salt".into(),
+                ArgumentValue::Map(Arguments::from([
+                    ("option".into(), ArgumentValue::Text("Hex".into())),
+                    ("string".into(), ArgumentValue::Text("00112233".into())),
+                ])),
+            ),
+            ("iterations".into(), ArgumentValue::Integer(cost)),
+            ("memory_factor".into(), ArgumentValue::Integer(8)),
+            ("parallelization_factor".into(), ArgumentValue::Integer(1)),
+            ("key_length".into(), ArgumentValue::Integer(64)),
+        ])
+    };
+
+    // The parameter set the operation itself defaults to.
+    support::run_with_budget(
+        "crypto.scrypt@1",
+        arguments(16_384),
+        support::text("password"),
+        support::budget(),
+    )
+    .expect("the default cost parameter must still derive a key");
+
+    // Sixteen gibibytes of mixing buffer for a sixty-four byte answer.
+    let error = support::run_with_budget(
+        "crypto.scrypt@1",
+        arguments(16_777_216),
+        support::text("password"),
+        support::budget(),
+    )
+    .expect_err("a cost parameter asking for gigabytes must be refused");
+    assert_eq!(error.code(), "core.operation.transient_limit_exceeded");
 }
 
 #[test]

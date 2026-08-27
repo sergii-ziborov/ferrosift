@@ -90,6 +90,8 @@ fn budget() -> ExecutionBudget {
         max_flow_depth: 16,
         max_operation_invocations: 10_000,
         max_total_bytes_processed: 1_048_576,
+        max_transient_bytes: 256 * 1024 * 1024,
+        max_work_units: 1 << 26,
     }
 }
 

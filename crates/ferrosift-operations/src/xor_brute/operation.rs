@@ -2,7 +2,8 @@ use alloc::vec;
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
+    Arguments, OperationClassification, OperationSpec, TextEncoding, TextValue, Value,
+    ValueConstraint, ValueKind,
 };
 
 use crate::args::{
@@ -61,7 +62,7 @@ impl XorBruteForce {
                     ),
                 ],
                 inverse: None,
-                classifications: None,
+                classifications: Some(&[OperationClassification::ResourceIntensive]),
             }),
         }
     }

@@ -2,7 +2,8 @@ use alloc::{collections::BTreeSet, vec};
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{
-    Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
+    Arguments, OperationClassification, OperationSpec, TextEncoding, TextValue, Value,
+    ValueConstraint, ValueKind,
 };
 
 use crate::args::{
@@ -57,7 +58,7 @@ impl DerivePbkdf2Key {
                     ),
                 ],
                 inverse: None,
-                classifications: None,
+                classifications: Some(&[OperationClassification::ResourceIntensive]),
             }),
         }
     }
@@ -131,7 +132,7 @@ impl Scrypt {
                     integer_argument("key_length", "Derived key length in bytes.", 64),
                 ],
                 inverse: None,
-                classifications: None,
+                classifications: Some(&[OperationClassification::ResourceIntensive]),
             }),
         }
     }

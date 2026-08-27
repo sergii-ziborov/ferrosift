@@ -179,5 +179,7 @@ const fn budget(max_output_bytes: u64) -> ExecutionBudget {
         max_flow_depth: 4,
         max_operation_invocations: 16,
         max_total_bytes_processed: 256 * 1024 * 1024,
+        max_transient_bytes: 256 * 1024 * 1024,
+        max_work_units: 1 << 26,
     }
 }

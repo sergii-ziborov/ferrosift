@@ -56,6 +56,19 @@ pub enum OperationClassification {
     Legacy,
     /// The operation requires an explicit unsafe-use policy decision.
     Unsafe,
+    /// Cost is set by an argument rather than by the input.
+    ///
+    /// Key derivations are the clear case and the reason this exists: they are
+    /// *designed* to be slow, take how slow from a parameter, and return a
+    /// short answer either way — so nothing about the input or the output says
+    /// what running one will cost. A caller deciding what to allow on a
+    /// constrained device, or what to expose to input it did not choose, needs
+    /// that visible rather than inferred from the operation's name.
+    ///
+    /// The declaration is advice; the enforcement is
+    /// `ExecutionBudget::max_work_units` and `max_transient_bytes`, which apply
+    /// whether or not an operation says this about itself.
+    ResourceIntensive,
 }
 
 /// A deterministic set of operation review classifications.

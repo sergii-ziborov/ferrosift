@@ -17,5 +17,7 @@ pub const fn budget() -> ExecutionBudget {
         max_flow_depth: 64,
         max_operation_invocations: 10_000_000,
         max_total_bytes_processed: 256 * 1024 * 1024,
+        max_transient_bytes: 256 * 1024 * 1024,
+        max_work_units: 1 << 26,
     }
 }

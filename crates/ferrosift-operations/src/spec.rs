@@ -63,6 +63,7 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
 /// Everything else in the catalog builds for bare metal, and the difference
 /// belongs in the spec because a caller asking "can I run this on a
 /// microcontroller" is asking about the operation and not about the build.
+#[cfg(feature = "compression-bzip2")]
 pub(crate) fn build_hosted(definition: SpecDefinition) -> OperationSpec {
     OperationSpec {
         targets: targets(Portability::Hosted),
@@ -184,7 +185,14 @@ pub(crate) fn build_uniform(kind: ValueKind, definition: UniformSpec) -> Operati
 pub(crate) enum Portability {
     /// Builds for `thumbv7em-none-eabihf` and `riscv32imac-unknown-none-elf`.
     BareMetal,
-    /// Needs an operating system. Only bzip2, which reaches `thiserror`.
+    /// Needs an operating system. Only bzip2, which reaches `thiserror` — so a
+    /// build without that pack has nothing to describe this way, and the
+    /// variant is there rather than absent because the *catalog* has two states
+    /// whether or not one build reaches both.
+    #[cfg_attr(
+        not(feature = "compression-bzip2"),
+        expect(dead_code, reason = "only the bzip2 operations are hosted")
+    )]
     Hosted,
 }
 

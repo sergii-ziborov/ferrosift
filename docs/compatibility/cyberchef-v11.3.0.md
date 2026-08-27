@@ -21,6 +21,18 @@ The top-level value is an array. Each supported step contains:
 - Executable integers: JavaScript safe-integer range,
   `-9007199254740991..=9007199254740991`.
 
+Two of those ceilings measure what an operation does rather than what crosses
+its boundary, because two operations take their cost from an argument instead
+of from their input. `Derive PBKDF2 key` accepts an iteration count up to four
+thousand million and answers with sixteen bytes; `Scrypt` takes `128 * r * N`
+bytes of mixing buffer and answers with sixty-four. An output limit looks
+straight past both. They are bounded by `max_work_units` and
+`max_transient_bytes`, checked against the operation's own estimate *before*
+the library call — which is also the only bound on how long that call is
+unresponsive, since cancellation is cooperative and cannot reach inside one.
+Both operations declare `ResourceIntensive` so a caller can see this without
+running them.
+
 The execution budget is a FerroSift concept the reference does not have, and
 one place it now applies *earlier* than the executor alone would. Exact
 addition brings both operands to the finer of the two exponents, so the gap
