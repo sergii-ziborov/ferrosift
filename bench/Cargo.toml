@@ -94,6 +94,10 @@ harness = false
 name = "dispatch"
 harness = false
 
+[[bench]]
+name = "cipher"
+harness = false
+
 # An excluded crate cannot inherit workspace lints, so the same rules the
 # shipped crates hold to are repeated rather than quietly dropped.
 [lints.rust]

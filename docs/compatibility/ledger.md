@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 243 |
-| Reference-aliased | 241 |
-| Byte-pinned (`exact`) | 237 |
+| Registered operations | 247 |
+| Reference-aliased | 245 |
+| Byte-pinned (`exact`) | 241 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 6279 |
+| Pinned cases | 6553 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -91,6 +91,10 @@ does.
 | `crypto.rc4@1` | RC4 | crypto | exact | 4 |
 | `crypto.rc4_drop@1` | RC4 Drop | crypto | exact | 34 |
 | `crypto.scrypt@1` | Scrypt | crypto | exact | 2 |
+| `crypto.tea.decrypt@1` | TEA Decrypt | core | exact | 85 |
+| `crypto.tea.encrypt@1` | TEA Encrypt | core | exact | 99 |
+| `crypto.xtea.decrypt@1` | XTEA Decrypt | core | exact | 45 |
+| `crypto.xtea.encrypt@1` | XTEA Encrypt | core | exact | 45 |
 | `crypto.xxtea.decrypt@1` | XXTEA Decrypt | core | exact | 8 |
 | `crypto.xxtea.encrypt@1` | XXTEA Encrypt | core | exact | 21 |
 | `data.drop_bytes@1` | Drop bytes | core | exact | 4 |

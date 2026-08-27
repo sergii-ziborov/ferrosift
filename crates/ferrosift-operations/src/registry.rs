@@ -36,7 +36,7 @@ use crate::{
     ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes,
     RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
     Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split, StripHeader, StripHtmlTags,
-    StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
+    StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes, TakeNthBytes, Tea,
     ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBcd, ToBech32, ToBinary,
     ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent,
     ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable,
@@ -295,6 +295,10 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     registry.register(Ls47Encrypt::new())?;
     registry.register(Xxtea::encrypt())?;
     registry.register(Xxtea::decrypt())?;
+    registry.register(Tea::encrypt())?;
+    registry.register(Tea::decrypt())?;
+    registry.register(Tea::xtea_encrypt())?;
+    registry.register(Tea::xtea_decrypt())?;
     registry.register(Ls47Decrypt::new())?;
     registry.register(ClassicalCipher::a1z26_decode())?;
     registry.register(ClassicalCipher::a1z26_encode())?;

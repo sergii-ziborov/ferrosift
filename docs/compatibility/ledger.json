@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 243,
-    "aliased": 241,
-    "exact": 237,
+    "operations": 247,
+    "aliased": 245,
+    "exact": 241,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 6279
+    "pinned_cases": 6553
   },
   "operations": [
     {
@@ -760,6 +760,58 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 2,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.tea.decrypt@1",
+      "display_name": "TEA Decrypt",
+      "category": "Ciphers",
+      "reference_alias": "TEA Decrypt",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 85,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.tea.encrypt@1",
+      "display_name": "TEA Encrypt",
+      "category": "Ciphers",
+      "reference_alias": "TEA Encrypt",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 99,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.xtea.decrypt@1",
+      "display_name": "XTEA Decrypt",
+      "category": "Ciphers",
+      "reference_alias": "XTEA Decrypt",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 45,
+      "status": "exact"
+    },
+    {
+      "id": "crypto.xtea.encrypt@1",
+      "display_name": "XTEA Encrypt",
+      "category": "Ciphers",
+      "reference_alias": "XTEA Encrypt",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 45,
       "status": "exact"
     },
     {

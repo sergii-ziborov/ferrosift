@@ -1,7 +1,7 @@
 # Operations not implemented
 
-FerroSift covers 243 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 260 are waiting on, so that "not done yet" is a list
+FerroSift covers 247 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 256 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The grouping below is by *import*, which is a proxy and not the thing itself.
@@ -18,9 +18,9 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-162 of the 260 are built on a JavaScript library, and 21 more reach one
+162 of the 256 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The three headings below
-partition the 260 exactly: 162 plus 21 plus 77. The obstacle is **not** that
+partition the 256 exactly: 162 plus 21 plus 73. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
@@ -186,7 +186,7 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 77 import nothing outside the reference's own source, transitively.
+These 73 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
 
@@ -222,4 +222,4 @@ jumping to it behaves identically in both, which is what the pin in
 `conformance_fork.rs` asserts. It is exempt from the corpus because the
 reference's Node build omits flow-control operations entirely.
 
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Subsection, Tar, TEA Decrypt, TEA Encrypt, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Subsection, Tar, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20

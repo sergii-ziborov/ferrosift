@@ -346,6 +346,27 @@ them:
 Both are pinned in the corpus. `tests/conformance_framing.rs` holds the
 refusals and states the rounding property.
 
+### TEA and XTEA reproduce two of the reference's own bugs
+
+Both are pinned in the corpus, because well-formed input reaches them.
+
+**`BIT` padding does not round-trip a message that already fills its blocks.**
+`applyPadding` returns early for every scheme but PKCS#5 when nothing needs
+adding, so the `0x80` marker is never written — and the removal then scans back
+for a marker that is not there and throws. Encrypting eight bytes with `BIT`
+succeeds; decrypting the result with `BIT` fails, in both projects.
+
+**`ZERO` and `RANDOM` padding are added and never removed.** Neither leaves a
+marker, so `removePadding` hands back the padded plaintext whole. A round trip
+through either returns more bytes than it was given, and the extra bytes are
+part of the answer rather than an error.
+
+`RANDOM` is the one argument with no output to pin: the reference fills those
+bytes with `Math.random()`. FerroSift refuses it in exactly the cases where the
+reference would have been unpredictable — when padding is actually added — and
+accepts it everywhere else, which is every message that already fills its
+blocks. `tests/conformance_tea.rs` holds all three.
+
 ### A toggleString field is read two different ways
 
 `Utils.convertToByteArray` and `Utils.convertToByteString` are two functions,

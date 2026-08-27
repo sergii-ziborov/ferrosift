@@ -93,6 +93,45 @@ const ARMS = [
         arm: "through-recipe",
         recipe: () => [{op: "SHA2", args: ["256", 64, 160]}],
     },
+    // The two block ciphers, which have no specialist crate to sit beside and
+    // so are measured only against the thing they port.
+    {
+        group: "cipher/tea",
+        directory: "cipher_tea",
+        arm: "ferrosift",
+        recipe: () => [
+            {
+                op: "TEA Encrypt",
+                args: [
+                    {option: "Hex", string: "00112233445566778899aabbccddeeff"},
+                    {option: "Hex", string: "0102030405060708"},
+                    "CBC",
+                    "Raw",
+                    "Hex",
+                    "PKCS5",
+                ],
+            },
+        ],
+    },
+    {
+        group: "cipher/xtea",
+        directory: "cipher_xtea",
+        arm: "ferrosift",
+        recipe: () => [
+            {
+                op: "XTEA Encrypt",
+                args: [
+                    {option: "Hex", string: "00112233445566778899aabbccddeeff"},
+                    {option: "Hex", string: "0102030405060708"},
+                    "CBC",
+                    "Raw",
+                    "Hex",
+                    "PKCS5",
+                    32,
+                ],
+            },
+        ],
+    },
 ];
 
 /** The spread above which a row is reported as noisy rather than as a number. */

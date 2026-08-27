@@ -86,6 +86,7 @@ mod spec;
 mod stats;
 mod substitute;
 mod table;
+mod tea;
 mod tlv;
 mod unicode_escape;
 mod unixperms;
@@ -211,6 +212,7 @@ pub use sift::{DropNthBytes, RemoveNullBytes, RemoveWhitespace, Reverse, TakeNth
 pub use stats::{ChiSquare, IndexOfCoincidence};
 pub use substitute::{Substitute, UnescapeString};
 pub use table::ToTable;
+pub use tea::Tea;
 pub use tlv::ParseTlv;
 pub use unicode_escape::{
     DecodeNetbiosName, EncodeNetbiosName, EscapeUnicodeCharacters, UnescapeUnicodeCharacters,

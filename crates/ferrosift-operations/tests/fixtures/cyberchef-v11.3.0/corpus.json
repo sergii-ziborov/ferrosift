@@ -119082,6 +119082,8316 @@
     "34333438346561666464663664353732303266353336333530323034626563633233343761376230383965303037623139366434386239653839666266343934"
    ],
    "stopped_after": 1
+  },
+  {
+   "name": "tea_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "74"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37356635303637643939306337623733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "636a603e5f774e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62333932646161616561306130323935"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "4f50423f787e5979"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3464383033643531353932336536663830356436356163663561323439373962"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "3d74634a4d266b6127"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3762343534393662383135663863303364376564393962663236313063336163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "7c25525068764a603c6d5662793a7d65"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353638656133653438663439326636393335376163626665343133306535646638383030306631393734343262643630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "3b713c4a75686a5f695b6f3a67744f3a72"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "623536313135376632326331616433346464623335323833653464386331653062336130663534333537626262373936"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_7",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "27"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "6f6377743b5726"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6231643262376436343532333762"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "53593679404f4643"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38646538663664623365336231626630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_11",
+   "input": {
+    "kind": "bytes",
+    "hex": "2a47262749767a7d6b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "663466366536383533373032323763656537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "5b4e4571695220777635202f5d636730"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3835666638356433313732363764633461353539316364323166343134373436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_13",
+   "input": {
+    "kind": "bytes",
+    "hex": "40613d7c566c295822384842547d5d2133"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39656430666464653238313837346562326661353931646539666430653436346338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_14",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_15",
+   "input": {
+    "kind": "bytes",
+    "hex": "2a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "4e4e6b5b372e20"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3930666661626639343935613764"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_17",
+   "input": {
+    "kind": "bytes",
+    "hex": "2e4472464b574172"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66306635623265343335323331636331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "35342e59733a342f2c"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "656238356565666230643465363939633939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_19",
+   "input": {
+    "kind": "bytes",
+    "hex": "216a622b7931546b3f31492e63445a69"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6666646261323839303734353039643838613162666331336662386438343433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_20",
+   "input": {
+    "kind": "bytes",
+    "hex": "2e5d6a5c5127562c312e4220302f766b5f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66306563616166653266353330623966383430346637316461386536613834313131"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_21",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_22",
+   "input": {
+    "kind": "bytes",
+    "hex": "73"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_23",
+   "input": {
+    "kind": "bytes",
+    "hex": "697832402b4e5e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6237633966326532353533613033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_24",
+   "input": {
+    "kind": "bytes",
+    "hex": "576b7c4f6f56462a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38396461626365643131323231623939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_25",
+   "input": {
+    "kind": "bytes",
+    "hex": "753a2e6d64435a3d7e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616238626565636631613337303738653237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_26",
+   "input": {
+    "kind": "bytes",
+    "hex": "4f6a40297e35333c6d4e6623246c705b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3931646238303862303034313665386633343061633133623638373130356462"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_27",
+   "input": {
+    "kind": "bytes",
+    "hex": "232544494f2626766565486a3355614b73"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66643934383465623331353237626335336332316566373237663438313463626436"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_28",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_29",
+   "input": {
+    "kind": "bytes",
+    "hex": "6e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36393538366432313238303337346130"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_30",
+   "input": {
+    "kind": "bytes",
+    "hex": "4f2c4544542a3c"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64336638626132386230323061333330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_31",
+   "input": {
+    "kind": "bytes",
+    "hex": "4a49335d707d2179"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6239343733623630626433646465336638333233343434376535643331666331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "695657267a2f642137"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3662623461376336353135313366633364643733353064336334666636353235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_33",
+   "input": {
+    "kind": "bytes",
+    "hex": "2e26457a5a4068596f6d535b4d514e45"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353030323031653530643864643562356230643662383362326564303335356438333233343434376535643331666331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_34",
+   "input": {
+    "kind": "bytes",
+    "hex": "4c485a41693a5757712f5263656c393e23"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616363366364343939353433623561383237336636623235616161363534346662346132383432366139356361303635"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_35",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_36",
+   "input": {
+    "kind": "bytes",
+    "hex": "6c"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31336530636633366338353236663164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_37",
+   "input": {
+    "kind": "bytes",
+    "hex": "717c7646206a5e"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32353237666534356165313035376164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_38",
+   "input": {
+    "kind": "bytes",
+    "hex": "46506b513d764b62"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6236306435343030363761346461353738346638396161353238653962366438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_39",
+   "input": {
+    "kind": "bytes",
+    "hex": "4f50356a2f62354f60"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6438353030393063663263393733636662653561663437333836343961623731"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_40",
+   "input": {
+    "kind": "bytes",
+    "hex": "2d565e3f404d2d5c6e21786b38485c68"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363137613439633966666334336338316263386438376530373464666232383131313762333839373561323739313533"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_41",
+   "input": {
+    "kind": "bytes",
+    "hex": "587d44546c5a6d4b74777571306173502d"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373665363338303831656663623761383431666532346335396230353230666531653838313330623832626132663032"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_42",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_43",
+   "input": {
+    "kind": "bytes",
+    "hex": "75"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_44",
+   "input": {
+    "kind": "bytes",
+    "hex": "6059242964234c"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6263383435656534613537623037"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_45",
+   "input": {
+    "kind": "bytes",
+    "hex": "466932536a762423"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39616234343839656162326536663561"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_46",
+   "input": {
+    "kind": "bytes",
+    "hex": "41606f224051365078"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "396462643135656638313039376432393039"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_47",
+   "input": {
+    "kind": "bytes",
+    "hex": "7232272c5177445451767a296d503a2f"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6165656635646531393032663066326466393036363633613531646139613465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_48",
+   "input": {
+    "kind": "bytes",
+    "hex": "29433466532121445c70616e2057213541"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66353965346561623932373936613364336632623864353837316630613239653865"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_49",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_50",
+   "input": {
+    "kind": "bytes",
+    "hex": "4e"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3932"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_51",
+   "input": {
+    "kind": "bytes",
+    "hex": "5e214531462477"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3832666333666663383737633363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_52",
+   "input": {
+    "kind": "bytes",
+    "hex": "673e482440527e48"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62626533333265393831306133353331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_53",
+   "input": {
+    "kind": "bytes",
+    "hex": "3e3b4e475e497a2a39"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "653265363334386139663131333135333734"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_54",
+   "input": {
+    "kind": "bytes",
+    "hex": "54285e57693b302f3757375a49583c79"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3838663532343961613836333762353637613765656537383664383833343963"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_55",
+   "input": {
+    "kind": "bytes",
+    "hex": "622547386c52762f535b202e636f486176"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62656638336466356164306133643536316537326639306334376266343038346439"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_56",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_57",
+   "input": {
+    "kind": "bytes",
+    "hex": "69"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6235"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_58",
+   "input": {
+    "kind": "bytes",
+    "hex": "4f222a68787745"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3933666635306135623932663065"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_59",
+   "input": {
+    "kind": "bytes",
+    "hex": "513857542c30224e"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38646535326439396564363836393337"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_60",
+   "input": {
+    "kind": "bytes",
+    "hex": "323247394d76507152"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "656565663364663438633265316230383435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_61",
+   "input": {
+    "kind": "bytes",
+    "hex": "2b6859492c3c7e587e4f434a3e345f7c"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6637623532333834656436343335323136393733363137333738663738363564"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_62",
+   "input": {
+    "kind": "bytes",
+    "hex": "382344253d54502e666727232240707053"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65346665336565386663306331623537373135623035316136343833613935313539"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_63",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "63"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61383931623038383932616432653163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_65",
+   "input": {
+    "kind": "bytes",
+    "hex": "2f253d226a504a"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35653230653765623634363165653133"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_66",
+   "input": {
+    "kind": "bytes",
+    "hex": "262230686039266f"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3930626432323766306639316364363833353438336538616533393264646237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_67",
+   "input": {
+    "kind": "bytes",
+    "hex": "69742e2a336d666c6a"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3435623832333539626334656262393663643836656234633035346437356462"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_68",
+   "input": {
+    "kind": "bytes",
+    "hex": "75257770654f2f6a204a4e7245285479"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "666465316139326237376362323138383734323232323534306433383631663633353438336538616533393264646237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_69",
+   "input": {
+    "kind": "bytes",
+    "hex": "7a7e7e456944784f4658544d4b4d5c5321"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "663031323135643231666235386238663265613933333338306161623539393335626563363566613830643135316631"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_1",
+   "input": {
+    "kind": "text",
+    "value": "2b68782aefd0a98f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "49"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_2",
+   "input": {
+    "kind": "text",
+    "value": "d483cc54fab53133"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "584866465b724e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_3",
+   "input": {
+    "kind": "text",
+    "value": "01218ec84b6c41cfe8f062d3e53f9149"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6d386e343c722473"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_4",
+   "input": {
+    "kind": "text",
+    "value": "a23c4b9a266985a58070a4cdbac3f00d"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "674a56427034266827"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_5",
+   "input": {
+    "kind": "text",
+    "value": "bb86d95a6d131de7e36a7055b475d9e0e51e4db02e01f531"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31485e774b5a2c3d2f394f4e5b5d3e26"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_6",
+   "input": {
+    "kind": "text",
+    "value": "11357970b250a2d5051fa1896dbe1d03666ac0b298c13a11"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2c7d63503c7a255579296b5a362f22794d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_7",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_8",
+   "input": {
+    "kind": "text",
+    "value": "a6"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "78"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_9",
+   "input": {
+    "kind": "text",
+    "value": "87e2e1d257161d"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "59532170296240"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_10",
+   "input": {
+    "kind": "text",
+    "value": "ac8c92de350d38c6"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "723d527c4b796575"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_11",
+   "input": {
+    "kind": "text",
+    "value": "add2bd9e2e07029c56"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "73637d3c50735f2f30"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_12",
+   "input": {
+    "kind": "text",
+    "value": "a0d69394120f0b9c897a1862edc12cb8"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7e6753366c7b562f353f665f21795d28"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_13",
+   "input": {
+    "kind": "text",
+    "value": "f4c5fdfb2e2664ed8478e922bb2192c30a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2a743d595052395e40232337345e202961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_14",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_15",
+   "input": {
+    "kind": "text",
+    "value": "b4"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_16",
+   "input": {
+    "kind": "text",
+    "value": "86fa88e0424b6e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "584b48423c3f33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_17",
+   "input": {
+    "kind": "text",
+    "value": "9fc3be9013220a8e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41727e326d56573d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_18",
+   "input": {
+    "kind": "text",
+    "value": "9295b4d15e4c2d9bd1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4c2474732038702864"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_19",
+   "input": {
+    "kind": "text",
+    "value": "bbecf1ed2d5232dbc60ad25bddeabc41"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "655d314f53266f68732067664523626b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_20",
+   "input": {
+    "kind": "text",
+    "value": "81ffadf754417af2d279fd0de8a699666b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5f4e6d552a35274167534830706f474c25"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_21",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_22",
+   "input": {
+    "kind": "text",
+    "value": "b5"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_23",
+   "input": {
+    "kind": "text",
+    "value": "9c9afade5d2c01"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "422b3a7c23585c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_24",
+   "input": {
+    "kind": "text",
+    "value": "85cdefc904566194"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5b7c2f6b7a223c27"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_25",
+   "input": {
+    "kind": "text",
+    "value": "b4ddb1f6454c1ad516"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6a6c71543b3847664f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_26",
+   "input": {
+    "kind": "text",
+    "value": "f3e9aaec5d2126f56f68da240d7746f9"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2d586a4e23557b46362c7d3c416a3379"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_27",
+   "input": {
+    "kind": "text",
+    "value": "e4c69087431113941375d7316d372ebafe"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3a7750253d654e274a317029212a5b3a5b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_28",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_29",
+   "input": {
+    "kind": "text",
+    "value": "c040a3118af58ab9"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_30",
+   "input": {
+    "kind": "text",
+    "value": "ff2e5104a4876442"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f51333a2e664e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_31",
+   "input": {
+    "kind": "text",
+    "value": "34f933e5a404054983234447e5d31fc1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4b364b4f77315922"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_32",
+   "input": {
+    "kind": "text",
+    "value": "1ed7656cb77d115b69586d21280374a0"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "595851432c657a486e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_33",
+   "input": {
+    "kind": "text",
+    "value": "6f56e3dcf469326e93b190c1bc247efd83234447e5d31fc1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5d7a3a245645634e5c712e575e463845"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_34",
+   "input": {
+    "kind": "text",
+    "value": "1c4156c648aad9128bf3131877a7d37e955941da40f3ac84"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3a67617b2770314a467c7927784b7b7966"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_35",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_36",
+   "input": {
+    "kind": "text",
+    "value": "94bbed0a7dacdb3c"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_37",
+   "input": {
+    "kind": "text",
+    "value": "47950e8fabc72ff9"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a765a4562347e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_38",
+   "input": {
+    "kind": "text",
+    "value": "116bb233cc1fe83dab33f93e320f6579"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5551476b4361342f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_39",
+   "input": {
+    "kind": "text",
+    "value": "1e270a8a4bdd08aabb5403bf4bc46c18"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "326a6b4b3646366e57"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_40",
+   "input": {
+    "kind": "text",
+    "value": "c0cd5e79cf6681b6567f0a0d8ce1b1b6232908c67062fd5c"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5b51327274744d626c5b4965403c4f63"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_41",
+   "input": {
+    "kind": "text",
+    "value": "e900be72cebd991dae108fbbfbc9e1e5b42c8c8281cae18a"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c532038492b7674245d33332d4c604634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_42",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_43",
+   "input": {
+    "kind": "text",
+    "value": "93"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_44",
+   "input": {
+    "kind": "text",
+    "value": "b9aa4e949d3227"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "657734595c6a6c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_45",
+   "input": {
+    "kind": "text",
+    "value": "ed953caeac370b41"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "314846636d6f4038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_46",
+   "input": {
+    "kind": "text",
+    "value": "9de258839e6e3a045f"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "413f224e5f36717d6f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_47",
+   "input": {
+    "kind": "text",
+    "value": "8d8a45e3f573363201f0a7e7173aecb3"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "51573f2e342b7d4b345f60284c66273b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_48",
+   "input": {
+    "kind": "text",
+    "value": "b4be15ade506391b242db5d63db455ada6"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68636f60245e7262495c6a3e4158353e77"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_49",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_50",
+   "input": {
+    "kind": "text",
+    "value": "b7"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_51",
+   "input": {
+    "kind": "text",
+    "value": "9aee44bd91126f"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "46333e70504a24"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_52",
+   "input": {
+    "kind": "text",
+    "value": "8ca729f4b4616e13"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "507a53397539256a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_53",
+   "input": {
+    "kind": "text",
+    "value": "f38c2a93ed2a7a4d00"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2f51505e2c7231344d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_54",
+   "input": {
+    "kind": "text",
+    "value": "a5840ba6811e69093701a96818925dd3"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7959716b404622707a28704a3c425536"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_55",
+   "input": {
+    "kind": "text",
+    "value": "e58327b4901b2c200d04bf5254e53ac693"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "OFB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "395e5d7951436759402d6670703532233c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_56",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_57",
+   "input": {
+    "kind": "text",
+    "value": "89"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "55"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_58",
+   "input": {
+    "kind": "text",
+    "value": "a8930b83e60379"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "744e714e275b32"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_59",
+   "input": {
+    "kind": "text",
+    "value": "a2f83ae3876e1856"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7e25402e4636532f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_60",
+   "input": {
+    "kind": "text",
+    "value": "a8883a9680087e1a58"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7455405b415035634f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_61",
+   "input": {
+    "kind": "text",
+    "value": "a9815fbc9b0d3e5f5f181a032fa7bf6f"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "755c25715a5575264824383a6964664e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_62",
+   "input": {
+    "kind": "text",
+    "value": "b78e209ffd212b0f3e6a157b6a99917a7d"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b535a523c796076295637422c5a485b77"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_63",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_64",
+   "input": {
+    "kind": "text",
+    "value": "2e76ba8bd9bd587b"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_65",
+   "input": {
+    "kind": "text",
+    "value": "dbaae27064363e4d"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "27743d42747b3e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_66",
+   "input": {
+    "kind": "text",
+    "value": "6aab62864dfcb8cf35483e8ae392ddb7"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "605854235f44495c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_67",
+   "input": {
+    "kind": "text",
+    "value": "c4a291eacf70f4cc3787636d9651f3eb"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2f5535612a2b693546"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_68",
+   "input": {
+    "kind": "text",
+    "value": "517f3671b50fd032a6dee7d822556bbf35483e8ae392ddb7"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "794c3c262d6f507c2760394235454a3c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_back_69",
+   "input": {
+    "kind": "text",
+    "value": "7e4b404adb4ed5effdc2350c0736dd0831797504bf52e2cd"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5366583039764e6e3b696b3a7b5c4c4e3b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_0",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_1",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "43"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36616239303038336665353632356463"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_3",
+   "input": {
+    "kind": "text",
+    "value": "6ab90083fe5625dc"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "43"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "28754b4e544a45"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32323834616261353333623838313534"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_5",
+   "input": {
+    "kind": "text",
+    "value": "2284aba533b88154"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "28754b4e544a45"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "3a4f653766285a5d"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6435383635653561346365376136316538333233343434376535643331666331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_7",
+   "input": {
+    "kind": "text",
+    "value": "d5865e5a4ce7a61e83234447e5d31fc1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3a4f653766285a5d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "755e7d4c7748497257"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6332383764663863656662376363633065303433323565373338366339393866"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_9",
+   "input": {
+    "kind": "text",
+    "value": "c287df8cefb7ccc0e04325e7386c998f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "755e7d4c7748497257"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_10",
+   "input": {
+    "kind": "bytes",
+    "hex": "5562314225602c7b73763c5672623d54"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "316634353531396530663561393834636632386637633764633365633363323738333233343434376535643331666331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_11",
+   "input": {
+    "kind": "text",
+    "value": "1f45519e0f5a984cf28f7c7dc3ec3c2783234447e5d31fc1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5562314225602c7b73763c5672623d54"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_12",
+   "input": {
+    "kind": "bytes",
+    "hex": "256c2b2e2148724f39615a3f503836722b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313436343663663732376464346231366139363035343539383737306261363730343466373134343631373265643731"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_13",
+   "input": {
+    "kind": "text",
+    "value": "14646cf727dd4b16a96054598770ba67044f71446172ed71"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "256c2b2e2148724f39615a3f503836722b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_14",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_15",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_16",
+   "input": {
+    "kind": "bytes",
+    "hex": "20"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65353031636162313763383964313161"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_17",
+   "input": {
+    "kind": "text",
+    "value": "e501cab17c89d11a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "20"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_18",
+   "input": {
+    "kind": "bytes",
+    "hex": "526c264f664258"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66353332656233393936356464633335"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_19",
+   "input": {
+    "kind": "text",
+    "value": "f532eb39965ddc35"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "526c264f664258"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_20",
+   "input": {
+    "kind": "bytes",
+    "hex": "537d3e7077535563"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6438653937303964353265313136326564306639393931353930636432386331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_21",
+   "input": {
+    "kind": "text",
+    "value": "d8e9709d52e1162ed0f9991590cd28c1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "537d3e7077535563"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_22",
+   "input": {
+    "kind": "bytes",
+    "hex": "523f55266f254e542f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6539313439393964643633616639393036653738336265656334373633363966"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_23",
+   "input": {
+    "kind": "text",
+    "value": "e914999dd63af9906e783beec476369f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "523f55266f254e542f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_24",
+   "input": {
+    "kind": "bytes",
+    "hex": "2e5e2b682c6563533f4c696e4677596b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "656466646639636161336366393039363139633432336137356666643432316539323464623862656563393232656365"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_25",
+   "input": {
+    "kind": "text",
+    "value": "edfdf9caa3cf909619c423a75ffd421e924db8beec922ece"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2e5e2b682c6563533f4c696e4677596b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_26",
+   "input": {
+    "kind": "bytes",
+    "hex": "573561335a7a63505e4f705d5f793b2144"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "643061323731643061313437643737623238643234376532396533623234346331343435623734343234313835663566"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_27",
+   "input": {
+    "kind": "text",
+    "value": "d0a271d0a147d77b28d247e29e3b244c1445b74424185f5f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "573561335a7a63505e4f705d5f793b2144"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_28",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_29",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_30",
+   "input": {
+    "kind": "bytes",
+    "hex": "74"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37383437383534393634633766636465"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_31",
+   "input": {
+    "kind": "text",
+    "value": "7847854964c7fcde"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7400000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_32",
+   "input": {
+    "kind": "bytes",
+    "hex": "415c5549406558"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37373863386363383530393838373637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_33",
+   "input": {
+    "kind": "text",
+    "value": "778c8cc850988767"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "415c554940655800"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_34",
+   "input": {
+    "kind": "bytes",
+    "hex": "39255b44795d6c79"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39613133666433346366323463353434"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_35",
+   "input": {
+    "kind": "text",
+    "value": "9a13fd34cf24c544"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39255b44795d6c79"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_36",
+   "input": {
+    "kind": "bytes",
+    "hex": "3e516d272630355859"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6164303035333337346232373531313762663964313131646463346462306262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_37",
+   "input": {
+    "kind": "text",
+    "value": "ad0053374b275117bf9d111ddc4db0bb"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3e516d27263035585900000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_38",
+   "input": {
+    "kind": "bytes",
+    "hex": "595723546b3a28282172362c6a504778"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3265326335643839623562306436353861386235363362383163363263383630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_39",
+   "input": {
+    "kind": "text",
+    "value": "2e2c5d89b5b0d658a8b563b81c62c860"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "595723546b3a28282172362c6a504778"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_40",
+   "input": {
+    "kind": "bytes",
+    "hex": "627a7b2659772b5d2546326e3749382567"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "653834613664336631623033643930663062343536643262303663643264386630363330366562346130303966626562"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_41",
+   "input": {
+    "kind": "text",
+    "value": "e84a6d3f1b03d90f0b456d2b06cd2d8f06306eb4a009fbeb"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "627a7b2659772b5d2546326e374938256700000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_42",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_43",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_44",
+   "input": {
+    "kind": "bytes",
+    "hex": "48"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36313264396535383739386466373766"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_45",
+   "input": {
+    "kind": "text",
+    "value": "612d9e58798df77f"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4800000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_46",
+   "input": {
+    "kind": "bytes",
+    "hex": "61415c47474973"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61373837376235663939386664366637"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_47",
+   "input": {
+    "kind": "text",
+    "value": "a7877b5f998fd6f7"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61415c4747497300"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_48",
+   "input": {
+    "kind": "bytes",
+    "hex": "50305e723c305d6a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63613031383338343733333532653137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_49",
+   "input": {
+    "kind": "text",
+    "value": "ca01838473352e17"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "50305e723c305d6a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_50",
+   "input": {
+    "kind": "bytes",
+    "hex": "584863376a463f6345"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3031353735333739373534336539623261616561613362323062666131336263"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_51",
+   "input": {
+    "kind": "text",
+    "value": "015753797543e9b2aaeaa3b20bfa13bc"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "584863376a463f634500000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_52",
+   "input": {
+    "kind": "bytes",
+    "hex": "21477d54374247257054355425222653"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3965363061653439666463373936353935316539323937656464303364326338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_53",
+   "input": {
+    "kind": "text",
+    "value": "9e60ae49fdc7965951e9297edd03d2c8"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "21477d54374247257054355425222653"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_54",
+   "input": {
+    "kind": "bytes",
+    "hex": "7a285b7140443a26753f7e3b216e5d2526"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "386465613136633039343263363062653835316335313166663338376239313834633730656430303437356435633862"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_55",
+   "input": {
+    "kind": "text",
+    "value": "8dea16c0942c60be851c511ff387b9184c70ed00475d5c8b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "ZERO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a285b7140443a26753f7e3b216e5d252600000000000000"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_56",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_57",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_58",
+   "input": {
+    "kind": "bytes",
+    "hex": "2b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34663261333163306566316465623336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_59",
+   "input": {
+    "kind": "text",
+    "value": "4f2a31c0ef1deb36"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_60",
+   "input": {
+    "kind": "bytes",
+    "hex": "7c256841677166"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33313765656336333136666537343563"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_61",
+   "input": {
+    "kind": "text",
+    "value": "317eec6316fe745c"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7c256841677166"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_62",
+   "input": {
+    "kind": "bytes",
+    "hex": "5f572132534c3834"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39613066386663623938616532333537"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_64",
+   "input": {
+    "kind": "bytes",
+    "hex": "3b633f6d72557e6755"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6134393636363534656661653536313236643433653164383731353930306137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_65",
+   "input": {
+    "kind": "text",
+    "value": "a4966654efae56126d43e1d8715900a7"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3b633f6d72557e6755"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_66",
+   "input": {
+    "kind": "bytes",
+    "hex": "4a277a6f6d41753c296f677a497c317a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3933323533386433613666656464386162636235356334623162643065303134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_68",
+   "input": {
+    "kind": "bytes",
+    "hex": "26326c553b7e2a7b5b7a2b3c284f3a3042"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "623561626132643034653530653463313036633962353334383437396634343834323965356364373336373036306531"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_69",
+   "input": {
+    "kind": "text",
+    "value": "b5aba2d04e50e4c106c9b5348479f448429e5cd7367060e1"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "26326c553b7e2a7b5b7a2b3c284f3a3042"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_70",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_71",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_72",
+   "input": {
+    "kind": "bytes",
+    "hex": "57"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37346561383634383666306162666236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_73",
+   "input": {
+    "kind": "text",
+    "value": "74ea86486f0abfb6"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_74",
+   "input": {
+    "kind": "bytes",
+    "hex": "784a78742e3e2d"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36643038396564616434643935353164"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_75",
+   "input": {
+    "kind": "text",
+    "value": "6d089edad4d9551d"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "784a78742e3e2d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_76",
+   "input": {
+    "kind": "bytes",
+    "hex": "6838376a4c523057"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62626364346430303233626663383631"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_78",
+   "input": {
+    "kind": "bytes",
+    "hex": "2b743c686574372324"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6434303063316163346637376465636261366237366365373430333837366663"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_79",
+   "input": {
+    "kind": "text",
+    "value": "d400c1ac4f77decba6b76ce7403876fc"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "2b743c686574372324"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_80",
+   "input": {
+    "kind": "bytes",
+    "hex": "79363629387a7124773e465234287e77"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3466613633646333353635613965306565303332646539666134303463353061"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_82",
+   "input": {
+    "kind": "bytes",
+    "hex": "31402d42656d5878585b2d7b6044554132"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "373963363963383637366137633132313163656331343163633238663138643964383766633461616436336435343733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_83",
+   "input": {
+    "kind": "text",
+    "value": "79c69c8676a7c1211cec141cc28f18d9d87fc4aad63d5473"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "BIT"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31402d42656d5878585b2d7b6044554132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_84",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_85",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_86",
+   "input": {
+    "kind": "bytes",
+    "hex": "29465968244d3255"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31333464343730323138323239633232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_87",
+   "input": {
+    "kind": "text",
+    "value": "134d470218229c22"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "29465968244d3255"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_88",
+   "input": {
+    "kind": "bytes",
+    "hex": "486c715220754373614b30605646625b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3862636363636663303530313830613434616132323637386366626234313836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_89",
+   "input": {
+    "kind": "text",
+    "value": "8bccccfc050180a44aa22678cfbb4186"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "486c715220754373614b30605646625b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_90",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_91",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_92",
+   "input": {
+    "kind": "bytes",
+    "hex": "3e5141323b65593a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36646631323934336638623663336239"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_93",
+   "input": {
+    "kind": "text",
+    "value": "6df12943f8b6c3b9"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3e5141323b65593a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_94",
+   "input": {
+    "kind": "bytes",
+    "hex": "416079752725357d3c79226a66403320"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3634636664393763313838653039373461653937336330623636633734303438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_95",
+   "input": {
+    "kind": "text",
+    "value": "64cfd97c188e0974ae973c0b66c74048"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "NO"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "416079752725357d3c79226a66403320"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_96",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_97",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_98",
+   "input": {
+    "kind": "bytes",
+    "hex": "7a5f526127382e66"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38656537346236333339616662393064"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_99",
+   "input": {
+    "kind": "text",
+    "value": "8ee74b6339afb90d"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a5f526127382e66"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_100",
+   "input": {
+    "kind": "bytes",
+    "hex": "495a3b403a7e77234c7c3b37404a5953"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3331653464656263353664653036616366613336646566383639303665616435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_101",
+   "input": {
+    "kind": "text",
+    "value": "31e4debc56de06acfa36def86906ead5"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "495a3b403a7e77234c7c3b37404a5953"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_102",
+   "input": {
+    "kind": "bytes",
+    "hex": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_103",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    ""
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_104",
+   "input": {
+    "kind": "bytes",
+    "hex": "4c7b66537a766e51"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31313332396664356534383263313136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_105",
+   "input": {
+    "kind": "text",
+    "value": "11329fd5e482c116"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4c7b66537a766e51"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_106",
+   "input": {
+    "kind": "bytes",
+    "hex": "23742f5233634f5a6170387e2963773b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3636316362613966303038613561616130383164356432636166613930633733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_pad_back_107",
+   "input": {
+    "kind": "text",
+    "value": "661cba9f008a5aaa081d5d2cafa90c73"
+   },
+   "recipe": [
+    {
+     "op": "TEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "RANDOM"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "23742f5233634f5a6170387e2963773b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "54296435543a364a475766383e4e503e4050402565295852"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65393537326461343634643532656233366163633439653461663938376438396637343734613263363532396532353739306531663330336638373736323162"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_0",
+   "input": {
+    "kind": "text",
+    "value": "e9572da464d52eb36acc49e4af987d89f7474a2c6529e25790e1f303f877621b"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "54296435543a364a475766383e4e503e4050402565295852"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "3f496276487b736053667c672f5b4c727147737e6c735331"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "363932383061383139643632666666653035303731346531666134326336363932373236316265626239366164613261"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_1",
+   "input": {
+    "kind": "text",
+    "value": "69280a819d62fffe050714e1fa42c66927261bebb96ada2a"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3f496276487b736053667c672f5b4c727147737e6c735331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_2",
+   "input": {
+    "kind": "bytes",
+    "hex": "784236634e225f397c5037567241317e5a2a3b4731634e4b"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62333838663836353930393465343166623739613934633333623463633333316335393235633961653661376266316233666464626666356530346332356232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_2",
+   "input": {
+    "kind": "text",
+    "value": "b388f8659094e41fb79a94c33b4cc331c5925c9ae6a7bf1b3fddbff5e04c25b2"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "784236634e225f397c5037567241317e5a2a3b4731634e4b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_3",
+   "input": {
+    "kind": "bytes",
+    "hex": "3c68215f3f6049325f5a334c244441373e343b4a3b787163"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333234343136653337643131373961393163316665623363643431623366363731656563393337306666353936346237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_3",
+   "input": {
+    "kind": "text",
+    "value": "324416e37d1179a91c1feb3cd41b3f671eec9370ff5964b7"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      8
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c68215f3f6049325f5a334c244441373e343b4a3b787163"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "68557824643a25424a78243c794f75303656755c6e607246"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37366466646132363264656262333862616530626437363639346166323264393131343463623864633961316664623333353438336538616533393264646237"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_4",
+   "input": {
+    "kind": "text",
+    "value": "76dfda262debb38bae0bd76694af22d91144cb8dc9a1fdb335483e8ae392ddb7"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "68557824643a25424a78243c794f75303656755c6e607246"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "4948266f626b4f2f422f2b6a573626284878472158425c49"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "393539353563613261333333303435363535313330393533313166356666303934323038663831633638663034303961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_5",
+   "input": {
+    "kind": "text",
+    "value": "95955ca2a33304565513095311f5ff094208f81c68f0409a"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      32
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4948266f626b4f2f422f2b6a573626284878472158425c49"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "557e384f46642b5c4e312045294d75434f63782a34596038"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62613966306363656239613964383233343335323566336134366537643238633737626233363661396635653066383461363833306638356437313263346535"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_6",
+   "input": {
+    "kind": "text",
+    "value": "ba9f0cceb9a9d82343525f3a46e7d28c77bb366a9f5e0f84a6830f85d712c4e5"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "557e384f46642b5c4e312045294d75434f63782a34596038"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "5d7d52737d725669784a32236b31515b4b5c3d2327306d3a"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "316563396239633730316536646134626465306362373462346232613363376338373562373736653661323166323365"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_7",
+   "input": {
+    "kind": "text",
+    "value": "1ec9b9c701e6da4bde0cb74b4b2a3c7c875b776e6a21f23e"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      64
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5d7d52737d725669784a32236b31515b4b5c3d2327306d3a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "31237c77515440395c47292f2e20636e3b60567c7d3f4361"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      255
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65633635613937396533313334663237303162636135643938656635626630663935613930373731323365343531356464623933383064653634666561363836"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_8",
+   "input": {
+    "kind": "text",
+    "value": "ec65a979e3134f2701bca5d98ef5bf0f95a9077123e4515ddb9380de64fea686"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "ECB",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      255
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31237c77515440395c47292f2e20636e3b60567c7d3f4361"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_9",
+   "input": {
+    "kind": "bytes",
+    "hex": "6c43317c6d4f4960284923317d4e796263643e572721422b"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5",
+      255
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "613138323762356338376133333561363934356466346565313061353231366566333561323430633730336537376238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_cycles_back_9",
+   "input": {
+    "kind": "text",
+    "value": "a1827b5c87a335a6945df4ee10a5216ef35a240c703e77b8"
+   },
+   "recipe": [
+    {
+     "op": "XTEA Decrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CTR",
+      "Hex",
+      "Raw",
+      "PKCS5",
+      255
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c43317c6d4f4960284923317d4e796263643e572721422b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_format_0",
+   "input": {
+    "kind": "bytes",
+    "hex": "4468304539267548734b736150"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3862356265303631363930366465623739663762323733353630666338343932"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_format_1",
+   "input": {
+    "kind": "bytes",
+    "hex": "2369566925333d763d3642322e"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b3fc4a89a3dc612c8362922eca7fa9fd"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_format_2",
+   "input": {
+    "kind": "text",
+    "value": "48656c6c6f2c20776f726c6421"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6638326534663031366633326536666262653164353230366666383265643936"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_format_3",
+   "input": {
+    "kind": "text",
+    "value": "48656c6c6f2c20776f726c6421"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Hex",
+      "Raw",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "f82e4f016f32e6fbbe1d5206ff82ed96"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_noiv_4",
+   "input": {
+    "kind": "bytes",
+    "hex": "605d6f29704d47722e3a6c2b2521605c"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": ""
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "643566613664383538323861383062616466303462623533666338623436613265356161373237346435346166373363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_noiv_5",
+   "input": {
+    "kind": "bytes",
+    "hex": "52707336262f273f55332d312950283b"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": ""
+      },
+      "CFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3963323130653630373039376338623734666232343439613134643263633733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_noiv_6",
+   "input": {
+    "kind": "bytes",
+    "hex": "62487d592a35296963402f636b455134"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": ""
+      },
+      "OFB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6163313930303066376338646336653130666436366131386634346365306137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_noiv_7",
+   "input": {
+    "kind": "bytes",
+    "hex": "70237e6c72546e7d39373b773773612a"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": ""
+      },
+      "CTR",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6265373230333361323465633831663532363838626262653063383161303039"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_noiv_8",
+   "input": {
+    "kind": "bytes",
+    "hex": "2f705a69684e78683e59713d5b276369"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      },
+      {
+       "option": "Hex",
+       "string": ""
+      },
+      "ECB",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "663539333335343438323634616133353063623637663839343737303037346638333233343434376535643331666331"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "tea_spaced_key",
+   "input": {
+    "kind": "bytes",
+    "hex": "714f793a63775f406667745e247e2d68"
+   },
+   "recipe": [
+    {
+     "op": "TEA Encrypt",
+     "args": [
+      {
+       "option": "Hex",
+       "string": "00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff"
+      },
+      {
+       "option": "Hex",
+       "string": "0102030405060708"
+      },
+      "CBC",
+      "Raw",
+      "Hex",
+      "PKCS5"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616237393830383431353032396663363937343062663061343036386633303130316362633835636164613164616665"
+   ],
+   "stopped_after": 1
   }
  ]
 }
