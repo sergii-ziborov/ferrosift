@@ -1,0 +1,18 @@
+# Inflate is handed the budget's ceiling rather than checked against it
+# afterwards. The unbounded forms build the entire output before anything can
+# refuse it, which is how a hundred kilobytes of deflate turns into gigabytes of
+# allocation; by the time `max_output_bytes` is consulted the allocation it
+# exists to prevent has already happened.
+#
+# The bounded forms cannot be swapped back for these by accident, because a
+# revert produces exactly the same failure code and no test can tell the two
+# apart from outside. That is what this list is for.
+#
+# See `crates/ferrosift-operations/src/compress/codec.rs` for the mapping from
+# `TINFLStatus::HasMoreOutput` back onto `OutputLimitExceeded`, and
+# `crates/ferrosift-operations/tests/decompression_limits.rs` for the boundary
+# that mapping has to keep.
+disallowed-methods = [
+    { path = "miniz_oxide::inflate::decompress_to_vec", reason = "unbounded; use decompress_to_vec_with_limit with the budget's max_output_bytes" },
+    { path = "miniz_oxide::inflate::decompress_to_vec_zlib", reason = "unbounded; use decompress_to_vec_zlib_with_limit with the budget's max_output_bytes" },
+]

@@ -2,7 +2,9 @@ use alloc::vec::Vec;
 
 use ferrosift_core::{OperationContext, OperationError};
 use miniz_oxide::deflate::{CompressionLevel, compress_to_vec, compress_to_vec_zlib};
-use miniz_oxide::inflate::{decompress_to_vec, decompress_to_vec_zlib};
+use miniz_oxide::inflate::{
+    DecompressError, TINFLStatus, decompress_to_vec_with_limit, decompress_to_vec_zlib_with_limit,
+};
 
 use crate::crc32::crc32;
 use crate::failure::failed;
@@ -21,7 +23,10 @@ pub(super) fn gunzip(
 ) -> Result<Vec<u8>, OperationError> {
     context.ensure_active()?;
     let deflate = skip_gzip_header(input)?;
-    let output = decompress_to_vec(deflate).map_err(|_| failed(INVALID_GZIP))?;
+    let output = inflated(
+        decompress_to_vec_with_limit(deflate, output_limit(context)),
+        INVALID_GZIP,
+    )?;
     ensure_fits(&output, context)?;
     context.ensure_active()?;
     Ok(output)
@@ -96,7 +101,10 @@ pub(super) fn zlib_inflate(
     }
     let start = usize::try_from(start_index).map_err(|_| failed(INVALID_ZLIB))?;
     let slice = input.get(start..).ok_or_else(|| failed(INVALID_ZLIB))?;
-    let output = decompress_to_vec_zlib(slice).map_err(|_| failed(INVALID_ZLIB))?;
+    let output = inflated(
+        decompress_to_vec_zlib_with_limit(slice, output_limit(context)),
+        INVALID_ZLIB,
+    )?;
     ensure_fits(&output, context)?;
     context.ensure_active()?;
     Ok(output)
@@ -126,7 +134,10 @@ pub(super) fn raw_inflate(
     }
     let start = usize::try_from(start_index).map_err(|_| failed(INVALID_RAW))?;
     let slice = input.get(start..).ok_or_else(|| failed(INVALID_RAW))?;
-    let output = decompress_to_vec(slice).map_err(|_| failed(INVALID_RAW))?;
+    let output = inflated(
+        decompress_to_vec_with_limit(slice, output_limit(context)),
+        INVALID_RAW,
+    )?;
     ensure_fits(&output, context)?;
     context.ensure_active()?;
     Ok(output)
@@ -161,9 +172,8 @@ pub(super) fn bzip2_decompress(
     if input.is_empty() {
         return Err(failed(EMPTY_BZIP2));
     }
-    let max_out = usize::try_from(context.budget().max_output_bytes).unwrap_or(usize::MAX);
-    let output =
-        oxiarc_bzip2::decompress_with_limit(input, max_out).map_err(|_| failed(INVALID_BZIP2))?;
+    let output = oxiarc_bzip2::decompress_with_limit(input, output_limit(context))
+        .map_err(|_| failed(INVALID_BZIP2))?;
     ensure_fits(&output, context)?;
     context.ensure_active()?;
     Ok(output)
@@ -178,6 +188,35 @@ fn compression_level(token: &str) -> Result<u8, OperationError> {
         }
         _ => Err(failed(INVALID_LEVEL)),
     }
+}
+
+/// The budget's output ceiling, as the decompressors want it.
+///
+/// A budget larger than the address space saturates rather than wrapping, which
+/// is why [`ensure_fits`] still runs after every decompression: on a 32-bit
+/// target a caller may legitimately set a ceiling this cannot express, and the
+/// check afterwards is then the one that holds.
+fn output_limit(context: &OperationContext<'_>) -> usize {
+    usize::try_from(context.budget().max_output_bytes).unwrap_or(usize::MAX)
+}
+
+/// Reads an inflate result, keeping "too large" and "malformed" apart.
+///
+/// Bounding the decompressor is what stops a small input from allocating
+/// gigabytes before anything gets to look at it, but it moves the size refusal
+/// from `ensure_fits` into `miniz`'s own error path, and `miniz` reports it the
+/// same way it reports a truncated stream: as an error. Only the status tells
+/// the two apart, so a bomb keeps reporting `OutputLimitExceeded` rather than
+/// being relabelled as invalid input, and the pinned failure codes for genuinely
+/// broken streams stay where they were.
+fn inflated(
+    result: Result<Vec<u8>, DecompressError>,
+    code: &'static str,
+) -> Result<Vec<u8>, OperationError> {
+    result.map_err(|error| match error.status {
+        TINFLStatus::HasMoreOutput => OperationError::OutputLimitExceeded,
+        _ => failed(code),
+    })
 }
 
 fn ensure_fits(output: &[u8], context: &OperationContext<'_>) -> Result<(), OperationError> {
