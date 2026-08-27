@@ -178,6 +178,50 @@ jobs:
       - name: Run each benchmark once
         run: cargo bench --manifest-path bench/Cargo.toml --benches -- --test
 
+  # The fuzz targets are outside the workspace because they link libFuzzer and
+  # need nightly with sanitizer instrumentation. That also means nothing above
+  # compiles them, and a target that stops compiling is one nobody runs.
+  #
+  # This builds them and then fuzzes each for a few seconds. The short run is
+  # not a search -- it is a check that every target starts, reaches the code it
+  # names, and returns; a target wired to an operation that no longer exists
+  # would otherwise pass by doing nothing. Real runs are long and belong
+  # somewhere that can afford them.
+  fuzz:
+    name: Fuzz targets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install the nightly toolchain
+        run: rustup toolchain install nightly --profile minimal
+      - name: Install cargo-fuzz
+        run: cargo install cargo-fuzz --locked
+      - name: Build every target
+        run: cargo +nightly fuzz build
+        working-directory: fuzz
+      - name: Smoke each target
+        run: |
+          for target in $(cargo +nightly fuzz list); do
+            echo "::group::$target"
+            cargo +nightly fuzz run "$target" -- -runs=2000 -max_total_time=20
+            echo "::endgroup::"
+          done
+        working-directory: fuzz
+
+  # A floor rather than a target. A number a build must *reach* invites tests
+  # written to reach it, and a test written for a number checks the number. This
+  # holds the opposite: whatever the suite already covers, it does not lose --
+  # so adding an untested branch is a visible act rather than a rounding error.
+  coverage:
+    name: Coverage floor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install cargo-llvm-cov
+        run: cargo install cargo-llvm-cov --locked
+      - name: Check coverage against the recorded floor
+        run: cargo xtask coverage check
+
   # The compatibility claim is only evidence if it cannot drift. Regenerate the
   # ledger from the code and fail when the committed copy disagrees. This needs
   # no reference checkout: every column comes from the catalog, the pack-only

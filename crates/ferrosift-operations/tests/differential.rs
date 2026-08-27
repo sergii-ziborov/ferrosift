@@ -13,7 +13,7 @@ fn reference_recipes_match_outputs_and_stopping_positions() {
         suite.reference.commit,
         "d24ba1afce2e3a080308b5df7db033332fe94a1a"
     );
-    assert_eq!(suite.cases.len(), 77);
+    assert_eq!(suite.cases.len(), 79);
 
     for case in &suite.cases {
         differential::assert_supported_case(case);

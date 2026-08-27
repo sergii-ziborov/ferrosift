@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Differential-pinned | Exact parity | Pinned cases |
 |---:|---:|---:|---:|---:|
-| 247 | 245 | 237 | **224** | **6565** |
+| 247 | 245 | 237 | **224** | **6567** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates

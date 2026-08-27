@@ -9,7 +9,7 @@
   "totals": {
     "operations": 247,
     "aliased": 245,
-    "pinned_cases": 6565,
+    "pinned_cases": 6567,
     "evidence": {
       "differential_pinned": 237,
       "pinned_elsewhere": 4,
@@ -1464,7 +1464,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 13,
+      "conformance_cases": 15,
       "evidence": "differential_pinned",
       "parity": "exact"
     },

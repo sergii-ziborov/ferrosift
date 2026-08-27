@@ -1,0 +1,9 @@
+# libFuzzer's own working files. The corpus is a cache of inputs that reached
+# new coverage, not evidence: it is machine-generated, grows without bound, and
+# says nothing a reader could check. A finding becomes a pinned case instead --
+# see the README.
+corpus/
+artifacts/
+coverage/
+target/
+Cargo.lock

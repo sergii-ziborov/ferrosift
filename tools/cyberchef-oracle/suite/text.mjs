@@ -22,6 +22,29 @@ export const textCases = [
             {op: "From Charcode", args: ["Space", 16]},
         ],
     },
+    // `From Charcode` splits an undelimited input into pairs when it is longer
+    // than seventeen, and both the test and the split count *UTF-16 code
+    // units*, because that is what a JavaScript string's length is. This port
+    // counted UTF-8 bytes, which is the same number only for ASCII: for
+    // anything else it split in the wrong places, and where a pair landed
+    // inside a character it aborted rather than answering. `fuzz/decoders`
+    // found it. Both cases below are longer than seventeen and neither is
+    // ASCII, so the byte count and the code-unit count disagree.
+    // The branch is reached by an input the delimiter does not split, so the
+    // delimiter is an ordinary one and the input simply has none of it. `From
+    // Charcode` offers only six delimiters and "Nothing" is not among them.
+    {
+        name: "from_charcode_undelimited_two_byte_characters",
+        input: {kind: "text", value: "ˉˉˉˉˉˉˉˉˉˉ12345678"},
+        recipe: [{op: "From Charcode", args: ["Space", 16]}],
+    },
+    {
+        name: "from_charcode_undelimited_astral_characters",
+        // Each of these is one character and two code units, so a pair-wise
+        // split lands on a surrogate boundary rather than a character one.
+        input: {kind: "text", value: "𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞"},
+        recipe: [{op: "From Charcode", args: ["Space", 16]}],
+    },
     {
         name: "extract_ip_url_email",
         input: {

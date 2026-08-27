@@ -15,7 +15,7 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 |---|---:|
 | Registered operations | 247 |
 | Reference-aliased | 245 |
-| Pinned cases | 6565 |
+| Pinned cases | 6567 |
 
 Two questions, asked separately, because one word was answering both
 and could only answer one. **Evidence** is how an operation was
@@ -153,7 +153,7 @@ the divergence is what lies outside those inputs.
 | `encoding.braille.decode@1` | From Braille | core | differential_pinned | exact | 15 |
 | `encoding.braille.encode@1` | To Braille | core | differential_pinned | exact | 10 |
 | `encoding.caret_m.decode@1` | Caret/M-decode | core | differential_pinned | exact | 20 |
-| `encoding.charcode.decode@1` | From Charcode | core | differential_pinned | exact | 13 |
+| `encoding.charcode.decode@1` | From Charcode | core | differential_pinned | exact | 15 |
 | `encoding.charcode.encode@1` | To Charcode | core | differential_pinned | exact | 13 |
 | `encoding.cobs.decode@1` | From COBS | core | differential_pinned | exact | 25 |
 | `encoding.cobs.encode@1` | To COBS | core | differential_pinned | exact | 16 |

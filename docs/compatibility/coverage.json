@@ -1,0 +1,10 @@
+{
+  "comment": [
+    "The coverage floor, not a target. `cargo xtask coverage check` fails when a",
+    "run lands more than half a point under any of these. Raising it is deliberate:",
+    "run `cargo xtask coverage record` and say in the commit what was added."
+  ],
+  "regions": 87.88,
+  "functions": 84.51,
+  "lines": 92.00
+}

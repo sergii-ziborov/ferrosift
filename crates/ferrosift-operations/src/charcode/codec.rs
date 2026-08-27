@@ -1,8 +1,4 @@
-use alloc::{
-    format,
-    string::{String, ToString},
-    vec::Vec,
-};
+use alloc::{format, string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 
@@ -66,13 +62,21 @@ pub(super) fn decode(
     } else {
         input.split(delimiter).map(String::from).collect()
     };
-    if tokens.len() == 1 && input.len() > 17 {
+    // `bites.length === 1 && input.length > 17` there, then `input.slice(i,
+    // i + 2)` in a loop. Both are over a JavaScript string, so both count
+    // *UTF-16 code units* -- and this counted UTF-8 bytes, which is the same
+    // number only while the input is ASCII. It was wrong for every other input
+    // and it panicked for the ones where a pair landed inside a character:
+    // `"ˉ"` is two bytes, and slicing a `str` between them is not a smaller
+    // answer but an abort. Found by `fuzz/fuzz_targets/decoders.rs`.
+    let units: Vec<u16> = input.encode_utf16().collect();
+    if tokens.len() == 1 && units.len() > 17 {
         tokens.clear();
-        let mut index = 0;
-        while index < input.len() {
-            let end = (index + 2).min(input.len());
-            tokens.push(input[index..end].to_string());
-            index = end;
+        for pair in units.chunks(2) {
+            // A lone surrogate becomes the replacement character, which is not
+            // a digit in any base -- and neither was the surrogate, so both
+            // read as zero exactly as the reference's `parseInt` does.
+            tokens.push(String::from_utf16_lossy(pair));
         }
     }
     let mut latin1 = String::new();

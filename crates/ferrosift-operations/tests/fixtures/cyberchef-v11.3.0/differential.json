@@ -1353,6 +1353,46 @@
       "stopped_after": 2
     },
     {
+      "name": "from_charcode_undelimited_two_byte_characters",
+      "input": {
+        "kind": "text",
+        "value": "ˉˉˉˉˉˉˉˉˉˉ12345678"
+      },
+      "recipe": [
+        {
+          "op": "From Charcode",
+          "args": [
+            "Space",
+            16
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "000000000012345678"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "from_charcode_undelimited_astral_characters",
+      "input": {
+        "kind": "text",
+        "value": "𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞"
+      },
+      "recipe": [
+        {
+          "op": "From Charcode",
+          "args": [
+            "Space",
+            16
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "00000000000000000000"
+      ],
+      "stopped_after": 1
+    },
+    {
       "name": "extract_ip_url_email",
       "input": {
         "kind": "text",

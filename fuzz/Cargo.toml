@@ -1,0 +1,93 @@
+[package]
+name = "ferrosift-fuzz"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+ferrosift-core = { path = "../crates/ferrosift-core" }
+ferrosift-model = { path = "../crates/ferrosift-model" }
+ferrosift-operations = { path = "../crates/ferrosift-operations", features = ["portable-full"] }
+ferrosift-pattern = { path = "../crates/ferrosift-pattern" }
+
+[[bin]]
+name = "decoders"
+path = "fuzz_targets/decoders.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "framing"
+path = "fuzz_targets/framing.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "inflate"
+path = "fuzz_targets/inflate.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "togglestring"
+path = "fuzz_targets/togglestring.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "decimal"
+path = "fuzz_targets/decimal.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "bignumber"
+path = "fuzz_targets/bignumber.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "jscompat"
+path = "fuzz_targets/jscompat.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "dish"
+path = "fuzz_targets/dish.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "pattern_parse"
+path = "fuzz_targets/pattern_parse.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "pattern_evaluate"
+path = "fuzz_targets/pattern_evaluate.rs"
+test = false
+doc = false
+bench = false
+
+# Fuzzing wants the optimiser and the assertions at the same time: a release
+# build finds more per second, and `debug-assertions` is what turns a silent
+# wrong answer into a crash the fuzzer can report.
+[profile.release]
+debug = 1
+debug-assertions = true
+overflow-checks = true
