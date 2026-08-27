@@ -418,6 +418,64 @@ text outside the byte range; every other option produces characters that fit,
 where the two agree exactly. `tests/conformance_togglestring.rs` pins both the
 agreement and the divergence.
 
+### A toggleString field does not hold bytes
+
+`fromDecimal` is `parseInt` per field and nothing else, so the array
+`convertToByteArray` returns holds whatever that produced: `300` for a field of
+`300`, `-1`, `NaN` for a field of `-`, and `Infinity` for a run of digits long
+enough to overflow a double. `fromBinary` chunks eight characters at a time and
+so cannot exceed 255, but a chunk starting on a character `parseInt` will not
+read is `NaN` there too.
+
+Only two families offer either option, because `toggleValues` decides what a
+field can be:
+
+| Field | Options | Can hold a non-byte |
+|---|---|---|
+| XOR, AND, OR, ADD, SUB | Hex, **Decimal**, **Binary**, Base64, UTF8, Latin1 | yes |
+| BLAKE2b, BLAKE2s | UTF8, **Decimal**, Base64, Hex, Latin1 | yes |
+| XXTEA, Scrypt salt, TEA, XTEA | Hex, UTF8, Latin1, Base64 | no |
+
+What happens next is the consumer's, and it is not one rule. **BLAKE2, XXTEA
+and Scrypt** store the array into a `Uint8Array` or a `Buffer`, which is
+`ToUint8`: `300` is `44` and `NaN` is `0`. **The bitwise family** does not
+coerce the key at all — `bitOp` applies the operator to the number and pushes
+the result — and `Dish.valid()` then walks the finished array refusing any
+element `< 0` or `> 255`.
+
+So the same key succeeds or fails depending on the operator:
+
+| Operator | Key `300` on byte `b` | Result |
+|---|---|---|
+| `AND` | `b & 300` | always a byte; succeeds |
+| `ADD` | `(b + 300) % 256` | always a byte; succeeds |
+| `SUB` | `b - 300`, corrected by one `+256` | a byte only for `b >= 44` |
+| `OR` | `b \| 300` | keeps bit 8; always refused |
+| `XOR` | `b ^ 300` | keeps bit 8; always refused |
+
+The refusal is the dish's, not the operation's, so FerroSift reports it under
+one code — `core.dish.invalid_byte_array` — rather than five.
+
+Two consequences do not follow from masking the key to a byte first, which is
+the natural thing to write:
+
+- **`NaN` is out of range and still allowed.** `Dish.valid()` compares, and
+  `NaN` fails both comparisons, so it reaches the output and becomes `0` when
+  the array is stored. `ADD` and `SUB` are arithmetic and carry it through, so a
+  key of `-` *erases* the input; `XOR`, `AND` and `OR` convert it away with
+  `ToInt32` first, so the same key behaves as a zero byte. A port that masked
+  `NaN` to `0` has `ADD` and `SUB` exactly backwards.
+- **Null preserving compares before anything narrows.** `o === k` is equality
+  between two JavaScript numbers, and `44` is not `300`: the reference XORs
+  them and the dish refuses the `256` that comes out. Masking the key first
+  makes them equal, preserves the byte, and returns successfully with the wrong
+  answer.
+
+Everything the reference will actually run is pinned in the `differential`
+suite. The refusals are in `tests/conformance_togglestring.rs` instead, because
+this corpus records reference *output* and a recipe the reference declines to
+run has none — the oracle cannot bake `XOR` with a key of `300` at all.
+
 ### Flow control: Fork / Merge
 
 `Fork` / `Merge` are first-class map/join control (not jump soup). The executor

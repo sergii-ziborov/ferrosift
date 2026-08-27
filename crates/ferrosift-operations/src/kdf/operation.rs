@@ -10,7 +10,7 @@ use crate::args::{
     toggle_string_default, toggle_string_parts,
 };
 use crate::codec_bytes::toggle_bytes;
-use crate::key::convert_to_byte_array;
+use crate::key::{convert_to_byte_array, stored_as_bytes};
 use crate::spec::{SpecDefinition, build};
 
 use super::codec;
@@ -164,8 +164,9 @@ impl Operation for Scrypt {
         // Scrypt is the exception among the key derivations here: it reads its
         // salt with `convertToByteArray` while PBKDF2 beside it reads both of
         // its fields with `convertToByteString`. See `key.rs` for what that
-        // changes.
-        let salt = convert_to_byte_array(salt_str, salt_opt, "crypto.scrypt.invalid_salt")?;
+        // changes. `Buffer.from` around it is the same `ToUint8` a typed array
+        // applies, so the two readings only part on Latin1.
+        let salt = stored_as_bytes(&convert_to_byte_array(salt_str, salt_opt));
         let hex = codec::scrypt_key(
             &password,
             &salt,

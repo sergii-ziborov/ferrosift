@@ -13,7 +13,7 @@
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 6553
+    "pinned_cases": 6565
   },
   "operations": [
     {
@@ -2050,7 +2050,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 102,
+      "conformance_cases": 104,
       "status": "exact"
     },
     {
@@ -2063,7 +2063,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 61,
+      "conformance_cases": 62,
       "status": "exact"
     },
     {
@@ -2349,7 +2349,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 31,
+      "conformance_cases": 33,
       "status": "exact"
     },
     {
@@ -2362,7 +2362,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 30,
+      "conformance_cases": 32,
       "status": "exact"
     },
     {
@@ -2388,7 +2388,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 30,
+      "conformance_cases": 31,
       "status": "exact"
     },
     {
@@ -2479,7 +2479,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 31,
+      "conformance_cases": 33,
       "status": "exact"
     },
     {
@@ -2492,7 +2492,7 @@
         "Native",
         "Wasm32UnknownUnknown"
       ],
-      "conformance_cases": 48,
+      "conformance_cases": 50,
       "status": "exact"
     },
     {

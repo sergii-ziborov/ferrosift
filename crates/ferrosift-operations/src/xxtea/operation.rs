@@ -4,7 +4,7 @@ use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::args::{map_argument, map_value, toggle_string_default, toggle_string_parts};
-use crate::key::{XOR_INVALID_KEY, convert_to_byte_array};
+use crate::key::{convert_to_byte_array, stored_as_bytes};
 use crate::spec::{SpecDefinition, build};
 
 use super::codec;
@@ -86,7 +86,10 @@ impl Operation for Xxtea {
         context.ensure_active()?;
         let input = crate::value::take_bytes(input)?;
         let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
-        let key = convert_to_byte_array(string, option, XOR_INVALID_KEY)?;
+        // `new Uint8Array(Utils.convertToByteArray(...))`, and the wrapping is
+        // the coercion: the reference stores the array into a typed one before
+        // the cipher ever sees it.
+        let key = stored_as_bytes(&convert_to_byte_array(string, option));
         let output = match self.direction {
             Direction::Encrypt => codec::encrypt(&input, &key, context)?,
             Direction::Decrypt => codec::decrypt(&input, &key, context)?,

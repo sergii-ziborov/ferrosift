@@ -34,6 +34,26 @@ export const digestCases = [
             },
         ],
     },
+    // BLAKE2 is the other operation offering a Decimal key, and it coerces
+    // where the bitwise family does not: `blakejs` stores each element into its
+    // own `Uint8Array`, which is ToUint8. So 300 really is 44 here, and NaN
+    // really is zero -- the same field that erases a SUB is an ordinary
+    // zero byte of key to this.
+    {
+        name: "blake2b_decimal_key_above_byte_range",
+        input: {kind: "bytes", hex: "68656c6c6f"},
+        recipe: [{op: "BLAKE2b", args: ["256", "Hex", {option: "Decimal", string: "300 44"}]}],
+    },
+    {
+        name: "blake2b_decimal_key_not_a_number",
+        input: {kind: "bytes", hex: "68656c6c6f"},
+        recipe: [{op: "BLAKE2b", args: ["256", "Hex", {option: "Decimal", string: "- 0"}]}],
+    },
+    {
+        name: "blake2s_decimal_key_negative",
+        input: {kind: "bytes", hex: "68656c6c6f"},
+        recipe: [{op: "BLAKE2s", args: ["256", "Hex", {option: "Decimal", string: "-1 255"}]}],
+    },
     {
         name: "zlib_inflate_hello",
         // Pinned CyberChef Zlib Deflate of "hello" (Dynamic Huffman Coding).

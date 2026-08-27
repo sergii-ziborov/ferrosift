@@ -2,8 +2,11 @@ use alloc::{format, string::String, vec::Vec};
 
 use ferrosift_core::{OperationContext, OperationError};
 
+use crate::failure::failed;
 use crate::hex_util;
+use crate::jscompat::number::{to_int32, to_uint8};
 use crate::jscompat::string::{byte_array_to_utf8, str_to_byte_array};
+use crate::key::{INVALID_BYTE_ARRAY, fits_byte_array};
 
 /// The per-byte operators the reference's `bitOp` dispatches to.
 #[derive(Clone, Copy)]
@@ -16,36 +19,68 @@ pub(super) enum Operator {
 }
 
 impl Operator {
-    const fn apply(self, operand: u8, key: u8) -> u8 {
+    /// One per-byte step, on the numbers the reference has rather than on
+    /// bytes.
+    ///
+    /// The key is whatever `Utils.convertToByteArray` produced, which for a
+    /// Decimal field is any number at all, and `bitOp` does not coerce it
+    /// before applying these. The split below is the reference's own and it
+    /// matters: the three bitwise operators convert both sides with `ToInt32`,
+    /// so a `NaN` key acts as zero, while `add` and `sub` are plain arithmetic
+    /// and carry a `NaN` through into the result.
+    ///
+    /// Masking the key to a byte first would agree with all five whenever the
+    /// key is a number — every one of them is congruent modulo 256 in the key —
+    /// which is why nothing caught it. It disagrees on `NaN` for exactly two.
+    fn apply(self, operand: u8, key: f64) -> f64 {
+        let value = f64::from(operand);
         match self {
-            Self::And => operand & key,
-            Self::Or => operand | key,
-            Self::Not => !operand,
-            Self::Add => operand.wrapping_add(key),
-            Self::Sub => operand.wrapping_sub(key),
+            Self::And => f64::from(to_int32(value) & to_int32(key)),
+            Self::Or => f64::from(to_int32(value) | to_int32(key)),
+            Self::Not => f64::from(!to_int32(value) & 0xff),
+            // `(o + k) % 256`, where JavaScript's `%` keeps the sign of the
+            // dividend and so does Rust's.
+            Self::Add => (value + key) % 256.0,
+            // `r < 0 ? 256 + r : r`, and a `NaN` compares false, so it is
+            // returned rather than corrected.
+            Self::Sub => {
+                let result = value - key;
+                if result < 0.0 { 256.0 + result } else { result }
+            }
         }
     }
 }
 
 /// Applies an operator byte-wise against a repeating key.
 ///
-/// An empty key becomes a single zero byte, matching the reference, so AND
-/// with no key zeroes the input rather than passing it through.
+/// An empty key becomes a single zero, matching the reference, so AND with no
+/// key zeroes the input rather than passing it through.
+///
+/// Becoming bytes happens once, at the end, because that is where the reference
+/// does it: `bitOp` pushes raw numbers and the dish decides afterwards whether
+/// the array it was handed is a byte array at all. Which is why a result out of
+/// range fails rather than wrapping — see [`fits_byte_array`]. A key of `300`
+/// therefore fails an `OR` and succeeds an `ADD`, because `o | 300` keeps the
+/// ninth bit and `(o + 300) % 256` does not.
 pub(super) fn bit_op(
     input: &[u8],
-    key: &[u8],
+    key: &[f64],
     operator: Operator,
     context: &OperationContext<'_>,
 ) -> Result<Vec<u8>, OperationError> {
     context.ensure_active()?;
-    let zero = [0u8];
+    let zero = [0.0_f64];
     let key = if key.is_empty() { &zero[..] } else { key };
     let mut output = Vec::with_capacity(input.len());
     for (index, byte) in input.iter().enumerate() {
         if index.is_multiple_of(4096) {
             context.ensure_active()?;
         }
-        output.push(operator.apply(*byte, key[index % key.len()]));
+        let result = operator.apply(*byte, key[index % key.len()]);
+        if !fits_byte_array(result) {
+            return Err(failed(INVALID_BYTE_ARRAY));
+        }
+        output.push(to_uint8(result));
     }
     context.ensure_active()?;
     Ok(output)

@@ -382,6 +382,24 @@ pub mod jscompat_testing {
         crate::jscompat::number::parse_decimal(token)
     }
 
+    /// `ToInt32`, which every JavaScript bitwise operator applies first.
+    #[must_use]
+    pub fn to_int32(value: f64) -> i32 {
+        crate::jscompat::number::to_int32(value)
+    }
+
+    /// `ToUint8`, which storing into a `Uint8Array` or a `Buffer` applies.
+    ///
+    /// Exposed beside [`to_int32`] because the pair is the point: a
+    /// toggleString field can hold a number no byte array can, and which of
+    /// these two the consumer applies is what decides the answer. Checking them
+    /// only through the operations that use them would have left the difference
+    /// implicit in six places instead of pinned in one.
+    #[must_use]
+    pub fn to_uint8(value: f64) -> u8 {
+        crate::jscompat::number::to_uint8(value)
+    }
+
     /// Accumulates keys the way a JavaScript object literal used as a set does.
     #[derive(Default)]
     pub struct KeySet {

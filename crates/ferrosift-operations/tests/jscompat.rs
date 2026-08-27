@@ -20,6 +20,19 @@ struct Fixture {
     utf16: Vec<Utf16Case>,
     key_order: Vec<KeyOrderCase>,
     number_format: Vec<NumberFormatCase>,
+    coercion: Vec<CoercionCase>,
+}
+
+#[derive(Deserialize)]
+struct CoercionCase {
+    /// The number being coerced, as its big-endian bit pattern.
+    ///
+    /// Bits for the same reason the formats above use them, and for one more:
+    /// this family deliberately includes `NaN` and both infinities, which JSON
+    /// cannot spell at all.
+    bits: String,
+    int32: i32,
+    uint8: u8,
 }
 
 #[derive(Deserialize)]
@@ -291,6 +304,53 @@ fn number_formatting_matches_node() {
     );
 }
 
+/// The two answers a number outside the byte range gets, and which is which.
+///
+/// A toggleString field is read into a plain JavaScript array, so a Decimal
+/// field of `300` really is three hundred until something coerces it. Every
+/// consumer coerces, and all of them do it one of these two ways: a bitwise
+/// operator with `ToInt32`, a typed array or `Buffer` with `ToUint8`. They
+/// disagree on the sign — `-1` is `-1` to the first and `255` to the second —
+/// so a port that models one of them and calls it "the byte conversion" is
+/// wrong for whichever half it did not look at.
+#[test]
+fn number_coercions_match_node() {
+    let fixture = fixture();
+    let mut mismatches = Vec::new();
+
+    for case in &fixture.coercion {
+        let bits = u64::from_str_radix(&case.bits, 16).expect("fixture bits must be hexadecimal");
+        let value = f64::from_bits(bits);
+
+        let int32 = ferrosift_operations::jscompat_testing::to_int32(value);
+        if int32 != case.int32 {
+            mismatches.push(format!(
+                "ToInt32(0x{}) — node gives {}, we give {int32}",
+                case.bits, case.int32
+            ));
+        }
+
+        let uint8 = ferrosift_operations::jscompat_testing::to_uint8(value);
+        if uint8 != case.uint8 {
+            mismatches.push(format!(
+                "ToUint8(0x{}) — node gives {}, we give {uint8}",
+                case.bits, case.uint8
+            ));
+        }
+    }
+
+    assert!(
+        mismatches.is_empty(),
+        "{} of {} coercion cases disagree with Node:\n{}\n\
+         Both reduce modulo 2^32 after truncating, and NaN and the infinities \
+         are zero to both. They part on what they do with the result: ToInt32 \
+         reads it as signed and ToUint8 keeps its low byte.",
+        mismatches.len(),
+        fixture.coercion.len(),
+        mismatches.join("\n")
+    );
+}
+
 /// A guard against the fixture quietly emptying out.
 #[test]
 fn the_fixture_is_not_empty() {
@@ -301,6 +361,7 @@ fn the_fixture_is_not_empty() {
         ("utf16", fixture.utf16.len()),
         ("key_order", fixture.key_order.len()),
         ("number_format", fixture.number_format.len()),
+        ("coercion", fixture.coercion.len()),
     ]);
     for (name, count) in counts {
         assert!(count > 0, "the {name} section of the fixture is empty");

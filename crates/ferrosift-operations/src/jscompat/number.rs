@@ -132,3 +132,89 @@ pub(crate) fn to_byte(parsed: JsInt) -> Option<u8> {
         JsInt::Value(value) => u8::try_from(value).ok(),
     }
 }
+
+/// `ToUint32`: the number reduced into `0..2^32`, which both conversions below
+/// are a view of.
+///
+/// Not an implementation detail the two happen to share — `ToUint8` really is
+/// `ToInt32` seen as unsigned and cut to its low byte, because 256 divides
+/// 2^32. Writing it once is what keeps them from drifting into disagreeing
+/// about a number neither was tested with.
+///
+/// Everything without a finite integer part is zero: `NaN`, both infinities.
+/// `parseInt` reaches all three — a long enough run of digits *is* `Infinity`
+/// there rather than an error.
+///
+/// Read off the bit pattern rather than computed with `trunc` and a remainder,
+/// for the same reason `float::floor` is written out: neither exists in `core`,
+/// and this crate is `no_std`. Working from the bits is also the exact answer
+/// rather than an accurate one — a double above 2^53 is still an integer, and
+/// reducing it through any float operation would be asking that operation not
+/// to round.
+fn to_uint32(value: f64) -> u32 {
+    let bits = value.to_bits();
+    let negative = bits >> 63 == 1;
+    let exponent = i32::try_from((bits >> 52) & 0x7ff).unwrap_or(0) - 1023;
+
+    // Below one there is no integer part, which covers both zeros and every
+    // subnormal. At or above 2^84 the integer part is a multiple of 2^32,
+    // because the mantissa carries at most 53 significant bits — so the low
+    // thirty-two are zero and there is nothing to keep. Infinities and `NaN`
+    // land in the second branch by their exponent alone.
+    if exponent < 0 {
+        return 0;
+    }
+    if exponent >= 84 {
+        return 0;
+    }
+
+    // The significand with its implicit leading bit, which is the integer
+    // `mantissa * 2^(exponent - 52)`.
+    let mantissa = (bits & 0x000f_ffff_ffff_ffff) | 0x0010_0000_0000_0000;
+    #[expect(
+        clippy::cast_possible_truncation,
+        reason = "keeping the low thirty-two bits is the reduction ToUint32 performs"
+    )]
+    let magnitude = if exponent >= 52 {
+        // Shifting left only moves bits toward the top, so reducing first and
+        // shifting the remainder gives the same low word without overflowing.
+        (mantissa as u32).wrapping_shl(exponent.unsigned_abs() - 52)
+    } else {
+        (mantissa >> (52 - exponent.unsigned_abs())) as u32
+    };
+
+    if negative {
+        magnitude.wrapping_neg()
+    } else {
+        magnitude
+    }
+}
+
+/// `ToInt32`, which every JavaScript bitwise operator applies to both operands
+/// before doing anything else.
+///
+/// This is why a key of `-1` is not a key of `255` to `^`, and why a key of
+/// 2^32 is a key of `0`.
+pub(crate) fn to_int32(value: f64) -> i32 {
+    #[expect(
+        clippy::cast_possible_wrap,
+        reason = "reinterpreting the low 32 bits as signed is what ToInt32 is"
+    )]
+    let signed = to_uint32(value) as i32;
+    signed
+}
+
+/// `ToUint8`, which is what storing into a `Uint8Array` or a `Buffer` does.
+///
+/// Four of the toggleString consumers hand their array straight to one of those
+/// — `new Uint8Array(...)`, `Buffer.from(...)`, or an element assignment into a
+/// typed array inside a library — so this is the coercion a byte array actually
+/// gets, rather than the range check a port would reach for.
+pub(crate) fn to_uint8(value: f64) -> u8 {
+    #[expect(
+        clippy::cast_possible_truncation,
+        reason = "keeping the low eight bits is what ToUint8 is"
+    )]
+    let byte = to_uint32(value) as u8;
+    byte
+}

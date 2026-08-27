@@ -330,8 +330,13 @@ impl Operation for Blake2 {
             .map_err(|_| OperationError::InvalidArguments)?;
         let encoding = text_value(arguments, "output_encoding")?;
         let (key_option, key_text) = toggle_string_parts(map_value(arguments, "key")?)?;
+        // BLAKE2 is one of the two operations that offer a Decimal field, so a
+        // key element here really can be a number no byte holds. `blakejs`
+        // stores each one into its own `Uint8Array` buffer, which is `ToUint8`
+        // — the length check below then counts elements, not bytes, which is
+        // the same thing only because the store is one-for-one.
         let key =
-            crate::key::convert_to_byte_array(key_text, key_option, "hash.blake2.invalid_key")?;
+            crate::key::stored_as_bytes(&crate::key::convert_to_byte_array(key_text, key_option));
         // The reference refuses a key longer than the function allows, and
         // says so rather than truncating it. The two functions do not allow
         // the same length: sixty-four bytes for the sixty-four bit form and

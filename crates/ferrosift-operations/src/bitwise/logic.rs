@@ -10,8 +10,6 @@ use crate::value::{bytes, take_bytes};
 
 use super::codec::{self, Operator};
 
-const INVALID_KEY: &str = "logic.bitwise.invalid_key";
-
 /// A byte-wise logic or arithmetic operation against a repeating key.
 ///
 /// The five reference operations differ only in the per-byte function and
@@ -106,12 +104,12 @@ impl Bitwise {
         }
     }
 
-    fn key(&self, arguments: &Arguments) -> Result<Vec<u8>, OperationError> {
+    fn key(&self, arguments: &Arguments) -> Result<Vec<f64>, OperationError> {
         if !self.keyed {
             return Ok(Vec::new());
         }
         let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
-        convert_to_byte_array(string, option, INVALID_KEY)
+        Ok(convert_to_byte_array(string, option))
     }
 }
 

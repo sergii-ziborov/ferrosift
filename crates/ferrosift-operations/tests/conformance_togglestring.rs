@@ -88,6 +88,150 @@ fn the_array_reading_falls_back_to_utf_eight() {
     );
 }
 
+/// Runs one keyed bitwise operation and reports what came back.
+fn bitwise(operation: &str, option: &str, string: &str, input: &[u8]) -> Result<Vec<u8>, String> {
+    support::run_with_budget(
+        operation,
+        Arguments::from([toggle("key", option, string)]),
+        Value::Bytes(input.to_vec()),
+        support::budget(),
+    )
+    .map(|result| match result.value {
+        Value::Bytes(bytes) => bytes,
+        other => panic!("a bitwise operation must produce bytes, got {other:?}"),
+    })
+    .map_err(|error| error.code().to_string())
+}
+
+/// The array reading does not produce bytes, and the dish is what decides.
+///
+/// `fromDecimal` is `parseInt` per field with nothing after it, so a Decimal
+/// key really holds 300, or -1, or NaN. `bitOp` never coerces it — it applies
+/// the operator and pushes the result — and `Dish.valid()` then walks the
+/// finished array refusing any element `< 0` or `> 255`.
+///
+/// So the same key succeeds under one operator and fails under another, which
+/// is the part no amount of masking reproduces. These belong here rather than in
+/// the corpus because the corpus records reference *output*, and a recipe the
+/// reference refuses to run has none: the oracle cannot bake `XOR` with a key of
+/// 300 at all.
+#[test]
+fn a_result_outside_the_byte_range_is_refused_rather_than_wrapped() {
+    // `o | 300` and `o ^ 300` keep the ninth bit for every byte, so the whole
+    // array is out of range and nothing survives validation.
+    for operation in ["logic.xor@1", "logic.or@1"] {
+        assert_eq!(
+            bitwise(operation, "Decimal", "300", &[0x2c, 0x2d]),
+            Err("core.dish.invalid_byte_array".into()),
+            "{operation} with a key above the byte range"
+        );
+    }
+
+    // ToInt32 of -1 is -1, and `o ^ -1` is `~o`, which is negative for every
+    // byte. Masking the key to 255 first would have produced a clean result.
+    assert_eq!(
+        bitwise("logic.xor@1", "Decimal", "-1", &[0x00, 0x01]),
+        Err("core.dish.invalid_byte_array".into())
+    );
+
+    // The same key is ordinary to the operators whose result cannot leave the
+    // range: `&` only clears bits, and `%` brings the sum back.
+    assert_eq!(
+        bitwise("logic.and@1", "Decimal", "300", &[0x2c, 0x2d]),
+        Ok(vec![0x2c, 0x2c])
+    );
+    assert_eq!(
+        bitwise("logic.add@1", "Decimal", "300", &[0x01, 0x02]),
+        Ok(vec![0x2d, 0x2e])
+    );
+
+    // SUB is the one that depends on the input rather than only on the key:
+    // `o - 300` is corrected by a single 256, which is enough for a byte of 44
+    // and not for the byte below it.
+    assert_eq!(
+        bitwise("logic.sub@1", "Decimal", "300", &[0x2c]),
+        Ok(vec![0x00])
+    );
+    assert_eq!(
+        bitwise("logic.sub@1", "Decimal", "300", &[0x2b]),
+        Err("core.dish.invalid_byte_array".into())
+    );
+}
+
+/// `NaN` is out of range too, and it is allowed.
+///
+/// `Dish.valid()` refuses an element `< 0` or `> 255`, and those are
+/// comparisons: `NaN` fails both, so it passes. It then becomes zero when the
+/// array is stored — which makes ADD and SUB erase their input, because they are
+/// arithmetic and carry the `NaN` through, while the bitwise three convert it to
+/// zero with `ToInt32` first and so leave the input alone.
+///
+/// A port that masked `NaN` to a zero key would have every one of these back to
+/// front for ADD and SUB.
+#[test]
+fn a_not_a_number_key_erases_under_arithmetic_and_vanishes_under_bitwise() {
+    let input = [0x01, 0x02, 0xff];
+
+    for operation in ["logic.add@1", "logic.sub@1"] {
+        assert_eq!(
+            bitwise(operation, "Decimal", "-", &input),
+            Ok(vec![0x00, 0x00, 0x00]),
+            "{operation} carries the NaN into every result"
+        );
+    }
+
+    // `o ^ 0` and `o | 0` are the input; `o & 0` is zero. All three are what a
+    // key byte of zero would have given, which is why only ADD and SUB show it.
+    assert_eq!(
+        bitwise("logic.xor@1", "Decimal", "-", &input),
+        Ok(input.to_vec())
+    );
+    assert_eq!(
+        bitwise("logic.or@1", "Decimal", "-", &input),
+        Ok(input.to_vec())
+    );
+    assert_eq!(
+        bitwise("logic.and@1", "Decimal", "-", &input),
+        Ok(vec![0x00, 0x00, 0x00])
+    );
+}
+
+/// Null preserving compares the key by identity, so masking it changes what is
+/// preserved.
+///
+/// `o === k` is an equality test between two JavaScript numbers, and 44 is not
+/// 300. The reference therefore XORs them — and the result, 256, is what the
+/// dish refuses. A port that masked the key to a byte first would find them
+/// equal, preserve the byte, and return successfully with the wrong answer.
+#[test]
+fn null_preserving_compares_the_key_before_anything_narrows_it() {
+    let preserved = |option: &str, string: &str, input: &[u8]| {
+        support::run_with_budget(
+            "logic.xor@1",
+            Arguments::from([
+                toggle("key", option, string),
+                ("scheme".into(), ArgumentValue::Text("Standard".into())),
+                ("null_preserving".into(), ArgumentValue::Boolean(true)),
+            ]),
+            Value::Bytes(input.to_vec()),
+            support::budget(),
+        )
+        .map(|result| match result.value {
+            Value::Bytes(bytes) => bytes,
+            other => panic!("XOR must produce bytes, got {other:?}"),
+        })
+        .map_err(|error| error.code().to_string())
+    };
+
+    // A key of 44 preserves the byte 44.
+    assert_eq!(preserved("Decimal", "44", &[0x2c]), Ok(vec![0x2c]));
+    // A key of 300 does not, and what it produces instead is out of range.
+    assert_eq!(
+        preserved("Decimal", "300", &[0x2c]),
+        Err("core.dish.invalid_byte_array".into())
+    );
+}
+
 /// HMAC's key, which takes the *other* reading.
 fn hmac_digest(option: &str, string: &str) -> String {
     let result = support::run(

@@ -15,7 +15,7 @@ use crate::args::{
 use crate::failure::failed;
 use crate::hex_util::to_hex_lower;
 use crate::jscompat::string::byte_array_to_utf8;
-use crate::key::convert_to_byte_array;
+use crate::key::{convert_to_byte_array, stored_as_bytes};
 use crate::spec::{SpecDefinition, build};
 use crate::value::text;
 
@@ -171,8 +171,8 @@ impl Operation for Tea {
         context.ensure_active()?;
         let (key_option, key_string) = toggle_string_parts(map_value(arguments, "key")?)?;
         let (iv_option, iv_string) = toggle_string_parts(map_value(arguments, "iv")?)?;
-        let key = convert_to_byte_array(key_string, key_option, INVALID_KEY)?;
-        let iv = convert_to_byte_array(iv_string, iv_option, INVALID_IV)?;
+        let key = stored_as_bytes(&convert_to_byte_array(key_string, key_option));
+        let iv = stored_as_bytes(&convert_to_byte_array(iv_string, iv_option));
         let mode = text_value(arguments, "mode")?;
         let padding = text_value(arguments, "padding")?;
         let input_format = text_value(arguments, "input")?;
@@ -229,7 +229,7 @@ fn read_input(input: Value, format: &str) -> Result<Vec<u8>, OperationError> {
         Value::Text(value) => value.text,
         _ => return Err(OperationError::InvalidArguments),
     };
-    convert_to_byte_array(&text, format, INVALID_FORMAT)
+    Ok(stored_as_bytes(&convert_to_byte_array(&text, format)))
 }
 
 /// Writes the output as hex, or as the *string* the reference makes of it.

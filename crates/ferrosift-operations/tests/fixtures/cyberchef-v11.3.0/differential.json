@@ -743,6 +743,208 @@
       "stopped_after": 1
     },
     {
+      "name": "xor_decimal_key_overflows_to_infinity",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "XOR",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+            },
+            "Standard",
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "0102ff"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "xor_binary_key_not_a_number",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "XOR",
+          "args": [
+            {
+              "option": "Binary",
+              "string": "2"
+            },
+            "Standard",
+            false
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "0102ff"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "add_decimal_key_not_a_number",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "ADD",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "-"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "000000"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "sub_decimal_key_not_a_number",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "SUB",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "-"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "000000"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "and_decimal_key_not_a_number",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "AND",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "-"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "000000"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "or_decimal_key_not_a_number",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "OR",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "-"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "0102ff"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "add_decimal_key_above_byte_range",
+      "input": {
+        "kind": "bytes",
+        "hex": "0102ff"
+      },
+      "recipe": [
+        {
+          "op": "ADD",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "300"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "2d2e2b"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "sub_decimal_key_above_byte_range",
+      "input": {
+        "kind": "bytes",
+        "hex": "2c40ff"
+      },
+      "recipe": [
+        {
+          "op": "SUB",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "300"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "0014d3"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "and_decimal_key_above_byte_range",
+      "input": {
+        "kind": "bytes",
+        "hex": "2c2d00ff"
+      },
+      "recipe": [
+        {
+          "op": "AND",
+          "args": [
+            {
+              "option": "Decimal",
+              "string": "300"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "2c2c002c"
+      ],
+      "stopped_after": 1
+    },
+    {
       "name": "hexdump_round_trip",
       "input": {
         "kind": "bytes",
@@ -977,6 +1179,78 @@
       ],
       "outputs_hex": [
         "39333037623362393135656662353137316666313464386362353566626363373938633663306566313435366436366465643161366161373233613538623762"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "blake2b_decimal_key_above_byte_range",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "BLAKE2b",
+          "args": [
+            "256",
+            "Hex",
+            {
+              "option": "Decimal",
+              "string": "300 44"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "30383737393534333631316434376662343034623636643239613236363865376463336165383139383331373161626362356538646262643931383266353636"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "blake2b_decimal_key_not_a_number",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "BLAKE2b",
+          "args": [
+            "256",
+            "Hex",
+            {
+              "option": "Decimal",
+              "string": "- 0"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "31313963373932633164313764653734383933333130356663656139356439353332343839376339616439663661393534316261346432623861326332623537"
+      ],
+      "stopped_after": 1
+    },
+    {
+      "name": "blake2s_decimal_key_negative",
+      "input": {
+        "kind": "bytes",
+        "hex": "68656c6c6f"
+      },
+      "recipe": [
+        {
+          "op": "BLAKE2s",
+          "args": [
+            "256",
+            "Hex",
+            {
+              "option": "Decimal",
+              "string": "-1 255"
+            }
+          ]
+        }
+      ],
+      "outputs_hex": [
+        "65373561633165646330613266653336656434663833633434616663366465653963353064626638663836396531373166666135663231306133343361613662"
       ],
       "stopped_after": 1
     },

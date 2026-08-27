@@ -19,7 +19,7 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 6553 |
+| Pinned cases | 6565 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -189,8 +189,8 @@ does.
 | `flow.label@1` | Label | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
 | `hash.bcrypt.parse@1` | Bcrypt parse | core | exact | 20 |
-| `hash.blake2b@1` | BLAKE2b | hash | exact | 102 |
-| `hash.blake2s@1` | BLAKE2s | hash | exact | 61 |
+| `hash.blake2b@1` | BLAKE2b | hash | exact | 104 |
+| `hash.blake2s@1` | BLAKE2s | hash | exact | 62 |
 | `hash.blake3@1` | BLAKE3 | hash | exact | 73 |
 | `hash.hmac@1` | HMAC | hash | exact | 29 |
 | `hash.keccak@1` | Keccak | hash | exact | 24 |
@@ -212,18 +212,18 @@ does.
 | `http.headers.strip@1` | Strip HTTP headers | core | exact | 6 |
 | `list.split@1` | Split | core | exact | 9 |
 | `list.unique@1` | Unique | core | exact | 30 |
-| `logic.add@1` | ADD | core | exact | 31 |
-| `logic.and@1` | AND | core | exact | 30 |
+| `logic.add@1` | ADD | core | exact | 33 |
+| `logic.and@1` | AND | core | exact | 32 |
 | `logic.not@1` | NOT | core | exact | 7 |
-| `logic.or@1` | OR | core | exact | 30 |
+| `logic.or@1` | OR | core | exact | 31 |
 | `logic.parity@1` | Parity Bit | core | exact | 54 |
 | `logic.ror13@1` | ROR13 | core | exact | 5 |
 | `logic.rotate.left@1` | Rotate left | core | exact | 62 |
 | `logic.rotate.right@1` | Rotate right | core | exact | 62 |
 | `logic.shift.left@1` | Bit shift left | core | exact | 20 |
 | `logic.shift.right@1` | Bit shift right | core | exact | 70 |
-| `logic.sub@1` | SUB | core | exact | 31 |
-| `logic.xor@1` | XOR | core | exact | 48 |
+| `logic.sub@1` | SUB | core | exact | 33 |
+| `logic.xor@1` | XOR | core | exact | 50 |
 | `logic.xor_brute@1` | XOR Brute Force | analysis | exact | 3 |
 | `math.convert.area@1` | Convert area | core | exact | 86 |
 | `math.convert.data@1` | Convert data units | core | exact | 92 |

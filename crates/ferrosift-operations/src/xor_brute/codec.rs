@@ -87,10 +87,16 @@ pub(super) fn brute(
     Ok(output)
 }
 
-fn int_to_key(mut value: u32, len: usize) -> Vec<u8> {
-    let mut key = alloc::vec![0_u8; len];
+/// One key from the enumeration, as the numbers XOR reads keys as.
+///
+/// Doubles because that is what `xor::apply` takes — a toggleString key can
+/// hold a number no byte holds, and it works on the number. Nothing here can:
+/// every element is a byte of `value` by construction, so the widening is
+/// exact and this enumeration reaches none of the behaviour that motivates it.
+fn int_to_key(mut value: u32, len: usize) -> Vec<f64> {
+    let mut key = alloc::vec![0.0_f64; len];
     for index in (0..len).rev() {
-        key[index] = u8::try_from(value & 0xff).unwrap_or(0);
+        key[index] = f64::from(value & 0xff);
         value >>= 8;
     }
     key

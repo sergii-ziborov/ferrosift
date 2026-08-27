@@ -31,50 +31,90 @@
 //! to XOR and two to HMAC.
 //!
 //! None of the branches can fail, which is the point: a key the reference reads
-//! is a key this reads. The single exception is documented on
-//! [`convert_to_byte_array`] and is a limit of the type rather than a choice.
+//! is a key this reads.
+//!
+//! The array reading does not produce bytes. `fromDecimal` is `parseInt` per
+//! field with nothing after it, so a Decimal field of `300` is three hundred, a
+//! field of `-` is `NaN`, and a long enough run of digits is `Infinity`;
+//! `fromBinary` chunks eight characters at a time and so cannot exceed 255, but
+//! a chunk starting on a non-binary character is `NaN` there too. Only two
+//! operations offer either format — the bitwise family and BLAKE2 — but what
+//! reaches a consumer is a JavaScript number, and
+//! [`convert_to_byte_array`] hands over exactly that.
+//!
+//! Which coercion follows is the consumer's, and it is not one coercion:
+//!
+//! * **The bitwise family** never coerces the key at all. `bitOp` hands it
+//!   straight to `^`, `&`, `|` or plain arithmetic and pushes the result, and
+//!   only the dish reduces that to a byte on the way out.
+//! * **BLAKE2, XXTEA and Scrypt** store the array into a `Uint8Array` or a
+//!   `Buffer` — `ToUint8`, which [`stored_as_bytes`] is.
+//!
+//! Masking up front looks equivalent for the bitwise family and is not, in two
+//! places. `add` and `sub` are ordinary arithmetic, so a `NaN` key propagates
+//! into the output and the dish writes zero, where a key masked to zero would
+//! have left the input alone. And XOR's null-preserving mode compares `o === k`
+//! by identity, so a key of `300` is not a byte of `44` there — masking first
+//! makes them equal and passes the byte through untouched.
 
 use alloc::vec::Vec;
 
-use ferrosift_core::OperationError;
-
-use crate::failure::failed;
 use crate::hex_util::from_hex_auto;
 use crate::jscompat::delim::is_js_whitespace;
+use crate::jscompat::number::{self, JsInt};
 use crate::jscompat::string::str_to_byte_array;
-
-/// The failure code XOR has reported since it shipped; other callers pass
-/// their own so a stable code always names the operation that raised it.
-pub(crate) const XOR_INVALID_KEY: &str = "logic.xor.invalid_key";
 
 /// The reference's Base64 alphabet, with its padding character last.
 const BASE64: &[u8; 65] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
-/// `Utils.convertToByteArray`.
+/// `Utils.convertToByteArray`, as the numbers it really produces.
 ///
-/// # Errors
-///
-/// Only for a binary or decimal field holding a number outside `0..=255`. The
-/// reference builds a plain JavaScript array there, which happily holds `300`,
-/// and each consumer then coerces it in its own way. A `Vec<u8>` cannot carry
-/// the value through to be coerced later, so this refuses rather than picking
-/// one consumer's coercion and applying it to all of them —
-/// [`convert_to_byte_string`], whose consumers all mask, does the masking.
-pub(crate) fn convert_to_byte_array(
-    value: &str,
-    format: &str,
-    code: &'static str,
-) -> Result<Vec<u8>, OperationError> {
+/// Doubles rather than bytes because the reference's array holds doubles: this
+/// is `parseInt`'s output with nothing between it and the caller. A consumer
+/// that wants bytes says so with [`stored_as_bytes`], which is a second step on
+/// purpose — the reference has one reading and several coercions, and folding
+/// them together is how a port ends up applying one consumer's rule to all of
+/// them.
+pub(crate) fn convert_to_byte_array(value: &str, format: &str) -> Vec<f64> {
     match fields(value, format) {
-        Some(numbers) => numbers
-            .into_iter()
-            .map(|number| u8::try_from(number).map_err(|_| failed(code)))
-            .collect(),
+        Some(numbers) => numbers,
         // Latin1 and anything unrecognised. The reference has no error branch
         // here: its `switch` falls through to this, so a misspelt option name
-        // reads the field as raw characters instead of refusing it.
-        None => Ok(str_to_byte_array(value)),
+        // reads the field as raw characters instead of refusing it. Every byte
+        // it produces is already a byte, so nothing here can be out of range.
+        None => widen(str_to_byte_array(value)),
     }
+}
+
+/// The array as the consumers that store it into a typed array receive it.
+///
+/// `new Uint8Array(array)`, `Buffer.from(array)`, and an element assignment
+/// into a library's own `Uint8Array` are all the same conversion — `ToUint8` —
+/// and between them they cover BLAKE2's key, XXTEA's key and Scrypt's salt.
+pub(crate) fn stored_as_bytes(numbers: &[f64]) -> Vec<u8> {
+    numbers.iter().copied().map(number::to_uint8).collect()
+}
+
+/// The failure a dish reports for a byte array holding something that is not a
+/// byte.
+///
+/// One code for every operation that produces one, because it is one check: the
+/// reference does not validate in the operation at all. `Dish.valid()` runs
+/// over the finished array and the recipe stops there, so `XOR` and `SUB` fail
+/// the same way for the same reason and a per-operation code would be inventing
+/// a distinction the reference does not have.
+pub(crate) const INVALID_BYTE_ARRAY: &str = "core.dish.invalid_byte_array";
+
+/// Whether a number may sit in a `byteArray` dish.
+///
+/// `Dish.valid()` refuses an element that is `< 0` or `> 255` — and those are
+/// *comparisons*, so `NaN` fails both and is waved through. That is not a
+/// rounding of the rule to make it convenient: an operation whose arithmetic
+/// produced `NaN` really does continue, and the value becomes a zero byte when
+/// the array is finally stored. An operation whose arithmetic produced 256 does
+/// not continue at all.
+pub(crate) fn fits_byte_array(value: f64) -> bool {
+    value.is_nan() || (0.0..=255.0).contains(&value)
 }
 
 /// `Utils.convertToByteString`, for the operations that call that one instead.
@@ -93,10 +133,12 @@ pub(crate) fn convert_to_byte_array(
 #[cfg(any(feature = "hash", feature = "crypto"))]
 pub(crate) fn convert_to_byte_string(value: &str, format: &str) -> Vec<u8> {
     match fields(value, format) {
-        Some(numbers) => numbers
-            .into_iter()
-            .map(|number| u8::try_from(number & 0xff).unwrap_or(0))
-            .collect(),
+        // `byteArrayToChars` is `String.fromCharCode`, which is `ToUint16`, and
+        // every consumer of this reading then masks the code unit to a byte.
+        // Two reductions modulo powers of two compose into the smaller one, so
+        // the pair is `ToUint8` — the same coercion [`stored_as_bytes`] applies,
+        // reached by a different route.
+        Some(numbers) => stored_as_bytes(&numbers),
         None => latin1_bytes(value),
     }
 }
@@ -106,7 +148,7 @@ pub(crate) fn convert_to_byte_string(value: &str, format: &str) -> Vec<u8> {
 ///
 /// UTF8 is here as bytes because both readings agree on it: one encodes to a
 /// byte array and the other to a byte string with the same contents.
-fn fields(value: &str, format: &str) -> Option<Vec<i64>> {
+fn fields(value: &str, format: &str) -> Option<Vec<f64>> {
     let numbers = match format.to_ascii_lowercase().as_str() {
         "binary" => decode_binary(value),
         "hex" => widen(from_hex_auto(value)),
@@ -118,9 +160,9 @@ fn fields(value: &str, format: &str) -> Option<Vec<i64>> {
     Some(numbers)
 }
 
-/// Bytes that are already bytes, as the wider numbers the caller compares.
-fn widen(bytes: Vec<u8>) -> Vec<i64> {
-    bytes.into_iter().map(i64::from).collect()
+/// Bytes that are already bytes, as the numbers the array actually holds.
+fn widen(bytes: Vec<u8>) -> Vec<f64> {
+    bytes.into_iter().map(f64::from).collect()
 }
 
 /// `fromBinary(data, "Space", 8)`.
@@ -129,13 +171,30 @@ fn widen(bytes: Vec<u8>) -> Vec<i64> {
 /// time — so the chunks run across where the spaces were rather than restarting
 /// after each one. `parseInt(chunk, 2)` reads the longest binary prefix, which
 /// is how a stray character ends a chunk early instead of failing it.
-fn decode_binary(value: &str) -> Vec<i64> {
+///
+/// Eight binary digits cannot exceed 255, so this branch never produces a
+/// number out of range. It can still produce `NaN`, for a chunk whose first
+/// character is not a binary digit, and that survives to the consumer.
+fn decode_binary(value: &str) -> Vec<f64> {
     let bits: Vec<char> = value
         .chars()
         .filter(|one| !is_js_whitespace(*one))
         .collect();
     bits.chunks(8)
-        .map(|chunk| prefix_number(chunk, 2).unwrap_or(0))
+        .map(|chunk| {
+            let token: alloc::string::String = chunk.iter().collect();
+            match number::parse(&token, 2) {
+                JsInt::Nan => f64::NAN,
+                JsInt::Value(parsed) => {
+                    #[expect(
+                        clippy::cast_precision_loss,
+                        reason = "eight binary digits reach 255, far inside what a double counts by ones"
+                    )]
+                    let widened = parsed as f64;
+                    widened
+                }
+            }
+        })
         .collect()
 }
 
@@ -144,16 +203,16 @@ fn decode_binary(value: &str) -> Vec<i64> {
 /// The separator is a run of anything that is neither an ASCII digit nor a
 /// minus, so `1,2,3` and `1 2 3` read alike and `1-2` is one field that
 /// `parseInt` reads as `1`.
-fn decode_decimal(value: &str) -> Vec<i64> {
+///
+/// This is the branch that produces numbers a byte array cannot hold. Nothing
+/// bounds `parseInt` here — the reference writes the result into a plain array
+/// and moves on — so `300`, `-1`, `NaN` and `Infinity` all reach the consumer
+/// untouched, and what each of them means is decided there.
+fn decode_decimal(value: &str) -> Vec<f64> {
     value
         .split(|one: char| !one.is_ascii_digit() && one != '-')
         .filter(|field| !field.is_empty())
-        .map(|field| {
-            let digits: Vec<char> = field.chars().collect();
-            // `parseInt` of a field that is only a minus sign is NaN, which
-            // reads back out of a byte array as zero.
-            prefix_number(&digits, 10).unwrap_or(0)
-        })
+        .map(number::parse_decimal)
         .collect()
 }
 
@@ -207,31 +266,4 @@ fn latin1_bytes(value: &str) -> Vec<u8> {
         .encode_utf16()
         .map(|unit| u8::try_from(unit & 0xff).unwrap_or(0))
         .collect()
-}
-
-/// The longest prefix of `chunk` that is a number in `radix`, as `parseInt`
-/// reads it, or `None` for its `NaN`.
-///
-/// One optional leading minus is honoured, because a decimal field can carry
-/// one: the separator the reference splits on keeps `-` out of it deliberately.
-fn prefix_number(chunk: &[char], radix: u32) -> Option<i64> {
-    let mut characters = chunk.iter().peekable();
-    let negative = characters.next_if_eq(&&'-').is_some();
-    let mut value: i64 = 0;
-    let mut seen = false;
-    for digit in characters {
-        match digit.to_digit(radix) {
-            Some(nibble) => {
-                value = value
-                    .saturating_mul(i64::from(radix))
-                    .saturating_add(i64::from(nibble));
-                seen = true;
-            }
-            None => break,
-        }
-    }
-    if !seen {
-        return None;
-    }
-    Some(if negative { -value } else { value })
 }
