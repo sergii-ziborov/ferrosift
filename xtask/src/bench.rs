@@ -16,19 +16,52 @@ use std::process::ExitCode;
 
 use crate::run_streaming;
 
+/// How long Criterion warms up and then samples, per benchmark.
+///
+/// The default is enough to rank two implementations. It is not enough to
+/// publish a ratio: at eight seconds the confidence interval on a fast
+/// operation is wide enough that two runs of unchanged code disagree in the
+/// second digit, and a table of such numbers invites comparisons it cannot
+/// support. `--slow` is for the runs that go into `docs/benchmarks.md`.
+#[derive(Clone, Copy)]
+struct Timing {
+    warm_up: &'static str,
+    measurement: &'static str,
+}
+
+const QUICK: Timing = Timing {
+    warm_up: "3",
+    measurement: "8",
+};
+
+const SLOW: Timing = Timing {
+    warm_up: "10",
+    measurement: "45",
+};
+
 pub fn run(arguments: &[&str]) -> ExitCode {
-    match arguments {
-        ["run", rest @ ..] => measure(rest),
+    // `--slow` may lead or trail the batch names, because both read naturally
+    // and neither is worth an error message.
+    let slow = arguments.contains(&"--slow");
+    let rest: Vec<&str> = arguments
+        .iter()
+        .copied()
+        .filter(|argument| *argument != "--slow")
+        .collect();
+    let timing = if slow { SLOW } else { QUICK };
+
+    match rest.as_slice() {
+        ["run", rest @ ..] => measure(rest, timing),
         ["report"] => report(),
         ["check"] => check(),
-        ["stale"] => rerun_stale(),
+        ["stale"] => rerun_stale(timing),
         // The comparison against the reference is a separate verb because it
         // needs the pinned CyberChef checkout, which a contributor measuring
         // one batch will not have. It was previously only a script beside the
         // others, and went unpublished for three revisions as a result.
         ["reference"] => reference(),
         ["all"] => {
-            if measure(&[]) == ExitCode::SUCCESS {
+            if measure(&[], timing) == ExitCode::SUCCESS {
                 report()
             } else {
                 ExitCode::FAILURE
@@ -36,7 +69,9 @@ pub fn run(arguments: &[&str]) -> ExitCode {
         }
         other => {
             eprintln!("unknown bench task: {}", other.join(" "));
-            eprintln!("expected: run [batch...] | stale | reference | report | check | all");
+            eprintln!(
+                "expected: run [--slow] [batch...] | stale [--slow] | reference | report | check | all [--slow]"
+            );
             ExitCode::FAILURE
         }
     }
@@ -104,7 +139,7 @@ fn provenance_dir() -> PathBuf {
 }
 
 /// Runs the named batches, or every batch when none are named.
-fn measure(requested: &[&str]) -> ExitCode {
+fn measure(requested: &[&str], timing: Timing) -> ExitCode {
     let selected: Vec<&Batch> = if requested.is_empty() {
         BATCHES.iter().collect()
     } else {
@@ -142,9 +177,9 @@ fn measure(requested: &[&str]) -> ExitCode {
             batch.name,
             "--",
             "--warm-up-time",
-            "3",
+            timing.warm_up,
             "--measurement-time",
-            "8",
+            timing.measurement,
         ];
         if !run_streaming("cargo", &arguments, Some(&directory)) {
             return ExitCode::FAILURE;
@@ -160,7 +195,7 @@ fn measure(requested: &[&str]) -> ExitCode {
 }
 
 /// Re-runs only the batches whose sources have changed.
-fn rerun_stale() -> ExitCode {
+fn rerun_stale(timing: Timing) -> ExitCode {
     let stale = stale_batches();
     if stale.is_empty() {
         println!("every batch is current; nothing to re-run");
@@ -173,7 +208,7 @@ fn rerun_stale() -> ExitCode {
         stale.join(", ")
     );
     let names: Vec<&str> = stale.iter().map(String::as_str).collect();
-    if measure(&names) == ExitCode::SUCCESS {
+    if measure(&names, timing) == ExitCode::SUCCESS {
         report()
     } else {
         ExitCode::FAILURE
