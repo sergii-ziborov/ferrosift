@@ -90,15 +90,15 @@ the divergence is what lies outside those inputs.
 | `cipher.substitute@1` | Substitute | core | differential_pinned | exact | 10 |
 | `cipher.vigenere.decode@1` | Vigenère Decode | core | differential_pinned | exact | 28 |
 | `cipher.vigenere.encode@1` | Vigenère Encode | core | differential_pinned | exact | 56 |
-| `compression.bzip2.compress@1` | Bzip2 Compress | compression | round_trip | interoperable (compressor output is interoperable; Bzip2 Decompress is differential-pinned) | 0 |
-| `compression.bzip2.decompress@1` | Bzip2 Decompress | compression | differential_pinned | exact (no Node bzip2 compressor to sample fresh inputs; pinned in differential.json) | 1 |
-| `compression.gunzip@1` | Gunzip | compression | differential_pinned | exact | 5 |
-| `compression.gzip@1` | Gzip | compression | round_trip | interoperable (compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned) | 0 |
+| `compression.bzip2.compress@1` | Bzip2 Compress | compression-bzip2 | round_trip | interoperable (compressor output is interoperable; Bzip2 Decompress is differential-pinned) | 0 |
+| `compression.bzip2.decompress@1` | Bzip2 Decompress | compression-bzip2 | differential_pinned | exact (no Node bzip2 compressor to sample fresh inputs; pinned in differential.json) | 1 |
+| `compression.gunzip@1` | Gunzip | compression-deflate | differential_pinned | exact | 5 |
+| `compression.gzip@1` | Gzip | compression-deflate | round_trip | interoperable (compressor output is interoperable, not bit-identical; Gunzip is corpus-pinned) | 0 |
 | `compression.lznt1.decompress@1` | LZNT1 Decompress | core | differential_pinned | exact | 8 |
-| `compression.raw.deflate@1` | Raw Deflate | compression | round_trip | interoperable (compressor output is interoperable; Raw Inflate is corpus-pinned) | 0 |
-| `compression.raw.inflate@1` | Raw Inflate | compression | differential_pinned | exact | 5 |
-| `compression.zlib.deflate@1` | Zlib Deflate | compression | round_trip | interoperable (compressor output is interoperable; Zlib Inflate is corpus-pinned) | 0 |
-| `compression.zlib.inflate@1` | Zlib Inflate | compression | differential_pinned | exact | 5 |
+| `compression.raw.deflate@1` | Raw Deflate | compression-deflate | round_trip | interoperable (compressor output is interoperable; Raw Inflate is corpus-pinned) | 0 |
+| `compression.raw.inflate@1` | Raw Inflate | compression-deflate | differential_pinned | exact | 5 |
+| `compression.zlib.deflate@1` | Zlib Deflate | compression-deflate | round_trip | interoperable (compressor output is interoperable; Zlib Inflate is corpus-pinned) | 0 |
+| `compression.zlib.inflate@1` | Zlib Inflate | compression-deflate | differential_pinned | exact | 5 |
 | `core.identity@1` | — | core | not_applicable | native | 0 |
 | `crypto.aes.decrypt@1` | AES Decrypt | crypto | differential_pinned | exact | 5 |
 | `crypto.aes.encrypt@1` | AES Encrypt | crypto | differential_pinned | exact | 9 |

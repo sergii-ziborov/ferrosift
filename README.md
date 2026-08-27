@@ -183,14 +183,24 @@ the packs below are the only ones that pull third-party crates.
 |---|---|---|
 | `hash` | MD5, SHA-1/2/3, HMAC | RustCrypto digests |
 | `crypto` | AES, key wrap, RC4, PBKDF2, scrypt | RustCrypto ciphers, KDFs |
-| `compression` | gzip, zlib, raw DEFLATE, bzip2 | `miniz_oxide`, `oxiarc-bzip2` |
+| `compression-deflate` | gzip, zlib, raw DEFLATE | `miniz_oxide` |
+| `compression-bzip2` | bzip2 | `oxiarc-bzip2` |
 | `text` | extractors, defang, Find / Replace | `regex-automata` |
 | `analysis` | Suggest recipe, XOR brute force | nothing |
 | `arithmetic` | Extended GCD, Modular Inverse | `num-bigint` |
 | `pattern` | the hex-pattern engine | nothing |
-| `portable-full` | every pack above | — |
+| `portable-full` | every pack that builds on bare metal | — |
+| `full` | `portable-full` plus bzip2 | — |
 
-`default = ["portable-full", "pattern"]`. A build that wants only binary
+The two halves of compression are named separately because only one of them is
+portable. `miniz_oxide` is `no_std`; `oxiarc-bzip2` reaches `thiserror`, which
+needs `std`, so a target without one can have gzip and zlib and not bzip2.
+`portable-full` used to include both, which made the name a label rather than a
+claim — it is now checked on `thumbv7em-none-eabihf` and
+`riscv32imac-unknown-none-elf` in CI. `compression` remains as the name for
+both, for a caller who wants compression and is not building for bare metal.
+
+`default = ["full", "pattern"]`. A build that wants only binary
 structure parsing costs **12 crates against the default 52**, with no cipher,
 digest, compression, or regex dependency compiled at all:
 

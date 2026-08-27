@@ -5,17 +5,26 @@ use alloc::vec;
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
-use crate::args::{
-    boolean_argument, boolean_value, integer_argument, integer_value, text_argument, text_value,
-};
+// Both containers take a boolean argument; only bzip2 takes integers and only
+// gzip takes text, so those two imports are gated and the shared pair is not.
+use crate::args::{boolean_argument, boolean_value};
+#[cfg(feature = "compression-bzip2")]
+use crate::args::{integer_argument, integer_value};
+#[cfg(feature = "compression-deflate")]
+use crate::args::{text_argument, text_value};
 use crate::spec::{SpecDefinition, build};
 
+#[cfg(feature = "compression-bzip2")]
+use super::bzip2;
+#[cfg(feature = "compression-deflate")]
 use super::codec;
 /// Compresses data with Bzip2.
+#[cfg(feature = "compression-bzip2")]
 pub struct Bzip2Compress {
     spec: OperationSpec,
 }
 
+#[cfg(feature = "compression-bzip2")]
 impl Bzip2Compress {
     /// Creates the Bzip2 compress operation.
     #[must_use]
@@ -48,12 +57,14 @@ impl Bzip2Compress {
     }
 }
 
+#[cfg(feature = "compression-bzip2")]
 impl Default for Bzip2Compress {
     fn default() -> Self {
         Self::new()
     }
 }
 
+#[cfg(feature = "compression-bzip2")]
 impl Operation for Bzip2Compress {
     fn spec(&self) -> &OperationSpec {
         &self.spec
@@ -67,7 +78,7 @@ impl Operation for Bzip2Compress {
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
         let input = crate::value::take_bytes(input)?;
-        Ok(Value::Bytes(codec::bzip2_compress(
+        Ok(Value::Bytes(bzip2::bzip2_compress(
             &input,
             integer_value(arguments, "block_size")?,
             integer_value(arguments, "work_factor")?,
@@ -77,10 +88,12 @@ impl Operation for Bzip2Compress {
 }
 
 /// Decompresses Bzip2 data.
+#[cfg(feature = "compression-bzip2")]
 pub struct Bzip2Decompress {
     spec: OperationSpec,
 }
 
+#[cfg(feature = "compression-bzip2")]
 impl Bzip2Decompress {
     /// Creates the Bzip2 decompress operation.
     #[must_use]
@@ -106,12 +119,14 @@ impl Bzip2Decompress {
     }
 }
 
+#[cfg(feature = "compression-bzip2")]
 impl Default for Bzip2Decompress {
     fn default() -> Self {
         Self::new()
     }
 }
 
+#[cfg(feature = "compression-bzip2")]
 impl Operation for Bzip2Decompress {
     fn spec(&self) -> &OperationSpec {
         &self.spec
@@ -125,7 +140,7 @@ impl Operation for Bzip2Decompress {
     ) -> Result<Value, OperationError> {
         context.ensure_active()?;
         let input = crate::value::take_bytes(input)?;
-        Ok(Value::Bytes(codec::bzip2_decompress(
+        Ok(Value::Bytes(bzip2::bzip2_decompress(
             &input,
             boolean_value(arguments, "low_memory")?,
             context,
@@ -134,10 +149,12 @@ impl Operation for Bzip2Decompress {
 }
 
 /// Decompresses gzip-wrapped deflate data.
+#[cfg(feature = "compression-deflate")]
 pub struct Gunzip {
     spec: OperationSpec,
 }
 
+#[cfg(feature = "compression-deflate")]
 impl Gunzip {
     /// Creates the gunzip operation.
     #[must_use]
@@ -159,12 +176,14 @@ impl Gunzip {
     }
 }
 
+#[cfg(feature = "compression-deflate")]
 impl Default for Gunzip {
     fn default() -> Self {
         Self::new()
     }
 }
 
+#[cfg(feature = "compression-deflate")]
 impl Operation for Gunzip {
     fn spec(&self) -> &OperationSpec {
         &self.spec
@@ -183,10 +202,12 @@ impl Operation for Gunzip {
 }
 
 /// Compresses data with gzip headers.
+#[cfg(feature = "compression-deflate")]
 pub struct Gzip {
     spec: OperationSpec,
 }
 
+#[cfg(feature = "compression-deflate")]
 impl Gzip {
     /// Creates the gzip operation.
     #[must_use]
@@ -221,12 +242,14 @@ impl Gzip {
     }
 }
 
+#[cfg(feature = "compression-deflate")]
 impl Default for Gzip {
     fn default() -> Self {
         Self::new()
     }
 }
 
+#[cfg(feature = "compression-deflate")]
 impl Operation for Gzip {
     fn spec(&self) -> &OperationSpec {
         &self.spec

@@ -556,7 +556,7 @@
       "display_name": "Bzip2 Compress",
       "category": "Compression",
       "reference_alias": "Bzip2 Compress",
-      "feature": "compression",
+      "feature": "compression-bzip2",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -571,7 +571,7 @@
       "display_name": "Bzip2 Decompress",
       "category": "Compression",
       "reference_alias": "Bzip2 Decompress",
-      "feature": "compression",
+      "feature": "compression-bzip2",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -586,7 +586,7 @@
       "display_name": "Gunzip",
       "category": "Compression",
       "reference_alias": "Gunzip",
-      "feature": "compression",
+      "feature": "compression-deflate",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -600,7 +600,7 @@
       "display_name": "Gzip",
       "category": "Compression",
       "reference_alias": "Gzip",
-      "feature": "compression",
+      "feature": "compression-deflate",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -629,7 +629,7 @@
       "display_name": "Raw Deflate",
       "category": "Compression",
       "reference_alias": "Raw Deflate",
-      "feature": "compression",
+      "feature": "compression-deflate",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -644,7 +644,7 @@
       "display_name": "Raw Inflate",
       "category": "Compression",
       "reference_alias": "Raw Inflate",
-      "feature": "compression",
+      "feature": "compression-deflate",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -658,7 +658,7 @@
       "display_name": "Zlib Deflate",
       "category": "Compression",
       "reference_alias": "Zlib Deflate",
-      "feature": "compression",
+      "feature": "compression-deflate",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"
@@ -673,7 +673,7 @@
       "display_name": "Zlib Inflate",
       "category": "Compression",
       "reference_alias": "Zlib Inflate",
-      "feature": "compression",
+      "feature": "compression-deflate",
       "targets": [
         "Native",
         "Wasm32UnknownUnknown"

@@ -1,3 +1,8 @@
+//! DEFLATE, and the two containers built on it.
+//!
+//! `miniz_oxide` is `no_std`, which is why this half of the compression pack
+//! reaches bare metal and the bzip2 half beside it does not.
+
 use alloc::vec::Vec;
 
 use ferrosift_core::{OperationContext, OperationError};
@@ -6,16 +11,14 @@ use miniz_oxide::inflate::{
     DecompressError, TINFLStatus, decompress_to_vec_with_limit, decompress_to_vec_zlib_with_limit,
 };
 
+use super::limits::{ensure_fits, output_limit};
 use crate::crc32::crc32;
 use crate::failure::failed;
 
 const INVALID_GZIP: &str = "compression.gzip.invalid";
 const INVALID_ZLIB: &str = "compression.zlib.invalid";
 const INVALID_RAW: &str = "compression.raw.invalid";
-const INVALID_BZIP2: &str = "compression.bzip2.invalid";
-const EMPTY_BZIP2: &str = "compression.bzip2.empty_input";
 const INVALID_LEVEL: &str = "compression.invalid_level";
-const INVALID_BLOCK: &str = "compression.bzip2.invalid_block_size";
 
 pub(super) fn gunzip(
     input: &[u8],
@@ -143,42 +146,6 @@ pub(super) fn raw_inflate(
     Ok(output)
 }
 
-pub(super) fn bzip2_compress(
-    input: &[u8],
-    block_size: i128,
-    _work_factor: i128,
-    context: &OperationContext<'_>,
-) -> Result<Vec<u8>, OperationError> {
-    context.ensure_active()?;
-    if input.is_empty() {
-        return Err(failed(EMPTY_BZIP2));
-    }
-    if !(1..=9).contains(&block_size) {
-        return Err(failed(INVALID_BLOCK));
-    }
-    let level = oxiarc_bzip2::CompressionLevel::new(u8::try_from(block_size).unwrap_or(9));
-    let output = oxiarc_bzip2::compress(input, level).map_err(|_| failed(INVALID_BZIP2))?;
-    ensure_fits(&output, context)?;
-    context.ensure_active()?;
-    Ok(output)
-}
-
-pub(super) fn bzip2_decompress(
-    input: &[u8],
-    _low_memory: bool,
-    context: &OperationContext<'_>,
-) -> Result<Vec<u8>, OperationError> {
-    context.ensure_active()?;
-    if input.is_empty() {
-        return Err(failed(EMPTY_BZIP2));
-    }
-    let output = oxiarc_bzip2::decompress_with_limit(input, output_limit(context))
-        .map_err(|_| failed(INVALID_BZIP2))?;
-    ensure_fits(&output, context)?;
-    context.ensure_active()?;
-    Ok(output)
-}
-
 fn compression_level(token: &str) -> Result<u8, OperationError> {
     // CyberChef compression type names map onto zlibjs levels; Default/Dynamic use
     // miniz default compression which is sufficient for interoperable inflate.
@@ -188,16 +155,6 @@ fn compression_level(token: &str) -> Result<u8, OperationError> {
         }
         _ => Err(failed(INVALID_LEVEL)),
     }
-}
-
-/// The budget's output ceiling, as the decompressors want it.
-///
-/// A budget larger than the address space saturates rather than wrapping, which
-/// is why [`ensure_fits`] still runs after every decompression: on a 32-bit
-/// target a caller may legitimately set a ceiling this cannot express, and the
-/// check afterwards is then the one that holds.
-fn output_limit(context: &OperationContext<'_>) -> usize {
-    usize::try_from(context.budget().max_output_bytes).unwrap_or(usize::MAX)
 }
 
 /// Reads an inflate result, keeping "too large" and "malformed" apart.
@@ -219,15 +176,7 @@ fn inflated(
     })
 }
 
-fn ensure_fits(output: &[u8], context: &OperationContext<'_>) -> Result<(), OperationError> {
-    if u64::try_from(output.len()).map_or(true, |size| size > context.budget().max_output_bytes) {
-        Err(OperationError::OutputLimitExceeded)
-    } else {
-        Ok(())
-    }
-}
-
-fn skip_gzip_header(input: &[u8]) -> Result<&[u8], OperationError> {
+pub(super) fn skip_gzip_header(input: &[u8]) -> Result<&[u8], OperationError> {
     if input.len() < 10 || input[0] != 0x1f || input[1] != 0x8b || input[2] != 0x08 {
         return Err(failed(INVALID_GZIP));
     }

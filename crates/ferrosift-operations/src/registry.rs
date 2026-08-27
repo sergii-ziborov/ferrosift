@@ -55,10 +55,8 @@ use crate::{
     Blake2, Blake3, FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake,
     Streebog,
 };
-#[cfg(feature = "compression")]
-use crate::{
-    Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
-};
+#[cfg(feature = "compression-bzip2")]
+use crate::{Bzip2Compress, Bzip2Decompress};
 #[cfg(feature = "text")]
 use crate::{
     CountOccurrences, DefangIpAddresses, DefangUrl, ExtractDomains, ExtractEmailAddresses,
@@ -70,6 +68,8 @@ use crate::{
     FiletimeToUnix, FromBase, FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex,
     TextIntegerConversion, ToBase, ToBase62, UnixToFiletime,
 };
+#[cfg(feature = "compression-deflate")]
+use crate::{Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate};
 #[cfg(feature = "analysis")]
 use crate::{SuggestRecipe, XorBruteForce};
 
@@ -340,16 +340,21 @@ fn register_compression(registry: &mut OperationRegistry) -> Result<(), Registry
     // pulls nothing, unlike the DEFLATE and bzip2 pair beside it.
     registry.register(Lznt1Decompress::new())?;
 
-    #[cfg(feature = "compression")]
+    #[cfg(feature = "compression-deflate")]
     {
-        registry.register(Bzip2Compress::new())?;
-        registry.register(Bzip2Decompress::new())?;
         registry.register(Gunzip::new())?;
         registry.register(Gzip::new())?;
         registry.register(RawDeflate::new())?;
         registry.register(RawInflate::new())?;
         registry.register(ZlibDeflate::new())?;
         registry.register(ZlibInflate::new())?;
+    }
+    // Separately, because bzip2 is the one thing in this pack that is not
+    // bare-metal clean: it reaches `thiserror`, which needs `std`.
+    #[cfg(feature = "compression-bzip2")]
+    {
+        registry.register(Bzip2Compress::new())?;
+        registry.register(Bzip2Decompress::new())?;
     }
     Ok(())
 }

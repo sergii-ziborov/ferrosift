@@ -9,8 +9,21 @@ description = "Portable pure-Rust operations for FerroSift"
 
 [features]
 # Everything portable. The default, and what the conformance corpus pins.
-default = ["portable-full"]
-portable-full = ["analysis", "arithmetic", "compression", "crypto", "hash", "text"]
+#
+# `portable-full` had been claiming more than it could deliver: it pulled
+# `compression`, which pulls bzip2, which pulls `thiserror`, which needs `std`.
+# A name that says portable has to be portable, so it now takes the DEFLATE half
+# and `full` is the one that takes both.
+default = ["full"]
+portable-full = [
+    "analysis",
+    "arithmetic",
+    "compression-deflate",
+    "crypto",
+    "hash",
+    "text",
+]
+full = ["portable-full", "compression-bzip2"]
 
 # Arbitrary precision, as a dependency rather than as a subject.
 #
@@ -69,8 +82,17 @@ crypto = [
     "dep:pbkdf2",
     "dep:scrypt",
 ]
-# Deflate, gzip, zlib, and bzip2.
-compression = ["dep:miniz_oxide", "dep:oxiarc-bzip2"]
+# Deflate, gzip and zlib. `miniz_oxide` is `no_std`, so this is bare-metal
+# clean and belongs in `portable-full`.
+compression-deflate = ["dep:miniz_oxide"]
+# Bzip2, which is not. `oxiarc-bzip2` reaches `thiserror`, and `thiserror` needs
+# `std` -- so this is the one pack that keeps `portable-full` off bare metal,
+# and it is now named separately rather than folded into a word that promises
+# otherwise.
+compression-bzip2 = ["dep:oxiarc-bzip2"]
+# Both, under the name they had before the split. Kept so a caller who asked
+# for compression still gets compression.
+compression = ["compression-deflate", "compression-bzip2"]
 # Indicator extraction and defanging.
 text = ["dep:regex-automata"]
 # Recipe suggestion and XOR brute force.

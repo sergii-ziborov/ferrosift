@@ -8,19 +8,34 @@ license.workspace = true
 repository.workspace = true
 
 [features]
-# The whole portable catalog plus the hex-pattern engine.
-default = ["portable-full", "pattern"]
+# The whole catalog plus the hex-pattern engine.
+default = ["full", "pattern"]
 
 # Operation packs, forwarded to ferrosift-operations. Identity, flow control,
 # every encoding, byte slicing, and XOR need no pack and are always present.
-portable-full = ["analysis", "arithmetic", "compression", "crypto", "hash", "text"]
+#
+# `portable-full` is everything that builds on bare metal. It used to include
+# bzip2, which does not: `oxiarc-bzip2` reaches `thiserror`, and `thiserror`
+# needs `std`. A name that says portable has to be portable, so `full` is now
+# the one that takes everything.
+portable-full = [
+    "analysis",
+    "arithmetic",
+    "compression-deflate",
+    "crypto",
+    "hash",
+    "text",
+]
+full = ["portable-full", "compression-bzip2"]
 analysis = ["ferrosift-operations/analysis"]
 arithmetic = ["ferrosift-operations/arithmetic"]
 # Base62 and the ASN.1 object identifiers: encodings that need arbitrary
 # precision. Separate from `arithmetic` because wanting Base62 is not wanting
 # Extended GCD; they share a dependency, not a purpose.
 bignum = ["ferrosift-operations/bignum"]
-compression = ["ferrosift-operations/compression"]
+compression-deflate = ["ferrosift-operations/compression-deflate"]
+compression-bzip2 = ["ferrosift-operations/compression-bzip2"]
+compression = ["compression-deflate", "compression-bzip2"]
 crypto = ["ferrosift-operations/crypto"]
 hash = ["ferrosift-operations/hash"]
 text = ["ferrosift-operations/text"]

@@ -107,13 +107,13 @@ mod arith;
 mod bigint;
 #[cfg(feature = "crypto")]
 mod codec_bytes;
-#[cfg(feature = "compression")]
+#[cfg(any(feature = "compression-deflate", feature = "compression-bzip2"))]
 mod compress;
 #[cfg(feature = "arithmetic")]
 mod convert;
 #[cfg(feature = "text")]
 mod count;
-#[cfg(feature = "compression")]
+#[cfg(feature = "compression-deflate")]
 mod crc32;
 #[cfg(feature = "text")]
 mod defang;
@@ -232,10 +232,10 @@ pub use aes_op::{AesDecrypt, AesEncrypt};
 pub use arith::{Aggregate, Mod};
 #[cfg(feature = "arithmetic")]
 pub use bigint::{ExtendedGcd, ModularInverse};
-#[cfg(feature = "compression")]
-pub use compress::{
-    Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
-};
+#[cfg(feature = "compression-bzip2")]
+pub use compress::{Bzip2Compress, Bzip2Decompress};
+#[cfg(feature = "compression-deflate")]
+pub use compress::{Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate};
 #[cfg(feature = "arithmetic")]
 pub use convert::ConvertUnits;
 #[cfg(feature = "text")]

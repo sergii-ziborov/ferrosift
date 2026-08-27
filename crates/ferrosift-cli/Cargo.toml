@@ -20,10 +20,13 @@ doc = false
 # The packs are forwarded so tooling can build the CLI with one pack at a
 # time and read back which operations that pack actually contributes. That is
 # what makes the compatibility ledger derived rather than hand-maintained.
-default = ["portable-full"]
+default = ["full"]
 portable-full = ["ferrosift-operations/portable-full"]
+full = ["ferrosift-operations/full"]
 analysis = ["ferrosift-operations/analysis"]
 arithmetic = ["ferrosift-operations/arithmetic"]
+compression-deflate = ["ferrosift-operations/compression-deflate"]
+compression-bzip2 = ["ferrosift-operations/compression-bzip2"]
 compression = ["ferrosift-operations/compression"]
 crypto = ["ferrosift-operations/crypto"]
 hash = ["ferrosift-operations/hash"]

@@ -19,7 +19,14 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 export const repoRoot = path.resolve(here, "../..");
 
 /** Packs, smallest first, so an operation is attributed to its own pack. */
-const PACKS = ["hash", "crypto", "compression", "text", "analysis"];
+const PACKS = [
+    "hash",
+    "crypto",
+    "compression-deflate",
+    "compression-bzip2",
+    "text",
+    "analysis",
+];
 // Every reference version the suite replays, not the newest one. A caller
 // pinned to the older release is entitled to know FerroSift still matches it,
 // so both stay in the ledger until one stops being replayed.
@@ -145,7 +152,9 @@ export function buildLedger() {
         path.join(repoRoot, `docs/compatibility/cyberchef-v${REFERENCE.version}.md`),
         "utf8",
     );
-    const entries = catalog("portable-full").map(operation => {
+    // `full` rather than `portable-full`: the ledger describes the whole
+    // catalog, and bzip2 is in it even though it is not bare-metal clean.
+    const entries = catalog("full").map(operation => {
         const alias =
             operation.aliases.find(entry => entry.profile === "CyberChefV11_3")?.name ?? null;
         const count = alias ? (cases.get(alias) ?? 0) : 0;

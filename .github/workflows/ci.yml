@@ -59,6 +59,8 @@ jobs:
           - pattern
           - hash
           - crypto
+          - compression-deflate
+          - compression-bzip2
           - compression
           - text
           - analysis
@@ -66,6 +68,8 @@ jobs:
           - bignum
           - portable-full
           - portable-full,pattern
+          - full
+          - full,pattern
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check the facade
@@ -137,8 +141,16 @@ jobs:
           - analysis
           - arithmetic
           - bignum
+          # The DEFLATE half of the compression pack, which is `no_std`. The
+          # bzip2 half is not and is deliberately absent: it reaches
+          # `thiserror`, which needs `std`.
+          - compression-deflate
           - "analysis,text"
-          - "analysis,arithmetic,bignum,hash,crypto,text,pattern"
+          # `portable-full` itself, which is what makes the name a claim rather
+          # than a label. It used to include bzip2 and so could not be checked
+          # here at all.
+          - portable-full
+          - "portable-full,pattern"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Add the bare-metal target
