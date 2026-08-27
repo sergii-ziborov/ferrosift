@@ -44,15 +44,14 @@ pub(super) fn check_output(
     if matches!(behavior, OutputBehavior::InputIndependent) {
         return Ok(());
     }
-    if exceeds_ratio(output_size, step_input_size, budget.max_expansion_ratio)
-        || exceeds_ratio(output_size, initial_input_size, budget.max_expansion_ratio)
+    // Stated through the shared ceiling so an operation can ask the same
+    // question before it builds anything. The ceiling folds in the absolute
+    // limit as well, which changes nothing here: the branch above has already
+    // returned for anything above it, so what is left is the ratio alone.
+    if output_size > budget.output_ceiling(step_input_size)
+        || output_size > budget.output_ceiling(initial_input_size)
     {
         return Err(ExecutionFailure::ExpansionRatioExceeded);
     }
     Ok(())
-}
-
-fn exceeds_ratio(output_size: u64, input_size: u64, ratio: u32) -> bool {
-    let denominator = input_size.max(1);
-    output_size > denominator.saturating_mul(u64::from(ratio))
 }

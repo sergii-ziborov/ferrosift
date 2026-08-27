@@ -64,6 +64,100 @@ fn aggregate(operation: &str, input: &str) -> Result<String, ()> {
     run(operation, arguments, input)
 }
 
+/// The same run, reporting the failure code rather than discarding it.
+fn refusal(operation: &str, input: &str) -> Result<String, String> {
+    let registry = ferrosift_operations::default_registry().expect("registry");
+    let arguments: Arguments = [(
+        "delimiter".to_owned(),
+        ArgumentValue::Text("Space".to_owned()),
+    )]
+    .into_iter()
+    .collect();
+    let recipe = Recipe::new(
+        vec![RecipeStep {
+            id: StepId::new("s").expect("step id"),
+            operation: OperationId::new(operation).expect("operation id"),
+            arguments,
+            disabled: false,
+            breakpoint: false,
+        }],
+        RecipeMetadata::default(),
+    )
+    .expect("recipe");
+
+    Executor::new(&registry)
+        .execute(
+            &recipe,
+            Value::Text(TextValue {
+                text: input.to_owned(),
+                encoding: TextEncoding::Utf8,
+            }),
+            ExecutionBudget::generous(),
+            &NeverCancelled,
+            CapabilitySet::new(),
+        )
+        .map_err(|error| error.code().to_string())
+        .map(|outcome| match outcome.value {
+            Value::Decimal(value) => value.to_fixed(),
+            Value::Text(text) => text.text,
+            other => panic!("unexpected output {other:?}"),
+        })
+}
+
+/// An answer too large to keep is refused before it is built.
+///
+/// Exact addition brings both operands to the finer of the two exponents, so
+/// the gap between the exponents is the answer's width: `1e10000000 +
+/// 1e-10000000` is twenty-three characters in and twenty million digits out.
+/// The executor already refused that, and measured in a release build it spent
+/// **five seconds** producing the digits it then threw away.
+///
+/// Which refuses is therefore the whole assertion. `core.operation.…` is the
+/// fold declining at the step that would cross the ceiling;
+/// `core.executor.…` is the old behaviour, where the answer existed first.
+/// The two are indistinguishable in every other way -- same input, same
+/// rejection, only the seconds differ -- so the code is what a test can hold.
+#[test]
+fn a_sum_wider_than_the_budget_is_refused_by_the_operation() {
+    for operation in [
+        "math.sum@1",
+        "math.subtract@1",
+        "math.mean@1",
+        "math.median@1",
+        "math.stddev@1",
+    ] {
+        assert_eq!(
+            refusal(operation, "1e10000000 1e-10000000"),
+            Err("core.operation.output_limit_exceeded".to_owned()),
+            "{operation} must decline before building the answer"
+        );
+    }
+}
+
+/// And nothing else is refused with it.
+///
+/// The floor the fold reads is a floor on purpose: acting on it means
+/// declining, so an estimate that ever came in high would decline an answer the
+/// budget would have taken. These are the shapes where a careless bound would
+/// do exactly that -- a wide gap whose answer still fits, two values whose
+/// exponents match so no rescaling happens at all, and a sum that cancels.
+#[test]
+fn an_answer_that_fits_is_still_produced() {
+    assert_eq!(aggregate("math.sum@1", "0.1 0.2"), Ok("0.3".to_owned()));
+    assert_eq!(
+        aggregate("math.sum@1", "1e20 1"),
+        Ok("100000000000000000001".to_owned())
+    );
+    assert_eq!(
+        aggregate("math.subtract@1", "1e20 1e20"),
+        Ok("0".to_owned())
+    );
+    // A gap of forty places: wide enough that a bound working from the
+    // exponents alone would have to reach for it, and small enough to keep.
+    let wide = aggregate("math.sum@1", "1e20 1e-20").expect("a 41-digit answer fits");
+    assert_eq!(wide.len(), 42, "{wide}");
+}
+
 fn modulo(modulus: i128, delimiter: &str, input: &str) -> Result<String, ()> {
     let arguments: Arguments = [
         ("modulus".to_owned(), ArgumentValue::Integer(modulus)),

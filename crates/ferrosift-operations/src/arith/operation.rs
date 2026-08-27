@@ -35,7 +35,7 @@ fn delimiter_argument() -> ferrosift_model::ArgumentSpec {
 /// in all seven, and the reference has them the same too.
 pub struct Aggregate {
     spec: OperationSpec,
-    fold: fn(&[DecimalValue]) -> Option<DecimalValue>,
+    fold: fn(&[DecimalValue], u64) -> Result<Option<DecimalValue>, OperationError>,
     unknown_delimiter: &'static str,
 }
 
@@ -46,7 +46,7 @@ struct AggregateDefinition {
     description: &'static str,
     alias: &'static str,
     unknown_delimiter: &'static str,
-    fold: fn(&[DecimalValue]) -> Option<DecimalValue>,
+    fold: fn(&[DecimalValue], u64) -> Result<Option<DecimalValue>, OperationError>,
 }
 
 impl Aggregate {
@@ -176,12 +176,20 @@ impl Operation for Aggregate {
         let delimiter = char_rep(text_value(arguments, "delimiter")?, self.unknown_delimiter)?;
         let input = take_text(input)?;
 
+        // What the executor would accept back, worked out before anything is
+        // built. Exact addition can turn two short numbers into tens of
+        // millions of digits, and measuring the answer afterwards means paying
+        // for it first -- so the fold is handed the ceiling and stops at the
+        // step that would cross it.
+        let ceiling = context
+            .budget()
+            .output_ceiling(u64::try_from(input.len()).unwrap_or(u64::MAX));
         let values = codec::read_list(&input, delimiter);
         context.ensure_active()?;
         // A list with nothing in it has no answer, and the reference says so
         // with not-a-number rather than with an error: its fold returns
         // nothing and the operation substitutes `NaN`.
-        let answer = (self.fold)(&values).unwrap_or_else(DecimalValue::not_a_number);
+        let answer = (self.fold)(&values, ceiling)?.unwrap_or_else(DecimalValue::not_a_number);
         Ok(Value::Decimal(answer))
     }
 }

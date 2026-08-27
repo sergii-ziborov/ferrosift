@@ -190,6 +190,69 @@ fn combine(left: &DecimalValue, right: &DecimalValue, subtract: bool) -> Decimal
     Scaled { value, exponent }.into_decimal()
 }
 
+/// A floor on how long the sum or difference of these two must render.
+///
+/// Exact addition is the one operation here that turns short inputs into a long
+/// answer: `1e10000000 + 1e-10000000` is twenty-three characters in and twenty
+/// million digits out, and the digits have to exist before anything can measure
+/// them. Five seconds of that work, on a budget that then refuses the answer, is
+/// the thing this exists to avoid — so a caller with a ceiling can ask first.
+///
+/// A *floor*, and the direction matters: acting on it means refusing, so an
+/// estimate that ever came in high would refuse an answer the budget would have
+/// accepted. Zero means no claim, which is the honest answer whenever the two
+/// exponents are equal — there is no rescaling to pay for in that case anyway.
+///
+/// Two facts make a floor possible. A coefficient never ends in a zero, because
+/// the model moves trailing zeros into the exponent, so the operand with the
+/// lower exponent has a non-zero digit where the other has nothing at all: that
+/// digit survives into the answer and fixes its bottom. And a value whose scale
+/// is more than one above the other's cannot have its top cancelled, because
+/// there is nothing up there to cancel against — which fixes the answer's top
+/// whenever the two are far apart, and claims nothing when they are close.
+#[must_use]
+pub fn sum_min_len(left: &DecimalValue, right: &DecimalValue) -> u64 {
+    if left.is_zero() || right.is_zero() {
+        return 0;
+    }
+    let (Some((_, left_digits, left_exponent)), Some((_, right_digits, right_exponent))) =
+        (left.parts(), right.parts())
+    else {
+        // A special answers a special, which is three characters at most.
+        return 0;
+    };
+    if left_exponent == right_exponent {
+        return 0;
+    }
+
+    let bottom = left_exponent.min(right_exponent);
+    let left_scale = scale_of(left_digits, left_exponent);
+    let right_scale = scale_of(right_digits, right_exponent);
+    // More than one apart, so the larger one's leading digits have nothing to
+    // cancel against and the answer reaches at least one place below its scale.
+    let top = if left_scale.abs_diff(right_scale) > 1 {
+        left_scale.max(right_scale).saturating_sub(1)
+    } else {
+        bottom
+    };
+
+    // Digits above the point, digits below it, and the one character every
+    // rendering has whether or not either side is occupied.
+    let above = u64::try_from(top.max(0)).unwrap_or(u64::MAX);
+    let below = u64::try_from(bottom.min(0).saturating_neg()).unwrap_or(u64::MAX);
+    above.saturating_add(below).saturating_add(1)
+}
+
+/// The power of ten a value sits at, read off its parts rather than computed.
+///
+/// This is the same quantity [`Scaled::scale`] estimates from the binary width,
+/// and here it is exact and free: the model normalises a coefficient so that
+/// its length and exponent say it directly.
+fn scale_of(digits: &str, exponent: i64) -> i64 {
+    let length = i64::try_from(digits.len()).unwrap_or(i64::MAX);
+    exponent.saturating_add(length).saturating_sub(1)
+}
+
 /// Exact multiplication.
 #[must_use]
 pub fn times(left: &DecimalValue, right: &DecimalValue) -> DecimalValue {
@@ -712,27 +775,66 @@ fn carry_one(fraction: &mut [u32], whole: &mut BigUint, base: u32) {
     *whole += BigUint::one();
 }
 
+/// The values in the order a median reads them.
+///
+/// Exposed because a caller with a resource ceiling needs the sorted list
+/// without the averaging step: the middle pair is a sum, and a sum is where the
+/// width comes from. Sharing the sort keeps the two from disagreeing about
+/// which values are in the middle.
+#[must_use]
+pub fn ordered(values: &[DecimalValue]) -> Vec<DecimalValue> {
+    let mut sorted = values.to_vec();
+    sorted.sort_by(compare);
+    sorted
+}
+
 /// The median, which is the middle value or the mean of the middle two.
 #[must_use]
 pub fn median(values: &[DecimalValue]) -> DecimalValue {
     if values.is_empty() {
         return DecimalValue::not_a_number();
     }
-    let mut ordered: Vec<&DecimalValue> = values.iter().collect();
-    ordered.sort_by(|left, right| compare(left, right));
-    let middle = ordered.len() / 2;
-    if ordered.len() % 2 == 1 {
-        return ordered[middle].clone();
+    let sorted = ordered(values);
+    let middle = sorted.len() / 2;
+    if sorted.len() % 2 == 1 {
+        return sorted[middle].clone();
     }
-    let pair = [ordered[middle - 1].clone(), ordered[middle].clone()];
-    mean(&pair)
+    mean(&sorted[middle - 1..=middle])
 }
 
 /// Orders two values, putting not-a-number last so a sort stays total.
+///
+/// Magnitude first, from the parts, and only then by the digits. Bringing both
+/// to a common exponent is what settles two values of the same size, and it
+/// costs the gap between their exponents -- which for `1e10000000` beside
+/// `1e-10000000` is twenty million digits built to answer a question their
+/// leading positions had already answered. Where the scales differ, the larger
+/// one is larger: it has a digit in a place the other cannot reach.
 fn compare(left: &DecimalValue, right: &DecimalValue) -> core::cmp::Ordering {
     use core::cmp::Ordering;
     match (Scaled::from(left), Scaled::from(right)) {
         (Some(a), Some(b)) => {
+            let signs = a.value.sign().cmp(&b.value.sign());
+            if signs != Ordering::Equal {
+                return signs;
+            }
+            if let (
+                Some((_, left_digits, left_exponent)),
+                Some((_, right_digits, right_exponent)),
+            ) = (left.parts(), right.parts())
+            {
+                let by_scale = scale_of(left_digits, left_exponent)
+                    .cmp(&scale_of(right_digits, right_exponent));
+                // A negative pair orders by magnitude the other way round.
+                let by_scale = if a.value.is_negative() {
+                    by_scale.reverse()
+                } else {
+                    by_scale
+                };
+                if by_scale != Ordering::Equal {
+                    return by_scale;
+                }
+            }
             let exponent = a.exponent.min(b.exponent);
             a.rescaled(exponent).cmp(&b.rescaled(exponent))
         }

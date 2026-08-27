@@ -21,6 +21,22 @@ The top-level value is an array. Each supported step contains:
 - Executable integers: JavaScript safe-integer range,
   `-9007199254740991..=9007199254740991`.
 
+The execution budget is a FerroSift concept the reference does not have, and
+one place it now applies *earlier* than the executor alone would. Exact
+addition brings both operands to the finer of the two exponents, so the gap
+between them is the answer's width: `1e10000000 + 1e-10000000` is twenty-three
+characters of input and twenty million digits of answer. The executor refused
+that already — after five seconds spent building the digits it then discarded.
+The list-arithmetic operations now compare a floor on the answer's width
+against the budget before taking each step, and stop at the one that would
+cross it.
+
+That is narrower than the executor in one case, deliberately: `1e10000000 +
+1e100 - 1e10000000` has a short answer and a twenty-million-digit middle, and
+it is now refused. An intermediate nobody can hold is the resource the budget
+exists to bound, and a recipe that genuinely wants one can raise
+`max_output_bytes`.
+
 ## Import behavior
 
 Operation names use exact, case-sensitive `CyberChefV11_3` aliases. No fuzzy

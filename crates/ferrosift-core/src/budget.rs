@@ -37,4 +37,32 @@ impl ExecutionBudget {
             max_total_bytes_processed: 256 * 1024 * 1024,
         }
     }
+
+    /// The largest output an input-proportional step reading `input_size` bytes
+    /// can produce and still be accepted.
+    ///
+    /// The executor applies this after the fact, which is the right place for
+    /// almost everything: an operation that has produced its answer has already
+    /// paid for it, and measuring is free. It is the wrong place when producing
+    /// the answer is itself the expense — arbitrary-precision arithmetic can
+    /// turn two short numbers into tens of millions of digits, and the executor
+    /// then refuses what it cost seconds to build.
+    ///
+    /// So the rule is stated once and read from both ends. An operation that
+    /// can predict its answer's size cheaply may compare against this first and
+    /// refuse without building.
+    ///
+    /// One arm of the executor's check is missing here, deliberately: it also
+    /// compares against the *recipe's* original input, which an operation
+    /// cannot see. That only makes this ceiling equal or higher, so a value
+    /// above it would have been refused either way.
+    #[must_use]
+    pub fn output_ceiling(&self, input_size: u64) -> u64 {
+        // An empty input still gets a ratio's worth, or a generator called the
+        // way generators are called would be refused everything.
+        let proportional = input_size
+            .max(1)
+            .saturating_mul(u64::from(self.max_expansion_ratio));
+        self.max_output_bytes.min(proportional)
+    }
 }
