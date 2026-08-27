@@ -20,14 +20,22 @@ import {fileURLToPath, pathToFileURL} from "node:url";
  *
  * Evidence for an older profile is never discarded when a newer one is added.
  * A caller pinned to 11.3 is entitled to know FerroSift still matches it.
+ *
+ * `alias` is the `CompatibilityProfile` variant the Rust catalog tags its names
+ * with for this version. It is written out rather than derived from `version`,
+ * because deriving it would be a string rule that quietly produces a variant
+ * that does not exist -- and a tool reading aliases for a variant nothing
+ * carries reports an empty catalog rather than an error.
  */
 export const PROFILES = {
     "11.3.0": {
         version: "11.3.0",
+        alias: "CyberChefV11_3",
         commit: "d24ba1afce2e3a080308b5df7db033332fe94a1a",
     },
     "11.4.0": {
         version: "11.4.0",
+        alias: "CyberChefV11_4",
         // The annotated tag `v11.4.0` points at this commit; the tag object's
         // own SHA is different and would check out nothing useful.
         commit: "49d1a5634a67a3b806c6db0fdca7dcecb41a776c",

@@ -43,11 +43,20 @@ Requires Node.js and `git` on the path. Nothing else.
 cargo xtask cyberchef generate   # rewrite both fixtures from the reference
 cargo xtask cyberchef verify     # check the pin, then replay the fixtures
 cargo xtask cyberchef gap        # reference operations not implemented yet
+cargo xtask cyberchef gap --check  # fail if an alias names nothing in this profile
 ```
 
 `gap` derives its answer from the reference catalog and from
 `ferrosift operations --format json`, so the work list cannot drift from the
-code the way a hand-maintained list would.
+code the way a hand-maintained list would. Both sides are read for the selected
+profile: 11.3 and 11.4 do not expose the same operations, so comparing one
+version's catalog against another version's aliases would miscount both what is
+implemented and what is left.
+
+`--check` reports the other direction — a name the catalog claims that this
+version of the reference does not have, from a typo or from an alias tagged
+with a profile that predates the operation. `cargo test` cannot catch it, since
+a name the reference never had has no replayed case to be missing.
 
 ## Adding an operation
 

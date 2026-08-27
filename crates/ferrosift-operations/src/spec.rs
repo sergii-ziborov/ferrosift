@@ -1,7 +1,6 @@
 use alloc::{
     collections::{BTreeMap, BTreeSet},
     string::String,
-    vec,
     vec::Vec,
 };
 
@@ -50,28 +49,38 @@ fn readable(declared: ValueConstraint) -> ValueConstraint {
     }
 }
 
+/// A specification for an operation the reference has had all along.
+///
+/// Almost every operation is one of these, so this is the plain form and the
+/// version-scoped one is spelled out at the few call sites that need it.
 pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
-    // One alias per profile the operation is proven against, not one per
-    // profile that exists. Both are emitted here because `tests/profiles.rs`
-    // replays every corpus case through 11.4 as well as 11.3 and refuses an
-    // 11.4 alias that no 11.4 case backs — so the second entry is a claim the
-    // suite has to keep earning. An operation whose behaviour genuinely
-    // diverged between references would need two specs and a versioned
-    // identifier instead, which that same test enforces.
+    build_since(CompatibilityProfile::CYBERCHEF[0], definition)
+}
+
+/// A specification for an operation the reference introduced in `earliest`.
+///
+/// The catalog spans more than one reference version, and until now every spec
+/// asserted its name existed in all of them. That was true of all 245 aliases
+/// and false of the next few: 11.4 added operations 11.3 has never heard of,
+/// and claiming those in 11.3 would be claiming a name the older reference
+/// cannot answer to. This takes the version the name starts existing in and
+/// aliases that one and everything after it.
+///
+/// Opting in through a separate function rather than a field keeps the decision
+/// at the call sites that make it, the same way [`build_generator`] does,
+/// instead of adding an "all of them" to every other operation in the catalog.
+///
+/// An alias is still a claim, not a declaration. `tests/corpus.rs` and
+/// `tests/profiles.rs` each refuse one that no replayed case of that profile
+/// backs, so narrowing the range here narrows what has to be proven — it does
+/// not exempt anything from being proven.
+pub(crate) fn build_since(
+    earliest: CompatibilityProfile,
+    definition: SpecDefinition,
+) -> OperationSpec {
     let aliases = definition
         .cyberchef_alias
-        .map(|name| {
-            vec![
-                CompatibilityAlias {
-                    profile: CompatibilityProfile::CyberChefV11_3,
-                    name: String::from(name),
-                },
-                CompatibilityAlias {
-                    profile: CompatibilityProfile::CyberChefV11_4,
-                    name: String::from(name),
-                },
-            ]
-        })
+        .map(|name| CompatibilityAlias::cyberchef_since(earliest, name))
         .unwrap_or_default();
     let classifications = definition
         .classifications

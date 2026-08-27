@@ -160,6 +160,64 @@ fn one_of_value_constraint_preserves_deterministic_order() {
     );
 }
 
+/// The list a catalog reads to work out which profiles an alias covers.
+///
+/// It is a second place a profile has to be added, so what it claims about
+/// itself is checked rather than assumed: everything in it is a `CyberChef`
+/// release, and the releases are oldest first. The order is not cosmetic —
+/// "aliased since 11.4" is resolved by comparing against it.
+#[test]
+fn the_cyberchef_profile_list_is_ordered_and_holds_only_cyberchef_profiles() {
+    assert!(
+        CompatibilityProfile::CYBERCHEF
+            .iter()
+            .all(|profile| profile.is_cyberchef()),
+        "the list is what a catalog treats as a reference version"
+    );
+    assert!(
+        CompatibilityProfile::CYBERCHEF
+            .windows(2)
+            .all(|pair| pair[0] < pair[1]),
+        "profiles must be listed oldest first"
+    );
+    assert!(!CompatibilityProfile::Native.is_cyberchef());
+}
+
+/// An operation the reference introduced is not claimed in the versions before
+/// it.
+///
+/// This is the whole point of scoping an alias to a range rather than to the
+/// profile list: 11.4 exposes operations 11.3 has never answered to, and a spec
+/// that named them in both would be asserting something false about the older
+/// reference. The evidence gates cannot catch that on their own — a name the
+/// reference never had has no replayed case to be missing — so what the range
+/// resolves to is checked here.
+#[test]
+fn an_alias_is_claimed_only_from_the_profile_that_introduced_it() {
+    let oldest = CompatibilityProfile::CYBERCHEF[0];
+    let newest = CompatibilityProfile::CYBERCHEF[CompatibilityProfile::CYBERCHEF.len() - 1];
+
+    let always = CompatibilityAlias::cyberchef_since(oldest, "To Base64");
+    assert_eq!(always.len(), CompatibilityProfile::CYBERCHEF.len());
+    assert!(always.iter().all(|alias| alias.name == "To Base64"));
+    assert_eq!(always[0].profile, oldest);
+
+    let introduced = CompatibilityAlias::cyberchef_since(newest, "Modular Exponentiation");
+    assert_eq!(
+        introduced,
+        vec![CompatibilityAlias {
+            profile: newest,
+            name: "Modular Exponentiation".into(),
+        }],
+        "an operation introduced in the newest profile is claimed there and nowhere earlier"
+    );
+
+    assert!(
+        CompatibilityAlias::cyberchef_since(CompatibilityProfile::Native, "To Base64").is_empty(),
+        "FerroSift's own profile is not a reference version to claim a name in"
+    );
+}
+
 #[test]
 fn value_constraints_match_value_kinds() {
     let exact = ValueConstraint::Exact(ValueKind::Bytes);

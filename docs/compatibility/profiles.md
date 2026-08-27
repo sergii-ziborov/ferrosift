@@ -68,6 +68,47 @@ An operation whose semantics genuinely diverged between references would not be
 one spec with two aliases. It would be two specs with versioned identifiers,
 `…@1` and `…@2`, so a caller can ask for the behaviour they mean.
 
+## Operations that arrive between profiles
+
+Not every operation has existed in every profile. 11.3 exposes 501 operations
+and 11.4 exposes 504, and the three it added are names 11.3 has never answered
+to. A spec that claimed them in both would be claiming one of them falsely.
+
+So a spec says which version its name *starts* existing in:
+
+```rust
+// Present in every profile, which is almost everything.
+build(SpecDefinition { cyberchef_alias: Some("To Base64"), .. })
+
+// Introduced upstream in 11.4, so aliased there and in everything after.
+build_since(
+    CompatibilityProfile::CyberChefV11_4,
+    SpecDefinition { cyberchef_alias: Some("Modular Exponentiation"), .. },
+)
+```
+
+Narrowing the range narrows what has to be proven; it exempts nothing. The
+alias that *is* claimed still needs a replayed case of that profile behind it,
+from the same gate every other alias answers to.
+
+The reverse — a name in 11.3 and not in 11.4 — would mean upstream removed an
+operation. That is a different claim needing its own evidence, so
+`tests/profiles.rs` refuses it rather than reading it as an oversight.
+
+Both directions are checked against the reference itself rather than against
+this description:
+
+```bash
+cargo xtask cyberchef gap --profile 11.3.0 --check
+cargo xtask cyberchef gap --profile 11.4.0 --check
+```
+
+Each fails if the catalog claims a name that version of the reference does not
+have. `cargo test` cannot see this: the replay gates demand evidence for the
+aliases a spec carries, and a name the reference never had has no case to
+demand. Only the pinned checkout can answer it, which is why the check lives
+beside the oracle and not in CI.
+
 ## Adding a profile
 
 ```bash

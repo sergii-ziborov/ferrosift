@@ -74,10 +74,19 @@ fn every_cyberchef_alias_is_covered_or_explicitly_exempt() {
     let exemptions = corpus_exemptions();
     let registry = support::registry();
     let mut aliases: BTreeSet<String> = BTreeSet::new();
+    // Every reference name the catalog claims, in any profile. The gate below
+    // is about 11.3 coverage and reads `aliases`; the stale-exemption check at
+    // the end is about whether an exempted name is still registered *at all*,
+    // and an operation the reference only introduced in 11.4 is registered
+    // without ever appearing in this profile's list.
+    let mut any_profile: BTreeSet<String> = BTreeSet::new();
     for specification in registry.catalog() {
         for alias in &specification.aliases {
             if alias.profile == CompatibilityProfile::CyberChefV11_3 {
                 aliases.insert(alias.name.clone());
+            }
+            if alias.profile.is_cyberchef() {
+                any_profile.insert(alias.name.clone());
             }
         }
     }
@@ -97,7 +106,7 @@ fn every_cyberchef_alias_is_covered_or_explicitly_exempt() {
 
     for exempt in &exemptions {
         assert!(
-            aliases.contains(exempt),
+            any_profile.contains(exempt),
             "exemption `{exempt}` names an operation that is no longer registered"
         );
     }

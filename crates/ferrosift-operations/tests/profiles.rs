@@ -127,16 +127,30 @@ fn every_cyberchef_11_4_alias_is_covered_or_explicitly_exempt() {
     }
 }
 
-/// The alias names themselves must still resolve in 11.4.
+/// An operation may arrive between profiles, but it may not be renamed across
+/// them, and it may not silently disappear from the newer one.
 ///
 /// Upstream renaming an operation would not change any output byte, so the
 /// replays above would all pass while every recipe naming the old name had
 /// quietly stopped working. What rules that out is that the oracle baked this
 /// corpus *through* 11.4 using these exact names: a rename would have failed
 /// the bake and dropped the case, so a name's presence in the 11.4 corpus is
-/// the evidence that 11.4 still answers to it.
+/// the evidence that 11.4 still answers to it. This turns that into a rule the
+/// catalog has to keep — one spec never carries two names.
+///
+/// Claiming 11.4 without 11.3 is the one asymmetry allowed, and it is a fact
+/// about the reference rather than about this port: 11.4 introduced operations
+/// 11.3 does not have, and asserting those names in 11.3 would assert something
+/// the older reference cannot answer to. It costs nothing in evidence —
+/// `every_cyberchef_11_4_alias_is_covered_or_explicitly_exempt` still demands a
+/// replayed 11.4 case for the alias that is claimed.
+///
+/// The reverse — 11.3 without 11.4 — would mean upstream *removed* an
+/// operation, which is a different claim needing its own evidence and which
+/// `build_since` cannot currently express. It is refused here rather than left
+/// to be discovered later.
 #[test]
-fn every_alias_name_appears_in_both_profiles() {
+fn an_alias_keeps_one_name_across_the_profiles_that_have_it() {
     let registry = support::registry();
     let mut both = 0usize;
     for specification in registry.catalog() {
@@ -149,16 +163,26 @@ fn every_alias_name_appears_in_both_profiles() {
         };
         let old = named(CompatibilityProfile::CyberChefV11_3);
         let new = named(CompatibilityProfile::CyberChefV11_4);
-        if old.is_some() && new.is_some() {
-            both += 1;
+        let identifier = specification.id.as_str();
+
+        match (&old, &new) {
+            (Some(_), Some(_)) => {
+                both += 1;
+                assert_eq!(
+                    old, new,
+                    "`{identifier}` claims different names in 11.3 and 11.4; a genuine \
+                     rename needs two specs and a versioned identifier, not one spec \
+                     with two names"
+                );
+            }
+            (Some(name), None) => panic!(
+                "`{identifier}` claims `{name}` in 11.3 and nothing in 11.4, which says \
+                 upstream removed it; that needs its own evidence rather than a gap in \
+                 the alias list"
+            ),
+            // Introduced in 11.4, or native and aliased in neither.
+            (None, _) => {}
         }
-        assert_eq!(
-            old,
-            new,
-            "`{}` claims different names in 11.3 and 11.4; a genuine rename needs \
-             two specs and a versioned identifier, not one spec with two names",
-            specification.id.as_str()
-        );
     }
     assert!(
         both > 100,
