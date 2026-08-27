@@ -181,6 +181,38 @@ const AGGREGATIONS: [&str; 7] = [
     "math.stddev@1",
 ];
 
+/// A remainder does not build the power of ten it is about to divide away.
+///
+/// `MOD` used to bring both operands to a common exponent, so `1e10000000 MOD
+/// 2` produced a ten-million-digit integer in order to answer `0`, and
+/// `1e-10000000 MOD 2` scaled the *modulus* by ten million places to conclude
+/// that the dividend was already the answer. Both are twelve characters of
+/// input and one character of output, so no output budget could see either.
+///
+/// The answers are what a reader can check; that they arrive at all is the
+/// rest of the test. Before the fix this file did not finish.
+#[test]
+fn a_remainder_does_not_materialise_the_exponent() {
+    // The dividend's exponent above the modulus's: a modular exponentiation
+    // rather than a decimal that has to exist.
+    assert_eq!(modulo(2, "Space", "1e10000000"), Ok("0".to_owned()));
+    assert_eq!(modulo(3, "Space", "1e9999999"), Ok("1".to_owned()));
+    assert_eq!(modulo(7, "Space", "-1e10000000"), Ok("-4".to_owned()));
+
+    // The modulus larger than the dividend: the dividend is its own remainder,
+    // decided from the scales without aligning anything. `MOD` renders through
+    // `toString` rather than in full, so the answer is also visibly a number
+    // that was never expanded.
+    assert_eq!(
+        modulo(2, "Space", "1e-10000000"),
+        Ok("1e-10000000".to_owned())
+    );
+
+    // And the ordinary cases still answer what they answered.
+    assert_eq!(modulo(3, "Space", "15 4 7"), Ok("0 1 1".to_owned()));
+    assert_eq!(modulo(3, "Space", "-7"), Ok("-1".to_owned()));
+}
+
 #[test]
 fn a_zero_modulus_is_refused_rather_than_answered() {
     // The reference throws here. Answering not-a-number instead would let a

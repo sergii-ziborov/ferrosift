@@ -57,6 +57,20 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
     build_since(CompatibilityProfile::CYBERCHEF[0], definition)
 }
 
+/// A specification for an operation that needs an operating system.
+///
+/// Two of them: bzip2 compress and decompress, whose crate reaches `thiserror`.
+/// Everything else in the catalog builds for bare metal, and the difference
+/// belongs in the spec because a caller asking "can I run this on a
+/// microcontroller" is asking about the operation and not about the build.
+pub(crate) fn build_hosted(definition: SpecDefinition) -> OperationSpec {
+    OperationSpec {
+        targets: targets(Portability::Hosted),
+        evidence: evidence(Portability::Hosted),
+        ..build(definition)
+    }
+}
+
 /// A specification for an operation the reference introduced in `earliest`.
 ///
 /// The catalog spans more than one reference version, and until now every spec
@@ -98,14 +112,14 @@ pub(crate) fn build_since(
         input: readable(definition.input),
         output: definition.output,
         arguments: definition.arguments,
-        targets: TargetSet::from([Target::Native, Target::Wasm32UnknownUnknown]),
+        targets: targets(Portability::BareMetal),
         capabilities: CapabilitySet::new(),
         classifications,
         deterministic: true,
         streaming: StreamingSupport::Buffered,
         output_behavior: OutputBehavior::InputProportional,
         inverse: definition.inverse.map(operation_id),
-        evidence: evidence(),
+        evidence: evidence(Portability::BareMetal),
     }
 }
 
@@ -159,7 +173,49 @@ pub(crate) fn build_uniform(kind: ValueKind, definition: UniformSpec) -> Operati
     })
 }
 
-fn evidence() -> EvidenceSummary {
+/// Whether an operation can be built for a target without an operating system.
+///
+/// A property of the operation, not of the build that selected it. The first
+/// attempt read `cfg!(feature = "compression-bzip2")` and so dropped `Embedded`
+/// from *every* operation as soon as bzip2 was compiled anywhere — which is the
+/// same mistake in reverse: SHA-256 does not stop running on a microcontroller
+/// because something else in the same binary needs `std`.
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub(crate) enum Portability {
+    /// Builds for `thumbv7em-none-eabihf` and `riscv32imac-unknown-none-elf`.
+    BareMetal,
+    /// Needs an operating system. Only bzip2, which reaches `thiserror`.
+    Hosted,
+}
+
+/// Where an operation can run.
+///
+/// `Embedded` is here because CI proves it rather than because it sounds true:
+/// the bare-metal job builds `portable-full` for both targets. The catalog used
+/// to claim only the native and browser targets while the workflow had been
+/// checking a third for months — a claim smaller than its evidence, which is
+/// the opposite of the usual drift and just as wrong.
+fn targets(portability: Portability) -> TargetSet {
+    let mut targets = TargetSet::from([Target::Native, Target::Wasm32UnknownUnknown]);
+    if portability == Portability::BareMetal {
+        targets.insert(Target::Embedded);
+    }
+    targets
+}
+
+fn evidence(portability: Portability) -> EvidenceSummary {
+    let mut target_checks = BTreeMap::from([
+        (Target::Native, passed(".github/workflows/ci.yml")),
+        (
+            Target::Wasm32UnknownUnknown,
+            passed(".github/workflows/ci.yml"),
+        ),
+    ]);
+    // Every declared target needs a record and `OperationSpec::validate`
+    // enforces that, so the two cannot say different things.
+    if portability == Portability::BareMetal {
+        target_checks.insert(Target::Embedded, passed(".github/workflows/ci.yml"));
+    }
     EvidenceSummary {
         provenance: passed("NOTICE"),
         license: passed("LICENSE"),
@@ -168,13 +224,7 @@ fn evidence() -> EvidenceSummary {
             state: EvidenceState::Missing,
             reference: None,
         },
-        target_checks: BTreeMap::from([
-            (Target::Native, passed(".github/workflows/ci.yml")),
-            (
-                Target::Wasm32UnknownUnknown,
-                passed(".github/workflows/ci.yml"),
-            ),
-        ]),
+        target_checks,
     }
 }
 

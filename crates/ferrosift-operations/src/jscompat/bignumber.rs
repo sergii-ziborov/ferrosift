@@ -391,6 +391,44 @@ pub fn modulo(left: &DecimalValue, right: &DecimalValue) -> DecimalValue {
             let (Some(a), Some(b)) = (Scaled::from(left), Scaled::from(right)) else {
                 return DecimalValue::not_a_number();
             };
+
+            // A dividend smaller than the modulus is its own remainder, and
+            // saying so from the parts is what avoids the whole problem: the
+            // alternative brings both to a common exponent, and the exponent
+            // gap is exactly what makes that expensive. `1e-10000000 MOD 2`
+            // would otherwise scale the *modulus* by ten million places to
+            // conclude that the dividend was already the answer.
+            if magnitude_below(left, right) {
+                return left.clone();
+            }
+
+            // The dividend's exponent above the modulus's is a power of ten
+            // that never has to exist. `ca * 10^k mod m` is
+            // `(ca mod m) * (10^k mod m) mod m`, and the second factor is a
+            // modular exponentiation -- so `1e10000000 MOD 2` is a few dozen
+            // multiplications rather than a ten-million-digit integer built to
+            // be divided away.
+            if a.exponent > b.exponent {
+                let shift = a.exponent.abs_diff(b.exponent);
+                let modulus = b.value.magnitude().clone();
+                let base = a.value.magnitude() % &modulus;
+                let power = BigUint::from(10_u32).modpow(&BigUint::from(shift), &modulus);
+                let reduced = base * power % &modulus;
+                let sign = if a.value.is_negative() {
+                    Sign::Minus
+                } else {
+                    Sign::Plus
+                };
+                return Scaled {
+                    value: BigInt::from_biguint(sign, reduced),
+                    exponent: b.exponent,
+                }
+                .into_decimal();
+            }
+
+            // What is left is a modulus with the finer exponent, and a
+            // dividend at least as large -- so the shift below is bounded by
+            // the dividend's own digits rather than by the gap.
             let exponent = a.exponent.min(b.exponent);
             let first = a.rescaled(exponent);
             let second = b.rescaled(exponent);
@@ -402,6 +440,41 @@ pub fn modulo(left: &DecimalValue, right: &DecimalValue) -> DecimalValue {
                 exponent,
             }
             .into_decimal()
+        }
+    }
+}
+
+/// Whether `left` is smaller than `right` in magnitude.
+///
+/// Read off the parts rather than by aligning the two, for the same reason
+/// [`compare`] is: the alignment costs the gap between the exponents, and the
+/// question is usually settled by the leading positions alone. A scale is
+/// exact here — the model normalises a coefficient so its length and exponent
+/// give it directly — so the comparison it settles is exact too.
+///
+/// Only when the scales agree do the digits get compared, and then the shift is
+/// bounded by the coefficients themselves rather than by the exponent gap.
+fn magnitude_below(left: &DecimalValue, right: &DecimalValue) -> bool {
+    if left.is_zero() {
+        return !right.is_zero();
+    }
+    if right.is_zero() {
+        return false;
+    }
+    let (Some((_, left_digits, left_exponent)), Some((_, right_digits, right_exponent))) =
+        (left.parts(), right.parts())
+    else {
+        return false;
+    };
+    match scale_of(left_digits, left_exponent).cmp(&scale_of(right_digits, right_exponent)) {
+        core::cmp::Ordering::Less => true,
+        core::cmp::Ordering::Greater => false,
+        core::cmp::Ordering::Equal => {
+            let (Some(a), Some(b)) = (Scaled::from(left), Scaled::from(right)) else {
+                return false;
+            };
+            let exponent = a.exponent.min(b.exponent);
+            a.rescaled(exponent).magnitude() < b.rescaled(exponent).magnitude()
         }
     }
 }

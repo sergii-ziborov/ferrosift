@@ -12,6 +12,8 @@ use crate::args::{boolean_argument, boolean_value};
 use crate::args::{integer_argument, integer_value};
 #[cfg(feature = "compression-deflate")]
 use crate::args::{text_argument, text_value};
+#[cfg(feature = "compression-bzip2")]
+use crate::spec::build_hosted;
 use crate::spec::{SpecDefinition, build};
 
 #[cfg(feature = "compression-bzip2")]
@@ -30,7 +32,7 @@ impl Bzip2Compress {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_hosted(SpecDefinition {
                 id: "compression.bzip2.compress@1",
                 display_name: "Bzip2 Compress",
                 category: "Compression",
@@ -99,7 +101,7 @@ impl Bzip2Decompress {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_hosted(SpecDefinition {
                 id: "compression.bzip2.decompress@1",
                 display_name: "Bzip2 Decompress",
                 category: "Compression",

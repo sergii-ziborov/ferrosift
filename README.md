@@ -1,14 +1,18 @@
 # FerroSift
 
-FerroSift is a pure-Rust library for deterministic, local-first data
-transformation. Its portable model and execution engine run on native targets
-and `wasm32-unknown-unknown`, with no JavaScript runtime.
+CyberChef-compatible transformations and binary patterns in a `no_std`-first
+Rust library. Native, `wasm32-unknown-unknown`, and bare metal, with no
+JavaScript runtime anywhere in the build.
 
-The design principle is precision over breadth: **if FerroSift says an
-operation is compatible, it is compatible.** Compatibility is measured against
-pinned CyberChef v11.3.0 and v11.4.0 checkouts, not asserted. Every corpus case
-is replayed against both, and adding the newer profile did not retire the
-older: see [reference profiles](docs/compatibility/profiles.md).
+**Broad by design. Compatible by evidence.** Nothing here claims compatibility
+it has not measured: every claim is against a pinned CyberChef v11.3.0 or
+v11.4.0 checkout, every corpus case is replayed against both, and adding the
+newer profile did not retire the older — see
+[reference profiles](docs/compatibility/profiles.md).
+
+And what is *not* exact is counted rather than glossed. The table below reports
+two things a single word used to answer for: how much was checked, and how much
+matched.
 
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Differential-pinned | Exact parity | Pinned cases |
@@ -20,16 +24,21 @@ These numbers are generated, not typed: `cargo xtask ledger check` regenerates
 them from the catalog and the committed fixtures on every CI run and fails if
 this table disagrees.
 
-The four aliased operations that are not byte-pinned are structurally exempt,
-never silently skipped: they are compressors whose output is interoperable
-rather than bit-identical, and their inverse direction *is* byte-pinned. A
-coverage gate fails the build if any aliased operation lacks both corpus cases
-and a documented exemption, reading the same
-[exemption list](docs/compatibility/exemptions.json) the ledger does. See the
-[compatibility ledger](docs/compatibility/ledger.md) for the per-operation
-table, and
+**Exact parity** is the 224 that match the reference everywhere this project
+knows of. Seventeen more are byte-pinned across their own corpus and differ
+over a stated domain outside it — a reduced digest round count, an odd hex
+digit, `RANDOM` padding the reference fills with `Math.random()` — and each is
+listed with its domain and its reason in
+[divergences.json](docs/compatibility/divergences.json). Four are compressors
+whose output is one valid encoding among several, checked through the inverse
+that *is* pinned. **None is aliased without evidence**, and that zero is a
+build failure rather than a footnote: a coverage gate refuses an alias with
+neither corpus cases nor a documented exemption.
+
+See the [compatibility ledger](docs/compatibility/ledger.md) for the
+per-operation table and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
-for every intentional divergence.
+for the argument behind each divergence.
 
 The value model reproduces the reference's *conversions*, not only its
 operations. A dish does not become bytes by printing itself: markup loses its
@@ -38,37 +47,27 @@ JavaScript prints one, a decimal renders through `toFixed`, and a structure
 renders through `JSON.stringify(value, null, 4)`. Those differences show on the
 second step of a recipe rather than the first, which is why they survived ten
 operations before anything caught them.
-[docs/value-model.md](docs/value-model.md) records each conversion, how it was
-checked, and the one limit that remains — key order inside a JSON object.
+[docs/value-model.md](docs/value-model.md) records each conversion and how it
+was checked.
 
-What is *not* covered is a list rather than a number:
+## Binary patterns
+
+The same library reads `.hexpat` sources and evaluates them against bytes,
+reporting the exact offset and size of every field. Measured the same way the
+operations are: `ImHex`'s own `plcli`, built from a pinned checkout of
+`WerWolv/PatternLanguage`, answers 104 cases covering one construct each, and
+**102 of them agree**. The two that do not ask for `sizeof` of a declared type,
+are held in the fixture, and are asserted to fail — so the day that changes,
+the test says so.
+
+What that does not yet say is how much of the real `.hexpat` ecosystem parses
+here. [docs/pattern-language-subset.md](docs/pattern-language-subset.md) has the
+grammar, what is covered, and what is missing.
+
+What is *not* covered on the operation side is a list rather than a number:
 [operations not implemented](docs/compatibility/not-implemented.md) groups the
 remaining catalog by what each one is waiting on, and says why an equivalent
 Rust library is not a substitute for the one the reference used.
-
-### Ecosystem place (transform runtime — not lost)
-
-```text
-Weavatrix — code facts
-Weavatrix Loom — capability Registry + compose + compile → Rust
-FerroSift (this) — deterministic ops / recipes
-Realforge — package / deploy artifacts
-```
-
-| FerroSift **is** | FerroSift **is not** |
-| --- | --- |
-| Portable recipe IR + executor + op specs | A **capability interchange Registry** (that is Loom) |
-| Local-first / Wasm transform runtime | A repository indexer (that is Weavatrix) |
-| Optional **source of Implementations** for Loom after conformance | A second WVX project graph |
-| Something Realforge may package into larger products | Agent orchestration (Cortex) |
-
-**Link to Loom:** a FerroSift op or recipe profile may back a Loom
-`Implementation` of a `Capability` once contracts and evidence pass. Do not
-merge FerroSift’s op registry into WVX IR.
-
-Normative Loom boundaries:
-[ADR-0012](https://github.com/sergii-ziborov/weavatrix-loom/blob/main/docs/adr/0012-ecosystem-boundaries.md) ·
-[ecosystem distribution](https://github.com/sergii-ziborov/weavatrix-loom/blob/main/docs/ecosystem-distribution.md).
 
 ## Capabilities
 
@@ -144,10 +143,11 @@ reasons, not defences — the harness exists to close them, and has already
 made base64 decoding 13× faster by finding a linear scan that should have
 been a lookup table.
 
-`ferrosift-pattern` deliberately claims **no** compatibility with any upstream
-pattern-language runtime yet: that claim requires a pinned differential
-corpus, exactly like the CyberChef one, and none exists in this repository
-today.
+`ferrosift-pattern` now has the pinned differential corpus that claim needed —
+104 cases against `ImHex`'s own runtime, 102 agreeing — but it is a corpus of
+*constructs*, not of patterns people wrote. The language surface is narrower
+than upstream's, so "compatible over what it implements" is the honest reading
+and the subset page says what it does not implement.
 
 ## Taking only part of the catalog
 
@@ -187,7 +187,8 @@ the packs below are the only ones that pull third-party crates.
 | `compression-bzip2` | bzip2 | `oxiarc-bzip2` |
 | `text` | extractors, defang, Find / Replace | `regex-automata` |
 | `analysis` | Suggest recipe, XOR brute force | nothing |
-| `arithmetic` | Extended GCD, Modular Inverse | `num-bigint` |
+| `bignum` | Base62, ASN.1 object identifiers, base conversion | `num-bigint` |
+| `arithmetic` | Extended GCD, Modular Inverse (implies `bignum`) | `num-bigint` |
 | `pattern` | the hex-pattern engine | nothing |
 | `portable-full` | every pack that builds on bare metal | — |
 | `full` | `portable-full` plus bzip2 | — |

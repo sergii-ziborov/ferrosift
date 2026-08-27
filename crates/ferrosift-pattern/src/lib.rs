@@ -3,12 +3,26 @@
 //! This crate reads a hex-pattern source file, produces a checked declaration
 //! tree, and evaluates it against bytes into a value tree carrying the exact
 //! offset and size of every field. It implements the **subset** documented in
-//! `docs/pattern-language-subset.md`: structs, enums, bitfields, `using`
-//! aliases, fixed-size arrays, endianness prefixes, and absolute placements.
+//! `docs/pattern-language-subset.md`: structs, unions, enums, bitfields,
+//! `using` aliases, counted and `while` arrays, `if`/`else`, padding,
+//! endianness prefixes, expressions with `sizeof` and `$`, and placements.
 //!
-//! Compatibility with any upstream pattern-language runtime is **not yet
-//! claimed**. `FerroSift` only claims compatibility that a pinned differential
-//! corpus can demonstrate, and no such corpus exists for this language yet.
+//! # Compatibility
+//!
+//! Measured against `ImHex`'s own runtime rather than asserted. `plcli` is
+//! built from a pinned checkout of `WerWolv/PatternLanguage`, answers 104 cases
+//! covering one construct each, and
+//! `crates/ferrosift-pattern/tests/differential.rs` replays every one of them.
+//!
+//! **102 of the 104 agree.** The other two ask for `sizeof` of a declared type,
+//! which this crate does not compute; they are held in the fixture and asserted
+//! to fail, so the day that changes the test says so. Nothing is skipped: a
+//! case answered differently fails the replay.
+//!
+//! What that does *not* say is how much of the real `.hexpat` ecosystem parses
+//! here — the corpus separates constructs rather than sampling patterns people
+//! wrote. `docs/pattern-language-subset.md` has the grammar, the case list, and
+//! what is still missing.
 //!
 //! ```
 //! use ferrosift_pattern::{EvalOptions, NodeValue};
