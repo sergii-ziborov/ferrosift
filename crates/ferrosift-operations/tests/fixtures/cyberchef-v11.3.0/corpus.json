@@ -111895,6 +111895,4241 @@
     "3139322e3136382e302e31"
    ],
    "stopped_after": 3
+  },
+  {
+   "name": "blake2_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3738366130326637343230313539303363366336666438353235353264323732393132663437343065313538343736313861383665323137663731663534313964323565313033316166656535383533313338393634343439333465623034623930336136383562313434386237353564353666373031616665396265326365"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_1",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3333336663623465653161613763313135333535656336366365616339313763386266643831356266373538376433323561656331383634656464323465333464356162653263366231623565653366616365363266656437386462656638303266326138356362393164343535613866353234396433333038353363623363"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_2",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6261383061353366393831633464306436613237393762363966313266366539346332313266313436383561633462373462313262623666646266666132643137643837633533393261616237393264633235326435646534353333636339353138643338616138646266313932356162393233383665646434303039393233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_3",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6138616464346264646466643933653438373764323734366536323831376231313633363461316661376263313438643935303930626337333333623336373366383234303163663761613265346362316563643930323936653366313463623534313366386564373762653733303435623133393134636463643661393138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_4",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6538666535323331373936383362343862653230663139396564363732616130373436643162353562633938396336343265336261343630383936363065386633373663613266363836376436326632386133346435643636386134653262626430363733393737313438616462396234633630356165353738356435626435"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_5",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65476f433930494257515047787632464a564c53637045765230446857456468696f6269462f636656426e5358684178722b355955784f4a5a4553545472424c6b44706f5778524974315856623341612f7076697a673d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_6",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d7a2f4c54754771664246545665786d7a717952664976396756763357483079577577595a4f3353546a5456712b4c477362587550367a6d4c2b3134322b2b414c7971467935485556616a314a4a307a4346504c50413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_7",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "756f436c50356763545131714a3565326e784c32365577684c78526f5773533353784b376239762f6f744639683855354b7174354c634a53316435464d387956474e4f4b714e76786b6c7135493462743141435a49773d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_8",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "714b3355766433396b2b534866536447356967587352593253682b6e7642534e6c516b4c787a4d374e6e50344a41485065714c6b7978374e6b436c755078544c564250343758652b637752624535464d334e617047413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_9",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "365035534d586c6f4f30692b4950475a375763716f485274473157386d4a786b4c6a756b59496c6d446f3833624b4c32686e3169386f6f3031645a6f704f4b37304763356478534b3235744d5946726c6546316231513d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_10",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_11",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "333fcb4ee1aa7c115355ec66ceac917c8bfd815bf7587d325aec1864edd24e34d5abe2c6b1b5ee3face62fed78dbef802f2a85cb91d455a8f5249d330853cb3c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_12",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "ba80a53f981c4d0d6a2797b69f12f6e94c212f14685ac4b74b12bb6fdbffa2d17d87c5392aab792dc252d5de4533cc9518d38aa8dbf1925ab92386edd4009923"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_13",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "a8add4bdddfd93e4877d2746e62817b116364a1fa7bc148d95090bc7333b3673f82401cf7aa2e4cb1ecd90296e3f14cb5413f8ed77be73045b13914cdcd6a918"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_14",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e8fe523179683b48be20f199ed672aa0746d1b55bc989c642e3ba46089660e8f376ca2f6867d62f28a34d5d668a4e2bbd0673977148adb9b4c605ae5785d5bd5"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_15",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "623332383131343233333737663532643738363232383665653161373265653534303532343338306664613137323461366632356437393738633666643332343461366361663034393838313236373363356530356566353833383235313030"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_16",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "376434306465313666663737316434353935626637306362646130633465613061303636613630343666613733643334343731636434643933643832376437633934633239333939633530646538363938336166316563363164356463656630"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_17",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "366635366138326338653765663532366466653138326562353231326637646239646631333137653537383135646264613436303833666333306635346565366336366261383362653634623330326437636261366365313562623535366634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_18",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "623763383162323238623662643931323933306538663062353338373938393639316331636565316536356161646534646133623836613363396636373866633830313866366564396532393036373230633864326133616564613963303364"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_19",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "376434393033633632356333623434366137396533336631353836666630653362313863383864623735353036303032663139643337633130333738366366653338396338396637343863333937646561633166326664616265366261323764"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_20",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "73796752516a4e3339533134596968753461637535554253513444396f584a4b627958586c3478763079524b624b38456d49456d6338586758765744676c4541"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_21",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6655446546763933485557567633444c3267784f6f4b426d70675276707a303052787a55325432436658795577704f5a7851336f61594f764873596458633777"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_22",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6231616f4c49352b3953626634594c7255684c33323533784d58355867563239704743442f4444315475624761366737356b73774c587936624f466274566230"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_23",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "74386762496f747232524b54446f384c553465596c7048427a75486d5771336b326a75476f386e3265507941475062746e696b476367794e4b6a727471634139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_24",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "66556b44786958447445616e6e6a507857472f773437474d694e743155474143385a303377514e34625034346e496e33534d4f58337177664c39712b61364a39"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_25",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b32811423377f52d7862286ee1a72ee540524380fda1724a6f25d7978c6fd3244a6caf0498812673c5e05ef583825100"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_26",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7d40de16ff771d4595bf70cbda0c4ea0a066a6046fa73d34471cd4d93d827d7c94c29399c50de86983af1ec61d5dcef0"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_27",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6f56a82c8e7ef526dfe182eb5212f7db9df1317e57815dbda46083fc30f54ee6c66ba83be64b302d7cba6ce15bb556f4"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_28",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "b7c81b228b6bd912930e8f0b5387989691c1cee1e65aade4da3b86a3c9f678fc8018f6ed9e2906720c8d2a3aeda9c03d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_29",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7d4903c625c3b446a79e33f1586ff0e3b18c88db75506002f19d37c103786cfe389c89f748c397deac1f2fdabe6ba27d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_30",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30653537353163303236653534336232653861623265623036303939646161316431653564663437373738663737383766616162343563646631326665336138"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_31",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38393238616165363363383464383765613039383536346431653033616438313366313037616464343734653536616564643238363334396330633033656134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_32",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62646464383133633633343233393732333137316566336665653938353739623934393634653362623163623365343237323632633863303638643532333139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_33",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30313731386365633335636433643739366464303030323065306266656362343733616432333435376430363362373565666632396330666661326535386139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_34",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31366662303961323938383761336337333661656538393865353164306139663532616434343638333730316264613366663166343030363265343363333563"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_35",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "446c64527743626c51374c6f71793677594a6e616f64486c333064336a3365482b7174467a6645763436673d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_36",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "69536971356a7945324836676d465a4e48674f746754385165743148546c61753353686a536344415071513d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_37",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7664324250474e434f5849786365382f377068586d355357546a7578797a3543636d4c4977476a5649786b3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_38",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4158474d3744584e50586c7430414167344c2f7374484f7449305639426a7431372f4b63442f6f75574b6b3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_39",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4676734a6f7069486f386332727569593552304b6e314b74524767334162326a2f783941426935447731773d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_40",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_41",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "8928aae63c84d87ea098564d1e03ad813f107add474e56aedd286349c0c03ea4"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_42",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "bddd813c634239723171ef3fee98579b94964e3bb1cb3e427262c8c068d52319"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_43",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "01718cec35cd3d796dd00020e0bfecb473ad23457d063b75eff29c0ffa2e58a9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_44",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "16fb09a29887a3c736aee898e51d0a9f52ad44683701bda3ff1f40062e43c35c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_45",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33333435353234616266366262653138303934343932323462353937326334313739306236636632"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_46",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39343863616132646236316263346364623466616637373430636434393166313935303433393134"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_47",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33383432363466363736663339353336383430353233663238343932316364633638623638343662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_48",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33633532336564313032616234356133376435346635363130643561393833313632666465383466"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_49",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31366466346135393564616330633038643662623737633632666530643666323535616537623962"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_50",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4d305653537239727668674a524a496b745a637351586b4c6250493d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_51",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c4979714c625962784d32302b766430444e5352385a55454f52513d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_52",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4f454a6b396e627a6c54614542535079684a4963334769326847733d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_53",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5046492b30514b7252614e3956505668445671594d574c393645383d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_54",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4674394b5756327344416a57753366474c2b4457386c57756535733d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_55",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3345524abf6bbe1809449224b5972c41790b6cf2"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_56",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "948caa2db61bc4cdb4faf7740cd491f195043914"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_57",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "384264f676f39536840523f284921cdc68b6846b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_58",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c523ed102ab45a37d54f5610d5a983162fde84f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_59",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "16df4a595dac0c08d6bb77c62fe0d6f255ae7b9b"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_60",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6361653636393431643965666264343034653464383837353865613637363730"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_61",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3237633335653665393337333837376632396535363234363465343634393765"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_62",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6366346162373931633632623864326232313039633930323735323837383136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_63",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3234396466396134396635313764646364333766356338393736323065633733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_64",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6537623262613238663065653535313334666361646563333563626134383538"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_65",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "79755a7051646e767655424f545968316a715a3263413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_66",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a384e6562704e7a6833387035574a47546b5a4a66673d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_67",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7a3071336b6359726a53736843636b436453683446673d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_68",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a4a3335704a395266647a546631794a6469447363773d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_69",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35374b364b50447556524e5079743744584c704957413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_70",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "cae66941d9efbd404e4d88758ea67670"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_71",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "27c35e6e9373877f29e562464e46497e"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_72",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "cf4ab791c62b8d2b2109c90275287816"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_73",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "249df9a49f517ddcd37f5c897620ec73"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_74",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "e7b2ba28f0ee55134fcadec35cba4858"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_75",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6261383061353366393831633464306436613237393762363966313266366539346332313266313436383561633462373462313262623666646266666132643137643837633533393261616237393264633235326435646534353333636339353138643338616138646266313932356162393233383665646434303039393233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_76",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3563366139613461653931316330326662376537316139393165623961656133373161653939336434383432643230366536303230643436663565343133353863366435633237376331313065663836633935396564363365366563616161636561616666333830313961343332363461653036616366373362393535306231"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_77",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161626336366534626461323537313865633865616533383930333334333331353966636236333334613266623266613565346137613339333766623961663565353734383334346234636638383962636662636630623863666139376166356436643132333933346438666330316566613836373638383836373431333735"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_78",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "a longer key than one block would be, but under the limit"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6237633736656637356336393939363766623366316264356332343261343564363834616131386137373436366264356233653838656365616264643964333136333663383135303839383965353235656437316130373639393432363663316566363030316537366137333564646166343762643062363264303162356232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_79",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "366635366138326338653765663532366466653138326562353231326637646239646631333137653537383135646264613436303833666333306635346565366336366261383362653634623330326437636261366365313562623535366634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_80",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "626437623535303765663533393030303635653965316461656336356537313831646138646664326564356133613531306264366634326563353732356233646436366133666463616631393831623431663038373130343837656266636236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_81",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616237653839653764633563333764656663383539653536343134346237616162306635326464363735633733656535393933336262363630333438363263373339366265346634313234616632383130316334363532386363336665383864"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_82",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "384",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "a longer key than one block would be, but under the limit"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "353438313461346631323061346332656163333330373365313030323630633663333661363533366666373063376133656437636138396639323935356337646261613966633932353264373261306165306134656635356238336366623830"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_83",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62646464383133633633343233393732333137316566336665653938353739623934393634653362623163623365343237323632633863303638643532333139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_84",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30333330353331643039373335356133663732653830643535633132343563636637396631373034343331633665333838373933383332303434326332336330"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_85",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62303037656232373832653438656235613538396365366234323434373465343336343335306134383039643862386135656138633437666634613538366565"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_86",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "a longer key than one block would be, but under the limit"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63646261643838323331613861333839613839373564313861623563383332303430373035386363343637373962396133313737363034623564653165373232"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_87",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33383432363466363736663339353336383430353233663238343932316364633638623638343662"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_88",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36336335653964326531363739393165376663613966653834623461666362326661623763633939"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_89",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32353063326264653461616432623330353739393061663365333139653739633334653237306437"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_90",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "a longer key than one block would be, but under the limit"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34333437336265613438346135393931656261666231323661336461613765626531623035326661"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_91",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6366346162373931633632623864326232313039633930323735323837383136"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_92",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3263663032616531366163323235656537333166396433353964386131633338"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_93",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3436353433653535383663343030336363396637643162393163356534366166"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_94",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "a longer key than one block would be, but under the limit"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6265653834646239383766306565333666613931653937626139303962323961"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_95",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36393231376133303739393038303934653131313231643034323335346137633166353562363438326361316135316531623235306466643165643065656639"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_96",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34613064313239383733343033303337633263643962393034383230333638376636323333666236373338393536653033343962643433323066656333653930"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_97",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35303863356538633332376331346532653161373262613334656562343532663337343538623230396564363361323934643939396234633836363735393832"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_98",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36303662656565633734336363626566663663626364663564353330326161383535633235366332396238386338656433333165613161366266336338383132"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_99",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37623365353937303761393265376238323262663432613838366339393930376631386264356337393237613930663665646566623833656331313539386561"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_100",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "615346364d486d51674a546845534851516a564b66423956746b67736f6155654779554e2f52375137766b3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_101",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "536730536d484e414d4466437a5a755153434132682f596a50375a7a695662674e4a76554d672f735070413d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_102",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "554978656a444a38464f4c687079756a547574464c7a644669794365316a6f70545a6d6254495a6e5759493d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_103",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5947767537485138792b2f3279383331315441717146584356734b62694d6a744d783668707238386942493d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_104",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "657a355a634871533537676976304b6f68736d5a422f474c316365536570443237652b34507345566d4f6f3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_105",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_106",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4a0d129873403037c2cd9b9048203687f6233fb6738956e0349bd4320fec3e90"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_107",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_108",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "606beeec743ccbeff6cbcdf5d5302aa855c256c29b88c8ed331ea1a6bf3c8812"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_109",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "7b3e59707a92e7b822bf42a886c99907f18bd5c7927a90f6edefb83ec11598ea"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_110",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33353463396333336637333539363234313862646163623934373938373334323963333439313666"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_111",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64396364326265633161323434303462363538386135356231393163373833336436333062616438"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_112",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35616533623939626532396230313833346333623530383532316564653630343338663864653137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_113",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35613630346665633937313363333639653834623065643638646165643764373530346566323430"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_114",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33366666386665313436323865393763396439336335643061313665626461363062656562333063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_115",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e5579634d2f63316c695159766179355235687a517077306b57383d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_116",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3263307237426f6b5145746c694b5662475278344d3959777574673d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_117",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "57754f356d2b4b6241594e4d4f3143464965336d42446a343368633d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_118",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "576d4250374a635477326e6f537737576a6137583131424f386b413d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_119",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "4e762b503455596f365879646b3858516f573639706776757377773d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_120",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "354c9c33f735962418bdacb9479873429c34916f"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_121",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d9cd2bec1a24404b6588a55b191c7833d630bad8"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_122",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5ae3b99be29b01834c3b508521ede60438f8de17"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_123",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a604fec9713c369e84b0ed68daed7d7504ef240"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_124",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "36ff8fe14628e97c9d93c5d0a16ebda60beeb30c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_125",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3634353530643666666532633061303161313461626131656164653032303063"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_126",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3835346239653962613439626664393435376434633362663936653432353233"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_127",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161343933383131396231646337623837636261643066666432303064306165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_128",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3936666430373235383932353734386130643266623163386131313637613733"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_129",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6438316131366638353135663630393731373465353936633962663534623561"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_130",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "5a46554e622f34734367476853726f657265416744413d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_131",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "685575656d3653622f5a5258314d4f2f6c75516c49773d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_132",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "716b6b34455a7364783768387574442f3067445172673d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_133",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6c7630484a596b6c64496f4e4c3748496f525a3663773d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_134",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Base64",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "32426f572b464666594a6358546c6c736d2f564c57673d3d"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_135",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "64550d6ffe2c0a01a14aba1eade0200c"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_136",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "854b9e9ba49bfd9457d4c3bf96e42523"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_137",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "aa4938119b1dc7b87cbad0ffd200d0ae"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_138",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "96fd07258925748a0d2fb1c8a1167a73"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_139",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Raw",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "d81a16f8515f6097174e596c9bf54b5a"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_140",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35303863356538633332376331346532653161373262613334656562343532663337343538623230396564363361323934643939396234633836363735393832"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_141",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33663937323334333762303333626630633166346466343363616664303737363036386362306139353931326465313366336232393532613361626137363464"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_142",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "31353234633466653965343631623436323434346538643238623961616330363832343937616365363165336235386538353639643936343434306266616139"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_144",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35616533623939626532396230313833346333623530383532316564653630343338663864653137"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_145",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34656436393966376537316365373433343062613230326139633337633463663937373261613361"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_146",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "160",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "65326232623436363730316535323637363130306337326138373839333631653433633237303433"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_148",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161343933383131396231646337623837636261643066666432303064306165"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_149",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": "key"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3934666466366633356239393939393230646364636165653336316164343335"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_keyed_150",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "128",
+      "Hex",
+      {
+       "option": "Hex",
+       "string": "00112233445566778899aabbccddeeff"
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6364336639663335646362316436333836383530666338356365356539653765"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_0",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33663533396132313365393763383032636332323964343734633661613332613832356133363062326139333361393439666439323532303864396365316262"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_1",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62613331303939623963633834656332613637316539333133353732333738393230613730356233363362303331613163623466633033653031636538646633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_2",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "34653239313963663133376564343165633466623632373063363138323663633466666662363630333431653061663336383863643036323664323362343831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_3",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "33653764656137663233383462366335613364306532346161613239633035653839646464373632313435303330656332326337316136646238623263316634"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_4",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "256"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63323733306461353030343563633261383931386532343665313639646636653365663239326533656662343862633839613364386438643466666130666335"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_5",
+   "input": {
+    "kind": "text",
+    "value": ""
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3865393435646132303961613836396630343535393238353239626361653436373965393837336162373037623535333135663536636562393862656630613733363266373135353238333536656538336364613566326161633463366164326261336137313563316263643831636238653966393062663463316331613861"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_6",
+   "input": {
+    "kind": "text",
+    "value": "a"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3862326134306563616237623734393662633463633066373733353935343532626166363538383439623439356163633362613031373230363831306566623030343230636364373366623332393765306637383930393431623834616334613862633237653363393565316639376330393436303965323133366162623765"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_7",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3238313536653238333137646137633938663466653262656436623534326430646162383562623232343434356663656461663735643436653236643765623864353939376633653039313564643662376630616162303864396338626562306438633634626165326162386233633863366263353362336266306462373238"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_8",
+   "input": {
+    "kind": "text",
+    "value": "The quick brown fox jumps over the lazy dog"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6432623739336130626236636235393034383238623562366463666234343362623866333365666330366164303933363838373861653463646338323435623937653630383032343639626564316537633231613634666630623137396136613165306262373464393239363534353061306164616236393136326330306665"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_9",
+   "input": {
+    "kind": "text",
+    "value": "\u0000\u0001ÿ"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6430613433343431336662383836306136623032383436663230626532613762393830393636656634363839616662353530623232353135656632313939353830613036303634613438373131343130363165356362323932663736306565383532363830313432633737373833646361633938326437386433653765363033"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_0",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3266353137656538666531373538626663646163353964636238306333323161346133366335366665396236333333653331313030313631343033333537313162666632633462316433306333386266613534386332393933663436396532326132663036653430323463303436373635353235383236656430363539623532"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_0",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "62353034343563643462323836613664653132316134376366663934613432633932353339613133663237633233353632623563326637313965636166316633"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_0",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3165626335303766313236363336363138383535633166376364666137303363313530653834633031356462343038326666613730366235666335643463376136363531656632376237336166333262366363396532313431333834333961346162306632616635653837363132366466313635366139663163393961343336"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_1",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3037663433353064376435636137613530383135316131623538373431653666376630383530373234313063323537656461623935626461616438663235346162353235623134636330323265613036633635346630326634633636383239646532663238333866313465366431313934653239626339393336656538316531"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_1",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "63313365623230623835623164366137326435326166373137343239666335346561636336336665636465313239356232366630666132353162646366343065"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_1",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6539313866656162353066633765366233316534303366313936613163303033306131353263363163356432383438623561623661323635653764326465343037346261633165653063386664626165666339393961333662336365613962663231383138333038643231633461663362643662646462643261643636323532"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_2",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3432326363306234333035393465333430363431356333346562343139383830343362653865343063643838613531666433343462636565303830396161323138646335326633653164656534643536393734336533366165366535376439393931613237356232306361663437626565366230626132653364323933383531"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_2",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "37376635333863393730353231643766356239346335653863383862386365333536363164666336643631623562633833376461333165353433636336623831"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_2",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6436313063643765623462623762626339353534326562316639353032363963313261336665356239646232613462303239623564323735636335653838356338633837623661323432363466653238323536353039626330316339623730643735376562326133626565313130326466653831333034613362633861633234"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_3",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6163633163643965626364373663386630653961666366653265323437396131616235336164306430326338656264373637666431653236633563663936373637633831303737653565646435356633666438373039646561363834396239373932633863313938313366356165366465396163346433613565666164353135"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_3",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "39316334623263343561316165343430363733383235353066313839653739383361633737306230616430363433303635376237373632363165366665386236"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_3",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6164663032623637646162313836306334383262316365363231343832386338353062386439376365373333646662323462316535366435363637623833333330326630663431636164353863373436653537353733633032363032633565316562633665616433323237633634383335663265393164646337623562346333"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_4",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3038326239316561326531356431353536643263656566646435616635643634643331623465303161666631393539373234353738383736323933383235623233366565383037393137336130613338313630643764363638356436626361306266623632633137376233353939623837323764393137336532313135623931"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_4",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "30623831646638663265383631366463393932626666373637613330663230346134373961663932326663623662636430613462656265656164333061623036"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_4",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6661393665303863343264363962383339363266653235356630626365343765613939353833613137303131356333336466613464333930383865316166303865396231383038383736636539623130393766363366393330346566643662336434613937323433646163386433303563313534393163646464623463633864"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_5",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3336326135336262653265633038303937623266333538613431643065313533616565643463313332616639323834303038373234313336353065376266323266396165343238666637333737303137306262643935663933356535646431393533633137646538633732363463373264316639393330336266323264666161"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_5",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "38363439313435353338373834383333633364383366356439646439333635313963306536383034646332616462646464623032303134333234346133336636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_5",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3238636136653034643232373266376332346239666533633538393832636637643362333538666364313366393638333663613262373564643232376363663638396462303831623630653161326434656165613366313930386364613663323933396337626336383736396430666565653366613730636332643562626466"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_b_6",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2b",
+     "args": [
+      "512",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6533653935356339326534613962313235343032613561353738343066346565303733383131373463613430646166326538663439613062356239393033633336346330366238363639653337393236303831313366373064393838393164316362356136383630653338386539646634393733343364376165303535366636"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "blake2_block_s_6",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "BLAKE2s",
+     "args": [
+      "256",
+      "Hex",
+      {
+       "option": "UTF8",
+       "string": ""
+      }
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "35393435626439373234386332336264386161653637346361303037383266356563363062646364323465356465646539373834636633663836663130613762"
+   ],
+   "stopped_after": 1
+  },
+  {
+   "name": "streebog_block_6",
+   "input": {
+    "kind": "text",
+    "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "recipe": [
+    {
+     "op": "Streebog",
+     "args": [
+      "512"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3436383331333262623130633261346562633061313330653239383665393664643435363765613163656539626165336434633937316537663834346433333732373838633337323263323031623036663237343431643266646134373630616665633464616533356636626434666230306236303034346335343534666664"
+   ],
+   "stopped_after": 1
   }
  ]
 }

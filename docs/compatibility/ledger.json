@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 237,
-    "aliased": 235,
-    "exact": 231,
+    "operations": 240,
+    "aliased": 238,
+    "exact": 234,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 5957
+    "pinned_cases": 6137
   },
   "operations": [
     {
@@ -1962,6 +1962,32 @@
       "note": "flow-control join; pinned in conformance_fork.rs"
     },
     {
+      "id": "hash.blake2b@1",
+      "display_name": "BLAKE2b",
+      "category": "Hashing",
+      "reference_alias": "BLAKE2b",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 102,
+      "status": "exact"
+    },
+    {
+      "id": "hash.blake2s@1",
+      "display_name": "BLAKE2s",
+      "category": "Hashing",
+      "reference_alias": "BLAKE2s",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 61,
+      "status": "exact"
+    },
+    {
       "id": "hash.hmac@1",
       "display_name": "HMAC",
       "category": "Hashing",
@@ -2141,6 +2167,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 13,
+      "status": "exact"
+    },
+    {
+      "id": "hash.streebog@1",
+      "display_name": "Streebog",
+      "category": "Hashing",
+      "reference_alias": "Streebog",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 17,
       "status": "exact"
     },
     {

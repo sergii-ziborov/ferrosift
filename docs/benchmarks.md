@@ -58,7 +58,7 @@ as a win.
 |---|---|---|
 | digest | `d021fb17` | clean |
 | dispatch | `d021fb17` | clean |
-| encoding | `d021fb17` | clean |
+| encoding | `b2c9bed7` | **uncommitted changes present** |
 
 ## Reproducing
 
@@ -237,6 +237,61 @@ same work, which is the least one should expect of a port.
 | 64 KiB | 3.78 ms | 43.13 µs | at least 77.1× faster |
 | 1 MiB | 61.24 ms | 887.81 µs | at least 64.9× faster |
 
+## Against the other Rust port
+
+Measured on **linux**, against rx-chef at `99e26de96e28`,
+unmodified.
+
+*unmodified rx-chef does not link on Windows MSVC, so this arm is measured on Linux and is not comparable with the rest of this report.*
+
+This is the comparison that asks whether a library of *this* shape —
+registry, operation trait, typed arguments, pipeline — carries its
+structure cheaply. Both sides pay that cost, which is what makes the
+answer about the implementations rather than about the architecture.
+The specialist crates below cannot answer it: beating `base64` would
+mean our codec is good, and losing to it says as much about the
+dispatch layer as about the codec.
+
+A ratio here is the ratio of the medians, not a floor. The gaps are
+small enough that the two intervals overlap on many rows, and refusing
+a verdict for all of them would hide a result several runs agree on —
+so an overlap is marked rather than silently dropped.
+
+Both arms are timed one after the other in one process, which is the
+best available and is not exact: a machine that slows between them
+biases the ratio. Two runs of one binary have disagreed here by a
+quarter. Read the direction, not the digit.
+
+### base64-encode
+
+| Size | `ferrosift` | `rx-chef` | Ratio |
+|---:|---:|---:|---|
+| 16 B | 399 ns | 440 ns | 1.10× faster |
+| 256 B | 515 ns | 523 ns | 1.02× faster *(intervals overlap)* |
+| 4 KiB | 2.31 µs | 1.75 µs | 1.32× slower |
+| 64 KiB | 35.32 µs | 21.80 µs | 1.62× slower |
+| 1 MiB | 414.71 µs | 362.94 µs | 1.14× slower |
+
+### hex-encode
+
+| Size | `ferrosift` | `rx-chef` | Ratio |
+|---:|---:|---:|---|
+| 16 B | 142 ns | 493 ns | 3.47× faster |
+| 256 B | 249 ns | 5.98 µs | 24.03× faster |
+| 4 KiB | 2.17 µs | 93.03 µs | 42.81× faster |
+| 64 KiB | 33.26 µs | 1.52 ms | 45.57× faster |
+| 1 MiB | 568.73 µs | 25.56 ms | 44.95× faster |
+
+### rot13
+
+| Size | `ferrosift` | `rx-chef` | Ratio |
+|---:|---:|---:|---|
+| 16 B | 197 ns | 100 ns | 1.97× slower |
+| 256 B | 376 ns | 615 ns | 1.64× faster |
+| 4 KiB | 4.79 µs | 10.20 µs | 2.13× faster |
+| 64 KiB | 387.79 µs | 407.20 µs | 1.05× faster |
+| 1 MiB | 4.74 ms | 6.58 ms | 1.39× faster |
+
 ## Claims
 
 This table is computed from the measurements, not written. A row can
@@ -273,11 +328,11 @@ Supported claims right now: **1** of 9 groups.
 
 | Size | `base64-crate` | `ferrosift` | `ferrosift-per-call` | verdict |
 |---:|---:|---:|---:|---|
-| 16 B | 72 ns | 1.23 µs | 2.01 µs | 17.05× slower |
-| 256 B | 220 ns | 1.94 µs | 2.65 µs | 8.82× slower |
-| 4 KiB | 2.87 µs | 12.99 µs | 15.19 µs | 4.52× slower |
-| 64 KiB | 40.98 µs | 194.03 µs | 188.02 µs | 4.73× slower |
-| 1 MiB | 1.01 ms | 3.75 ms | 3.88 ms | 3.70× slower |
+| 16 B | 51 ns | 1.14 µs | 1.62 µs | noisy — rerun |
+| 256 B | 167 ns | 1.67 µs | 2.46 µs | 10.00× slower |
+| 4 KiB | 2.09 µs | 11.66 µs | 11.51 µs | 5.57× slower |
+| 64 KiB | 31.50 µs | 162.06 µs | 163.23 µs | 5.15× slower |
+| 1 MiB | 681.50 µs | 3.01 ms | 3.16 ms | 4.42× slower |
 
 Verdict compares `ferrosift` against `base64-crate`, the fastest
 comparison arm in this group.
@@ -286,21 +341,21 @@ comparison arm in this group.
 
 | Size | Arm | Median | 95% interval |
 |---:|---|---:|---|
-| 16 B | `base64-crate` | 72 ns | 71 ns – 73 ns |
-| 16 B | `ferrosift` | 1.23 µs | 1.20 µs – 1.27 µs |
-| 16 B | `ferrosift-per-call` | 2.01 µs | 1.94 µs – 2.08 µs |
-| 256 B | `base64-crate` | 220 ns | 216 ns – 227 ns |
-| 256 B | `ferrosift` | 1.94 µs | 1.88 µs – 1.98 µs |
-| 256 B | `ferrosift-per-call` | 2.65 µs | 2.61 µs – 2.73 µs |
-| 4 KiB | `base64-crate` | 2.87 µs | 2.73 µs – 3.00 µs |
-| 4 KiB | `ferrosift` | 12.99 µs | 12.47 µs – 13.49 µs |
-| 4 KiB | `ferrosift-per-call` | 15.19 µs | 14.33 µs – 16.43 µs |
-| 64 KiB | `base64-crate` | 40.98 µs | 40.21 µs – 42.15 µs |
-| 64 KiB | `ferrosift` | 194.03 µs | 188.69 µs – 199.17 µs |
-| 64 KiB | `ferrosift-per-call` | 188.02 µs | 184.59 µs – 191.45 µs |
-| 1 MiB | `base64-crate` | 1.01 ms | 961.80 µs – 1.09 ms |
-| 1 MiB | `ferrosift` | 3.75 ms | 3.54 ms – 3.94 ms |
-| 1 MiB | `ferrosift-per-call` | 3.88 ms | 3.73 ms – 4.06 ms |
+| 16 B | `base64-crate` | 51 ns | 46 ns – 54 ns |
+| 16 B | `ferrosift` | 1.14 µs | 1.09 µs – 1.20 µs |
+| 16 B | `ferrosift-per-call` | 1.62 µs | 1.53 µs – 1.70 µs |
+| 256 B | `base64-crate` | 167 ns | 163 ns – 176 ns |
+| 256 B | `ferrosift` | 1.67 µs | 1.57 µs – 1.76 µs |
+| 256 B | `ferrosift-per-call` | 2.46 µs | 2.36 µs – 2.55 µs |
+| 4 KiB | `base64-crate` | 2.09 µs | 2.00 µs – 2.16 µs |
+| 4 KiB | `ferrosift` | 11.66 µs | 11.24 µs – 12.97 µs |
+| 4 KiB | `ferrosift-per-call` | 11.51 µs | 11.07 µs – 11.85 µs |
+| 64 KiB | `base64-crate` | 31.50 µs | 30.34 µs – 32.90 µs |
+| 64 KiB | `ferrosift` | 162.06 µs | 154.37 µs – 168.71 µs |
+| 64 KiB | `ferrosift-per-call` | 163.23 µs | 154.74 µs – 170.46 µs |
+| 1 MiB | `base64-crate` | 681.50 µs | 656.11 µs – 704.95 µs |
+| 1 MiB | `ferrosift` | 3.01 ms | 2.91 ms – 3.12 ms |
+| 1 MiB | `ferrosift-per-call` | 3.16 ms | 3.02 ms – 3.31 ms |
 
 </details>
 
@@ -308,11 +363,11 @@ comparison arm in this group.
 
 | Size | `base64-crate` | `ferrosift` | `ferrosift-per-call` | verdict |
 |---:|---:|---:|---:|---|
-| 16 B | 83 ns | 1.37 µs | 1.71 µs | 16.41× slower |
-| 256 B | 246 ns | 1.63 µs | 2.12 µs | 6.61× slower |
-| 4 KiB | 2.54 µs | 4.67 µs | 5.31 µs | 1.83× slower |
-| 64 KiB | 35.82 µs | 49.99 µs | 54.91 µs | 1.40× slower |
-| 1 MiB | 993.52 µs | 1.68 ms | 1.78 ms | 1.70× slower |
+| 16 B | 72 ns | 1.35 µs | 1.43 µs | noisy — rerun |
+| 256 B | 143 ns | 1.90 µs | 2.55 µs | 13.31× slower |
+| 4 KiB | 1.83 µs | 4.59 µs | 4.38 µs | 2.51× slower |
+| 64 KiB | 24.93 µs | 45.03 µs | 45.06 µs | 1.81× slower |
+| 1 MiB | 721.48 µs | 1.10 ms | 1.23 ms | 1.53× slower |
 
 Verdict compares `ferrosift` against `base64-crate`, the fastest
 comparison arm in this group.
@@ -321,21 +376,21 @@ comparison arm in this group.
 
 | Size | Arm | Median | 95% interval |
 |---:|---|---:|---|
-| 16 B | `base64-crate` | 83 ns | 81 ns – 85 ns |
-| 16 B | `ferrosift` | 1.37 µs | 1.32 µs – 1.41 µs |
-| 16 B | `ferrosift-per-call` | 1.71 µs | 1.68 µs – 1.73 µs |
-| 256 B | `base64-crate` | 246 ns | 233 ns – 259 ns |
-| 256 B | `ferrosift` | 1.63 µs | 1.54 µs – 1.68 µs |
-| 256 B | `ferrosift-per-call` | 2.12 µs | 2.08 µs – 2.15 µs |
-| 4 KiB | `base64-crate` | 2.54 µs | 2.49 µs – 2.65 µs |
-| 4 KiB | `ferrosift` | 4.67 µs | 4.57 µs – 4.78 µs |
-| 4 KiB | `ferrosift-per-call` | 5.31 µs | 5.20 µs – 5.44 µs |
-| 64 KiB | `base64-crate` | 35.82 µs | 35.06 µs – 36.95 µs |
-| 64 KiB | `ferrosift` | 49.99 µs | 48.87 µs – 51.24 µs |
-| 64 KiB | `ferrosift-per-call` | 54.91 µs | 51.76 µs – 56.99 µs |
-| 1 MiB | `base64-crate` | 993.52 µs | 968.20 µs – 1.02 ms |
-| 1 MiB | `ferrosift` | 1.68 ms | 1.64 ms – 1.76 ms |
-| 1 MiB | `ferrosift-per-call` | 1.78 ms | 1.74 ms – 1.85 ms |
+| 16 B | `base64-crate` | 72 ns | 65 ns – 82 ns |
+| 16 B | `ferrosift` | 1.35 µs | 1.28 µs – 1.43 µs |
+| 16 B | `ferrosift-per-call` | 1.43 µs | 1.38 µs – 1.49 µs |
+| 256 B | `base64-crate` | 143 ns | 132 ns – 152 ns |
+| 256 B | `ferrosift` | 1.90 µs | 1.80 µs – 2.03 µs |
+| 256 B | `ferrosift-per-call` | 2.55 µs | 2.37 µs – 2.65 µs |
+| 4 KiB | `base64-crate` | 1.83 µs | 1.76 µs – 1.96 µs |
+| 4 KiB | `ferrosift` | 4.59 µs | 4.27 µs – 4.95 µs |
+| 4 KiB | `ferrosift-per-call` | 4.38 µs | 4.21 µs – 4.63 µs |
+| 64 KiB | `base64-crate` | 24.93 µs | 23.54 µs – 26.52 µs |
+| 64 KiB | `ferrosift` | 45.03 µs | 43.22 µs – 47.21 µs |
+| 64 KiB | `ferrosift-per-call` | 45.06 µs | 41.63 µs – 47.62 µs |
+| 1 MiB | `base64-crate` | 721.48 µs | 665.29 µs – 754.33 µs |
+| 1 MiB | `ferrosift` | 1.10 ms | 1.09 ms – 1.13 ms |
+| 1 MiB | `ferrosift-per-call` | 1.23 ms | 1.17 ms – 1.26 ms |
 
 </details>
 
@@ -414,11 +469,11 @@ comparison arm in this group.
 
 | Size | `faster-hex-crate` | `ferrosift` | `ferrosift-per-call` | `hex-crate` | verdict |
 |---:|---:|---:|---:|---:|---|
-| 16 B | 59 ns | 714 ns | 1.66 µs | 117 ns | 12.13× slower |
-| 256 B | 89 ns | 926 ns | 1.63 µs | 948 ns | 10.43× slower |
-| 4 KiB | 778 ns | 4.30 µs | 5.26 µs | 17.16 µs | 5.53× slower |
-| 64 KiB | 12.54 µs | 72.68 µs | 75.60 µs | 230.84 µs | 5.80× slower |
-| 1 MiB | 652.33 µs | 2.08 ms | 2.09 ms | 4.66 ms | 3.19× slower |
+| 16 B | 46 ns | 474 ns | 1.08 µs | 86 ns | noisy — rerun |
+| 256 B | 57 ns | 801 ns | 1.28 µs | 614 ns | noisy — rerun |
+| 4 KiB | 387 ns | 3.23 µs | 5.03 µs | 8.43 µs | noisy — rerun |
+| 64 KiB | 6.82 µs | 50.61 µs | 50.91 µs | 140.39 µs | 7.42× slower |
+| 1 MiB | 543.54 µs | 1.47 ms | 1.68 ms | 4.22 ms | 2.71× slower |
 
 Verdict compares `ferrosift` against `faster-hex-crate`, the fastest
 comparison arm in this group.
@@ -427,26 +482,26 @@ comparison arm in this group.
 
 | Size | Arm | Median | 95% interval |
 |---:|---|---:|---|
-| 16 B | `faster-hex-crate` | 59 ns | 56 ns – 60 ns |
-| 16 B | `ferrosift` | 714 ns | 683 ns – 742 ns |
-| 16 B | `ferrosift-per-call` | 1.66 µs | 1.56 µs – 1.76 µs |
-| 16 B | `hex-crate` | 117 ns | 112 ns – 120 ns |
-| 256 B | `faster-hex-crate` | 89 ns | 86 ns – 92 ns |
-| 256 B | `ferrosift` | 926 ns | 897 ns – 969 ns |
-| 256 B | `ferrosift-per-call` | 1.63 µs | 1.58 µs – 1.81 µs |
-| 256 B | `hex-crate` | 948 ns | 927 ns – 982 ns |
-| 4 KiB | `faster-hex-crate` | 778 ns | 727 ns – 797 ns |
-| 4 KiB | `ferrosift` | 4.30 µs | 4.18 µs – 4.68 µs |
-| 4 KiB | `ferrosift-per-call` | 5.26 µs | 5.18 µs – 5.37 µs |
-| 4 KiB | `hex-crate` | 17.16 µs | 15.80 µs – 18.22 µs |
-| 64 KiB | `faster-hex-crate` | 12.54 µs | 12.29 µs – 13.25 µs |
-| 64 KiB | `ferrosift` | 72.68 µs | 68.44 µs – 76.81 µs |
-| 64 KiB | `ferrosift-per-call` | 75.60 µs | 72.81 µs – 81.22 µs |
-| 64 KiB | `hex-crate` | 230.84 µs | 218.63 µs – 237.41 µs |
-| 1 MiB | `faster-hex-crate` | 652.33 µs | 643.22 µs – 680.80 µs |
-| 1 MiB | `ferrosift` | 2.08 ms | 1.99 ms – 2.17 ms |
-| 1 MiB | `ferrosift-per-call` | 2.09 ms | 2.03 ms – 2.14 ms |
-| 1 MiB | `hex-crate` | 4.66 ms | 4.40 ms – 5.04 ms |
+| 16 B | `faster-hex-crate` | 46 ns | 43 ns – 51 ns |
+| 16 B | `ferrosift` | 474 ns | 444 ns – 502 ns |
+| 16 B | `ferrosift-per-call` | 1.08 µs | 1.02 µs – 1.14 µs |
+| 16 B | `hex-crate` | 86 ns | 83 ns – 92 ns |
+| 256 B | `faster-hex-crate` | 57 ns | 49 ns – 65 ns |
+| 256 B | `ferrosift` | 801 ns | 747 ns – 828 ns |
+| 256 B | `ferrosift-per-call` | 1.28 µs | 1.22 µs – 1.36 µs |
+| 256 B | `hex-crate` | 614 ns | 582 ns – 651 ns |
+| 4 KiB | `faster-hex-crate` | 387 ns | 344 ns – 427 ns |
+| 4 KiB | `ferrosift` | 3.23 µs | 3.04 µs – 3.34 µs |
+| 4 KiB | `ferrosift-per-call` | 5.03 µs | 4.68 µs – 5.25 µs |
+| 4 KiB | `hex-crate` | 8.43 µs | 7.70 µs – 9.10 µs |
+| 64 KiB | `faster-hex-crate` | 6.82 µs | 6.44 µs – 7.14 µs |
+| 64 KiB | `ferrosift` | 50.61 µs | 49.48 µs – 52.02 µs |
+| 64 KiB | `ferrosift-per-call` | 50.91 µs | 47.80 µs – 52.60 µs |
+| 64 KiB | `hex-crate` | 140.39 µs | 130.52 µs – 154.12 µs |
+| 1 MiB | `faster-hex-crate` | 543.54 µs | 535.68 µs – 550.24 µs |
+| 1 MiB | `ferrosift` | 1.47 ms | 1.44 ms – 1.50 ms |
+| 1 MiB | `ferrosift-per-call` | 1.68 ms | 1.61 ms – 1.74 ms |
+| 1 MiB | `hex-crate` | 4.22 ms | 3.92 ms – 4.39 ms |
 
 </details>
 

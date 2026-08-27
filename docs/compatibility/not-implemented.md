@@ -1,7 +1,7 @@
 # Operations not implemented
 
-FerroSift covers 237 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 266 are waiting on, so that "not done yet" is a list
+FerroSift covers 240 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 263 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The grouping below is by *import*, which is a proxy and not the thing itself.
@@ -18,11 +18,26 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-166 of the 266 are built on a JavaScript library, and 21 more reach one
+164 of the 263 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The three headings below
-partition the 266 exactly: 166 plus 21 plus 79. The obstacle is **not** that
+partition the 263 exactly: 164 plus 21 plus 78. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
+
+**The argument does not apply to a standardised primitive**, and that
+exception has now been tested rather than assumed. BLAKE2b and BLAKE2s sat
+under `blakejs` here on the reasoning below; a published hash has exactly one
+answer for a given input, key and digest length, so any correct implementation
+is byte-identical by construction. RustCrypto's is, on every case in the
+corpus — including keyed digests at each length, which are the ones a careless
+port gets wrong, because the length is part of BLAKE2's parameter block and a
+short keyed digest is not a long one truncated.
+
+So a row here is worth re-reading before it is believed. The test is whether
+the *output format* is a choice the library made, not whether a library is
+named in the import list. Ciphers, hashes and key derivations with published
+test vectors are portable; renderers, beautifiers and serialisers usually are
+not.
 
 `comrak` renders correct HTML from Markdown, and it differs from `markdown-it`
 in whitespace, attribute order, and entity choice. `syntect` highlights code,
@@ -82,7 +97,6 @@ list rather than a search.
 | `rison` | 2 | Rison Decode, Rison Encode |
 | `uuid` | 2 | Analyse UUID, Generate UUID |
 | `notepack.io` | 2 | From MessagePack, To MessagePack |
-| `blakejs` | 2 | BLAKE2b, BLAKE2s |
 | `fernet` | 2 | Fernet Decrypt, Fernet Encrypt |
 | `otpauth` | 2 | Generate HOTP, Generate TOTP |
 | `cbor` | 2 | CBOR Decode, CBOR Encode |
@@ -165,7 +179,7 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 79 import nothing outside the reference's own source, transitively.
+These 78 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
 
@@ -191,4 +205,4 @@ Three left this list at once, for three reasons, and only one was a port.
 which is why the counts above now claim to partition the total exactly, a
 claim that fails loudly the next time one of them drifts.
 
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Streebog, Subsection, Tar, TEA Decrypt, TEA Encrypt, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Subsection, Tar, TEA Decrypt, TEA Encrypt, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt

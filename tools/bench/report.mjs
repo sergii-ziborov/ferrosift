@@ -482,6 +482,7 @@ export function render(results, environment) {
         "",
     ];
     lines.push(...renderReference());
+    lines.push(...renderPeer());
     // `renderClaims` closes with the `## Results` heading the group tables sit
     // under, so nothing adds one here -- a second push left an empty heading
     // above the claims table for three revisions.
@@ -562,6 +563,81 @@ function renderReference() {
             `| ${bytes(row.size)} | ${duration(row.reference)} | ${
                 row.ferrosift === null ? "—" : duration(row.ferrosift)
             } | ${said} |`,
+        );
+    }
+    lines.push("");
+    return lines;
+}
+
+/**
+ * Renders the comparison against the other Rust port.
+ *
+ * The only arm in this file that is not measured on the machine described
+ * above, and the only one that says anything about the *code* rather than
+ * about the architecture: rx-chef carries a registry, an operation trait and
+ * a pipeline exactly as FerroSift does, so both sides pay for their shape.
+ */
+function renderPeer() {
+    const file = path.join(repoRoot, "docs/benchmarks-peer.json");
+    const heading = ["## Against the other Rust port", ""];
+    if (!existsSync(file)) {
+        return [
+            ...heading,
+            "Not measured for this report. It needs a platform where unmodified",
+            "rx-chef links, which is not Windows — see the note below — and then",
+            "`node tools/bench/peer.mjs` to collect what criterion recorded.",
+            "",
+        ];
+    }
+
+    const {rows, revision, measured_on: measuredOn, note} = JSON.parse(readFileSync(file, "utf8"));
+    const lines = [
+        ...heading,
+        `Measured on **${measuredOn}**, against rx-chef at \`${revision.slice(0, 12)}\`,`,
+        "unmodified.",
+        "",
+        `*${note}.*`,
+        "",
+        "This is the comparison that asks whether a library of *this* shape —",
+        "registry, operation trait, typed arguments, pipeline — carries its",
+        "structure cheaply. Both sides pay that cost, which is what makes the",
+        "answer about the implementations rather than about the architecture.",
+        "The specialist crates below cannot answer it: beating `base64` would",
+        "mean our codec is good, and losing to it says as much about the",
+        "dispatch layer as about the codec.",
+        "",
+        "A ratio here is the ratio of the medians, not a floor. The gaps are",
+        "small enough that the two intervals overlap on many rows, and refusing",
+        "a verdict for all of them would hide a result several runs agree on —",
+        "so an overlap is marked rather than silently dropped.",
+        "",
+        "Both arms are timed one after the other in one process, which is the",
+        "best available and is not exact: a machine that slows between them",
+        "biases the ratio. Two runs of one binary have disagreed here by a",
+        "quarter. Read the direction, not the digit.",
+        "",
+    ];
+
+    let group = null;
+    for (const row of rows) {
+        if (row.group !== group) {
+            if (group !== null) lines.push("");
+            lines.push(
+                `### ${row.group}`,
+                "",
+                "| Size | `ferrosift` | `rx-chef` | Ratio |",
+                "|---:|---:|---:|---|",
+            );
+            group = row.group;
+        }
+        const ratio =
+            row.ratio >= 1
+                ? `${row.ratio.toFixed(2)}× slower`
+                : `${(1 / row.ratio).toFixed(2)}× faster`;
+        const caveat = row.overlaps ? " *(intervals overlap)*" : "";
+        lines.push(
+            `| ${bytes(row.size)} | ${duration(row.ferrosift)} | ${duration(row.peer)} |`
+                + ` ${ratio}${caveat} |`,
         );
     }
     lines.push("");

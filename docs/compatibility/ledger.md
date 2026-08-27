@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 237 |
-| Reference-aliased | 235 |
-| Byte-pinned (`exact`) | 231 |
+| Registered operations | 240 |
+| Reference-aliased | 238 |
+| Byte-pinned (`exact`) | 234 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 5957 |
+| Pinned cases | 6137 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -183,6 +183,8 @@ does.
 | `flow.comment@1` | Comment | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
 | `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
+| `hash.blake2b@1` | BLAKE2b | hash | exact | 102 |
+| `hash.blake2s@1` | BLAKE2s | hash | exact | 61 |
 | `hash.hmac@1` | HMAC | hash | exact | 5 |
 | `hash.keccak@1` | Keccak | hash | exact | 24 |
 | `hash.md2@1` | MD2 | hash | exact | 13 |
@@ -197,6 +199,7 @@ does.
 | `hash.sha3@1` | SHA3 | hash | exact | 13 |
 | `hash.shake@1` | Shake | hash | exact | 24 |
 | `hash.sm3@1` | SM3 | hash | exact | 13 |
+| `hash.streebog@1` | Streebog | hash | exact | 17 |
 | `hash.whirlpool@1` | Whirlpool | hash | exact | 13 |
 | `http.dechunk@1` | Dechunk HTTP response | core | exact | 7 |
 | `http.headers.strip@1` | Strip HTTP headers | core | exact | 6 |

@@ -50,6 +50,10 @@ use crate::{
 };
 #[cfg(feature = "arithmetic")]
 use crate::{Aggregate, ConvertUnits, ExtendedGcd, Mod, ModularInverse};
+#[cfg(feature = "hash")]
+use crate::{
+    Blake2, FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake, Streebog,
+};
 #[cfg(feature = "compression")]
 use crate::{
     Bzip2Compress, Bzip2Decompress, Gunzip, Gzip, RawDeflate, RawInflate, ZlibDeflate, ZlibInflate,
@@ -65,8 +69,6 @@ use crate::{
     FiletimeToUnix, FromBase, FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex,
     TextIntegerConversion, ToBase, ToBase62, UnixToFiletime,
 };
-#[cfg(feature = "hash")]
-use crate::{FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake};
 #[cfg(feature = "analysis")]
 use crate::{SuggestRecipe, XorBruteForce};
 
@@ -519,7 +521,10 @@ fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
         registry.register(FixedDigest::sm3())?;
         registry.register(FixedDigest::whirlpool())?;
         registry.register(NtHash::new())?;
+        registry.register(Blake2::b())?;
+        registry.register(Blake2::s())?;
         registry.register(Ripemd::new())?;
+        registry.register(Streebog::new())?;
         registry.register(Hmac::new())?;
     }
     Ok(())

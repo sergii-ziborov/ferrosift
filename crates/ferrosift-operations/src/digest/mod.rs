@@ -8,4 +8,4 @@
 mod codec;
 mod operation;
 
-pub use operation::{FixedDigest, Ripemd};
+pub use operation::{Blake2, FixedDigest, Ripemd, Streebog};

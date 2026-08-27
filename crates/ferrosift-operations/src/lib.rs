@@ -237,7 +237,7 @@ pub use count::CountOccurrences;
 #[cfg(feature = "text")]
 pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
 #[cfg(feature = "hash")]
-pub use digest::{FixedDigest, Ripemd};
+pub use digest::{Blake2, FixedDigest, Ripemd, Streebog};
 #[cfg(feature = "text")]
 pub use extract::{
     ExtractDomains, ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,
