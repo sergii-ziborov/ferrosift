@@ -222,8 +222,21 @@ pub(super) fn enumeration(
 
 /// Unpacks bit members from the smallest byte span that holds them.
 ///
-/// Members are extracted most-significant-bit first from a big-endian view of
-/// that span, which is the layout this crate defines for the subset.
+/// Bit order follows byte order, which is the reference's rule and was not this
+/// crate's. In a little-endian span — the default — the first member occupies
+/// the *least* significant bits and each one after it sits above the last. In a
+/// big-endian span the first member takes the *most* significant bits instead,
+/// so the members run in the same direction the bytes do.
+///
+/// The subset was written before there was an implementation to compare
+/// against. It chose most-significant-bit-first unconditionally and documented
+/// the choice, which is right for exactly the half of the cases that ask for
+/// `be`. Two entries in the differential fixture recorded the other half as a
+/// divergence; both now agree, and the fixture holds a case each way.
+///
+/// The two answers differ for every bitfield whose members are not all the same
+/// width, or that spans more than one byte, which is most of them: `low : 3;
+/// high : 5;` over `0xa5` is `5, 20` little-endian and `5, 5` big-endian.
 pub(super) fn bitfield(
     evaluator: &mut Evaluator<'_>,
     name: &str,
@@ -237,15 +250,17 @@ pub(super) fn bitfield(
         .map(|member| member.bits)
         .fold(0, u32::saturating_add);
     let size = total_bits.div_ceil(8);
-    let storage = evaluator
-        .reader
-        .unsigned(offset, size, endian.unwrap_or(Endian::Big))?;
+    let order = endian.unwrap_or(Endian::Little);
+    let storage = evaluator.reader.unsigned(offset, size, order)?;
 
     let mut children = Vec::new();
     let mut consumed = 0_u32;
     for member in &declaration.members {
         evaluator.charge()?;
-        let shift = (size * 8).saturating_sub(consumed + member.bits);
+        let shift = match order {
+            Endian::Little => consumed,
+            Endian::Big => (size * 8).saturating_sub(consumed + member.bits),
+        };
         let mask = if member.bits >= 128 {
             u128::MAX
         } else {

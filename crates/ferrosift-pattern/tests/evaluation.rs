@@ -138,15 +138,38 @@ fn enum_values_resolve_to_names_when_declared() {
     );
 }
 
+/// Bit order follows byte order, which is the reference's rule.
+///
+/// A little-endian span — the default — gives the first member the least
+/// significant bits, so `first : 4` of `0xab` is `0xb` and not `0xa`. Asking
+/// for `be` puts the members in the same direction as the bytes and gives the
+/// other answer. Both are in the differential fixture; this states the pair
+/// side by side, which the fixture's one-case-per-file shape cannot.
 #[test]
-fn bitfield_members_unpack_most_significant_first() {
-    let nodes = run(
-        "bitfield Nibbles { high : 4; low : 4; };
+fn bit_order_follows_byte_order() {
+    let little = run(
+        "bitfield Nibbles { low : 4; high : 4; };
          Nibbles byte @ 0;",
         &[0xab],
     );
-    let byte = &nodes[0];
+    let byte = &little[0];
     assert_eq!((byte.offset, byte.size), (0, 1));
+    assert_eq!(
+        byte.child("low").expect("member").value,
+        NodeValue::Unsigned(0xb)
+    );
+    assert_eq!(
+        byte.child("high").expect("member").value,
+        NodeValue::Unsigned(0xa)
+    );
+
+    let big = run(
+        "bitfield Nibbles { high : 4; low : 4; };
+         struct S { be Nibbles byte; };
+         S s @ 0;",
+        &[0xab],
+    );
+    let byte = big[0].child("byte").expect("member");
     assert_eq!(
         byte.child("high").expect("member").value,
         NodeValue::Unsigned(0xa)
@@ -159,7 +182,8 @@ fn bitfield_members_unpack_most_significant_first() {
 
 #[test]
 fn bitfields_round_their_storage_up_to_whole_bytes() {
-    // Twelve declared bits occupy two bytes, read most significant first.
+    // Twelve declared bits occupy two bytes. Read little-endian, the span is
+    // `0xcdab`: the first four bits are `0xb` and the next eight `0xda`.
     let nodes = run(
         "bitfield Packed { first : 4; second : 8; };
          Packed packed @ 0;",
@@ -169,11 +193,11 @@ fn bitfields_round_their_storage_up_to_whole_bytes() {
     assert_eq!(packed.size, 2);
     assert_eq!(
         packed.child("first").expect("member").value,
-        NodeValue::Unsigned(0xa)
+        NodeValue::Unsigned(0xb)
     );
     assert_eq!(
         packed.child("second").expect("member").value,
-        NodeValue::Unsigned(0xbc)
+        NodeValue::Unsigned(0xda)
     );
 }
 

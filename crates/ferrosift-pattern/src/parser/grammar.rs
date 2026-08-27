@@ -154,7 +154,7 @@ fn enumeration(cursor: &mut Cursor) -> Result<EnumDeclaration, PatternError> {
         }
         let entry_name = cursor.expect_identifier()?;
         let value = if cursor.eat(Symbol::Assign) {
-            constant(cursor, EXPECTED_INTEGER, "enum value")?
+            signed_constant(cursor, EXPECTED_INTEGER, "enum value")?
         } else {
             next
         };
@@ -262,6 +262,26 @@ fn constant(
     let folded = crate::eval::fold(&value)
         .map_err(|_| cursor.fail(code, format!("{what} must be a constant expression")))?;
     u128::try_from(folded).map_err(|_| cursor.fail(code, format!("{what} must not be negative")))
+}
+
+/// The same folding, for the one place a negative value is meaningful.
+///
+/// An enum over a signed type has negative constants — `enum Sign : s8 { Minus
+/// = -1 }` is ordinary — and the value is stored as the bit pattern a read
+/// produces, which is what the evaluator compares against. Refusing it here
+/// made a whole shape of enum unparsable; the differential corpus found it.
+///
+/// Array lengths and bit widths keep [`constant`], where a negative really is
+/// an error rather than a two's-complement.
+fn signed_constant(
+    cursor: &mut Cursor,
+    code: &'static str,
+    what: &'static str,
+) -> Result<u128, PatternError> {
+    let value = expression(cursor)?;
+    let folded = crate::eval::fold(&value)
+        .map_err(|_| cursor.fail(code, format!("{what} must be a constant expression")))?;
+    Ok(folded.cast_unsigned())
 }
 
 fn type_reference(cursor: &mut Cursor) -> Result<TypeReference, PatternError> {

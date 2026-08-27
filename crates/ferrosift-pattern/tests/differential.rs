@@ -37,22 +37,31 @@ struct Case {
 
 /// Cases where this crate answers something else, and what it answers.
 ///
-/// Every entry is a decision this crate made knowingly, not a defect waiting
-/// to be found. Each records the reason, so a reader deciding whether to close
-/// the gap has the argument rather than only the symptom.
-const DIVERGENCES: &[(&str, &str)] = &[
-    // The reference reads bitfield members from the least significant bit of a
-    // little-endian span; this crate reads from the most significant bit of a
-    // big-endian one. `docs/pattern-language-subset.md` documented that as this
-    // crate's own layout before there was anything to compare it against.
-    (
-        "bitfield_member_order",
-        "{\n    \"flags\": {\n        \"low\": 5,\n        \"high\": 5\n    }\n}",
-    ),
-    (
-        "bitfield_across_two_bytes",
-        "{\n    \"wide\": {\n        \"a\": 1,\n        \"b\": 35,\n        \"c\": 4\n    }\n}",
-    ),
+/// Empty, and the emptiness is checked rather than assumed — every case in the
+/// fixture that runs is compared against the reference byte for byte, so an
+/// entry here would have to be added deliberately.
+///
+/// The two that used to be here were the bitfield layout, which this crate had
+/// chosen for itself before there was an implementation to compare against.
+/// The reference's rule is that bit order follows byte order; reading
+/// most-significant-first from a big-endian span unconditionally was right for
+/// half the cases, and nothing was gained by keeping it for the other half.
+const DIVERGENCES: &[(&str, &str)] = &[];
+
+/// Cases the reference runs and this crate cannot, with the code it answers.
+///
+/// Kept in the fixture rather than deleted from it. A case the corpus does not
+/// hold is a gap nobody can see; a case that is held and asserted to fail is a
+/// gap with a name, a reproduction, and a test that will notice the day it
+/// closes. The entry is as strict as a passing case: implementing the feature
+/// fails this test until the entry goes.
+const UNSUPPORTED: &[(&str, &str)] = &[
+    // `sizeof` takes a built-in type or a field already read. A declared type
+    // has a size too, and computing it means walking the declaration rather
+    // than the tree that was read -- which is a different question for a type
+    // whose own arrays are variable-length.
+    ("sizeof_type", "pattern.eval.unknown_field"),
+    ("sizeof_nested_struct", "pattern.eval.unknown_field"),
 ];
 
 #[test]
@@ -62,20 +71,42 @@ fn agrees_with_the_reference_or_diverges_exactly_as_recorded() {
         !fixture.reference.commit.is_empty(),
         "the fixture must name the commit it came from"
     );
+    // The generator writes what the reference agreed to run, so a case it
+    // refuses is silently dropped rather than reported as a failure. A floor
+    // here is what turns "the fixture got smaller" into a test result.
     assert!(
-        fixture.cases.len() >= 12,
+        fixture.cases.len() >= 100,
         "fixture looks truncated: {} cases",
         fixture.cases.len()
     );
 
     let mut agreed = 0;
     let mut diverged = 0;
+    let mut unsupported = 0;
     for case in &fixture.cases {
-        let pattern = ferrosift_pattern::parse(&case.pattern)
-            .unwrap_or_else(|error| panic!("{} did not parse: {error:?}", case.name));
         let data = decode_hex(&case.data);
-        let nodes = ferrosift_pattern::evaluate(&pattern, &data, &EvalOptions::default())
-            .unwrap_or_else(|error| panic!("{} did not evaluate: {error:?}", case.name));
+        let outcome = ferrosift_pattern::parse(&case.pattern).and_then(|pattern| {
+            ferrosift_pattern::evaluate(&pattern, &data, &EvalOptions::default())
+        });
+
+        if let Some((_, code)) = UNSUPPORTED.iter().find(|(name, _)| *name == case.name) {
+            let error = outcome.err().unwrap_or_else(|| {
+                panic!(
+                    "{} is listed as unsupported but now runs; remove the entry",
+                    case.name
+                )
+            });
+            assert_eq!(
+                error.code(),
+                *code,
+                "{} fails differently than recorded",
+                case.name
+            );
+            unsupported += 1;
+            continue;
+        }
+
+        let nodes = outcome.unwrap_or_else(|error| panic!("{} did not run: {error:?}", case.name));
         let ours = render(&nodes);
         let theirs = case.json.trim_end();
 
@@ -101,6 +132,11 @@ fn agrees_with_the_reference_or_diverges_exactly_as_recorded() {
         diverged,
         DIVERGENCES.len(),
         "every recorded divergence must appear in the fixture"
+    );
+    assert_eq!(
+        unsupported,
+        UNSUPPORTED.len(),
+        "every recorded gap must appear in the fixture"
     );
     assert!(agreed > 0, "no case actually agreed");
 }
@@ -142,6 +178,24 @@ fn render_node(node: &Node, depth: usize) -> String {
             quote(&alloc_format(&node.type_name, constant))
         }
         NodeValue::Group(children) => {
+            // An array of `char` is one string there, not a list of
+            // one-character ones. That is the formatter's choice and not a
+            // difference in what was read, so it belongs here rather than in
+            // the crate: both sides hold the same five characters.
+            if !children.is_empty()
+                && children
+                    .iter()
+                    .all(|child| matches!(child.value, NodeValue::Char(_)))
+            {
+                let text: String = children
+                    .iter()
+                    .map(|child| match child.value {
+                        NodeValue::Char(value) => value,
+                        _ => unreachable!("every child was checked above"),
+                    })
+                    .collect();
+                return quote(&text);
+            }
             if node.type_name.ends_with(']') {
                 render_array(children, depth)
             } else {
@@ -160,10 +214,13 @@ fn alloc_format(type_name: &str, constant: &str) -> String {
     output
 }
 
-/// A JSON array of the children, or `[]` when there are none.
+/// A JSON array of the children.
+///
+/// An empty one still opens and closes on two lines, because the reference's
+/// formatter writes the newline before it knows whether anything follows.
 fn render_array(children: &[Node], depth: usize) -> String {
     if children.is_empty() {
-        return String::from("[]");
+        return format!("[\n{}]", "    ".repeat(depth));
     }
     let inner = depth + 1;
     let mut output = String::from("[\n");
@@ -180,10 +237,11 @@ fn render_array(children: &[Node], depth: usize) -> String {
     output
 }
 
-/// A JSON object keyed by each child's name.
+/// A JSON object keyed by each child's name, empty ones on two lines like the
+/// arrays above.
 fn render_object(children: &[Node], depth: usize) -> String {
     if children.is_empty() {
-        return String::from("{}");
+        return format!("{{\n{}}}", "    ".repeat(depth));
     }
     let inner = depth + 1;
     let mut output = String::from("{\n");

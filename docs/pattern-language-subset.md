@@ -18,44 +18,61 @@ which left every grammar decision looking arbitrary rather than inherited.
 
 ## Compatibility status
 
-**No upstream compatibility is claimed yet, and now there is evidence about
-why.** Until this commit the crate had sixty-six tests and every one of them
-asked the crate what the crate does. That is not evidence about any other
-implementation.
+**104 cases, replayed against ImHex's own runtime.** `tools/pattern-oracle`
+builds `plcli` from a pinned checkout and records what it answers for the same
+source and the same bytes, exactly as `tools/cyberchef-oracle` does for the
+catalog. `crates/ferrosift-pattern/tests/differential.rs` replays every one of
+them. The pinned reference is commit
+`1ee0eeba331109ae9244fc75ec44d26fbfc4a0e1` of `WerWolv/PatternLanguage`.
 
-There is now an oracle: `tools/pattern-oracle` builds ImHex's own `plcli` from
-a pinned checkout and records what it answers for the same source and the same
-bytes, exactly as `tools/cyberchef-oracle` does for the catalog. The pinned
-reference is commit `2751a95c94efc788512675d997e534ef9e0aba11` of
-`WerWolv/PatternLanguage`.
+The crate agrees with the reference on 102 of the 104 and cannot yet run the
+other two. Nothing is skipped: a case this crate answers differently would fail
+the replay, and the two it cannot run are asserted to fail with the code they
+fail with, so the day either changes the test says so.
 
-The first run found three divergences. They are listed below rather than
-quietly fixed, because a claim needs the corpus to be replayed in CI before it
-means anything, and that replay is not written yet.
+### What the corpus covers
 
-### What the oracle found
+The cases separate constructs rather than exercising them together, because a
+case using four features at once reports one failure for whichever of them was
+wrong first. They span scalar widths and both endiannesses, signed boundaries,
+floats and doubles, `char` and `bool`, fixed and computed and `while` arrays,
+arrays of structs and unions and enums, enums with implicit, expression,
+negative and wide-backed values, unions overlaying unequal widths, nesting
+three deep, padding, overlapping and expression placements, `if`/`else` in both
+directions, operator precedence, `sizeof`, aliases including chains — and
+twenty cases of bit layout alone, which is where the two implementations had
+actually disagreed.
 
-**Bitfields disagree, in two ways at once.** This page already said the layout
-was "the layout *this crate defines*, not a claim about another
-implementation", and now the difference has numbers. For `bitfield Flags { low : 3; high : 5; }`
-over the single byte `0xA5`, the reference answers `low = 5, high = 20`; this
-crate answers `low = 5, high = 5`. The reference reads members from the
-*least* significant bit; this crate reads from the most significant. And for a
-bitfield spanning two bytes the reference reads the span *little-endian*,
-where this crate reads it big-endian -- so `a : 4; b : 8; c : 4` over `0x1234`
-is `2, 65, 3` there and `1, 35, 4` here.
+### What the oracle found, and what came of it
 
-**An unmatched enum value is rendered.** The reference writes
-`"Kind::???"` for a value with no matching constant; this crate carries the
-value with no name and leaves the rendering to a caller.
+**Bitfields disagreed, in two ways at once, and now agree.** This page used to
+say the layout was "the layout *this crate defines*, not a claim about another
+implementation". The reference's rule turned out to be that **bit order follows
+byte order**: in a little-endian span the first member takes the least
+significant bits, and in a big-endian one it takes the most significant. This
+crate read most-significant-first from a big-endian span unconditionally, which
+is right for exactly the half of the cases that ask for `be`. For
+`bitfield Flags { low : 3; high : 5; }` over `0xA5` the answer is `5, 20`, and
+was `5, 5`; for `a : 4; b : 8; c : 4` over `0x1234` it is `2, 65, 3`, and was
+`1, 35, 4`.
 
-**An integral float prints without a point.** The reference renders `1.0` as
-`1`, which is the JavaScript-style rendering rather than Rust's.
+**A negative enum value would not parse.** `enum Sign : s8 { Minus = -1 }` is
+ordinary and was refused, because the folded constant was range-checked into a
+`u128`. It is now stored as the bit pattern a read produces, which is what the
+comparison against a value already used.
 
-None of these is a bug in the sense of a mistake nobody meant. The bitfield
-layout was documented as this crate's own choice. What has changed is that the
-choice is now measurable, and measurable is the precondition for deciding
-whether to keep it.
+**`sizeof` takes a built-in type or a field, not a declared type.** The two
+cases that ask for `sizeof(Inner)` are in the fixture, asserted to fail with
+`pattern.eval.unknown_field`. Computing it means walking a declaration rather
+than the tree that was read, which is a different question for a type whose own
+arrays are variable-length.
+
+Two earlier findings were the harness rather than the crate, and are handled
+there: an unmatched enum value renders as `Kind::???` and an integral float
+prints without a point. A `char` array renders as one string rather than a list
+of one-character ones, and an empty array or object still opens and closes on
+two lines — all four are the reference formatter's choices about presentation,
+not differences in what was read.
 
 ## Supported grammar
 
@@ -196,9 +213,11 @@ absolute address.
 - **Signed integers** are sign-extended from their declared width.
 - **Enums** read their backing type and resolve the value against the declared
   constants; an unmatched value is preserved with no name rather than failing.
-- **Bitfields** occupy `ceil(total_bits / 8)` bytes and unpack members
-  most-significant-bit first from a big-endian view of that span. This is the
-  layout *this crate defines*, not a claim about another implementation.
+- **Bitfields** occupy `ceil(total_bits / 8)` bytes and unpack members in the
+  direction the bytes run: least-significant-bit first from a little-endian
+  span, which is the default, and most-significant-bit first from a `be` one.
+  This is the reference's layout, replayed by twenty cases in the differential
+  fixture.
 - **Bounds.** Every read is checked against the real buffer length, so a
   pattern can never observe bytes that are not there.
 - **Budgets.** Array lengths and nesting come from untrusted text, so

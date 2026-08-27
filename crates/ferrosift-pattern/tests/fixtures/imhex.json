@@ -1,7 +1,7 @@
 {
  "reference": {
   "name": "ImHex PatternLanguage",
-  "commit": "2751a95c94efc788512675d997e534ef9e0aba11"
+  "commit": "1ee0eeba331109ae9244fc75ec44d26fbfc4a0e1"
  },
  "cases": [
   {
@@ -75,6 +75,558 @@
    "pattern": "struct S {\n    float f;\n    double d;\n};\nS s @ 0x00;",
    "data": "0000803f000000000000f03f",
    "json": "{\n    \"s\": {\n        \"f\": 1,\n        \"d\": 1\n    }\n}"
+  },
+  {
+   "name": "bitfield_single_bits",
+   "pattern": "bitfield Bits {\n    a : 1;\n    b : 1;\n    c : 1;\n    d : 1;\n    e : 1;\n    f : 1;\n    g : 1;\n    h : 1;\n};\nBits bits @ 0x00;",
+   "data": "b3",
+   "json": "{\n    \"bits\": {\n        \"a\": 1,\n        \"b\": 1,\n        \"c\": 0,\n        \"d\": 0,\n        \"e\": 1,\n        \"f\": 1,\n        \"g\": 0,\n        \"h\": 1\n    }\n}"
+  },
+  {
+   "name": "bitfield_uneven_three_members",
+   "pattern": "bitfield Split {\n    first  : 2;\n    second : 3;\n    third  : 3;\n};\nSplit split @ 0x00;",
+   "data": "9c",
+   "json": "{\n    \"split\": {\n        \"first\": 0,\n        \"second\": 7,\n        \"third\": 4\n    }\n}"
+  },
+  {
+   "name": "bitfield_spanning_three_bytes",
+   "pattern": "bitfield Long {\n    a : 5;\n    b : 11;\n    c : 8;\n};\nLong long @ 0x00;",
+   "data": "0f1e2d",
+   "json": "{\n    \"long\": {\n        \"a\": 15,\n        \"b\": 240,\n        \"c\": 45\n    }\n}"
+  },
+  {
+   "name": "bitfield_partial_byte",
+   "pattern": "bitfield Partial {\n    a : 3;\n    b : 2;\n};\nPartial partial @ 0x00;",
+   "data": "ff",
+   "json": "{\n    \"partial\": {\n        \"a\": 7,\n        \"b\": 3\n    }\n}"
+  },
+  {
+   "name": "bitfield_thirty_two_bits",
+   "pattern": "bitfield Word {\n    low  : 16;\n    high : 16;\n};\nWord word @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"word\": {\n        \"low\": 513,\n        \"high\": 1027\n    }\n}"
+  },
+  {
+   "name": "bitfield_be_prefix",
+   "pattern": "bitfield Flags {\n    a : 4;\n    b : 12;\n};\nstruct S {\n    be Flags flags;\n};\nS s @ 0x00;",
+   "data": "abcd",
+   "json": "{\n    \"s\": {\n        \"flags\": {\n            \"a\": 10,\n            \"b\": 3021\n        }\n    }\n}"
+  },
+  {
+   "name": "bitfield_le_prefix",
+   "pattern": "bitfield Flags {\n    a : 4;\n    b : 12;\n};\nstruct S {\n    le Flags flags;\n};\nS s @ 0x00;",
+   "data": "abcd",
+   "json": "{\n    \"s\": {\n        \"flags\": {\n            \"a\": 11,\n            \"b\": 3290\n        }\n    }\n}"
+  },
+  {
+   "name": "bitfield_inside_struct_after_scalar",
+   "pattern": "bitfield Flags {\n    a : 4;\n    b : 4;\n};\nstruct S {\n    u16 lead;\n    Flags flags;\n    u8 trail;\n};\nS s @ 0x00;",
+   "data": "11223c44",
+   "json": "{\n    \"s\": {\n        \"lead\": 8721,\n        \"flags\": {\n            \"a\": 12,\n            \"b\": 3\n        },\n        \"trail\": 68\n    }\n}"
+  },
+  {
+   "name": "bitfield_array",
+   "pattern": "bitfield Pair {\n    a : 3;\n    b : 5;\n};\nstruct S {\n    Pair items[3];\n};\nS s @ 0x00;",
+   "data": "a55a0f",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            {\n                \"a\": 5,\n                \"b\": 20\n            },\n            {\n                \"a\": 2,\n                \"b\": 11\n            },\n            {\n                \"a\": 7,\n                \"b\": 1\n            }\n        ]\n    }\n}"
+  },
+  {
+   "name": "signed_negative_and_positive",
+   "pattern": "struct S {\n    s8 neg;\n    s8 pos;\n    s16 wide_neg;\n    s16 wide_pos;\n    s64 huge;\n};\nS s @ 0x00;",
+   "data": "807f80007fff8000000000000000",
+   "json": "{\n    \"s\": {\n        \"neg\": -128,\n        \"pos\": 127,\n        \"wide_neg\": 128,\n        \"wide_pos\": -129,\n        \"huge\": 128\n    }\n}"
+  },
+  {
+   "name": "unsigned_extremes",
+   "pattern": "struct S {\n    u8 a;\n    u16 b;\n    u32 c;\n    u64 d;\n};\nS s @ 0x00;",
+   "data": "ffffffffffffffffffffffffffffff",
+   "json": "{\n    \"s\": {\n        \"a\": 255,\n        \"b\": 65535,\n        \"c\": 4294967295,\n        \"d\": 18446744073709551615\n    }\n}"
+  },
+  {
+   "name": "big_endian_all_widths",
+   "pattern": "struct S {\n    be u16 b;\n    be u32 c;\n    be u64 d;\n};\nS s @ 0x00;",
+   "data": "0102030405060708090a0b0c0d0e",
+   "json": "{\n    \"s\": {\n        \"b\": 258,\n        \"c\": 50595078,\n        \"d\": 506664896818842894\n    }\n}"
+  },
+  {
+   "name": "little_endian_all_widths",
+   "pattern": "struct S {\n    le u16 b;\n    le u32 c;\n    le u64 d;\n};\nS s @ 0x00;",
+   "data": "0102030405060708090a0b0c0d0e",
+   "json": "{\n    \"s\": {\n        \"b\": 513,\n        \"c\": 100992003,\n        \"d\": 1012478732780767239\n    }\n}"
+  },
+  {
+   "name": "endianness_switches_mid_struct",
+   "pattern": "struct S {\n    be u32 first;\n    le u32 second;\n    be u32 third;\n};\nS s @ 0x00;",
+   "data": "000000010000000100000001",
+   "json": "{\n    \"s\": {\n        \"first\": 1,\n        \"second\": 16777216,\n        \"third\": 1\n    }\n}"
+  },
+  {
+   "name": "signed_endianness",
+   "pattern": "struct S {\n    be s16 big;\n    le s16 little;\n};\nS s @ 0x00;",
+   "data": "ff01ff01",
+   "json": "{\n    \"s\": {\n        \"big\": -255,\n        \"little\": 511\n    }\n}"
+  },
+  {
+   "name": "float_negative_and_fractional",
+   "pattern": "struct S {\n    float half;\n    float negative;\n    double third;\n};\nS s @ 0x00;",
+   "data": "0000003f000080bf555555555555d53f",
+   "json": "{\n    \"s\": {\n        \"half\": 0.5,\n        \"negative\": -1,\n        \"third\": 0.3333333333333333\n    }\n}"
+  },
+  {
+   "name": "float_endianness",
+   "pattern": "struct S {\n    be float big;\n    le float little;\n};\nS s @ 0x00;",
+   "data": "3f8000000000803f",
+   "json": "{\n    \"s\": {\n        \"big\": 1,\n        \"little\": 1\n    }\n}"
+  },
+  {
+   "name": "array_of_structs",
+   "pattern": "struct Item { u8 tag; u16 value; };\nstruct S { Item items[3]; };\nS s @ 0x00;",
+   "data": "010203040506070809",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            {\n                \"tag\": 1,\n                \"value\": 770\n            },\n            {\n                \"tag\": 4,\n                \"value\": 1541\n            },\n            {\n                \"tag\": 7,\n                \"value\": 2312\n            }\n        ]\n    }\n}"
+  },
+  {
+   "name": "array_of_arrays",
+   "pattern": "struct Row { u8 cells[3]; };\nstruct S { Row rows[2]; };\nS s @ 0x00;",
+   "data": "010203040506",
+   "json": "{\n    \"s\": {\n        \"rows\": [\n            {\n                \"cells\": [\n                    1,\n                    2,\n                    3\n                ]\n            },\n            {\n                \"cells\": [\n                    4,\n                    5,\n                    6\n                ]\n            }\n        ]\n    }\n}"
+  },
+  {
+   "name": "array_length_from_expression",
+   "pattern": "struct S {\n    u8 count;\n    u8 items[count];\n};\nS s @ 0x00;",
+   "data": "030a0b0c",
+   "json": "{\n    \"s\": {\n        \"count\": 3,\n        \"items\": [\n            10,\n            11,\n            12\n        ]\n    }\n}"
+  },
+  {
+   "name": "array_length_from_arithmetic",
+   "pattern": "struct S {\n    u8 count;\n    u8 items[count * 2 + 1];\n};\nS s @ 0x00;",
+   "data": "020102030405",
+   "json": "{\n    \"s\": {\n        \"count\": 2,\n        \"items\": [\n            1,\n            2,\n            3,\n            4,\n            5\n        ]\n    }\n}"
+  },
+  {
+   "name": "array_length_zero",
+   "pattern": "struct S {\n    u8 count;\n    u8 items[count];\n    u8 after;\n};\nS s @ 0x00;",
+   "data": "00ff",
+   "json": "{\n    \"s\": {\n        \"count\": 0,\n        \"items\": [\n        ],\n        \"after\": 255\n    }\n}"
+  },
+  {
+   "name": "array_of_enums",
+   "pattern": "enum Kind : u8 { A = 1, B = 2 };\nstruct S { Kind kinds[3]; };\nS s @ 0x00;",
+   "data": "010209",
+   "json": "{\n    \"s\": {\n        \"kinds\": [\n            \"Kind::A\",\n            \"Kind::B\",\n            \"Kind::???\"\n        ]\n    }\n}"
+  },
+  {
+   "name": "char_array",
+   "pattern": "struct S { char text[5]; };\nS s @ 0x00;",
+   "data": "48656c6c6f",
+   "json": "{\n    \"s\": {\n        \"text\": \"Hello\"\n    }\n}"
+  },
+  {
+   "name": "while_array_bounded_by_offset",
+   "pattern": "struct S {\n    u8 items[while($ < 3)];\n    u8 last;\n};\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3\n        ],\n        \"last\": 4\n    }\n}"
+  },
+  {
+   "name": "enum_implicit_values",
+   "pattern": "enum Kind : u8 { Zero, One, Two, Three };\nstruct S { Kind a; Kind b; Kind c; };\nS s @ 0x00;",
+   "data": "000203",
+   "json": "{\n    \"s\": {\n        \"a\": \"Kind::Zero\",\n        \"b\": \"Kind::Two\",\n        \"c\": \"Kind::Three\"\n    }\n}"
+  },
+  {
+   "name": "enum_wide_backing",
+   "pattern": "enum Wide : u32 { Small = 1, Large = 0x11223344 };\nstruct S { Wide a; Wide b; };\nS s @ 0x00;",
+   "data": "0100000044332211",
+   "json": "{\n    \"s\": {\n        \"a\": \"Wide::Small\",\n        \"b\": \"Wide::Large\"\n    }\n}"
+  },
+  {
+   "name": "enum_big_endian_at_use_site",
+   "pattern": "enum Wide : u16 { One = 0x0102 };\nstruct S { be Wide a; le Wide b; };\nS s @ 0x00;",
+   "data": "01020201",
+   "json": "{\n    \"s\": {\n        \"a\": \"Wide::One\",\n        \"b\": \"Wide::One\"\n    }\n}"
+  },
+  {
+   "name": "enum_signed_backing",
+   "pattern": "enum Sign : s8 { Minus = -1, Zero = 0 };\nstruct S { Sign a; Sign b; };\nS s @ 0x00;",
+   "data": "ff00",
+   "json": "{\n    \"s\": {\n        \"a\": \"Sign::Minus\",\n        \"b\": \"Sign::Zero\"\n    }\n}"
+  },
+  {
+   "name": "enum_expression_values",
+   "pattern": "enum Kind : u8 { A = 1 << 2, B = (1 << 2) + 1 };\nstruct S { Kind a; Kind b; };\nS s @ 0x00;",
+   "data": "0405",
+   "json": "{\n    \"s\": {\n        \"a\": \"Kind::A\",\n        \"b\": \"Kind::B\"\n    }\n}"
+  },
+  {
+   "name": "union_overlays_members",
+   "pattern": "union U {\n    u32 whole;\n    u8 bytes[4];\n};\nU u @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"u\": {\n        \"whole\": 67305985,\n        \"bytes\": [\n            1,\n            2,\n            3,\n            4\n        ]\n    }\n}"
+  },
+  {
+   "name": "union_of_unequal_widths",
+   "pattern": "union U {\n    u8 small;\n    u64 large;\n};\nstruct S { U u; u8 after; };\nS s @ 0x00;",
+   "data": "0102030405060708ff",
+   "json": "{\n    \"s\": {\n        \"u\": {\n            \"small\": 1,\n            \"large\": 578437695752307201\n        },\n        \"after\": 255\n    }\n}"
+  },
+  {
+   "name": "nested_struct_three_deep",
+   "pattern": "struct A { u8 x; };\nstruct B { A a; u8 y; };\nstruct C { B b; u8 z; };\nC c @ 0x00;",
+   "data": "010203",
+   "json": "{\n    \"c\": {\n        \"b\": {\n            \"a\": {\n                \"x\": 1\n            },\n            \"y\": 2\n        },\n        \"z\": 3\n    }\n}"
+  },
+  {
+   "name": "struct_containing_union",
+   "pattern": "union U { u16 word; u8 pair[2]; };\nstruct S { u8 lead; U body; u8 tail; };\nS s @ 0x00;",
+   "data": "aa0102bb",
+   "json": "{\n    \"s\": {\n        \"lead\": 170,\n        \"body\": {\n            \"word\": 513,\n            \"pair\": [\n                1,\n                2\n            ]\n        },\n        \"tail\": 187\n    }\n}"
+  },
+  {
+   "name": "empty_struct",
+   "pattern": "struct Empty {};\nstruct S { Empty e; u8 after; };\nS s @ 0x00;",
+   "data": "7f",
+   "json": "{\n    \"s\": {\n        \"e\": {\n        },\n        \"after\": 127\n    }\n}"
+  },
+  {
+   "name": "padding_skips_bytes",
+   "pattern": "struct S {\n    u8 first;\n    padding[3];\n    u8 last;\n};\nS s @ 0x00;",
+   "data": "01aabbcc02",
+   "json": "{\n    \"s\": {\n        \"first\": 1,\n        \"last\": 2\n    }\n}"
+  },
+  {
+   "name": "padding_zero",
+   "pattern": "struct S {\n    u8 first;\n    padding[0];\n    u8 second;\n};\nS s @ 0x00;",
+   "data": "0102",
+   "json": "{\n    \"s\": {\n        \"first\": 1,\n        \"second\": 2\n    }\n}"
+  },
+  {
+   "name": "placement_overlapping",
+   "pattern": "struct S { u16 v; };\nS first  @ 0x00;\nS second @ 0x01;",
+   "data": "01020304",
+   "json": "{\n    \"first\": {\n        \"v\": 513\n    },\n    \"second\": {\n        \"v\": 770\n    }\n}"
+  },
+  {
+   "name": "placement_at_expression",
+   "pattern": "struct S { u8 v; };\nS here @ 1 + 2;",
+   "data": "00000004",
+   "json": "{\n    \"here\": {\n        \"v\": 4\n    }\n}"
+  },
+  {
+   "name": "multiple_top_level_scalars",
+   "pattern": "u8 a @ 0x00;\nu16 b @ 0x01;\nu32 c @ 0x03;",
+   "data": "01020304050607",
+   "json": "{\n    \"a\": 1,\n    \"b\": 770,\n    \"c\": 117835012\n}"
+  },
+  {
+   "name": "expression_precedence",
+   "pattern": "struct S {\n    u8 items[1 + 2 * 3];\n};\nS s @ 0x00;",
+   "data": "0102030405060708",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ]\n    }\n}"
+  },
+  {
+   "name": "expression_shifts_and_masks",
+   "pattern": "struct S {\n    u8 items[(1 << 3) - (6 & 3)];\n};\nS s @ 0x00;",
+   "data": "0102030405060708",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6\n        ]\n    }\n}"
+  },
+  {
+   "name": "expression_from_earlier_member",
+   "pattern": "struct S {\n    u8 a;\n    u8 b;\n    u8 items[a + b];\n};\nS s @ 0x00;",
+   "data": "01020a0b0c",
+   "json": "{\n    \"s\": {\n        \"a\": 1,\n        \"b\": 2,\n        \"items\": [\n            10,\n            11,\n            12\n        ]\n    }\n}"
+  },
+  {
+   "name": "sizeof_type",
+   "pattern": "struct Inner { u32 a; u16 b; };\nstruct S {\n    u8 items[sizeof(Inner)];\n};\nS s @ 0x00;",
+   "data": "0102030405060708",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6\n        ]\n    }\n}"
+  },
+  {
+   "name": "if_selects_a_member",
+   "pattern": "struct S {\n    u8 tag;\n    if (tag == 1) {\n        u16 pair;\n    } else {\n        u8 single;\n    }\n};\nS s @ 0x00;",
+   "data": "010203",
+   "json": "{\n    \"s\": {\n        \"tag\": 1,\n        \"pair\": 770\n    }\n}"
+  },
+  {
+   "name": "if_else_takes_the_other_branch",
+   "pattern": "struct S {\n    u8 tag;\n    if (tag == 1) {\n        u16 pair;\n    } else {\n        u8 single;\n    }\n};\nS s @ 0x00;",
+   "data": "0203",
+   "json": "{\n    \"s\": {\n        \"tag\": 2,\n        \"single\": 3\n    }\n}"
+  },
+  {
+   "name": "using_alias_of_struct",
+   "pattern": "struct Inner { u8 a; u8 b; };\nusing Pair = Inner;\nstruct S { Pair one; Pair two; };\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"one\": {\n            \"a\": 1,\n            \"b\": 2\n        },\n        \"two\": {\n            \"a\": 3,\n            \"b\": 4\n        }\n    }\n}"
+  },
+  {
+   "name": "using_alias_of_enum",
+   "pattern": "enum Kind : u8 { A = 1 };\nusing K = Kind;\nstruct S { K value; };\nS s @ 0x00;",
+   "data": "01",
+   "json": "{\n    \"s\": {\n        \"value\": \"K::A\"\n    }\n}"
+  },
+  {
+   "name": "using_alias_chain",
+   "pattern": "using A = be u32;\nusing B = A;\nstruct S { B value; };\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"value\": 16909060\n    }\n}"
+  },
+  {
+   "name": "bitfield_one_bit_then_seven",
+   "pattern": "bitfield Flag {\n    set  : 1;\n    rest : 7;\n};\nFlag flag @ 0x00;",
+   "data": "81",
+   "json": "{\n    \"flag\": {\n        \"set\": 1,\n        \"rest\": 64\n    }\n}"
+  },
+  {
+   "name": "bitfield_seven_then_one",
+   "pattern": "bitfield Flag {\n    rest : 7;\n    set  : 1;\n};\nFlag flag @ 0x00;",
+   "data": "81",
+   "json": "{\n    \"flag\": {\n        \"rest\": 1,\n        \"set\": 1\n    }\n}"
+  },
+  {
+   "name": "bitfield_crossing_every_byte_boundary",
+   "pattern": "bitfield Crossing {\n    a : 7;\n    b : 7;\n    c : 7;\n    d : 3;\n};\nCrossing crossing @ 0x00;",
+   "data": "deadbeef",
+   "json": "{\n    \"crossing\": {\n        \"a\": 94,\n        \"b\": 91,\n        \"c\": 122,\n        \"d\": 5\n    }\n}"
+  },
+  {
+   "name": "bitfield_wider_than_a_word",
+   "pattern": "bitfield Big {\n    a : 20;\n    b : 20;\n    c : 24;\n};\nBig big @ 0x00;",
+   "data": "0123456789abcdef",
+   "json": "{\n    \"big\": {\n        \"a\": 336641,\n        \"b\": 562804,\n        \"c\": 15715755\n    }\n}"
+  },
+  {
+   "name": "bitfield_all_zero_bytes",
+   "pattern": "bitfield Flags {\n    a : 3;\n    b : 5;\n};\nFlags flags @ 0x00;",
+   "data": "00",
+   "json": "{\n    \"flags\": {\n        \"a\": 0,\n        \"b\": 0\n    }\n}"
+  },
+  {
+   "name": "bitfield_all_one_bytes",
+   "pattern": "bitfield Flags {\n    a : 3;\n    b : 13;\n};\nFlags flags @ 0x00;",
+   "data": "ffff",
+   "json": "{\n    \"flags\": {\n        \"a\": 7,\n        \"b\": 8191\n    }\n}"
+  },
+  {
+   "name": "two_bitfields_in_sequence",
+   "pattern": "bitfield A { x : 4; y : 4; };\nbitfield B { p : 2; q : 6; };\nstruct S { A first; B second; };\nS s @ 0x00;",
+   "data": "1234",
+   "json": "{\n    \"s\": {\n        \"first\": {\n            \"x\": 2,\n            \"y\": 1\n        },\n        \"second\": {\n            \"p\": 0,\n            \"q\": 13\n        }\n    }\n}"
+  },
+  {
+   "name": "bitfield_at_nonzero_placement",
+   "pattern": "bitfield Flags { a : 3; b : 5; };\nFlags flags @ 0x02;",
+   "data": "0000a5ff",
+   "json": "{\n    \"flags\": {\n        \"a\": 5,\n        \"b\": 20\n    }\n}"
+  },
+  {
+   "name": "dollar_offset_in_array_length",
+   "pattern": "struct S {\n    u8 lead;\n    u8 items[$];\n};\nS s @ 0x00;",
+   "data": "010203",
+   "json": "{\n    \"s\": {\n        \"lead\": 1,\n        \"items\": [\n            2\n        ]\n    }\n}"
+  },
+  {
+   "name": "placement_at_end_of_data",
+   "pattern": "struct S { u8 v; };\nS last @ 0x03;",
+   "data": "00000041",
+   "json": "{\n    \"last\": {\n        \"v\": 65\n    }\n}"
+  },
+  {
+   "name": "two_placements_descending",
+   "pattern": "struct S { u8 v; };\nS high @ 0x02;\nS low  @ 0x00;",
+   "data": "0a0b0c",
+   "json": "{\n    \"high\": {\n        \"v\": 12\n    },\n    \"low\": {\n        \"v\": 10\n    }\n}"
+  },
+  {
+   "name": "padding_then_array",
+   "pattern": "struct S {\n    padding[2];\n    u8 items[2];\n};\nS s @ 0x00;",
+   "data": "ffff0102",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2\n        ]\n    }\n}"
+  },
+  {
+   "name": "padding_inside_nested_struct",
+   "pattern": "struct Inner {\n    u8 a;\n    padding[1];\n    u8 b;\n};\nstruct S { Inner one; Inner two; };\nS s @ 0x00;",
+   "data": "01ff0203ff04",
+   "json": "{\n    \"s\": {\n        \"one\": {\n            \"a\": 1,\n            \"b\": 2\n        },\n        \"two\": {\n            \"a\": 3,\n            \"b\": 4\n        }\n    }\n}"
+  },
+  {
+   "name": "if_without_else_taken",
+   "pattern": "struct S {\n    u8 tag;\n    if (tag > 0) {\n        u8 extra;\n    }\n    u8 tail;\n};\nS s @ 0x00;",
+   "data": "010203",
+   "json": "{\n    \"s\": {\n        \"tag\": 1,\n        \"extra\": 2,\n        \"tail\": 3\n    }\n}"
+  },
+  {
+   "name": "if_without_else_skipped",
+   "pattern": "struct S {\n    u8 tag;\n    if (tag > 0) {\n        u8 extra;\n    }\n    u8 tail;\n};\nS s @ 0x00;",
+   "data": "0003",
+   "json": "{\n    \"s\": {\n        \"tag\": 0,\n        \"tail\": 3\n    }\n}"
+  },
+  {
+   "name": "nested_if",
+   "pattern": "struct S {\n    u8 outer;\n    if (outer == 1) {\n        u8 inner;\n        if (inner == 2) {\n            u8 deep;\n        }\n    }\n};\nS s @ 0x00;",
+   "data": "010203",
+   "json": "{\n    \"s\": {\n        \"outer\": 1,\n        \"inner\": 2,\n        \"deep\": 3\n    }\n}"
+  },
+  {
+   "name": "if_on_comparison_operators",
+   "pattern": "struct S {\n    u8 v;\n    if (v >= 5 && v <= 10) { u8 inside; }\n    if (v < 5 || v > 10)   { u8 outside; }\n};\nS s @ 0x00;",
+   "data": "07aa",
+   "json": "{\n    \"s\": {\n        \"v\": 7,\n        \"inside\": 170\n    }\n}"
+  },
+  {
+   "name": "if_on_equality_with_enum",
+   "pattern": "enum Kind : u8 { A = 1, B = 2 };\nstruct S {\n    Kind kind;\n    if (kind == Kind::A) { u8 forA; }\n    if (kind == Kind::B) { u16 forB; }\n};\nS s @ 0x00;",
+   "data": "020304",
+   "json": "{\n    \"s\": {\n        \"kind\": \"Kind::B\",\n        \"forB\": 1027\n    }\n}"
+  },
+  {
+   "name": "expression_division_and_modulo",
+   "pattern": "struct S {\n    u8 items[(10 / 3) + (10 % 3)];\n};\nS s @ 0x00;",
+   "data": "0102030405060708",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3,\n            4\n        ]\n    }\n}"
+  },
+  {
+   "name": "expression_unary_minus_in_comparison",
+   "pattern": "struct S {\n    s8 v;\n    if (v == -1) { u8 flagged; }\n};\nS s @ 0x00;",
+   "data": "ff77",
+   "json": "{\n    \"s\": {\n        \"v\": -1,\n        \"flagged\": 119\n    }\n}"
+  },
+  {
+   "name": "expression_bitwise_or_and_xor",
+   "pattern": "struct S {\n    u8 items[(1 | 2) ^ 1];\n};\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2\n        ]\n    }\n}"
+  },
+  {
+   "name": "expression_right_shift",
+   "pattern": "struct S {\n    u8 items[64 >> 4];\n};\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3,\n            4\n        ]\n    }\n}"
+  },
+  {
+   "name": "expression_parenthesised_precedence",
+   "pattern": "struct S {\n    u8 flat[1 + 2 * 3];\n    u8 grouped[(1 + 2) * 1];\n};\nS s @ 0x00;",
+   "data": "0102030405060708090a",
+   "json": "{\n    \"s\": {\n        \"flat\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"grouped\": [\n            8,\n            9,\n            10\n        ]\n    }\n}"
+  },
+  {
+   "name": "sizeof_scalar_types",
+   "pattern": "struct S {\n    u8 a[sizeof(u16)];\n    u8 b[sizeof(u64)];\n};\nS s @ 0x00;",
+   "data": "0102030405060708090a",
+   "json": "{\n    \"s\": {\n        \"a\": [\n            1,\n            2\n        ],\n        \"b\": [\n            3,\n            4,\n            5,\n            6,\n            7,\n            8,\n            9,\n            10\n        ]\n    }\n}"
+  },
+  {
+   "name": "sizeof_nested_struct",
+   "pattern": "struct Inner { u8 a; u8 b; };\nstruct Middle { Inner one; Inner two; };\nstruct S { u8 items[sizeof(Middle)]; };\nS s @ 0x00;",
+   "data": "0102030405060708",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            1,\n            2,\n            3,\n            4\n        ]\n    }\n}"
+  },
+  {
+   "name": "scalar_zero_values",
+   "pattern": "struct S {\n    u8 a;\n    u16 b;\n    u32 c;\n    s8 d;\n    float e;\n};\nS s @ 0x00;",
+   "data": "000000000000000000000000",
+   "json": "{\n    \"s\": {\n        \"a\": 0,\n        \"b\": 0,\n        \"c\": 0,\n        \"d\": 0,\n        \"e\": 0\n    }\n}"
+  },
+  {
+   "name": "double_negative_zero_and_one",
+   "pattern": "struct S {\n    double negative_zero;\n    double one;\n};\nS s @ 0x00;",
+   "data": "0000000000000080000000000000f03f",
+   "json": "{\n    \"s\": {\n        \"negative_zero\": -0,\n        \"one\": 1\n    }\n}"
+  },
+  {
+   "name": "bool_nonzero_is_true",
+   "pattern": "struct S {\n    bool zero;\n    bool one;\n    bool many;\n};\nS s @ 0x00;",
+   "data": "00017f",
+   "json": "{\n    \"s\": {\n        \"zero\": false,\n        \"one\": true,\n        \"many\": true\n    }\n}"
+  },
+  {
+   "name": "char_non_ascii_bytes",
+   "pattern": "struct S { char letters[4]; };\nS s @ 0x00;",
+   "data": "417a3020",
+   "json": "{\n    \"s\": {\n        \"letters\": \"Az0 \"\n    }\n}"
+  },
+  {
+   "name": "signed_boundary_values",
+   "pattern": "struct S {\n    s8 min;\n    s8 max;\n    s16 wide_min;\n    s16 wide_max;\n    s32 widest_min;\n    s32 widest_max;\n};\nS s @ 0x00;",
+   "data": "807f0080ff7f00000080ffffff7f",
+   "json": "{\n    \"s\": {\n        \"min\": -128,\n        \"max\": 127,\n        \"wide_min\": -32768,\n        \"wide_max\": 32767,\n        \"widest_min\": -2147483648,\n        \"widest_max\": 2147483647\n    }\n}"
+  },
+  {
+   "name": "union_of_enum_and_scalar",
+   "pattern": "enum Kind : u8 { A = 1 };\nunion U { Kind kind; u8 raw; };\nU u @ 0x00;",
+   "data": "01",
+   "json": "{\n    \"u\": {\n        \"kind\": \"Kind::A\",\n        \"raw\": 1\n    }\n}"
+  },
+  {
+   "name": "union_containing_bitfield",
+   "pattern": "bitfield Flags { a : 4; b : 4; };\nunion U { Flags flags; u8 raw; };\nU u @ 0x00;",
+   "data": "5a",
+   "json": "{\n    \"u\": {\n        \"flags\": {\n            \"a\": 10,\n            \"b\": 5\n        },\n        \"raw\": 90\n    }\n}"
+  },
+  {
+   "name": "union_containing_struct",
+   "pattern": "struct Inner { u8 a; u8 b; };\nunion U { Inner pair; u16 word; };\nU u @ 0x00;",
+   "data": "0102",
+   "json": "{\n    \"u\": {\n        \"pair\": {\n            \"a\": 1,\n            \"b\": 2\n        },\n        \"word\": 513\n    }\n}"
+  },
+  {
+   "name": "struct_of_one_member",
+   "pattern": "struct S { u8 only; };\nS s @ 0x00;",
+   "data": "42",
+   "json": "{\n    \"s\": {\n        \"only\": 66\n    }\n}"
+  },
+  {
+   "name": "struct_with_trailing_array",
+   "pattern": "struct S {\n    u16 header;\n    u8 body[4];\n};\nS s @ 0x00;",
+   "data": "010203040506",
+   "json": "{\n    \"s\": {\n        \"header\": 513,\n        \"body\": [\n            3,\n            4,\n            5,\n            6\n        ]\n    }\n}"
+  },
+  {
+   "name": "array_of_unions",
+   "pattern": "union U { u16 word; u8 pair[2]; };\nstruct S { U items[2]; };\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            {\n                \"word\": 513,\n                \"pair\": [\n                    1,\n                    2\n                ]\n            },\n            {\n                \"word\": 1027,\n                \"pair\": [\n                    3,\n                    4\n                ]\n            }\n        ]\n    }\n}"
+  },
+  {
+   "name": "array_of_nested_structs",
+   "pattern": "struct Leaf { u8 v; };\nstruct Branch { Leaf leaves[2]; };\nstruct S { Branch branches[2]; };\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"branches\": [\n            {\n                \"leaves\": [\n                    {\n                        \"v\": 1\n                    },\n                    {\n                        \"v\": 2\n                    }\n                ]\n            },\n            {\n                \"leaves\": [\n                    {\n                        \"v\": 3\n                    },\n                    {\n                        \"v\": 4\n                    }\n                ]\n            }\n        ]\n    }\n}"
+  },
+  {
+   "name": "enum_inside_nested_struct",
+   "pattern": "enum Kind : u8 { A = 1, B = 2 };\nstruct Inner { Kind kind; u8 v; };\nstruct S { Inner one; Inner two; };\nS s @ 0x00;",
+   "data": "01050206",
+   "json": "{\n    \"s\": {\n        \"one\": {\n            \"kind\": \"Kind::A\",\n            \"v\": 5\n        },\n        \"two\": {\n            \"kind\": \"Kind::B\",\n            \"v\": 6\n        }\n    }\n}"
+  },
+  {
+   "name": "using_alias_of_bitfield",
+   "pattern": "bitfield Flags { a : 3; b : 5; };\nusing F = Flags;\nstruct S { F one; F two; };\nS s @ 0x00;",
+   "data": "a55a",
+   "json": "{\n    \"s\": {\n        \"one\": {\n            \"a\": 5,\n            \"b\": 20\n        },\n        \"two\": {\n            \"a\": 2,\n            \"b\": 11\n        }\n    }\n}"
+  },
+  {
+   "name": "using_alias_little_endian",
+   "pattern": "using Word = le u32;\nstruct S { Word a; };\nS s @ 0x00;",
+   "data": "01020304",
+   "json": "{\n    \"s\": {\n        \"a\": 67305985\n    }\n}"
+  },
+  {
+   "name": "endianness_on_array_elements",
+   "pattern": "struct S {\n    be u16 items[3];\n};\nS s @ 0x00;",
+   "data": "010203040506",
+   "json": "{\n    \"s\": {\n        \"items\": [\n            258,\n            772,\n            1286\n        ]\n    }\n}"
+  },
+  {
+   "name": "endianness_default_is_little",
+   "pattern": "struct S {\n    u16 plain;\n    le u16 explicit_little;\n};\nS s @ 0x00;",
+   "data": "01020102",
+   "json": "{\n    \"s\": {\n        \"plain\": 513,\n        \"explicit_little\": 513\n    }\n}"
+  },
+  {
+   "name": "endianness_inside_nested_struct",
+   "pattern": "struct Inner { be u32 v; };\nstruct S { Inner one; le u32 two; };\nS s @ 0x00;",
+   "data": "0102030401020304",
+   "json": "{\n    \"s\": {\n        \"one\": {\n            \"v\": 16909060\n        },\n        \"two\": 67305985\n    }\n}"
   }
  ]
 }
