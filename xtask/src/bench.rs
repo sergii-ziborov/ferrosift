@@ -87,6 +87,12 @@ pub fn run(arguments: &[&str]) -> ExitCode {
 struct Batch {
     name: &'static str,
     watches: &'static [&'static str],
+    /// Cargo features the batch needs, when it needs any.
+    ///
+    /// Only the peer comparison does: it links `rx-chef`, which needs a system
+    /// OpenSSL toolchain, so it is off by default and a machine without one can
+    /// still measure everything else.
+    features: Option<&'static str>,
 }
 
 /// Paths that invalidate every batch, because every batch runs through them.
@@ -107,6 +113,7 @@ const BATCHES: &[Batch] = &[
             "crates/ferrosift-operations/src/alphabet.rs",
             "bench/benches/encoding.rs",
         ],
+        features: None,
     },
     Batch {
         name: "digest",
@@ -115,6 +122,7 @@ const BATCHES: &[Batch] = &[
             "crates/ferrosift-operations/src/sets",
             "bench/benches/digest.rs",
         ],
+        features: None,
     },
     Batch {
         name: "dispatch",
@@ -125,6 +133,7 @@ const BATCHES: &[Batch] = &[
             "crates/ferrosift-operations/src/registry.rs",
             "bench/benches/dispatch.rs",
         ],
+        features: None,
     },
     // These two were benchmark files that no batch named, so `all` never ran
     // them and `check` never called them stale -- and their numbers are in the
@@ -138,7 +147,14 @@ const BATCHES: &[Batch] = &[
             "crates/ferrosift-operations/src/key.rs",
             "bench/benches/cipher.rs",
         ],
+        features: None,
     },
+    // `peer` does not build everywhere. `rx-chef`'s MD6 operation binds to a C
+    // library, and on Windows those two symbols -- `md6_default_r` and
+    // `md6_full_hash` -- do not resolve under MSVC. Nothing here can fix that,
+    // and registering the batch anyway is still right: `check` now reports the
+    // comparison as unmeasured on a machine that cannot measure it, which is
+    // more useful than a table nobody knew was old.
     Batch {
         name: "peer",
         watches: &[
@@ -147,6 +163,7 @@ const BATCHES: &[Batch] = &[
             "crates/ferrosift-operations/src/rot13",
             "bench/benches/peer.rs",
         ],
+        features: Some("peer"),
     },
 ];
 
@@ -193,16 +210,18 @@ fn measure(requested: &[&str], timing: Timing) -> ExitCode {
     }
 
     for batch in selected {
-        let arguments = [
-            "bench",
-            "--bench",
-            batch.name,
+        let mut arguments = vec!["bench", "--bench", batch.name];
+        if let Some(features) = batch.features {
+            arguments.push("--features");
+            arguments.push(features);
+        }
+        arguments.extend([
             "--",
             "--warm-up-time",
             timing.warm_up,
             "--measurement-time",
             timing.measurement,
-        ];
+        ]);
         if !run_streaming("cargo", &arguments, Some(&directory)) {
             return ExitCode::FAILURE;
         }

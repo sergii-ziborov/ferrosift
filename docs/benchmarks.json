@@ -1,12 +1,21 @@
 {
  "environment": {
+  "cipher": {
+   "batch": "cipher",
+   "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: x86_64-pc-windows-msvc\nrelease: 1.97.1\nLLVM version: 22.1.6",
+   "os": "windows",
+   "arch": "x86_64",
+   "cpu": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
+   "commit": "0a5e398f40bea7ba6727e0690dbfe14e0b2075cf",
+   "dirty": true
+  },
   "digest": {
    "batch": "digest",
    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: x86_64-pc-windows-msvc\nrelease: 1.97.1\nLLVM version: 22.1.6",
    "os": "windows",
    "arch": "x86_64",
    "cpu": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
-   "commit": "d021fb170e198a697066fbf6291c086b9a3548e6",
+   "commit": "0a5e398f40bea7ba6727e0690dbfe14e0b2075cf",
    "dirty": false
   },
   "dispatch": {
@@ -15,7 +24,7 @@
    "os": "windows",
    "arch": "x86_64",
    "cpu": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
-   "commit": "d021fb170e198a697066fbf6291c086b9a3548e6",
+   "commit": "0a5e398f40bea7ba6727e0690dbfe14e0b2075cf",
    "dirty": false
   },
   "encoding": {
@@ -24,8 +33,8 @@
    "os": "windows",
    "arch": "x86_64",
    "cpu": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
-   "commit": "b2c9bed73112abffe062c375038a389dc810c7ee",
-   "dirty": true
+   "commit": "0a5e398f40bea7ba6727e0690dbfe14e0b2075cf",
+   "dirty": false
   }
  },
  "measurements": [
@@ -33,945 +42,945 @@
    "group": "base64_decode",
    "arm": "base64-crate",
    "size": 1048576,
-   "nanoseconds": 820951.4849992462,
-   "low": 797185.7142857143,
-   "high": 838400.7970071568
+   "nanoseconds": 534435.2258133562,
+   "low": 528941.1184210526,
+   "high": 540815.8471736596
   },
   {
    "group": "base64_decode",
    "arm": "base64-crate",
    "size": 16,
-   "nanoseconds": 77.60683743884074,
-   "low": 73.41251320190108,
-   "high": 84.41591754298008
+   "nanoseconds": 37.58379342746498,
+   "low": 37.1800992033778,
+   "high": 38.64384127169462
   },
   {
    "group": "base64_decode",
    "arm": "base64-crate",
    "size": 256,
-   "nanoseconds": 214.93322893159888,
-   "low": 211.33271388947418,
-   "high": 219.2704902711267
+   "nanoseconds": 129.52328120453686,
+   "low": 127.78370789086152,
+   "high": 132.49598058360078
   },
   {
    "group": "base64_decode",
    "arm": "base64-crate",
    "size": 4096,
-   "nanoseconds": 2664.5669230104554,
-   "low": 2547.5460122699387,
-   "high": 2924.7761088780762
+   "nanoseconds": 1552.6335690462513,
+   "low": 1532.266381744747,
+   "high": 1568.5988191852773
   },
   {
    "group": "base64_decode",
    "arm": "base64-crate",
    "size": 65536,
-   "nanoseconds": 42536.586531178255,
-   "low": 40426.61369722747,
-   "high": 45642.39015217852
+   "nanoseconds": 24757.89391584789,
+   "low": 24214.708083832335,
+   "high": 25005.151552564974
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 3663525,
-   "low": 3423939.285714286,
-   "high": 3853346.4285714286
+   "nanoseconds": 2405454.8214285714,
+   "low": 2381784.9383301707,
+   "high": 2438189.6739130435
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 1374.2129533433342,
-   "low": 1271.5982028241335,
-   "high": 1487.1028562259307
+   "nanoseconds": 792.3049902860655,
+   "low": 779.3305276097153,
+   "high": 804.5954532805174
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 1852.3995330883204,
-   "low": 1822.965479316884,
-   "high": 1899.6403665134314
+   "nanoseconds": 1250.474691630779,
+   "low": 1238.0269150142403,
+   "high": 1288.883876752692
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 11974.006858178054,
-   "low": 11847.997506623033,
-   "high": 12486.308161708619
+   "nanoseconds": 8620.289250165322,
+   "low": 8486.989372594711,
+   "high": 8825.595805529076
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 213679.15909090912,
-   "low": 206299.16059457883,
-   "high": 234983.74149659864
+   "nanoseconds": 127212.62608164782,
+   "low": 125408.91817772706,
+   "high": 129157.08049589663
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 3563660.7142857146,
-   "low": 3347128.5714285714,
-   "high": 3693064.285714286
+   "nanoseconds": 2417078.9228723403,
+   "low": 2392725.5102040814,
+   "high": 2447052.5849150848
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 1980.1770206025526,
-   "low": 1796.2796129462797,
-   "high": 2157.2162162162163
+   "nanoseconds": 1303.362599796161,
+   "low": 1289.3679962526576,
+   "high": 1324.9276015496146
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 2680.6550957663385,
-   "low": 2592.3867238315106,
-   "high": 2796.9345451646336
+   "nanoseconds": 1784.3006694138717,
+   "low": 1763.2838392689732,
+   "high": 1855.3517972946674
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 12956.980879308245,
-   "low": 12810.361904761905,
-   "high": 13046.720656004338
+   "nanoseconds": 9065.200282139807,
+   "low": 8942.145049709075,
+   "high": 9183.093314600164
   },
   {
    "group": "base64_decode",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 199488.87414383562,
-   "low": 191292.19512195123,
-   "high": 213154.72527472526
+   "nanoseconds": 128039.89485211778,
+   "low": 126510.8951914099,
+   "high": 130161.94852941178
   },
   {
    "group": "base64_encode",
    "arm": "base64-crate",
    "size": 1048576,
-   "nanoseconds": 813292.0864661655,
-   "low": 780834.3898165326,
-   "high": 845938.8819012314
+   "nanoseconds": 489245.61615186615,
+   "low": 486248.17402945115,
+   "high": 493110.01157407404
   },
   {
    "group": "base64_encode",
    "arm": "base64-crate",
    "size": 16,
-   "nanoseconds": 76.13901222047996,
-   "low": 73.85443652849742,
-   "high": 79.77508243052284
+   "nanoseconds": 39.51796568346417,
+   "low": 38.847665029315564,
+   "high": 40.5709193006291
   },
   {
    "group": "base64_encode",
    "arm": "base64-crate",
    "size": 256,
-   "nanoseconds": 216.97777333699696,
-   "low": 196.5016111707841,
-   "high": 231.77546544933762
+   "nanoseconds": 104.6467544415685,
+   "low": 102.26591800485976,
+   "high": 108.04538532857073
   },
   {
    "group": "base64_encode",
    "arm": "base64-crate",
    "size": 4096,
-   "nanoseconds": 2228.9419534100384,
-   "low": 2146.1615030484013,
-   "high": 2307.62000205571
+   "nanoseconds": 1099.1447736428759,
+   "low": 1084.3590933330356,
+   "high": 1142.7944719158108
   },
   {
    "group": "base64_encode",
    "arm": "base64-crate",
    "size": 65536,
-   "nanoseconds": 37212.620591617684,
-   "low": 35788.72863247863,
-   "high": 39686.418269230766
+   "nanoseconds": 18954.738429472578,
+   "low": 18655.81395348837,
+   "high": 19783.40138132477
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 1300535.4609929079,
-   "low": 1245956.415367887,
-   "high": 1358652.6315789474
+   "nanoseconds": 914522.273249139,
+   "low": 904167.592760181,
+   "high": 926138.9035087719
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 1240.6481839373891,
-   "low": 1158.778827727483,
-   "high": 1285.714705526747
+   "nanoseconds": 711.7677299532818,
+   "low": 700.9456324797175,
+   "high": 722.7775585722969
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 1729.2450186799501,
-   "low": 1675.3010694994969,
-   "high": 1772.5456621004566
+   "nanoseconds": 818.1254769084717,
+   "low": 798.858878164731,
+   "high": 827.9494907933338
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 4136.382390336936,
-   "low": 4001.6064629956354,
-   "high": 4292.4647242263
+   "nanoseconds": 2355.881224304879,
+   "low": 2289.076110997686,
+   "high": 2401.0419975807636
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 62674.94814814815,
-   "low": 61202.03703703704,
-   "high": 64520.75
+   "nanoseconds": 34709.08887783631,
+   "low": 33518.57268931078,
+   "high": 35704.00490682585
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 1289461.7117117117,
-   "low": 1221713.6842105263,
-   "high": 1397140
+   "nanoseconds": 901608.469387755,
+   "low": 896157,
+   "high": 905891.755319149
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 1880.4063513115238,
-   "low": 1782.1793929073622,
-   "high": 1984.567901234568
+   "nanoseconds": 1076.285564867137,
+   "low": 1063.7651888162277,
+   "high": 1090.71561053067
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 2449.5019358879463,
-   "low": 2316.012492015047,
-   "high": 2524.141267215734
+   "nanoseconds": 1239.0924084236385,
+   "low": 1208.9921380796434,
+   "high": 1255.9242561809394
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 5546.6057232393205,
-   "low": 5029.465797300389,
-   "high": 5902.008760951189
+   "nanoseconds": 2654.8321507148485,
+   "low": 2613.5856613597675,
+   "high": 2715.7725106068665
   },
   {
    "group": "base64_encode",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 68078.74964956546,
-   "low": 64818.93939393939,
-   "high": 72221.37893296854
+   "nanoseconds": 33990.88127705551,
+   "low": 33278.982050960214,
+   "high": 34443.18795936013
   },
   {
    "group": "checksum_adler32",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 760092.5,
-   "low": 751247.9166666666,
-   "high": 767858
+   "nanoseconds": 755208.5397960315,
+   "low": 751457.8703703703,
+   "high": 762470.1884920634
   },
   {
    "group": "checksum_adler32",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 984.0294254637113,
-   "low": 951.688790560472,
-   "high": 1021.0246856078248
+   "nanoseconds": 615.1494888950203,
+   "low": 606.3201612324003,
+   "high": 622.1178607919595
   },
   {
    "group": "checksum_adler32",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 1375.15788582199,
-   "low": 1256.5326063987152,
-   "high": 1453.5431115186948
+   "nanoseconds": 765.2663748655762,
+   "low": 752.8842048653252,
+   "high": 774.8181866229486
   },
   {
    "group": "checksum_adler32",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 4687.100844244947,
-   "low": 4437.280089759282,
-   "high": 5141.932330827068
+   "nanoseconds": 2555.646304371958,
+   "low": 2508.4485659935617,
+   "high": 2603.3149379154647
   },
   {
    "group": "checksum_adler32",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 53358.07291666667,
-   "low": 52594.990808823524,
-   "high": 55249.90234375
+   "nanoseconds": 34489.68774703557,
+   "low": 33644.39269093459,
+   "high": 35628.318077803204
   },
   {
    "group": "checksum_crc32",
    "arm": "crc32fast-crate",
    "size": 1048576,
-   "nanoseconds": 34117.541407867495,
-   "low": 33335.58909674981,
-   "high": 35593.04761904762
+   "nanoseconds": 15098.508769499322,
+   "low": 14798.78483047081,
+   "high": 15329.060994455049
   },
   {
    "group": "checksum_crc32",
    "arm": "crc32fast-crate",
    "size": 16,
-   "nanoseconds": 8.043462126921057,
-   "low": 7.898182125967913,
-   "high": 8.790066266018215
+   "nanoseconds": 5.154244148913715,
+   "low": 5.092749457004361,
+   "high": 5.308273622140742
   },
   {
    "group": "checksum_crc32",
    "arm": "crc32fast-crate",
    "size": 256,
-   "nanoseconds": 15.321395864816228,
-   "low": 15.197435801592345,
-   "high": 15.6813000476746
+   "nanoseconds": 7.974144826688592,
+   "low": 7.8469765901665625,
+   "high": 8.232679950307624
   },
   {
    "group": "checksum_crc32",
    "arm": "crc32fast-crate",
    "size": 4096,
-   "nanoseconds": 140.4354817644562,
-   "low": 134.2183201131859,
-   "high": 151.22939715444176
+   "nanoseconds": 67.37198673084055,
+   "low": 65.17696930252852,
+   "high": 69.91459721199615
   },
   {
    "group": "checksum_crc32",
    "arm": "crc32fast-crate",
    "size": 65536,
-   "nanoseconds": 2122.3346560846558,
-   "low": 2080.1427581614653,
-   "high": 2185.9257560702185
+   "nanoseconds": 1020.0496566382376,
+   "low": 1001.4644802637567,
+   "high": 1044.4396505064562
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 12212975,
-   "low": 12099900,
-   "high": 12294850
+   "nanoseconds": 12467723.128679562,
+   "low": 12418672.5,
+   "high": 12514636.842105262
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 2578.311268355779,
-   "low": 2147.967359050445,
-   "high": 2772.657905892327
+   "nanoseconds": 1676.2807274689535,
+   "low": 1665.407353291676,
+   "high": 1700.0273555325466
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 4806.536538585237,
-   "low": 4773.74283876713,
-   "high": 4827.463414634146
+   "nanoseconds": 4521.761397149507,
+   "low": 4462.30736158219,
+   "high": 4565.88874120326
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 44940.756039092754,
-   "low": 44831.118881118884,
-   "high": 45413.068181818184
+   "nanoseconds": 46824.94142851888,
+   "low": 46341.00169779287,
+   "high": 47179.27412592648
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 1024229.6937751004,
-   "low": 973837.5,
-   "high": 1072654.298941799
+   "nanoseconds": 752158.6172816264,
+   "low": 745123.6790123456,
+   "high": 762573.9114380244
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 18156212.5,
-   "low": 17223150,
-   "high": 18662750
+   "nanoseconds": 12506063.836898394,
+   "low": 12435843.28358209,
+   "high": 12588420.338983051
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 2906.642064198678,
-   "low": 2854.750982961992,
-   "high": 2950.1816913380817
+   "nanoseconds": 2853.6205449059285,
+   "low": 2801.8799634869924,
+   "high": 2881.9488817891374
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 5975.909677419355,
-   "low": 5940.888648795475,
-   "high": 6019.396462018731
+   "nanoseconds": 5387.486225196904,
+   "low": 5353.207289659602,
+   "high": 5441.668903278543
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 47109.22813569872,
-   "low": 46792.3645320197,
-   "high": 47300.32907471932
+   "nanoseconds": 46952.62030650313,
+   "low": 46515.241228070176,
+   "high": 47372.422723475356
   },
   {
    "group": "cipher_tea",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 737789.0873015872,
-   "low": 734895.3733766234,
-   "high": 740570.3099838969
+   "nanoseconds": 734302.9077723043,
+   "low": 730246.0451977401,
+   "high": 739011.4583333334
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 12997950,
-   "low": 12937987.5,
-   "high": 13121587.5
+   "nanoseconds": 12834857.582688248,
+   "low": 12757631.666666668,
+   "high": 12916864.285714285
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 1828.0612210588606,
-   "low": 1800.0362418560871,
-   "high": 1860.1156973108193
+   "nanoseconds": 1797.7108327727829,
+   "low": 1778.7646931251356,
+   "high": 1837.2277473123277
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 7245.037615421403,
-   "low": 6827.1157568718545,
-   "high": 7638.839763488544
+   "nanoseconds": 4639.273933531746,
+   "low": 4573.479166666667,
+   "high": 4699.58106884058
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 46360.694805194806,
-   "low": 46068.93382352941,
-   "high": 46814.86291486291
+   "nanoseconds": 48884.538332248965,
+   "low": 48619.19266253791,
+   "high": 49275.07183908046
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 786337.7450980393,
-   "low": 765574.6794871795,
-   "high": 931760.4110054348
+   "nanoseconds": 770066.9117647059,
+   "low": 764321.0884353742,
+   "high": 777970.3703703703
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 12968762.5,
-   "low": 12897250,
-   "high": 13041625
+   "nanoseconds": 13030803.94736842,
+   "low": 12938396.103896104,
+   "high": 13087433.449275363
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 2913.7414161319957,
-   "low": 2891.0715023313337,
-   "high": 2946.74313583815
+   "nanoseconds": 2977.294566058087,
+   "low": 2954.1897005090177,
+   "high": 3039.4001146277783
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 7929.541925465838,
-   "low": 6630.797101449275,
-   "high": 8320.498188405796
+   "nanoseconds": 5900.586888384911,
+   "low": 5809.117412022376,
+   "high": 6015.7045609258
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 57190.451824004456,
-   "low": 49133.43653250774,
-   "high": 58129.63456211379
+   "nanoseconds": 48965.35769400353,
+   "low": 48759.12930328278,
+   "high": 49154.27467292944
   },
   {
    "group": "cipher_xtea",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 775809.6380090498,
-   "low": 772493.0460074034,
-   "high": 780869.8795180722
+   "nanoseconds": 772578.4090909092,
+   "low": 766511.1403508772,
+   "high": 780409.5064218482
   },
   {
    "group": "distance_levenshtein",
    "arm": "ferrosift",
    "size": 1024,
-   "nanoseconds": 1879023.076923077,
-   "low": 1854860,
-   "high": 1917255.252606255
+   "nanoseconds": 1216032.9618804043,
+   "low": 1195075.1104565538,
+   "high": 1236843.9379699249
   },
   {
    "group": "distance_levenshtein",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 2612.3021360941384,
-   "low": 2473.8351749539593,
-   "high": 2714.5649930180316
+   "nanoseconds": 1622.193208536806,
+   "low": 1585.5052149273527,
+   "high": 1645.1156006229257
   },
   {
    "group": "distance_levenshtein",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 68713.02503052502,
-   "low": 68245.64364207222,
-   "high": 69412.19336219336
+   "nanoseconds": 77851.06712015145,
+   "low": 77027.43362831858,
+   "high": 79402.3524328834
   },
   {
    "group": "distance_levenshtein",
    "arm": "ferrosift",
    "size": 64,
-   "nanoseconds": 10099.313330347813,
-   "low": 9488.129571577847,
-   "high": 10590.133803067507
+   "nanoseconds": 5906.2127377177985,
+   "low": 5785.041216547986,
+   "high": 5980.06285193116
   },
   {
    "group": "distance_levenshtein",
    "arm": "strsim-crate",
    "size": 1024,
-   "nanoseconds": 1739828.4680851065,
-   "low": 1683200.5886970172,
-   "high": 1778699.341120096
+   "nanoseconds": 829288.4242424242,
+   "low": 818181.8181818182,
+   "high": 842682.8445747801
   },
   {
    "group": "distance_levenshtein",
    "arm": "strsim-crate",
    "size": 16,
-   "nanoseconds": 479.0856147336983,
-   "low": 462.1280104310477,
-   "high": 518.0715447154472
+   "nanoseconds": 260.4464661291388,
+   "low": 256.14509350420025,
+   "high": 271.93692101633553
   },
   {
    "group": "distance_levenshtein",
    "arm": "strsim-crate",
    "size": 256,
-   "nanoseconds": 50406.94576490925,
-   "low": 50067.64705882353,
-   "high": 50721.35135135135
+   "nanoseconds": 57202.03796128252,
+   "low": 56200.73529411765,
+   "high": 58115.71248600224
   },
   {
    "group": "distance_levenshtein",
    "arm": "strsim-crate",
    "size": 64,
-   "nanoseconds": 3460.6340359498254,
-   "low": 3440.8571428571427,
-   "high": 3476.894284459502
+   "nanoseconds": 3826.055773282449,
+   "low": 3792.606266237246,
+   "high": 3888.1810711350886
   },
   {
    "group": "hex_encode",
    "arm": "faster-hex-crate",
    "size": 1048576,
-   "nanoseconds": 492206.6346153846,
-   "low": 473390.54054054053,
-   "high": 505587.5
+   "nanoseconds": 477297.1320474985,
+   "low": 471120.41228070174,
+   "high": 481743.8122332859
   },
   {
    "group": "hex_encode",
    "arm": "faster-hex-crate",
    "size": 16,
-   "nanoseconds": 61.979400453084665,
-   "low": 57.08216837527182,
-   "high": 64.59490128119228
+   "nanoseconds": 27.558336125410317,
+   "low": 27.153559838667903,
+   "high": 27.900439396647368
   },
   {
    "group": "hex_encode",
    "arm": "faster-hex-crate",
    "size": 256,
-   "nanoseconds": 95.93188881161106,
-   "low": 89.67787717530463,
-   "high": 103.17686018447492
+   "nanoseconds": 40.47049544624911,
+   "low": 40.05867398433989,
+   "high": 40.92209651280457
   },
   {
    "group": "hex_encode",
    "arm": "faster-hex-crate",
    "size": 4096,
-   "nanoseconds": 872.7354868744869,
-   "low": 794.3666961913198,
-   "high": 929.9610044517042
+   "nanoseconds": 255.95471226244734,
+   "low": 248.10058881914267,
+   "high": 267.0031719357544
   },
   {
    "group": "hex_encode",
    "arm": "faster-hex-crate",
    "size": 65536,
-   "nanoseconds": 11899.955555555556,
-   "low": 11748.761904761905,
-   "high": 12336.920634920634
+   "nanoseconds": 4554.362297759309,
+   "low": 4470.318302387268,
+   "high": 4638.1386229961945
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift",
    "size": 1048576,
-   "nanoseconds": 1569760.6884057971,
-   "low": 1532144.9367088608,
-   "high": 1601176.0069515437
+   "nanoseconds": 1185814.2446524063,
+   "low": 1177102.8630136987,
+   "high": 1195295.625
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift",
    "size": 16,
-   "nanoseconds": 732.5993316284578,
-   "low": 680.558195849458,
-   "high": 794.1806350786933
+   "nanoseconds": 355.32767976712796,
+   "low": 350.6940710422782,
+   "high": 361.39873443476847
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift",
    "size": 256,
-   "nanoseconds": 824.2523278481144,
-   "low": 789.7722556547002,
-   "high": 871.6053710094909
+   "nanoseconds": 468.5336782022513,
+   "low": 463.4076407506702,
+   "high": 484.1925672552464
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift",
    "size": 4096,
-   "nanoseconds": 4444.050027158135,
-   "low": 4187.129987129987,
-   "high": 4859.62280962281
+   "nanoseconds": 2447.2782747110423,
+   "low": 2395.081162062654,
+   "high": 2493.781721045602
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift",
    "size": 65536,
-   "nanoseconds": 67445.25987525989,
-   "low": 64879.25407925408,
-   "high": 71950.98199672668
+   "nanoseconds": 38823.25894705708,
+   "low": 38018.55032289815,
+   "high": 39516.69565217391
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift-per-call",
    "size": 1048576,
-   "nanoseconds": 1576815,
-   "low": 1536808.041958042,
-   "high": 1694117.857142857
+   "nanoseconds": 1200620.443136932,
+   "low": 1192228.0263157894,
+   "high": 1210665.0943396227
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift-per-call",
    "size": 16,
-   "nanoseconds": 1542.160975963631,
-   "low": 1458.147406559878,
-   "high": 1627.6381589425068
+   "nanoseconds": 852.3307164005834,
+   "low": 839.6894300151802,
+   "high": 870.1775477589204
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift-per-call",
    "size": 256,
-   "nanoseconds": 1693.88801656932,
-   "low": 1599.0596704818838,
-   "high": 1808.1403407180483
+   "nanoseconds": 942.9319174870527,
+   "low": 928.029012591526,
+   "high": 954.6029168866196
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift-per-call",
    "size": 4096,
-   "nanoseconds": 5313.133981403213,
-   "low": 5115.247146016376,
-   "high": 5737.726376187915
+   "nanoseconds": 2853.311852114619,
+   "low": 2822.664151792281,
+   "high": 2905.0309872086473
   },
   {
    "group": "hex_encode",
    "arm": "ferrosift-per-call",
    "size": 65536,
-   "nanoseconds": 64303.52564102564,
-   "low": 62947.916666666664,
-   "high": 67307.83972125435
+   "nanoseconds": 41123.08260714468,
+   "low": 40563.74407582938,
+   "high": 41815.990658553565
   },
   {
    "group": "hex_encode",
    "arm": "hex-crate",
    "size": 1048576,
-   "nanoseconds": 3836969.230769231,
-   "low": 3745957.692307692,
-   "high": 4036946.153846154
+   "nanoseconds": 2138970.910099889,
+   "low": 2086704.9682539683,
+   "high": 2237456.907216495
   },
   {
    "group": "hex_encode",
    "arm": "hex-crate",
    "size": 16,
-   "nanoseconds": 104.45834781160869,
-   "low": 101.98511904761905,
-   "high": 109.00981996726678
+   "nanoseconds": 59.98837365839647,
+   "low": 59.45625683370907,
+   "high": 60.89257841915879
   },
   {
    "group": "hex_encode",
    "arm": "hex-crate",
    "size": 256,
-   "nanoseconds": 914.1051404853129,
-   "low": 860.6842696629213,
-   "high": 974.1937379110252
+   "nanoseconds": 477.1171405323853,
+   "low": 456.51479202112574,
+   "high": 510.7953188092505
   },
   {
    "group": "hex_encode",
    "arm": "hex-crate",
    "size": 4096,
-   "nanoseconds": 14991.78309473312,
-   "low": 13870.285714285714,
-   "high": 16352.837500000001
+   "nanoseconds": 6603.900720070171,
+   "low": 6466.519256867425,
+   "high": 6772.549910974732
   },
   {
    "group": "hex_encode",
    "arm": "hex-crate",
    "size": 65536,
-   "nanoseconds": 236094.39338235295,
-   "low": 228073.5507246377,
-   "high": 257174.17582417582
+   "nanoseconds": 100962.37726098191,
+   "low": 99629.71739770386,
+   "high": 102717.06917113894
   },
   {
    "group": "overhead_identity",
    "arm": "compiled-pipeline",
    "size": 1048576,
-   "nanoseconds": 295457.3132183908,
-   "low": 280604.6703296703,
-   "high": 310381.38289304124
+   "nanoseconds": 278901.68613183324,
+   "low": 277078.1805745554,
+   "high": 282413.7691212662
   },
   {
    "group": "overhead_identity",
    "arm": "compiled-pipeline",
    "size": 16,
-   "nanoseconds": 589.2843905915895,
-   "low": 543.7206224459862,
-   "high": 614.2552388454028
+   "nanoseconds": 274.58415505362774,
+   "low": 271.28205235217524,
+   "high": 277.2435148349141
   },
   {
    "group": "overhead_identity",
    "arm": "compiled-pipeline",
    "size": 256,
-   "nanoseconds": 536.1626498896924,
-   "low": 506.8522175857785,
-   "high": 593.2482738380265
+   "nanoseconds": 285.81972895586364,
+   "low": 280.68700321587994,
+   "high": 289.9060377429814
   },
   {
    "group": "overhead_identity",
    "arm": "compiled-pipeline",
    "size": 4096,
-   "nanoseconds": 625.6138302298268,
-   "low": 571.9072605247102,
-   "high": 661.9817833173538
+   "nanoseconds": 334.35402446736595,
+   "low": 332.7450862008079,
+   "high": 339.2767275385839
   },
   {
    "group": "overhead_identity",
    "arm": "compiled-pipeline",
    "size": 65536,
-   "nanoseconds": 2209.524481127156,
-   "low": 2036.7447306791569,
-   "high": 2322.44085802532
+   "nanoseconds": 1597.8107256350145,
+   "low": 1574.0061661521104,
+   "high": 1624.5381701631702
   },
   {
    "group": "overhead_identity",
    "arm": "execute-each-call",
    "size": 1048576,
-   "nanoseconds": 289676.7047930283,
-   "low": 280437.5,
-   "high": 295592.1052631579
+   "nanoseconds": 280610.78060300206,
+   "low": 278360.4375,
+   "high": 284517.6416015625
   },
   {
    "group": "overhead_identity",
    "arm": "execute-each-call",
    "size": 16,
-   "nanoseconds": 983.0886429489981,
-   "low": 949.0487433520098,
-   "high": 1056.5441650548034
+   "nanoseconds": 493.33650638236145,
+   "low": 487.9460331187129,
+   "high": 501.2209436545071
   },
   {
    "group": "overhead_identity",
    "arm": "execute-each-call",
    "size": 256,
-   "nanoseconds": 1010.8527093582758,
-   "low": 956.3473468112643,
-   "high": 1136.520045819015
+   "nanoseconds": 496.5980040932791,
+   "low": 488.09263558339745,
+   "high": 504.5162924801391
   },
   {
    "group": "overhead_identity",
    "arm": "execute-each-call",
    "size": 4096,
-   "nanoseconds": 1087.0464022713159,
-   "low": 1030.8025019962736,
-   "high": 1161.3672554820746
+   "nanoseconds": 537.1847505441483,
+   "low": 529.4240784863216,
+   "high": 552.5476371980803
   },
   {
    "group": "overhead_identity",
    "arm": "execute-each-call",
    "size": 65536,
-   "nanoseconds": 2786.7731962653097,
-   "low": 2711.984359726295,
-   "high": 2898.519759810082
+   "nanoseconds": 1772.0719016036082,
+   "low": 1752.233930261338,
+   "high": 1795.157353315862
   },
   {
    "group": "overhead_md5",
    "arm": "primitive-direct",
    "size": 1048576,
-   "nanoseconds": 1937436.5104166665,
-   "low": 1766491.1988911987,
-   "high": 2024312.2222222222
+   "nanoseconds": 1343361.801242236,
+   "low": 1338937.450826121,
+   "high": 1353608.0745341615
   },
   {
    "group": "overhead_md5",
    "arm": "primitive-direct",
    "size": 16,
-   "nanoseconds": 145.2552251572792,
-   "low": 136.79304836827967,
-   "high": 152.9903192119895
+   "nanoseconds": 100.86447284582306,
+   "low": 100.13594210386785,
+   "high": 101.72166122180408
   },
   {
    "group": "overhead_md5",
    "arm": "primitive-direct",
    "size": 256,
-   "nanoseconds": 632.0362469055135,
-   "low": 597.2668339865402,
-   "high": 684.4702684238991
+   "nanoseconds": 434.45808879241594,
+   "low": 430.6870762894415,
+   "high": 442.75595172919157
   },
   {
    "group": "overhead_md5",
    "arm": "primitive-direct",
    "size": 4096,
-   "nanoseconds": 7685.344692005243,
-   "low": 7090.364959305168,
-   "high": 8255.126524851295
+   "nanoseconds": 5411.639640526553,
+   "low": 5360.332591803484,
+   "high": 5455.365983026874
   },
   {
    "group": "overhead_md5",
    "arm": "primitive-direct",
    "size": 65536,
-   "nanoseconds": 140019.14087301586,
-   "low": 131295.84455178966,
-   "high": 148006.25
+   "nanoseconds": 85023.57041353083,
+   "low": 84057.29881360778,
+   "high": 85826.23957876262
   },
   {
    "group": "overhead_md5",
    "arm": "through-recipe",
    "size": 1048576,
-   "nanoseconds": 2083429.5454545454,
-   "low": 1994879.5454545454,
-   "high": 2265879.5454545454
+   "nanoseconds": 1612783.1196581195,
+   "low": 1605411.6883116884,
+   "high": 1625965.0614754097
   },
   {
    "group": "overhead_md5",
    "arm": "through-recipe",
    "size": 16,
-   "nanoseconds": 1254.8048285734044,
-   "low": 1184.1397540512585,
-   "high": 1310.3319603605073
+   "nanoseconds": 658.9075124051806,
+   "low": 653.3042980411401,
+   "high": 672.6240992748169
   },
   {
    "group": "overhead_md5",
    "arm": "through-recipe",
    "size": 256,
-   "nanoseconds": 1662.233517105125,
-   "low": 1612.5297949658564,
-   "high": 1741.6603004838298
+   "nanoseconds": 987.5989266343863,
+   "low": 976.832983469346,
+   "high": 1006.1682080554717
   },
   {
    "group": "overhead_md5",
    "arm": "through-recipe",
    "size": 4096,
-   "nanoseconds": 8808.360225632952,
-   "low": 8296.124885215795,
-   "high": 9363.831867057674
+   "nanoseconds": 6252.338686251798,
+   "low": 6194.27337161936,
+   "high": 6307.762932357757
   },
   {
    "group": "overhead_md5",
    "arm": "through-recipe",
    "size": 65536,
-   "nanoseconds": 124948.73421717172,
-   "low": 119135.96342383107,
-   "high": 131341.53981264637
+   "nanoseconds": 90269.88011449987,
+   "low": 89589.05978770557,
+   "high": 90820.89997721577
   },
   {
    "group": "overhead_sha256",
    "arm": "primitive-direct",
    "size": 1048576,
-   "nanoseconds": 462369.02159244264,
-   "low": 435786.5168539326,
-   "high": 492928.3105022831
+   "nanoseconds": 445465.6540162122,
+   "low": 442491.3888888889,
+   "high": 448857.77777777775
   },
   {
    "group": "overhead_sha256",
    "arm": "primitive-direct",
    "size": 16,
-   "nanoseconds": 67.78168442497378,
-   "low": 64.73358379614506,
-   "high": 71.00307588447959
+   "nanoseconds": 49.47184908492305,
+   "low": 49.21134374117552,
+   "high": 49.6756433825295
   },
   {
    "group": "overhead_sha256",
    "arm": "primitive-direct",
    "size": 256,
-   "nanoseconds": 181.5224642658987,
-   "low": 171.57138587268173,
-   "high": 196.1586753053142
+   "nanoseconds": 147.09935872365145,
+   "low": 146.66645388471926,
+   "high": 147.45975144429764
   },
   {
    "group": "overhead_sha256",
    "arm": "primitive-direct",
    "size": 4096,
-   "nanoseconds": 1808.792256918353,
-   "low": 1665.5367231638418,
-   "high": 1916.8432647550012
+   "nanoseconds": 1774.0294595392793,
+   "low": 1766.9669226225635,
+   "high": 1784.513824431131
   },
   {
    "group": "overhead_sha256",
    "arm": "primitive-direct",
    "size": 65536,
-   "nanoseconds": 29111.134453781513,
-   "low": 27331.706932773108,
-   "high": 31136.825396825396
+   "nanoseconds": 27782.862803068427,
+   "low": 27544.098236870916,
+   "high": 27932.65433058622
   },
   {
    "group": "overhead_sha256",
    "arm": "through-recipe",
    "size": 1048576,
-   "nanoseconds": 745793.8490464678,
-   "low": 729562.0370370371,
-   "high": 755758.9005702067
+   "nanoseconds": 741786.9565217391,
+   "low": 738962.9468018394,
+   "high": 745153.0448717949
   },
   {
    "group": "overhead_sha256",
    "arm": "through-recipe",
    "size": 16,
-   "nanoseconds": 1499.5293046746535,
-   "low": 1392.9476013596654,
-   "high": 1603.7693798449613
+   "nanoseconds": 897.3786295140541,
+   "low": 882.4553669825876,
+   "high": 909.7455524625518
   },
   {
    "group": "overhead_sha256",
    "arm": "through-recipe",
    "size": 256,
-   "nanoseconds": 1759.7786833946002,
-   "low": 1637.9968203497615,
-   "high": 1852.7755240813356
+   "nanoseconds": 1022.0048998295412,
+   "low": 1009.8861578336641,
+   "high": 1041.3547062075302
   },
   {
    "group": "overhead_sha256",
    "arm": "through-recipe",
    "size": 4096,
-   "nanoseconds": 3693.7219255518303,
-   "low": 3520.148619473332,
-   "high": 3888.5754092650645
+   "nanoseconds": 2766.061890116314,
+   "low": 2755.0267223323735,
+   "high": 2787.1008296032633
   },
   {
    "group": "overhead_sha256",
    "arm": "through-recipe",
    "size": 65536,
-   "nanoseconds": 33642.000816016545,
-   "low": 29668.09474050853,
-   "high": 35791.86422413793
+   "nanoseconds": 30401.847892220772,
+   "low": 30302.680642283674,
+   "high": 30516.094588669315
   }
  ]
 }

@@ -3,481 +3,481 @@
   {
    "group": "base64/encode",
    "size": 16,
-   "reference": 42795.4,
-   "reference_fastest": 41605.2,
-   "reference_slowest": 67480.4,
-   "spread": 0.6046257308028432,
+   "reference": 81481.6,
+   "reference_fastest": 70731,
+   "reference_slowest": 106236.8,
+   "spread": 0.4357523661783765,
    "noisy": true,
-   "ferrosift": 1240.6481839373891,
-   "ferrosift_lower": 1158.778827727483,
-   "ferrosift_upper": 1285.714705526747,
+   "ferrosift": 711.7677299532818,
+   "ferrosift_lower": 700.9456324797175,
+   "ferrosift_upper": 722.7775585722969,
    "verdict": {
     "kind": "faster",
-    "ratio": 32.35958943392087
+    "ratio": 97.8599835607998
    }
   },
   {
    "group": "base64/encode",
    "size": 256,
-   "reference": 50254.4,
-   "reference_fastest": 46497.8,
-   "reference_slowest": 51803.6,
-   "spread": 0.10557881498933418,
-   "noisy": false,
-   "ferrosift": 1729.2450186799501,
-   "ferrosift_lower": 1675.3010694994969,
-   "ferrosift_upper": 1772.5456621004566,
+   "reference": 86418.8,
+   "reference_fastest": 74740.4,
+   "reference_slowest": 93423.8,
+   "spread": 0.21619601290459955,
+   "noisy": true,
+   "ferrosift": 818.1254769084717,
+   "ferrosift_lower": 798.858878164731,
+   "ferrosift_upper": 827.9494907933338,
    "verdict": {
     "kind": "faster",
-    "ratio": 26.23221561745291
+    "ratio": 90.27169027954159
    }
   },
   {
    "group": "base64/encode",
    "size": 4096,
-   "reference": 139840.8,
-   "reference_fastest": 138120.2,
-   "reference_slowest": 148488.8,
-   "spread": 0.07414574287332436,
+   "reference": 193996,
+   "reference_fastest": 192462.8,
+   "reference_slowest": 198997,
+   "spread": 0.03368213777603668,
    "noisy": false,
-   "ferrosift": 4136.382390336936,
-   "ferrosift_lower": 4001.6064629956354,
-   "ferrosift_upper": 4292.4647242263,
+   "ferrosift": 2355.881224304879,
+   "ferrosift_lower": 2289.076110997686,
+   "ferrosift_upper": 2401.0419975807636,
    "verdict": {
     "kind": "faster",
-    "ratio": 32.17736402595496
+    "ratio": 80.15803146880447
    }
   },
   {
    "group": "base64/encode",
    "size": 65536,
-   "reference": 3112635,
-   "reference_fastest": 2548290,
-   "reference_slowest": 3421010,
-   "spread": 0.2803798068196239,
-   "noisy": true,
-   "ferrosift": 62674.94814814815,
-   "ferrosift_lower": 61202.03703703704,
-   "ferrosift_upper": 64520.75,
+   "reference": 2796220,
+   "reference_fastest": 2621680,
+   "reference_slowest": 2813845,
+   "spread": 0.06872313337291057,
+   "noisy": false,
+   "ferrosift": 34709.08887783631,
+   "ferrosift_lower": 33518.57268931078,
+   "ferrosift_upper": 35704.00490682585,
    "verdict": {
     "kind": "faster",
-    "ratio": 39.495666122913946
+    "ratio": 73.42817722666149
    }
   },
   {
    "group": "base64/encode",
    "size": 1048576,
-   "reference": 102386860,
-   "reference_fastest": 87545010,
-   "reference_slowest": 105611040,
-   "spread": 0.17644871617314956,
+   "reference": 88133005,
+   "reference_fastest": 81502640,
+   "reference_slowest": 103052960,
+   "spread": 0.244520426825342,
    "noisy": true,
-   "ferrosift": 1300535.4609929079,
-   "ferrosift_lower": 1245956.415367887,
-   "ferrosift_upper": 1358652.6315789474,
+   "ferrosift": 914522.273249139,
+   "ferrosift_lower": 904167.592760181,
+   "ferrosift_upper": 926138.9035087719,
    "verdict": {
     "kind": "faster",
-    "ratio": 64.43516758088508
+    "ratio": 88.00260921036674
    }
   },
   {
    "group": "hex/encode",
    "size": 16,
-   "reference": 121954.2,
-   "reference_fastest": 79143.8,
-   "reference_slowest": 153470.6,
-   "spread": 0.6094648646787073,
+   "reference": 76876,
+   "reference_fastest": 65990.4,
+   "reference_slowest": 135361.8,
+   "spread": 0.9023804568395858,
    "noisy": true,
-   "ferrosift": 732.5993316284578,
-   "ferrosift_lower": 680.558195849458,
-   "ferrosift_upper": 794.1806350786933,
+   "ferrosift": 355.32767976712796,
+   "ferrosift_lower": 350.6940710422782,
+   "ferrosift_upper": 361.39873443476847,
    "verdict": {
     "kind": "faster",
-    "ratio": 99.65465853011872
+    "ratio": 182.59720832506426
    }
   },
   {
    "group": "hex/encode",
    "size": 256,
-   "reference": 113934,
-   "reference_fastest": 85524.8,
-   "reference_slowest": 184994,
-   "spread": 0.8730422876402127,
+   "reference": 135207.8,
+   "reference_fastest": 93422.8,
+   "reference_slowest": 162021,
+   "spread": 0.5073538656793469,
    "noisy": true,
-   "ferrosift": 824.2523278481144,
-   "ferrosift_lower": 789.7722556547002,
-   "ferrosift_upper": 871.6053710094909,
+   "ferrosift": 468.5336782022513,
+   "ferrosift_lower": 463.4076407506702,
+   "ferrosift_upper": 484.1925672552464,
    "verdict": {
     "kind": "faster",
-    "ratio": 98.12330539099985
+    "ratio": 192.94554753202428
    }
   },
   {
    "group": "hex/encode",
    "size": 4096,
-   "reference": 498287.6,
-   "reference_fastest": 474980.8,
-   "reference_slowest": 562094.2,
-   "spread": 0.17482554251801563,
+   "reference": 526689.6,
+   "reference_fastest": 491708.4,
+   "reference_slowest": 620626,
+   "spread": 0.2447695948429587,
    "noisy": true,
-   "ferrosift": 4444.050027158135,
-   "ferrosift_lower": 4187.129987129987,
-   "ferrosift_upper": 4859.62280962281,
+   "ferrosift": 2447.2782747110423,
+   "ferrosift_lower": 2395.081162062654,
+   "ferrosift_upper": 2493.781721045602,
    "verdict": {
     "kind": "faster",
-    "ratio": 97.74026063493325
+    "ratio": 197.17379265809788
    }
   },
   {
    "group": "hex/encode",
    "size": 65536,
-   "reference": 8635610,
-   "reference_fastest": 7338425,
-   "reference_slowest": 11846105,
-   "spread": 0.5219874450096751,
+   "reference": 7802450,
+   "reference_fastest": 7377125,
+   "reference_slowest": 10470420,
+   "spread": 0.3964517555383245,
    "noisy": true,
-   "ferrosift": 67445.25987525989,
-   "ferrosift_lower": 64879.25407925408,
-   "ferrosift_upper": 71950.98199672668,
+   "ferrosift": 38823.25894705708,
+   "ferrosift_lower": 38018.55032289815,
+   "ferrosift_upper": 39516.69565217391,
    "verdict": {
     "kind": "faster",
-    "ratio": 101.99200617350647
+    "ratio": 186.6837517218919
    }
   },
   {
    "group": "hex/encode",
    "size": 1048576,
-   "reference": 255736670,
-   "reference_fastest": 248404585,
-   "reference_slowest": 262996745,
-   "spread": 0.057059318086843,
+   "reference": 254904025,
+   "reference_fastest": 229233445,
+   "reference_slowest": 268230030,
+   "spread": 0.1529853638050635,
+   "noisy": true,
+   "ferrosift": 1185814.2446524063,
+   "ferrosift_lower": 1177102.8630136987,
+   "ferrosift_upper": 1195295.625,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 191.77970721678162
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 16,
+   "reference": 40417,
+   "reference_fastest": 36101.4,
+   "reference_slowest": 83989.2,
+   "spread": 1.1848430116040278,
+   "noisy": true,
+   "ferrosift": 658.9075124051806,
+   "ferrosift_lower": 653.3042980411401,
+   "ferrosift_upper": 672.6240992748169,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 53.67247477294134
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 256,
+   "reference": 58948.8,
+   "reference_fastest": 53332.6,
+   "reference_slowest": 69165.8,
+   "spread": 0.2685924056130066,
+   "noisy": true,
+   "ferrosift": 987.5989266343863,
+   "ferrosift_lower": 976.832983469346,
+   "ferrosift_upper": 1006.1682080554717,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 53.005650121932376
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 4096,
+   "reference": 437996.4,
+   "reference_fastest": 366112,
+   "reference_slowest": 483241.6,
+   "spread": 0.2674213760661046,
+   "noisy": true,
+   "ferrosift": 6252.338686251798,
+   "ferrosift_lower": 6194.27337161936,
+   "ferrosift_upper": 6307.762932357757,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 58.0414964744327
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 65536,
+   "reference": 6440765,
+   "reference_fastest": 5939135,
+   "reference_slowest": 7412740,
+   "spread": 0.22879347406713332,
+   "noisy": true,
+   "ferrosift": 90269.88011449987,
+   "ferrosift_lower": 89589.05978770557,
+   "ferrosift_upper": 90820.89997721577,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 65.3939236617337
+   }
+  },
+  {
+   "group": "overhead/md5",
+   "size": 1048576,
+   "reference": 117701595,
+   "reference_fastest": 110080935,
+   "reference_slowest": 133534235,
+   "spread": 0.19926068121676685,
+   "noisy": true,
+   "ferrosift": 1612783.1196581195,
+   "ferrosift_lower": 1605411.6883116884,
+   "ferrosift_upper": 1625965.0614754097,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 67.70190676797935
+   }
+  },
+  {
+   "group": "overhead/sha256",
+   "size": 16,
+   "reference": 72286.4,
+   "reference_fastest": 58135,
+   "reference_slowest": 99535.4,
+   "spread": 0.5727273733371699,
+   "noisy": true,
+   "ferrosift": 897.3786295140541,
+   "ferrosift_lower": 882.4553669825876,
+   "ferrosift_upper": 909.7455524625518,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 63.902483329142775
+   }
+  },
+  {
+   "group": "overhead/sha256",
+   "size": 256,
+   "reference": 93380.2,
+   "reference_fastest": 69837.4,
+   "reference_slowest": 132544.8,
+   "spread": 0.6715277971133067,
+   "noisy": true,
+   "ferrosift": 1022.0048998295412,
+   "ferrosift_lower": 1009.8861578336641,
+   "ferrosift_upper": 1041.3547062075302,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 67.06398846012628
+   }
+  },
+  {
+   "group": "overhead/sha256",
+   "size": 4096,
+   "reference": 400978,
+   "reference_fastest": 341052.2,
+   "reference_slowest": 437938.4,
+   "spread": 0.24162472754116188,
+   "noisy": true,
+   "ferrosift": 2766.061890116314,
+   "ferrosift_lower": 2755.0267223323735,
+   "ferrosift_upper": 2787.1008296032633,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 122.36808815006091
+   }
+  },
+  {
+   "group": "overhead/sha256",
+   "size": 65536,
+   "reference": 6238795,
+   "reference_fastest": 5896710,
+   "reference_slowest": 8350085,
+   "spread": 0.39324500965330644,
+   "noisy": true,
+   "ferrosift": 30401.847892220772,
+   "ferrosift_lower": 30302.680642283674,
+   "ferrosift_upper": 30516.094588669315,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 193.2327868124206
+   }
+  },
+  {
+   "group": "overhead/sha256",
+   "size": 1048576,
+   "reference": 108793020,
+   "reference_fastest": 95292760,
+   "reference_slowest": 115983165,
+   "spread": 0.1901813645765142,
+   "noisy": true,
+   "ferrosift": 741786.9565217391,
+   "ferrosift_lower": 738962.9468018394,
+   "ferrosift_upper": 745153.0448717949,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 127.88347394647676
+   }
+  },
+  {
+   "group": "cipher/tea",
+   "size": 16,
+   "reference": 111069.2,
+   "reference_fastest": 98640.8,
+   "reference_slowest": 136005.2,
+   "spread": 0.336406492528982,
+   "noisy": true,
+   "ferrosift": 1676.2807274689535,
+   "ferrosift_lower": 1665.407353291676,
+   "ferrosift_upper": 1700.0273555325466,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 58.02306632242398
+   }
+  },
+  {
+   "group": "cipher/tea",
+   "size": 256,
+   "reference": 166809,
+   "reference_fastest": 143967,
+   "reference_slowest": 204480.6,
+   "spread": 0.36277179288887296,
+   "noisy": true,
+   "ferrosift": 4521.761397149507,
+   "ferrosift_lower": 4462.30736158219,
+   "ferrosift_upper": 4565.88874120326,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 31.530991699561216
+   }
+  },
+  {
+   "group": "cipher/tea",
+   "size": 4096,
+   "reference": 973083.4,
+   "reference_fastest": 788254.2,
+   "reference_slowest": 1213284.4,
+   "spread": 0.4367870215440937,
+   "noisy": true,
+   "ferrosift": 46824.94142851888,
+   "ferrosift_lower": 46341.00169779287,
+   "ferrosift_upper": 47179.27412592648,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 16.707637296327746
+   }
+  },
+  {
+   "group": "cipher/tea",
+   "size": 65536,
+   "reference": 14060175,
+   "reference_fastest": 13952025,
+   "reference_slowest": 14512900,
+   "spread": 0.039891039763018596,
    "noisy": false,
-   "ferrosift": 1569760.6884057971,
-   "ferrosift_lower": 1532144.9367088608,
-   "ferrosift_upper": 1601176.0069515437,
+   "ferrosift": 752158.6172816264,
+   "ferrosift_lower": 745123.6790123456,
+   "ferrosift_upper": 762573.9114380244,
    "verdict": {
     "kind": "faster",
-    "ratio": 155.13883790510573
-   }
-  },
-  {
-   "group": "overhead/md5",
-   "size": 16,
-   "reference": 72464.2,
-   "reference_fastest": 39101.6,
-   "reference_slowest": 125480.2,
-   "spread": 1.1920175755752498,
-   "noisy": true,
-   "ferrosift": 1254.8048285734044,
-   "ferrosift_lower": 1184.1397540512585,
-   "ferrosift_upper": 1310.3319603605073,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 29.840987767132006
-   }
-  },
-  {
-   "group": "overhead/md5",
-   "size": 256,
-   "reference": 63338.4,
-   "reference_fastest": 54531.8,
-   "reference_slowest": 85547.2,
-   "spread": 0.4896776678918317,
-   "noisy": true,
-   "ferrosift": 1662.233517105125,
-   "ferrosift_lower": 1612.5297949658564,
-   "ferrosift_upper": 1741.6603004838298,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 31.310238847868998
-   }
-  },
-  {
-   "group": "overhead/md5",
-   "size": 4096,
-   "reference": 388968.8,
-   "reference_fastest": 276266.8,
-   "reference_slowest": 480180.4,
-   "spread": 0.5242415329969912,
-   "noisy": true,
-   "ferrosift": 8808.360225632952,
-   "ferrosift_lower": 8296.124885215795,
-   "ferrosift_upper": 9363.831867057674,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 29.503605353265407
-   }
-  },
-  {
-   "group": "overhead/md5",
-   "size": 65536,
-   "reference": 6488145,
-   "reference_fastest": 4975870,
-   "reference_slowest": 8357945,
-   "spread": 0.521269946957104,
-   "noisy": true,
-   "ferrosift": 124948.73421717172,
-   "ferrosift_lower": 119135.96342383107,
-   "ferrosift_upper": 131341.53981264637,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 37.884967749714875
-   }
-  },
-  {
-   "group": "overhead/md5",
-   "size": 1048576,
-   "reference": 118664365,
-   "reference_fastest": 109861545,
-   "reference_slowest": 134337545,
-   "spread": 0.20626242764624408,
-   "noisy": true,
-   "ferrosift": 2083429.5454545454,
-   "ferrosift_lower": 1994879.5454545454,
-   "ferrosift_upper": 2265879.5454545454,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 48.485165603964745
-   }
-  },
-  {
-   "group": "overhead/sha256",
-   "size": 16,
-   "reference": 55745.8,
-   "reference_fastest": 51244.2,
-   "reference_slowest": 60460.8,
-   "spread": 0.16533263492496306,
-   "noisy": true,
-   "ferrosift": 1499.5293046746535,
-   "ferrosift_lower": 1392.9476013596654,
-   "ferrosift_upper": 1603.7693798449613,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 31.952349660743522
-   }
-  },
-  {
-   "group": "overhead/sha256",
-   "size": 256,
-   "reference": 70222.4,
-   "reference_fastest": 66289.2,
-   "reference_slowest": 88056.6,
-   "spread": 0.309978012713892,
-   "noisy": true,
-   "ferrosift": 1759.7786833946002,
-   "ferrosift_lower": 1637.9968203497615,
-   "ferrosift_upper": 1852.7755240813356,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 35.7783223808876
-   }
-  },
-  {
-   "group": "overhead/sha256",
-   "size": 4096,
-   "reference": 404844.6,
-   "reference_fastest": 351419.4,
-   "reference_slowest": 457163.4,
-   "spread": 0.26119651836778857,
-   "noisy": true,
-   "ferrosift": 3693.7219255518303,
-   "ferrosift_lower": 3520.148619473332,
-   "ferrosift_upper": 3888.5754092650645,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 90.37227339418314
-   }
-  },
-  {
-   "group": "overhead/sha256",
-   "size": 65536,
-   "reference": 6609550,
-   "reference_fastest": 5765110,
-   "reference_slowest": 7626250,
-   "spread": 0.28158346634793596,
-   "noisy": true,
-   "ferrosift": 33642.000816016545,
-   "ferrosift_lower": 29668.09474050853,
-   "ferrosift_upper": 35791.86422413793,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 161.07319707901738
-   }
-  },
-  {
-   "group": "overhead/sha256",
-   "size": 1048576,
-   "reference": 111500910,
-   "reference_fastest": 105985665,
-   "reference_slowest": 131037450,
-   "spread": 0.2246778524049714,
-   "noisy": true,
-   "ferrosift": 745793.8490464678,
-   "ferrosift_lower": 729562.0370370371,
-   "ferrosift_upper": 755758.9005702067,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 140.23740232504798
-   }
-  },
-  {
-   "group": "cipher/tea",
-   "size": 16,
-   "reference": 124489.6,
-   "reference_fastest": 100892.8,
-   "reference_slowest": 148218.4,
-   "spread": 0.38015705729635235,
-   "noisy": true,
-   "ferrosift": 2578.311268355779,
-   "ferrosift_lower": 2147.967359050445,
-   "ferrosift_upper": 2772.657905892327,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 36.388477563563534
-   }
-  },
-  {
-   "group": "cipher/tea",
-   "size": 256,
-   "reference": 187333,
-   "reference_fastest": 102957.2,
-   "reference_slowest": 245341.2,
-   "spread": 0.7600582919186689,
-   "noisy": true,
-   "ferrosift": 4806.536538585237,
-   "ferrosift_lower": 4773.74283876713,
-   "ferrosift_upper": 4827.463414634146,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 21.327391045138082
-   }
-  },
-  {
-   "group": "cipher/tea",
-   "size": 4096,
-   "reference": 975936,
-   "reference_fastest": 762371.2,
-   "reference_slowest": 1213487.2,
-   "spread": 0.4622393271689947,
-   "noisy": true,
-   "ferrosift": 44940.756039092754,
-   "ferrosift_lower": 44831.118881118884,
-   "ferrosift_upper": 45413.068181818184,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 16.78748498004429
-   }
-  },
-  {
-   "group": "cipher/tea",
-   "size": 65536,
-   "reference": 17263370,
-   "reference_fastest": 13170920,
-   "reference_slowest": 20070275,
-   "spread": 0.39965284877749824,
-   "noisy": true,
-   "ferrosift": 1024229.6937751004,
-   "ferrosift_lower": 973837.5,
-   "ferrosift_upper": 1072654.298941799,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 12.27881155465787
+    "ratio": 18.29596422160569
    }
   },
   {
    "group": "cipher/tea",
    "size": 1048576,
-   "reference": 402114160,
-   "reference_fastest": 365102170,
-   "reference_slowest": 410276200,
-   "spread": 0.11234130625989396,
+   "reference": 364591560,
+   "reference_fastest": 342976395,
+   "reference_slowest": 400486590,
+   "spread": 0.15773868983692327,
+   "noisy": true,
+   "ferrosift": 12467723.128679562,
+   "ferrosift_lower": 12418672.5,
+   "ferrosift_upper": 12514636.842105262,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 27.406020592308547
+   }
+  },
+  {
+   "group": "cipher/xtea",
+   "size": 16,
+   "reference": 145548.2,
+   "reference_fastest": 110587.4,
+   "reference_slowest": 154925.8,
+   "spread": 0.3046303561294471,
+   "noisy": true,
+   "ferrosift": 1797.7108327727829,
+   "ferrosift_lower": 1778.7646931251356,
+   "ferrosift_upper": 1837.2277473123277,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 60.19253745855831
+   }
+  },
+  {
+   "group": "cipher/xtea",
+   "size": 256,
+   "reference": 178011.6,
+   "reference_fastest": 160336,
+   "reference_slowest": 270297.4,
+   "spread": 0.6177204182199363,
+   "noisy": true,
+   "ferrosift": 4639.273933531746,
+   "ferrosift_lower": 4573.479166666667,
+   "ferrosift_upper": 4699.58106884058,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 34.11708355518506
+   }
+  },
+  {
+   "group": "cipher/xtea",
+   "size": 4096,
+   "reference": 993710.6,
+   "reference_fastest": 814063,
+   "reference_slowest": 1084958.6,
+   "spread": 0.2726101543044827,
+   "noisy": true,
+   "ferrosift": 48884.538332248965,
+   "ferrosift_lower": 48619.19266253791,
+   "ferrosift_upper": 49275.07183908046,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 16.52078768466371
+   }
+  },
+  {
+   "group": "cipher/xtea",
+   "size": 65536,
+   "reference": 13509645,
+   "reference_fastest": 12281290,
+   "reference_slowest": 17077600,
+   "spread": 0.3550285740298875,
+   "noisy": true,
+   "ferrosift": 770066.9117647059,
+   "ferrosift_lower": 764321.0884353742,
+   "ferrosift_upper": 777970.3703703703,
+   "verdict": {
+    "kind": "faster",
+    "ratio": 15.78632100622703
+   }
+  },
+  {
+   "group": "cipher/xtea",
+   "size": 1048576,
+   "reference": 367066980,
+   "reference_fastest": 327848445,
+   "reference_slowest": 382228175,
+   "spread": 0.14814661346002847,
    "noisy": false,
-   "ferrosift": 12212975,
-   "ferrosift_lower": 12099900,
-   "ferrosift_upper": 12294850,
+   "ferrosift": 12834857.582688248,
+   "ferrosift_lower": 12757631.666666668,
+   "ferrosift_upper": 12916864.285714285,
    "verdict": {
     "kind": "faster",
-    "ratio": 29.695536749126667
-   }
-  },
-  {
-   "group": "cipher/xtea",
-   "size": 16,
-   "reference": 152899.6,
-   "reference_fastest": 130396.8,
-   "reference_slowest": 265528.4,
-   "spread": 0.8837930249654024,
-   "noisy": true,
-   "ferrosift": 1828.0612210588606,
-   "ferrosift_lower": 1800.0362418560871,
-   "ferrosift_upper": 1860.1156973108193,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 70.10144594151615
-   }
-  },
-  {
-   "group": "cipher/xtea",
-   "size": 256,
-   "reference": 206858.8,
-   "reference_fastest": 157951.6,
-   "reference_slowest": 284808.2,
-   "spread": 0.6132521314055772,
-   "noisy": true,
-   "ferrosift": 7245.037615421403,
-   "ferrosift_lower": 6827.1157568718545,
-   "ferrosift_upper": 7638.839763488544,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 20.677433339414083
-   }
-  },
-  {
-   "group": "cipher/xtea",
-   "size": 4096,
-   "reference": 944122.4,
-   "reference_fastest": 706652.6,
-   "reference_slowest": 1086097.8,
-   "spread": 0.4019025499236117,
-   "noisy": true,
-   "ferrosift": 46360.694805194806,
-   "ferrosift_lower": 46068.93382352941,
-   "ferrosift_upper": 46814.86291486291,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 15.094620725155428
-   }
-  },
-  {
-   "group": "cipher/xtea",
-   "size": 65536,
-   "reference": 12225040,
-   "reference_fastest": 11773160,
-   "reference_slowest": 12551415,
-   "spread": 0.0636607323984216,
-   "noisy": false,
-   "ferrosift": 786337.7450980393,
-   "ferrosift_lower": 765574.6794871795,
-   "ferrosift_upper": 931760.4110054348,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 12.635394100180683
-   }
-  },
-  {
-   "group": "cipher/xtea",
-   "size": 1048576,
-   "reference": 336885540,
-   "reference_fastest": 303075115,
-   "reference_slowest": 353034630,
-   "spread": 0.14829818756839488,
-   "noisy": false,
-   "ferrosift": 12997950,
-   "ferrosift_lower": 12937987.5,
-   "ferrosift_upper": 13121587.5,
-   "verdict": {
-    "kind": "faster",
-    "ratio": 23.097442668427124
+    "ratio": 25.38142677264108
    }
   }
  ]
