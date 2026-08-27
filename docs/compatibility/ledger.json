@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 235,
-    "aliased": 233,
-    "exact": 229,
+    "operations": 237,
+    "aliased": 235,
+    "exact": 231,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 5590
+    "pinned_cases": 5957
   },
   "operations": [
     {
@@ -1712,6 +1712,19 @@
       "status": "exact"
     },
     {
+      "id": "encoding.text_integer@1",
+      "display_name": "Text-Integer Conversion",
+      "category": "Encoding",
+      "reference_alias": "Text-Integer Conversion",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 136,
+      "status": "exact"
+    },
+    {
       "id": "encoding.unicode.escape@1",
       "display_name": "Escape Unicode Characters",
       "category": "Encoding",
@@ -2557,6 +2570,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 42,
+      "status": "exact"
+    },
+    {
+      "id": "network.ip.format@1",
+      "display_name": "Change IP format",
+      "category": "Networking",
+      "reference_alias": "Change IP format",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 231,
       "status": "exact"
     },
     {

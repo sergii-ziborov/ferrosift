@@ -23,25 +23,25 @@ use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
     AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BifidCipher, BitShift, Bitwise,
-    CaretMDecode, Checksum, ChiSquare, CitrixCtx1Decode, CitrixCtx1Encode, ClassicalCipher,
-    Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes, EncodeNetbiosName,
-    EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork, FormatMacAddresses,
-    FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBase92, FromBcd, FromBech32,
-    FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs, FromDecimal,
-    FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity, FromModhex, FromMorseCode,
-    FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings, HammingDistance, Head,
-    HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance, Ls47Decrypt,
-    Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge, MicrosoftScriptDecoder, MurmurHash3,
-    OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseTlv, ParseUnixFilePermissions,
-    PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes,
-    RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate,
-    SetOperation, Sha0, Split, StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase,
-    SwapEndianness, Tail, TakeBytes, TakeNthBytes, ToBase32, ToBase45, ToBase58, ToBase64,
-    ToBase85, ToBase92, ToBcd, ToBech32, ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode,
-    ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase,
-    ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString,
-    UnescapeUnicodeCharacters, UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode,
-    VarIntEncode, Wrap, XkcdRandomNumber, Xor, Xxtea,
+    CaretMDecode, ChangeIpFormat, Checksum, ChiSquare, CitrixCtx1Decode, CitrixCtx1Encode,
+    ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes,
+    EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork,
+    FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBase92,
+    FromBcd, FromBech32, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
+    FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity, FromModhex,
+    FromMorseCode, FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings,
+    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance,
+    Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge, MicrosoftScriptDecoder,
+    MurmurHash3, OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseTlv,
+    ParseUnixFilePermissions, PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes,
+    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
+    Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split, StripHeader, StripHtmlTags,
+    StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
+    ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBcd, ToBech32, ToBinary,
+    ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent,
+    ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable,
+    ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, UnicodeTextFormat, Unique,
+    UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap, XkcdRandomNumber, Xor, Xxtea,
 };
 
 #[cfg(feature = "crypto")]
@@ -62,8 +62,8 @@ use crate::{
 };
 #[cfg(feature = "bignum")]
 use crate::{
-    FiletimeToUnix, FromBase, FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex, ToBase,
-    ToBase62, UnixToFiletime,
+    FiletimeToUnix, FromBase, FromBase62, HexToObjectIdentifier, ObjectIdentifierToHex,
+    TextIntegerConversion, ToBase, ToBase62, UnixToFiletime,
 };
 #[cfg(feature = "hash")]
 use crate::{FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake};
@@ -447,6 +447,7 @@ fn register_encoding(registry: &mut OperationRegistry) -> Result<(), RegistryErr
     {
         registry.register(FromBase::new())?;
         registry.register(FromBase62::new())?;
+        registry.register(TextIntegerConversion::new())?;
         registry.register(ToBase::new())?;
         registry.register(ToBase62::new())?;
     }
@@ -557,6 +558,7 @@ fn register_parsing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
     registry.register(ParseTlv::new())?;
     registry.register(HexToPem::new())?;
     registry.register(PemToHex::new())?;
+    registry.register(ChangeIpFormat::new())?;
     registry.register(FormatMacAddresses::new())?;
     registry.register(StripHeader::ipv4())?;
     registry.register(StripHeader::tcp())?;

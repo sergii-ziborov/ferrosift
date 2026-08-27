@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 235 |
-| Reference-aliased | 233 |
-| Byte-pinned (`exact`) | 229 |
+| Registered operations | 237 |
+| Reference-aliased | 235 |
+| Byte-pinned (`exact`) | 231 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 5590 |
+| Pinned cases | 5957 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -164,6 +164,7 @@ does.
 | `encoding.radix.decode@1` | From Base | core | exact | 48 |
 | `encoding.radix.encode@1` | To Base | core | exact | 148 |
 | `encoding.rot13@1` | ROT13 | core | exact | 5 |
+| `encoding.text_integer@1` | Text-Integer Conversion | core | exact | 136 |
 | `encoding.unicode.escape@1` | Escape Unicode Characters | core | exact | 56 |
 | `encoding.unicode.unescape@1` | Unescape Unicode Characters | core | exact | 38 |
 | `encoding.url.decode@1` | URL Decode | core | exact | 26 |
@@ -229,6 +230,7 @@ does.
 | `math.stddev@1` | Standard Deviation | core | exact | 32 |
 | `math.subtract@1` | Subtract | core | exact | 32 |
 | `math.sum@1` | Sum | core | exact | 42 |
+| `network.ip.format@1` | Change IP format | core | exact | 231 |
 | `network.mac.format@1` | Format MAC addresses | core | exact | 63 |
 | `network.strip.ipv4@1` | Strip IPv4 header | core | exact | 2 |
 | `network.strip.tcp@1` | Strip TCP header | core | exact | 2 |

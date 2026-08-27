@@ -28,6 +28,28 @@ const SATURATION: i64 = 1_000_000;
 /// against Node directly; every operation reading a hex token shared the
 /// mistake, and none of their own corpus cases had reached it.
 pub(crate) fn parse(token: &str, radix: u32) -> JsInt {
+    scan(token, radix, SATURATION)
+}
+
+/// The same reading, without the byte-range ceiling.
+///
+/// [`parse`] stops counting at a million because every caller it was written
+/// for only had to tell a byte from something out of range. An address does
+/// not fit that: four thousand million is an ordinary IPv4 address written as
+/// a decimal, and saturating it turned `3232235521` into `1000000` and
+/// `192.168.0.1` into `0.15.66.64`.
+///
+/// The ceiling here is what a JavaScript number can hold exactly, which is the
+/// real limit the reference is working under.
+pub(crate) fn parse_wide(token: &str, radix: u32) -> JsInt {
+    scan(token, radix, MAX_SAFE_INTEGER)
+}
+
+/// What a JavaScript number counts by ones up to.
+const MAX_SAFE_INTEGER: i64 = 9_007_199_254_740_991;
+
+/// The reading both entry points share, differing only in where they stop.
+fn scan(token: &str, radix: u32, ceiling: i64) -> JsInt {
     let mut chars = token.chars().skip_while(|value| is_js_whitespace(*value));
     let mut first = chars.next();
     let negative = match first {
@@ -56,7 +78,7 @@ pub(crate) fn parse(token: &str, radix: u32) -> JsInt {
         value = value
             .saturating_mul(i64::from(radix))
             .saturating_add(i64::from(digit))
-            .min(SATURATION);
+            .min(ceiling);
         digits += 1;
         first = chars.next();
     }

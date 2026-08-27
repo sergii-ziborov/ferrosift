@@ -53,6 +53,7 @@ mod hexcontent;
 mod hexdump;
 mod html;
 mod identity;
+mod ipformat;
 mod jscompat;
 mod key;
 mod legacy;
@@ -135,6 +136,8 @@ mod numbase;
 mod rc4_op;
 #[cfg(feature = "analysis")]
 mod suggest;
+#[cfg(feature = "bignum")]
+mod textint;
 #[cfg(feature = "analysis")]
 mod xor_brute;
 
@@ -175,6 +178,7 @@ pub use hexcontent::{FromHexContent, ToHexContent};
 pub use hexdump::{FromHexdump, ToHexdump};
 pub use html::{FromHtmlEntity, ToHtmlEntity};
 pub use identity::Identity;
+pub use ipformat::ChangeIpFormat;
 pub use legacy::{MurmurHash3, Sha0};
 pub use lines::{AddLineNumbers, PadLines, RemoveLineNumbers, Tail};
 pub use lists::{Split, Unique};
@@ -257,6 +261,8 @@ pub use numbase::{FromBase, ToBase};
 pub use rc4_op::{Rc4, Rc4Drop};
 #[cfg(feature = "analysis")]
 pub use suggest::SuggestRecipe;
+#[cfg(feature = "bignum")]
+pub use textint::TextIntegerConversion;
 #[cfg(feature = "analysis")]
 pub use xor_brute::XorBruteForce;
 

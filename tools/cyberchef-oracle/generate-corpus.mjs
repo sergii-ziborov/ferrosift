@@ -75,6 +75,8 @@ import * as numbase from "./corpus/numbase.mjs";
 import * as filetime from "./corpus/filetime.mjs";
 import * as bcd from "./corpus/bcd.mjs";
 import * as convert from "./corpus/convert.mjs";
+import * as textint from "./corpus/textint.mjs";
+import * as ipformat from "./corpus/ipformat.mjs";
 
 const profile = selectedProfile();
 const chef = await loadChef(profile);
@@ -88,8 +90,36 @@ const builder = createBuilder({
 // Order is part of the fixture: it fixes the PRNG draw order, so a new family
 // is appended rather than inserted. Inserting one would re-draw every sample
 // after it and rewrite fixtures that nothing about the change had touched.
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47, stats, offsetcheck, table, colour, xxtea, lznt1, tlv, arith, numbase, filetime, bcd, convert]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47, stats, offsetcheck, table, colour, xxtea, lznt1, tlv, arith, numbase, filetime, bcd, convert, textint, ipformat]) {
     await family.add(builder);
+}
+
+// Operations the reference's Node API cannot be asked for by the name its own
+// interface gives them.
+//
+// `NodeRecipe` matches a name against each wrapper's `opName`, which the Node
+// build sets from the *class* name. For all but five operations the class name
+// and the display name come out the same once punctuation and spacing are
+// stripped, so nobody notices. For these they do not.
+//
+// A scan of the whole catalog found five: `Pseudo-Random Prime Generator`,
+// `JWK to PEM`, `Public Key from Certificate`, `Public Key from Private Key`,
+// and the one below -- the only one of them FerroSift implements.
+//
+// The fixture records the name a real CyberChef recipe carries, because that
+// is what the recipe *is* and what FerroSift's alias has to match. This map is
+// only the handle used to reach the same operation while baking. Recording the
+// wrapper name instead would put a name in the corpus that no CyberChef user
+// has ever typed.
+const NODE_HANDLES = {
+    "Text-Integer Conversion": "TextIntegerConverter",
+};
+
+/** The same recipe, addressed the way the Node API can answer to. */
+function bakeable(recipe) {
+    return recipe.map(step =>
+        NODE_HANDLES[step.op] ? {...step, op: NODE_HANDLES[step.op]} : step,
+    );
 }
 
 const {cases} = builder;
@@ -101,7 +131,7 @@ for (const testCase of cases) {
             const {hex} = await bakeOutput(
                 chef,
                 makeInput(testCase.input),
-                testCase.recipe.slice(0, length),
+                bakeable(testCase.recipe.slice(0, length)),
             );
             testCase.outputs_hex.push(hex);
         } catch (error) {
