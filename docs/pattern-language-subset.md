@@ -207,9 +207,11 @@ absolute address.
 - **Padding.** `padding[n]` advances the cursor by `n` bytes and produces no
   node. The bytes it covers are still counted in the enclosing size.
 - **`while` arrays.** Elements are read while the test holds, with `$` bound
-  to where the next element would start. An element of zero width would spin,
-  and the node budget is what stops it — the same bound that stops a wrong
-  count.
+  to where the next element would start. An element of zero width leaves `$`
+  where it was, so the test never changes its mind and the loop has no end of
+  its own; the first such element is refused with `pattern.eval.zero_width_loop`
+  rather than counted. The node budget still stands behind it, for a loop that
+  does advance by an amount the data never satisfies.
 - **Signed integers** are sign-extended from their declared width.
 - **Enums** read their backing type and resolve the value against the declared
   constants; an unmatched value is preserved with no name rather than failing.
@@ -266,3 +268,4 @@ are matchable identifiers whose meaning does not change between releases.
 | `pattern.eval.invalid_length` | A computed array or padding length is negative or too large |
 | `pattern.eval.depth_exceeded` | Type nesting exceeds the configured depth |
 | `pattern.eval.node_budget_exceeded` | The value tree exceeds the configured node budget |
+| `pattern.eval.zero_width_loop` | A `while`-array element occupies no bytes, so the loop cannot end |

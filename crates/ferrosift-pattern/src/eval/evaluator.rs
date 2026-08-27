@@ -14,6 +14,7 @@ pub(super) const UNKNOWN_TYPE: &str = "pattern.eval.unknown_type";
 pub(super) const DEPTH_EXCEEDED: &str = "pattern.eval.depth_exceeded";
 pub(super) const NODE_BUDGET: &str = "pattern.eval.node_budget_exceeded";
 pub(super) const INVALID_LENGTH: &str = "pattern.eval.invalid_length";
+pub(super) const ZERO_WIDTH_LOOP: &str = "pattern.eval.zero_width_loop";
 
 /// Evaluates every placement in `pattern` against `data`.
 ///
@@ -109,9 +110,15 @@ impl Evaluator<'_> {
             ArrayLength::While(condition) => {
                 // The test sees `$` as the offset the next element would start
                 // at, which is what makes `[while($ < end)]` mean what it
-                // reads as. An element of zero width would spin here; the node
-                // budget is what stops it, the same bound that stops a wrong
-                // count.
+                // reads as.
+                //
+                // An element of zero width does not advance the cursor, so a
+                // condition that reads `$` never changes its mind and the loop
+                // runs until something else stops it. The node budget did stop
+                // it, at a million wasted iterations and a million allocated
+                // nodes -- a bound rather than an answer. Refusing on the first
+                // element that occupies nothing costs one comparison and says
+                // what is actually wrong.
                 let mut index: u64 = 0;
                 loop {
                     let test = Scope {
@@ -128,6 +135,12 @@ impl Evaluator<'_> {
                         cursor,
                         depth + 1,
                     )?;
+                    if child.end() == cursor {
+                        return Err(fail(
+                            ZERO_WIDTH_LOOP,
+                            "a while-array element occupies no bytes, so the loop cannot end",
+                        ));
+                    }
                     cursor = child.end();
                     children.push(child);
                     index += 1;

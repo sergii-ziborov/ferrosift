@@ -418,6 +418,33 @@ fn a_while_sized_array_stops_when_its_test_fails() {
     assert_eq!(items.size, 4);
 }
 
+/// A `while`-array whose element reads nothing is refused, not counted.
+///
+/// The condition sees `$`, and an element of zero width leaves `$` where it
+/// was — so the test never changes its mind and the loop has no end of its own.
+/// The node budget did stop it, after a million iterations that allocated a
+/// million nodes to say nothing. Refusing on the first element that occupies no
+/// bytes costs one comparison and names the actual problem.
+#[test]
+fn a_while_sized_array_refuses_an_element_that_reads_nothing() {
+    let error = reject(
+        "struct Empty {};
+         struct S { Empty items[while($ < 4)]; };
+         S s @ 0;",
+        &[1, 2, 3, 4],
+    );
+    assert_eq!(error.code(), "pattern.eval.zero_width_loop");
+
+    // Padding of nothing is the other way to occupy no bytes.
+    let error = reject(
+        "struct Nothing { padding[0]; };
+         struct S { Nothing items[while($ < 4)]; };
+         S s @ 0;",
+        &[1, 2, 3, 4],
+    );
+    assert_eq!(error.code(), "pattern.eval.zero_width_loop");
+}
+
 #[test]
 fn sizeof_reads_builtin_widths_and_the_span_a_field_occupied() {
     let nodes = run(
@@ -496,8 +523,15 @@ fn a_field_cannot_refer_to_one_declared_after_it() {
     assert_eq!(error.code(), "pattern.eval.unknown_field");
 }
 
+/// A loop that cannot end is refused for that reason, not for running out.
+///
+/// The node budget still stands behind it and still stops a loop that advances
+/// by some amount the data never satisfies. What it should not be is the answer
+/// to a loop that was never going to end: a million iterations and a million
+/// nodes to report a ceiling, where the first element already showed the
+/// problem.
 #[test]
-fn a_while_array_that_never_advances_is_stopped_by_the_node_budget() {
+fn a_while_array_that_never_advances_says_so_rather_than_running_out() {
     let options = EvalOptions {
         max_nodes: 64,
         ..EvalOptions::default()
@@ -509,8 +543,18 @@ fn a_while_array_that_never_advances_is_stopped_by_the_node_budget() {
         &[0; 8],
         &options,
     )
+    .expect_err("expected the loop to be refused");
+    assert_eq!(error.code(), "pattern.eval.zero_width_loop");
+
+    // The budget is still what stops a loop that *does* advance.
+    let error = run_with(
+        "struct S { u8 items[while(true)]; };
+         S s @ 0;",
+        &[0; 8],
+        &options,
+    )
     .expect_err("expected the budget to stop it");
-    assert_eq!(error.code(), "pattern.eval.node_budget_exceeded");
+    assert_eq!(error.code(), "pattern.eval.out_of_bounds");
 }
 
 #[test]
