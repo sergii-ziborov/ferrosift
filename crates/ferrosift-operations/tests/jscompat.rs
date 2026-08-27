@@ -125,6 +125,49 @@ fn parse_int_matches_node() {
     );
 }
 
+/// The same fixture again, read for the value rather than the classification.
+///
+/// [`parse_int_matches_node`] deliberately compares inside a saturation window,
+/// because the reading it checks stops at a million. That leaves the digits
+/// past the window unchecked, and an operation that *prints* a `parseInt`
+/// result needs exactly those — so this replays the radix-ten cases through the
+/// unbounded reading and compares the printed form, which is what the reference
+/// puts in its output.
+#[test]
+fn parse_int_as_a_number_matches_node() {
+    let fixture = fixture();
+    let mut mismatches = Vec::new();
+    let mut checked = 0_usize;
+
+    for case in &fixture.parse_int {
+        // Radix ten only: that is the whole domain of the unbounded reading,
+        // and the reason is written where it is defined.
+        if case.radix != 10 {
+            continue;
+        }
+        checked += 1;
+        let value = ferrosift_operations::jscompat_testing::parse_int_decimal(&case.token);
+        let actual = ferrosift_operations::jscompat_testing::format_double(value);
+        // `String(NaN)` is "NaN", which is what the reference prints for it
+        // rather than treating it as a failure.
+        let expected = case.value.as_deref().unwrap_or("NaN");
+        if actual != expected {
+            mismatches.push(format!(
+                "String(parseInt({:?}, 10)) — node gives {expected:?}, we give {actual:?}",
+                case.token,
+            ));
+        }
+    }
+
+    assert!(checked > 0, "the fixture has no radix-ten parseInt cases");
+    assert!(
+        mismatches.is_empty(),
+        "{} of {checked} radix-ten parseInt cases disagree with Node:\n{}",
+        mismatches.len(),
+        mismatches.join("\n")
+    );
+}
+
 #[test]
 fn the_whitespace_definition_matches_node() {
     let fixture = fixture();

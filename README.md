@@ -13,7 +13,7 @@ older: see [reference profiles](docs/compatibility/profiles.md).
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Byte-pinned against the reference | Pinned cases |
 |---:|---:|---:|---:|
-| 240 | 238 | **234** | **6137** |
+| 243 | 241 | **237** | **6230** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -232,8 +232,8 @@ has a `std`. One pack does not yet reach bare metal;
 | Distance | Hamming Distance, Levenshtein Distance |
 | Encoding | Caret/M-decode, Citrix CTX1 Decode, Citrix CTX1 Encode, Decode NetBIOS Name, Encode NetBIOS Name, Escape Unicode Characters, From BCD, From Base, From Base32, From Base45, From Base58, From Base62, From Base64, From Base85, From Base92, From Bech32, From Binary, From Braille, From COBS, From Charcode, From Decimal, From Float, From HTML Entity, From Hex, From Hex Content, From Hexdump, From Modhex, From Morse Code, From Octal, From Punycode, From Quoted Printable, Microsoft Script Decoder, ROT13, Text-Integer Conversion, To BCD, To Base, To Base32, To Base45, To Base58, To Base62, To Base64, To Base85, To Base92, To Bech32, To Binary, To Braille, To COBS, To Charcode, To Decimal, To Float, To HTML Entity, To Hex, To Hex Content, To Hexdump, To Modhex, To Morse Code, To Octal, To Punycode, To Quoted Printable, URL Decode, URL Encode, Unescape Unicode Characters, Unicode Text Format, VarInt Decode, VarInt Encode |
 | Extractors | Extract IP addresses, Extract MAC addresses, Extract URLs, Extract domains, Extract email addresses, Extract file paths, Extract hashes, Strings |
-| Flow control | Comment, Fork, Merge |
-| Hashing | BLAKE2b, BLAKE2s, HMAC, Keccak, MD2, MD4, MD5, MurmurHash3, NT Hash, RIPEMD, SHA0, SHA1, SHA2, SHA3, SM3, Shake, Streebog, Whirlpool |
+| Flow control | Comment, Fork, Label, Merge |
+| Hashing | BLAKE2b, BLAKE2s, BLAKE3, Bcrypt parse, HMAC, Keccak, MD2, MD4, MD5, MurmurHash3, NT Hash, RIPEMD, SHA0, SHA1, SHA2, SHA3, SM3, Shake, Streebog, Whirlpool |
 | KDF | Derive PBKDF2 key, Scrypt |
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, Parity Bit, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Networking | Change IP format, Format MAC addresses, Strip IPv4 header, Strip TCP header, Strip UDP header |

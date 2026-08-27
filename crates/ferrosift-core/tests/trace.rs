@@ -1,7 +1,5 @@
 //! Execution trace summaries must remain bounded and representation-aware.
 
-use std::collections::BTreeMap;
-
 use ferrosift_core::{
     ExecutionStatus, ExecutionTrace, StepLocation, TraceEvent, TraceEventKind, ValueSummary,
 };

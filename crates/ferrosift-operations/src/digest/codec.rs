@@ -180,6 +180,45 @@ pub(super) fn blake2(
     Ok(output)
 }
 
+/// BLAKE3 at any output length, optionally keyed.
+///
+/// The output length is free rather than chosen from a list, because BLAKE3
+/// is an extendable-output function: the digest is a stream and the length is
+/// how much of it to take. That is unlike BLAKE2 above, where the length is
+/// part of the parameter block and each one is a different computation -- here
+/// a short digest really is the prefix of a long one.
+///
+/// The key is exactly thirty-two bytes or there is no key. The reference
+/// refuses any other length rather than padding or hashing it into one, which
+/// matters: a key derived from a wrong-length one would be a digest nobody
+/// could reproduce.
+pub(super) fn blake3(
+    input: &[u8],
+    size: i128,
+    key: Option<&[u8; 32]>,
+    context: &OperationContext<'_>,
+) -> Result<String, OperationError> {
+    context.ensure_active()?;
+    // The reference's interface bounds this at sixty-five thousand, and calls
+    // the bound arbitrary -- it is there to stop a recipe asking for a
+    // gigabyte of digest. Reproduced, bound and all.
+    if !(1..=65_535).contains(&size) {
+        return Err(failed(UNSUPPORTED_SIZE));
+    }
+    let length = usize::try_from(size).map_err(|_| failed(UNSUPPORTED_SIZE))?;
+
+    let mut hasher = match key {
+        Some(key) => blake3::Hasher::new_keyed(key),
+        None => blake3::Hasher::new(),
+    };
+    hasher.update(input);
+    let mut output = alloc::vec![0_u8; length];
+    hasher.finalize_xof().fill(&mut output);
+
+    context.ensure_active()?;
+    Ok(to_hex_lower(&output))
+}
+
 /// RIPEMD at one of its four published digest sizes.
 pub(super) fn ripemd(
     input: &[u8],

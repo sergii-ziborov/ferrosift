@@ -13,13 +13,13 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 240 |
-| Reference-aliased | 238 |
-| Byte-pinned (`exact`) | 234 |
+| Registered operations | 243 |
+| Reference-aliased | 241 |
+| Byte-pinned (`exact`) | 237 |
 | Interoperable, exempt from byte-pinning | 4 |
 | Aliased but unverified | 0 |
 | FerroSift-native, no reference alias | 2 |
-| Pinned cases | 6137 |
+| Pinned cases | 6230 |
 
 `exact` means the reference bytes are pinned — by the case count shown,
 or, where that is zero, by the test named in the note. `interoperable`
@@ -182,9 +182,12 @@ does.
 | `filesystem.unix_permissions@1` | Parse UNIX file permissions | core | exact | 32 |
 | `flow.comment@1` | Comment | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
 | `flow.fork@1` | Fork | core | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
+| `flow.label@1` | Label | core | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
 | `flow.merge@1` | Merge | core | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
+| `hash.bcrypt.parse@1` | Bcrypt parse | core | exact | 20 |
 | `hash.blake2b@1` | BLAKE2b | hash | exact | 102 |
 | `hash.blake2s@1` | BLAKE2s | hash | exact | 61 |
+| `hash.blake3@1` | BLAKE3 | hash | exact | 73 |
 | `hash.hmac@1` | HMAC | hash | exact | 5 |
 | `hash.keccak@1` | Keccak | hash | exact | 24 |
 | `hash.md2@1` | MD2 | hash | exact | 13 |

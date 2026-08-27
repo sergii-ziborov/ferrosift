@@ -1,7 +1,5 @@
 //! Round-trip tests for `FerroSift` values.
 
-use std::collections::BTreeMap;
-
 use ferrosift_model::{StructuredValue, TextEncoding, TextValue, Value, ValueKind, VirtualFile};
 
 fn round_trip(value: &Value) -> Value {

@@ -25,6 +25,7 @@ mod base64;
 mod base85;
 mod base92;
 mod bcd;
+mod bcrypt_parse;
 mod bech32;
 mod bifid;
 mod binary;
@@ -56,6 +57,7 @@ mod identity;
 mod ipformat;
 mod jscompat;
 mod key;
+mod label;
 mod legacy;
 mod lines;
 mod lists;
@@ -152,6 +154,7 @@ pub use base64::{FromBase64, ToBase64};
 pub use base85::{FromBase85, ToBase85};
 pub use base92::{FromBase92, ToBase92};
 pub use bcd::{FromBcd, ToBcd};
+pub use bcrypt_parse::BcryptParse;
 pub use bech32::{FromBech32, ToBech32};
 pub use bifid::BifidCipher;
 pub use binary::{FromBinary, ToBinary};
@@ -179,6 +182,7 @@ pub use hexdump::{FromHexdump, ToHexdump};
 pub use html::{FromHtmlEntity, ToHtmlEntity};
 pub use identity::Identity;
 pub use ipformat::ChangeIpFormat;
+pub use label::Label;
 pub use legacy::{MurmurHash3, Sha0};
 pub use lines::{AddLineNumbers, PadLines, RemoveLineNumbers, Tail};
 pub use lists::{Split, Unique};
@@ -237,7 +241,7 @@ pub use count::CountOccurrences;
 #[cfg(feature = "text")]
 pub use defang::{DefangIpAddresses, DefangUrl, FangUrl};
 #[cfg(feature = "hash")]
-pub use digest::{Blake2, FixedDigest, Ripemd, Streebog};
+pub use digest::{Blake2, Blake3, FixedDigest, Ripemd, Streebog};
 #[cfg(feature = "text")]
 pub use extract::{
     ExtractDomains, ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,
@@ -364,6 +368,16 @@ pub mod jscompat_testing {
             crate::jscompat::number::JsInt::Nan => None,
             crate::jscompat::number::JsInt::Value(value) => Some(value),
         }
+    }
+
+    /// `parseInt` at radix ten, as the `Number` it really produces.
+    ///
+    /// Exposed separately from [`parse_int`] because the two answer different
+    /// questions: that one classifies and this one is the value the reference
+    /// goes on to print, digits and exponential form and all.
+    #[must_use]
+    pub fn parse_int_decimal(token: &str) -> f64 {
+        crate::jscompat::number::parse_decimal(token)
     }
 
     /// Accumulates keys the way a JavaScript object literal used as a set does.

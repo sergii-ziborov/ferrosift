@@ -1,7 +1,7 @@
 # Operations not implemented
 
-FerroSift covers 240 of CyberChef 11.3.0's 503 catalog operations. This page
-records what the other 263 are waiting on, so that "not done yet" is a list
+FerroSift covers 243 of CyberChef 11.3.0's 503 catalog operations. This page
+records what the other 260 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The grouping below is by *import*, which is a proxy and not the thing itself.
@@ -18,20 +18,28 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-164 of the 263 are built on a JavaScript library, and 21 more reach one
+162 of the 260 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The three headings below
-partition the 263 exactly: 164 plus 21 plus 78. The obstacle is **not** that
+partition the 260 exactly: 162 plus 21 plus 77. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
 **The argument does not apply to a standardised primitive**, and that
-exception has now been tested rather than assumed. BLAKE2b and BLAKE2s sat
-under `blakejs` here on the reasoning below; a published hash has exactly one
-answer for a given input, key and digest length, so any correct implementation
-is byte-identical by construction. RustCrypto's is, on every case in the
-corpus — including keyed digests at each length, which are the ones a careless
-port gets wrong, because the length is part of BLAKE2's parameter block and a
-short keyed digest is not a long one truncated.
+exception has now been tested rather than assumed. BLAKE2b, BLAKE2s and BLAKE3
+sat under `blakejs` and `@noble/hashes` here on the reasoning below; a
+published hash has exactly one answer for a given input, key and digest length,
+so any correct implementation is byte-identical by construction. RustCrypto's
+and the `blake3` crate's are, on every case in the corpus — including keyed
+digests at each length, which are the ones a careless port gets wrong, because
+the length is part of BLAKE2's parameter block and a short keyed digest is not
+a long one truncated.
+
+**And a row can name a library the operation barely uses.** `Bcrypt parse`
+imported `bcryptjs` and computed no bcrypt: the two functions it calls count
+characters and read a field, so the port needs no key-stretching at all and
+does not even join the `hash` feature pack. That is the page's own caveat about
+imports being a proxy, arriving from the other direction — not "the import list
+missed a dependency" but "the import list named one that was never the point".
 
 So a row here is worth re-reading before it is believed. The test is whether
 the *output format* is a choice the library made, not whether a library is
@@ -89,7 +97,7 @@ list rather than a search.
 | `moment-timezone` | 5 | DateTime Delta, From UNIX Timestamp, Parse DateTime, To UNIX Timestamp, Translate DateTime Format |
 | `codepage` | 4 | Decode text, Encode text, MIME Decoding, Text Encoding Brute Force |
 | `bson` | 3 | BSON deserialise, BSON serialise, Parse ObjectID timestamp |
-| `bcryptjs` | 3 | Bcrypt, Bcrypt compare, Bcrypt parse |
+| `bcryptjs` | 2 | Bcrypt, Bcrypt compare |
 | `crypto-api/src/crypto-api.mjs` | 3 | Derive HKDF key, Flask Session Sign, Flask Session Verify |
 | `xregexp` | 3 | Filter, Register, Regular expression |
 | `jsonwebtoken` | 3 | JWT Decode, JWT Sign, JWT Verify |
@@ -118,7 +126,6 @@ list rather than a search.
 | `diff` | 1 | Diff |
 | `jsonata` | 1 | Jsonata Query |
 | `url` | 1 | Parse URI |
-| `@noble/hashes/blake3.js` | 1 | BLAKE3 |
 | `tesseract.js` | 1 | Optical Character Recognition |
 | `avsc` | 1 | Avro to JSON |
 | `js-yaml` | 1 | YAML to JSON |
@@ -179,7 +186,7 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 78 import nothing outside the reference's own source, transitively.
+These 77 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
 
@@ -203,6 +210,16 @@ Three left this list at once, for three reasons, and only one was a port.
 `bignumber.js`, it was handed one, so reading the imports had missed it.
 `LZNT1 Decompress` and `Parse TLV` had been implemented and never struck off —
 which is why the counts above now claim to partition the total exactly, a
-claim that fails loudly the next time one of them drifts.
+claim that fails loudly the next time one of them drifts. It did its job
+immediately: `Label` was ported next and the check named all three places the
+page still said otherwise before anything was committed.
 
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Label, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Subsection, Tar, TEA Decrypt, TEA Encrypt, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt
+`Label` is worth one line on why it was cheap. It is flow control that returns
+the state it was given, so the whole operation is a pass-through — and the
+reason it sat here is `Jump`, which is what a label is *for*. `Jump` needs a
+program counter the linear executor does not have; a `Label` with nothing
+jumping to it behaves identically in both, which is what the pin in
+`conformance_fork.rs` asserts. It is exempt from the corpus because the
+reference's Node build omits flow-control operations entirely.
+
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Subsection, Tar, TEA Decrypt, TEA Encrypt, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20, XTEA Decrypt, XTEA Encrypt

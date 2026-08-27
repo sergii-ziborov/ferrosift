@@ -78,6 +78,8 @@ import * as convert from "./corpus/convert.mjs";
 import * as textint from "./corpus/textint.mjs";
 import * as ipformat from "./corpus/ipformat.mjs";
 import * as digest2 from "./corpus/digest2.mjs";
+import * as blake3 from "./corpus/blake3.mjs";
+import * as bcrypt from "./corpus/bcrypt.mjs";
 
 const profile = selectedProfile();
 const chef = await loadChef(profile);
@@ -91,7 +93,7 @@ const builder = createBuilder({
 // Order is part of the fixture: it fixes the PRNG draw order, so a new family
 // is appended rather than inserted. Inserting one would re-draw every sample
 // after it and rewrite fixtures that nothing about the change had touched.
-for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47, stats, offsetcheck, table, colour, xxtea, lznt1, tlv, arith, numbase, filetime, bcd, convert, textint, ipformat, digest2]) {
+for (const family of [encoding, text, digest, crypto, compress, extract, shape, bitwise, classical, checksum, sets, legacyDigest, casing, shaping, unicodeEscape, brute, misc, substitute, netfmt, markup, varint, braille, annotate, bigint, framing, numeric, mail, crosskind, sponge, snort, bacon, legacyHash, bifid, caseregex, unixperms, rc4drop, punycode, bech32, ls47, stats, offsetcheck, table, colour, xxtea, lznt1, tlv, arith, numbase, filetime, bcd, convert, textint, ipformat, digest2, blake3, bcrypt]) {
     await family.add(builder);
 }
 

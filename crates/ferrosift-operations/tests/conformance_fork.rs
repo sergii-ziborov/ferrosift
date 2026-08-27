@@ -289,3 +289,38 @@ fn comment_passes_every_representation_through_unchanged() {
     );
     assert_eq!(bytes, Value::Bytes(raw));
 }
+
+/// `Label` names a position in a recipe and must not touch the value either.
+///
+/// Exempt from the automatic corpus for the same reason as `Comment`: the
+/// reference marks it flow control and its Node build omits those, so there is
+/// nothing to bake against. `docs/compatibility/exemptions.json` records that
+/// and points here.
+///
+/// What it names is a jump target, and `FerroSift` has no Jump — so the claim
+/// being pinned is the whole of the operation's behaviour rather than part of
+/// it. A Label with nothing jumping to it is a pass-through in the reference
+/// too, which is why a recipe carrying one agrees step for step.
+#[test]
+fn label_passes_every_representation_through_unchanged() {
+    let name = Arguments::from([("name".into(), ArgumentValue::Text("retry".into()))]);
+
+    let text = run_recipe(
+        vec![step("mark", "flow.label@1", name.clone())],
+        support::text("value survives the label"),
+    );
+    match text {
+        Value::Text(value) => {
+            assert_eq!(value.text, "value survives the label");
+            assert_eq!(value.encoding, TextEncoding::Utf8);
+        }
+        other => panic!("text must stay text, got {other:?}"),
+    }
+
+    let raw = vec![0x00, 0xff, 0x80, 0x41];
+    let bytes = run_recipe(
+        vec![step("mark", "flow.label@1", name)],
+        Value::Bytes(raw.clone()),
+    );
+    assert_eq!(bytes, Value::Bytes(raw));
+}

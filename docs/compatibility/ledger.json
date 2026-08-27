@@ -7,13 +7,13 @@
     ]
   },
   "totals": {
-    "operations": 240,
-    "aliased": 238,
-    "exact": 234,
+    "operations": 243,
+    "aliased": 241,
+    "exact": 237,
     "interoperable": 4,
     "unverified": 0,
     "native": 2,
-    "pinned_cases": 6137
+    "pinned_cases": 6230
   },
   "operations": [
     {
@@ -1948,6 +1948,20 @@
       "note": "flow-control map; pinned in conformance_fork.rs"
     },
     {
+      "id": "flow.label@1",
+      "display_name": "Label",
+      "category": "Flow control",
+      "reference_alias": "Label",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 0,
+      "status": "exact",
+      "note": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
+    },
+    {
       "id": "flow.merge@1",
       "display_name": "Merge",
       "category": "Flow control",
@@ -1960,6 +1974,19 @@
       "conformance_cases": 0,
       "status": "exact",
       "note": "flow-control join; pinned in conformance_fork.rs"
+    },
+    {
+      "id": "hash.bcrypt.parse@1",
+      "display_name": "Bcrypt parse",
+      "category": "Hashing",
+      "reference_alias": "Bcrypt parse",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 20,
+      "status": "exact"
     },
     {
       "id": "hash.blake2b@1",
@@ -1985,6 +2012,19 @@
         "Wasm32UnknownUnknown"
       ],
       "conformance_cases": 61,
+      "status": "exact"
+    },
+    {
+      "id": "hash.blake3@1",
+      "display_name": "BLAKE3",
+      "category": "Hashing",
+      "reference_alias": "BLAKE3",
+      "feature": "hash",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown"
+      ],
+      "conformance_cases": 73,
       "status": "exact"
     },
     {

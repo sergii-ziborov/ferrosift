@@ -358,3 +358,64 @@ impl Operation for Blake2 {
         Ok(text(written))
     }
 }
+
+/// BLAKE3, whose digest is a stream cut to whatever length is asked for.
+pub struct Blake3 {
+    spec: OperationSpec,
+}
+
+impl Blake3 {
+    /// Creates the BLAKE3 operation.
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            spec: digest_spec(
+                "hash.blake3@1",
+                "BLAKE3",
+                "Computes a BLAKE3 digest of a chosen length as lower-case hex.",
+                vec![
+                    integer_argument("size", "Digest length in bytes, 1 to 65535.", 16),
+                    text_argument("key", "Key; empty for none, or exactly 32 bytes.", ""),
+                ],
+            ),
+        }
+    }
+}
+
+impl Default for Blake3 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Operation for Blake3 {
+    fn spec(&self) -> &OperationSpec {
+        &self.spec
+    }
+
+    fn execute(
+        &self,
+        input: Value,
+        arguments: &Arguments,
+        context: &mut OperationContext<'_>,
+    ) -> Result<Value, OperationError> {
+        context.ensure_active()?;
+        let size = integer_value(arguments, "size")?;
+        // A plain string rather than a toggleString: the reference reads this
+        // one with the same rule it reads the input by, so the bytes of the
+        // key are the bytes of its characters.
+        let key_text = text_value(arguments, "key")?;
+        let key_bytes = crate::jscompat::string::str_to_byte_array(key_text);
+        let key = if key_bytes.is_empty() {
+            None
+        } else {
+            Some(
+                <[u8; 32]>::try_from(key_bytes.as_slice())
+                    .map_err(|_| crate::failure::failed("hash.blake3.key_length"))?,
+            )
+        };
+
+        let input = take_bytes(input)?;
+        Ok(text(codec::blake3(&input, size, key.as_ref(), context)?))
+    }
+}

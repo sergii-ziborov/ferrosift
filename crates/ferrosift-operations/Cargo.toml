@@ -32,6 +32,7 @@ arithmetic = ["bignum"]
 # Digests and HMAC.
 hash = [
     "dep:blake2",
+    "dep:blake3",
     "dep:digest",
     "dep:hmac",
     "dep:md2",
@@ -100,6 +101,7 @@ ferrosift-core = { path = "../ferrosift-core" }
 ferrosift-model = { path = "../ferrosift-model" }
 hmac = { version = "0.12.1", default-features = false, optional = true }
 blake2 = { version = "0.10.6", default-features = false, optional = true }
+blake3 = { version = "1.8.7", default-features = false, optional = true }
 digest = { version = "0.10.7", default-features = false, optional = true }
 md2 = { version = "0.10.2", default-features = false, optional = true }
 md4 = { version = "0.10.2", default-features = false, optional = true }

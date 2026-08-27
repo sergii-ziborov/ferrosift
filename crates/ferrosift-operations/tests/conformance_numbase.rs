@@ -12,7 +12,7 @@
 
 #![cfg(feature = "bignum")]
 
-use ferrosift_model::{ArgumentValue, Arguments, Value};
+use ferrosift_model::{ArgumentValue, Value};
 
 mod support;
 

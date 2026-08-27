@@ -48,6 +48,38 @@ pub(crate) fn parse_wide(token: &str, radix: u32) -> JsInt {
 /// What a JavaScript number counts by ones up to.
 const MAX_SAFE_INTEGER: i64 = 9_007_199_254_740_991;
 
+/// The same reading once more, as the *number* the reference ends up holding.
+///
+/// `parseInt` produces a `Number`, not an integer. Both readings above stop at
+/// a ceiling, which is right for a caller that goes on to index with the answer
+/// and wrong for one that goes on to print it: a long enough run of digits
+/// rounds to a double there and prints in exponential form, where saturating
+/// would print a round number the reference never had.
+///
+/// Radix ten only, and that restriction is what makes it exact. Rust's
+/// decimal-to-double conversion is correctly rounded and so is the reference's,
+/// so handing the digits over unchanged gives the same double; reproducing that
+/// rounding for base thirty-six would mean writing it out by hand, and no
+/// caller wants it.
+pub(crate) fn parse_decimal(token: &str) -> f64 {
+    let trimmed = token.trim_start_matches(is_js_whitespace);
+    let (negative, rest) = match trimmed.strip_prefix('-') {
+        Some(rest) => (true, rest),
+        None => (false, trimmed.strip_prefix('+').unwrap_or(trimmed)),
+    };
+    let digits = rest.len()
+        - rest
+            .trim_start_matches(|value: char| value.is_ascii_digit())
+            .len();
+    if digits == 0 {
+        return f64::NAN;
+    }
+    // Digits only, so this cannot fail; a run too long to hold reads as
+    // infinity, which is what the reference gets for it too.
+    let value = rest[..digits].parse::<f64>().unwrap_or(f64::NAN);
+    if negative { -value } else { value }
+}
+
 /// The reading both entry points share, differing only in where they stop.
 fn scan(token: &str, radix: u32, ceiling: i64) -> JsInt {
     let mut chars = token.chars().skip_while(|value| is_js_whitespace(*value));

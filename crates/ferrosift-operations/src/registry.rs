@@ -22,18 +22,18 @@
 use ferrosift_core::{OperationRegistry, RegistryError};
 
 use crate::{
-    AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BifidCipher, BitShift, Bitwise,
-    CaretMDecode, ChangeIpFormat, Checksum, ChiSquare, CitrixCtx1Decode, CitrixCtx1Encode,
+    AddLineNumbers, AlternatingCaps, BaconDecode, BaconEncode, BcryptParse, BifidCipher, BitShift,
+    Bitwise, CaretMDecode, ChangeIpFormat, Checksum, ChiSquare, CitrixCtx1Decode, CitrixCtx1Encode,
     ClassicalCipher, Comment, DechunkHttpResponse, DecodeNetbiosName, DropBytes, DropNthBytes,
     EncodeNetbiosName, EscapeSmartCharacters, EscapeUnicodeCharacters, ExpandAlphabetRange, Fork,
     FormatMacAddresses, FromBase32, FromBase45, FromBase58, FromBase64, FromBase85, FromBase92,
     FromBcd, FromBech32, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
     FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity, FromModhex,
     FromMorseCode, FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings,
-    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, LevenshteinDistance,
-    Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge, MicrosoftScriptDecoder,
-    MurmurHash3, OffsetChecker, PadLines, ParityBit, ParseColourCode, ParseTlv,
-    ParseUnixFilePermissions, PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes,
+    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, Label,
+    LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge,
+    MicrosoftScriptDecoder, MurmurHash3, OffsetChecker, PadLines, ParityBit, ParseColourCode,
+    ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes,
     RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
     Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split, StripHeader, StripHtmlTags,
     StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes, TakeNthBytes,
@@ -52,7 +52,8 @@ use crate::{
 use crate::{Aggregate, ConvertUnits, ExtendedGcd, Mod, ModularInverse};
 #[cfg(feature = "hash")]
 use crate::{
-    Blake2, FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake, Streebog,
+    Blake2, Blake3, FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake,
+    Streebog,
 };
 #[cfg(feature = "compression")]
 use crate::{
@@ -204,14 +205,6 @@ pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
 }
 
 /// Recipe suggestion and brute-force search.
-#[cfg_attr(
-    not(feature = "analysis"),
-    expect(
-        unused_variables,
-        clippy::unnecessary_wraps,
-        reason = "the analysis pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
-    )
-)]
 fn register_analysis(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     // Outside the feature gate: both are arithmetic over the input and pull
     // nothing, so gating them would remove an operation for a cost it does
@@ -338,14 +331,6 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
 }
 
 /// Compressors and their inverses.
-#[cfg_attr(
-    not(feature = "compression"),
-    expect(
-        unused_variables,
-        clippy::unnecessary_wraps,
-        reason = "the compression pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
-    )
-)]
 fn register_compression(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     // Outside the feature gate: the decoder is a loop over the input and
     // pulls nothing, unlike the DEFLATE and bzip2 pair beside it.
@@ -488,25 +473,20 @@ fn register_flow(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
     registry.register(Fork::new())?;
     registry.register(Merge::new())?;
     registry.register(Comment::new())?;
+    registry.register(Label::new())?;
     Ok(())
 }
 
 /// Digests and message authentication.
-#[cfg_attr(
-    not(feature = "hash"),
-    expect(
-        unused_variables,
-        clippy::unnecessary_wraps,
-        reason = "the hash pack is not enabled, so the body is empty -- the signature is fixed by the family table and cannot vary by feature"
-    )
-)]
 fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    // SHA-0 and MurmurHash3 need no dependency, so they are not behind the
-    // `hash` pack. That pack exists to keep the RustCrypto tree optional, and
-    // gating a self-contained implementation behind it would charge these two
-    // for a cost they do not incur.
+    // SHA-0, MurmurHash3, and reading a bcrypt hash need no dependency, so they
+    // are not behind the `hash` pack. That pack exists to keep the RustCrypto
+    // tree optional, and gating a self-contained implementation behind it would
+    // charge these three for a cost they do not incur. Reading a bcrypt hash
+    // computes no bcrypt: it is string arithmetic on a fixed layout.
     registry.register(Sha0::new())?;
     registry.register(MurmurHash3::new())?;
+    registry.register(BcryptParse::new())?;
 
     #[cfg(feature = "hash")]
     {
@@ -523,6 +503,7 @@ fn register_hashing(registry: &mut OperationRegistry) -> Result<(), RegistryErro
         registry.register(NtHash::new())?;
         registry.register(Blake2::b())?;
         registry.register(Blake2::s())?;
+        registry.register(Blake3::new())?;
         registry.register(Ripemd::new())?;
         registry.register(Streebog::new())?;
         registry.register(Hmac::new())?;
