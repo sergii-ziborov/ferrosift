@@ -126,6 +126,28 @@ const BATCHES: &[Batch] = &[
             "bench/benches/dispatch.rs",
         ],
     },
+    // These two were benchmark files that no batch named, so `all` never ran
+    // them and `check` never called them stale -- and their numbers are in the
+    // published report. A measurement nothing re-runs is the exact failure this
+    // provenance machinery exists to prevent, arrived at from the other side.
+    Batch {
+        name: "cipher",
+        watches: &[
+            "crates/ferrosift-operations/src/tea",
+            "crates/ferrosift-operations/src/xxtea",
+            "crates/ferrosift-operations/src/key.rs",
+            "bench/benches/cipher.rs",
+        ],
+    },
+    Batch {
+        name: "peer",
+        watches: &[
+            "crates/ferrosift-operations/src/base64",
+            "crates/ferrosift-operations/src/hex",
+            "crates/ferrosift-operations/src/rot13",
+            "bench/benches/peer.rs",
+        ],
+    },
 ];
 
 fn repo_root() -> PathBuf {
