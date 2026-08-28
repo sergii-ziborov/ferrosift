@@ -6,7 +6,7 @@ use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{ArgumentSpec, Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::args::{integer_argument, integer_value};
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 use crate::value::{take_bytes, take_text, text};
 
 use super::codec::{self, Fletcher};
@@ -19,7 +19,7 @@ fn checksum_spec(
     input: ValueKind,
     arguments: alloc::vec::Vec<ArgumentSpec>,
 ) -> OperationSpec {
-    build(SpecDefinition {
+    build_reducer(SpecDefinition {
         id,
         display_name,
         category: "Checksums",

@@ -3,7 +3,7 @@
 use alloc::{vec, vec::Vec};
 
 use ferrosift_core::{Operation, OperationContext, OperationError};
-use ferrosift_model::{ArgumentSpec, Arguments, OperationSpec, Value, ValueKind};
+use ferrosift_model::{ArgumentSpec, Arguments, OperationSpec, OutputBehavior, Value, ValueKind};
 
 use crate::args::{integer_argument, integer_value, text_argument, text_value};
 use crate::spec::{UniformSpec, build_uniform};
@@ -143,17 +143,23 @@ impl HammingDistance {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: text_spec(
-                "distance.hamming@1",
-                "Hamming Distance",
-                "Counts the differing bytes or bits between two samples.",
-                "Distance",
-                vec![
-                    text_argument("delimiter", "Between samples.", "\n\n"),
-                    text_argument("unit", "Byte or Bit.", "Byte"),
-                    text_argument("input_type", "Raw string or Hex.", "Raw string"),
-                ],
-            ),
+            // A count, whatever the samples weigh. Declared here rather than in
+            // `text_spec`, which most of its callers use for operations that
+            // really are proportional.
+            spec: OperationSpec {
+                output_behavior: OutputBehavior::Reducer,
+                ..text_spec(
+                    "distance.hamming@1",
+                    "Hamming Distance",
+                    "Counts the differing bytes or bits between two samples.",
+                    "Distance",
+                    vec![
+                        text_argument("delimiter", "Between samples.", "\n\n"),
+                        text_argument("unit", "Byte or Bit.", "Byte"),
+                        text_argument("input_type", "Raw string or Hex.", "Raw string"),
+                    ],
+                )
+            },
         }
     }
 }
@@ -196,18 +202,21 @@ impl LevenshteinDistance {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: text_spec(
-                "distance.levenshtein@1",
-                "Levenshtein Distance",
-                "Computes the edit distance between two samples.",
-                "Distance",
-                vec![
-                    text_argument("delimiter", "Between samples.", "\n"),
-                    integer_argument("insertion_cost", "Cost of an insertion.", 1),
-                    integer_argument("deletion_cost", "Cost of a deletion.", 1),
-                    integer_argument("substitution_cost", "Cost of a substitution.", 1),
-                ],
-            ),
+            spec: OperationSpec {
+                output_behavior: OutputBehavior::Reducer,
+                ..text_spec(
+                    "distance.levenshtein@1",
+                    "Levenshtein Distance",
+                    "Computes the edit distance between two samples.",
+                    "Distance",
+                    vec![
+                        text_argument("delimiter", "Between samples.", "\n"),
+                        integer_argument("insertion_cost", "Cost of an insertion.", 1),
+                        integer_argument("deletion_cost", "Cost of a deletion.", 1),
+                        integer_argument("substitution_cost", "Cost of a substitution.", 1),
+                    ],
+                )
+            },
         }
     }
 }

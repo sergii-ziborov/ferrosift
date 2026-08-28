@@ -9,7 +9,7 @@ use crate::args::{
     integer_argument, integer_value, map_argument, map_value, text_argument, text_value,
     toggle_string_default, toggle_string_parts,
 };
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 use crate::value::{take_bytes, text};
 
 use super::codec::{self, Simple};
@@ -20,7 +20,7 @@ fn digest_spec(
     description: &'static str,
     arguments: Vec<ArgumentSpec>,
 ) -> OperationSpec {
-    build(SpecDefinition {
+    build_reducer(SpecDefinition {
         id,
         display_name,
         category: "Hashing",
@@ -260,7 +260,7 @@ impl Blake2 {
         kind: codec::Blake2Kind,
     ) -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id,
                 display_name,
                 category: "Hashing",

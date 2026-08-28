@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use ferrosift_core::{Operation, OperationContext, OperationError};
 use ferrosift_model::{Arguments, NumberValue, OperationSpec, Value, ValueConstraint, ValueKind};
 
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 
 /// Widens a count to the type the arithmetic runs in.
 ///
@@ -29,7 +29,7 @@ impl ChiSquare {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "analysis.chi_square@1",
                 display_name: "Chi Square",
                 category: "Analysis",
@@ -97,7 +97,7 @@ impl IndexOfCoincidence {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "analysis.index_of_coincidence@1",
                 display_name: "Index of Coincidence",
                 category: "Analysis",

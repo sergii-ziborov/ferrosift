@@ -9,7 +9,7 @@ use crate::args::{
     map_argument, map_value, text_argument, text_value, toggle_string_default, toggle_string_parts,
 };
 use crate::key::convert_to_byte_string;
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 
 use super::codec;
 
@@ -23,7 +23,7 @@ impl Hmac {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.hmac@1",
                 display_name: "HMAC",
                 category: "Hashing",

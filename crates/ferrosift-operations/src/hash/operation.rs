@@ -6,7 +6,7 @@ use ferrosift_model::{
 };
 
 use crate::args::{integer_argument, integer_value, text_argument, text_value};
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 
 use super::codec;
 
@@ -20,7 +20,7 @@ impl Sha3 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.sha3@1",
                 display_name: "SHA3",
                 category: "Hashing",
@@ -77,7 +77,7 @@ impl Md5 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.md5@1",
                 display_name: "MD5",
                 category: "Hashing",
@@ -126,7 +126,7 @@ impl Sha1 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.sha1@1",
                 display_name: "SHA1",
                 category: "Hashing",
@@ -183,7 +183,7 @@ impl Sha2 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.sha2@1",
                 display_name: "SHA2",
                 category: "Hashing",
@@ -254,7 +254,7 @@ impl Keccak {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.keccak@1",
                 display_name: "Keccak",
                 category: "Hashing",
@@ -311,7 +311,7 @@ impl Shake {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.shake@1",
                 display_name: "Shake",
                 category: "Hashing",

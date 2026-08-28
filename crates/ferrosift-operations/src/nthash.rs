@@ -20,7 +20,7 @@ use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKin
 
 use crate::hex_util::to_hex_lower;
 use crate::jscompat::string::to_utf16le;
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 use crate::value::{take_text, text as text_output};
 
 /// Computes the NT hash of a password.
@@ -33,7 +33,7 @@ impl NtHash {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.nt@1",
                 display_name: "NT Hash",
                 category: "Hashing",

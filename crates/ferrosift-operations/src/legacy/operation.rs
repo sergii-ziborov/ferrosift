@@ -6,7 +6,7 @@ use ferrosift_model::{
 };
 
 use crate::args::{boolean_argument, boolean_value, integer_argument, integer_value};
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build_reducer};
 
 use super::codec;
 
@@ -20,7 +20,7 @@ impl MurmurHash3 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.murmur3@1",
                 display_name: "MurmurHash3",
                 category: "Hashing",
@@ -77,7 +77,7 @@ impl Sha0 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: build_reducer(SpecDefinition {
                 id: "hash.sha0@1",
                 display_name: "SHA0",
                 category: "Hashing",

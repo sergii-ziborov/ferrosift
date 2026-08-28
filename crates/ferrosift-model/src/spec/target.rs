@@ -105,9 +105,17 @@ pub enum OutputBehavior {
     InputIndependent,
     /// Output is a bounded summary regardless of input size.
     ///
-    /// Hashes, checksums, and statistics. Behaves like the proportional case
-    /// today; naming it separately is what will later let the executor skip
-    /// growth accounting it cannot need.
+    /// Hashes, checksums, distances, statistics. The expansion ratio is not
+    /// applied, and the reason is the opposite of the one above: a summary is
+    /// a *constant* and the input is the denominator, so the ratio refuses one
+    /// on a **small** input rather than a large one. `SHA-512` of an empty
+    /// input is a hundred and twenty-eight characters against a denominator of
+    /// one, which a ratio of sixty-four called an expansion — and hashing
+    /// nothing is an ordinary thing to do.
+    ///
+    /// The claim is checked rather than trusted: every operation declaring it
+    /// is run over inputs differing by a factor of two hundred and fifty-six
+    /// and must not grow.
     Reducer,
 }
 

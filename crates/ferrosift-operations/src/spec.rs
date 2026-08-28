@@ -142,6 +142,30 @@ pub(crate) fn build_generator(definition: SpecDefinition) -> OperationSpec {
     }
 }
 
+/// Builds a spec for an operation whose output is a summary of fixed size.
+///
+/// A digest, a checksum, a distance, a statistic. The expansion ratio is the
+/// wrong instrument for these in the direction nobody expects: it refuses them
+/// on *small* inputs, because the output is a constant and the denominator is
+/// the input. `SHA-512` of an empty input is a hundred and twenty-eight
+/// characters against a denominator of one, and the generous default budget —
+/// a ratio of sixty-four — refused it outright. Hashing nothing is an ordinary
+/// thing to do and the reference does it happily.
+///
+/// The claim is checkable and is checked: `tests/output_behavior.rs` runs every
+/// operation declaring this over inputs differing by a factor of two hundred
+/// and fifty-six and requires the output not to grow. A misdeclaration fails
+/// there rather than quietly widening what escapes the ratio.
+///
+/// Still bound by the absolute output limit, the total-bytes accounting and
+/// cancellation, exactly as [`build_generator`] is.
+pub(crate) fn build_reducer(definition: SpecDefinition) -> OperationSpec {
+    OperationSpec {
+        output_behavior: OutputBehavior::Reducer,
+        ..build(definition)
+    }
+}
+
 pub(crate) const fn operation_id(value: &'static str) -> OperationId {
     OperationId::from_static(value)
 }
