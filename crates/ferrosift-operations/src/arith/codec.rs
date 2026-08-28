@@ -25,12 +25,22 @@ pub(crate) fn read_list(input: &str, delimiter: &str) -> Vec<DecimalValue> {
 /// One reduction step, and what can be said about the size of its answer
 /// before taking it.
 ///
-/// Only addition and subtraction carry a floor, because only they can turn two
-/// short numbers into a long one: they bring both operands to the finer of the
-/// two exponents first, so a wide gap between the exponents *is* the answer's
-/// width. Multiplication adds the exponents instead and divides the work by
-/// nothing, and division already refuses an out-of-range scale before it
-/// computes any digits.
+/// Everything but multiplication carries a floor, because everything but
+/// multiplication can turn two short numbers into a long one. Addition and
+/// subtraction bring both operands to the finer of the two exponents first, so
+/// a wide gap between the exponents *is* the answer's width. Division produces
+/// a digit for every place between the two scales.
+///
+/// Multiplication is the exception on its own terms: it adds the exponents and
+/// multiplies the coefficients, so a short pair stays short and a long answer
+/// needed a long operand to begin with — which the input ceiling already
+/// bounds.
+///
+/// Division used to be listed with multiplication, on the reasoning that it
+/// "already refuses an out-of-range scale before it computes any digits". It
+/// does, against ten million; a scale of five million is in range, computed in
+/// full, and then refused by the executor for the size it just spent thirty
+/// seconds producing.
 struct Step {
     apply: fn(&DecimalValue, &DecimalValue) -> DecimalValue,
     floor: fn(&DecimalValue, &DecimalValue) -> u64,
@@ -129,7 +139,7 @@ pub(crate) fn quotient(
         values,
         &Step {
             apply: bignumber::divide,
-            floor: no_floor,
+            floor: bignumber::quotient_min_len,
         },
         ceiling,
     )
@@ -149,7 +159,11 @@ pub(crate) fn average(
     let Some(summed) = total(values, ceiling)? else {
         return Ok(None);
     };
-    Ok(Some(bignumber::divide(&summed, &count_of(values))))
+    let count = count_of(values);
+    if bignumber::quotient_min_len(&summed, &count) > ceiling {
+        return Err(OperationError::OutputLimitExceeded);
+    }
+    Ok(Some(bignumber::divide(&summed, &count)))
 }
 
 /// The list's length as a value to divide by.
@@ -206,8 +220,20 @@ pub(crate) fn standard_deviation(
         }
         squares = bignumber::plus(&squares, &square);
     }
-    Ok(Some(bignumber::square_root(&bignumber::divide(
-        &squares,
-        &count_of(values),
-    ))))
+
+    // And the root is guarded too, which it was not until a fuzzer pointed out
+    // that every addition on the way here was. The root of a value at
+    // `10^10000000` has five million digits, and reaching it means building a
+    // radicand with ten million — so an unguarded root computes for half a
+    // minute and is then refused by the output ceiling for the size it just
+    // spent that minute producing.
+    let count = count_of(values);
+    if bignumber::quotient_min_len(&squares, &count) > ceiling {
+        return Err(OperationError::OutputLimitExceeded);
+    }
+    let quotient = bignumber::divide(&squares, &count);
+    if bignumber::root_min_len(&quotient) > ceiling {
+        return Err(OperationError::OutputLimitExceeded);
+    }
+    Ok(Some(bignumber::square_root(&quotient)))
 }

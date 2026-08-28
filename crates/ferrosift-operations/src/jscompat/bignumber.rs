@@ -176,6 +176,23 @@ pub fn minus(left: &DecimalValue, right: &DecimalValue) -> DecimalValue {
 /// makes the result exact: `0.1 + 0.2` is computed as `1 + 2` scaled by a
 /// tenth, and answers `0.3` rather than an approximation of it.
 fn combine(left: &DecimalValue, right: &DecimalValue, subtract: bool) -> DecimalValue {
+    // Zero is the one operand that has to be short-circuited rather than
+    // rescaled. Bringing `1e+5000000` down to zero's exponent materialises five
+    // million digits to add nothing to them, which is why `Mean` over
+    // `1e+5000000` and `0` spent nine seconds on an addition whose answer is
+    // its own first operand. `sum_min_len` reports no cost for a zero operand,
+    // which was true of the answer and false of the work — so this makes the
+    // work match what was already being claimed about it.
+    if right.is_zero() {
+        return left.clone();
+    }
+    if left.is_zero() {
+        return if subtract {
+            negate(right)
+        } else {
+            right.clone()
+        };
+    }
     let (Some(a), Some(b)) = (Scaled::from(left), Scaled::from(right)) else {
         return DecimalValue::not_a_number();
     };
@@ -241,6 +258,76 @@ pub fn sum_min_len(left: &DecimalValue, right: &DecimalValue) -> u64 {
     let above = u64::try_from(top.max(0)).unwrap_or(u64::MAX);
     let below = u64::try_from(bottom.min(0).saturating_neg()).unwrap_or(u64::MAX);
     above.saturating_add(below).saturating_add(1)
+}
+
+/// A floor on how long `left / right` renders.
+///
+/// Division was left unguarded on the reasoning that it "already refuses an
+/// out-of-range scale before it computes any digits" — true, and not the whole
+/// story. The refusal is against [`DecimalValue::EXPONENT_LIMIT`], ten
+/// million, so a scale of five million is *in* range and computed in full:
+/// `1e+5000000 / 3` spends thirty-four seconds producing a five-million-digit
+/// answer, which the executor then refuses for being five million digits long.
+/// A floor is what turns that into an immediate answer.
+///
+/// The quotient's leading digit sits one or zero places below the difference
+/// of the two scales, depending on which coefficient is larger, so the
+/// difference itself is the count of digits above the point that is certainly
+/// reached. Claiming the difference plus one would be an over-estimate on
+/// every pair where the divisor's coefficient wins, and an over-estimating
+/// floor refuses answers the budget would have accepted.
+#[must_use]
+pub fn quotient_min_len(left: &DecimalValue, right: &DecimalValue) -> u64 {
+    if left.is_zero() || right.is_zero() {
+        return 0;
+    }
+    let (Some((_, left_digits, left_exponent)), Some((_, right_digits, right_exponent))) =
+        (left.parts(), right.parts())
+    else {
+        return 0;
+    };
+    let scale =
+        scale_of(left_digits, left_exponent).saturating_sub(scale_of(right_digits, right_exponent));
+    if scale <= 0 {
+        // A quotient below one renders as `0.` and the places the division
+        // keeps, which is a constant and not worth claiming.
+        return 0;
+    }
+    u64::try_from(scale).unwrap_or(u64::MAX)
+}
+
+/// A floor on how long the square root of `value` renders.
+///
+/// Wanted for the same reason [`sum_min_len`] is, and it took a fuzzer to
+/// notice the difference. Addition was guarded and the root was not, so
+/// `Standard Deviation` over `1e+5000000` computed a five-million-digit answer
+/// and *then* had it refused by the output ceiling: the right verdict, reached
+/// after twenty-nine seconds of work the verdict says should not have
+/// happened. [`root`] gets there by building a radicand with `exponent + 40`
+/// digits, so the cost is set by the exponent and is invisible to every other
+/// limit.
+///
+/// A floor, like its neighbour: acting on it means refusing, so it must never
+/// come in high. The root of a value whose leading digit sits at `10^n` sits
+/// at `10^(n/2)`, which is `n/2 + 1` digits above the point — exactly, by
+/// truncating division, for every `n` at or above zero. Below zero the root is
+/// under one and nothing is claimed.
+#[must_use]
+pub fn root_min_len(value: &DecimalValue) -> u64 {
+    if value.is_zero() {
+        return 0;
+    }
+    let Some((_, digits, exponent)) = value.parts() else {
+        // A special roots to a special, which is three characters at most.
+        return 0;
+    };
+    let scale = scale_of(digits, exponent);
+    if scale < 0 {
+        return 0;
+    }
+    u64::try_from(scale / 2)
+        .unwrap_or(u64::MAX)
+        .saturating_add(1)
 }
 
 /// The power of ten a value sits at, read off its parts rather than computed.
@@ -312,6 +399,13 @@ pub fn divide(left: &DecimalValue, right: &DecimalValue) -> DecimalValue {
                 }
                 return DecimalValue::infinity(left.is_negative() != right.is_negative());
             }
+            // Nothing divided by anything is nothing, and saying so here is
+            // what stops the division below building a power of ten to
+            // multiply a zero by: `0 / 1e-10000000` reaches a shift of ten
+            // million, which is ten million digits produced to be discarded.
+            if left.is_zero() {
+                return DecimalValue::zero();
+            }
             let (Some(a), Some(b)) = (Scaled::from(left), Scaled::from(right)) else {
                 return DecimalValue::not_a_number();
             };
@@ -343,6 +437,18 @@ fn quotient(a: &Scaled, b: &Scaled) -> DecimalValue {
     }
 
     let places = DECIMAL_PLACES.saturating_add(1);
+    // And the same conclusion from the other end, which the range check above
+    // is far too wide to reach. A quotient whose leading digit sits below the
+    // guard digit rounds to zero whatever follows it, so `3 / 1e9999999` is
+    // zero — but the range check only refuses a scale past ten million, so
+    // this was computed by building a power of ten with ten million digits to
+    // divide it away again. A fuzzer found it as a forty-four-second
+    // execution. The margin covers `scale`, which is estimated from the binary
+    // width and is good to within a digit either way.
+    if scale < places.saturating_add(4).saturating_neg() {
+        return DecimalValue::zero();
+    }
+
     let shift = a.exponent.saturating_sub(b.exponent).saturating_add(places);
     let power = BigInt::from(power_of_ten(shift.unsigned_abs()));
     let (numerator, denominator) = if shift >= 0 {

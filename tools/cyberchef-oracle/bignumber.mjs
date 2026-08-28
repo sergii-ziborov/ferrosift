@@ -63,6 +63,23 @@ const PAIRS = [
     ["Infinity", "Infinity"], ["-Infinity", "2"],
     // Very small and very large together.
     ["1e-20", "1e20"], ["1e20", "1e-20"],
+    // A quotient that falls off the bottom of the twenty places kept, either
+    // side of where it does. The port short-circuits these rather than
+    // computing them -- `3 / 1e9999999` is zero whatever its digits are, and
+    // reaching that through the division builds a power of ten with ten
+    // million of them -- so the reference has to say where the cliff is
+    // instead of the port assuming it. A rounding boundary is the place to
+    // ask: `5e-21` lifts the twentieth place and `5e-22` does not.
+    ["1", "1e20"], ["1", "1e21"], ["1", "1e22"], ["1", "1e23"],
+    ["5", "1e20"], ["5", "1e21"], ["5", "1e22"],
+    ["9", "1e21"], ["9", "1e22"], ["49", "1e22"], ["51", "1e22"],
+    ["-5", "1e21"], ["-1", "1e23"],
+    // Zero over something tiny, which used to build the same power of ten in
+    // order to multiply it by nothing.
+    ["0", "1e-20"], ["0", "1e-40"], ["0", "1e20"],
+    // And a zero operand against a large exponent, which addition now returns
+    // without rescaling anything.
+    ["1e20", "0"], ["1e-20", "0"], ["0", "1e40"], ["1e40", "0"],
 ];
 
 /// Values for the one-argument operations.

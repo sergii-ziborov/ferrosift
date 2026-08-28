@@ -158,6 +158,89 @@ fn an_answer_that_fits_is_still_produced() {
     assert_eq!(wide.len(), 42, "{wide}");
 }
 
+/// The same again for division, which was left out of the floor above.
+///
+/// The reasoning was that division "already refuses an out-of-range scale
+/// before it computes any digits", and it does — against ten million. A scale
+/// of five million is *in* range and computed in full, so `1e5000000 / 3` was
+/// thirty-four seconds of work producing a five-million-digit answer that the
+/// executor then refused for being five million digits long.
+///
+/// Found by the `bignumber` fuzz target once it was given both operands and a
+/// seed corpus of exponent extremes, which is what those two changes were for.
+/// As above, the code is the assertion: `core.operation.…` is the fold
+/// declining first, `core.executor.…` is the old behaviour where the answer
+/// existed before anyone objected to it.
+#[test]
+fn a_quotient_wider_than_the_budget_is_refused_by_the_operation() {
+    for operation in ["math.divide@1", "math.mean@1", "math.stddev@1"] {
+        assert_eq!(
+            refusal(operation, "1e5000000 3"),
+            Err("core.operation.output_limit_exceeded".to_owned()),
+            "{operation} must decline before building the quotient"
+        );
+    }
+    // And the root, which sits behind the division in standard deviation and
+    // amplifies again: the root of a value at 10^10000000 has five million
+    // digits, and reaching it builds a radicand with ten million.
+    assert_eq!(
+        refusal("math.stddev@1", "1e5000000 0"),
+        Err("core.operation.output_limit_exceeded".to_owned())
+    );
+}
+
+/// And division still answers everything that fits.
+///
+/// The floor is a floor: `1e20 / 3` has twenty-one digits above the point and
+/// a bound that claimed twenty-two would refuse it. The exact-division cases
+/// matter for the same reason from the other side — an answer shorter than the
+/// scale difference suggests must not be pre-emptively refused.
+#[test]
+fn a_quotient_that_fits_is_still_produced() {
+    assert_eq!(aggregate("math.divide@1", "1 2"), Ok("0.5".to_owned()));
+    assert_eq!(aggregate("math.divide@1", "100 4"), Ok("25".to_owned()));
+    assert_eq!(
+        aggregate("math.divide@1", "1e20 1"),
+        Ok("100000000000000000000".to_owned())
+    );
+    // A divisor whose coefficient is larger than the dividend's, so the
+    // quotient sits one place *below* the scale difference. A floor computed
+    // as "difference plus one" would refuse this.
+    let short = aggregate("math.divide@1", "1e2 3e1").expect("a short quotient fits");
+    assert!(short.starts_with("3.33"), "{short}");
+    assert_eq!(aggregate("math.mean@1", "1 2 3 4"), Ok("2.5".to_owned()));
+    assert_eq!(
+        aggregate("math.stddev@1", "1 2 3 4"),
+        Ok("1.1180339887498948482".to_owned())
+    );
+}
+
+/// Zero is added by not adding it.
+///
+/// `x + 0` is `x`, and computing it as one was the last of the three: bringing
+/// `1e5000000` down to zero's exponent materialises five million digits in
+/// order to add nothing to them. `sum_min_len` had always reported no cost for
+/// a zero operand — true of the answer and false of the work — so this is the
+/// work being made to match what was already claimed about it.
+#[test]
+fn adding_zero_costs_nothing_and_changes_nothing() {
+    assert_eq!(
+        aggregate("math.sum@1", "1e20 0"),
+        Ok("100000000000000000000".to_owned())
+    );
+    assert_eq!(aggregate("math.sum@1", "0 0.25"), Ok("0.25".to_owned()));
+    assert_eq!(
+        aggregate("math.subtract@1", "0 0.25"),
+        Ok("-0.25".to_owned())
+    );
+    assert_eq!(
+        aggregate("math.subtract@1", "0.25 0"),
+        Ok("0.25".to_owned())
+    );
+    assert_eq!(aggregate("math.sum@1", "0 0"), Ok("0".to_owned()));
+    assert_eq!(aggregate("math.subtract@1", "0 0"), Ok("0".to_owned()));
+}
+
 fn modulo(modulus: i128, delimiter: &str, input: &str) -> Result<String, ()> {
     let arguments: Arguments = [
         ("modulus".to_owned(), ArgumentValue::Integer(modulus)),
