@@ -244,7 +244,9 @@ fn number(node: &Node) -> Result<i128, PatternError> {
             NOT_A_NUMBER,
             "floating-point values cannot be used in a pattern expression",
         )),
-        NodeValue::Group(_) => Err(fail(NOT_A_NUMBER, "a composite has no numeric value")),
+        NodeValue::Group(_) | NodeValue::Scalars(_) => {
+            Err(fail(NOT_A_NUMBER, "a composite has no numeric value"))
+        }
     }
 }
 

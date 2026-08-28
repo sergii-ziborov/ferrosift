@@ -35,6 +35,20 @@
 //! evaluator, so an implementation is never asked for a range the pattern had
 //! no right to.
 //!
+//! # Arrays of scalars
+//!
+//! An array whose element type resolves to a built-in — through any number of
+//! `using` aliases — is kept as [`NodeValue::Scalars`]: the bytes it was read
+//! from, decoded one element at a time by [`ScalarArray::get`]. One [`Node`]
+//! per element is the obvious representation and the wrong one, because a
+//! `Node` carries two heap strings and a `u8` carries one byte.
+//!
+//! Such a node has no [`children`](Node::children). [`Node::element_count`]
+//! and [`Node::element`] read either representation, so a caller walking an
+//! array does not have to ask which one it got. An array of structs, unions,
+//! enums or bitfields keeps a [`NodeValue::Group`]: those elements are trees,
+//! and there is nothing to defer.
+//!
 //! ```
 //! use ferrosift_pattern::{EvalOptions, NodeValue};
 //!
@@ -72,7 +86,7 @@ pub use ast::{
 };
 pub use error::{PatternError, Position};
 pub use eval::{
-    ByteSource, EvalOptions, MAX_SCALAR_BYTES, Node, NodeValue, SourceError, evaluate,
+    ByteSource, EvalOptions, MAX_SCALAR_BYTES, Node, NodeValue, ScalarArray, SourceError, evaluate,
     evaluate_with,
 };
 pub use parser::parse;

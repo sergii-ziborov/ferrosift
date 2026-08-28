@@ -11,7 +11,7 @@
 //! skipping the case: a listed divergence fails if either side moves, so
 //! neither an upstream change nor a local one can pass unnoticed.
 
-use ferrosift_pattern::{EvalOptions, Node, NodeValue};
+use ferrosift_pattern::{Builtin, EvalOptions, Node, NodeValue};
 use serde::Deserialize;
 
 const FIXTURE: &str = include_str!("fixtures/imhex.json");
@@ -202,6 +202,39 @@ fn render_node(node: &Node, depth: usize) -> String {
                 render_object(children, depth)
             }
         }
+        NodeValue::Scalars(array) => {
+            // The same two renderings as a group of scalars would get. Which
+            // representation the crate happens to use for an array of built-in
+            // elements is a decision about memory, and the reference's output
+            // cannot see it — so this arm exists to prove exactly that: the
+            // JSON either side produces is unchanged by it.
+            if array.element_type() == Builtin::Char {
+                let text: String = array
+                    .iter()
+                    .map(|value| match value {
+                        NodeValue::Char(character) => character,
+                        _ => unreachable!("the element type was checked to be char"),
+                    })
+                    .collect();
+                return quote(&text);
+            }
+            let elements: Vec<String> = array
+                .iter()
+                .map(|value| {
+                    render_node(
+                        &Node {
+                            name: String::new(),
+                            type_name: String::new(),
+                            offset: 0,
+                            size: 0,
+                            value,
+                        },
+                        depth + 1,
+                    )
+                })
+                .collect();
+            render_values(&elements, depth)
+        }
     }
 }
 
@@ -219,17 +252,31 @@ fn alloc_format(type_name: &str, constant: &str) -> String {
 /// An empty one still opens and closes on two lines, because the reference's
 /// formatter writes the newline before it knows whether anything follows.
 fn render_array(children: &[Node], depth: usize) -> String {
-    if children.is_empty() {
+    let inner = depth + 1;
+    let elements: Vec<String> = children
+        .iter()
+        .map(|child| render_node(child, inner))
+        .collect();
+    render_values(&elements, depth)
+}
+
+/// A JSON array of already-rendered elements.
+///
+/// Shared by the two array representations so neither can drift into its own
+/// formatting, which would show up as a compatibility failure that was really
+/// a test bug.
+fn render_values(elements: &[String], depth: usize) -> String {
+    if elements.is_empty() {
         return format!("[\n{}]", "    ".repeat(depth));
     }
     let inner = depth + 1;
     let mut output = String::from("[\n");
-    for (index, child) in children.iter().enumerate() {
+    for (index, element) in elements.iter().enumerate() {
         if index > 0 {
             output.push_str(",\n");
         }
         output.push_str(&"    ".repeat(inner));
-        output.push_str(&render_node(child, inner));
+        output.push_str(element);
     }
     output.push('\n');
     output.push_str(&"    ".repeat(depth));

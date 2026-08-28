@@ -1,3 +1,5 @@
+use alloc::vec::Vec;
+
 use crate::ast::Endian;
 use crate::error::{PatternError, Position};
 
@@ -56,15 +58,39 @@ impl<'a, S: ByteSource + ?Sized> Reader<'a, S> {
         Ok(value)
     }
 
-    /// Reads `size` bytes at `offset` as a two's-complement signed integer.
-    pub(super) fn signed(
-        &self,
-        offset: u64,
-        size: u32,
-        endian: Endian,
-    ) -> Result<i128, PatternError> {
-        let raw = self.unsigned(offset, size, endian)?;
-        Ok(sign_extend(raw, size))
+    /// Reads a whole run of bytes, for an array of scalars.
+    ///
+    /// The one read that is not a single scalar, and the reason the trait's
+    /// per-call ceiling does not apply to it: the block is fetched in
+    /// [`MAX_SCALAR_BYTES`] steps, so a source still never sees a request
+    /// wider than one scalar.
+    pub(super) fn block(&self, offset: u64, size: u64) -> Result<Vec<u8>, PatternError> {
+        let end = offset
+            .checked_add(size)
+            .ok_or_else(|| out_of_bounds("read offset overflows"))?;
+        if end > self.len() {
+            return Err(out_of_bounds("read extends past the end of the data"));
+        }
+        let length = usize::try_from(size).map_err(|_| out_of_bounds("size is too large"))?;
+
+        // Sized up front rather than grown: the length was just checked
+        // against the source, so this is the allocation the caller asked for
+        // and not a guess that doubles.
+        let mut block = Vec::new();
+        block
+            .try_reserve_exact(length)
+            .map_err(|_| out_of_bounds("array does not fit in memory"))?;
+        block.resize(length, 0);
+
+        for (step, chunk) in block.chunks_mut(MAX_SCALAR_BYTES).enumerate() {
+            let at = offset
+                .checked_add((step * MAX_SCALAR_BYTES) as u64)
+                .ok_or_else(|| out_of_bounds("read offset overflows"))?;
+            self.source
+                .read_exact_at(at, chunk)
+                .map_err(|error| source_failed(error.detail()))?;
+        }
+        Ok(block)
     }
 
     /// Fills the front of `buffer` with `size` bytes from `offset`.
@@ -93,20 +119,6 @@ impl<'a, S: ByteSource + ?Sized> Reader<'a, S> {
             .read_exact_at(offset, slot)
             .map_err(|error| source_failed(error.detail()))?;
         Ok(slot)
-    }
-}
-
-/// Widens an `n`-byte two's-complement value to `i128`.
-fn sign_extend(raw: u128, size: u32) -> i128 {
-    let bits = size.saturating_mul(8);
-    if bits == 0 || bits >= 128 {
-        return raw.cast_signed();
-    }
-    let sign_bit = 1_u128 << (bits - 1);
-    if raw & sign_bit == 0 {
-        raw.cast_signed()
-    } else {
-        raw.cast_signed().wrapping_sub(1_i128 << bits)
     }
 }
 

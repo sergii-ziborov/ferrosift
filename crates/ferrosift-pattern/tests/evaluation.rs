@@ -1,6 +1,6 @@
 //! Evaluation vectors: value decoding, layout offsets, and bounded failure.
 
-use ferrosift_pattern::{EvalOptions, Node, NodeValue, PatternError, evaluate, parse};
+use ferrosift_pattern::{Builtin, EvalOptions, Node, NodeValue, PatternError, evaluate, parse};
 
 fn run(source: &str, data: &[u8]) -> Vec<Node> {
     let pattern = parse(source).unwrap_or_else(|error| panic!("parse failed: {error}"));
@@ -80,17 +80,111 @@ fn signed_values_are_sign_extended_from_their_width() {
 }
 
 #[test]
-fn arrays_expand_into_indexed_children() {
+fn an_array_of_scalars_is_kept_as_the_bytes_it_came_from() {
+    // These used to be four `Node`s, each carrying the words `bytes[2]` and
+    // `u8` on the heap. A node costs something over a hundred bytes and a `u8`
+    // costs one, so an array of a million of them cost a hundred megabytes to
+    // say what a megabyte already said.
     let nodes = run("u8 bytes[4] @ 0;", &[10, 20, 30, 40]);
     let array = &nodes[0];
 
     assert_eq!(array.type_name, "u8[4]");
     assert_eq!((array.offset, array.size), (0, 4));
+    assert_eq!(array.element_count(), 4);
+    assert_eq!(array.element(0), Some(NodeValue::Unsigned(10)));
+    assert_eq!(array.element(3), Some(NodeValue::Unsigned(40)));
+    assert_eq!(array.element(4), None);
+    // No children, and that is the visible half of the change.
+    assert!(array.children().is_empty());
+
+    let NodeValue::Scalars(scalars) = &array.value else {
+        panic!("an array of a built-in scalar keeps its bytes");
+    };
+    assert_eq!(scalars.bytes(), &[10, 20, 30, 40]);
+    assert_eq!(scalars.element_type(), Builtin::Unsigned(1));
+    assert_eq!(
+        scalars.iter().collect::<Vec<_>>(),
+        [10, 20, 30, 40].map(NodeValue::Unsigned)
+    );
+}
+
+#[test]
+fn a_large_scalar_array_costs_its_bytes_rather_than_its_elements() {
+    // Just under the default node budget, so this is the largest array the
+    // engine will build — and it is a megabyte of storage rather than the
+    // hundred-odd megabytes a million `Node`s would have been. That the test
+    // runs at all is most of what it asserts.
+    const COUNT: usize = 999_999;
+    let data = vec![0xab_u8; COUNT];
+    let nodes = run("u8 blob[999999] @ 0;", &data);
+
+    let NodeValue::Scalars(scalars) = &nodes[0].value else {
+        panic!("an array of a built-in scalar keeps its bytes");
+    };
+    assert_eq!(scalars.len(), COUNT);
+    assert_eq!(scalars.bytes().len(), COUNT, "one byte per element");
+    assert_eq!(nodes[0].size, COUNT as u64);
+    assert_eq!(scalars.get(COUNT - 1), Some(NodeValue::Unsigned(0xab)));
+}
+
+#[test]
+fn the_node_budget_still_bounds_a_scalar_array() {
+    // Charged per element even though no node is built. The budget is the
+    // caller's statement about how large a value tree they will accept, and
+    // answering a bigger one because it happens to be cheap now would move
+    // that boundary without being asked to.
+    let data = vec![0_u8; 32];
+    let options = EvalOptions {
+        max_nodes: 8,
+        ..EvalOptions::default()
+    };
+    // One for the array itself, then one per element.
+    assert!(run_with("u8 x[7] @ 0;", &data, &options).is_ok());
+    let error = run_with("u8 x[8] @ 0;", &data, &options)
+        .expect_err("eight elements plus the array itself is nine");
+    assert_eq!(error.code(), "pattern.eval.node_budget_exceeded");
+}
+
+#[test]
+fn an_array_of_composites_still_expands_into_children() {
+    // The compact form is only for elements that are numbers. A struct element
+    // is a tree, and there is nothing to defer.
+    let nodes = run(
+        "struct Pair { u8 a; u8 b; };
+         Pair pairs[2] @ 0;",
+        &[1, 2, 3, 4],
+    );
+    let array = &nodes[0];
+
+    assert_eq!(array.element_count(), 2);
     let children = array.children();
-    assert_eq!(children.len(), 4);
-    assert_eq!(children[0].name, "bytes[0]");
-    assert_eq!(children[3].value, NodeValue::Unsigned(40));
-    assert_eq!((children[3].offset, children[3].size), (3, 1));
+    assert_eq!(children.len(), 2);
+    assert_eq!(children[0].name, "pairs[0]");
+    assert_eq!((children[1].offset, children[1].size), (2, 2));
+    assert_eq!(
+        children[1].child("b").expect("field").value,
+        NodeValue::Unsigned(4)
+    );
+}
+
+#[test]
+fn an_alias_of_a_scalar_is_compact_too() {
+    // `using Byte = u8;` describes the same megabyte as `u8` does, and it
+    // would be a strange rule that made one of them a hundred times more
+    // expensive than the other. Aliases are followed to the built-in behind
+    // them, carrying whichever endianness prefix wins.
+    let nodes = run(
+        "using Word = be u16;
+         Word words[3] @ 0;",
+        &[0x01, 0x02, 0x03, 0x04, 0x05, 0x06],
+    );
+    let array = &nodes[0];
+
+    assert_eq!(array.element_count(), 3);
+    assert!(array.children().is_empty());
+    assert_eq!(array.element(0), Some(NodeValue::Unsigned(0x0102)));
+    assert_eq!(array.element(2), Some(NodeValue::Unsigned(0x0506)));
+    assert_eq!(array.type_name, "Word[3]");
 }
 
 #[test]
@@ -306,11 +400,11 @@ fn an_array_length_may_be_a_field_read_before_it() {
 
     let nodes = run(source, &[2, 0x11, 0x00, 0x22, 0x00]);
     let items = nodes[0].child("items").expect("field");
-    assert_eq!(items.children().len(), 2);
+    assert_eq!(items.element_count(), 2);
     assert_eq!((items.offset, items.size), (1, 4));
 
     let nodes = run(source, &[3, 1, 0, 2, 0, 3, 0]);
-    assert_eq!(nodes[0].child("items").expect("field").children().len(), 3);
+    assert_eq!(nodes[0].child("items").expect("field").element_count(), 3);
 }
 
 #[test]
@@ -321,7 +415,7 @@ fn arithmetic_and_precedence_hold_at_evaluation_time() {
         &[2, 9, 9, 9, 9, 9],
     );
     // 2 * 2 + 1, not 2 * 3: multiplication binds first.
-    assert_eq!(nodes[0].child("tail").expect("field").children().len(), 5);
+    assert_eq!(nodes[0].child("tail").expect("field").element_count(), 5);
 }
 
 #[test]
@@ -414,7 +508,7 @@ fn a_while_sized_array_stops_when_its_test_fails() {
         &[1, 2, 3, 4, 5, 6],
     );
     let items = nodes[0].child("items").expect("field");
-    assert_eq!(items.children().len(), 4);
+    assert_eq!(items.element_count(), 4);
     assert_eq!(items.size, 4);
 }
 
@@ -468,7 +562,7 @@ fn a_dotted_path_reaches_into_a_nested_field() {
          Outer outer @ 0;",
         &[3, 7, 7, 7],
     );
-    assert_eq!(nodes[0].child("data").expect("field").children().len(), 3);
+    assert_eq!(nodes[0].child("data").expect("field").element_count(), 3);
 }
 
 #[test]
@@ -480,7 +574,7 @@ fn a_conditional_only_evaluates_the_branch_it_takes() {
          S s @ 0;",
         &[0, 9],
     );
-    assert_eq!(nodes[0].child("items").expect("field").children().len(), 1);
+    assert_eq!(nodes[0].child("items").expect("field").element_count(), 1);
 }
 
 #[test]
@@ -593,7 +687,7 @@ fn short_circuit_operators_do_not_evaluate_the_dead_side() {
          S s @ 0;",
         &[0, 9, 9],
     );
-    assert_eq!(nodes[0].child("items").expect("field").children().len(), 2);
+    assert_eq!(nodes[0].child("items").expect("field").element_count(), 2);
 }
 
 #[test]
@@ -607,7 +701,7 @@ fn a_computed_zero_length_yields_an_empty_array() {
         &[0, 0xab],
     );
     let items = nodes[0].child("items").expect("field");
-    assert_eq!(items.children().len(), 0);
+    assert_eq!(items.element_count(), 0);
     assert_eq!((items.offset, items.size), (1, 0));
     // The zero-width array must not disturb what follows it.
     assert_eq!(nodes[0].child("tail").expect("field").offset, 1);
@@ -699,7 +793,7 @@ fn a_realistic_container_format_parses_end_to_end() {
             value: 1
         }
     );
-    assert_eq!(first.child("text").expect("field").children().len(), 2);
+    assert_eq!(first.child("text").expect("field").element_count(), 2);
     assert!(first.child("number").is_none());
 
     let second = &body.children()[1];

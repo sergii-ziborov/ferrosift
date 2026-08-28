@@ -7,7 +7,7 @@ use super::expression::{self, Scope};
 use super::options::EvalOptions;
 use super::reader::{Reader, out_of_bounds};
 use super::source::ByteSource;
-use super::value::{Node, NodeValue};
+use super::value::{Node, NodeValue, ScalarArray, scalar_value};
 use crate::ast::{ArrayLength, Builtin, Declaration, Endian, Pattern, TypeKind, TypeReference};
 use crate::error::{PatternError, Position};
 
@@ -110,6 +110,20 @@ impl<S: ByteSource + ?Sized> Evaluator<'_, S> {
             return self.value(name, type_reference, offset, depth);
         };
         self.charge()?;
+        // An array whose element is a built-in scalar is kept as the bytes it
+        // came from rather than as one node per element. See
+        // [`NodeValue::Scalars`]; the short version is that a node costs two
+        // heap strings and a `u8` costs one byte.
+        if let Some((element, endian)) = self.scalar_element(type_reference, depth)? {
+            return self.scalar_array(
+                name,
+                type_reference,
+                (element, endian),
+                length,
+                offset,
+                scope,
+            );
+        }
         let mut children = Vec::new();
         let mut cursor = offset;
 
@@ -177,6 +191,124 @@ impl<S: ByteSource + ?Sized> Evaluator<'_, S> {
             offset,
             size: cursor.saturating_sub(offset),
             value: NodeValue::Group(children),
+        })
+    }
+
+    /// The built-in this type reference resolves to, following `using`
+    /// aliases, or `None` when it names a composite.
+    ///
+    /// Aliases are followed rather than refused, because `using Byte = u8;`
+    /// then `Byte data[0x100000];` is the same megabyte as `u8 data[…]` and it
+    /// would be a strange rule that made one of them a hundred times more
+    /// expensive than the other.
+    ///
+    /// The endianness resolved here is the one each element is read in: the
+    /// use site's prefix, else the alias target's, else the default — the same
+    /// order [`Evaluator::named`] applies.
+    fn scalar_element(
+        &self,
+        type_reference: &TypeReference,
+        depth: u32,
+    ) -> Result<Option<(Builtin, Endian)>, PatternError> {
+        let mut current = type_reference.clone();
+        let mut hops = 0_u32;
+        loop {
+            match &current.kind {
+                TypeKind::Builtin(builtin) => {
+                    let endian = current.endian.unwrap_or(self.options.endian);
+                    return Ok(Some((*builtin, endian)));
+                }
+                TypeKind::Named(name) => {
+                    // The same ceiling a nested type answers to, so a cycle of
+                    // aliases is refused here rather than looping.
+                    hops += 1;
+                    if depth.saturating_add(hops) > self.options.max_depth {
+                        return Err(fail(DEPTH_EXCEEDED, "type nesting is too deep"));
+                    }
+                    let Some(Declaration::Alias(alias)) = self.pattern.type_named(name) else {
+                        return Ok(None);
+                    };
+                    current = TypeReference {
+                        kind: alias.target.kind.clone(),
+                        endian: current.endian.or(alias.target.endian),
+                    };
+                }
+            }
+        }
+    }
+
+    /// Reads a whole array of scalars as one block of bytes.
+    fn scalar_array(
+        &mut self,
+        name: &str,
+        type_reference: &TypeReference,
+        element: (Builtin, Endian),
+        length: &ArrayLength,
+        offset: u64,
+        scope: Scope<'_>,
+    ) -> Result<Node, PatternError> {
+        let (element, endian) = element;
+        let width = u64::from(element.size());
+        let count = match length {
+            ArrayLength::Counted(expression) => {
+                let count = expression::evaluate(expression, scope)?;
+                u64::try_from(count)
+                    .map_err(|_| fail(INVALID_LENGTH, "array length is negative or too large"))?
+            }
+            ArrayLength::While(condition) => {
+                // A zero-width element cannot end the loop, exactly as for a
+                // composite one — and here it is decidable before the first
+                // iteration rather than after it.
+                if width == 0 {
+                    return Err(fail(
+                        ZERO_WIDTH_LOOP,
+                        "a while-array element occupies no bytes, so the loop cannot end",
+                    ));
+                }
+                let mut count = 0_u64;
+                let mut cursor = offset;
+                loop {
+                    let test = Scope {
+                        siblings: scope.siblings,
+                        offset: cursor,
+                        pattern: scope.pattern,
+                    };
+                    if expression::evaluate(condition, test)? == 0 {
+                        break;
+                    }
+                    // The read is charged and bounds-checked per element, so a
+                    // condition that never turns false stops at the budget or
+                    // at the end of the data rather than running away.
+                    self.charge()?;
+                    let end = cursor
+                        .checked_add(width)
+                        .ok_or_else(|| out_of_bounds("read offset overflows"))?;
+                    if end > self.reader.len() {
+                        return Err(out_of_bounds("read extends past the end of the data"));
+                    }
+                    cursor = end;
+                    count += 1;
+                }
+                count
+            }
+        };
+
+        // Charged per element even though no node is built, so the boundary
+        // between what evaluates and what is refused does not move: an array
+        // this budget used to decline still declines, and one it allowed now
+        // costs bytes rather than nodes.
+        self.charge_many(count)?;
+
+        let size = count
+            .checked_mul(width)
+            .ok_or_else(|| fail(INVALID_LENGTH, "array is too large to address"))?;
+        let bytes = self.reader.block(offset, size)?;
+        Ok(Node {
+            name: name.to_string(),
+            type_name: format!("{}[{count}]", type_name(type_reference)),
+            offset,
+            size,
+            value: NodeValue::Scalars(ScalarArray::new(element, endian, bytes)),
         })
     }
 
@@ -250,32 +382,11 @@ impl<S: ByteSource + ?Sized> Evaluator<'_, S> {
         offset: u64,
     ) -> Result<Node, PatternError> {
         let size = builtin.size();
-        let value = match builtin {
-            Builtin::Unsigned(_) => {
-                NodeValue::Unsigned(self.reader.unsigned(offset, size, endian)?)
-            }
-            Builtin::Signed(_) => NodeValue::Signed(self.reader.signed(offset, size, endian)?),
-            Builtin::Float => {
-                let bits = self.reader.unsigned(offset, 4, endian)?;
-                NodeValue::Float(f32::from_bits(truncate_u32(bits)))
-            }
-            Builtin::Double => {
-                let bits = self.reader.unsigned(offset, 8, endian)?;
-                NodeValue::Double(f64::from_bits(truncate_u64(bits)))
-            }
-            Builtin::Bool => NodeValue::Bool(self.reader.unsigned(offset, 1, endian)? != 0),
-            Builtin::Char => {
-                let raw = self.reader.unsigned(offset, 1, endian)?;
-                NodeValue::Char(char::from(truncate_u8(raw)))
-            }
-            Builtin::Char16 => {
-                let raw = self.reader.unsigned(offset, 2, endian)?;
-                NodeValue::Char(
-                    char::from_u32(u32::from(truncate_u16(raw)))
-                        .unwrap_or(char::REPLACEMENT_CHARACTER),
-                )
-            }
-        };
+        // The same interpretation an array element gets, from the same
+        // function, so a scalar written on its own and the same type written
+        // with `[n]` after it cannot decode differently.
+        let raw = self.reader.unsigned(offset, size, endian)?;
+        let value = scalar_value(builtin, raw);
         Ok(Node {
             name: name.to_string(),
             type_name: builtin.name().to_string(),
@@ -288,7 +399,17 @@ impl<S: ByteSource + ?Sized> Evaluator<'_, S> {
     /// Counts one node against the budget so untrusted array lengths cannot
     /// drive unbounded allocation.
     pub(super) fn charge(&mut self) -> Result<(), PatternError> {
-        self.nodes += 1;
+        self.charge_many(1)
+    }
+
+    /// Counts `count` nodes at once.
+    ///
+    /// A scalar array builds no nodes and is charged as if it did. The budget
+    /// is the caller's statement about how large a value tree they are willing
+    /// to receive, and answering `u8 x[10000000]` because it happens to be
+    /// cheap now would move that boundary without being asked to.
+    fn charge_many(&mut self, count: u64) -> Result<(), PatternError> {
+        self.nodes = self.nodes.saturating_add(count);
         if self.nodes > self.options.max_nodes {
             return Err(fail(NODE_BUDGET, "pattern produces too many nodes"));
         }
@@ -306,20 +427,4 @@ pub(super) fn type_name(type_reference: &TypeReference) -> String {
 
 pub(crate) fn fail(code: &'static str, detail: &'static str) -> PatternError {
     PatternError::new(code, Position { line: 0, column: 0 }, detail)
-}
-
-fn truncate_u8(value: u128) -> u8 {
-    u8::try_from(value & 0xff).unwrap_or(0)
-}
-
-fn truncate_u16(value: u128) -> u16 {
-    u16::try_from(value & 0xffff).unwrap_or(0)
-}
-
-fn truncate_u32(value: u128) -> u32 {
-    u32::try_from(value & 0xffff_ffff).unwrap_or(0)
-}
-
-fn truncate_u64(value: u128) -> u64 {
-    u64::try_from(value & u128::from(u64::MAX)).unwrap_or(0)
 }
