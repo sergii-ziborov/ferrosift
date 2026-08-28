@@ -42,6 +42,14 @@ that *is* pinned. **None is aliased without evidence**, and that zero is a
 build failure rather than a footnote: a coverage gate refuses an alias with
 neither corpus cases nor a documented exemption.
 
+A caller has to answer a different question before that one — **what can this
+operation do?** — and the [safety matrix](docs/safety-matrix.md) is generated
+from the catalog to answer it per operation: host capabilities, review
+classifications, determinism, and which growth limit applies. Today no
+operation requires a host capability at all, and every one of them is
+deterministic; that page says so because the code does, not because anyone
+wrote it down.
+
 See the [compatibility ledger](docs/compatibility/ledger.md) for the
 per-operation table and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
