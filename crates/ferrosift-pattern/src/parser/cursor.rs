@@ -13,6 +13,12 @@ pub(super) const EXPECTED_TYPE: &str = "pattern.parse.expected_type";
 pub(super) const INVALID_ARRAY_LENGTH: &str = "pattern.parse.invalid_array_length";
 pub(super) const INVALID_BIT_WIDTH: &str = "pattern.parse.invalid_bit_width";
 pub(super) const DUPLICATE_DECLARATION: &str = "pattern.parse.duplicate_declaration";
+/// A #-line this crate cannot honour, which today means #include.
+///
+/// Named rather than folded into `unexpected_token`, because it is a limit of
+/// where this crate runs and not of what the language is: #include names
+/// another file and there is no filesystem here to fetch one from.
+pub(super) const UNSUPPORTED_DIRECTIVE: &str = "pattern.parse.unsupported_directive";
 
 /// A forward-only cursor over the token stream with expectation helpers.
 pub(super) struct Cursor {

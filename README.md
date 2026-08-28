@@ -67,9 +67,25 @@ operations are: `ImHex`'s own `plcli`, built from a pinned checkout of
 are held in the fixture, and are asserted to fail — so the day that changes,
 the test says so.
 
-What that does not yet say is how much of the real `.hexpat` ecosystem parses
-here. [docs/pattern-language-subset.md](docs/pattern-language-subset.md) has the
-grammar, what is covered, and what is missing.
+That is a number about *constructs*, and it used to be the only one — nobody
+writes one construct at a time, so it said nothing about patterns people
+actually wrote. Now there is a second: every `.hexpat` in
+`WerWolv/ImHex-Patterns`, the collection ImHex itself ships, parsed and
+recorded per file.
+
+**11 of 308 — 3.6%.** And the ranked reason rather than a shrug: 268 of them,
+87%, stop at `import std.io;` or `#include`, because they build on ImHex's
+standard library and this crate reads one source and has no filesystem to fetch
+another from. That is a limit of where it runs rather than of the grammar,
+which is why it carries a code of its own.
+
+The survey paid for itself on the first run: it started at 1%, and what stood
+in the way was three one-line gaps — `#pragma` metadata, `\xNN` escapes, and
+`0xA000'0002` digit separators — none of them language design and none of them
+visible to a corpus of hand-written constructs.
+
+[docs/pattern-language-subset.md](docs/pattern-language-subset.md) has the
+grammar, both numbers, and what is missing.
 
 What is *not* covered on the operation side is a list rather than a number:
 [operations not implemented](docs/compatibility/not-implemented.md) groups the

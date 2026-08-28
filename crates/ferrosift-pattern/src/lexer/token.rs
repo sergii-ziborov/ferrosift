@@ -26,6 +26,17 @@ pub enum TokenKind {
     Text(String),
     /// A punctuation mark or operator.
     Symbol(Symbol),
+    /// A whole `#`-line: the word after the hash, then the rest of it.
+    ///
+    /// One token rather than several because a directive's argument is prose.
+    /// `#pragma description Assassin's Creed: Unity's .forge archive` holds
+    /// two apostrophes that are not quotes and a colon that is not a symbol.
+    Directive {
+        /// The word after the hash — `pragma`, `include`, and so on.
+        name: String,
+        /// The rest of the line, trimmed.
+        argument: String,
+    },
     /// End of input.
     End,
 }

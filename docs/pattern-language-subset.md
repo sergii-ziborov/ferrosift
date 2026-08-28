@@ -30,6 +30,56 @@ other two. Nothing is skipped: a case this crate answers differently would fail
 the replay, and the two it cannot run are asserted to fail with the code they
 fail with, so the day either changes the test says so.
 
+### And how much of the real ecosystem this reads
+
+That number is about *constructs*, and it is the one this project could measure
+first. It says nothing about patterns people actually wrote, because nobody
+writes one construct at a time — so the honest reading was always "compatible
+over what it implements", with no number behind *what it implements* as a
+fraction of what exists.
+
+There is one now. `crates/ferrosift-pattern/tests/ecosystem.rs` parses every
+`.hexpat` in `WerWolv/ImHex-Patterns`, the pattern collection ImHex itself
+ships, and records the verdict per file:
+
+<!-- ecosystem:begin -->
+| Patterns surveyed | Parsed | Rate |
+|---:|---:|---:|
+| 308 | 11 | 3.6% |
+
+| What stopped the rest | Patterns |
+|---|---:|
+| `pattern.parse.unsupported_directive` | 268 |
+| `pattern.parse.expected_symbol` | 17 |
+| `pattern.parse.expected_identifier` | 4 |
+| `pattern.parse.unexpected_token` | 4 |
+| `pattern.lex.invalid_escape` | 1 |
+| `pattern.lex.invalid_number` | 1 |
+| `pattern.lex.unterminated_text` | 1 |
+| `pattern.parse.expected_type` | 1 |
+<!-- ecosystem:end -->
+
+**Three point six per cent**, and the ranking says why rather than leaving it
+to be guessed. 268 of the 308 — 87% — stop at `import std.io;` or
+`#include <std/mem.pat>`: they build on ImHex's standard library, and this
+crate reads one source and has no filesystem to fetch another from. That is a
+fact about where the crate runs rather than about the grammar, which is why it
+has a code of its own instead of being reported as a misplaced semicolon.
+
+The survey earned its place immediately. It started at **1%**, with 302 files
+refused on their first line because `#` was not a character the lexer knew, and
+three separate one-line gaps behind that: `#pragma` metadata, `\xNN` escapes in
+a magic signature, and `0xA000'0002` digit separators. None of those is
+language design; all three were invisible to a corpus of hand-written
+constructs.
+
+The patterns are **not vendored**: `ImHex-Patterns` is GPL-2.0 and this
+repository is Apache-2.0. The fixture records each file's path, size and
+content digest, the checkout stays gitignored beside the other references, and
+the survey re-runs where it is present. Without it the test still checks the
+published number against the list it summarises, because a number that
+disagreed with its own evidence would be wrong either way.
+
 ### What the corpus covers
 
 The cases separate constructs rather than exercising them together, because a
@@ -231,16 +281,38 @@ absolute address.
 
 Each of these is a named future step, never a silent gap: functions and their
 `return`, `while` and `for` statements, `match`, pointers (`Type *p : u32`),
-namespaces, attributes (`[[color]]`, `[[name]]`, `[[hidden]]`, …), the
-preprocessor (`#include`, `#define`, `#pragma`), `str` and `auto`, unbounded
-arrays terminated by a sentinel, `in` / `out` variables, and the `parent` and
-`this` scopes. Sources using them are rejected with a stable code, never
-partially accepted.
+namespaces, attributes (`[[color]]`, `[[name]]`, `[[hidden]]`, …), `#define`,
+`str` and `auto`, unbounded arrays terminated by a sentinel, `in` / `out`
+variables, and the `parent` and `this` scopes. Sources using them are rejected
+with a stable code, never partially accepted.
+
+**Another source is the one that costs the most.** `import` and `#include` both
+name a second file, and this crate reads one — it has no filesystem, by
+design, since it builds for targets that have none. The survey above puts a
+number on what that costs: 87% of published patterns. Closing it is not a
+grammar change but an interface one, a resolver the caller supplies, in the
+same shape as [`ByteSource`]; until then both spellings are refused under
+`pattern.parse.unsupported_directive` rather than as a syntax error, so the
+reason is legible.
+
+`#pragma` **is** implemented: the lines are parsed, kept on `Pattern`, and
+handed to the caller. Only `endian` is acted on, being the one that changes
+what a read produces; the rest describe the pattern rather than the data.
+
+[`ByteSource`]: https://docs.rs/ferrosift-pattern/latest/ferrosift_pattern/trait.ByteSource.html
 
 ## Failure codes
 
 Every failure carries a stable code and a one-based source position. Codes
 are matchable identifiers whose meaning does not change between releases.
+
+An **evaluation** failure carries a second location as well: the byte offset
+it concerns. The two answer different questions — "the read left the data" is
+useless without knowing which byte was wanted, and the byte is useless without
+knowing which line asked for it — and the reported line is the *nearest*
+declaration, so a member of a nested struct names its own line rather than the
+placement that reached it. A failure about the pattern rather than about the
+bytes carries no offset at all.
 
 | Code | Meaning |
 |---|---|
@@ -258,7 +330,9 @@ are matchable identifiers whose meaning does not change between releases.
 | `pattern.parse.invalid_array_length` | Array length is not positive |
 | `pattern.parse.invalid_bit_width` | Bitfield width is outside 1..=64 |
 | `pattern.parse.duplicate_declaration` | A name is declared more than once |
+| `pattern.parse.unsupported_directive` | `import` or `#include` names another source |
 | `pattern.eval.out_of_bounds` | A read extends past the end of the data |
+| `pattern.eval.source_failed` | The byte source declined a read that was in range |
 | `pattern.eval.unknown_type` | A referenced type is not declared in the pattern |
 | `pattern.eval.unknown_field` | An expression names a field not readable from there |
 | `pattern.eval.unknown_constant` | `Enum::Constant` names no declared enum or entry |

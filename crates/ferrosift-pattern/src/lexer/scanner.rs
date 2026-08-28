@@ -51,7 +51,9 @@ impl Scanner {
                 });
                 return Ok(tokens);
             };
-            let kind = if value.is_ascii_digit() {
+            let kind = if value == '#' {
+                self.scan_directive()
+            } else if value.is_ascii_digit() {
                 self.scan_number()?
             } else if is_identifier_start(value) {
                 self.scan_word()
@@ -120,6 +122,47 @@ impl Scanner {
         }
     }
 
+    /// A `#`-line: the word after the hash, then the rest of the line.
+    ///
+    /// Taken whole rather than tokenised. A directive's argument is prose —
+    /// `#pragma description Assassin's Creed: Unity's .forge archive` — and
+    /// running a lexer over it would find an unterminated character literal in
+    /// an apostrophe. It is one line of metadata, and one line is the unit.
+    ///
+    /// Which directive it is, and whether this crate can honour it, is the
+    /// parser's question. The lexer's job is only to stop treating a `#` as an
+    /// unsupported character, which is what refused three hundred and two of
+    /// the three hundred and eight patterns anyone has published.
+    fn scan_directive(&mut self) -> TokenKind {
+        self.advance();
+        let mut name = String::new();
+        while let Some(value) = self
+            .peek()
+            .filter(|value| !value.is_whitespace() && *value != '\n')
+        {
+            name.push(value);
+            self.advance();
+        }
+        // Spaces between the name and the argument, but not the newline: an
+        // empty argument has to stay empty rather than swallowing the line
+        // that follows.
+        while self
+            .peek()
+            .is_some_and(|value| value == ' ' || value == '\t')
+        {
+            self.advance();
+        }
+        let mut argument = String::new();
+        while let Some(value) = self.peek().filter(|value| *value != '\n') {
+            argument.push(value);
+            self.advance();
+        }
+        TokenKind::Directive {
+            name,
+            argument: String::from(argument.trim_end()),
+        }
+    }
+
     fn scan_word(&mut self) -> TokenKind {
         let mut word = String::new();
         while let Some(value) = self.peek() {
@@ -137,7 +180,12 @@ impl Scanner {
         let radix = self.scan_radix();
         let mut digits = String::new();
         while let Some(value) = self.peek() {
-            if value == '_' {
+            // Both separators the language allows. The apostrophe is the one
+            // real patterns actually use — `0xA000'0002`, `0b1110'0000` — and
+            // without it the lexer reads the quote as the start of a character
+            // literal and then runs to the end of the file looking for its
+            // closing quote.
+            if value == '_' || value == '\'' {
                 self.advance();
                 continue;
             }
@@ -251,8 +299,35 @@ impl Scanner {
             '\\' => '\\',
             '\'' => '\'',
             '"' => '"',
+            // `\xNN`, which is how a magic signature is written: `"\x7fELF"`,
+            // `"\x78\x9c"`, `"\x28\xB5\x2F\xFD"`. Exactly two hex digits, as
+            // the language defines it — a shorter form would make `"\x7"`
+            // ambiguous with the character after it.
+            'x' => self.scan_hex_escape(position)?,
             _ => return Err(Self::fail(INVALID_ESCAPE, position, "unsupported escape")),
         })
+    }
+
+    /// The two hex digits after `\x`, as one code point.
+    ///
+    /// Yields a code point below 256, so a byte that is not ASCII becomes the
+    /// Latin-1 character of the same value. That is what the text is *for*
+    /// here — a magic signature compared against bytes — and it is what makes
+    /// `"\x7fELF"` four characters rather than a decoding failure.
+    fn scan_hex_escape(&mut self, position: Position) -> Result<char, PatternError> {
+        let mut value: u32 = 0;
+        for _ in 0..2 {
+            let digit = self
+                .peek()
+                .and_then(|value| value.to_digit(16))
+                .ok_or_else(|| {
+                    Self::fail(INVALID_ESCAPE, position, "\\x needs two hexadecimal digits")
+                })?;
+            self.advance();
+            value = value * 16 + digit;
+        }
+        char::from_u32(value)
+            .ok_or_else(|| Self::fail(INVALID_ESCAPE, position, "escape is not a character"))
     }
 
     fn peek(&self) -> Option<char> {

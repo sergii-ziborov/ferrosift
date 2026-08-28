@@ -50,10 +50,18 @@ pub fn evaluate_with<S: ByteSource + ?Sized>(
     source: &S,
     options: &EvalOptions,
 ) -> Result<Vec<Node>, PatternError> {
+    // `#pragma endian` wins over the caller's default. The option is a default
+    // for patterns that say nothing; a pattern that says `big` is making a
+    // statement about the format it describes, and honouring the caller
+    // instead would read every field backwards.
+    let mut options = *options;
+    if let Some(endian) = pattern.endian {
+        options.endian = endian;
+    }
     let mut evaluator = Evaluator {
         pattern,
         reader: Reader::new(source),
-        options: *options,
+        options,
         nodes: 0,
     };
     let mut roots: Vec<Node> = Vec::new();

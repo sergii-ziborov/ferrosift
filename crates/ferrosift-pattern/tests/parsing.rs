@@ -348,7 +348,15 @@ fn malformed_sources_report_stable_codes() {
         // A radix prefix with no digits fails in the lexer, before the parser
         // ever asks for a value.
         ("u8 a @ 0x; ", "pattern.lex.invalid_number"),
-        ("struct S { u8 a; } #", "pattern.lex.unexpected_character"),
+        // A bare `#` opens a directive whose name is empty, which is not
+        // `pragma` and so is refused as one this crate cannot honour. It used
+        // to be an unsupported character, back when `#` was not part of the
+        // language at all.
+        (
+            "struct S { u8 a; } #",
+            "pattern.parse.unsupported_directive",
+        ),
+        ("struct S { u8 a; } `", "pattern.lex.unexpected_character"),
     ] {
         let error = reject(source);
         assert_eq!(error.code(), code, "source: {source}");

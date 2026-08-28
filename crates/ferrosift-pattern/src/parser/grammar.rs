@@ -6,7 +6,7 @@ use alloc::vec::Vec;
 
 use super::cursor::{
     Cursor, DUPLICATE_DECLARATION, EXPECTED_INTEGER, EXPECTED_TYPE, INVALID_ARRAY_LENGTH,
-    INVALID_BIT_WIDTH, UNEXPECTED_TOKEN,
+    INVALID_BIT_WIDTH, UNEXPECTED_TOKEN, UNSUPPORTED_DIRECTIVE,
 };
 use super::expression::expression;
 use crate::ast::{
@@ -19,8 +19,17 @@ use crate::lexer::{Keyword, Symbol, TokenKind};
 
 pub(super) fn pattern(cursor: &mut Cursor) -> Result<Pattern, PatternError> {
     let mut declarations = Vec::new();
+    let mut directives = Vec::new();
+    let mut endian = None;
     let mut names = BTreeSet::new();
     while !cursor.at_end() {
+        if let Some(directive) = self::directive(cursor)? {
+            if let Some(declared) = pragma_endian(&directive) {
+                endian = Some(declared);
+            }
+            directives.push(directive);
+            continue;
+        }
         let declaration = self::declaration(cursor)?;
         let name = declared_name(&declaration);
         if !names.insert(name.clone()) {
@@ -31,7 +40,66 @@ pub(super) fn pattern(cursor: &mut Cursor) -> Result<Pattern, PatternError> {
         }
         declarations.push(declaration);
     }
-    Ok(Pattern { declarations })
+    Ok(Pattern {
+        declarations,
+        directives,
+        endian,
+    })
+}
+
+/// One `#`-line, or nothing when the next token is not one.
+///
+/// `#pragma` is kept and handed on. `#include` is refused with a code of its
+/// own: it names another file, and this crate has no filesystem to fetch one
+/// from — a fact about where it runs rather than about the language. Saying so
+/// under its own name is worth more than a generic parse failure, because the
+/// survey in `tests/ecosystem.rs` then reports it as a named limit and counts
+/// how many real patterns it costs.
+fn directive(cursor: &mut Cursor) -> Result<Option<crate::ast::Directive>, PatternError> {
+    let position = cursor.position();
+    let TokenKind::Directive { name, argument } = cursor.peek() else {
+        return Ok(None);
+    };
+    let (name, argument) = (name.clone(), argument.clone());
+    if name != "pragma" {
+        return Err(cursor.fail(
+            UNSUPPORTED_DIRECTIVE,
+            format!("`#{name}` is not supported: this crate reads one source and no others"),
+        ));
+    }
+    cursor.advance();
+    Ok(Some(crate::ast::Directive {
+        name: first_word(&argument),
+        argument: String::from(rest_after_first_word(&argument)),
+        position,
+    }))
+}
+
+/// `#pragma endian big` / `little`, and nothing else.
+///
+/// The one pragma in this subset that changes what a read produces, so it is
+/// the one that is acted on rather than only recorded. An unrecognised value
+/// is ignored rather than refused: the pattern is still readable, and refusing
+/// it would turn a metadata line into a parse error.
+fn pragma_endian(directive: &crate::ast::Directive) -> Option<Endian> {
+    if directive.name != "endian" {
+        return None;
+    }
+    match directive.argument.trim() {
+        "big" => Some(Endian::Big),
+        "little" => Some(Endian::Little),
+        _ => None,
+    }
+}
+
+fn first_word(text: &str) -> String {
+    String::from(text.split_whitespace().next().unwrap_or(""))
+}
+
+fn rest_after_first_word(text: &str) -> &str {
+    text.trim_start()
+        .split_once(char::is_whitespace)
+        .map_or("", |(_, rest)| rest.trim_start())
 }
 
 fn declared_name(declaration: &Declaration) -> String {
@@ -46,6 +114,20 @@ fn declared_name(declaration: &Declaration) -> String {
 }
 
 fn declaration(cursor: &mut Cursor) -> Result<Declaration, PatternError> {
+    // `import std.io;` is the same limit `#include` is, written as a statement
+    // rather than as a directive: it names another source, and this crate
+    // reads one. Refusing it under the directive's own code is worth more than
+    // "expected `;`, found `.`" — which is what two hundred and twelve of the
+    // published patterns used to answer, and which describes the punctuation
+    // rather than the reason.
+    if let TokenKind::Identifier(word) = cursor.peek()
+        && word == "import"
+    {
+        return Err(cursor.fail(
+            UNSUPPORTED_DIRECTIVE,
+            "`import` is not supported: this crate reads one source and no others",
+        ));
+    }
     if cursor.eat_keyword(Keyword::Struct) {
         return structure(cursor).map(Declaration::Struct);
     }

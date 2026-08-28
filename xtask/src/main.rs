@@ -13,6 +13,7 @@ mod cyberchef;
 mod encoding;
 mod jscompat;
 mod ledger;
+mod pattern;
 
 const USAGE: &str = "\
 FerroSift development tasks
@@ -22,6 +23,9 @@ Usage:
   cargo xtask cyberchef generate   Regenerate the pinned fixtures
   cargo xtask cyberchef verify     Check the pin, then replay the fixtures
   cargo xtask cyberchef gap        List reference operations not yet implemented
+  cargo xtask pattern setup        Clone the pinned ImHex-Patterns collection
+  cargo xtask pattern survey       Re-record how much of it this crate parses
+  cargo xtask pattern check        Fail when the recorded survey is stale
   cargo xtask ledger generate      Rewrite the derived compatibility ledger
   cargo xtask ledger check         Fail when the committed ledger is stale
   cargo xtask encoding check       Fail on text that was double-encoded
@@ -42,6 +46,7 @@ fn main() -> ExitCode {
         ["encoding", rest @ ..] => encoding::run(rest),
         ["jscompat", rest @ ..] => jscompat::run(rest),
         ["ledger", rest @ ..] => ledger::run(rest),
+        ["pattern", rest @ ..] => pattern::run(rest),
         ["--help" | "-h"] | [] => {
             print!("{USAGE}");
             ExitCode::SUCCESS

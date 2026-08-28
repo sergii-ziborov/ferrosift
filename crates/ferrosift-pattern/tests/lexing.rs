@@ -15,6 +15,18 @@ fn placement_address(source: &str) -> u128 {
     }
 }
 
+/// The code point of a character literal written as a placement address.
+fn placement_char(source: &str) -> u32 {
+    let pattern = parse(source).unwrap_or_else(|error| panic!("parse failed: {error}"));
+    match &pattern.declarations[0] {
+        Declaration::Placement(placement) => match placement.address {
+            Expression::Char(value) => u32::from(value),
+            ref other => panic!("expected a character address, found {other:?}"),
+        },
+        other => panic!("expected a placement, found {other:?}"),
+    }
+}
+
 fn code(source: &str) -> &'static str {
     let error = parse(source).expect_err("expected a rejection");
     // Leak-free mapping: the crate returns `&'static str` codes already.
@@ -83,14 +95,44 @@ fn unsupported_escapes_and_characters_are_rejected() {
     assert_eq!(code(r"u8 a @ '\"), "pattern.lex.invalid_escape");
     // `$` and `&` used to belong here. They are operators now, so a source
     // using them reaches the parser and fails there instead -- the characters
-    // that remain are the ones no part of the grammar spells.
-    for source in [
-        "u8 a @ 0; #pragma once",
-        "struct S { u8 a; } `",
-        "u8 a @ 0 \\ 1;",
-    ] {
+    // that remain are the ones no part of the grammar spells. `#` left this
+    // list for the same reason: it opens a directive.
+    for source in ["struct S { u8 a; } `", "u8 a @ 0 \\ 1;"] {
         assert_eq!(code(source), "pattern.lex.unexpected_character", "{source}");
     }
+}
+
+#[test]
+fn a_hex_escape_is_two_digits_and_no_fewer() {
+    // How a magic signature is written: `"\x7fELF"`, `"\x78\x9c"`. Twenty-four
+    // of the published patterns used one, and every one of them was refused.
+    assert_eq!(placement_char(r"u8 a @ '\x41';"), 0x41);
+    assert_eq!(placement_char(r"u8 a @ '\x00';"), 0);
+    assert_eq!(placement_char(r"u8 a @ '\xff';"), 0xff);
+    assert_eq!(placement_char(r"u8 a @ '\xFF';"), 0xff);
+    // In a string too, which is where they actually appear: a magic signature
+    // is compared against bytes.
+    let pattern = parse("#pragma magic \"\\x7fELF\"\nu8 a @ 0;").expect("parses");
+    assert_eq!(pattern.directives[0].name, "magic");
+    // One digit is not a short form: it would make `"\x7f"` ambiguous with a
+    // `\x7` followed by an `f`.
+    assert_eq!(code(r"u8 a @ '\x4';"), "pattern.lex.invalid_escape");
+    assert_eq!(code(r"u8 a @ '\xg1';"), "pattern.lex.invalid_escape");
+}
+
+#[test]
+fn an_apostrophe_separates_digits() {
+    // `0xA000'0002` and `0b1110'0000` are how real patterns group a wide
+    // literal. Without this the quote opened a character literal and the lexer
+    // ran to the end of the file looking for its partner.
+    assert_eq!(placement_address("u8 a @ 0xA000'0002;"), 0xA000_0002);
+    assert_eq!(placement_address("u8 a @ 0b1110'0000;"), 0b1110_0000);
+    assert_eq!(placement_address("u8 a @ 0x1'0000;"), 0x1_0000);
+    // The underscore still works, and the two mean the same thing.
+    assert_eq!(
+        placement_address("u8 a @ 1'000'000;"),
+        placement_address("u8 a @ 1_000_000;")
+    );
 }
 
 #[test]

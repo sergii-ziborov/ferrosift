@@ -161,6 +161,20 @@ pub enum ArrayLength {
 pub struct Pattern {
     /// Declarations in source order.
     pub declarations: Vec<Declaration>,
+    /// `#pragma` lines, in source order, as written.
+    ///
+    /// Nearly every pattern anyone has published opens with several: an
+    /// author, a description, a MIME type, a magic signature. They describe
+    /// the *pattern* rather than the data, so they are kept and handed on
+    /// rather than acted upon — with the one exception below, which is the
+    /// only pragma in this subset that changes what a read produces.
+    pub directives: Vec<Directive>,
+    /// The default byte order this pattern declares, from `#pragma endian`.
+    ///
+    /// Overrides the caller's [`crate::EvalOptions::endian`] when present: the
+    /// pattern is a statement about the format and the option is a default for
+    /// patterns that make no such statement.
+    pub endian: Option<Endian>,
 }
 
 impl Pattern {
@@ -177,6 +191,19 @@ impl Pattern {
                 || matches!(declaration, Declaration::Alias(value) if value.name == name)
         })
     }
+}
+
+/// One `#pragma` line, split at the first space.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Directive {
+    /// The word after `#pragma` — `author`, `endian`, `MIME`, `once`, and so
+    /// on. Not an enumeration: the set is upstream's and open, and refusing an
+    /// unrecognised one would refuse the pattern for a line that describes it.
+    pub name: String,
+    /// The rest of the line, trimmed. Empty where the pragma takes no value.
+    pub argument: String,
+    /// Where the directive was written.
+    pub position: Position,
 }
 
 /// A top-level declaration.

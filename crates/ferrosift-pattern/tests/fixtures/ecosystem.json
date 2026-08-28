@@ -1,0 +1,2204 @@
+{
+  "source": {
+    "repository": "https://github.com/WerWolv/ImHex-Patterns",
+    "commit": "4b25356eb7bec31ad33d6b196e8173c832b195f1",
+    "license": "GPL-2.0"
+  },
+  "summary": {
+    "surveyed": 308,
+    "parsed": 11,
+    "refused": 297
+  },
+  "refusals": [
+    {
+      "code": "pattern.parse.unsupported_directive",
+      "patterns": 268
+    },
+    {
+      "code": "pattern.parse.expected_symbol",
+      "patterns": 17
+    },
+    {
+      "code": "pattern.parse.expected_identifier",
+      "patterns": 4
+    },
+    {
+      "code": "pattern.parse.unexpected_token",
+      "patterns": 4
+    },
+    {
+      "code": "pattern.lex.invalid_escape",
+      "patterns": 1
+    },
+    {
+      "code": "pattern.lex.invalid_number",
+      "patterns": 1
+    },
+    {
+      "code": "pattern.lex.unterminated_text",
+      "patterns": 1
+    },
+    {
+      "code": "pattern.parse.expected_type",
+      "patterns": 1
+    }
+  ],
+  "patterns": [
+    {
+      "path": "patterns/3ds.hexpat",
+      "bytes": 45601,
+      "digest": "ffe5fcfa47826536",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/7z.hexpat",
+      "bytes": 3402,
+      "digest": "457593a6f0781062",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/AC Unity/acu_data_compressed.hexpat",
+      "bytes": 896,
+      "digest": "d767c98363dc221f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/AC Unity/acu_data_decompressed.hexpat",
+      "bytes": 2145,
+      "digest": "755ffd5912888d70",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/AC Unity/acu_forge.hexpat",
+      "bytes": 1464,
+      "digest": "9c388f328382af1b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/BroEngine/anim.hexpat",
+      "bytes": 847,
+      "digest": "7a8c19a258aacbf3",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/BroEngine/dds.hexpat",
+      "bytes": 348,
+      "digest": "70d6a6fa1c90323a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 11
+    },
+    {
+      "path": "patterns/BroEngine/mesh.hexpat",
+      "bytes": 2653,
+      "digest": "2fa09e173ea1a759",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/BroEngine/morph.hexpat",
+      "bytes": 1154,
+      "digest": "3e2225d1505561e0",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/BroEngine/skel.hexpat",
+      "bytes": 1049,
+      "digest": "7712dc0d3fe3a6b4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/CGX.hexpat",
+      "bytes": 1944,
+      "digest": "f464ad8ff36d4f05",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/Crashlvl.hexpat",
+      "bytes": 6342,
+      "digest": "c8eb6fe18835b0ef",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/DFIR/DISK_PARSER.hexpat",
+      "bytes": 30860,
+      "digest": "bb3fd1f3a7531e66",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 18
+    },
+    {
+      "path": "patterns/DFIR/FAT32.hexpat",
+      "bytes": 32204,
+      "digest": "cd093b2995c590d4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 31
+    },
+    {
+      "path": "patterns/DFIR/NTFS.hexpat",
+      "bytes": 63754,
+      "digest": "2b4e4f1c4245143f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 36
+    },
+    {
+      "path": "patterns/DFIR/exFAT.hexpat",
+      "bytes": 25118,
+      "digest": "bf47ca490779340d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 24
+    },
+    {
+      "path": "patterns/Devil May Cry HD Collection/dmc3_hd_mod.hexpat",
+      "bytes": 3376,
+      "digest": "cdd8ed6a15cd2a3a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/GoldBox/GB_CHR.hexpat",
+      "bytes": 68344,
+      "digest": "af769ba9e53a138e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/GoldBox/GB_EXE.hexpat",
+      "bytes": 59313,
+      "digest": "f8237cbe992b0d5b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 15
+    },
+    {
+      "path": "patterns/GoldBox/GB_GEO.hexpat",
+      "bytes": 116618,
+      "digest": "01a14c3687e5649e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/GoldBox/GB_ITM-Base.hexpat",
+      "bytes": 58679,
+      "digest": "3a99d2c0902257af",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/GoldBox/GB_ITM-Record.hexpat",
+      "bytes": 3013,
+      "digest": "cfb8acee1b36cdac",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/GoldBox/GB_UA_SCRIPT.hexpat",
+      "bytes": 29418,
+      "digest": "67af1a4ee1abeb24",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/GoldBox/GB_VLT.hexpat",
+      "bytes": 3861,
+      "digest": "b0fa0d5f89ab5319",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/SHR.hexpat",
+      "bytes": 7060,
+      "digest": "36bef1b324f7a9e9",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 28
+    },
+    {
+      "path": "patterns/Spore/spore-pdr.hexpat",
+      "bytes": 6282,
+      "digest": "5acc4ba210444f8c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/a3/a3_bmtr.hexpat",
+      "bytes": 3599,
+      "digest": "15ff09c8bdf4f943",
+      "code": "pattern.parse.expected_symbol",
+      "line": 8
+    },
+    {
+      "path": "patterns/a3/a3_p3d_mlod.hexpat",
+      "bytes": 5359,
+      "digest": "31f2f632bbb6c5fd",
+      "code": "pattern.parse.expected_symbol",
+      "line": 8
+    },
+    {
+      "path": "patterns/a3/a3_paa.hexpat",
+      "bytes": 3643,
+      "digest": "775d02c1bd3753fc",
+      "code": "pattern.parse.expected_symbol",
+      "line": 8
+    },
+    {
+      "path": "patterns/a3/a3_rap.hexpat",
+      "bytes": 4449,
+      "digest": "480df3fe434748fb",
+      "code": "pattern.parse.expected_symbol",
+      "line": 8
+    },
+    {
+      "path": "patterns/a3/a3_rtm.hexpat",
+      "bytes": 2652,
+      "digest": "a1a2b392be85e5d7",
+      "code": "pattern.parse.expected_symbol",
+      "line": 8
+    },
+    {
+      "path": "patterns/a3/a3_texheaders.hexpat",
+      "bytes": 3548,
+      "digest": "80df00bb59a0d5ba",
+      "code": "pattern.parse.expected_symbol",
+      "line": 8
+    },
+    {
+      "path": "patterns/adtfdat.hexpat",
+      "bytes": 4762,
+      "digest": "20bfd0c0046a4a9a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/adts.hexpat",
+      "bytes": 7124,
+      "digest": "7966a1632d056752",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 20
+    },
+    {
+      "path": "patterns/afe2.hexpat",
+      "bytes": 1684,
+      "digest": "d99d785b5fca5ced",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/amd_ucode_container.hexpat",
+      "bytes": 2166,
+      "digest": "8c855117ef7b04a1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 17
+    },
+    {
+      "path": "patterns/amd_ucode_patch.hexpat",
+      "bytes": 4655,
+      "digest": "1b27c8beae01f89f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/ani.hexpat",
+      "bytes": 1741,
+      "digest": "1c90b786e4601609",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/ape.hexpat",
+      "bytes": 1204,
+      "digest": "4b7204afad1f9b25",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/apple_single_double.hexpat",
+      "bytes": 989,
+      "digest": "5b03095d266dca11",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/ar.hexpat",
+      "bytes": 739,
+      "digest": "4d589005428de6c3",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/arc.hexpat",
+      "bytes": 508,
+      "digest": "173f2f1c9abafd34",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/aria2.hexpat",
+      "bytes": 907,
+      "digest": "68c456c4e61c7e3b",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/arm_cm_vtor.hexpat",
+      "bytes": 1911,
+      "digest": "fe383b00582b4e39",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/bastion/map.hexpat",
+      "bytes": 8241,
+      "digest": "ab7b82b6e1e80217",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/bastion/profile.hexpat",
+      "bytes": 1162,
+      "digest": "49a44e520572dc65",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/bastion/save.hexpat",
+      "bytes": 1445,
+      "digest": "280c907f55113686",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/bastion/util.hexpat",
+      "bytes": 1186,
+      "digest": "575541b4fdb29688",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/bcss.hexpat",
+      "bytes": 5859,
+      "digest": "2901936faf1cbffd",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/bencode.hexpat",
+      "bytes": 1789,
+      "digest": "45c9248e71eb0305",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/bgcode.hexpat",
+      "bytes": 2312,
+      "digest": "f11f87ab0cb26f3d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/bink_container.hexpat",
+      "bytes": 3869,
+      "digest": "cd2887a95571065e",
+      "code": "pattern.parse.expected_symbol",
+      "line": 14
+    },
+    {
+      "path": "patterns/binka.hexpat",
+      "bytes": 788,
+      "digest": "59779a3ec7939795",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/blend.hexpat",
+      "bytes": 6025,
+      "digest": "af8d9414cb81c2d2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 18
+    },
+    {
+      "path": "patterns/blf.hexpat",
+      "bytes": 17676,
+      "digest": "a4afe13b4d3d73ae",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 14
+    },
+    {
+      "path": "patterns/bloodborne_save.hexpat",
+      "bytes": 6055,
+      "digest": "bcdb0eb46b832d67",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/bmp.hexpat",
+      "bytes": 2142,
+      "digest": "0ccf47888a730e08",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/bplist.hexpat",
+      "bytes": 9843,
+      "digest": "47ac09c534c83113",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/bson.hexpat",
+      "bytes": 3272,
+      "digest": "4c9de96ba32b74c3",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/bsp_goldsrc.hexpat",
+      "bytes": 5332,
+      "digest": "e70bf5c10fab8b6b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/btrfs_send_stream.hexpat",
+      "bytes": 11347,
+      "digest": "244194d84054f232",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/bzip3.hexpat",
+      "bytes": 1746,
+      "digest": "dee4c45cc2c58b36",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/cab.hexpat",
+      "bytes": 2510,
+      "digest": "c3d88b3e14bd38c7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/cchva.hexpat",
+      "bytes": 576,
+      "digest": "59fa72483eb8b8c5",
+      "code": "pattern.parse.unexpected_token",
+      "line": 6
+    },
+    {
+      "path": "patterns/ccpal.hexpat",
+      "bytes": 209,
+      "digest": "28c7b4e35a7129e9",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/ccvxl.hexpat",
+      "bytes": 1249,
+      "digest": "c3194bb36aec9918",
+      "code": "pattern.parse.unexpected_token",
+      "line": 6
+    },
+    {
+      "path": "patterns/cda.hexpat",
+      "bytes": 591,
+      "digest": "681b86fcb51bd97a",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/chd.hexpat",
+      "bytes": 2720,
+      "digest": "cf5aff11ef24cd10",
+      "code": "pattern.parse.expected_symbol",
+      "line": 5
+    },
+    {
+      "path": "patterns/chm.hexpat",
+      "bytes": 18531,
+      "digest": "d2c6654460b4f916",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/chromium_pak.hexpat",
+      "bytes": 2064,
+      "digest": "a7bee6991f38b92f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/coff.hexpat",
+      "bytes": 5170,
+      "digest": "0f3338b3cd122c17",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/commodore_basic.hexpat",
+      "bytes": 3961,
+      "digest": "696726c0b9ca5d38",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/cpio.hexpat",
+      "bytes": 1727,
+      "digest": "2528de98ae16b32b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/cpio_new_ascii.hexpat",
+      "bytes": 2008,
+      "digest": "088853e7258d5282",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/cpio_portable_ascii.hexpat",
+      "bytes": 1860,
+      "digest": "80710f3e526e421c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/credhist.hexpat",
+      "bytes": 5304,
+      "digest": "8b123bfe14856d3f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 14
+    },
+    {
+      "path": "patterns/csnap.hexpat",
+      "bytes": 1517,
+      "digest": "9a82d5562388467b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/dds.hexpat",
+      "bytes": 6957,
+      "digest": "02739002409c2fbd",
+      "code": "pattern.parse.expected_identifier",
+      "line": 135
+    },
+    {
+      "path": "patterns/dex.hexpat",
+      "bytes": 4616,
+      "digest": "5ad82c6b341f10e4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/dicom.hexpat",
+      "bytes": 340276,
+      "digest": "ada973f11b6fe6e2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/dmc3_hd_mod.hexpat",
+      "bytes": 3412,
+      "digest": "12adf9cf20758da1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/dmg.hexpat",
+      "bytes": 2185,
+      "digest": "31d45739bc51a39f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/dmp64.hexpat",
+      "bytes": 4523,
+      "digest": "3294242c4f761735",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/dod-save.hexpat",
+      "bytes": 28601,
+      "digest": "d23b2a393bf193f2",
+      "code": "pattern.lex.invalid_number",
+      "line": 52
+    },
+    {
+      "path": "patterns/dos.hexpat",
+      "bytes": 9284,
+      "digest": "e5d5a08004333eba",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/dotnet_binaryformatter.hexpat",
+      "bytes": 40367,
+      "digest": "3920533bb9af03e2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 17
+    },
+    {
+      "path": "patterns/dpapiblob.hexpat",
+      "bytes": 2763,
+      "digest": "27cec325b01f03a2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/dpapimasterkey.hexpat",
+      "bytes": 4168,
+      "digest": "2a92673e1dc30dba",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/dsstore.hexpat",
+      "bytes": 2434,
+      "digest": "0ff3e8999c169143",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/dted.hexpat",
+      "bytes": 2687,
+      "digest": "3b834d7ea5fdd90b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/ebu_stl.hexpat",
+      "bytes": 4445,
+      "digest": "6fb329c85d89c0a3",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/elf.hexpat",
+      "bytes": 26055,
+      "digest": "0cc1af7340534364",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/esp32_image.hexpat",
+      "bytes": 3060,
+      "digest": "5c272e945dc2122d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/esp8266.hexpat",
+      "bytes": 1863,
+      "digest": "ec54ead2922f0133",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/evtx.hexpat",
+      "bytes": 1315,
+      "digest": "a1bf057400550933",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/fas_oskasoftware.hexpat",
+      "bytes": 2856,
+      "digest": "47e737d02f5d20e1",
+      "code": "pattern.parse.unexpected_token",
+      "line": 57
+    },
+    {
+      "path": "patterns/fas_oskasoftware_old.hexpat",
+      "bytes": 2047,
+      "digest": "774710a4af3e28de",
+      "code": "pattern.parse.unexpected_token",
+      "line": 57
+    },
+    {
+      "path": "patterns/fbx.hexpat",
+      "bytes": 6298,
+      "digest": "65b2e3f5c238fe64",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/fdt.hexpat",
+      "bytes": 3243,
+      "digest": "d1bd2a604e93e017",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/ffx/all/a_abilities.bin.hexpat",
+      "bytes": 3529,
+      "digest": "8ecc8baab006f534",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/all/btl.bin.hexpat",
+      "bytes": 1499,
+      "digest": "d6058351b14e1290",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 2
+    },
+    {
+      "path": "patterns/ffx/all/buki_get.bin.hexpat",
+      "bytes": 2709,
+      "digest": "97dcbd86191fa9ca",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/all/mon.bin.hexpat",
+      "bytes": 19219,
+      "digest": "52a5237286e63203",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 2
+    },
+    {
+      "path": "patterns/ffx/all/ply_save.bin.hexpat",
+      "bytes": 5243,
+      "digest": "19338343d531c394",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/all/sphere_grid_layout.dat.hexpat",
+      "bytes": 1095,
+      "digest": "422166e9ae600f25",
+      "code": "pattern.parse.expected_identifier",
+      "line": 13
+    },
+    {
+      "path": "patterns/ffx/all/sphere_grid_nodes.dat.hexpat",
+      "bytes": 2659,
+      "digest": "e6957d0b59fe7bc5",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/ffx/all/st_number.bin.hexpat",
+      "bytes": 5309,
+      "digest": "0546ab77bd297195",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/all/sum_assure.bin.hexpat",
+      "bytes": 220,
+      "digest": "0c3b5b4e2f98f0a1",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/ffx/all/takara.bin.hexpat",
+      "bytes": 166,
+      "digest": "0731f2a18aefb2ce",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/ffx/all/weapon.bin.hexpat",
+      "bytes": 446,
+      "digest": "42a3e37539a8e783",
+      "code": "pattern.parse.expected_identifier",
+      "line": 6
+    },
+    {
+      "path": "patterns/ffx/en/important.bin.hexpat",
+      "bytes": 457,
+      "digest": "74e4f7ec32e3b35d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/item.bin.hexpat",
+      "bytes": 6519,
+      "digest": "9209d19745068d45",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/moncom.hexpat",
+      "bytes": 6419,
+      "digest": "1ee04672ececdef4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/panel.bin.hexpat",
+      "bytes": 475,
+      "digest": "4d56a8df02ad081a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/pccom.hexpat",
+      "bytes": 6519,
+      "digest": "9209d19745068d45",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/sphere.bin.hexpat",
+      "bytes": 1262,
+      "digest": "546fdc164378d9a5",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/txt/double0.hexpat",
+      "bytes": 295,
+      "digest": "834f41c4386c581e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/txt/double1.hexpat",
+      "bytes": 293,
+      "digest": "4d04670b32567bb6",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/txt/double2.hexpat",
+      "bytes": 295,
+      "digest": "8d3e0c5d554fe2be",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/txt/single2.hexpat",
+      "bytes": 252,
+      "digest": "8da66f8fecf54ff4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/en/w_name.bin.hexpat",
+      "bytes": 982,
+      "digest": "6080ac72ca92d9c4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/jp/txt/double0.hexpat",
+      "bytes": 293,
+      "digest": "b0e1113005f4282c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/jp/txt/double1.hexpat",
+      "bytes": 291,
+      "digest": "7d7f0fa1dca52e0c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/jp/txt/double2.hexpat",
+      "bytes": 293,
+      "digest": "00ed917e7195ce1c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/jp/txt/single2.hexpat",
+      "bytes": 251,
+      "digest": "315f36605a6cb85f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/jp/w_name.bin.hexpat",
+      "bytes": 982,
+      "digest": "6080ac72ca92d9c4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/ffx/utils.hexpat",
+      "bytes": 13852,
+      "digest": "e26ba8f759f07083",
+      "code": "pattern.lex.unterminated_text",
+      "line": 26
+    },
+    {
+      "path": "patterns/flac.hexpat",
+      "bytes": 7545,
+      "digest": "39a3f2d5a41bc5c2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/flc.hexpat",
+      "bytes": 9310,
+      "digest": "8d2987987a6a31a2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/flipper_settings.hexpat",
+      "bytes": 8145,
+      "digest": "115f2f7bd034e62e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/flp.hexpat",
+      "bytes": 50008,
+      "digest": "8131f40b3cf73faf",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 31
+    },
+    {
+      "path": "patterns/flv.hexpat",
+      "bytes": 7079,
+      "digest": "8884086481a2847b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/fs/apfs.hexpat",
+      "bytes": 43250,
+      "digest": "01a2aa8c2b211b18",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/fs/exfat.hexpat",
+      "bytes": 9673,
+      "digest": "cfe36629cdd82607",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/fs/ext4.hexpat",
+      "bytes": 29309,
+      "digest": "65707b3916ab0a7d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/fs/fat32.hexpat",
+      "bytes": 2415,
+      "digest": "1a54c2683aacff05",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/fs/mbr.hexpat",
+      "bytes": 1192,
+      "digest": "ecf82f6d62266776",
+      "code": "pattern.parse.expected_symbol",
+      "line": 17
+    },
+    {
+      "path": "patterns/fs/ntfs.hexpat",
+      "bytes": 30211,
+      "digest": "5e90be4d49fb17d5",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/fs/pattern.hexpat",
+      "bytes": 6217,
+      "digest": "36eb7c074f53ea62",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/fs/refs.hexpat",
+      "bytes": 9243,
+      "digest": "7d1831d0a7c41589",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/fs.hexpat",
+      "bytes": 3630,
+      "digest": "d1cf59318ee269d1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/gb.hexpat",
+      "bytes": 11274,
+      "digest": "14993e961415334f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/gba.hexpat",
+      "bytes": 7187,
+      "digest": "e27e89c388b17b36",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/gbx.hexpat",
+      "bytes": 1298,
+      "digest": "86ff756aa6ea47b7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/gen.hexpat",
+      "bytes": 2930,
+      "digest": "8956380680fa35a7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/gguf.hexpat",
+      "bytes": 11051,
+      "digest": "b35fac68287c13be",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/gif.hexpat",
+      "bytes": 5369,
+      "digest": "b702470092d37266",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/gltf.hexpat",
+      "bytes": 9687,
+      "digest": "78ee4a5e49a4d426",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 30
+    },
+    {
+      "path": "patterns/gmd.hexpat",
+      "bytes": 28007,
+      "digest": "1f8a82f6e831f3db",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/gmf.hexpat",
+      "bytes": 5585,
+      "digest": "32fd126199562b51",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/gtasa_save.hexpat",
+      "bytes": 2016,
+      "digest": "b2048c0f7761d2b1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/gvas.hexpat",
+      "bytes": 29806,
+      "digest": "8e2daaa2e3334706",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/gzip.hexpat",
+      "bytes": 1596,
+      "digest": "a3717cb0413b2b66",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/hinf_luas.hexpat",
+      "bytes": 9637,
+      "digest": "854508e79614718c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/hinf_module.hexpat",
+      "bytes": 1745,
+      "digest": "4e95c38784f55480",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/hinf_tag.hexpat",
+      "bytes": 3005,
+      "digest": "2e9b057a0973d4e5",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/hldem.hexpat",
+      "bytes": 4145,
+      "digest": "189243657fbe5ef9",
+      "code": "pattern.parse.expected_symbol",
+      "line": 224
+    },
+    {
+      "path": "patterns/hprof.hexpat",
+      "bytes": 9085,
+      "digest": "409c0f60e810882e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/hsdt.hexpat",
+      "bytes": 2093,
+      "digest": "1678ea4dd620d6ca",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/ico.hexpat",
+      "bytes": 2328,
+      "digest": "45449bbb5f43ecc9",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/id3.hexpat",
+      "bytes": 3795,
+      "digest": "07ba83aa6dc6f94c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/ifile.hexpat",
+      "bytes": 895,
+      "digest": "f72fa2c80a365eea",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/imah.hexpat",
+      "bytes": 1363,
+      "digest": "8a2ac5c65bdc0242",
+      "code": "pattern.parse.expected_symbol",
+      "line": 50
+    },
+    {
+      "path": "patterns/intel_hex.hexpat",
+      "bytes": 1732,
+      "digest": "3e49ae12d0df584e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/ip.hexpat",
+      "bytes": 5383,
+      "digest": "9fbb8dafa3747051",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/ips.hexpat",
+      "bytes": 617,
+      "digest": "68497296ea5e7396",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/iso.hexpat",
+      "bytes": 4970,
+      "digest": "597d50f8e9f64bfd",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/java_class.hexpat",
+      "bytes": 36580,
+      "digest": "a3249ed498ee9b5d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/job.hexpat",
+      "bytes": 5488,
+      "digest": "60551c900552f488",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/jpeg.hexpat",
+      "bytes": 3849,
+      "digest": "a1d66781742b2ce4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/kindle_update.hexpat",
+      "bytes": 17145,
+      "digest": "f3b544949200ec88",
+      "code": "pattern.parse.expected_symbol",
+      "line": 231
+    },
+    {
+      "path": "patterns/ktx.hexpat",
+      "bytes": 7386,
+      "digest": "c44f7f4934130509",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/lcesave.hexpat",
+      "bytes": 3951,
+      "digest": "4a9d90e239f4012a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/lnk.hexpat",
+      "bytes": 13139,
+      "digest": "751a8b371872568b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/loc.hexpat",
+      "bytes": 780,
+      "digest": "df37273d176e048c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/lua40.hexpat",
+      "bytes": 2815,
+      "digest": "1bae91b7aa7108e6",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/lua50.hexpat",
+      "bytes": 2233,
+      "digest": "b2ac80e2d90bd900",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/lua51.hexpat",
+      "bytes": 2241,
+      "digest": "e2bbb8c5d20d079e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/lua52.hexpat",
+      "bytes": 2230,
+      "digest": "9bc435b8380d8482",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/lua53.hexpat",
+      "bytes": 2434,
+      "digest": "d91a0d609e35879f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/lua54.hexpat",
+      "bytes": 2938,
+      "digest": "e0ce38cb0da4e538",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/lz4.hexpat",
+      "bytes": 3059,
+      "digest": "35c353d67add913e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/lznt1.hexpat",
+      "bytes": 8067,
+      "digest": "e379ecd153bc21f2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 12
+    },
+    {
+      "path": "patterns/macho.hexpat",
+      "bytes": 9762,
+      "digest": "cc45bd90fb6f1c2a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/magic.hexpat",
+      "bytes": 3452,
+      "digest": "3cf7b2f0d08e006d",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/max_v104.hexpat",
+      "bytes": 16009,
+      "digest": "30956890ad165fa9",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/midi.hexpat",
+      "bytes": 8570,
+      "digest": "b617d0d8d838af96",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/mifare/mifare-1k.hexpat",
+      "bytes": 6380,
+      "digest": "24825e6cce7033b0",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/mifare/mifare-4k.hexpat",
+      "bytes": 7064,
+      "digest": "77818a2d6efb5156",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 16
+    },
+    {
+      "path": "patterns/minidump.hexpat",
+      "bytes": 12750,
+      "digest": "3e58dfcadada34b7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/mo.hexpat",
+      "bytes": 891,
+      "digest": "4614608d40aa2fb7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/moduleanalysiscache.hexpat",
+      "bytes": 5446,
+      "digest": "c17cb1e6c0c22d20",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 1
+    },
+    {
+      "path": "patterns/mp4.hexpat",
+      "bytes": 10240,
+      "digest": "eb5eb89dbea8cd03",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/msf.hexpat",
+      "bytes": 15855,
+      "digest": "83640149ed78f506",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/msgpack.hexpat",
+      "bytes": 3314,
+      "digest": "3af3175e6e397ac8",
+      "code": "pattern.parse.expected_symbol",
+      "line": 7
+    },
+    {
+      "path": "patterns/msscmp.hexpat",
+      "bytes": 1860,
+      "digest": "9dc6e93bb7e4bc08",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/n64.hexpat",
+      "bytes": 96,
+      "digest": "bfa43fd54df01a2b",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/nacp.hexpat",
+      "bytes": 4072,
+      "digest": "fef241708bd3fb09",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/nbt.hexpat",
+      "bytes": 1804,
+      "digest": "2adba2ce0aaee505",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/nds.hexpat",
+      "bytes": 5777,
+      "digest": "bd6f3b943c76fefa",
+      "code": "pattern.parse.expected_symbol",
+      "line": 19
+    },
+    {
+      "path": "patterns/ne.hexpat",
+      "bytes": 6281,
+      "digest": "43715c9078428ad4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/nes.hexpat",
+      "bytes": 18026,
+      "digest": "11f53744cd03cbe8",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/notepad-cache.hexpat",
+      "bytes": 2197,
+      "digest": "824c2f11f374cbed",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/notepad-state.hexpat",
+      "bytes": 2378,
+      "digest": "a32a567de2e7ecda",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/notepadwindowstate.hexpat",
+      "bytes": 965,
+      "digest": "6ce5ce5f7bd0264b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/nro.hexpat",
+      "bytes": 1479,
+      "digest": "0aa345728adf5294",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/nsf.hexpat",
+      "bytes": 2654,
+      "digest": "834fb36c06d60c9a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/nsfe.hexpat",
+      "bytes": 1328,
+      "digest": "1a230cdd23a8476f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/nso.hexpat",
+      "bytes": 2105,
+      "digest": "65cd5bed283c2e2e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/ntag.hexpat",
+      "bytes": 3903,
+      "digest": "ca73aae0dc49b445",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/ogg.hexpat",
+      "bytes": 635,
+      "digest": "f417da5e90cff980",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/openssh.hexpat",
+      "bytes": 1884,
+      "digest": "78eae4816dc8b629",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/optee_ta.hexpat",
+      "bytes": 10338,
+      "digest": "c349d52f37ff3bf6",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/orp.hexpat",
+      "bytes": 2812,
+      "digest": "a688b3440bc644da",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/parquet.hexpat",
+      "bytes": 26264,
+      "digest": "37d4c27ea7247ec9",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 20
+    },
+    {
+      "path": "patterns/pbz.hexpat",
+      "bytes": 911,
+      "digest": "19e6350d151a2f5f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 13
+    },
+    {
+      "path": "patterns/pcap.hexpat",
+      "bytes": 4780,
+      "digest": "beba7cf5da49b7b7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/pcapng.hexpat",
+      "bytes": 12110,
+      "digest": "e2ead3cfb3a1fb44",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/pck.hexpat",
+      "bytes": 4444,
+      "digest": "6cfc9e838469da53",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/pcx.hexpat",
+      "bytes": 1384,
+      "digest": "02949d879371aefe",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/pe.hexpat",
+      "bytes": 43317,
+      "digest": "5216990b3c0b4a95",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/pef.hexpat",
+      "bytes": 23285,
+      "digest": "527e2aaceb2a5353",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/pex.hexpat",
+      "bytes": 14989,
+      "digest": "5b7acf6e39df221f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/pf.hexpat",
+      "bytes": 5087,
+      "digest": "b9442801770f0066",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 16
+    },
+    {
+      "path": "patterns/pfs0.hexpat",
+      "bytes": 937,
+      "digest": "de55340f6eb66883",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/pickle.hexpat",
+      "bytes": 15010,
+      "digest": "2de1e11190410a20",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 17
+    },
+    {
+      "path": "patterns/pif.hexpat",
+      "bytes": 1819,
+      "digest": "64fcce2aa5cbd34c",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/pkm.hexpat",
+      "bytes": 761,
+      "digest": "7e423dc8453f643b",
+      "code": "pattern.parse.expected_symbol",
+      "line": 28
+    },
+    {
+      "path": "patterns/png.hexpat",
+      "bytes": 5095,
+      "digest": "04ed2590aa832d3e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/png2.hexpat",
+      "bytes": 5095,
+      "digest": "04ed2590aa832d3e",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/popcap_luc.hexpat",
+      "bytes": 5029,
+      "digest": "f9e244a0b4edfd3b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/prodinfo.hexpat",
+      "bytes": 3746,
+      "digest": "5e462f2937896b17",
+      "code": "pattern.parse.expected_type",
+      "line": 11
+    },
+    {
+      "path": "patterns/protobuf.hexpat",
+      "bytes": 3387,
+      "digest": "818c142a16e43d29",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/psafe3.hexpat",
+      "bytes": 721,
+      "digest": "2b8d8808389e9dc1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/psp_self.hexpat",
+      "bytes": 912,
+      "digest": "1bb272a6870aedd4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/pyc.hexpat",
+      "bytes": 9605,
+      "digest": "e879ee9e58198bc7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/pyinstaller.hexpat",
+      "bytes": 2437,
+      "digest": "1264c20535d37a17",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/q3demo.hexpat",
+      "bytes": 15775,
+      "digest": "babd50c0de37a098",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/qbcl.hexpat",
+      "bytes": 1310,
+      "digest": "a4e9058609190054",
+      "code": "pattern.parse.expected_symbol",
+      "line": 32
+    },
+    {
+      "path": "patterns/qoi.hexpat",
+      "bytes": 1808,
+      "digest": "ab3584100fe7619c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/quantized-mesh.hexpat",
+      "bytes": 3860,
+      "digest": "494484d4be9b2850",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/rar.hexpat",
+      "bytes": 10516,
+      "digest": "e27f3b0b9ce639c3",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/ras.hexpat",
+      "bytes": 484,
+      "digest": "e13c2b342c53d243",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/rcf_v1_2.hexpat",
+      "bytes": 1129,
+      "digest": "92ed8a47d26ac180",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 10
+    },
+    {
+      "path": "patterns/rgbds.hexpat",
+      "bytes": 2591,
+      "digest": "35c1c3d229623e20",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/rkvd.hexpat",
+      "bytes": 2312,
+      "digest": "6c332127743b17e3",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/roblox_pack.hexpat",
+      "bytes": 617,
+      "digest": "0e141baaf7e0d193",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/rpm.hexpat",
+      "bytes": 8240,
+      "digest": "afa091900d57eb6b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/rsc.hexpat",
+      "bytes": 3466,
+      "digest": "85d5fa2d50a6313b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/sdb.hexpat",
+      "bytes": 1876,
+      "digest": "48af06c28cf00531",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/selinux.hexpat",
+      "bytes": 17232,
+      "digest": "e61c0f68c469f651",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/selinuxpp.hexpat",
+      "bytes": 687,
+      "digest": "5de06b0a135e823f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/sfo.hexpat",
+      "bytes": 1093,
+      "digest": "36277fe0ac5d0e93",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/shp.hexpat",
+      "bytes": 4210,
+      "digest": "5e57c699e3f1a014",
+      "code": "pattern.parse.expected_identifier",
+      "line": 177
+    },
+    {
+      "path": "patterns/shx.hexpat",
+      "bytes": 1115,
+      "digest": "aecf935c49b2bd68",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/sit5.hexpat",
+      "bytes": 3247,
+      "digest": "17c94a3a7615f0a4",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/smk.hexpat",
+      "bytes": 5830,
+      "digest": "f31f7f607a895918",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/snes.hexpat",
+      "bytes": 2675,
+      "digest": "303d33ab0b69ee04",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/spc.hexpat",
+      "bytes": 3750,
+      "digest": "ca12941de422e29a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/spirv.hexpat",
+      "bytes": 22853,
+      "digest": "d376d0ce1c6c5db6",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/sqlite3.hexpat",
+      "bytes": 2568,
+      "digest": "af7ce58ee9ec8250",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/stdfv4.hexpat",
+      "bytes": 69230,
+      "digest": "055d15b1777cc9eb",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/stl.hexpat",
+      "bytes": 1215,
+      "digest": "e6978ae0d96ed1e7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/sup.hexpat",
+      "bytes": 2844,
+      "digest": "cffb4eb9ae27eeff",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/swf.hexpat",
+      "bytes": 1123,
+      "digest": "215a35a86ac66b99",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/tar.hexpat",
+      "bytes": 3085,
+      "digest": "1d88518724abe362",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/tarc.hexpat",
+      "bytes": 906,
+      "digest": "2be3c362b34b71dc",
+      "code": null,
+      "line": null
+    },
+    {
+      "path": "patterns/terminfo.hexpat",
+      "bytes": 9381,
+      "digest": "97f3a3c8e583d65e",
+      "code": "pattern.lex.invalid_escape",
+      "line": 316
+    },
+    {
+      "path": "patterns/tga.hexpat",
+      "bytes": 1718,
+      "digest": "77e4cc2fdc2fb0b1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/thumbcache.hexpat",
+      "bytes": 4477,
+      "digest": "86ebe8bcecefb454",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 11
+    },
+    {
+      "path": "patterns/tiff.hexpat",
+      "bytes": 19758,
+      "digest": "d51868b7e3ca69fb",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/tmd.hexpat",
+      "bytes": 2525,
+      "digest": "b7de56d042e5e0e2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/ttf.hexpat",
+      "bytes": 15535,
+      "digest": "840e03341a67041c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/ubiquiti.hexpat",
+      "bytes": 1986,
+      "digest": "624f71b483e26bed",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/uefi.hexpat",
+      "bytes": 1459,
+      "digest": "ffa3f68bdce08486",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/uefi_boot_entry.hexpat",
+      "bytes": 1766,
+      "digest": "3236b4fd0d0f324b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/uefi_fv_varstore.hexpat",
+      "bytes": 5860,
+      "digest": "c6c3beab6f3782ef",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 37
+    },
+    {
+      "path": "patterns/uf2.hexpat",
+      "bytes": 4857,
+      "digest": "c5bcee9581bb35dc",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/unif.hexpat",
+      "bytes": 512,
+      "digest": "8e076014e05fabf1",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/unity-asset-bundle.hexpat",
+      "bytes": 5599,
+      "digest": "1a37fb2de0de9f8a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 16
+    },
+    {
+      "path": "patterns/unity_web_data.hexpat",
+      "bytes": 499,
+      "digest": "e580e72a27de6119",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    },
+    {
+      "path": "patterns/upk-ue3.hexpat",
+      "bytes": 3426,
+      "digest": "0fd14ae7238f0655",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/usb.hexpat",
+      "bytes": 8721,
+      "digest": "d2ab2eb297520773",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 3
+    },
+    {
+      "path": "patterns/valve_vpk.hexpat",
+      "bytes": 1110,
+      "digest": "ce2a6a224daa98fb",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/vbmeta.hexpat",
+      "bytes": 7784,
+      "digest": "4dee39080a3a8e1b",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/vdf.hexpat",
+      "bytes": 810,
+      "digest": "b7be85a6c0f07e74",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/veado.hexpat",
+      "bytes": 3462,
+      "digest": "7703bb809ea15d78",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/vgm.hexpat",
+      "bytes": 5532,
+      "digest": "223ae3108a14fa69",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/vhd.hexpat",
+      "bytes": 2235,
+      "digest": "f997655accde60e0",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 15
+    },
+    {
+      "path": "patterns/vhdx.hexpat",
+      "bytes": 4555,
+      "digest": "1231efe148d86f42",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/vox.hexpat",
+      "bytes": 7003,
+      "digest": "af67981f3d70222f",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/wad.hexpat",
+      "bytes": 497,
+      "digest": "024e8dfc7702f3b9",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/was_oskasoftware.hexpat",
+      "bytes": 476,
+      "digest": "e1a5a9e36ff8cbd0",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/wav.hexpat",
+      "bytes": 6484,
+      "digest": "2aae33aad83e3f44",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/webp.hexpat",
+      "bytes": 2704,
+      "digest": "a9d5e5ebd9cae613",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/wintec_tes.hexpat",
+      "bytes": 2808,
+      "digest": "cb860c2d2439f7ae",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 24
+    },
+    {
+      "path": "patterns/xbeh.hexpat",
+      "bytes": 15560,
+      "digest": "53340ea766c516f7",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/xci.hexpat",
+      "bytes": 2428,
+      "digest": "cbc99aa05f1511f9",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/xex.hexpat",
+      "bytes": 1014,
+      "digest": "52e873a1aada50b2",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 6
+    },
+    {
+      "path": "patterns/xgspak.hexpat",
+      "bytes": 4036,
+      "digest": "0d823acc0a60672c",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/xgstexture.hexpat",
+      "bytes": 6380,
+      "digest": "21481c64351fe779",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/xilinx_bit.hexpat",
+      "bytes": 1220,
+      "digest": "73a0bb24d3735d81",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 4
+    },
+    {
+      "path": "patterns/xilinx_bootgen.hexpat",
+      "bytes": 9406,
+      "digest": "99bd7df9a6f40379",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 8
+    },
+    {
+      "path": "patterns/zim.hexpat",
+      "bytes": 1848,
+      "digest": "f726822666ae582d",
+      "code": "pattern.parse.expected_symbol",
+      "line": 5
+    },
+    {
+      "path": "patterns/zip.hexpat",
+      "bytes": 13548,
+      "digest": "1cba33c78a73a8fc",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/zlib.hexpat",
+      "bytes": 1952,
+      "digest": "d6864d7ae8ed778a",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 5
+    },
+    {
+      "path": "patterns/zone.hexpat",
+      "bytes": 4228,
+      "digest": "6a087b19b2393e74",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 9
+    },
+    {
+      "path": "patterns/zstd.hexpat",
+      "bytes": 3255,
+      "digest": "3d4a1a28a71372bc",
+      "code": "pattern.parse.unsupported_directive",
+      "line": 7
+    }
+  ]
+}

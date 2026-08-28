@@ -98,3 +98,13 @@ jobs:
 
       - name: Check the ledger still matches the regenerated fixtures
         run: cargo xtask ledger check
+
+      # A third question the committed tree cannot answer, for the same reason
+      # and with an extra one: the pattern collection is GPL-2.0 and this
+      # repository is Apache-2.0, so it is not vendored either. The published
+      # parse rate is a claim about someone else's files, and this is where it
+      # is checked against them.
+      - name: Fetch the pinned ImHex-Patterns collection
+        run: cargo xtask pattern setup
+      - name: Check the recorded ecosystem survey is current
+        run: cargo xtask pattern check
