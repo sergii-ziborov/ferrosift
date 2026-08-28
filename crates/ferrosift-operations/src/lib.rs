@@ -179,6 +179,18 @@ pub use float::{FromFloat, ToFloat};
 #[cfg(feature = "text")]
 pub use flow::{ConditionalJump, Subsection};
 pub use flow::{Fork, Jump, Merge, Return};
+
+/// What this build of the catalog has checked, and where to read the check.
+///
+/// [`default_registry`] declares this before registering anything. A caller
+/// assembling a smaller catalog by hand needs it too, because registering an
+/// operation checks the targets it claims against the manifest the registry
+/// holds — an operation that says it runs on bare metal, in a registry that has
+/// checked nothing, is a claim with nothing behind it and is refused.
+#[must_use]
+pub fn evidence_manifest() -> ferrosift_model::EvidenceManifest {
+    spec::manifest()
+}
 pub use generate::GenerateDeBruijnSequence;
 pub use head::Head;
 pub use hex::{FromHex, ToHex};
@@ -313,6 +325,7 @@ pub mod registry_testing {
         let mut result = Vec::new();
         for family in crate::registry::FAMILIES {
             let mut registry = OperationRegistry::new();
+            registry.declare_evidence(crate::spec::manifest())?;
             (family.register)(&mut registry)?;
             result.push(Family {
                 name: family.name,

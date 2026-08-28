@@ -27,6 +27,30 @@ from `0.1.0` onward.
   code path the browser uses — so all seven are pinned against real reference
   bytes at every recipe prefix, and the exemption list is four entries shorter.
 
+### Changed
+
+- **Evidence is a property of the build, and there is one of it.**
+  `OperationSpec.evidence` held five records on every one of the 254
+  specifications, and not one dimension of it was a fact about an operation: the
+  same notice file, the same licence, the same workflow, `Missing` for a
+  benchmark in a repository that publishes measurements — and one test file
+  named as the conformance evidence for the whole catalog, which was false for
+  253 of them. `EvidenceManifest` replaces it, the registry holds one, and
+  `OperationRegistry::declare_evidence` is where a catalog says what stands
+  behind it. **Breaking:** `OperationSpec` loses its `evidence` field,
+  `EvidenceSummary` is gone, and a registry must declare a manifest before
+  registering anything.
+- The invariant that survived is stronger than the one it replaces. An
+  operation's declared targets used to be checked against a copy of the target
+  checks stored beside them, so it could only catch a specification disagreeing
+  with itself. They are checked against the manifest now: an operation may not
+  claim a target this build did not compile and run.
+- `ferrosift operations --format json` publishes the manifest, so a reviewer
+  asking "what backs this catalog?" has somewhere to look. Targets in that JSON
+  are serialized through `serde` rather than `Debug`, so they read the same way
+  as the manifest keys beside them (`wasm32_unknown_unknown`, not
+  `Wasm32UnknownUnknown`).
+
 ### Fixed
 
 - A step declaring `Any` on both sides is transparent to the cross-step type

@@ -2,7 +2,9 @@
 
 use alloc::{boxed::Box, collections::BTreeMap, collections::BTreeSet, string::String, vec::Vec};
 
-use ferrosift_model::{Arguments, CompatibilityProfile, OperationId, OperationSpec, Value};
+use ferrosift_model::{
+    Arguments, CompatibilityProfile, EvidenceManifest, OperationId, OperationSpec, Value,
+};
 
 use crate::{FlowDirective, Operation, OperationContext, OperationError};
 
@@ -54,31 +56,72 @@ impl Operation for RegisteredOperation {
 pub struct OperationRegistry {
     operations: BTreeMap<OperationId, RegisteredOperation>,
     aliases: BTreeMap<CompatibilityProfile, ProfileAliases>,
+    evidence: EvidenceManifest,
 }
 
 impl OperationRegistry {
-    /// Creates an empty operation registry.
+    /// Creates an empty registry that claims no evidence.
+    ///
+    /// Registering an operation into it is refused, because every operation
+    /// declares at least one target and this registry has checked none. That is
+    /// the honest answer rather than an inconvenient one — see
+    /// [`Self::declare_evidence`].
     #[must_use]
-    pub const fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             operations: BTreeMap::new(),
             aliases: BTreeMap::new(),
+            evidence: EvidenceManifest::unverified(),
         }
+    }
+
+    /// Records what this build checked, and where to read the check.
+    ///
+    /// A catalog is a set of claims and this is what stands behind them: the
+    /// provenance, the licence, the published measurements, and which targets
+    /// were actually compiled and run. It was carried on every specification
+    /// until it became clear that not one dimension of it was a fact about an
+    /// operation — the same five records, two hundred and fifty-four times, one
+    /// of them naming a single test file for the whole catalog.
+    ///
+    /// Declared before registering, because [`Self::register`] checks each
+    /// operation's targets against it.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`RegistryError`] when the manifest's own records are
+    /// inconsistent, or when an operation already registered declares a target
+    /// the new manifest does not cover.
+    pub fn declare_evidence(&mut self, evidence: EvidenceManifest) -> Result<(), RegistryError> {
+        evidence.validate()?;
+        for operation in self.operations.values() {
+            operation.spec.check_targets(&evidence)?;
+        }
+        self.evidence = evidence;
+        Ok(())
+    }
+
+    /// What this build checked.
+    #[must_use]
+    pub const fn evidence(&self) -> &EvidenceManifest {
+        &self.evidence
     }
 
     /// Validates and atomically registers one operation.
     ///
     /// # Errors
     ///
-    /// Returns [`RegistryError`] when the contract is invalid or any canonical ID
-    /// or profile-scoped alias is already registered. The registry is unchanged on
-    /// every failure path.
+    /// Returns [`RegistryError`] when the contract is invalid, when the
+    /// operation declares a target this build has not checked, or when any
+    /// canonical ID or profile-scoped alias is already registered. The registry
+    /// is unchanged on every failure path.
     pub fn register<O>(&mut self, operation: O) -> Result<(), RegistryError>
     where
         O: Operation + 'static,
     {
         let spec = operation.spec();
         spec.validate()?;
+        spec.check_targets(&self.evidence)?;
 
         let id = spec.id.clone();
         if self.operations.contains_key(&id) {

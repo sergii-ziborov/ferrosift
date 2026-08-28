@@ -9,7 +9,7 @@ use std::collections::BTreeMap;
 use ferrosift_core::{Operation, OperationContext, OperationError, OperationRegistry};
 use ferrosift_model::{
     ArgumentKind, ArgumentSpec, ArgumentValue, Arguments, CapabilitySet, ClassificationSet,
-    CompatibilityAlias, CompatibilityProfile, EvidenceRecord, EvidenceState, EvidenceSummary,
+    CompatibilityAlias, CompatibilityProfile, EvidenceManifest, EvidenceRecord, EvidenceState,
     OperationId, OperationSpec, OutputBehavior, StreamingSupport, Target, TargetSet, Value,
     ValueConstraint,
 };
@@ -38,7 +38,7 @@ pub fn registry_with(
     cyberchef_aliases: &[&str],
     arguments: Vec<ArgumentSpec>,
 ) -> OperationRegistry {
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry();
     registry
         .register(StaticOperation {
             spec: operation_spec(id, cyberchef_aliases, arguments),
@@ -61,7 +61,7 @@ pub type OperationFixture<'a> = (
 );
 
 pub fn registry_of(operations: &[OperationFixture<'_>]) -> OperationRegistry {
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry();
     for (id, aliases, arguments) in operations {
         let mut spec = operation_spec(id, &[], arguments.clone());
         spec.aliases = aliases
@@ -120,17 +120,30 @@ pub fn operation_spec(
         streaming: StreamingSupport::Buffered,
         output_behavior: OutputBehavior::default(),
         inverse: None,
-        evidence: EvidenceSummary {
-            provenance: verified("fixtures/provenance"),
-            license: verified("fixtures/license"),
-            conformance: verified("fixtures/conformance"),
-            benchmark: EvidenceRecord {
-                state: EvidenceState::Planned,
-                reference: None,
-            },
-            target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
-        },
     }
+}
+
+/// What these fixtures claim their build checked.
+pub fn manifest() -> EvidenceManifest {
+    EvidenceManifest {
+        provenance: verified("fixtures/provenance"),
+        license: verified("fixtures/license"),
+        conformance: verified("fixtures/conformance"),
+        benchmark: EvidenceRecord {
+            state: EvidenceState::Planned,
+            reference: None,
+        },
+        target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
+    }
+}
+
+/// An empty registry already backed by [manifest].
+pub fn registry() -> OperationRegistry {
+    let mut registry = OperationRegistry::new();
+    registry
+        .declare_evidence(manifest())
+        .expect("the fixture manifest must be valid");
+    registry
 }
 
 fn verified(reference: &str) -> EvidenceRecord {

@@ -6,10 +6,10 @@ use std::sync::{
     atomic::{AtomicBool, Ordering},
 };
 
-use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_core::{Operation, OperationContext, OperationError, OperationRegistry};
 use ferrosift_model::{
     Arguments, CapabilitySet, ClassificationSet, CompatibilityAlias, CompatibilityProfile,
-    EvidenceRecord, EvidenceState, EvidenceSummary, OperationId, OperationSpec, OutputBehavior,
+    EvidenceManifest, EvidenceRecord, EvidenceState, OperationId, OperationSpec, OutputBehavior,
     StreamingSupport, Target, TargetSet, Value, ValueConstraint,
 };
 
@@ -83,17 +83,34 @@ pub fn spec(id: &str, aliases: Vec<CompatibilityAlias>) -> OperationSpec {
         streaming: StreamingSupport::Buffered,
         output_behavior: OutputBehavior::default(),
         inverse: None,
-        evidence: EvidenceSummary {
-            provenance: verified("fixtures/provenance"),
-            license: verified("fixtures/license"),
-            conformance: verified("fixtures/conformance"),
-            benchmark: EvidenceRecord {
-                state: EvidenceState::Planned,
-                reference: None,
-            },
-            target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
-        },
     }
+}
+
+/// What these fixtures claim their build checked.
+///
+/// One value for the whole test catalog, which is the point of the type: the
+/// fixtures all run on the host and nowhere else, and saying so once is both
+/// shorter and truer than saying it on every specification.
+pub fn manifest() -> EvidenceManifest {
+    EvidenceManifest {
+        provenance: verified("fixtures/provenance"),
+        license: verified("fixtures/license"),
+        conformance: verified("fixtures/conformance"),
+        benchmark: EvidenceRecord {
+            state: EvidenceState::Planned,
+            reference: None,
+        },
+        target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
+    }
+}
+
+/// An empty registry already backed by [manifest].
+pub fn registry() -> OperationRegistry {
+    let mut registry = OperationRegistry::new();
+    registry
+        .declare_evidence(manifest())
+        .expect("the fixture manifest must be valid");
+    registry
 }
 
 pub fn alias(profile: CompatibilityProfile, name: &str) -> CompatibilityAlias {

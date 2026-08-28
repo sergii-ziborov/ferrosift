@@ -1,15 +1,14 @@
 //! Contract tests for portable operation execution.
 
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeSet;
 
 use ferrosift_core::{
     Cancellation, ExecutionBudget, NeverCancelled, Operation, OperationContext, OperationError,
     OperationFailureCode,
 };
 use ferrosift_model::{
-    Arguments, CapabilitySet, ClassificationSet, EvidenceRecord, EvidenceState, EvidenceSummary,
-    HostCapability, OperationId, OperationSpec, OutputBehavior, StreamingSupport, Target,
-    TargetSet, Value, ValueConstraint,
+    Arguments, CapabilitySet, ClassificationSet, HostCapability, OperationId, OperationSpec,
+    OutputBehavior, StreamingSupport, Target, TargetSet, Value, ValueConstraint,
 };
 
 struct IdentityOperation {
@@ -40,25 +39,8 @@ impl Cancellation for Cancelled {
     }
 }
 
-fn verified(reference: &str) -> EvidenceRecord {
-    EvidenceRecord {
-        state: EvidenceState::Passed,
-        reference: Some(reference.into()),
-    }
-}
-
 fn operation_spec() -> OperationSpec {
     let targets = TargetSet::from([Target::Native]);
-    let evidence = EvidenceSummary {
-        provenance: verified("upstream/identity"),
-        license: verified("license/identity"),
-        conformance: verified("vectors/identity"),
-        benchmark: EvidenceRecord {
-            state: EvidenceState::Planned,
-            reference: None,
-        },
-        target_checks: BTreeMap::from([(Target::Native, verified("ci/native"))]),
-    };
 
     OperationSpec {
         id: OperationId::new("core.identity@1").expect("valid operation id"),
@@ -76,7 +58,6 @@ fn operation_spec() -> OperationSpec {
         streaming: StreamingSupport::Buffered,
         output_behavior: OutputBehavior::default(),
         inverse: None,
-        evidence,
     }
 }
 

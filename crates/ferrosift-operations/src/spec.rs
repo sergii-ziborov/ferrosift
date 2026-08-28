@@ -5,9 +5,9 @@ use alloc::{
 };
 
 use ferrosift_model::{
-    ArgumentSpec, CapabilitySet, CompatibilityAlias, CompatibilityProfile, EvidenceRecord,
-    EvidenceState, EvidenceSummary, OperationClassification, OperationId, OperationSpec,
-    OutputBehavior, StreamingSupport, Target, TargetSet, ValueConstraint, ValueKind,
+    ArgumentSpec, CapabilitySet, CompatibilityAlias, CompatibilityProfile, EvidenceManifest,
+    EvidenceRecord, OperationClassification, OperationId, OperationSpec, OutputBehavior,
+    StreamingSupport, Target, TargetSet, ValueConstraint, ValueKind,
 };
 
 pub(crate) struct SpecDefinition {
@@ -67,7 +67,6 @@ pub(crate) fn build(definition: SpecDefinition) -> OperationSpec {
 pub(crate) fn build_hosted(definition: SpecDefinition) -> OperationSpec {
     OperationSpec {
         targets: targets(Portability::Hosted),
-        evidence: evidence(Portability::Hosted),
         ..build(definition)
     }
 }
@@ -120,7 +119,6 @@ pub(crate) fn build_since(
         streaming: StreamingSupport::Buffered,
         output_behavior: OutputBehavior::InputProportional,
         inverse: definition.inverse.map(operation_id),
-        evidence: evidence(Portability::BareMetal),
     }
 }
 
@@ -214,6 +212,41 @@ pub(crate) fn build_uniform(kind: ValueKind, definition: UniformSpec) -> Operati
     })
 }
 
+/// What this build has checked, and where to read the check.
+///
+/// One value for the catalog. It used to be five records on every one of the
+/// two hundred and fifty-four specifications, and reading them showed that not
+/// one was a fact about an operation: the same notice file, the same licence,
+/// the same workflow, `Missing` for a benchmark in a repository that publishes
+/// measurements, and one test file named as the conformance evidence for every
+/// operation in the catalog.
+///
+/// The benchmark record says `Passed` here and said `Missing` there, and both
+/// were honest. As a claim about one operation it was false — most of the
+/// catalog is unmeasured. As a claim about the build it is true: measurements
+/// exist and are published, with the unflattering numbers in them.
+///
+/// Conformance points at the ledger rather than answering. How many reference
+/// cases pin one operation is computed from the committed fixtures on every CI
+/// run; a string in the catalog could only repeat that, and repeated it wrongly.
+#[must_use]
+pub(crate) fn manifest() -> EvidenceManifest {
+    EvidenceManifest {
+        provenance: passed("NOTICE"),
+        license: passed("LICENSE"),
+        conformance: passed("docs/compatibility/ledger.md"),
+        benchmark: passed("docs/benchmarks.md"),
+        target_checks: BTreeMap::from([
+            (Target::Native, passed(".github/workflows/ci.yml")),
+            (
+                Target::Wasm32UnknownUnknown,
+                passed(".github/workflows/ci.yml"),
+            ),
+            (Target::Embedded, passed(".github/workflows/ci.yml")),
+        ]),
+    }
+}
+
 /// Whether an operation can be built for a target without an operating system.
 ///
 /// A property of the operation, not of the build that selected it. The first
@@ -251,34 +284,6 @@ fn targets(portability: Portability) -> TargetSet {
     targets
 }
 
-fn evidence(portability: Portability) -> EvidenceSummary {
-    let mut target_checks = BTreeMap::from([
-        (Target::Native, passed(".github/workflows/ci.yml")),
-        (
-            Target::Wasm32UnknownUnknown,
-            passed(".github/workflows/ci.yml"),
-        ),
-    ]);
-    // Every declared target needs a record and `OperationSpec::validate`
-    // enforces that, so the two cannot say different things.
-    if portability == Portability::BareMetal {
-        target_checks.insert(Target::Embedded, passed(".github/workflows/ci.yml"));
-    }
-    EvidenceSummary {
-        provenance: passed("NOTICE"),
-        license: passed("LICENSE"),
-        conformance: passed("crates/ferrosift-operations/tests/conformance.rs"),
-        benchmark: EvidenceRecord {
-            state: EvidenceState::Missing,
-            reference: None,
-        },
-        target_checks,
-    }
-}
-
 fn passed(reference: &str) -> EvidenceRecord {
-    EvidenceRecord {
-        state: EvidenceState::Passed,
-        reference: Some(String::from(reference)),
-    }
+    EvidenceRecord::passed(reference)
 }

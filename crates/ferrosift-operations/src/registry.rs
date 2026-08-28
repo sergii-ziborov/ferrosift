@@ -193,12 +193,19 @@ pub(crate) const FAMILIES: &[Family] = &[
 /// Which operations are present depends on the selected feature packs; with
 /// the default `portable-full` this is the whole portable catalog.
 ///
+/// The evidence manifest is declared before the first registration, because
+/// registering an operation checks the targets it claims against what this
+/// build actually compiled and ran. Declaring it afterwards would register the
+/// catalog against an empty manifest and then check nothing.
+///
 /// # Errors
 ///
 /// Returns [`RegistryError`] if an internal operation contract or alias is not
-/// valid. The returned registry is never partially initialized.
+/// valid, or if an operation claims a target the manifest does not cover. The
+/// returned registry is never partially initialized.
 pub fn default_registry() -> Result<OperationRegistry, RegistryError> {
     let mut registry = OperationRegistry::new();
+    registry.declare_evidence(crate::spec::manifest())?;
     for family in FAMILIES {
         (family.register)(&mut registry)?;
     }

@@ -4,7 +4,7 @@ use std::sync::{Arc, atomic::AtomicBool, atomic::Ordering};
 
 use ferrosift_core::{
     ExecutionFailure, ExecutionStatus, Executor, NeverCancelled, OperationError,
-    OperationFailureCode, OperationRegistry, TraceEventKind,
+    OperationFailureCode, TraceEventKind,
 };
 use ferrosift_model::{
     ArgumentKind, ArgumentSpec, ArgumentValue, CapabilitySet, TextEncoding, TextValue, Value,
@@ -20,7 +20,7 @@ use executor_support::{AtomicCancellation, Behavior, budget, counter, operation,
 fn two_steps_pass_values_and_emit_started_completed_pairs() {
     let first_calls = counter();
     let second_calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.append_a@1",
@@ -79,7 +79,7 @@ fn defaults_are_resolved_and_disabled_takes_precedence_over_breakpoint() {
         kind: ArgumentKind::Bytes,
         default: Some(ArgumentValue::Bytes(vec![b'!'])),
     });
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(append).expect("valid operation");
 
     let mut disabled = step("disabled", "core.append_default@1");
@@ -107,7 +107,7 @@ fn defaults_are_resolved_and_disabled_takes_precedence_over_breakpoint() {
 #[test]
 fn breakpoint_pauses_before_invocation() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.identity@1",
@@ -143,7 +143,7 @@ fn cancellation_between_steps_stops_at_exact_location() {
     let cancelled = Arc::new(AtomicBool::new(false));
     let first_calls = counter();
     let second_calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.signal@1",
@@ -189,7 +189,7 @@ fn operation_failure_stops_later_steps_and_preserves_code() {
     let failed_calls = counter();
     let later_calls = counter();
     let failure_code = OperationFailureCode::new("test.expected").expect("valid failure code");
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.fail@1",
@@ -240,7 +240,7 @@ fn value_constraints_fail_at_the_responsible_step() {
         output_calls.clone(),
     );
     output_operation.spec.output = ValueConstraint::Exact(ValueKind::Bytes);
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(input_operation)
         .expect("valid input contract");

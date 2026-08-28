@@ -5,9 +5,7 @@ use std::sync::{
     atomic::{AtomicBool, Ordering},
 };
 
-use ferrosift_core::{
-    ExecutionFailure, Executor, NeverCancelled, OperationError, OperationRegistry,
-};
+use ferrosift_core::{ExecutionFailure, Executor, NeverCancelled, OperationError};
 use ferrosift_model::{
     ArgumentKind, ArgumentSpec, ArgumentValue, CapabilitySet, HostCapability, Recipe,
     RecipeMetadata, Value,
@@ -21,7 +19,7 @@ use executor_support::{AtomicCancellation, Behavior, budget, counter, operation,
 #[test]
 fn later_unknown_operation_prevents_all_invocation() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation("core.known@1", Behavior::Identity, calls.clone()))
         .expect("valid operation");
@@ -72,7 +70,7 @@ fn invalid_arguments_fail_preflight_without_invocation() {
             default: Some(ArgumentValue::Text("default".into())),
         },
     ];
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(operation).expect("valid operation");
 
     let cases = [
@@ -111,7 +109,7 @@ fn missing_capability_fails_closed() {
     let calls = counter();
     let mut operation = operation("core.networked@1", Behavior::Identity, calls.clone());
     operation.spec.capabilities.insert(HostCapability::Network);
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(operation).expect("valid operation");
 
     let error = Executor::new(&registry)
@@ -137,7 +135,7 @@ fn missing_capability_fails_closed() {
 #[test]
 fn structural_and_initial_budget_failures_are_global() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.identity@1",
@@ -207,7 +205,7 @@ fn structural_and_initial_budget_failures_are_global() {
 
 #[test]
 fn disabled_unknown_operation_is_an_explicit_skip() {
-    let registry = OperationRegistry::new();
+    let registry = executor_support::registry();
     let mut disabled = step("disabled", "core.not_registered@1");
     disabled.disabled = true;
     let input = Value::Bytes(vec![1, 2]);
@@ -229,7 +227,7 @@ fn disabled_unknown_operation_is_an_explicit_skip() {
 #[test]
 fn initial_cancellation_is_a_global_wrapped_failure() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.identity@1",

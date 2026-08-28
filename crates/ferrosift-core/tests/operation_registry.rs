@@ -5,7 +5,7 @@ use std::sync::{
     atomic::{AtomicBool, Ordering},
 };
 
-use ferrosift_core::{OperationRegistry, RegistryError};
+use ferrosift_core::RegistryError;
 use ferrosift_model::{
     ArgumentKind, ArgumentSpec, ArgumentValue, CompatibilityProfile, OperationId,
 };
@@ -17,7 +17,7 @@ use registry_support::{StaticOperation, SwitchingOperation, alias, operation, sp
 
 #[test]
 fn lookup_and_catalog_are_deterministic() {
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
     registry
         .register(operation(
             "encoding.hex.decode@1",
@@ -68,7 +68,7 @@ fn registry_exposes_the_validated_spec_snapshot() {
         ),
         use_alternate: Arc::clone(&use_alternate),
     };
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
     registry.register(operation).expect("valid initial spec");
 
     use_alternate.store(true, Ordering::SeqCst);
@@ -94,7 +94,7 @@ fn registry_exposes_the_validated_spec_snapshot() {
 
 #[test]
 fn duplicate_ids_fail_without_mutating_the_registry() {
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
     registry
         .register(operation("core.identity@1", Vec::new()))
         .expect("first operation should register");
@@ -109,7 +109,7 @@ fn duplicate_ids_fail_without_mutating_the_registry() {
 
 #[test]
 fn duplicate_aliases_fail_without_partial_insertion() {
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
     registry
         .register(operation(
             "encoding.hex.decode@1",
@@ -136,7 +136,7 @@ fn duplicate_aliases_fail_without_partial_insertion() {
 #[test]
 fn duplicate_aliases_inside_one_spec_fail_before_insertion() {
     let duplicate = alias(CompatibilityProfile::Native, "Decode");
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
 
     let error = registry
         .register(operation(
@@ -151,7 +151,7 @@ fn duplicate_aliases_inside_one_spec_fail_before_insertion() {
 
 #[test]
 fn identical_alias_text_is_allowed_in_different_profiles() {
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
     registry
         .register(operation(
             "core.decode.native@1",
@@ -187,7 +187,7 @@ fn invalid_argument_defaults_preserve_the_specific_error_code() {
         kind: ArgumentKind::Text,
         default: Some(ArgumentValue::Integer(64)),
     });
-    let mut registry = OperationRegistry::new();
+    let mut registry = registry_support::registry();
 
     let error = registry
         .register(StaticOperation { spec: invalid })
@@ -205,17 +205,68 @@ fn invalid_argument_defaults_preserve_the_specific_error_code() {
     assert!(registry.is_empty());
 }
 
+/// An operation may not claim a target this build has not checked.
+///
+/// The claim and the check used to live in the same struct, so this could only
+/// catch a specification disagreeing with a copy of itself. They are two values
+/// now: the specification says where the operation runs, the registry's
+/// manifest says what the build compiled and ran, and registering compares them.
 #[test]
 fn missing_target_evidence_preserves_the_specific_error_code() {
-    let mut invalid = spec("core.unverified@1", Vec::new());
-    invalid.evidence.target_checks.clear();
-    let mut registry = OperationRegistry::new();
+    let mut manifest = registry_support::manifest();
+    manifest.target_checks.clear();
+    let mut registry = ferrosift_core::OperationRegistry::new();
+    registry
+        .declare_evidence(manifest)
+        .expect("a manifest that checked no target is still a valid manifest");
 
     let error = registry
-        .register(StaticOperation { spec: invalid })
+        .register(registry_support::operation("core.unverified@1", Vec::new()))
         .expect_err("unverified target must fail");
 
     assert!(matches!(error, RegistryError::InvalidSpec(_)));
     assert_eq!(error.code(), "model.operation_spec.target_evidence_missing");
     assert!(registry.is_empty());
+}
+
+/// An empty registry claims nothing, so it backs nothing.
+///
+/// The default is not a convenience that lets an unevidenced catalog through —
+/// it is a manifest with nothing in it, and every operation declares at least
+/// one target.
+#[test]
+fn a_registry_that_declared_no_evidence_registers_nothing() {
+    let mut registry = ferrosift_core::OperationRegistry::new();
+    let error = registry
+        .register(registry_support::operation("core.unbacked@1", Vec::new()))
+        .expect_err("a registry with no evidence must back no operation");
+
+    assert_eq!(error.code(), "model.operation_spec.target_evidence_missing");
+    assert!(registry.is_empty());
+    assert!(!registry.evidence().covers(ferrosift_model::Target::Native));
+}
+
+/// Evidence may not be narrowed under operations that already rely on it.
+///
+/// Declaring a manifest after registering is allowed — the order is the
+/// caller's — but a manifest that no longer covers what is already registered
+/// is refused, and the registry keeps the one it had.
+#[test]
+fn evidence_cannot_be_replaced_with_less_than_the_catalog_needs() {
+    let mut registry = registry_support::registry();
+    registry
+        .register(registry_support::operation("core.backed@1", Vec::new()))
+        .expect("a covered operation registers");
+
+    let mut narrowed = registry_support::manifest();
+    narrowed.target_checks.clear();
+    let error = registry
+        .declare_evidence(narrowed)
+        .expect_err("narrowing evidence under a registered operation must fail");
+
+    assert_eq!(error.code(), "model.operation_spec.target_evidence_missing");
+    assert!(
+        registry.evidence().covers(ferrosift_model::Target::Native),
+        "the refused manifest must not have been applied"
+    );
 }

@@ -6,7 +6,7 @@ use std::sync::{
     atomic::{AtomicBool, Ordering},
 };
 
-use ferrosift_core::{ExecutionFailure, Executor, NeverCancelled, OperationRegistry};
+use ferrosift_core::{ExecutionFailure, Executor, NeverCancelled};
 use ferrosift_model::{CapabilitySet, Value, ValueConstraint, ValueKind};
 
 #[path = "support/executor.rs"]
@@ -17,7 +17,7 @@ use executor_support::{AtomicCancellation, Behavior, budget, counter, operation,
 #[test]
 fn validation_performs_complete_preflight_without_invoking_operations() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation("core.known@1", Behavior::Identity, calls.clone()))
         .expect("valid operation");
@@ -49,7 +49,7 @@ fn deterministically_incompatible_later_input_fails_before_side_effects() {
     first.spec.output = ValueConstraint::Exact(ValueKind::Files);
     let mut second = operation("core.text@1", Behavior::Identity, second_calls.clone());
     second.spec.input = ValueConstraint::Exact(ValueKind::Text);
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
 
@@ -81,7 +81,7 @@ fn partially_overlapping_output_contract_fails_before_side_effects() {
     first.spec.output = ValueConstraint::OneOf(BTreeSet::from([ValueKind::Files, ValueKind::Text]));
     let mut second = operation("core.text@1", Behavior::Identity, second_calls.clone());
     second.spec.input = ValueConstraint::Exact(ValueKind::Text);
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
 
@@ -125,7 +125,7 @@ fn an_unconstrained_step_is_transparent_to_the_type_check() {
     let first = operation("core.any@1", Behavior::Identity, first_calls.clone());
     let mut second = operation("core.bytes@1", Behavior::Identity, second_calls.clone());
     second.spec.input = ValueConstraint::Exact(ValueKind::Bytes);
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
 
@@ -165,7 +165,7 @@ fn a_transparent_step_that_changes_the_kind_fails_at_the_step() {
     );
     let mut second = operation("core.text@1", Behavior::Identity, second_calls.clone());
     second.spec.input = ValueConstraint::Exact(ValueKind::Text);
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
 
@@ -195,7 +195,7 @@ fn unconstrained_output_accepts_a_semantically_complete_one_of() {
     // name seven kinds, which was every kind when it was written and stopped
     // being so when three were added -- and nothing would have said so.
     second.spec.input = ValueConstraint::OneOf(ValueKind::ALL.into_iter().collect::<BTreeSet<_>>());
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
 
@@ -220,7 +220,7 @@ fn unconstrained_output_accepts_a_semantically_complete_one_of() {
 #[test]
 fn complete_preflight_reports_invalid_steps_before_cancellation() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation("core.known@1", Behavior::Identity, calls.clone()))
         .expect("valid operation");

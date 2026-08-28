@@ -2,7 +2,7 @@
 
 use std::sync::atomic::Ordering;
 
-use ferrosift_core::{ExecutionFailure, Executor, NeverCancelled, OperationRegistry};
+use ferrosift_core::{ExecutionFailure, Executor, NeverCancelled};
 use ferrosift_model::{CapabilitySet, Value};
 
 #[path = "support/executor.rs"]
@@ -13,7 +13,7 @@ use executor_support::{Behavior, budget, counter, operation, recipe, step};
 #[test]
 fn output_ceiling_fails_after_invocation_with_partial_trace() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.expand@1",
@@ -47,7 +47,7 @@ fn output_ceiling_fails_after_invocation_with_partial_trace() {
 #[test]
 fn per_step_expansion_uses_a_nonzero_denominator() {
     let calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.expand@1",
@@ -80,7 +80,7 @@ fn per_step_expansion_uses_a_nonzero_denominator() {
 fn total_expansion_catches_safe_individual_steps() {
     let first_calls = counter();
     let second_calls = counter();
-    let mut registry = OperationRegistry::new();
+    let mut registry = executor_support::registry();
     registry
         .register(operation(
             "core.double_one@1",

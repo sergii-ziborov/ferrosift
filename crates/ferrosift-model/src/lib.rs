@@ -23,7 +23,7 @@ pub use operation_id::OperationId;
 pub use recipe::{Recipe, RecipeMetadata, RecipeStep};
 pub use spec::{
     ArgumentKind, ArgumentSpec, CapabilitySet, ClassificationSet, CompatibilityAlias,
-    CompatibilityProfile, EvidenceRecord, EvidenceState, EvidenceSummary, HostCapability,
+    CompatibilityProfile, EvidenceManifest, EvidenceRecord, EvidenceState, HostCapability,
     OperationClassification, OperationSpec, OutputBehavior, SpecError, StreamingSupport, Target,
     TargetSet, ValueConstraint,
 };

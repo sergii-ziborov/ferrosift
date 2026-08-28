@@ -196,10 +196,18 @@ needed is a supported way to use this library rather than a workaround:
 use ferrosift::{Engine, OperationRegistry, operations};
 
 let mut registry = OperationRegistry::new();
+registry.declare_evidence(operations::evidence_manifest())?;
 registry.register(operations::FromBase64::new())?;
 registry.register(operations::Gunzip::new())?;
 let engine = Engine::with_registry(registry);
 ```
+
+The manifest is the one line that is not obvious. A registry holds what its
+build has checked — the provenance, the licence, the published measurements,
+and which targets were compiled and run — and registering an operation refuses
+a target claim that manifest does not cover. An operation saying it runs on
+bare metal, in a registry that has checked nothing, is a claim with nothing
+behind it.
 
 The pipeline, the budgets, the traces, and `run_pattern` all work the same
 against it. And the smaller catalog is not only a smaller registry: nothing

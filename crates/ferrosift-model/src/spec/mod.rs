@@ -15,7 +15,7 @@ mod target;
 pub use argument::{ArgumentKind, ArgumentSpec, ValueConstraint};
 pub use compatibility::{CompatibilityAlias, CompatibilityProfile};
 pub use error::SpecError;
-pub use evidence::{EvidenceRecord, EvidenceState, EvidenceSummary};
+pub use evidence::{EvidenceManifest, EvidenceRecord, EvidenceState};
 pub use target::{
     CapabilitySet, ClassificationSet, HostCapability, OperationClassification, OutputBehavior,
     StreamingSupport, Target, TargetSet,
@@ -58,8 +58,6 @@ pub struct OperationSpec {
     pub output_behavior: OutputBehavior,
     /// Optional inverse operation contract.
     pub inverse: Option<OperationId>,
-    /// Independent evidence dimensions.
-    pub evidence: EvidenceSummary,
 }
 
 impl OperationSpec {
@@ -102,24 +100,24 @@ impl OperationSpec {
             }
         }
 
-        validate_evidence_record("evidence.provenance", &self.evidence.provenance)?;
-        validate_evidence_record("evidence.license", &self.evidence.license)?;
-        validate_evidence_record("evidence.conformance", &self.evidence.conformance)?;
-        validate_evidence_record("evidence.benchmark", &self.evidence.benchmark)?;
-        for record in self.evidence.target_checks.values() {
-            validate_evidence_record("evidence.target_checks", record)?;
-        }
+        Ok(())
+    }
 
-        require_evidence("evidence.provenance", &self.evidence.provenance)?;
-        require_evidence("evidence.license", &self.evidence.license)?;
-        require_evidence("evidence.conformance", &self.evidence.conformance)?;
+    /// Refuses a target this build has not checked.
+    ///
+    /// The specification says where an operation runs; the manifest says what
+    /// the build actually compiled and ran there. Both claims existed before,
+    /// with the second copied into every specification — so the check compared
+    /// a value against a duplicate of itself. It compares two different things
+    /// now, and the registry is where it happens, once per registration.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`SpecError::MissingTargetEvidence`] for the first declared
+    /// target with no verified check behind it.
+    pub fn check_targets(&self, evidence: &EvidenceManifest) -> Result<(), SpecError> {
         for target in &self.targets {
-            if !self
-                .evidence
-                .target_checks
-                .get(target)
-                .is_some_and(EvidenceRecord::is_verified)
-            {
+            if !evidence.covers(*target) {
                 return Err(SpecError::MissingTargetEvidence { target: *target });
             }
         }
@@ -140,21 +138,5 @@ fn validate_constraint(field: &'static str, constraint: &ValueConstraint) -> Res
         Err(SpecError::InvalidField { field })
     } else {
         Ok(())
-    }
-}
-
-fn validate_evidence_record(field: &'static str, record: &EvidenceRecord) -> Result<(), SpecError> {
-    if record.is_structurally_valid() {
-        Ok(())
-    } else {
-        Err(SpecError::InvalidEvidenceRecord { field })
-    }
-}
-
-fn require_evidence(field: &'static str, record: &EvidenceRecord) -> Result<(), SpecError> {
-    if record.is_verified() {
-        Ok(())
-    } else {
-        Err(SpecError::MissingEvidence { field })
     }
 }

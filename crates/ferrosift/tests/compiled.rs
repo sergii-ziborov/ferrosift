@@ -147,6 +147,9 @@ fn an_engine_can_be_built_from_a_reduced_registry() {
 
     let mut registry = OperationRegistry::new();
     registry
+        .declare_evidence(ferrosift_operations::evidence_manifest())
+        .expect("the catalog's own manifest is valid");
+    registry
         .register(ferrosift_operations::FromBase64::new())
         .expect("registers");
     let engine = Engine::with_registry(registry);

@@ -6,11 +6,13 @@ use std::sync::{
     atomic::{AtomicBool, AtomicUsize, Ordering},
 };
 
-use ferrosift_core::{Cancellation, ExecutionBudget, Operation, OperationContext, OperationError};
+use ferrosift_core::{
+    Cancellation, ExecutionBudget, Operation, OperationContext, OperationError, OperationRegistry,
+};
 use ferrosift_model::{
-    ArgumentValue, Arguments, CapabilitySet, ClassificationSet, EvidenceRecord, EvidenceState,
-    EvidenceSummary, OperationId, OperationSpec, OutputBehavior, Recipe, RecipeMetadata,
-    RecipeStep, StreamingSupport, Target, TargetSet, Value, ValueConstraint,
+    ArgumentValue, Arguments, CapabilitySet, ClassificationSet, EvidenceManifest, EvidenceRecord,
+    EvidenceState, OperationId, OperationSpec, OutputBehavior, Recipe, RecipeMetadata, RecipeStep,
+    StreamingSupport, Target, TargetSet, Value, ValueConstraint,
 };
 
 #[derive(Clone)]
@@ -111,17 +113,34 @@ pub fn spec(id: &str) -> OperationSpec {
         streaming: StreamingSupport::Buffered,
         output_behavior: OutputBehavior::default(),
         inverse: None,
-        evidence: EvidenceSummary {
-            provenance: verified("fixtures/provenance"),
-            license: verified("fixtures/license"),
-            conformance: verified("fixtures/conformance"),
-            benchmark: EvidenceRecord {
-                state: EvidenceState::Planned,
-                reference: None,
-            },
-            target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
-        },
     }
+}
+
+/// What these fixtures claim their build checked.
+///
+/// One value for the whole test catalog rather than a copy on every
+/// specification: the fixtures run on the host and nowhere else, and saying so
+/// once is both shorter and truer than saying it two hundred times.
+pub fn manifest() -> EvidenceManifest {
+    EvidenceManifest {
+        provenance: verified("fixtures/provenance"),
+        license: verified("fixtures/license"),
+        conformance: verified("fixtures/conformance"),
+        benchmark: EvidenceRecord {
+            state: EvidenceState::Planned,
+            reference: None,
+        },
+        target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
+    }
+}
+
+/// An empty registry already backed by [manifest].
+pub fn registry() -> OperationRegistry {
+    let mut registry = OperationRegistry::new();
+    registry
+        .declare_evidence(manifest())
+        .expect("the fixture manifest must be valid");
+    registry
 }
 
 fn verified(reference: &str) -> EvidenceRecord {

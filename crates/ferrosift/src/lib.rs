@@ -60,6 +60,7 @@ pub use ferrosift_pattern::{
 /// use ferrosift::{Engine, OperationRegistry, operations};
 ///
 /// let mut registry = OperationRegistry::new();
+/// registry.declare_evidence(operations::evidence_manifest())?;
 /// registry.register(operations::FromBase64::new())?;
 /// let engine = Engine::with_registry(registry);
 ///
