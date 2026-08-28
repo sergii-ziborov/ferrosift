@@ -1,12 +1,14 @@
+use alloc::boxed::Box;
 use alloc::vec;
 
-use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_core::{Operation, OperationContext, OperationError, StreamSession, Streamable};
 use ferrosift_model::{
     Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
 };
 
 use crate::args::{integer_argument, integer_value, text_argument, text_value};
-use crate::spec::{SpecDefinition, build_reducer};
+use crate::spec::{SpecDefinition, build_reducer, incremental};
+use crate::stream::DigestSession;
 
 use super::codec;
 
@@ -183,7 +185,7 @@ impl Sha2 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build_reducer(SpecDefinition {
+            spec: incremental(build_reducer(SpecDefinition {
                 id: "hash.sha2@1",
                 display_name: "SHA2",
                 category: "Hashing",
@@ -210,7 +212,7 @@ impl Sha2 {
                 ],
                 inverse: None,
                 classifications: None,
-            }),
+            })),
         }
     }
 }
@@ -241,6 +243,24 @@ impl Operation for Sha2 {
             integer_value(arguments, "rounds_512")?,
             context,
         )?))
+    }
+}
+
+impl Streamable for Sha2 {
+    fn start(
+        &self,
+        arguments: &Arguments,
+        _context: &OperationContext<'_>,
+    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError> {
+        // The reduced-round variants are refused by the buffered path too, and
+        // for the same reason: they are a different function. `None` here
+        // would be a session that silently declined; the error is the answer.
+        let digest = codec::sha2_streaming(
+            text_value(arguments, "size")?,
+            integer_value(arguments, "rounds_256")?,
+            integer_value(arguments, "rounds_512")?,
+        )?;
+        Ok(Some(Box::new(DigestSession::new(digest))))
     }
 }
 

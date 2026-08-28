@@ -84,6 +84,7 @@ mod shape;
 mod sift;
 mod spec;
 mod stats;
+mod stream;
 mod substitute;
 mod table;
 mod tea;

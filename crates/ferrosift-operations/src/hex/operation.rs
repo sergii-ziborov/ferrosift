@@ -1,13 +1,16 @@
+use alloc::boxed::Box;
 use alloc::vec;
 
-use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_core::{Operation, OperationContext, OperationError, StreamSession, Streamable};
 use ferrosift_model::{
     Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
 };
 
 use crate::args::{integer_argument, integer_value, text_argument, text_value};
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build, incremental};
+use crate::stream::HexSession;
 
+use super::delimiter::EncodeDelimiter;
 use super::{codec, delimiter};
 
 /// Encodes bytes as lower-case hexadecimal text.
@@ -20,7 +23,7 @@ impl ToHex {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: incremental(build(SpecDefinition {
                 id: "encoding.hex.encode@1",
                 display_name: "To Hex",
                 category: "Encoding",
@@ -34,7 +37,7 @@ impl ToHex {
                 ],
                 inverse: Some("encoding.hex.decode@1"),
                 classifications: None,
-            }),
+            })),
         }
     }
 }
@@ -65,6 +68,28 @@ impl Operation for ToHex {
             text: output,
             encoding: TextEncoding::Utf8,
         }))
+    }
+}
+
+impl Streamable for ToHex {
+    fn start(
+        &self,
+        arguments: &Arguments,
+        _context: &OperationContext<'_>,
+    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError> {
+        // Only the contiguous form. A delimiter or a line width makes the
+        // output depend on *where* the last byte is, and a session does not
+        // know that until it ends — it would have to hold a byte back and
+        // decide at `finish`, which is implementable and is not implemented
+        // here rather than implemented approximately. Everything else answers
+        // `None` and the caller uses the buffered path, which is what `None`
+        // is for.
+        let delimiter = delimiter::encode(text_value(arguments, "delimiter")?)?;
+        let line_size = nonnegative_usize(integer_value(arguments, "bytes_per_line")?)?;
+        if line_size != 0 || !matches!(delimiter, EncodeDelimiter::Suffix("")) {
+            return Ok(None);
+        }
+        Ok(Some(Box::new(HexSession::new())))
     }
 }
 

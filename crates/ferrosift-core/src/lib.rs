@@ -11,6 +11,7 @@ mod context;
 mod executor;
 mod operation;
 mod registry;
+mod streaming;
 mod trace;
 mod value_size;
 
@@ -20,6 +21,7 @@ pub use context::OperationContext;
 pub use executor::{ExecutionError, ExecutionFailure, Executor, FORK_ID, MERGE_ID, PreparedRecipe};
 pub use operation::{InvalidOperationFailureCode, Operation, OperationError, OperationFailureCode};
 pub use registry::{OperationRegistry, RegistryError};
+pub use streaming::{CollectSink, StreamSession, StreamSink, Streamable, drive};
 pub use trace::{
     ExecutionResult, ExecutionStatus, ExecutionTrace, StepLocation, TraceEvent, TraceEventKind,
     ValueSummary,

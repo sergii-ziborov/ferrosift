@@ -166,6 +166,22 @@ pub(crate) fn build_reducer(definition: SpecDefinition) -> OperationSpec {
     }
 }
 
+/// Declares that this specification's operation implements
+/// [`Streamable`](ferrosift_core::Streamable).
+///
+/// Applied on top of whichever builder the operation already used, because
+/// streaming is orthogonal to how output relates to input: a digest is a
+/// reducer *and* incremental, hex encoding is proportional *and* incremental.
+///
+/// The declaration and the implementation must agree, and
+/// `tests/streaming.rs` is what makes them: an operation declaring this and
+/// offering no session fails there, and so does one whose streamed answer
+/// differs from `execute`'s at any chunk size.
+pub(crate) const fn incremental(mut spec: OperationSpec) -> OperationSpec {
+    spec.streaming = StreamingSupport::Incremental;
+    spec
+}
+
 pub(crate) const fn operation_id(value: &'static str) -> OperationId {
     OperationId::from_static(value)
 }

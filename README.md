@@ -116,6 +116,11 @@ Rust library is not a substitute for the one the reference used.
   grants; the portable core exposes no built-in host or network handles.
 - Bounded execution traces containing locations and value summaries rather
   than recipe payloads.
+- Streaming for the operations that can offer it, so a subject larger than the
+  machine — a disk image, a firmware dump — is read a chunk at a time. Three
+  today, and the reason it is trustworthy at all is that a streamed answer is
+  checked against the buffered one at eight chunk sizes rather than assumed to
+  match.
 - Loss-aware JSON interchange for CyberChef
   [11.3.0](docs/compatibility/cyberchef-v11.3.0.md) and
   [11.4.0](docs/compatibility/profiles.md) recipes, in both directions, whose

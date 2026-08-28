@@ -1,14 +1,17 @@
+use alloc::boxed::Box;
 use alloc::vec;
 
-use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_core::{Operation, OperationContext, OperationError, StreamSession, Streamable};
 use ferrosift_model::{Arguments, OperationSpec, Value, ValueConstraint, ValueKind};
 
 use crate::args::{
     boolean_argument, boolean_value, map_argument, map_value, text_argument, text_value,
     toggle_string_default, toggle_string_parts,
 };
-use crate::key::convert_to_byte_array;
-use crate::spec::{SpecDefinition, build};
+use crate::key::{convert_to_byte_array, stored_as_bytes};
+use crate::spec::{SpecDefinition, build, incremental};
+
+use crate::stream::KeyedByteSession;
 
 use super::codec;
 
@@ -22,7 +25,7 @@ impl Xor {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: incremental(build(SpecDefinition {
                 id: "logic.xor@1",
                 display_name: "XOR",
                 category: "Logic",
@@ -45,7 +48,7 @@ impl Xor {
                 ],
                 inverse: Some("logic.xor@1"),
                 classifications: None,
-            }),
+            })),
         }
     }
 }
@@ -75,5 +78,27 @@ impl Operation for Xor {
         let null_preserving = boolean_value(arguments, "null_preserving")?;
         let output = codec::apply(&input, &key, scheme, null_preserving, context)?;
         Ok(Value::Bytes(output))
+    }
+}
+
+impl Streamable for Xor {
+    fn start(
+        &self,
+        arguments: &Arguments,
+        _context: &OperationContext<'_>,
+    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError> {
+        // Only the plain scheme, and only without null-preservation. The other
+        // schemes carry the previous byte's *output* into the next key, and
+        // null-preservation skips a byte without advancing — both are still
+        // position-dependent in a way a session could hold, and neither is
+        // implemented here rather than being implemented approximately.
+        if text_value(arguments, "scheme")? != "Standard"
+            || boolean_value(arguments, "null_preserving")?
+        {
+            return Ok(None);
+        }
+        let (option, string) = toggle_string_parts(map_value(arguments, "key")?)?;
+        let key = stored_as_bytes(&convert_to_byte_array(string, option));
+        Ok(Some(Box::new(KeyedByteSession::new(key))))
     }
 }

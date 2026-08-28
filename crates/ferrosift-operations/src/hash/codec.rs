@@ -41,6 +41,32 @@ pub(super) fn sha1(
     Ok(to_hex_lower(&digest))
 }
 
+/// The same choice of function, as something that can be fed a chunk at a time.
+///
+/// One function rather than two so the streaming path cannot answer for a
+/// different size than the buffered one: both read the same arguments through
+/// the same match, and a divergence would have to be written twice.
+pub(super) fn sha2_streaming(
+    size: &str,
+    rounds_256: i128,
+    rounds_512: i128,
+) -> Result<alloc::boxed::Box<dyn digest::DynDigest + Send>, OperationError> {
+    let full_256 = rounds_256 == 64;
+    let full_512 = rounds_512 == 160;
+    Ok(match size {
+        "224" if full_256 => alloc::boxed::Box::new(Sha224::default()),
+        "256" if full_256 => alloc::boxed::Box::new(Sha256::default()),
+        "384" if full_512 => alloc::boxed::Box::new(Sha384::default()),
+        "512" if full_512 => alloc::boxed::Box::new(Sha512::default()),
+        "512/224" if full_512 => alloc::boxed::Box::new(Sha512_224::default()),
+        "512/256" if full_512 => alloc::boxed::Box::new(Sha512_256::default()),
+        "224" | "256" | "384" | "512" | "512/224" | "512/256" => {
+            return Err(failed(UNSUPPORTED_ROUNDS));
+        }
+        _ => return Err(failed(INVALID_SIZE)),
+    })
+}
+
 pub(super) fn sha2(
     input: &[u8],
     size: &str,

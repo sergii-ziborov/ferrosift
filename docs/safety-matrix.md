@@ -74,6 +74,22 @@ Both exemptions are opt-in and checked. `tests/output_behavior.rs` names
 every generator, and runs every reducer over inputs differing by a factor
 of 256 to confirm it does not grow.
 
+## Streaming
+
+An operation declaring `incremental` can be run over an input it never
+holds whole — a disk image, a firmware dump — through
+[`Streamable`](https://docs.rs/ferrosift-core/latest/ferrosift_core/trait.Streamable.html).
+Everything else buffers, which is correct and merely needs the memory.
+
+**3 of 250**: `encoding.hex.encode@1`, `hash.sha2@1`, `logic.xor@1`.
+
+The declaration and the implementation must agree, and
+`tests/streaming.rs` is what makes them: a streamed answer is compared
+against the buffered one at eight chunk sizes over six input lengths,
+because an implementation that flushed a partial group twice or reset a
+key position at a boundary would look correct at whichever single chunk
+size someone tried by hand.
+
 ## Every operation
 
 `—` where an operation declares nothing, which is most of them.
