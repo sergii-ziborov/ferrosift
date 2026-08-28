@@ -12,9 +12,23 @@ use crate::{
     finding::CompatibilityFinding,
 };
 
+/// What to say when a name resolves in no profile, or not in this one.
+///
+/// A `&'static str` per profile rather than a formatted string: the finding
+/// detail is part of a stable surface, and the set of profiles is small and
+/// known at compile time.
+const fn profile_detail(profile: CompatibilityProfile) -> &'static str {
+    match profile {
+        CompatibilityProfile::CyberChefV11_3 => "operation has no exact CyberChef 11.3 alias",
+        CompatibilityProfile::CyberChefV11_4 => "operation has no exact CyberChef 11.4 alias",
+        CompatibilityProfile::Native => "operation has no exact alias in the requested profile",
+    }
+}
+
 pub(crate) fn map_step(
     index: usize,
     raw: &JsonValue,
+    profile: CompatibilityProfile,
     registry: &OperationRegistry,
     findings: &mut Vec<CompatibilityFinding>,
 ) -> Result<Option<RecipeStep>, ImportError> {
@@ -43,14 +57,16 @@ pub(crate) fn map_step(
         return Ok(None);
     };
 
-    let Some(operation) =
-        registry.resolve_alias(CompatibilityProfile::CyberChefV11_3, operation_name)
-    else {
+    let Some(operation) = registry.resolve_alias(profile, operation_name) else {
+        // The detail names the profile because that is what decides the
+        // answer: an operation the reference introduced in 11.4 is genuinely
+        // unknown to 11.3, and a message that did not say which was asked
+        // would read as "FerroSift does not have this".
         findings.push(finding(
             "compat.cyberchef.unknown_operation",
             index,
             Some(operation_name),
-            "operation has no exact CyberChef 11.3 alias",
+            profile_detail(profile),
         ));
         return Ok(None);
     };

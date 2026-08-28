@@ -78,6 +78,15 @@ pub enum RecipeFormat {
     /// `CyberChef` 11.3 compact recipe JSON.
     #[value(name = "cyberchef-v11.3")]
     CyberChefV11_3,
+    /// `CyberChef` 11.4 compact recipe JSON.
+    ///
+    /// The same shape as 11.3 — the reference's whole recipe model is
+    /// unchanged between the two — so this selects which operation *names*
+    /// resolve. A recipe using an operation 11.4 introduced loads here and not
+    /// as 11.3, which is a fact about the reference rather than about this
+    /// port.
+    #[value(name = "cyberchef-v11.4")]
+    CyberChefV11_4,
 }
 
 #[derive(Clone, Copy, Debug, ValueEnum)]

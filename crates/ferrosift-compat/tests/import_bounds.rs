@@ -4,15 +4,21 @@ use ferrosift_compat::cyberchef::{
     ImportError, MAX_RECIPE_BYTES, MAX_RECIPE_STEPS, export_source, import_recipe,
 };
 use ferrosift_core::OperationRegistry;
+use ferrosift_model::CompatibilityProfile;
 use serde_json::Value as JsonValue;
 
 #[test]
 fn malformed_and_non_array_json_return_distinct_stable_errors() {
     let registry = OperationRegistry::new();
 
-    let malformed = import_recipe(b"[{", &registry).expect_err("JSON is incomplete");
-    let non_array =
-        import_recipe(br#"{"op":"From Hex"}"#, &registry).expect_err("top level must be an array");
+    let malformed = import_recipe(b"[{", CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect_err("JSON is incomplete");
+    let non_array = import_recipe(
+        br#"{"op":"From Hex"}"#,
+        CompatibilityProfile::CyberChefV11_3,
+        &registry,
+    )
+    .expect_err("top level must be an array");
 
     assert_eq!(malformed, ImportError::MalformedJson);
     assert_eq!(malformed.code(), "compat.cyberchef.malformed_json");
@@ -27,9 +33,11 @@ fn source_byte_limit_is_inclusive_and_checked_before_parsing() {
     at_limit[0] = b'[';
     at_limit[1] = b']';
 
-    let report = import_recipe(&at_limit, &registry).expect("exact byte ceiling is accepted");
+    let report = import_recipe(&at_limit, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("exact byte ceiling is accepted");
     let over_limit = vec![b' '; MAX_RECIPE_BYTES + 1];
-    let error = import_recipe(&over_limit, &registry).expect_err("over ceiling is rejected first");
+    let error = import_recipe(&over_limit, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect_err("over ceiling is rejected first");
 
     assert!(report.source.steps().is_empty());
     assert_eq!(error, ImportError::SourceTooLarge);
@@ -41,8 +49,18 @@ fn step_limit_is_inclusive() {
     let at_limit = json_array_with_nulls(MAX_RECIPE_STEPS);
     let over_limit = json_array_with_nulls(MAX_RECIPE_STEPS + 1);
 
-    let report = import_recipe(at_limit.as_bytes(), &registry).expect("4096 steps are accepted");
-    let error = import_recipe(over_limit.as_bytes(), &registry).expect_err("4097 are rejected");
+    let report = import_recipe(
+        at_limit.as_bytes(),
+        CompatibilityProfile::CyberChefV11_3,
+        &registry,
+    )
+    .expect("4096 steps are accepted");
+    let error = import_recipe(
+        over_limit.as_bytes(),
+        CompatibilityProfile::CyberChefV11_3,
+        &registry,
+    )
+    .expect_err("4097 are rejected");
 
     assert_eq!(report.source.steps().len(), MAX_RECIPE_STEPS);
     assert_eq!(error, ImportError::TooManySteps);
@@ -56,8 +74,12 @@ fn step_ceiling_stops_before_materializing_trailing_source() {
     source.push_str(",{\"unterminated\":]");
     assert!(source.len() < MAX_RECIPE_BYTES);
 
-    let error = import_recipe(source.as_bytes(), &registry)
-        .expect_err("the 4097th complete value crosses the step ceiling");
+    let error = import_recipe(
+        source.as_bytes(),
+        CompatibilityProfile::CyberChefV11_3,
+        &registry,
+    )
+    .expect_err("the 4097th complete value crosses the step ceiling");
 
     assert_eq!(error, ImportError::TooManySteps);
 }
@@ -66,7 +88,8 @@ fn step_ceiling_stops_before_materializing_trailing_source() {
 fn source_export_preserves_every_semantic_json_value() {
     let registry = OperationRegistry::new();
     let input = include_bytes!("fixtures/cyberchef-v11.3.0/recipes.json");
-    let report = import_recipe(input, &registry).expect("bounded JSON source is preservable");
+    let report = import_recipe(input, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("bounded JSON source is preservable");
 
     let exported = export_source(&report.source).expect("JSON values serialize");
     let original: JsonValue = serde_json::from_slice(input).expect("fixture is valid JSON");
@@ -81,7 +104,8 @@ fn source_export_preserves_arbitrary_precision_number_tokens() {
     let input =
         br#"[{"op":"Unknown","args":[184467440737095516160,0.123456789012345678901234567890]}]"#;
 
-    let report = import_recipe(input, &registry).expect("bounded source is preservable");
+    let report = import_recipe(input, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("bounded source is preservable");
     let exported = export_source(&report.source).expect("source serializes");
 
     assert!(exported.contains("184467440737095516160"));

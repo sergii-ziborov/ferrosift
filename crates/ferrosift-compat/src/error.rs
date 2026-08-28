@@ -15,6 +15,13 @@ pub enum ImportError {
     TooManySteps,
     /// Generated portable recipe invariants could not be satisfied.
     InvalidRecipe,
+    /// The requested profile is not a `CyberChef` release.
+    ///
+    /// The interchange speaks versions of one reference. Asking it for
+    /// `FerroSift`'s own naming profile would resolve nothing and report every
+    /// step as unknown, which describes the mistake far less usefully than
+    /// refusing it does.
+    UnsupportedProfile,
 }
 
 impl ImportError {
@@ -27,6 +34,7 @@ impl ImportError {
             Self::ExpectedArray => "compat.cyberchef.expected_array",
             Self::TooManySteps => "compat.cyberchef.too_many_steps",
             Self::InvalidRecipe => "compat.cyberchef.invalid_recipe",
+            Self::UnsupportedProfile => "compat.cyberchef.unsupported_profile",
         }
     }
 }
@@ -48,9 +56,13 @@ pub enum ExportError {
     RecipeTooLarge,
     /// A recipe step references an operation absent from the registry.
     UnknownOperation,
-    /// A registered operation has no `CyberChef` 11.3 alias.
+    /// A registered operation has no alias in the requested profile.
+    ///
+    /// Reached by exporting an operation the reference introduced later than
+    /// the profile asked for: it has an 11.4 name and no 11.3 one, and there is
+    /// nothing to write.
     MissingAlias,
-    /// A registered operation has multiple `CyberChef` 11.3 aliases.
+    /// A registered operation has more than one alias in the requested profile.
     AmbiguousAlias,
     /// A recipe supplies an argument not declared by the operation.
     UndeclaredArgument,
@@ -60,6 +72,8 @@ pub enum ExportError {
     ArgumentValue,
     /// The source value could not be serialized.
     Serialization,
+    /// The requested profile is not a `CyberChef` release.
+    UnsupportedProfile,
 }
 
 impl ExportError {
@@ -76,6 +90,7 @@ impl ExportError {
             Self::MissingArgument => "compat.cyberchef.export_missing_argument",
             Self::ArgumentValue => "compat.cyberchef.export_argument_value",
             Self::Serialization => "compat.cyberchef.serialization",
+            Self::UnsupportedProfile => "compat.cyberchef.export_unsupported_profile",
         }
     }
 }

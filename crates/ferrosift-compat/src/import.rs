@@ -3,7 +3,7 @@
 use alloc::vec::Vec;
 
 use ferrosift_core::OperationRegistry;
-use ferrosift_model::{Recipe, RecipeMetadata};
+use ferrosift_model::{CompatibilityProfile, Recipe, RecipeMetadata};
 
 use crate::{
     error::ImportError,
@@ -24,15 +24,27 @@ pub struct ImportReport {
     pub findings: Vec<CompatibilityFinding>,
 }
 
-/// Imports one `CyberChef` 11.3.0 JSON recipe.
+/// Imports one `CyberChef` JSON recipe, resolving names in `profile`.
+///
+/// The two reference versions serialize a recipe identically — the whole
+/// `Recipe`, `Operation` and `Ingredient` model is byte-for-byte the same
+/// between 11.3 and 11.4 apart from one added argument check — so the profile
+/// changes which *names* resolve rather than how the JSON is read. An
+/// operation the reference introduced in 11.4 has no 11.3 name, and importing
+/// it as 11.3 reports it as unknown rather than guessing.
 ///
 /// # Errors
 ///
-/// Returns a stable [`ImportError`] when the source cannot be bounded or decoded.
+/// Returns a stable [`ImportError`] when the source cannot be bounded or
+/// decoded, or when `profile` is not a `CyberChef` release.
 pub fn import_recipe(
     bytes: &[u8],
+    profile: CompatibilityProfile,
     registry: &OperationRegistry,
 ) -> Result<ImportReport, ImportError> {
+    if !profile.is_cyberchef() {
+        return Err(ImportError::UnsupportedProfile);
+    }
     if bytes.len() > MAX_RECIPE_BYTES {
         return Err(ImportError::SourceTooLarge);
     }
@@ -41,7 +53,7 @@ pub fn import_recipe(
     let mut findings = Vec::new();
     let mut steps = Vec::with_capacity(source.steps().len());
     for (index, source_step) in source.steps().iter().enumerate() {
-        if let Some(step) = map_step(index, source_step.raw(), registry, &mut findings)? {
+        if let Some(step) = map_step(index, source_step.raw(), profile, registry, &mut findings)? {
             steps.push(step);
         }
     }

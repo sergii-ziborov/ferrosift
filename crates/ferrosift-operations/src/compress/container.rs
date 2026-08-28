@@ -14,7 +14,12 @@ use crate::args::{integer_argument, integer_value};
 use crate::args::{text_argument, text_value};
 #[cfg(feature = "compression-bzip2")]
 use crate::spec::build_hosted;
-use crate::spec::{SpecDefinition, build};
+// Only the gzip pair builds a bare-metal spec; bzip2 goes through
+// `build_hosted` above, so `build` is gated with gzip and not with the
+// definition type both of them fill in.
+use crate::spec::SpecDefinition;
+#[cfg(feature = "compression-deflate")]
+use crate::spec::build;
 
 #[cfg(feature = "compression-bzip2")]
 use super::bzip2;

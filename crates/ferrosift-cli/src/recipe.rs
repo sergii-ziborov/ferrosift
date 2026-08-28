@@ -4,7 +4,7 @@ use std::fmt::Write as _;
 
 use ferrosift_compat::cyberchef;
 use ferrosift_core::OperationRegistry;
-use ferrosift_model::{Recipe, SchemaVersion};
+use ferrosift_model::{CompatibilityProfile, Recipe, SchemaVersion};
 
 use crate::{args::RecipeFormat, error::CliError};
 
@@ -15,7 +15,12 @@ pub fn load(
 ) -> Result<Recipe, CliError> {
     match format {
         RecipeFormat::FerroSift => load_native(bytes),
-        RecipeFormat::CyberChefV11_3 => load_cyberchef(bytes, registry),
+        RecipeFormat::CyberChefV11_3 => {
+            load_cyberchef(bytes, CompatibilityProfile::CyberChefV11_3, registry)
+        }
+        RecipeFormat::CyberChefV11_4 => {
+            load_cyberchef(bytes, CompatibilityProfile::CyberChefV11_4, registry)
+        }
     }
 }
 
@@ -31,8 +36,12 @@ fn load_native(bytes: &[u8]) -> Result<Recipe, CliError> {
     Ok(recipe)
 }
 
-fn load_cyberchef(bytes: &[u8], registry: &OperationRegistry) -> Result<Recipe, CliError> {
-    let report = cyberchef::import_recipe(bytes, registry)
+fn load_cyberchef(
+    bytes: &[u8],
+    profile: CompatibilityProfile,
+    registry: &OperationRegistry,
+) -> Result<Recipe, CliError> {
+    let report = cyberchef::import_recipe(bytes, profile, registry)
         .map_err(|error| CliError::new(error.code(), error.to_string()))?;
     if let Some(first) = report.findings.first() {
         let mut detail = String::new();

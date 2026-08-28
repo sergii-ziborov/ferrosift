@@ -1,4 +1,8 @@
 //! Real operation fixtures shared by compatibility integration tests.
+//!
+//! Each integration test binary compiles this module separately, so a helper
+//! only some of them need reads as dead in the rest.
+#![allow(dead_code)]
 
 use std::collections::BTreeMap;
 
@@ -40,6 +44,37 @@ pub fn registry_with(
             spec: operation_spec(id, cyberchef_aliases, arguments),
         })
         .expect("fixture operation is valid");
+    registry
+}
+
+/// A registry whose operations each carry exactly the aliases given.
+///
+/// Distinct from [`registry_with`], which puts every alias in 11.3 because
+/// that is what almost every test needs. Profile-scoping tests need the
+/// opposite: a name that exists in one profile and genuinely does not exist in
+/// another, which is what an operation the reference introduced later looks
+/// like.
+pub type OperationFixture<'a> = (
+    &'a str,
+    &'a [(CompatibilityProfile, &'a str)],
+    Vec<ArgumentSpec>,
+);
+
+pub fn registry_of(operations: &[OperationFixture<'_>]) -> OperationRegistry {
+    let mut registry = OperationRegistry::new();
+    for (id, aliases, arguments) in operations {
+        let mut spec = operation_spec(id, &[], arguments.clone());
+        spec.aliases = aliases
+            .iter()
+            .map(|(profile, name)| CompatibilityAlias {
+                profile: *profile,
+                name: (*name).into(),
+            })
+            .collect();
+        registry
+            .register(StaticOperation { spec })
+            .expect("fixture operation is valid");
+    }
     registry
 }
 

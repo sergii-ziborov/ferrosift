@@ -85,9 +85,10 @@ Rust library is not a substitute for the one the reference used.
   grants; the portable core exposes no built-in host or network handles.
 - Bounded execution traces containing locations and value summaries rather
   than recipe payloads.
-- Loss-aware JSON interchange for
-  [CyberChef 11.3.0 recipes](docs/compatibility/cyberchef-v11.3.0.md) whose
-  operations have exact registered aliases.
+- Loss-aware JSON interchange for CyberChef
+  [11.3.0](docs/compatibility/cyberchef-v11.3.0.md) and
+  [11.4.0](docs/compatibility/profiles.md) recipes, in both directions, whose
+  operations have an exact alias in the requested profile.
 - Native `ferrosift` CLI with `operations`, `describe`, `validate`, and `run`
   commands for bounded file or standard-stream processing.
 - An automatic differential corpus, sized in the table above: every case is
@@ -268,8 +269,12 @@ cargo run -p ferrosift-cli -- validate --format cyberchef-v11.3 --input-kind byt
 cargo run -p ferrosift-cli -- run --format cyberchef-v11.3 --input-kind bytes --recipe recipe.json
 ```
 
-Recipes may be native FerroSift JSON or CyberChef 11.3 compact JSON. Unknown
-CyberChef operations fail closed with stable finding codes.
+`--format` takes `ferrosift`, `cyberchef-v11.3`, or `cyberchef-v11.4`. The two
+CyberChef formats parse identically — the reference's recipe model is unchanged
+between those releases — and differ in which operation *names* resolve, so a
+recipe using an operation 11.4 introduced loads as 11.4 and not as 11.3.
+Unknown operations fail closed with stable finding codes naming the version
+that was asked. See [reference profiles](docs/compatibility/profiles.md).
 
 ## Development
 

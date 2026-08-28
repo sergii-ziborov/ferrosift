@@ -1,6 +1,6 @@
 use ferrosift_compat::cyberchef::import_recipe;
 use ferrosift_core::{ExecutionStatus, Executor, NeverCancelled, TraceEventKind};
-use ferrosift_model::{CapabilitySet, TextEncoding, Value, ValueKind};
+use ferrosift_model::{CapabilitySet, CompatibilityProfile, TextEncoding, Value, ValueKind};
 
 use super::fixture::{Case, UnsupportedCase, decode_hex};
 
@@ -27,7 +27,8 @@ pub fn assert_unsupported_case(case: &UnsupportedCase) {
     let registry = ferrosift_operations::default_registry()
         .expect("built-in operation registry must validate");
     let source = serde_json::to_vec(&case.recipe).expect("recipe must serialize");
-    let report = import_recipe(&source, &registry).expect("recipe must parse");
+    let report = import_recipe(&source, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("recipe must parse");
 
     assert!(report.recipe.is_none(), "{} must not execute", case.name);
     assert_eq!(report.findings.len(), 1, "{} finding count", case.name);
@@ -55,7 +56,8 @@ fn assert_prefix(case: &Case, prefix_length: usize) {
         .expect("built-in operation registry must validate");
     let source =
         serde_json::to_vec(&case.recipe[..prefix_length]).expect("recipe prefix must serialize");
-    let report = import_recipe(&source, &registry).expect("recipe prefix must parse");
+    let report = import_recipe(&source, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("recipe prefix must parse");
     assert!(
         report.findings.is_empty(),
         "{} prefix {prefix_length}: {:?}",

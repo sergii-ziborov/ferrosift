@@ -109,6 +109,59 @@ aliases a spec carries, and a name the reference never had has no case to
 demand. Only the pinned checkout can answer it, which is why the check lives
 beside the oracle and not in CI.
 
+## Reading and writing recipes
+
+A profile is not only a naming scheme for the catalog; it is also what you read
+and write a serialized recipe *as*:
+
+```bash
+ferrosift run --format cyberchef-v11.3 --recipe recipe.json --input - --input-kind bytes
+ferrosift run --format cyberchef-v11.4 --recipe recipe.json --input - --input-kind bytes
+```
+
+One parser serves both, because there is nothing version-specific to parse. In
+the two pinned checkouts, `src/core/Recipe.mjs`, `Operation.mjs`, `Dish.mjs`
+and `Utils.mjs` are byte-identical; the reference's recipe model did not change
+between 11.3 and 11.4. What the flag selects is which operation *names*
+resolve, and that is the whole difference:
+
+| | 11.3 | 11.4 |
+|---|---|---|
+| `[{"op":"To Base64","args":[…]}]` | loads | loads |
+| `[{"op":"Modular Exponentiation","args":[…]}]` | `compat.cyberchef.unknown_operation` | loads |
+
+The finding names the version that was asked, because the version is what
+decides the answer. "No exact CyberChef 11.3 alias" is a fact about 11.3, and a
+message that omitted it would read as FerroSift not having the operation.
+
+Export is the same asymmetry from the other side. `export_recipe` writes each
+step under the name the requested profile uses, and refuses with
+`ExportError::MissingAlias` when that profile has no name for it — emitting the
+11.4 name into a file labelled 11.3 would produce a recipe the older reference
+cannot load. `CompatibilityProfile::Native` is a catalog naming profile rather
+than a serialized dialect, so both directions reject it outright with
+`UnsupportedProfile` instead of half-working.
+
+`crates/ferrosift-compat/tests/profile_scope.rs` holds all of this against a
+synthetic operation that exists in exactly one profile. A real 11.4-only
+operation would let those tests pass for a second reason — that this port
+happens to have it — and they would stop failing if the profile argument were
+ignored.
+
+### The one core change 11.4 did make
+
+`Ingredient.mjs` is the single core module that differs, by 24 lines: 11.4's
+`validate()` gained an `argSelector` branch that refuses a value not among the
+declared option names. That tightens what the reference accepts as an
+*argument*, not what it accepts as a *recipe*, so it does not reach the parser.
+
+FerroSift refuses such a value in both profiles, at the operation rather than
+at the ingredient — `SHA2` with an unrecognised size answers
+`hash.sha2.invalid_size` under `cyberchef-v11.3` as well as under
+`cyberchef-v11.4`. Nothing in the corpus depends on 11.3's laxer reading,
+because a case whose argument the reference rejects produces no output bytes to
+pin.
+
 ## Adding a profile
 
 ```bash

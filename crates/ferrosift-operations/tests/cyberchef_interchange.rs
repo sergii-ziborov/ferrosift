@@ -2,7 +2,7 @@
 
 use ferrosift_compat::cyberchef::import_recipe;
 use ferrosift_core::{Executor, NeverCancelled};
-use ferrosift_model::{CapabilitySet, Value};
+use ferrosift_model::{CapabilitySet, CompatibilityProfile, Value};
 
 mod support;
 
@@ -13,7 +13,8 @@ fn imported_base64_recipe_executes_without_fixture_operations() {
         {"op":"To Base64","args":["A-Za-z0-9+/="]},
         {"op":"From Base64","args":["A-Za-z0-9+/=",true,false]}
     ]"#;
-    let report = import_recipe(source, &registry).expect("bounded recipe must parse");
+    let report = import_recipe(source, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("bounded recipe must parse");
     let recipe = report.recipe.expect("every operation must map exactly");
     assert!(report.findings.is_empty());
 

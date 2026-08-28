@@ -23,7 +23,11 @@ fn validate_accepts_native_and_cyberchef_recipes_after_full_preflight() {
         r#"[{"op":"To Base64","args":["A-Za-z0-9+/="]}]"#,
     );
 
-    for (format, recipe) in [("ferrosift", native), ("cyberchef-v11.3", cyberchef)] {
+    for (format, recipe) in [
+        ("ferrosift", &native),
+        ("cyberchef-v11.3", &cyberchef),
+        ("cyberchef-v11.4", &cyberchef),
+    ] {
         let output = support::run(
             &[
                 "validate",
@@ -32,13 +36,46 @@ fn validate_accepts_native_and_cyberchef_recipes_after_full_preflight() {
                 "--input-kind",
                 "bytes",
                 "--recipe",
-                support::path_text(&recipe),
+                support::path_text(recipe),
             ],
             b"",
         );
         assert!(output.status.success(), "{}", support::stderr(&output));
         assert_eq!(support::stdout(&output), "valid\n");
         assert!(output.stderr.is_empty());
+    }
+}
+
+/// The two `CyberChef` formats read the same bytes and differ only in names.
+///
+/// The reference's recipe model is unchanged between 11.3 and 11.4 — the
+/// `Recipe`, `Operation`, `Dish` and `Utils` modules are byte-identical across
+/// the two checkouts — so one file loading under both is the correct outcome,
+/// not an accident of the flag being ignored. What the flag decides is which
+/// names resolve, which the compatibility crate's own tests hold against a
+/// fixture that exists in exactly one profile.
+#[test]
+fn both_cyberchef_formats_run_the_same_recipe() {
+    let directory = support::TempDir::new("run-v11-4");
+    let recipe = directory.write("cyberchef.json", r#"[{"op":"To Hex","args":["Space",0]}]"#);
+
+    for format in ["cyberchef-v11.3", "cyberchef-v11.4"] {
+        let output = support::run(
+            &[
+                "run",
+                "--format",
+                format,
+                "--input-kind",
+                "bytes",
+                "--recipe",
+                support::path_text(&recipe),
+                "--input",
+                "-",
+            ],
+            b"\x00\xff",
+        );
+        assert!(output.status.success(), "{}", support::stderr(&output));
+        assert_eq!(support::stdout(&output), "00 ff");
     }
 }
 

@@ -7,7 +7,8 @@ use ferrosift_compat::cyberchef::{
     import_recipe,
 };
 use ferrosift_model::{
-    ArgumentKind, ArgumentValue, Arguments, OperationId, Recipe, RecipeMetadata, RecipeStep, StepId,
+    ArgumentKind, ArgumentValue, Arguments, CompatibilityProfile, OperationId, Recipe,
+    RecipeMetadata, RecipeStep, StepId,
 };
 use serde_json::Value as JsonValue;
 
@@ -35,7 +36,8 @@ fn native_recipe_exports_positional_arguments_and_true_flags() {
         true,
     );
 
-    let json = export_recipe(&recipe, &registry).expect("recipe is exactly representable");
+    let json = export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("recipe is exactly representable");
     let value: JsonValue = serde_json::from_str(&json).expect("export is JSON");
 
     assert_eq!(
@@ -54,7 +56,8 @@ fn false_flags_are_omitted() {
     let registry = registry_with("test.empty@1", &["Empty"], vec![]);
     let recipe = recipe_with("test.empty@1", Arguments::new(), false, false);
 
-    let json = export_recipe(&recipe, &registry).expect("empty operation is representable");
+    let json = export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("empty operation is representable");
     let value: JsonValue = serde_json::from_str(&json).expect("export is JSON");
 
     assert_eq!(value, serde_json::json!([{"op": "Empty", "args": []}]));
@@ -67,11 +70,11 @@ fn missing_and_ambiguous_profile_aliases_fail_distinctly() {
     let recipe = recipe_with("test.empty@1", Arguments::new(), false, false);
 
     assert_eq!(
-        export_recipe(&recipe, &no_alias),
+        export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &no_alias),
         Err(ExportError::MissingAlias)
     );
     assert_eq!(
-        export_recipe(&recipe, &two_aliases),
+        export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &two_aliases),
         Err(ExportError::AmbiguousAlias)
     );
 }
@@ -89,11 +92,15 @@ fn unknown_operations_and_undeclared_arguments_fail_closed() {
     );
 
     assert_eq!(
-        export_recipe(&unknown, &empty_registry),
+        export_recipe(
+            &unknown,
+            CompatibilityProfile::CyberChefV11_3,
+            &empty_registry
+        ),
         Err(ExportError::UnknownOperation)
     );
     assert_eq!(
-        export_recipe(&undeclared, &registry),
+        export_recipe(&undeclared, CompatibilityProfile::CyberChefV11_3, &registry),
         Err(ExportError::UndeclaredArgument)
     );
 }
@@ -114,11 +121,11 @@ fn missing_required_and_unrepresentable_integer_fail_closed() {
     );
 
     assert_eq!(
-        export_recipe(&missing, &registry),
+        export_recipe(&missing, CompatibilityProfile::CyberChefV11_3, &registry),
         Err(ExportError::MissingArgument)
     );
     assert_eq!(
-        export_recipe(&huge, &registry),
+        export_recipe(&huge, CompatibilityProfile::CyberChefV11_3, &registry),
         Err(ExportError::ArgumentValue)
     );
 }
@@ -137,11 +144,16 @@ fn supported_native_export_imports_back_to_equivalent_step_semantics() {
         true,
     );
 
-    let json = export_recipe(&original, &registry).expect("native export succeeds");
-    let imported = import_recipe(json.as_bytes(), &registry)
-        .expect("exported JSON imports")
-        .recipe
-        .expect("exported semantics are supported");
+    let json = export_recipe(&original, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("native export succeeds");
+    let imported = import_recipe(
+        json.as_bytes(),
+        CompatibilityProfile::CyberChefV11_3,
+        &registry,
+    )
+    .expect("exported JSON imports")
+    .recipe
+    .expect("exported semantics are supported");
 
     assert_eq!(imported.steps[0].operation, original.steps[0].operation);
     assert_eq!(imported.steps[0].arguments, original.steps[0].arguments);
@@ -154,7 +166,11 @@ fn native_export_enforces_step_and_serialized_byte_limits() {
     let empty_registry = ferrosift_core::OperationRegistry::new();
     let too_many = recipe_with_steps(MAX_RECIPE_STEPS + 1, "test.unknown@1");
     assert_eq!(
-        export_recipe(&too_many, &empty_registry),
+        export_recipe(
+            &too_many,
+            CompatibilityProfile::CyberChefV11_3,
+            &empty_registry
+        ),
         Err(ExportError::TooManySteps)
     );
 
@@ -173,7 +189,7 @@ fn native_export_enforces_step_and_serialized_byte_limits() {
         false,
     );
     assert_eq!(
-        export_recipe(&oversized, &registry),
+        export_recipe(&oversized, CompatibilityProfile::CyberChefV11_3, &registry),
         Err(ExportError::RecipeTooLarge)
     );
 }
@@ -202,7 +218,7 @@ fn native_export_rejects_javascript_unsafe_integers_recursively() {
     );
 
     assert_eq!(
-        export_recipe(&recipe, &registry),
+        export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &registry),
         Err(ExportError::ArgumentValue)
     );
 }
@@ -223,7 +239,7 @@ fn native_export_rejects_excessively_nested_argument_values() {
     );
 
     assert_eq!(
-        export_recipe(&recipe, &registry),
+        export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &registry),
         Err(ExportError::ArgumentValue)
     );
 }
@@ -243,11 +259,16 @@ fn native_depth_limit_round_trips_at_exact_boundary() {
         false,
     );
 
-    let json = export_recipe(&recipe, &registry).expect("boundary depth exports");
-    let imported = import_recipe(json.as_bytes(), &registry)
-        .expect("exported boundary depth parses")
-        .recipe
-        .expect("exported boundary depth remains executable");
+    let json = export_recipe(&recipe, CompatibilityProfile::CyberChefV11_3, &registry)
+        .expect("boundary depth exports");
+    let imported = import_recipe(
+        json.as_bytes(),
+        CompatibilityProfile::CyberChefV11_3,
+        &registry,
+    )
+    .expect("exported boundary depth parses")
+    .recipe
+    .expect("exported boundary depth remains executable");
 
     assert_eq!(imported.steps[0].arguments.get("value"), Some(&nested));
 }
