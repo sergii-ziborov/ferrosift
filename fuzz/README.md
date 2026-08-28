@@ -46,6 +46,19 @@ first is libFuzzer's own and is written to; the second is read-only input:
 cargo +nightly fuzz run bignumber corpus/bignumber seeds/bignumber -- -max_total_time=60
 ```
 
+## Nightly, because twenty seconds is not a search
+
+CI builds every target and runs each for twenty seconds. That is a check that
+the targets *work* — each one starts, reaches the code it names, and returns —
+and a target wired to an operation that no longer exists would pass it by doing
+nothing. It will not find a bug that needs a million executions.
+
+`.github/workflows/fuzz.yml` is the search: ten minutes per target, every
+night, one job each so a crash stops its own job and the rest keep looking. The
+corpus is cached between nights so each run continues rather than restarts, and
+a crashing input is uploaded as an artifact — a crash nobody can reproduce is a
+crash that comes back.
+
 ## Seeds are not a corpus
 
 `corpus/` is gitignored and `seeds/` is committed, and the difference is what
@@ -54,12 +67,20 @@ machine-generated, grows without bound, and says nothing a reader could check.
 A seed is a *claim about where the interesting inputs are*, written by hand and
 readable.
 
-`seeds/bignumber` is the case for that. The arithmetic's cost is set by the gap
-between two exponents, and the exponent range is ±10,000,000 — so the inputs
-that matter are `1e+9999999` against `1e-9999999` and their neighbours. A
-fuzzer mutating bytes will reach `1e+9999999` eventually and the pair almost
-never, because it has to find both ends of a fourteen-character coincidence at
-once. Twenty-four files say where to start looking.
+Seeds exist for the four targets whose input space has a front door — where a
+mutator starting from nothing spends its run finding the entrance instead of
+what is behind it:
+
+| Target | What the seeds are | Why |
+|---|---|---|
+| `bignumber` | Exponents at ±10,000,000 and the gaps between them | The arithmetic's cost is set by the *gap* between two exponents; finding both ends of a fourteen-character coincidence by mutation is a coincidence |
+| `inflate` | Valid gzip, zlib and raw streams, including two bombs | A random byte string is a header failure, and the decompressor is behind the header |
+| `decoders` | One well-formed input per decoder | A permissive decoder's interesting behaviour is on input it *accepts* |
+| `pattern_parse`, `pattern_evaluate` | One well-formed pattern per construct | A grammar is a narrow target and a lexer error is a shallow one |
+
+The rest — `decimal`, `dish`, `framing`, `jscompat`, `togglestring` — take
+arbitrary bytes or short text and have no such door, so a seed would only be an
+input the fuzzer reaches in its first second anyway.
 
 The crate is outside the workspace on purpose: the targets link libFuzzer and
 build only under nightly with sanitizer instrumentation, which every other gate

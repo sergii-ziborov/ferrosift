@@ -1,0 +1,7 @@
+Zstruct S {
+    u8 kind;
+    if (kind == 1) { be u16 word; } else { u8 byte; }
+};
+S s @ 0;
+	
+ 

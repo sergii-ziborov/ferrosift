@@ -1,0 +1,5 @@
+6using Word = be u16;
+using Alias = Word;
+Alias a @ 0;
+	
+ 

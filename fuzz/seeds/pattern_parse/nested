@@ -1,0 +1,4 @@
+struct Inner { u8 a; };
+struct Middle { Inner i; u8 b; };
+struct Outer { Middle m; };
+Outer o @ 0;

@@ -1,0 +1,4 @@
+6struct S { u8 first; padding[3]; u8 last; };
+S s @ 0;
+	
+ 

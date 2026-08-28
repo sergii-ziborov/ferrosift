@@ -1,0 +1,2 @@
+enum Kind : u8 { Text = 1, Number = 2, Other };
+Kind k @ 0;

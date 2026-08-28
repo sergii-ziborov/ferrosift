@@ -1,0 +1,4 @@
+/* block */ struct S { // line
+    u8 a; /* inner */ u8 b;
+};
+S s @ 0;

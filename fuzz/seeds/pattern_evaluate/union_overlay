@@ -1,0 +1,4 @@
+.union U { be u32 wide; u8 narrow; };
+U u @ 0;
+	
+ 

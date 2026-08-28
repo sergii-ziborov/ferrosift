@@ -1,0 +1,2 @@
+struct S { u8 n; u16 items[n]; };
+S s @ 0;

@@ -1,0 +1,5 @@
+bitfield Flags {
+    a : 3;
+    b : 5;
+};
+Flags f @ 0;

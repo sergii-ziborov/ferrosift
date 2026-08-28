@@ -1,0 +1,98 @@
+name: Nightly fuzz
+
+# CI already builds every target and runs each for twenty seconds. That is a
+# check that the targets *work* — that each one starts, reaches the code it
+# names, and returns — and it is not a search. A target wired to an operation
+# that no longer exists would pass a smoke run by doing nothing; twenty seconds
+# will not find a bug that needs a million executions.
+#
+# This is the search. Ten minutes per target, every night, starting from the
+# committed seeds and from whatever the previous night's corpus reached. A
+# crash is uploaded as an artifact so it can be reproduced from the exact bytes
+# rather than from a description of them.
+on:
+  schedule:
+    # After midnight UTC, well clear of the weekly reference job.
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+    inputs:
+      seconds:
+        description: Seconds to fuzz each target
+        required: false
+        default: "600"
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # One job per target rather than a loop inside one. A target that crashes
+  # stops its own job and the rest keep searching — a loop would stop at the
+  # first finding and spend the night not looking at the others.
+  fuzz:
+    name: ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - bignumber
+          - decimal
+          - decoders
+          - dish
+          - framing
+          - inflate
+          - jscompat
+          - pattern_evaluate
+          - pattern_parse
+          - togglestring
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install the nightly toolchain
+        run: rustup toolchain install nightly --profile minimal
+      - name: Install cargo-fuzz
+        run: cargo install cargo-fuzz --locked
+
+      # The corpus libFuzzer writes to is not committed — it is a cache of
+      # whatever reached new coverage, machine-generated and unbounded. Caching
+      # it between nights is what makes each run continue the search rather
+      # than restart it, and losing the cache costs nothing but time.
+      - name: Restore the corpus from previous nights
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: fuzz/corpus/${{ matrix.target }}
+          key: fuzz-corpus-${{ matrix.target }}-${{ github.run_id }}
+          restore-keys: fuzz-corpus-${{ matrix.target }}-
+
+      # Seeds where the target has them. They are a claim about where the
+      # interesting inputs are — a valid deflate stream, a well-formed pattern,
+      # an exponent at the edge of the range — and a mutator starting from
+      # nothing spends its night finding the front door instead of what is
+      # behind it.
+      - name: Search
+        run: |
+          seconds="${{ github.event.inputs.seconds || '600' }}"
+          if [ -d "seeds/${{ matrix.target }}" ]; then
+            cargo +nightly fuzz run "${{ matrix.target }}" \
+              "corpus/${{ matrix.target }}" "seeds/${{ matrix.target }}" \
+              -- -max_total_time="$seconds" -print_final_stats=1
+          else
+            cargo +nightly fuzz run "${{ matrix.target }}" \
+              -- -max_total_time="$seconds" -print_final_stats=1
+          fi
+        working-directory: fuzz
+
+      # Only on failure, and it is the whole point of running unattended: a
+      # crash nobody can reproduce is a crash that comes back. `fuzz/README.md`
+      # says what to do with one — fix it, then pin it as a case.
+      - name: Keep the input that crashed
+        if: failure()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: fuzz-artifacts-${{ matrix.target }}
+          path: fuzz/artifacts/${{ matrix.target }}
+          if-no-files-found: ignore
+          retention-days: 30
