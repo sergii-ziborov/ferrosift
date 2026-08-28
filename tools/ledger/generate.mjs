@@ -84,6 +84,40 @@ function conformanceCases() {
     return counts;
 }
 
+/**
+ * Counts the cases a later profile added, which the baseline cannot hold.
+ *
+ * An operation the reference introduced after the baseline has no case in the
+ * baseline fixtures, because those were baked through a reference that could
+ * not run it. Its evidence is in the newer profile's overlay, under `added` —
+ * and reading it there is what stops such an operation being published as
+ * having no reference claim at all.
+ *
+ * Only the overlay is read, not a reconstructed corpus. Cases the baseline
+ * already holds are counted once, above; counting them again per profile would
+ * multiply every number by however many references are replayed and say
+ * nothing more about any of them.
+ */
+function addedCases() {
+    const counts = new Map();
+    for (const version of REFERENCE.alsoVersions) {
+        const fixtures = path.join(
+            repoRoot,
+            "crates/ferrosift-operations/tests/fixtures",
+            `cyberchef-v${version}`,
+        );
+        for (const file of ["differential.overlay.json", "corpus.overlay.json"]) {
+            const overlay = JSON.parse(readFileSync(path.join(fixtures, file), "utf8"));
+            for (const testCase of overlay.added) {
+                for (const step of testCase.recipe) {
+                    counts.set(step.op, (counts.get(step.op) ?? 0) + 1);
+                }
+            }
+        }
+    }
+    return counts;
+}
+
 // The exemption list is shared with the corpus coverage gate in
 // crates/ferrosift-operations/tests/corpus.rs, so the gate and the published
 // ledger cannot disagree about what is allowed to be absent.
@@ -143,9 +177,39 @@ function parityOf(alias, exemption, divergence) {
     return "exact";
 }
 
+/**
+ * The name this operation answers to, and the earliest reference that has it.
+ *
+ * The baseline is preferred so that the overwhelming majority of the catalog
+ * reads exactly as it did before profiles existed. An operation the baseline
+ * does not name is not unaliased — it is one the reference introduced later,
+ * and the version it arrived in is part of what the ledger has to say about
+ * it. The replay gate already refuses two different names across profiles, so
+ * whichever profile answers first, the name is the same.
+ */
+function referenceName(operation) {
+    const named = version =>
+        operation.aliases.find(entry => entry.profile === PROFILE_FIELDS[version])?.name ?? null;
+
+    const baseline = named(REFERENCE.version);
+    if (baseline) return {alias: baseline, since: REFERENCE.version};
+    for (const version of REFERENCE.alsoVersions) {
+        const later = named(version);
+        if (later) return {alias: later, since: version};
+    }
+    return {alias: null, since: null};
+}
+
+/** The `CompatibilityProfile` variant each replayed version is tagged with. */
+const PROFILE_FIELDS = {
+    "11.3.0": "CyberChefV11_3",
+    "11.4.0": "CyberChefV11_4",
+};
+
 export function buildLedger() {
     const membership = packMembership();
     const cases = conformanceCases();
+    const added = addedCases();
     const exempt = exemptions();
     const diverge = divergences();
     const page = readFileSync(
@@ -155,9 +219,12 @@ export function buildLedger() {
     // `full` rather than `portable-full`: the ledger describes the whole
     // catalog, and bzip2 is in it even though it is not bare-metal clean.
     const entries = catalog("full").map(operation => {
-        const alias =
-            operation.aliases.find(entry => entry.profile === "CyberChefV11_3")?.name ?? null;
-        const count = alias ? (cases.get(alias) ?? 0) : 0;
+        const {alias, since} = referenceName(operation);
+        // Cases come from the profile the alias starts in: the baseline for
+        // almost everything, and the overlay's additions for an operation the
+        // baseline reference could not run.
+        const pinned = since === REFERENCE.version ? cases : added;
+        const count = alias ? (pinned.get(alias) ?? 0) : 0;
         const exemption = alias ? (exempt.get(alias) ?? null) : null;
         const divergence = alias ? (diverge.get(alias) ?? null) : null;
         const entry = {
@@ -165,6 +232,7 @@ export function buildLedger() {
             display_name: operation.display_name,
             category: operation.category,
             reference_alias: alias,
+            reference_since: since,
             feature: membership.get(operation.id) ?? "core",
             targets: operation.targets,
             conformance_cases: count,
@@ -216,7 +284,13 @@ export function buildLedger() {
         totals: {
             operations: entries.length,
             aliased: entries.filter(entry => entry.reference_alias).length,
-            pinned_cases: [...cases.values()].reduce((sum, value) => sum + value, 0),
+            // The baseline's cases plus the ones a later profile added, which
+            // are the only pinned bytes an operation the baseline never had
+            // can possibly have. Cases both profiles share are counted once.
+            pinned_cases: [...cases.values(), ...added.values()].reduce(
+                (sum, value) => sum + value,
+                0,
+            ),
             evidence: {
                 differential_pinned: by("evidence", "differential_pinned"),
                 pinned_elsewhere: by("evidence", "pinned_elsewhere"),
@@ -312,7 +386,14 @@ export function renderMarkdown(ledger) {
         "|---|---|---|---|---|---:|",
     ];
     for (const entry of ledger.operations) {
-        const alias = entry.reference_alias ?? "—";
+        // An operation the baseline never had says so next to its name, rather
+        // than reading as an ordinary alias whose evidence happens to live
+        // somewhere else.
+        const since =
+            entry.reference_since && entry.reference_since !== ledger.reference.version
+                ? ` (since ${entry.reference_since})`
+                : "";
+        const alias = entry.reference_alias ? `${entry.reference_alias}${since}` : "—";
         const detail = entry.divergence
             ? ` (${entry.divergence.domain})`
             : entry.note

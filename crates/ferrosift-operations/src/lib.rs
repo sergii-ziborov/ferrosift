@@ -231,7 +231,7 @@ pub use aes_op::{AesDecrypt, AesEncrypt};
 #[cfg(feature = "arithmetic")]
 pub use arith::{Aggregate, Mod};
 #[cfg(feature = "arithmetic")]
-pub use bigint::{ExtendedGcd, ModularInverse};
+pub use bigint::{ExtendedGcd, ModularExponentiation, ModularInverse};
 #[cfg(feature = "compression-bzip2")]
 pub use compress::{Bzip2Compress, Bzip2Decompress};
 #[cfg(feature = "compression-deflate")]

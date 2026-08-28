@@ -67,7 +67,7 @@ fn corpus_matches_reference_bytes_at_every_prefix() {
         cases.len()
     );
     for case in &cases {
-        differential::assert_supported_case(case);
+        differential::assert_supported_case(CompatibilityProfile::CyberChefV11_4, case);
     }
 }
 
@@ -77,7 +77,7 @@ fn differential_suite_matches_reference_bytes_at_every_prefix() {
     assert_eq!(overlay.reference.version, COMPARED.0);
     assert_eq!(overlay.baseline.commit, BASELINE.1);
     for case in &differential::apply_overlay(&differential::load_suite().cases, &overlay) {
-        differential::assert_supported_case(case);
+        differential::assert_supported_case(CompatibilityProfile::CyberChefV11_4, case);
     }
 }
 

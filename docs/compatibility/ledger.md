@@ -13,9 +13,9 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 247 |
-| Reference-aliased | 245 |
-| Pinned cases | 6567 |
+| Registered operations | 248 |
+| Reference-aliased | 246 |
+| Pinned cases | 6644 |
 
 Two questions, asked separately, because one word was answering both
 and could only answer one. **Evidence** is how an operation was
@@ -26,7 +26,7 @@ cannot speak for the ones it does not.
 
 | Evidence | |
 |---|---:|
-| Differential-pinned against the reference | 237 |
+| Differential-pinned against the reference | 238 |
 | Pinned by a named test instead of the corpus | 4 |
 | Checked through a pinned inverse | 4 |
 | No reference claim to evidence | 2 |
@@ -34,7 +34,7 @@ cannot speak for the ones it does not.
 
 | Parity | |
 |---|---:|
-| Exact | 224 |
+| Exact | 225 |
 | Documented divergence | 17 |
 | Interoperable rather than byte-identical | 4 |
 | FerroSift-native, no reference to match | 2 |
@@ -254,6 +254,7 @@ the divergence is what lies outside those inputs.
 | `math.mean@1` | Mean | core | differential_pinned | exact | 33 |
 | `math.median@1` | Median | core | differential_pinned | exact | 32 |
 | `math.mod@1` | MOD | core | differential_pinned | exact | 18 |
+| `math.modexp@1` | Modular Exponentiation (since 11.4.0) | core | differential_pinned | exact | 77 |
 | `math.modinv@1` | Modular Inverse | core | differential_pinned | exact | 25 |
 | `math.multiply@1` | Multiply | core | differential_pinned | exact | 32 |
 | `math.stddev@1` | Standard Deviation | core | differential_pinned | exact | 32 |

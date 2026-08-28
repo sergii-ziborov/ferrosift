@@ -7,18 +7,18 @@
     ]
   },
   "totals": {
-    "operations": 247,
-    "aliased": 245,
-    "pinned_cases": 6567,
+    "operations": 248,
+    "aliased": 246,
+    "pinned_cases": 6644,
     "evidence": {
-      "differential_pinned": 237,
+      "differential_pinned": 238,
       "pinned_elsewhere": 4,
       "round_trip": 4,
       "none": 0,
       "not_applicable": 2
     },
     "parity": {
-      "exact": 224,
+      "exact": 225,
       "documented_divergence": 17,
       "interoperable": 4,
       "native": 2
@@ -30,6 +30,7 @@
       "display_name": "Chi Square",
       "category": "Analysis",
       "reference_alias": "Chi Square",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -45,6 +46,7 @@
       "display_name": "Index of Coincidence",
       "category": "Analysis",
       "reference_alias": "Index of Coincidence",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -60,6 +62,7 @@
       "display_name": "Offset checker",
       "category": "Analysis",
       "reference_alias": "Offset checker",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -75,6 +78,7 @@
       "display_name": "Suggest recipe",
       "category": "Analysis",
       "reference_alias": null,
+      "reference_since": null,
       "feature": "analysis",
       "targets": [
         "Native",
@@ -90,6 +94,7 @@
       "display_name": "Hex to Object Identifier",
       "category": "Parsing",
       "reference_alias": "Hex to Object Identifier",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -109,6 +114,7 @@
       "display_name": "Object Identifier to Hex",
       "category": "Parsing",
       "reference_alias": "Object Identifier to Hex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -128,6 +134,7 @@
       "display_name": "PEM to Hex",
       "category": "Parsing",
       "reference_alias": "PEM to Hex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -143,6 +150,7 @@
       "display_name": "Hex to PEM",
       "category": "Parsing",
       "reference_alias": "Hex to PEM",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -158,6 +166,7 @@
       "display_name": "Adler-32 Checksum",
       "category": "Checksums",
       "reference_alias": "Adler-32 Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -173,6 +182,7 @@
       "display_name": "Fletcher-16 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-16 Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -188,6 +198,7 @@
       "display_name": "Fletcher-32 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-32 Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -203,6 +214,7 @@
       "display_name": "Fletcher-64 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-64 Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -218,6 +230,7 @@
       "display_name": "Fletcher-8 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-8 Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -233,6 +246,7 @@
       "display_name": "Luhn Checksum",
       "category": "Checksums",
       "reference_alias": "Luhn Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -248,6 +262,7 @@
       "display_name": "TCP/IP Checksum",
       "category": "Checksums",
       "reference_alias": "TCP/IP Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -263,6 +278,7 @@
       "display_name": "XOR Checksum",
       "category": "Checksums",
       "reference_alias": "XOR Checksum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -278,6 +294,7 @@
       "display_name": "A1Z26 Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "A1Z26 Cipher Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -293,6 +310,7 @@
       "display_name": "A1Z26 Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "A1Z26 Cipher Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -308,6 +326,7 @@
       "display_name": "Affine Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Affine Cipher Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -323,6 +342,7 @@
       "display_name": "Affine Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Affine Cipher Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -338,6 +358,7 @@
       "display_name": "Atbash Cipher",
       "category": "Ciphers",
       "reference_alias": "Atbash Cipher",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -353,6 +374,7 @@
       "display_name": "Bacon Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Bacon Cipher Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -368,6 +390,7 @@
       "display_name": "Bacon Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Bacon Cipher Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -383,6 +406,7 @@
       "display_name": "Bifid Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Bifid Cipher Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -398,6 +422,7 @@
       "display_name": "Bifid Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Bifid Cipher Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -413,6 +438,7 @@
       "display_name": "Caesar Box Cipher",
       "category": "Ciphers",
       "reference_alias": "Caesar Box Cipher",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -428,6 +454,7 @@
       "display_name": "Cetacean Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Cetacean Cipher Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -443,6 +470,7 @@
       "display_name": "Cetacean Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Cetacean Cipher Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -458,6 +486,7 @@
       "display_name": "Rail Fence Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Rail Fence Cipher Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -473,6 +502,7 @@
       "display_name": "Rail Fence Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Rail Fence Cipher Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -488,6 +518,7 @@
       "display_name": "ROT13 Brute Force",
       "category": "Ciphers",
       "reference_alias": "ROT13 Brute Force",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -503,6 +534,7 @@
       "display_name": "ROT47 Brute Force",
       "category": "Ciphers",
       "reference_alias": "ROT47 Brute Force",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -518,6 +550,7 @@
       "display_name": "ROT47",
       "category": "Ciphers",
       "reference_alias": "ROT47",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -533,6 +566,7 @@
       "display_name": "ROT8000",
       "category": "Ciphers",
       "reference_alias": "ROT8000",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -548,6 +582,7 @@
       "display_name": "Substitute",
       "category": "Ciphers",
       "reference_alias": "Substitute",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -563,6 +598,7 @@
       "display_name": "Vigenère Decode",
       "category": "Ciphers",
       "reference_alias": "Vigenère Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -578,6 +614,7 @@
       "display_name": "Vigenère Encode",
       "category": "Ciphers",
       "reference_alias": "Vigenère Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -593,6 +630,7 @@
       "display_name": "Bzip2 Compress",
       "category": "Compression",
       "reference_alias": "Bzip2 Compress",
+      "reference_since": "11.3.0",
       "feature": "compression-bzip2",
       "targets": [
         "Native",
@@ -608,6 +646,7 @@
       "display_name": "Bzip2 Decompress",
       "category": "Compression",
       "reference_alias": "Bzip2 Decompress",
+      "reference_since": "11.3.0",
       "feature": "compression-bzip2",
       "targets": [
         "Native",
@@ -623,6 +662,7 @@
       "display_name": "Gunzip",
       "category": "Compression",
       "reference_alias": "Gunzip",
+      "reference_since": "11.3.0",
       "feature": "compression-deflate",
       "targets": [
         "Native",
@@ -638,6 +678,7 @@
       "display_name": "Gzip",
       "category": "Compression",
       "reference_alias": "Gzip",
+      "reference_since": "11.3.0",
       "feature": "compression-deflate",
       "targets": [
         "Native",
@@ -654,6 +695,7 @@
       "display_name": "LZNT1 Decompress",
       "category": "Compression",
       "reference_alias": "LZNT1 Decompress",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -669,6 +711,7 @@
       "display_name": "Raw Deflate",
       "category": "Compression",
       "reference_alias": "Raw Deflate",
+      "reference_since": "11.3.0",
       "feature": "compression-deflate",
       "targets": [
         "Native",
@@ -685,6 +728,7 @@
       "display_name": "Raw Inflate",
       "category": "Compression",
       "reference_alias": "Raw Inflate",
+      "reference_since": "11.3.0",
       "feature": "compression-deflate",
       "targets": [
         "Native",
@@ -700,6 +744,7 @@
       "display_name": "Zlib Deflate",
       "category": "Compression",
       "reference_alias": "Zlib Deflate",
+      "reference_since": "11.3.0",
       "feature": "compression-deflate",
       "targets": [
         "Native",
@@ -716,6 +761,7 @@
       "display_name": "Zlib Inflate",
       "category": "Compression",
       "reference_alias": "Zlib Inflate",
+      "reference_since": "11.3.0",
       "feature": "compression-deflate",
       "targets": [
         "Native",
@@ -731,6 +777,7 @@
       "display_name": "Identity",
       "category": "Core",
       "reference_alias": null,
+      "reference_since": null,
       "feature": "core",
       "targets": [
         "Native",
@@ -746,6 +793,7 @@
       "display_name": "AES Decrypt",
       "category": "Ciphers",
       "reference_alias": "AES Decrypt",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -761,6 +809,7 @@
       "display_name": "AES Encrypt",
       "category": "Ciphers",
       "reference_alias": "AES Encrypt",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -776,6 +825,7 @@
       "display_name": "AES Key Unwrap",
       "category": "Ciphers",
       "reference_alias": "AES Key Unwrap",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -791,6 +841,7 @@
       "display_name": "AES Key Wrap",
       "category": "Ciphers",
       "reference_alias": "AES Key Wrap",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -806,6 +857,7 @@
       "display_name": "LS47 Decrypt",
       "category": "Ciphers",
       "reference_alias": "LS47 Decrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -821,6 +873,7 @@
       "display_name": "LS47 Encrypt",
       "category": "Ciphers",
       "reference_alias": "LS47 Encrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -836,6 +889,7 @@
       "display_name": "Derive PBKDF2 key",
       "category": "KDF",
       "reference_alias": "Derive PBKDF2 key",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -851,6 +905,7 @@
       "display_name": "RC4",
       "category": "Ciphers",
       "reference_alias": "RC4",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -866,6 +921,7 @@
       "display_name": "RC4 Drop",
       "category": "Ciphers",
       "reference_alias": "RC4 Drop",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -881,6 +937,7 @@
       "display_name": "Scrypt",
       "category": "KDF",
       "reference_alias": "Scrypt",
+      "reference_since": "11.3.0",
       "feature": "crypto",
       "targets": [
         "Native",
@@ -896,6 +953,7 @@
       "display_name": "TEA Decrypt",
       "category": "Ciphers",
       "reference_alias": "TEA Decrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -915,6 +973,7 @@
       "display_name": "TEA Encrypt",
       "category": "Ciphers",
       "reference_alias": "TEA Encrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -934,6 +993,7 @@
       "display_name": "XTEA Decrypt",
       "category": "Ciphers",
       "reference_alias": "XTEA Decrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -953,6 +1013,7 @@
       "display_name": "XTEA Encrypt",
       "category": "Ciphers",
       "reference_alias": "XTEA Encrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -972,6 +1033,7 @@
       "display_name": "XXTEA Decrypt",
       "category": "Ciphers",
       "reference_alias": "XXTEA Decrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -987,6 +1049,7 @@
       "display_name": "XXTEA Encrypt",
       "category": "Ciphers",
       "reference_alias": "XXTEA Encrypt",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1002,6 +1065,7 @@
       "display_name": "Drop bytes",
       "category": "Data",
       "reference_alias": "Drop bytes",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1017,6 +1081,7 @@
       "display_name": "Head",
       "category": "Data",
       "reference_alias": "Head",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1032,6 +1097,7 @@
       "display_name": "Drop nth bytes",
       "category": "Data",
       "reference_alias": "Drop nth bytes",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1047,6 +1113,7 @@
       "display_name": "Take nth bytes",
       "category": "Data",
       "reference_alias": "Take nth bytes",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1062,6 +1129,7 @@
       "display_name": "Remove null bytes",
       "category": "Data",
       "reference_alias": "Remove null bytes",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1077,6 +1145,7 @@
       "display_name": "Reverse",
       "category": "Data",
       "reference_alias": "Reverse",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1092,6 +1161,7 @@
       "display_name": "Swap endianness",
       "category": "Data",
       "reference_alias": "Swap endianness",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1107,6 +1177,7 @@
       "display_name": "Tail",
       "category": "Text",
       "reference_alias": "Tail",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1122,6 +1193,7 @@
       "display_name": "Take bytes",
       "category": "Data",
       "reference_alias": "Take bytes",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1137,6 +1209,7 @@
       "display_name": "Fang URL",
       "category": "Defang",
       "reference_alias": "Fang URL",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -1152,6 +1225,7 @@
       "display_name": "Defang IP Addresses",
       "category": "Defang",
       "reference_alias": "Defang IP Addresses",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -1167,6 +1241,7 @@
       "display_name": "Defang URL",
       "category": "Defang",
       "reference_alias": "Defang URL",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -1182,6 +1257,7 @@
       "display_name": "Hamming Distance",
       "category": "Distance",
       "reference_alias": "Hamming Distance",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1197,6 +1273,7 @@
       "display_name": "Levenshtein Distance",
       "category": "Distance",
       "reference_alias": "Levenshtein Distance",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1212,6 +1289,7 @@
       "display_name": "From Base32",
       "category": "Encoding",
       "reference_alias": "From Base32",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1227,6 +1305,7 @@
       "display_name": "To Base32",
       "category": "Encoding",
       "reference_alias": "To Base32",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1242,6 +1321,7 @@
       "display_name": "From Base45",
       "category": "Encoding",
       "reference_alias": "From Base45",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1257,6 +1337,7 @@
       "display_name": "To Base45",
       "category": "Encoding",
       "reference_alias": "To Base45",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1272,6 +1353,7 @@
       "display_name": "From Base58",
       "category": "Encoding",
       "reference_alias": "From Base58",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1287,6 +1369,7 @@
       "display_name": "To Base58",
       "category": "Encoding",
       "reference_alias": "To Base58",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1302,6 +1385,7 @@
       "display_name": "From Base62",
       "category": "Encoding",
       "reference_alias": "From Base62",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1317,6 +1401,7 @@
       "display_name": "To Base62",
       "category": "Encoding",
       "reference_alias": "To Base62",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1332,6 +1417,7 @@
       "display_name": "From Base64",
       "category": "Encoding",
       "reference_alias": "From Base64",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1347,6 +1433,7 @@
       "display_name": "To Base64",
       "category": "Encoding",
       "reference_alias": "To Base64",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1362,6 +1449,7 @@
       "display_name": "From Base85",
       "category": "Encoding",
       "reference_alias": "From Base85",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1377,6 +1465,7 @@
       "display_name": "To Base85",
       "category": "Encoding",
       "reference_alias": "To Base85",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1392,6 +1481,7 @@
       "display_name": "From Base92",
       "category": "Encoding",
       "reference_alias": "From Base92",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1407,6 +1497,7 @@
       "display_name": "To Base92",
       "category": "Encoding",
       "reference_alias": "To Base92",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1422,6 +1513,7 @@
       "display_name": "From BCD",
       "category": "Encoding",
       "reference_alias": "From BCD",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1437,6 +1529,7 @@
       "display_name": "To BCD",
       "category": "Encoding",
       "reference_alias": "To BCD",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1452,6 +1545,7 @@
       "display_name": "From Bech32",
       "category": "Encoding",
       "reference_alias": "From Bech32",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1467,6 +1561,7 @@
       "display_name": "To Bech32",
       "category": "Encoding",
       "reference_alias": "To Bech32",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1482,6 +1577,7 @@
       "display_name": "From Binary",
       "category": "Encoding",
       "reference_alias": "From Binary",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1497,6 +1593,7 @@
       "display_name": "To Binary",
       "category": "Encoding",
       "reference_alias": "To Binary",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1512,6 +1609,7 @@
       "display_name": "From Braille",
       "category": "Encoding",
       "reference_alias": "From Braille",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1527,6 +1625,7 @@
       "display_name": "To Braille",
       "category": "Encoding",
       "reference_alias": "To Braille",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1542,6 +1641,7 @@
       "display_name": "Caret/M-decode",
       "category": "Encoding",
       "reference_alias": "Caret/M-decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1557,6 +1657,7 @@
       "display_name": "From Charcode",
       "category": "Encoding",
       "reference_alias": "From Charcode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1572,6 +1673,7 @@
       "display_name": "To Charcode",
       "category": "Encoding",
       "reference_alias": "To Charcode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1587,6 +1689,7 @@
       "display_name": "From COBS",
       "category": "Encoding",
       "reference_alias": "From COBS",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1602,6 +1705,7 @@
       "display_name": "To COBS",
       "category": "Encoding",
       "reference_alias": "To COBS",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1617,6 +1721,7 @@
       "display_name": "Citrix CTX1 Decode",
       "category": "Encoding",
       "reference_alias": "Citrix CTX1 Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1632,6 +1737,7 @@
       "display_name": "Citrix CTX1 Encode",
       "category": "Encoding",
       "reference_alias": "Citrix CTX1 Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1647,6 +1753,7 @@
       "display_name": "From Decimal",
       "category": "Encoding",
       "reference_alias": "From Decimal",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1662,6 +1769,7 @@
       "display_name": "To Decimal",
       "category": "Encoding",
       "reference_alias": "To Decimal",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1677,6 +1785,7 @@
       "display_name": "From Float",
       "category": "Encoding",
       "reference_alias": "From Float",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1692,6 +1801,7 @@
       "display_name": "To Float",
       "category": "Encoding",
       "reference_alias": "To Float",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1707,6 +1817,7 @@
       "display_name": "From Hex",
       "category": "Encoding",
       "reference_alias": "From Hex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1726,6 +1837,7 @@
       "display_name": "To Hex",
       "category": "Encoding",
       "reference_alias": "To Hex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1741,6 +1853,7 @@
       "display_name": "From Hex Content",
       "category": "Encoding",
       "reference_alias": "From Hex Content",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1756,6 +1869,7 @@
       "display_name": "To Hex Content",
       "category": "Encoding",
       "reference_alias": "To Hex Content",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1771,6 +1885,7 @@
       "display_name": "From Hexdump",
       "category": "Encoding",
       "reference_alias": "From Hexdump",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1786,6 +1901,7 @@
       "display_name": "To Hexdump",
       "category": "Encoding",
       "reference_alias": "To Hexdump",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1801,6 +1917,7 @@
       "display_name": "From HTML Entity",
       "category": "Encoding",
       "reference_alias": "From HTML Entity",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1816,6 +1933,7 @@
       "display_name": "To HTML Entity",
       "category": "Encoding",
       "reference_alias": "To HTML Entity",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1831,6 +1949,7 @@
       "display_name": "Microsoft Script Decoder",
       "category": "Encoding",
       "reference_alias": "Microsoft Script Decoder",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1846,6 +1965,7 @@
       "display_name": "From Modhex",
       "category": "Encoding",
       "reference_alias": "From Modhex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1861,6 +1981,7 @@
       "display_name": "To Modhex",
       "category": "Encoding",
       "reference_alias": "To Modhex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1876,6 +1997,7 @@
       "display_name": "From Morse Code",
       "category": "Encoding",
       "reference_alias": "From Morse Code",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1891,6 +2013,7 @@
       "display_name": "To Morse Code",
       "category": "Encoding",
       "reference_alias": "To Morse Code",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1906,6 +2029,7 @@
       "display_name": "Decode NetBIOS Name",
       "category": "Encoding",
       "reference_alias": "Decode NetBIOS Name",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1921,6 +2045,7 @@
       "display_name": "Encode NetBIOS Name",
       "category": "Encoding",
       "reference_alias": "Encode NetBIOS Name",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1936,6 +2061,7 @@
       "display_name": "From Octal",
       "category": "Encoding",
       "reference_alias": "From Octal",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1951,6 +2077,7 @@
       "display_name": "To Octal",
       "category": "Encoding",
       "reference_alias": "To Octal",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1966,6 +2093,7 @@
       "display_name": "From Punycode",
       "category": "Encoding",
       "reference_alias": "From Punycode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1981,6 +2109,7 @@
       "display_name": "To Punycode",
       "category": "Encoding",
       "reference_alias": "To Punycode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -1996,6 +2125,7 @@
       "display_name": "From Quoted Printable",
       "category": "Encoding",
       "reference_alias": "From Quoted Printable",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2011,6 +2141,7 @@
       "display_name": "To Quoted Printable",
       "category": "Encoding",
       "reference_alias": "To Quoted Printable",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2026,6 +2157,7 @@
       "display_name": "From Base",
       "category": "Encoding",
       "reference_alias": "From Base",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2041,6 +2173,7 @@
       "display_name": "To Base",
       "category": "Encoding",
       "reference_alias": "To Base",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2056,6 +2189,7 @@
       "display_name": "ROT13",
       "category": "Encoding",
       "reference_alias": "ROT13",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2071,6 +2205,7 @@
       "display_name": "Text-Integer Conversion",
       "category": "Encoding",
       "reference_alias": "Text-Integer Conversion",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2086,6 +2221,7 @@
       "display_name": "Escape Unicode Characters",
       "category": "Encoding",
       "reference_alias": "Escape Unicode Characters",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2101,6 +2237,7 @@
       "display_name": "Unescape Unicode Characters",
       "category": "Encoding",
       "reference_alias": "Unescape Unicode Characters",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2116,6 +2253,7 @@
       "display_name": "URL Decode",
       "category": "Encoding",
       "reference_alias": "URL Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2131,6 +2269,7 @@
       "display_name": "URL Encode",
       "category": "Encoding",
       "reference_alias": "URL Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2146,6 +2285,7 @@
       "display_name": "VarInt Decode",
       "category": "Encoding",
       "reference_alias": "VarInt Decode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2161,6 +2301,7 @@
       "display_name": "VarInt Encode",
       "category": "Encoding",
       "reference_alias": "VarInt Encode",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2176,6 +2317,7 @@
       "display_name": "Extract domains",
       "category": "Extractors",
       "reference_alias": "Extract domains",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2195,6 +2337,7 @@
       "display_name": "Extract email addresses",
       "category": "Extractors",
       "reference_alias": "Extract email addresses",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2210,6 +2353,7 @@
       "display_name": "Extract file paths",
       "category": "Extractors",
       "reference_alias": "Extract file paths",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2225,6 +2369,7 @@
       "display_name": "Extract hashes",
       "category": "Extractors",
       "reference_alias": "Extract hashes",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2240,6 +2385,7 @@
       "display_name": "Extract IP addresses",
       "category": "Extractors",
       "reference_alias": "Extract IP addresses",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2255,6 +2401,7 @@
       "display_name": "Extract MAC addresses",
       "category": "Extractors",
       "reference_alias": "Extract MAC addresses",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2270,6 +2417,7 @@
       "display_name": "Strings",
       "category": "Extractors",
       "reference_alias": "Strings",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2285,6 +2433,7 @@
       "display_name": "Extract URLs",
       "category": "Extractors",
       "reference_alias": "Extract URLs",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -2300,6 +2449,7 @@
       "display_name": "Parse UNIX file permissions",
       "category": "Parsing",
       "reference_alias": "Parse UNIX file permissions",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2315,6 +2465,7 @@
       "display_name": "Comment",
       "category": "Flow control",
       "reference_alias": "Comment",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2331,6 +2482,7 @@
       "display_name": "Fork",
       "category": "Flow control",
       "reference_alias": "Fork",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2347,6 +2499,7 @@
       "display_name": "Label",
       "category": "Flow control",
       "reference_alias": "Label",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2363,6 +2516,7 @@
       "display_name": "Merge",
       "category": "Flow control",
       "reference_alias": "Merge",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2379,6 +2533,7 @@
       "display_name": "Bcrypt parse",
       "category": "Hashing",
       "reference_alias": "Bcrypt parse",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2394,6 +2549,7 @@
       "display_name": "BLAKE2b",
       "category": "Hashing",
       "reference_alias": "BLAKE2b",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2409,6 +2565,7 @@
       "display_name": "BLAKE2s",
       "category": "Hashing",
       "reference_alias": "BLAKE2s",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2424,6 +2581,7 @@
       "display_name": "BLAKE3",
       "category": "Hashing",
       "reference_alias": "BLAKE3",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2439,6 +2597,7 @@
       "display_name": "HMAC",
       "category": "Hashing",
       "reference_alias": "HMAC",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2458,6 +2617,7 @@
       "display_name": "Keccak",
       "category": "Hashing",
       "reference_alias": "Keccak",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2473,6 +2633,7 @@
       "display_name": "MD2",
       "category": "Hashing",
       "reference_alias": "MD2",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2492,6 +2653,7 @@
       "display_name": "MD4",
       "category": "Hashing",
       "reference_alias": "MD4",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2507,6 +2669,7 @@
       "display_name": "MD5",
       "category": "Hashing",
       "reference_alias": "MD5",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2522,6 +2685,7 @@
       "display_name": "MurmurHash3",
       "category": "Hashing",
       "reference_alias": "MurmurHash3",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2537,6 +2701,7 @@
       "display_name": "NT Hash",
       "category": "Hashing",
       "reference_alias": "NT Hash",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2552,6 +2717,7 @@
       "display_name": "RIPEMD",
       "category": "Hashing",
       "reference_alias": "RIPEMD",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2567,6 +2733,7 @@
       "display_name": "SHA0",
       "category": "Hashing",
       "reference_alias": "SHA0",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2586,6 +2753,7 @@
       "display_name": "SHA1",
       "category": "Hashing",
       "reference_alias": "SHA1",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2605,6 +2773,7 @@
       "display_name": "SHA2",
       "category": "Hashing",
       "reference_alias": "SHA2",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2624,6 +2793,7 @@
       "display_name": "SHA3",
       "category": "Hashing",
       "reference_alias": "SHA3",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2643,6 +2813,7 @@
       "display_name": "Shake",
       "category": "Hashing",
       "reference_alias": "Shake",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2658,6 +2829,7 @@
       "display_name": "SM3",
       "category": "Hashing",
       "reference_alias": "SM3",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2677,6 +2849,7 @@
       "display_name": "Streebog",
       "category": "Hashing",
       "reference_alias": "Streebog",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2692,6 +2865,7 @@
       "display_name": "Whirlpool",
       "category": "Hashing",
       "reference_alias": "Whirlpool",
+      "reference_since": "11.3.0",
       "feature": "hash",
       "targets": [
         "Native",
@@ -2711,6 +2885,7 @@
       "display_name": "Dechunk HTTP response",
       "category": "Text",
       "reference_alias": "Dechunk HTTP response",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2726,6 +2901,7 @@
       "display_name": "Strip HTTP headers",
       "category": "Text",
       "reference_alias": "Strip HTTP headers",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2741,6 +2917,7 @@
       "display_name": "Split",
       "category": "Shaping",
       "reference_alias": "Split",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2756,6 +2933,7 @@
       "display_name": "Unique",
       "category": "Shaping",
       "reference_alias": "Unique",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2771,6 +2949,7 @@
       "display_name": "ADD",
       "category": "Logic",
       "reference_alias": "ADD",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2786,6 +2965,7 @@
       "display_name": "AND",
       "category": "Logic",
       "reference_alias": "AND",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2801,6 +2981,7 @@
       "display_name": "NOT",
       "category": "Logic",
       "reference_alias": "NOT",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2816,6 +2997,7 @@
       "display_name": "OR",
       "category": "Logic",
       "reference_alias": "OR",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2831,6 +3013,7 @@
       "display_name": "Parity Bit",
       "category": "Logic",
       "reference_alias": "Parity Bit",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2846,6 +3029,7 @@
       "display_name": "ROR13",
       "category": "Logic",
       "reference_alias": "ROR13",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2861,6 +3045,7 @@
       "display_name": "Rotate left",
       "category": "Logic",
       "reference_alias": "Rotate left",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2876,6 +3061,7 @@
       "display_name": "Rotate right",
       "category": "Logic",
       "reference_alias": "Rotate right",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2891,6 +3077,7 @@
       "display_name": "Bit shift left",
       "category": "Logic",
       "reference_alias": "Bit shift left",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2906,6 +3093,7 @@
       "display_name": "Bit shift right",
       "category": "Logic",
       "reference_alias": "Bit shift right",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2921,6 +3109,7 @@
       "display_name": "SUB",
       "category": "Logic",
       "reference_alias": "SUB",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2936,6 +3125,7 @@
       "display_name": "XOR",
       "category": "Logic",
       "reference_alias": "XOR",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2951,6 +3141,7 @@
       "display_name": "XOR Brute Force",
       "category": "Logic",
       "reference_alias": "XOR Brute Force",
+      "reference_since": "11.3.0",
       "feature": "analysis",
       "targets": [
         "Native",
@@ -2966,6 +3157,7 @@
       "display_name": "Convert area",
       "category": "Arithmetic",
       "reference_alias": "Convert area",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2981,6 +3173,7 @@
       "display_name": "Convert data units",
       "category": "Arithmetic",
       "reference_alias": "Convert data units",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -2996,6 +3189,7 @@
       "display_name": "Convert distance",
       "category": "Arithmetic",
       "reference_alias": "Convert distance",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3011,6 +3205,7 @@
       "display_name": "Convert mass",
       "category": "Arithmetic",
       "reference_alias": "Convert mass",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3026,6 +3221,7 @@
       "display_name": "Convert speed",
       "category": "Arithmetic",
       "reference_alias": "Convert speed",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3041,6 +3237,7 @@
       "display_name": "Divide",
       "category": "Arithmetic",
       "reference_alias": "Divide",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3056,6 +3253,7 @@
       "display_name": "Extended GCD",
       "category": "Arithmetic",
       "reference_alias": "Extended GCD",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3071,6 +3269,7 @@
       "display_name": "Mean",
       "category": "Arithmetic",
       "reference_alias": "Mean",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3086,6 +3285,7 @@
       "display_name": "Median",
       "category": "Arithmetic",
       "reference_alias": "Median",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3101,6 +3301,7 @@
       "display_name": "MOD",
       "category": "Arithmetic",
       "reference_alias": "MOD",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3112,10 +3313,27 @@
       "parity": "exact"
     },
     {
+      "id": "math.modexp@1",
+      "display_name": "Modular Exponentiation",
+      "category": "Arithmetic",
+      "reference_alias": "Modular Exponentiation",
+      "reference_since": "11.4.0",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 77,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
       "id": "math.modinv@1",
       "display_name": "Modular Inverse",
       "category": "Arithmetic",
       "reference_alias": "Modular Inverse",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3131,6 +3349,7 @@
       "display_name": "Multiply",
       "category": "Arithmetic",
       "reference_alias": "Multiply",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3146,6 +3365,7 @@
       "display_name": "Standard Deviation",
       "category": "Arithmetic",
       "reference_alias": "Standard Deviation",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3161,6 +3381,7 @@
       "display_name": "Subtract",
       "category": "Arithmetic",
       "reference_alias": "Subtract",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3176,6 +3397,7 @@
       "display_name": "Sum",
       "category": "Arithmetic",
       "reference_alias": "Sum",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3191,6 +3413,7 @@
       "display_name": "Change IP format",
       "category": "Networking",
       "reference_alias": "Change IP format",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3206,6 +3429,7 @@
       "display_name": "Format MAC addresses",
       "category": "Networking",
       "reference_alias": "Format MAC addresses",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3221,6 +3445,7 @@
       "display_name": "Strip IPv4 header",
       "category": "Networking",
       "reference_alias": "Strip IPv4 header",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3236,6 +3461,7 @@
       "display_name": "Strip TCP header",
       "category": "Networking",
       "reference_alias": "Strip TCP header",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3251,6 +3477,7 @@
       "display_name": "Strip UDP header",
       "category": "Networking",
       "reference_alias": "Strip UDP header",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3266,6 +3493,7 @@
       "display_name": "Parse colour code",
       "category": "Parsing",
       "reference_alias": "Parse colour code",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3281,6 +3509,7 @@
       "display_name": "Parse TLV",
       "category": "Parsing",
       "reference_alias": "Parse TLV",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3296,6 +3525,7 @@
       "display_name": "Cartesian Product",
       "category": "Sets",
       "reference_alias": "Cartesian Product",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3311,6 +3541,7 @@
       "display_name": "Set Difference",
       "category": "Sets",
       "reference_alias": "Set Difference",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3326,6 +3557,7 @@
       "display_name": "Set Intersection",
       "category": "Sets",
       "reference_alias": "Set Intersection",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3341,6 +3573,7 @@
       "display_name": "Power Set",
       "category": "Sets",
       "reference_alias": "Power Set",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3356,6 +3589,7 @@
       "display_name": "Symmetric Difference",
       "category": "Sets",
       "reference_alias": "Symmetric Difference",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3371,6 +3605,7 @@
       "display_name": "Set Union",
       "category": "Sets",
       "reference_alias": "Set Union",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3386,6 +3621,7 @@
       "display_name": "To Table",
       "category": "Shaping",
       "reference_alias": "To Table",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3401,6 +3637,7 @@
       "display_name": "Expand alphabet range",
       "category": "Text",
       "reference_alias": "Expand alphabet range",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3416,6 +3653,7 @@
       "display_name": "Remove ANSI Escape Codes",
       "category": "Text",
       "reference_alias": "Remove ANSI Escape Codes",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3431,6 +3669,7 @@
       "display_name": "Get All Casings",
       "category": "Text",
       "reference_alias": "Get All Casings",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3446,6 +3685,7 @@
       "display_name": "Alternating Caps",
       "category": "Text",
       "reference_alias": "Alternating Caps",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3461,6 +3701,7 @@
       "display_name": "To Lower case",
       "category": "Text",
       "reference_alias": "To Lower case",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3476,6 +3717,7 @@
       "display_name": "Swap case",
       "category": "Text",
       "reference_alias": "Swap case",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3491,6 +3733,7 @@
       "display_name": "To Upper case",
       "category": "Text",
       "reference_alias": "To Upper case",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3506,6 +3749,7 @@
       "display_name": "Count occurrences",
       "category": "Text",
       "reference_alias": "Count occurrences",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -3521,6 +3765,7 @@
       "display_name": "Generate De Bruijn Sequence",
       "category": "Text",
       "reference_alias": "Generate De Bruijn Sequence",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3536,6 +3781,7 @@
       "display_name": "Unescape string",
       "category": "Text",
       "reference_alias": "Unescape string",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3551,6 +3797,7 @@
       "display_name": "Find / Replace",
       "category": "Text",
       "reference_alias": "Find / Replace",
+      "reference_since": "11.3.0",
       "feature": "text",
       "targets": [
         "Native",
@@ -3570,6 +3817,7 @@
       "display_name": "Strip HTML tags",
       "category": "Text",
       "reference_alias": "Strip HTML tags",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3585,6 +3833,7 @@
       "display_name": "HTML To Text",
       "category": "Text",
       "reference_alias": "HTML To Text",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3600,6 +3849,7 @@
       "display_name": "Convert Leet Speak",
       "category": "Ciphers",
       "reference_alias": "Convert Leet Speak",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3615,6 +3865,7 @@
       "display_name": "Add line numbers",
       "category": "Text",
       "reference_alias": "Add line numbers",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3630,6 +3881,7 @@
       "display_name": "Remove line numbers",
       "category": "Text",
       "reference_alias": "Remove line numbers",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3645,6 +3897,7 @@
       "display_name": "Convert to NATO alphabet",
       "category": "Ciphers",
       "reference_alias": "Convert to NATO alphabet",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3660,6 +3913,7 @@
       "display_name": "Pad lines",
       "category": "Text",
       "reference_alias": "Pad lines",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3675,6 +3929,7 @@
       "display_name": "From Case Insensitive Regex",
       "category": "Text",
       "reference_alias": "From Case Insensitive Regex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3690,6 +3945,7 @@
       "display_name": "To Case Insensitive Regex",
       "category": "Text",
       "reference_alias": "To Case Insensitive Regex",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3705,6 +3961,7 @@
       "display_name": "Remove whitespace",
       "category": "Text",
       "reference_alias": "Remove whitespace",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3720,6 +3977,7 @@
       "display_name": "Escape Smart Characters",
       "category": "Text",
       "reference_alias": "Escape Smart Characters",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3735,6 +3993,7 @@
       "display_name": "Unicode Text Format",
       "category": "Encoding",
       "reference_alias": "Unicode Text Format",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3750,6 +4009,7 @@
       "display_name": "Wrap",
       "category": "Text",
       "reference_alias": "Wrap",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3765,6 +4025,7 @@
       "display_name": "XKCD Random Number",
       "category": "Text",
       "reference_alias": "XKCD Random Number",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3780,6 +4041,7 @@
       "display_name": "Windows Filetime to UNIX Timestamp",
       "category": "Time",
       "reference_alias": "Windows Filetime to UNIX Timestamp",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",
@@ -3795,6 +4057,7 @@
       "display_name": "UNIX Timestamp to Windows Filetime",
       "category": "Time",
       "reference_alias": "UNIX Timestamp to Windows Filetime",
+      "reference_since": "11.3.0",
       "feature": "core",
       "targets": [
         "Native",

@@ -5,13 +5,22 @@ records what the other 256 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The catalog is larger than the coverage number twice over, and it is worth
-being exact about which number is which. FerroSift registers 247 operations;
+being exact about which number is which. FerroSift registers 248 operations;
 two of them — `core.identity@1` and `analysis.suggest@1` — are its own and have
-no reference alias, so they cover nothing here. This sentence used to read 247
+no reference alias, so they cover nothing here, and one more answers to a name
+only 11.4.0 has. This sentence used to read 247
 of 503, which was both sides inflated by exactly those two and therefore
 arithmetically consistent with everything below it. That is why nothing caught
 it: the check read the page against itself and against the count of *registered*
 operations, never against the reference's own catalog.
+
+This page is about 11.3.0's catalog, and stays that way as newer references
+are added. 11.4.0 has 504 operations rather than 501, and an operation it
+introduced is not one of the 501 above — counting it here would report it as
+covering something 11.3.0 never had. Each such arrival is marked in
+[the ledger](ledger.md) with the version it came from, and the newer catalog's
+own missing set is reported by `cargo xtask cyberchef gap --profile 11.4.0`,
+which needs the pinned checkout. See [reference profiles](profiles.md).
 
 The grouping below is by *import*, which is a proxy and not the thing itself.
 `To Base` sat in the no-dependency list for three revisions because it never

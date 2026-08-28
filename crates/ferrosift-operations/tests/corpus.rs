@@ -57,7 +57,7 @@ fn corpus_matches_reference_bytes_at_every_prefix() {
     );
 
     for case in &suite.cases {
-        differential::assert_supported_case(case);
+        differential::assert_supported_case(CompatibilityProfile::CyberChefV11_3, case);
     }
 }
 

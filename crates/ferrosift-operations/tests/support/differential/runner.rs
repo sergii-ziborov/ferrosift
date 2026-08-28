@@ -4,7 +4,13 @@ use ferrosift_model::{CapabilitySet, CompatibilityProfile, TextEncoding, Value, 
 
 use super::fixture::{Case, UnsupportedCase, decode_hex};
 
-pub fn assert_supported_case(case: &Case) {
+/// Replays one case under the profile whose fixture it came from.
+///
+/// The profile travels with the case rather than being a constant, because a
+/// fixture baked through 11.4 may name an operation 11.3 has never heard of.
+/// Reading an 11.4 corpus under the 11.3 name table would report that as an
+/// unknown operation — a true statement about the wrong question.
+pub fn assert_supported_case(profile: CompatibilityProfile, case: &Case) {
     assert_eq!(
         case.outputs_hex.len(),
         case.recipe.len(),
@@ -19,16 +25,15 @@ pub fn assert_supported_case(case: &Case) {
     );
 
     for prefix_length in 1..=case.recipe.len() {
-        assert_prefix(case, prefix_length);
+        assert_prefix(profile, case, prefix_length);
     }
 }
 
-pub fn assert_unsupported_case(case: &UnsupportedCase) {
+pub fn assert_unsupported_case(profile: CompatibilityProfile, case: &UnsupportedCase) {
     let registry = ferrosift_operations::default_registry()
         .expect("built-in operation registry must validate");
     let source = serde_json::to_vec(&case.recipe).expect("recipe must serialize");
-    let report = import_recipe(&source, CompatibilityProfile::CyberChefV11_3, &registry)
-        .expect("recipe must parse");
+    let report = import_recipe(&source, profile, &registry).expect("recipe must parse");
 
     assert!(report.recipe.is_none(), "{} must not execute", case.name);
     assert_eq!(report.findings.len(), 1, "{} finding count", case.name);
@@ -51,13 +56,12 @@ pub fn assert_unsupported_case(case: &UnsupportedCase) {
     );
 }
 
-fn assert_prefix(case: &Case, prefix_length: usize) {
+fn assert_prefix(profile: CompatibilityProfile, case: &Case, prefix_length: usize) {
     let registry = ferrosift_operations::default_registry()
         .expect("built-in operation registry must validate");
     let source =
         serde_json::to_vec(&case.recipe[..prefix_length]).expect("recipe prefix must serialize");
-    let report = import_recipe(&source, CompatibilityProfile::CyberChefV11_3, &registry)
-        .expect("recipe prefix must parse");
+    let report = import_recipe(&source, profile, &registry).expect("recipe prefix must parse");
     assert!(
         report.findings.is_empty(),
         "{} prefix {prefix_length}: {:?}",

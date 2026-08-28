@@ -16,4 +16,4 @@
 mod codec;
 mod operation;
 
-pub use operation::{ExtendedGcd, ModularInverse};
+pub use operation::{ExtendedGcd, ModularExponentiation, ModularInverse};

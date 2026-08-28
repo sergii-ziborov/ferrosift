@@ -109,8 +109,24 @@ function claims(markdown) {
 
 const markdown = readFileSync(page, "utf8");
 const ledger = JSON.parse(readFileSync(ledgerJson, "utf8"));
+
+// Only the baseline reference's operations count here, because that is the
+// catalog the page divides up. An operation a later reference introduced is
+// not one of the baseline's 501 and subtracting it from them would report a
+// missing operation as covered -- while the page's three groups, which list
+// baseline operations, would still add up to the old number and disagree.
+//
+// What that leaves unsaid is said elsewhere rather than left out: `cargo xtask
+// cyberchef gap --profile 11.4.0` reports the newer catalog's own missing set,
+// and the ledger marks each later arrival with the version it came from.
 const implemented = new Set(
-    ledger.operations.map(operation => operation.reference_alias).filter(Boolean),
+    ledger.operations
+        .filter(operation => operation.reference_since === ledger.reference.version)
+        .map(operation => operation.reference_alias)
+        .filter(Boolean),
+);
+const laterProfile = ledger.operations.filter(
+    operation => operation.reference_alias && operation.reference_since !== ledger.reference.version,
 );
 
 const {external, internal, reachable} = groups(markdown);
@@ -195,3 +211,16 @@ process.stdout.write(
     `not-implemented current: ${total} missing = ${sizes[0]} external + ${sizes[1]} internal`
         + ` + ${sizes[2]} reachable\n`,
 );
+// Reported rather than checked. These operations are outside the catalog this
+// page partitions, and printing the count is what keeps them from being
+// invisible simply because the page has no column for them.
+if (laterProfile.length) {
+    process.stdout.write(
+        `not-implemented note: ${laterProfile.length} operation(s) outside `
+            + `${ledger.reference.version}: `
+            + laterProfile
+                .map(operation => `${operation.reference_alias} (${operation.reference_since})`)
+                .join(", ")
+            + "\n",
+    );
+}

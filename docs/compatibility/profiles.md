@@ -91,6 +91,19 @@ Narrowing the range narrows what has to be proven; it exempts nothing. The
 alias that *is* claimed still needs a replayed case of that profile behind it,
 from the same gate every other alias answers to.
 
+`Modular Exponentiation` is the first one this is real for rather than
+illustrative. Its 76 corpus cases bake through 11.4 and fail to bake through
+11.3 — the baseline reference answers `Couldn't find an operation with name
+'Modular Exponentiation'` — so they arrive in the overlay's `added` list, and
+the alias is backed by cases only 11.4 could produce. Nothing had to be
+asserted about which version has it: the two references were asked.
+
+The counting follows the same rule. `docs/compatibility/not-implemented.md`
+partitions 11.3.0's 501 operations and does not count this one, because it is
+not one of them; the ledger marks it `(since 11.4.0)`; and
+`cargo xtask cyberchef gap --profile 11.4.0` reports the newer catalog's own
+missing set separately.
+
 The reverse — a name in 11.3 and not in 11.4 — would mean upstream removed an
 operation. That is a different claim needing its own evidence, so
 `tests/profiles.rs` refuses it rather than reading it as an oversight.

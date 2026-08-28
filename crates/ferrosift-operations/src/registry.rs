@@ -49,7 +49,7 @@ use crate::{
     AesDecrypt, AesEncrypt, AesKeyUnwrap, AesKeyWrap, DerivePbkdf2Key, Rc4, Rc4Drop, Scrypt,
 };
 #[cfg(feature = "arithmetic")]
-use crate::{Aggregate, ConvertUnits, ExtendedGcd, Mod, ModularInverse};
+use crate::{Aggregate, ConvertUnits, ExtendedGcd, Mod, ModularExponentiation, ModularInverse};
 #[cfg(feature = "hash")]
 use crate::{
     Blake2, Blake3, FixedDigest, Hmac, Keccak, Md5, NtHash, Ripemd, Sha1, Sha2, Sha3, Shake,
@@ -246,6 +246,7 @@ fn register_arithmetic(registry: &mut OperationRegistry) -> Result<(), RegistryE
         registry.register(Aggregate::sum())?;
         registry.register(ExtendedGcd::new())?;
         registry.register(Mod::new())?;
+        registry.register(ModularExponentiation::new())?;
         registry.register(ModularInverse::new())?;
     }
     Ok(())

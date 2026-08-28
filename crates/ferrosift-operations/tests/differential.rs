@@ -1,5 +1,7 @@
 //! Byte-for-byte conformance against pinned external reference observations.
 
+use ferrosift_model::CompatibilityProfile;
+
 #[path = "support/differential/mod.rs"]
 mod differential;
 mod support;
@@ -16,12 +18,12 @@ fn reference_recipes_match_outputs_and_stopping_positions() {
     assert_eq!(suite.cases.len(), 79);
 
     for case in &suite.cases {
-        differential::assert_supported_case(case);
+        differential::assert_supported_case(CompatibilityProfile::CyberChefV11_3, case);
     }
 }
 
 #[test]
 fn unsupported_operation_has_a_stable_explicit_finding() {
     let suite = differential::load_suite();
-    differential::assert_unsupported_case(&suite.unsupported);
+    differential::assert_unsupported_case(CompatibilityProfile::CyberChefV11_3, &suite.unsupported);
 }
