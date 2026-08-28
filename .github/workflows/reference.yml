@@ -1,0 +1,100 @@
+name: Reference integrity
+
+# Everything in CI checks FerroSift against the *committed* fixtures. That is
+# the right trade for a pull request — the fixtures are the evidence and they
+# are in the tree — but it leaves two questions nothing asks:
+#
+#   1. Does the reference still have the names the catalog claims? An alias is
+#      the assertion "CyberChef 11.4 has an operation called this". Nothing in
+#      the committed tree can check it, because the answer lives in the
+#      reference and not here.
+#   2. Are the committed fixtures still what the oracle produces? A fixture
+#      edited by hand, a generator changed without being re-run, or a sampler
+#      that stopped being deterministic would all pass every other gate: the
+#      replay would agree with the file, and the file would be wrong.
+#
+# Both need the pinned checkouts, which take several minutes each to clone and
+# build, so this runs on a schedule rather than on every push. It answers a
+# question that changes on upstream's timetable, not on ours.
+on:
+  schedule:
+    # Mondays, early UTC. Nothing here is urgent; what matters is that it runs
+    # often enough that a break is attributed to a week's worth of changes
+    # rather than to a quarter's.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  reference:
+    name: Pinned checkouts
+    runs-on: ubuntu-latest
+    # The two checkouts dominate: `npm ci` and `npx grunt node` on each. The
+    # ceiling is generous rather than tight because a job killed halfway looks
+    # exactly like a real failure and is far more annoying.
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Both pinned references declare `node >= 24` in `engines`, and `npm ci`
+      # refuses to install under an older one. No npm cache: the lock files
+      # this job installs from arrive with the clones a few steps below, so
+      # there is nothing to key a cache on when the action runs.
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: "24"
+
+      # `setup` clones at the pinned commit, installs, runs `npx grunt node` to
+      # write the barrel the oracle imports, and finishes by replaying the
+      # committed corpus. A commit that upstream has rewritten away fails here,
+      # which is itself the finding.
+      - name: Fetch and build CyberChef 11.3.0
+        run: cargo xtask cyberchef setup --profile 11.3.0
+      - name: Fetch and build CyberChef 11.4.0
+        run: cargo xtask cyberchef setup --profile 11.4.0
+
+      # Every alias the catalog claims must be a name that version of the
+      # reference actually has, and the coverage counts on the
+      # not-implemented page must match what the reference's catalog holds.
+      # `cargo test` cannot see either: the replay gates demand evidence for
+      # the aliases a spec carries, and a name the reference never had has no
+      # case to demand.
+      - name: Check every 11.3.0 alias exists upstream
+        run: cargo xtask cyberchef gap --profile 11.3.0 --check
+      - name: Check every 11.4.0 alias exists upstream
+        run: cargo xtask cyberchef gap --profile 11.4.0 --check
+
+      # Regenerate from scratch and require the committed files back, byte for
+      # byte. The generator is seeded and clock-free precisely so that this is
+      # a meaningful demand rather than a coin toss.
+      - name: Regenerate the 11.3.0 fixtures
+        run: cargo xtask cyberchef generate --profile 11.3.0
+      - name: Regenerate the 11.4.0 fixtures
+        run: cargo xtask cyberchef generate --profile 11.4.0
+      - name: Recompute the 11.4.0 overlay
+        run: cargo xtask cyberchef overlay --profile 11.4.0
+
+      - name: The committed fixtures must be what the oracle produces
+        run: |
+          if ! git diff --exit-code -- crates/ferrosift-operations/tests/fixtures; then
+            echo "::error::Regenerating from the pinned checkouts produced different fixtures."
+            echo "Either the committed files were edited by hand, or a generator changed"
+            echo "without being re-run, or a sampler stopped being deterministic."
+            exit 1
+          fi
+
+      # And the regenerated fixtures still have to replay. This is the same
+      # suite CI already runs, against files that were rebuilt a moment ago
+      # rather than against files that were committed months ago.
+      - name: Replay against the regenerated fixtures
+        run: cargo test --workspace --all-features
+        env:
+          RUSTFLAGS: -D warnings
+
+      - name: Check the ledger still matches the regenerated fixtures
+        run: cargo xtask ledger check

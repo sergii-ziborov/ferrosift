@@ -66,6 +66,19 @@ fn run_streaming(program: &str, arguments: &[&str], directory: Option<&str>) -> 
     }
 }
 
+/// Runs a command and returns its standard output, or `None` if it failed.
+///
+/// Separate from [`run_streaming`] because some answers have to be *compared*
+/// rather than shown. A value printed for a reader to check is no check at all
+/// where nobody is reading, which is most of the places these tasks run.
+fn capture(program: &str, arguments: &[&str]) -> Option<String> {
+    let output = Command::new(program).args(arguments).output().ok()?;
+    if !output.status.success() {
+        return None;
+    }
+    String::from_utf8(output.stdout).ok()
+}
+
 /// Starts a program, falling back to the shell for Windows batch shims.
 ///
 /// `npm` and `npx` on Windows are `npm.cmd` and `npx.cmd`. `Command::new`

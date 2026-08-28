@@ -287,6 +287,13 @@ cargo check --workspace --target wasm32-unknown-unknown
 
 Pinned toolchain: see `rust-toolchain.toml` (Rust 1.97).
 
+Those four run on every push. Two more questions need the pinned CyberChef
+checkouts and so run weekly instead: whether the reference still has the names
+the catalog claims, and whether regenerating the whole corpus from both
+checkouts reproduces the committed fixtures byte for byte. Reproduce them with
+`cargo xtask cyberchef setup --profile 11.3.0` and the commands in
+[reference profiles](docs/compatibility/profiles.md).
+
 ## Compatibility and attribution
 
 FerroSift is independent of and not endorsed by GCHQ. CyberChef is a separate

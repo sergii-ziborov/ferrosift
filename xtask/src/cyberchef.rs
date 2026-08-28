@@ -3,7 +3,7 @@
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
-use crate::run_streaming;
+use crate::{capture, run_streaming};
 
 /// One pinned reference version.
 ///
@@ -144,7 +144,13 @@ fn setup(profile: &Profile) -> ExitCode {
     verify(profile)
 }
 
-/// Confirms the checkout sits exactly on the pinned tag and commit.
+/// Confirms the checkout sits exactly on the pinned commit, then replays it.
+///
+/// The commit is compared rather than printed. It used to be printed beside
+/// the expected one and left for a reader to check, which works at a terminal
+/// and does nothing at all in a scheduled job — a checkout left on some other
+/// revision would have passed silently, which is the one failure this whole
+/// arrangement exists to prevent.
 fn verify(profile: &Profile) -> ExitCode {
     let checkout = checkout_dir(profile);
     if !checkout.exists() {
@@ -156,29 +162,41 @@ fn verify(profile: &Profile) -> ExitCode {
         return ExitCode::FAILURE;
     }
     let target = checkout.to_string_lossy().to_string();
-    eprintln!("expecting v{} {}", profile.version, profile.commit);
-    if !run_streaming("git", &["-C", &target, "rev-parse", "HEAD"], None) {
+    let Some(head) = capture("git", &["-C", &target, "rev-parse", "HEAD"]) else {
+        eprintln!("cannot read the checkout's HEAD at {target}");
+        return ExitCode::FAILURE;
+    };
+    if head.trim() != profile.commit {
+        eprintln!(
+            "checkout at {target} is on {}, not the pinned v{} commit {}",
+            head.trim(),
+            profile.version,
+            profile.commit
+        );
         return ExitCode::FAILURE;
     }
-    if run_streaming(
-        "cargo",
-        &["test", "-p", "ferrosift-operations", "--test", "corpus"],
-        Some(&repo_root().to_string_lossy()),
-    ) && run_streaming(
-        "cargo",
-        &[
-            "test",
-            "-p",
-            "ferrosift-operations",
-            "--test",
-            "differential",
-        ],
-        Some(&repo_root().to_string_lossy()),
-    ) {
-        ExitCode::SUCCESS
+    eprintln!("v{} is at {}", profile.version, profile.commit);
+
+    // Replay the fixtures this profile is actually recorded in: the baseline
+    // is stored in full and everything after it as an overlay, so the two are
+    // different test targets and running the baseline's for a later profile
+    // would report on a version nobody asked about.
+    let replays: &[&str] = if profile.version == DEFAULT_PROFILE {
+        &["corpus", "differential"]
     } else {
-        ExitCode::FAILURE
+        &["profiles"]
+    };
+    let root = repo_root().to_string_lossy().to_string();
+    for replay in replays {
+        if !run_streaming(
+            "cargo",
+            &["test", "-p", "ferrosift-operations", "--test", replay],
+            Some(&root),
+        ) {
+            return ExitCode::FAILURE;
+        }
     }
+    ExitCode::SUCCESS
 }
 
 /// Regenerates both pinned fixtures from the reference.

@@ -133,8 +133,23 @@ cargo xtask cyberchef gap --profile 11.4.0 --check
 Each fails if the catalog claims a name that version of the reference does not
 have. `cargo test` cannot see this: the replay gates demand evidence for the
 aliases a spec carries, and a name the reference never had has no case to
-demand. Only the pinned checkout can answer it, which is why the check lives
-beside the oracle and not in CI.
+demand. Only the pinned checkout can answer it, and cloning and building two
+references takes long enough that asking on every push would be a tax on every
+unrelated change.
+
+So it runs weekly instead, in `.github/workflows/reference.yml`, which asks
+both questions the committed tree cannot:
+
+- **Does the reference still have these names?** Both `gap --check` runs above.
+- **Are the committed fixtures still what the oracle produces?** The whole
+  corpus is regenerated from both checkouts and the result must match the
+  committed files byte for byte. That is what a seeded, clock-free generator
+  is *for*: a fixture edited by hand, a generator changed without being re-run,
+  and a sampler that stopped being deterministic all pass every other gate,
+  because the replay agrees with the file and the file is wrong.
+
+It can also be started by hand from the Actions tab when a change to the
+oracle warrants it before the next Monday.
 
 ## Reading and writing recipes
 
