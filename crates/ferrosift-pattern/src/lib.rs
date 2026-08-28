@@ -24,6 +24,17 @@
 //! wrote. `docs/pattern-language-subset.md` has the grammar, the case list, and
 //! what is still missing.
 //!
+//! # Bytes that are not a buffer
+//!
+//! [`evaluate`] takes a slice, which requires the whole subject in memory.
+//! [`evaluate_with`] takes anything implementing [`ByteSource`], which does
+//! not — and that is the case this engine is for. A disk image or a firmware
+//! dump is routinely larger than the machine reading it, while a pattern
+//! touches a vanishing fraction of it: one scalar per field, at a known
+//! offset, of at most [`MAX_SCALAR_BYTES`]. The bounds check stays with the
+//! evaluator, so an implementation is never asked for a range the pattern had
+//! no right to.
+//!
 //! ```
 //! use ferrosift_pattern::{EvalOptions, NodeValue};
 //!
@@ -60,5 +71,8 @@ pub use ast::{
     SizeOfTarget, StructDeclaration, TypeKind, TypeReference, UnaryOperator, UnionDeclaration,
 };
 pub use error::{PatternError, Position};
-pub use eval::{EvalOptions, Node, NodeValue, evaluate};
+pub use eval::{
+    ByteSource, EvalOptions, MAX_SCALAR_BYTES, Node, NodeValue, SourceError, evaluate,
+    evaluate_with,
+};
 pub use parser::parse;

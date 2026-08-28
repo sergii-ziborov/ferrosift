@@ -6,6 +6,7 @@ use super::composite;
 use super::expression::{self, Scope};
 use super::options::EvalOptions;
 use super::reader::{Reader, out_of_bounds};
+use super::source::ByteSource;
 use super::value::{Node, NodeValue};
 use crate::ast::{ArrayLength, Builtin, Declaration, Endian, Pattern, TypeKind, TypeReference};
 use crate::error::{PatternError, Position};
@@ -28,9 +29,30 @@ pub fn evaluate(
     data: &[u8],
     options: &EvalOptions,
 ) -> Result<Vec<Node>, PatternError> {
+    evaluate_with(pattern, data, options)
+}
+
+/// Evaluates every placement in `pattern` against any [`ByteSource`].
+///
+/// The same evaluation as [`evaluate`], which is this function over a slice.
+/// It exists because a slice requires the whole subject in memory, and the
+/// case this engine is for — a disk image, a firmware dump, a memory capture —
+/// is routinely larger than the machine reading it. A pattern touches a
+/// vanishing fraction of what it describes, so the whole is never needed at
+/// once; only the scalars a placement actually names.
+///
+/// # Errors
+///
+/// As [`evaluate`], plus `pattern.eval.source_failed` when the source declines
+/// a read the evaluator had already found to be in range.
+pub fn evaluate_with<S: ByteSource + ?Sized>(
+    pattern: &Pattern,
+    source: &S,
+    options: &EvalOptions,
+) -> Result<Vec<Node>, PatternError> {
     let mut evaluator = Evaluator {
         pattern,
-        reader: Reader::new(data),
+        reader: Reader::new(source),
         options: *options,
         nodes: 0,
     };
@@ -66,14 +88,14 @@ pub fn evaluate(
     Ok(roots)
 }
 
-pub(super) struct Evaluator<'a> {
+pub(super) struct Evaluator<'a, S: ?Sized> {
     pub(super) pattern: &'a Pattern,
-    pub(super) reader: Reader<'a>,
+    pub(super) reader: Reader<'a, S>,
     pub(super) options: EvalOptions,
     nodes: u64,
 }
 
-impl Evaluator<'_> {
+impl<S: ByteSource + ?Sized> Evaluator<'_, S> {
     /// Evaluates one named item, which may be an array.
     pub(super) fn item(
         &mut self,

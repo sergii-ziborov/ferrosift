@@ -3,6 +3,7 @@ use alloc::vec::Vec;
 
 use super::evaluator::Evaluator;
 use super::expression::{self, Scope};
+use super::source::ByteSource;
 use super::value::{Node, NodeValue};
 use crate::ast::{
     BitfieldDeclaration, Endian, EnumDeclaration, Member, StructDeclaration, TypeReference,
@@ -20,8 +21,8 @@ enum Layout {
 }
 
 /// Lays struct members out back to back from `offset`.
-pub(super) fn structure(
-    evaluator: &mut Evaluator<'_>,
+pub(super) fn structure<S: ByteSource + ?Sized>(
+    evaluator: &mut Evaluator<'_, S>,
     name: &str,
     declaration: &StructDeclaration,
     endian: Option<Endian>,
@@ -50,8 +51,8 @@ pub(super) fn structure(
 /// The size is the widest member rather than the sum. Members still see the
 /// ones declared before them, so a union can be discriminated by a field read
 /// earlier in the enclosing struct.
-pub(super) fn union(
-    evaluator: &mut Evaluator<'_>,
+pub(super) fn union<S: ByteSource + ?Sized>(
+    evaluator: &mut Evaluator<'_, S>,
     name: &str,
     declaration: &UnionDeclaration,
     endian: Option<Endian>,
@@ -80,8 +81,8 @@ pub(super) fn union(
 /// Conditional members are flattened into the enclosing body rather than
 /// producing a node of their own, so `if` changes which fields exist without
 /// changing the shape of the value tree.
-fn members(
-    evaluator: &mut Evaluator<'_>,
+fn members<S: ByteSource + ?Sized>(
+    evaluator: &mut Evaluator<'_, S>,
     list: &[Member],
     endian: Option<Endian>,
     base: u64,
@@ -109,8 +110,8 @@ fn members(
     clippy::too_many_arguments,
     reason = "the recursion threads one layout state; splitting it into a struct would name each field twice"
 )]
-fn walk(
-    evaluator: &mut Evaluator<'_>,
+fn walk<S: ByteSource + ?Sized>(
+    evaluator: &mut Evaluator<'_, S>,
     list: &[Member],
     endian: Option<Endian>,
     base: u64,
@@ -186,8 +187,8 @@ fn walk(
 }
 
 /// Reads the backing integer and resolves it against the declared constants.
-pub(super) fn enumeration(
-    evaluator: &mut Evaluator<'_>,
+pub(super) fn enumeration<S: ByteSource + ?Sized>(
+    evaluator: &mut Evaluator<'_, S>,
     name: &str,
     declaration: &EnumDeclaration,
     endian: Option<Endian>,
@@ -237,8 +238,8 @@ pub(super) fn enumeration(
 /// The two answers differ for every bitfield whose members are not all the same
 /// width, or that spans more than one byte, which is most of them: `low : 3;
 /// high : 5;` over `0xa5` is `5, 20` little-endian and `5, 5` big-endian.
-pub(super) fn bitfield(
-    evaluator: &mut Evaluator<'_>,
+pub(super) fn bitfield<S: ByteSource + ?Sized>(
+    evaluator: &mut Evaluator<'_, S>,
     name: &str,
     declaration: &BitfieldDeclaration,
     endian: Option<Endian>,

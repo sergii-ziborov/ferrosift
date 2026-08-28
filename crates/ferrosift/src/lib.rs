@@ -46,7 +46,9 @@ pub use ferrosift_model::{
     ArgumentValue, Arguments, Recipe, StructuredValue, TextEncoding, TextValue, Value,
 };
 #[cfg(feature = "pattern")]
-pub use ferrosift_pattern::{EvalOptions, Node, NodeValue, Pattern, PatternError};
+pub use ferrosift_pattern::{
+    ByteSource, EvalOptions, Node, NodeValue, Pattern, PatternError, SourceError,
+};
 
 /// The built-in operations, for assembling a catalog smaller than the whole.
 ///
@@ -83,10 +85,69 @@ pub fn parse_pattern(source: &str) -> Result<Pattern, Error> {
     Ok(ferrosift_pattern::parse(source)?)
 }
 
+/// Evaluates a parsed pattern against any [`ByteSource`].
+///
+/// The pipeline methods take a `&[u8]` because a transform has to produce its
+/// output somewhere, and that somewhere is memory. Describing bytes *without*
+/// transforming them has no such constraint, which is the case a hex pattern is
+/// usually for: a disk image or a firmware dump larger than the machine reading
+/// it, where a pattern touches a few dozen scalars and nothing else.
+///
+/// ```
+/// use ferrosift::{ByteSource, EvalOptions, NodeValue, SourceError};
+///
+/// /// A window onto something bigger, without a copy of it.
+/// struct Window<'a> {
+///     bytes: &'a [u8],
+///     base: u64,
+/// }
+///
+/// impl ByteSource for Window<'_> {
+///     fn len(&self) -> u64 {
+///         self.base + self.bytes.len() as u64
+///     }
+///
+///     fn read_exact_at(&self, offset: u64, into: &mut [u8]) -> Result<(), SourceError> {
+///         let at = offset
+///             .checked_sub(self.base)
+///             .and_then(|at| usize::try_from(at).ok())
+///             .ok_or_else(|| SourceError::new("before the window"))?;
+///         let end = at + into.len();
+///         into.copy_from_slice(
+///             self.bytes
+///                 .get(at..end)
+///                 .ok_or_else(|| SourceError::new("after the window"))?,
+///         );
+///         Ok(())
+///     }
+/// }
+///
+/// let pattern = ferrosift::parse_pattern("be u16 magic @ 0x10000000;")?;
+/// let window = Window { bytes: &[0xca, 0xfe], base: 0x1000_0000 };
+/// let nodes = ferrosift::evaluate_pattern(&pattern, &window, &EvalOptions::default())?;
+/// assert_eq!(nodes[0].value, NodeValue::Unsigned(0xcafe));
+/// # Ok::<(), ferrosift::Error>(())
+/// ```
+///
+/// # Errors
+///
+/// Returns [`Error::Pattern`] when a read leaves the source, the source
+/// declines a read, or the pattern exceeds the bounds in `options`.
+#[cfg(feature = "pattern")]
+pub fn evaluate_pattern<S: ByteSource + ?Sized>(
+    pattern: &Pattern,
+    source: &S,
+    options: &EvalOptions,
+) -> Result<alloc::vec::Vec<Node>, Error> {
+    Ok(ferrosift_pattern::evaluate_with(pattern, source, options)?)
+}
+
 /// The names most callers want in scope.
 pub mod prelude {
     pub use crate::{Arguments, Engine, Error, Pipeline, Value, pipeline};
 
     #[cfg(feature = "pattern")]
-    pub use crate::{EvalOptions, Node, NodeValue, Pattern, parse_pattern};
+    pub use crate::{
+        ByteSource, EvalOptions, Node, NodeValue, Pattern, evaluate_pattern, parse_pattern,
+    };
 }
