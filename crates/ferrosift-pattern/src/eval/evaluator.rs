@@ -66,22 +66,30 @@ pub fn evaluate_with<S: ByteSource + ?Sized>(
                 offset: 0,
                 pattern: Some(pattern),
             };
-            let address = expression::evaluate(&placement.address, scope)?;
-            let offset = u64::try_from(address)
-                .map_err(|_| out_of_bounds("placement address is past the addressable range"))?;
+            let address = expression::evaluate(&placement.address, scope)
+                .map_err(|error| error.or_position(placement.position))?;
+            let offset = u64::try_from(address).map_err(|_| {
+                out_of_bounds("placement address is past the addressable range")
+                    .at_position(placement.position)
+            })?;
             let scope = Scope {
                 siblings: &roots,
                 offset,
                 pattern: Some(pattern),
             };
-            let node = evaluator.item(
-                &placement.name,
-                &placement.type_reference,
-                placement.array_length.as_ref(),
-                offset,
-                0,
-                scope,
-            )?;
+            let node = evaluator
+                .item(
+                    &placement.name,
+                    &placement.type_reference,
+                    placement.array_length.as_ref(),
+                    offset,
+                    0,
+                    scope,
+                )
+                // The outermost source position, filled in only where nothing
+                // nearer supplied one — a failure inside a struct member
+                // reports the member's line rather than the placement's.
+                .map_err(|error| error.or_position(placement.position))?;
             roots.push(node);
         }
     }
@@ -426,5 +434,5 @@ pub(super) fn type_name(type_reference: &TypeReference) -> String {
 }
 
 pub(crate) fn fail(code: &'static str, detail: &'static str) -> PatternError {
-    PatternError::new(code, Position { line: 0, column: 0 }, detail)
+    PatternError::new(code, Position::UNKNOWN, detail)
 }

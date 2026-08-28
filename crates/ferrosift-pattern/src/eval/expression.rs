@@ -251,5 +251,5 @@ fn number(node: &Node) -> Result<i128, PatternError> {
 }
 
 fn fail(code: &'static str, detail: &'static str) -> PatternError {
-    PatternError::new(code, Position { line: 0, column: 0 }, detail)
+    PatternError::new(code, Position::UNKNOWN, detail)
 }

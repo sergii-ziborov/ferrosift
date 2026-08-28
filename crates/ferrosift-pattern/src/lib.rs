@@ -49,6 +49,22 @@
 //! enums or bitfields keeps a [`NodeValue::Group`]: those elements are trees,
 //! and there is nothing to defer.
 //!
+//! # Where a failure happened
+//!
+//! A [`PatternError`] carries up to two locations, and neither answers the
+//! other's question. [`position`](PatternError::position) is a line and column
+//! in the pattern source; [`data_offset`](PatternError::data_offset) is a byte
+//! in the subject. "The read left the data" is useless without knowing which
+//! byte was wanted, and knowing the byte is useless without knowing which line
+//! asked for it.
+//!
+//! The reported line is the *nearest* declaration to the failure, so a member
+//! of a nested struct reports its own line rather than the line of whatever
+//! reached it. A failure about the pattern rather than about the bytes — an
+//! undeclared type, say — carries no offset, because inventing one would be
+//! worse than saying nothing. [`Position::UNKNOWN`] is what a location nobody
+//! recorded looks like, and it renders as `?:?` rather than as line zero.
+//!
 //! ```
 //! use ferrosift_pattern::{EvalOptions, NodeValue};
 //!

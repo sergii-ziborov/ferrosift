@@ -130,6 +130,9 @@ fn conditional(cursor: &mut Cursor) -> Result<Member, PatternError> {
 }
 
 fn field(cursor: &mut Cursor) -> Result<Field, PatternError> {
+    // Taken before anything is consumed, so the recorded position is where the
+    // declaration starts rather than wherever parsing happened to stop.
+    let position = cursor.position();
     let type_reference = type_reference(cursor)?;
     let name = cursor.expect_identifier()?;
     let array_length = array_length(cursor)?;
@@ -138,6 +141,7 @@ fn field(cursor: &mut Cursor) -> Result<Field, PatternError> {
         name,
         type_reference,
         array_length,
+        position,
     })
 }
 
@@ -210,6 +214,7 @@ fn alias(cursor: &mut Cursor) -> Result<AliasDeclaration, PatternError> {
 }
 
 fn placement(cursor: &mut Cursor) -> Result<Placement, PatternError> {
+    let position = cursor.position();
     let type_reference = type_reference(cursor)?;
     let name = cursor.expect_identifier()?;
     let array_length = array_length(cursor)?;
@@ -221,6 +226,7 @@ fn placement(cursor: &mut Cursor) -> Result<Placement, PatternError> {
         type_reference,
         array_length,
         address,
+        position,
     })
 }
 

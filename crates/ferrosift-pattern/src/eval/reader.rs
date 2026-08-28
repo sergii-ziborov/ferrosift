@@ -67,11 +67,11 @@ impl<'a, S: ByteSource + ?Sized> Reader<'a, S> {
     pub(super) fn block(&self, offset: u64, size: u64) -> Result<Vec<u8>, PatternError> {
         let end = offset
             .checked_add(size)
-            .ok_or_else(|| out_of_bounds("read offset overflows"))?;
+            .ok_or_else(|| at("read offset overflows", offset))?;
         if end > self.len() {
-            return Err(out_of_bounds("read extends past the end of the data"));
+            return Err(at("read extends past the end of the data", offset));
         }
-        let length = usize::try_from(size).map_err(|_| out_of_bounds("size is too large"))?;
+        let length = usize::try_from(size).map_err(|_| at("size is too large", offset))?;
 
         // Sized up front rather than grown: the length was just checked
         // against the source, so this is the allocation the caller asked for
@@ -79,16 +79,18 @@ impl<'a, S: ByteSource + ?Sized> Reader<'a, S> {
         let mut block = Vec::new();
         block
             .try_reserve_exact(length)
-            .map_err(|_| out_of_bounds("array does not fit in memory"))?;
+            .map_err(|_| at("array does not fit in memory", offset))?;
         block.resize(length, 0);
 
         for (step, chunk) in block.chunks_mut(MAX_SCALAR_BYTES).enumerate() {
-            let at = offset
+            let position = offset
                 .checked_add((step * MAX_SCALAR_BYTES) as u64)
-                .ok_or_else(|| out_of_bounds("read offset overflows"))?;
+                .ok_or_else(|| at("read offset overflows", offset))?;
             self.source
-                .read_exact_at(at, chunk)
-                .map_err(|error| source_failed(error.detail()))?;
+                .read_exact_at(position, chunk)
+                // The failing chunk's own offset, not the array's: a source
+                // that stops part way through says where it stopped.
+                .map_err(|error| source_failed(error.detail(), position))?;
         }
         Ok(block)
     }
@@ -100,30 +102,40 @@ impl<'a, S: ByteSource + ?Sized> Reader<'a, S> {
         size: u32,
         buffer: &'b mut [u8; MAX_SCALAR_BYTES],
     ) -> Result<&'b [u8], PatternError> {
-        let length = usize::try_from(size).map_err(|_| out_of_bounds("size is too large"))?;
+        let length = usize::try_from(size).map_err(|_| at("size is too large", offset))?;
         // Not a bound the language can reach — every builtin is sixteen bytes
         // or fewer — and checked anyway, because the alternative is a panic on
         // a slice index if it ever becomes reachable.
         if length > MAX_SCALAR_BYTES {
-            return Err(out_of_bounds("read is wider than the widest scalar"));
+            return Err(at("read is wider than the widest scalar", offset));
         }
         let end = offset
             .checked_add(u64::from(size))
-            .ok_or_else(|| out_of_bounds("read offset overflows"))?;
+            .ok_or_else(|| at("read offset overflows", offset))?;
         if end > self.len() {
-            return Err(out_of_bounds("read extends past the end of the data"));
+            return Err(at("read extends past the end of the data", offset));
         }
 
         let slot = &mut buffer[..length];
         self.source
             .read_exact_at(offset, slot)
-            .map_err(|error| source_failed(error.detail()))?;
+            .map_err(|error| source_failed(error.detail(), offset))?;
         Ok(slot)
     }
 }
 
 pub(super) fn out_of_bounds(detail: &'static str) -> PatternError {
-    PatternError::new(OUT_OF_BOUNDS, Position { line: 0, column: 0 }, detail)
+    PatternError::new(OUT_OF_BOUNDS, Position::UNKNOWN, detail)
+}
+
+/// The same, naming the byte the read wanted.
+///
+/// Every failure in this file concerns a specific offset, and reporting one
+/// without it leaves a reader with "the read left the data" and nowhere to
+/// look. The source position is filled in further out, by the declaration that
+/// asked for the read.
+fn at(detail: &'static str, offset: u64) -> PatternError {
+    out_of_bounds(detail).at_offset(offset)
 }
 
 /// A read the evaluator had already established was in range, which the source
@@ -133,6 +145,6 @@ pub(super) fn out_of_bounds(detail: &'static str) -> PatternError {
 /// something that is not there, the other says the medium behind the bytes
 /// failed. Reporting both under one code would make a disk error look like a
 /// malformed pattern.
-fn source_failed(detail: &str) -> PatternError {
-    PatternError::new(SOURCE_FAILED, Position { line: 0, column: 0 }, detail)
+fn source_failed(detail: &str, offset: u64) -> PatternError {
+    PatternError::new(SOURCE_FAILED, Position::UNKNOWN, detail).at_offset(offset)
 }

@@ -2,6 +2,8 @@ use alloc::boxed::Box;
 use alloc::string::String;
 use alloc::vec::Vec;
 
+use crate::error::Position;
+
 /// A value computed from literals and fields already read.
 ///
 /// Expressions are what let a pattern describe a format rather than one file:
@@ -244,6 +246,12 @@ pub struct Field {
     pub type_reference: TypeReference,
     /// `Some(..)` when the member is an array.
     pub array_length: Option<ArrayLength>,
+    /// Where the declaration begins, for reporting a failure while reading it.
+    ///
+    /// Carried on the *declaration* rather than worked out at failure time,
+    /// because by then the evaluator is several types deep and the only thing
+    /// that can say which line a caller should look at is the line itself.
+    pub position: Position,
 }
 
 /// A named set of integer constants over an explicit backing type.
@@ -308,6 +316,8 @@ pub struct Placement {
     /// relative to an earlier one -- `Body body @ sizeof(header);` -- which is
     /// how a format with a variable-length header is described.
     pub address: Expression,
+    /// Where the placement begins, for reporting a failure while reading it.
+    pub position: Position,
 }
 
 /// A type together with any explicit endianness prefix.

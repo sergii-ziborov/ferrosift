@@ -138,14 +138,20 @@ fn walk<S: ByteSource + ?Sized>(
                     offset: start,
                     pattern: Some(evaluator.pattern),
                 };
-                let child = evaluator.item(
-                    &field.name,
-                    &field_type,
-                    field.array_length.as_ref(),
-                    start,
-                    depth + 1,
-                    scope,
-                )?;
+                let child = evaluator
+                    .item(
+                        &field.name,
+                        &field_type,
+                        field.array_length.as_ref(),
+                        start,
+                        depth + 1,
+                        scope,
+                    )
+                    // The nearest declaration to the failure, so a member of a
+                    // nested struct reports its own line rather than the line
+                    // of whatever reached it. `or_position` only fills in a
+                    // position nothing else has supplied.
+                    .map_err(|error| error.or_position(field.position))?;
                 *end = (*end).max(child.end());
                 children.push(child);
             }
