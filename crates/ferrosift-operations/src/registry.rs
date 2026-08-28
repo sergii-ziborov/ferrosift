@@ -41,7 +41,8 @@ use crate::{
     ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent,
     ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable,
     ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, UnicodeTextFormat, Unique,
-    UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap, XkcdRandomNumber, Xor, Xxtea,
+    UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap, XkcdRandomNumber, Xor,
+    XpressDecompress, XpressHuffmanDecompress, Xxtea,
 };
 
 #[cfg(feature = "crypto")]
@@ -337,9 +338,11 @@ fn register_ciphers(registry: &mut OperationRegistry) -> Result<(), RegistryErro
 
 /// Compressors and their inverses.
 fn register_compression(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
-    // Outside the feature gate: the decoder is a loop over the input and
-    // pulls nothing, unlike the DEFLATE and bzip2 pair beside it.
+    // Outside the feature gate: the decoders are loops over the input and pull
+    // nothing, unlike the DEFLATE and bzip2 pair beside them.
     registry.register(Lznt1Decompress::new())?;
+    registry.register(XpressDecompress::new())?;
+    registry.register(XpressHuffmanDecompress::new())?;
 
     #[cfg(feature = "compression-deflate")]
     {

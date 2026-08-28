@@ -5,9 +5,9 @@ records what the other 256 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The catalog is larger than the coverage number twice over, and it is worth
-being exact about which number is which. FerroSift registers 248 operations;
+being exact about which number is which. FerroSift registers 250 operations;
 two of them — `core.identity@1` and `analysis.suggest@1` — are its own and have
-no reference alias, so they cover nothing here, and one more answers to a name
+no reference alias, so they cover nothing here, and three more answer to names
 only 11.4.0 has. This sentence used to read 247
 of 503, which was both sides inflated by exactly those two and therefore
 arithmetically consistent with everything below it. That is why nothing caught

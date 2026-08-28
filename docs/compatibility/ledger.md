@@ -13,9 +13,9 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 248 |
-| Reference-aliased | 246 |
-| Pinned cases | 6644 |
+| Registered operations | 250 |
+| Reference-aliased | 248 |
+| Pinned cases | 6730 |
 
 Two questions, asked separately, because one word was answering both
 and could only answer one. **Evidence** is how an operation was
@@ -26,7 +26,7 @@ cannot speak for the ones it does not.
 
 | Evidence | |
 |---|---:|
-| Differential-pinned against the reference | 238 |
+| Differential-pinned against the reference | 240 |
 | Pinned by a named test instead of the corpus | 4 |
 | Checked through a pinned inverse | 4 |
 | No reference claim to evidence | 2 |
@@ -34,7 +34,7 @@ cannot speak for the ones it does not.
 
 | Parity | |
 |---|---:|
-| Exact | 225 |
+| Exact | 227 |
 | Documented divergence | 17 |
 | Interoperable rather than byte-identical | 4 |
 | FerroSift-native, no reference to match | 2 |
@@ -97,6 +97,8 @@ the divergence is what lies outside those inputs.
 | `compression.lznt1.decompress@1` | LZNT1 Decompress | core | differential_pinned | exact | 8 |
 | `compression.raw.deflate@1` | Raw Deflate | compression-deflate | round_trip | interoperable (compressor output is interoperable; Raw Inflate is corpus-pinned) | 0 |
 | `compression.raw.inflate@1` | Raw Inflate | compression-deflate | differential_pinned | exact | 5 |
+| `compression.xpress.decompress@1` | XPRESS Decompress (since 11.4.0) | core | differential_pinned | exact | 45 |
+| `compression.xpress.huffman.decompress@1` | XPRESS LZ77+Huffman Decompress (since 11.4.0) | core | differential_pinned | exact | 39 |
 | `compression.zlib.deflate@1` | Zlib Deflate | compression-deflate | round_trip | interoperable (compressor output is interoperable; Zlib Inflate is corpus-pinned) | 0 |
 | `compression.zlib.inflate@1` | Zlib Inflate | compression-deflate | differential_pinned | exact | 5 |
 | `core.identity@1` | — | core | not_applicable | native | 0 |

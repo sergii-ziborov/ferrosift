@@ -7,18 +7,18 @@
     ]
   },
   "totals": {
-    "operations": 248,
-    "aliased": 246,
-    "pinned_cases": 6644,
+    "operations": 250,
+    "aliased": 248,
+    "pinned_cases": 6730,
     "evidence": {
-      "differential_pinned": 238,
+      "differential_pinned": 240,
       "pinned_elsewhere": 4,
       "round_trip": 4,
       "none": 0,
       "not_applicable": 2
     },
     "parity": {
-      "exact": 225,
+      "exact": 227,
       "documented_divergence": 17,
       "interoperable": 4,
       "native": 2
@@ -736,6 +736,38 @@
         "Embedded"
       ],
       "conformance_cases": 5,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
+      "id": "compression.xpress.decompress@1",
+      "display_name": "XPRESS Decompress",
+      "category": "Compression",
+      "reference_alias": "XPRESS Decompress",
+      "reference_since": "11.4.0",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 45,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
+      "id": "compression.xpress.huffman.decompress@1",
+      "display_name": "XPRESS LZ77+Huffman Decompress",
+      "category": "Compression",
+      "reference_alias": "XPRESS LZ77+Huffman Decompress",
+      "reference_since": "11.4.0",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 39,
       "evidence": "differential_pinned",
       "parity": "exact"
     },

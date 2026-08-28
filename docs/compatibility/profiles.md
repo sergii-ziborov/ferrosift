@@ -72,7 +72,9 @@ one spec with two aliases. It would be two specs with versioned identifiers,
 
 Not every operation has existed in every profile. 11.3 exposes 501 operations
 and 11.4 exposes 504, and the three it added are names 11.3 has never answered
-to. A spec that claimed them in both would be claiming one of them falsely.
+to. A spec that claimed them in both would be claiming one of them falsely —
+and all three are ported, so this is a claim the catalog really makes rather
+than a rule kept for a future that had not arrived.
 
 So a spec says which version its name *starts* existing in:
 
@@ -91,12 +93,24 @@ Narrowing the range narrows what has to be proven; it exempts nothing. The
 alias that *is* claimed still needs a replayed case of that profile behind it,
 from the same gate every other alias answers to.
 
-`Modular Exponentiation` is the first one this is real for rather than
-illustrative. Its 76 corpus cases bake through 11.4 and fail to bake through
-11.3 — the baseline reference answers `Couldn't find an operation with name
-'Modular Exponentiation'` — so they arrive in the overlay's `added` list, and
-the alias is backed by cases only 11.4 could produce. Nothing had to be
-asserted about which version has it: the two references were asked.
+All three of 11.4's additions are now ported — `Modular Exponentiation`,
+`XPRESS Decompress`, and `XPRESS LZ77+Huffman Decompress` — and this is real
+for each of them rather than illustrative. Their 160 corpus cases bake through
+11.4 and fail to bake through 11.3, where the baseline reference answers
+`Couldn't find an operation with name '…'`, so they arrive in the overlay's
+`added` list and the aliases are backed by cases only 11.4 could produce.
+Nothing had to be asserted about which version has them: the two references
+were asked.
+
+The XPRESS pair also needed something no other family here does. Every other
+decoder's corpus inputs come from the reference's own *encoder*, which makes
+them canonical by construction; the reference has no XPRESS encoder, because
+these are formats Windows writes and CyberChef reads. So the inputs are built
+by two small encoders in `tools/cyberchef-oracle/corpus/xpress.mjs`, and what
+makes them evidence is the same thing as everywhere else: the reference
+decompresses them and the fixture records what it produced. A stream the
+reference refuses fails to bake and the case disappears, so an encoder bug
+cannot manufacture a passing case.
 
 The counting follows the same rule. `docs/compatibility/not-implemented.md`
 partitions 11.3.0's 501 operations and does not count this one, because it is

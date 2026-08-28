@@ -17,7 +17,7 @@ matched.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Differential-pinned | Exact parity | Pinned cases |
 |---:|---:|---:|---:|---:|
-| 248 | 246 | 238 | **225** | **6644** |
+| 250 | 248 | 240 | **227** | **6730** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -237,7 +237,7 @@ has a `std`. One pack does not yet reach bare metal;
 | Arithmetic | Convert area, Convert data units, Convert distance, Convert mass, Convert speed, Divide, Extended GCD, MOD, Mean, Median, Modular Exponentiation, Modular Inverse, Multiply, Standard Deviation, Subtract, Sum |
 | Checksums | Adler-32 Checksum, Fletcher-16 Checksum, Fletcher-32 Checksum, Fletcher-64 Checksum, Fletcher-8 Checksum, Luhn Checksum, TCP/IP Checksum, XOR Checksum |
 | Ciphers | A1Z26 Cipher Decode, A1Z26 Cipher Encode, AES Decrypt, AES Encrypt, AES Key Unwrap, AES Key Wrap, Affine Cipher Decode, Affine Cipher Encode, Atbash Cipher, Bacon Cipher Decode, Bacon Cipher Encode, Bifid Cipher Decode, Bifid Cipher Encode, Caesar Box Cipher, Cetacean Cipher Decode, Cetacean Cipher Encode, Convert Leet Speak, Convert to NATO alphabet, LS47 Decrypt, LS47 Encrypt, RC4, RC4 Drop, ROT13 Brute Force, ROT47, ROT47 Brute Force, ROT8000, Rail Fence Cipher Decode, Rail Fence Cipher Encode, Substitute, TEA Decrypt, TEA Encrypt, Vigenère Decode, Vigenère Encode, XTEA Decrypt, XTEA Encrypt, XXTEA Decrypt, XXTEA Encrypt |
-| Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, LZNT1 Decompress, Raw Deflate, Raw Inflate, Zlib Deflate, Zlib Inflate |
+| Compression | Bzip2 Compress, Bzip2 Decompress, Gunzip, Gzip, LZNT1 Decompress, Raw Deflate, Raw Inflate, XPRESS Decompress, XPRESS LZ77+Huffman Decompress, Zlib Deflate, Zlib Inflate |
 | Core | Identity |
 | Data | Drop bytes, Drop nth bytes, Head, Remove null bytes, Reverse, Swap endianness, Take bytes, Take nth bytes |
 | Defang | Defang IP Addresses, Defang URL, Fang URL |

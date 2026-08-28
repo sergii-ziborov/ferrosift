@@ -95,6 +95,7 @@ mod value;
 mod varint;
 mod xkcd;
 mod xor;
+mod xpress;
 mod xxtea;
 
 #[cfg(feature = "crypto")]
@@ -222,6 +223,7 @@ pub use url::{UrlDecode, UrlEncode};
 pub use varint::{VarIntDecode, VarIntEncode};
 pub use xkcd::XkcdRandomNumber;
 pub use xor::Xor;
+pub use xpress::{XpressDecompress, XpressHuffmanDecompress};
 pub use xxtea::Xxtea;
 
 #[cfg(feature = "crypto")]
