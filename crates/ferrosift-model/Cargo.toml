@@ -6,6 +6,13 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords = ["cyberchef", "no-std", "recipe", "serde", "ferrosift"]
+categories = ["encoding", "no-std", "data-structures"]
+
+[package.metadata.docs.rs]
+all-features = true
 
 [dependencies]
 serde = { version = "1.0.229", default-features = false, features = ["alloc", "derive"] }

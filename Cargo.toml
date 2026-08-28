@@ -17,11 +17,36 @@ exclude = ["bench", "fuzz", "xtask"]
 resolver = "3"
 
 [workspace.package]
-version = "0.0.0"
+# One version for the whole workspace, and an alpha on purpose. The crates
+# reference each other by exact version, so a release is all of them or none:
+# publishing `ferrosift-operations` against a `ferrosift-core` that moved would
+# be shipping a combination nothing here has ever built.
+#
+# `alpha` is a statement about the API rather than about the evidence. The
+# compatibility claim is measured and pinned; what is not yet settled is the
+# shape a caller programs against, and a pre-release says so in the one place
+# a dependency resolver reads.
+version = "0.1.0-alpha.1"
 edition = "2024"
 rust-version = "1.97"
 license = "Apache-2.0"
 repository = "https://github.com/sergii-ziborov/ferrosift"
+homepage = "https://github.com/sergii-ziborov/ferrosift"
+authors = ["Sergii Ziborov <sergii@edgehawk.io>"]
+
+# The internal crates, versioned once. A path dependency alone is enough to
+# build here and not enough to publish: crates.io resolves by version, so every
+# one of these carries both, and carrying both in seven manifests is seven
+# places to forget on the next release.
+[workspace.dependencies]
+ferrosift-compat = { path = "crates/ferrosift-compat", version = "0.1.0-alpha.1" }
+ferrosift-core = { path = "crates/ferrosift-core", version = "0.1.0-alpha.1" }
+ferrosift-model = { path = "crates/ferrosift-model", version = "0.1.0-alpha.1" }
+# Defaults off here rather than at each use: a member may add features to an
+# inherited dependency and may not take them away, and every dependent of the
+# catalog selects its own packs.
+ferrosift-operations = { path = "crates/ferrosift-operations", version = "0.1.0-alpha.1", default-features = false }
+ferrosift-pattern = { path = "crates/ferrosift-pattern", version = "0.1.0-alpha.1" }
 
 [workspace.lints.rust]
 missing_docs = "warn"

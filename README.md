@@ -4,6 +4,13 @@ CyberChef-compatible transformations and binary patterns in a `no_std`-first
 Rust library. Native, `wasm32-unknown-unknown`, and bare metal, with no
 JavaScript runtime anywhere in the build.
 
+```toml
+ferrosift = "0.1.0-alpha.1"
+```
+
+An alpha because the API is not settled, not because the claim below is. See
+the [changelog](CHANGELOG.md) for what the first release contains.
+
 **Broad by design. Compatible by evidence.** Nothing here claims compatibility
 it has not measured: every claim is against a pinned CyberChef v11.3.0 or
 v11.4.0 checkout, every corpus case is replayed against both, and adding the
@@ -287,12 +294,17 @@ cargo check --workspace --target wasm32-unknown-unknown
 
 Pinned toolchain: see `rust-toolchain.toml` (Rust 1.97).
 
-Those four run on every push. Two more questions need the pinned CyberChef
+Those four run on every push, alongside the feature-pack matrix, the two
+bare-metal targets, the fuzz targets, the coverage floor, the ledger check and
+`cargo package --workspace`. Two more questions need the pinned CyberChef
 checkouts and so run weekly instead: whether the reference still has the names
 the catalog claims, and whether regenerating the whole corpus from both
 checkouts reproduces the committed fixtures byte for byte. Reproduce them with
 `cargo xtask cyberchef setup --profile 11.3.0` and the commands in
 [reference profiles](docs/compatibility/profiles.md).
+
+Publishing is manual and its order matters; [docs/releasing.md](docs/releasing.md)
+has the sequence.
 
 ## Compatibility and attribution
 

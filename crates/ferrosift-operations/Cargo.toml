@@ -6,6 +6,19 @@ rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
 description = "Portable pure-Rust operations for FerroSift"
+homepage.workspace = true
+authors.workspace = true
+keywords = ["cyberchef", "no-std", "encoding", "hashing", "forensics"]
+categories = ["encoding", "no-std", "cryptography", "compression"]
+# The corpus ships. It is two and a half megabytes of fixture that no dependent
+# compiles, and excluding it was the first thing tried — but a package whose own
+# `cargo test` cannot compile is a package that quietly stops being checkable
+# the moment it leaves the repository, and the corpus is the evidence behind
+# every claim this crate makes. Compressed it is a fraction of what the
+# dependency tree already costs.
+
+[package.metadata.docs.rs]
+all-features = true
 
 [features]
 # Everything portable. The default, and what the conformance corpus pins.
@@ -119,8 +132,8 @@ cfb-mode = { version = "0.8.2", default-features = false, optional = true }
 cipher = { version = "0.4.4", default-features = false, features = ["alloc", "block-padding"], optional = true }
 ctr = { version = "0.9.2", default-features = false, optional = true }
 ecb = { version = "0.1.2", default-features = false, features = ["alloc"], optional = true }
-ferrosift-core = { path = "../ferrosift-core" }
-ferrosift-model = { path = "../ferrosift-model" }
+ferrosift-core = { workspace = true }
+ferrosift-model = { workspace = true }
 hmac = { version = "0.12.1", default-features = false, optional = true }
 blake2 = { version = "0.10.6", default-features = false, optional = true }
 blake3 = { version = "1.8.7", default-features = false, optional = true }
@@ -147,7 +160,7 @@ streebog = { version = "0.10.2", default-features = false, optional = true }
 whirlpool = { version = "0.10.4", default-features = false, optional = true }
 
 [dev-dependencies]
-ferrosift-compat = { path = "../ferrosift-compat" }
+ferrosift-compat = { workspace = true }
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = "1.0.151"
 

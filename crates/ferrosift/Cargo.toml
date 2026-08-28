@@ -6,6 +6,14 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+readme = "README.md"
+keywords = ["cyberchef", "no-std", "encoding", "forensics", "hexpat"]
+categories = ["encoding", "no-std", "cryptography", "parser-implementations"]
+
+[package.metadata.docs.rs]
+all-features = true
 
 [features]
 # The whole catalog plus the hex-pattern engine.
@@ -45,10 +53,10 @@ text = ["ferrosift-operations/text"]
 pattern = ["dep:ferrosift-pattern"]
 
 [dependencies]
-ferrosift-core = { path = "../ferrosift-core" }
-ferrosift-model = { path = "../ferrosift-model" }
-ferrosift-operations = { path = "../ferrosift-operations", default-features = false }
-ferrosift-pattern = { path = "../ferrosift-pattern", optional = true }
+ferrosift-core = { workspace = true }
+ferrosift-model = { workspace = true }
+ferrosift-operations = { workspace = true }
+ferrosift-pattern = { workspace = true, optional = true }
 
 [lints]
 workspace = true

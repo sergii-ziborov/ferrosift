@@ -249,7 +249,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "ferrosift-core",
  "ferrosift-model",
@@ -259,7 +259,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-cli"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "clap",
  "ferrosift-compat",
@@ -271,7 +271,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-compat"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "ferrosift-core",
  "ferrosift-model",
@@ -281,14 +281,14 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-core"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "ferrosift-model",
 ]
 
 [[package]]
 name = "ferrosift-model"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "serde",
  "serde_json",
@@ -296,7 +296,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-operations"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "aes",
  "aes-gcm",
@@ -336,7 +336,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-pattern"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "serde",
  "serde_json",

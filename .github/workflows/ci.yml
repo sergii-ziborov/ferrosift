@@ -244,6 +244,30 @@ jobs:
       - name: Check coverage against the recorded floor
         run: cargo xtask coverage check
 
+  # Packaging is a gate rather than a release step. Nothing here publishes; what
+  # it checks is that the workspace *could* be, on every push rather than on the
+  # day someone wants to.
+  #
+  # The failures it catches are all invisible to `cargo build`: a path
+  # dependency without a version, a `readme` or `license-file` pointing outside
+  # its own package, a crate whose sources no longer compile once lifted out of
+  # the workspace, and a `.crate` past what the registry accepts.
+  #
+  # `--workspace` rather than one crate at a time: the members depend on each
+  # other by exact version, and none of those versions exists on crates.io yet,
+  # so packaging them separately would ask the index for a crate that is right
+  # here. There is no `--allow-dirty`, which makes this a check that every
+  # generated file in the tree was committed as well.
+  package:
+    name: Packaging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Package every crate, and build each one unpacked
+        run: cargo package --workspace
+      - name: Report what each crate would ship
+        run: ls -lh target/package/*.crate
+
   # The compatibility claim is only evidence if it cannot drift. Regenerate the
   # ledger from the code and fail when the committed copy disagrees. This needs
   # no reference checkout: every column comes from the catalog, the pack-only

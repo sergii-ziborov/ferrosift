@@ -84,6 +84,12 @@ pub const fn budget() -> ExecutionBudget {
         max_flow_depth: 8,
         max_operation_invocations: 1 << 20,
         max_total_bytes_processed: 1 << 34,
+        // Wide enough that a measurement is never a measurement of a refusal.
+        // Every other ceiling here is generous for the same reason: the
+        // question a benchmark asks is how long the work takes, and an
+        // operation that declined to do it answers a different one.
+        max_transient_bytes: 1 << 32,
+        max_work_units: 1 << 32,
     }
 }
 

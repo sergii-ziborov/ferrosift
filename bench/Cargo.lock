@@ -1562,7 +1562,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "ferrosift-core",
  "ferrosift-model",
@@ -1592,21 +1592,21 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-core"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "ferrosift-model",
 ]
 
 [[package]]
 name = "ferrosift-model"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "ferrosift-operations"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 dependencies = [
  "aes 0.8.4",
  "aes-gcm",
@@ -1643,7 +1643,7 @@ dependencies = [
 
 [[package]]
 name = "ferrosift-pattern"
-version = "0.0.0"
+version = "0.1.0-alpha.1"
 
 [[package]]
 name = "ff"
