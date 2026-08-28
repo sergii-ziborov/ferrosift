@@ -211,11 +211,21 @@ jobs:
       - name: Build every target
         run: cargo +nightly fuzz build
         working-directory: fuzz
+      # A target with committed seeds gets them: the seeds are a claim about
+      # where its interesting inputs are, and a claim nothing ever runs is one
+      # nobody notices going stale. They also make the twenty seconds below
+      # worth something — a mutator starting from nothing does not reach an
+      # exponent extreme in that time, and starting from the seeds it begins
+      # there.
       - name: Smoke each target
         run: |
           for target in $(cargo +nightly fuzz list); do
             echo "::group::$target"
-            cargo +nightly fuzz run "$target" -- -runs=2000 -max_total_time=20
+            if [ -d "seeds/$target" ]; then
+              cargo +nightly fuzz run "$target" "corpus/$target" "seeds/$target" -- -runs=2000 -max_total_time=20
+            else
+              cargo +nightly fuzz run "$target" -- -runs=2000 -max_total_time=20
+            fi
             echo "::endgroup::"
           done
         working-directory: fuzz
