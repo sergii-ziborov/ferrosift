@@ -63,9 +63,14 @@ fn corpus_matches_reference_bytes_at_every_prefix() {
 
 #[test]
 fn every_cyberchef_alias_is_covered_or_explicitly_exempt() {
+    // Both fixtures count. `flow.json` is a separate file because it is baked
+    // through the reference's own `Recipe` rather than its Node API, which
+    // refuses flow control -- not because it is weaker evidence. It records the
+    // same thing in the same way, and `tests/flow.rs` replays it.
     let suite = differential::load_corpus();
+    let flow = differential::load_flow();
     let mut coverage: BTreeMap<&str, usize> = BTreeMap::new();
-    for case in &suite.cases {
+    for case in suite.cases.iter().chain(flow.cases.iter()) {
         for operation in case.operations() {
             *coverage.entry(operation).or_default() += 1;
         }

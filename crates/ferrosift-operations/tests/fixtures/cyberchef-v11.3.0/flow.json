@@ -1,0 +1,1546 @@
+{
+ "reference": {
+  "name": "CyberChef",
+  "version": "11.3.0",
+  "commit": "d24ba1afce2e3a080308b5df7db033332fe94a1a"
+ },
+ "cases": [
+  {
+   "name": "comment_and_label_pass_through",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Comment",
+     "args": [
+      "why this recipe exists"
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "616263",
+    "414243"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "comment_between_typed_operations",
+   "input": {
+    "kind": "bytes",
+    "hex": "00ff41"
+   },
+   "recipe": [
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Comment",
+     "args": [
+      "a note in the middle"
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "303066663431",
+    "303066663431",
+    "303046463431"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "label_before_a_typed_operation",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "start"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "end"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162",
+    "36313632",
+    "36313632"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "fork_maps_each_line",
+   "input": {
+    "kind": "text",
+    "value": "aGVsbG8=\nb29y"
+   },
+   "recipe": [
+    {
+     "op": "Fork",
+     "args": [
+      "\\n",
+      "\\n",
+      false
+     ]
+    },
+    {
+     "op": "From Base64",
+     "args": [
+      "A-Za-z0-9+/=",
+      true,
+      false
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "614756736247383d0a62323979",
+    "68656c6c6f0a6f6f72",
+    "68656c6c6f0a6f6f72"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "fork_without_merge_runs_to_the_end",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncd"
+   },
+   "recipe": [
+    {
+     "op": "Fork",
+     "args": [
+      "\\n",
+      "-",
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61622d6364",
+    "41422d4344"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "jump_forward_skips_a_step",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Jump",
+     "args": [
+      "end",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "end"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243",
+    "616263",
+    "363136323633"
+   ],
+   "stopped_after": 4
+  },
+  {
+   "name": "jump_backward_loops_to_the_limit",
+   "input": {
+    "kind": "text",
+    "value": "aaa"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616161",
+    "363136313631",
+    "333333363333333133333336333333313333333633333331"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "jump_to_a_missing_label_continues",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Jump",
+     "args": [
+      "nowhere",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "jump_with_no_allowance_continues",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162",
+    "36313632",
+    "36313632"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "jump_to_a_disabled_label",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ],
+     "disabled": true
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      1
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162",
+    "36313632",
+    "3336333133363332"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "jump_inside_a_fork_is_scoped_to_the_branch",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncd"
+   },
+   "recipe": [
+    {
+     "op": "Fork",
+     "args": [
+      "\\n",
+      "\\n",
+      false
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      1
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61620a6364",
+    "61620a6364",
+    "363136320a36333634",
+    "33363331333633320a3336333333363334",
+    "33363331333633320a3336333333363334"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "jump_out_of_a_fork_does_not_fire",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncd"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "outer"
+     ]
+    },
+    {
+     "op": "Fork",
+     "args": [
+      "\\n",
+      "\\n",
+      false
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "outer",
+      5
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61620a6364",
+    "61620a6364",
+    "61620a6364",
+    "61620a6364",
+    "36313632306136333634"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "two_jumps_share_one_allowance",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      2
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "second"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "second",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162",
+    "36313632",
+    "33333336333333313333333633333332",
+    "33333336333333313333333633333332",
+    "3333333333333336333333333333333133333333333333363333333333333332",
+    "3333333333333333333333333333333333333333333333333333333333333336333333333333333333333333333333333333333333333333333333333333333133333333333333333333333333333333333333333333333333333333333333363333333333333333333333333333333333333333333333333333333333333332"
+   ],
+   "stopped_after": 6
+  },
+  {
+   "name": "conditional_jump_taken",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "^61",
+      false,
+      "top",
+      2
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "363136323633",
+    "333633313336333233363333"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "conditional_jump_not_taken",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "zzz",
+      false,
+      "end",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "end"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243",
+    "414243"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "conditional_jump_inverted",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "zzz",
+      true,
+      "end",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "end"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243",
+    "616263"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "conditional_jump_empty_pattern_does_nothing",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "",
+      false,
+      "end",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "end"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243",
+    "414243"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "conditional_jump_missing_label_continues",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "b",
+      false,
+      "nowhere",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "conditional_jump_loops_until_the_pattern_fails",
+   "input": {
+    "kind": "text",
+    "value": "aaaab"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "Drop bytes",
+     "args": [
+      0,
+      1,
+      false
+     ]
+    },
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "a",
+      false,
+      "top",
+      10
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6161616162",
+    "61616162",
+    "62"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "conditional_jump_case_matters",
+   "input": {
+    "kind": "text",
+    "value": "ABC"
+   },
+   "recipe": [
+    {
+     "op": "Conditional Jump",
+     "args": [
+      "abc",
+      false,
+      "end",
+      10
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "end"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "414243",
+    "414243",
+    "414243"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "return_stops_the_recipe",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Return",
+     "args": []
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "414243",
+    "414243",
+    "414243"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "return_first_leaves_the_input_alone",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Return",
+     "args": []
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "616263"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "return_inside_a_fork_ends_the_branch",
+   "input": {
+    "kind": "text",
+    "value": "ab\ncd"
+   },
+   "recipe": [
+    {
+     "op": "Fork",
+     "args": [
+      "\\n",
+      "\\n",
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Return",
+     "args": []
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61620a6364",
+    "41420a4344",
+    "41420a4344",
+    "41420a4344",
+    "41420a4344"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "return_after_a_jump",
+   "input": {
+    "kind": "text",
+    "value": "ab"
+   },
+   "recipe": [
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      1
+     ]
+    },
+    {
+     "op": "Return",
+     "args": []
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6162",
+    "36313632",
+    "3336333133363332",
+    "3336333133363332",
+    "3336333133363332"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "subsection_uppercases_each_match",
+   "input": {
+    "kind": "text",
+    "value": "aa-bb-cc"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]+",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61612d62622d6363",
+    "41412d42422d4343",
+    "41412d42422d4343"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_without_global_takes_the_first",
+   "input": {
+    "kind": "text",
+    "value": "aa-bb-cc"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]+",
+      true,
+      false,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61612d62622d6363",
+    "41412d62622d6363",
+    "41412d62622d6363"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_case_insensitive",
+   "input": {
+    "kind": "text",
+    "value": "Aa-bB-cc"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]+",
+      false,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "41612d62422d6363",
+    "343136312d363234322d36333633",
+    "343136312d363234322d36333633"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_capture_group",
+   "input": {
+    "kind": "text",
+    "value": "key=val;key2=val2"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "=(\\w+)",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6b65793d76616c3b6b6579323d76616c32",
+    "6b65793d56414c3b6b6579323d56414c32",
+    "6b65793d56414c3b6b6579323d56414c32"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_no_match_skips_the_region",
+   "input": {
+    "kind": "text",
+    "value": "123"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]+",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "313233",
+    "313233",
+    "313233",
+    "333133323333"
+   ],
+   "stopped_after": 4
+  },
+  {
+   "name": "subsection_empty_pattern_runs_on_everything",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "414243",
+    "414243"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_without_merge_runs_to_the_end",
+   "input": {
+    "kind": "text",
+    "value": "a1b2"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61316232",
+    "41314232"
+   ],
+   "stopped_after": 2
+  },
+  {
+   "name": "subsection_then_more_operations",
+   "input": {
+    "kind": "text",
+    "value": "a1b2"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61316232",
+    "41314232",
+    "41314232",
+    "3431333134323332"
+   ],
+   "stopped_after": 4
+  },
+  {
+   "name": "subsection_matching_everything",
+   "input": {
+    "kind": "text",
+    "value": "abc"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      ".+",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "616263",
+    "363136323633",
+    "363136323633"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_over_bytes",
+   "input": {
+    "kind": "bytes",
+    "hex": "6100620063"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "6100620063",
+    "4100420043",
+    "4100420043"
+   ],
+   "stopped_after": 3
+  },
+  {
+   "name": "subsection_nested_in_a_fork",
+   "input": {
+    "kind": "text",
+    "value": "ab-cd\nef-gh"
+   },
+   "recipe": [
+    {
+     "op": "Fork",
+     "args": [
+      "\\n",
+      "\\n",
+      false
+     ]
+    },
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]+",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      false
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61622d63640a65662d6768",
+    "61622d63640a65662d6768",
+    "41422d43440a45462d4748",
+    "41422d43440a45462d4748",
+    "41422d43440a45462d4748"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "fork_nested_in_a_subsection",
+   "input": {
+    "kind": "text",
+    "value": "<a,b> and <c,d>"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "<([^>]+)>",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "Fork",
+     "args": [
+      ",",
+      ";",
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      false
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "3c612c623e20616e64203c632c643e",
+    "3c613b623e20616e64203c633b643e",
+    "3c413b423e20616e64203c433b443e",
+    "3c413b423e20616e64203c433b443e",
+    "3c413b423e20616e64203c433b443e"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "subsection_containing_a_jump",
+   "input": {
+    "kind": "text",
+    "value": "a-b"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "Label",
+     "args": [
+      "top"
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Jump",
+     "args": [
+      "top",
+      1
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612d62",
+    "612d62",
+    "36312d3632",
+    "333633312d33363332",
+    "333633312d33363332"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "subsection_containing_a_return",
+   "input": {
+    "kind": "text",
+    "value": "a-b"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Return",
+     "args": []
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "612d62",
+    "36312d3632",
+    "36312d3632",
+    "36312d3632",
+    "36312d3632"
+   ],
+   "stopped_after": 5
+  },
+  {
+   "name": "two_subsections_in_a_row",
+   "input": {
+    "kind": "text",
+    "value": "a1-b2"
+   },
+   "recipe": [
+    {
+     "op": "Subsection",
+     "args": [
+      "[a-z]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Upper case",
+     "args": [
+      "All"
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    },
+    {
+     "op": "Subsection",
+     "args": [
+      "[0-9]",
+      true,
+      true,
+      false
+     ]
+    },
+    {
+     "op": "To Hex",
+     "args": [
+      "None",
+      0
+     ]
+    },
+    {
+     "op": "Merge",
+     "args": [
+      true
+     ]
+    }
+   ],
+   "outputs_hex": [
+    "61312d6232",
+    "41312d4232",
+    "41312d4232",
+    "41312d4232",
+    "4133312d423332",
+    "4133312d423332"
+   ],
+   "stopped_after": 6
+  }
+ ]
+}

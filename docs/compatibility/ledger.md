@@ -13,9 +13,9 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 250 |
-| Reference-aliased | 248 |
-| Pinned cases | 6730 |
+| Registered operations | 254 |
+| Reference-aliased | 252 |
+| Pinned cases | 6867 |
 
 Two questions, asked separately, because one word was answering both
 and could only answer one. **Evidence** is how an operation was
@@ -26,16 +26,16 @@ cannot speak for the ones it does not.
 
 | Evidence | |
 |---|---:|
-| Differential-pinned against the reference | 240 |
-| Pinned by a named test instead of the corpus | 4 |
+| Differential-pinned against the reference | 248 |
+| Pinned by a named test instead of the corpus | 0 |
 | Checked through a pinned inverse | 4 |
 | No reference claim to evidence | 2 |
 | Aliased with no evidence | 0 |
 
 | Parity | |
 |---|---:|
-| Exact | 227 |
-| Documented divergence | 17 |
+| Exact | 230 |
+| Documented divergence | 18 |
 | Interoperable rather than byte-identical | 4 |
 | FerroSift-native, no reference to match | 2 |
 
@@ -118,7 +118,7 @@ the divergence is what lies outside those inputs.
 | `crypto.xtea.encrypt@1` | XTEA Encrypt | core | differential_pinned | documented_divergence (`RANDOM` padding where padding is actually added) | 45 |
 | `crypto.xxtea.decrypt@1` | XXTEA Decrypt | core | differential_pinned | exact | 8 |
 | `crypto.xxtea.encrypt@1` | XXTEA Encrypt | core | differential_pinned | exact | 21 |
-| `data.drop_bytes@1` | Drop bytes | core | differential_pinned | exact | 4 |
+| `data.drop_bytes@1` | Drop bytes | core | differential_pinned | exact | 5 |
 | `data.head@1` | Head | core | differential_pinned | exact | 5 |
 | `data.nth_bytes.drop@1` | Drop nth bytes | core | differential_pinned | exact | 17 |
 | `data.nth_bytes.take@1` | Take nth bytes | core | differential_pinned | exact | 17 |
@@ -140,7 +140,7 @@ the divergence is what lies outside those inputs.
 | `encoding.base58.encode@1` | To Base58 | core | differential_pinned | exact | 25 |
 | `encoding.base62.decode@1` | From Base62 | core | differential_pinned | exact | 12 |
 | `encoding.base62.encode@1` | To Base62 | core | differential_pinned | exact | 15 |
-| `encoding.base64.decode@1` | From Base64 | core | differential_pinned | exact | 41 |
+| `encoding.base64.decode@1` | From Base64 | core | differential_pinned | exact | 42 |
 | `encoding.base64.encode@1` | To Base64 | core | differential_pinned | exact | 52 |
 | `encoding.base85.decode@1` | From Base85 | core | differential_pinned | exact | 26 |
 | `encoding.base85.encode@1` | To Base85 | core | differential_pinned | exact | 27 |
@@ -166,7 +166,7 @@ the divergence is what lies outside those inputs.
 | `encoding.float.decode@1` | From Float | core | differential_pinned | exact | 87 |
 | `encoding.float.encode@1` | To Float | core | differential_pinned | exact | 59 |
 | `encoding.hex.decode@1` | From Hex | core | differential_pinned | documented_divergence (an odd number of hex digits, and text holding none) | 27 |
-| `encoding.hex.encode@1` | To Hex | core | differential_pinned | exact | 53 |
+| `encoding.hex.encode@1` | To Hex | core | differential_pinned | exact | 74 |
 | `encoding.hex_content.decode@1` | From Hex Content | core | differential_pinned | exact | 10 |
 | `encoding.hex_content.encode@1` | To Hex Content | core | differential_pinned | exact | 26 |
 | `encoding.hexdump.decode@1` | From Hexdump | core | differential_pinned | exact | 6 |
@@ -205,10 +205,14 @@ the divergence is what lies outside those inputs.
 | `extract.strings@1` | Strings | text | differential_pinned | exact | 2 |
 | `extract.url@1` | Extract URLs | text | differential_pinned | exact | 2 |
 | `filesystem.unix_permissions@1` | Parse UNIX file permissions | core | differential_pinned | exact | 32 |
-| `flow.comment@1` | Comment | core | pinned_elsewhere | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
-| `flow.fork@1` | Fork | core | pinned_elsewhere | exact (flow-control map; pinned in conformance_fork.rs) | 0 |
-| `flow.label@1` | Label | core | pinned_elsewhere | exact (flow-control no-op the Node build omits; pinned in conformance_fork.rs) | 0 |
-| `flow.merge@1` | Merge | core | pinned_elsewhere | exact (flow-control join; pinned in conformance_fork.rs) | 0 |
+| `flow.comment@1` | Comment | core | differential_pinned | exact | 2 |
+| `flow.conditional_jump@1` | Conditional Jump | text | differential_pinned | exact | 7 |
+| `flow.fork@1` | Fork | core | differential_pinned | exact | 7 |
+| `flow.jump@1` | Jump | core | differential_pinned | exact | 11 |
+| `flow.label@1` | Label | core | differential_pinned | exact | 19 |
+| `flow.merge@1` | Merge | core | differential_pinned | exact | 21 |
+| `flow.return@1` | Return | core | differential_pinned | exact | 5 |
+| `flow.subsection@1` | Subsection | text | differential_pinned | documented_divergence (a capture group whose text occurs earlier in the match, and a failing section under `ignore_errors`) | 16 |
 | `hash.bcrypt.parse@1` | Bcrypt parse | core | differential_pinned | exact | 20 |
 | `hash.blake2b@1` | BLAKE2b | hash | differential_pinned | exact | 104 |
 | `hash.blake2s@1` | BLAKE2s | hash | differential_pinned | exact | 62 |
@@ -282,7 +286,7 @@ the divergence is what lies outside those inputs.
 | `text.case.alternating@1` | Alternating Caps | core | differential_pinned | exact | 9 |
 | `text.case.lower@1` | To Lower case | core | differential_pinned | exact | 9 |
 | `text.case.swap@1` | Swap case | core | differential_pinned | exact | 9 |
-| `text.case.upper@1` | To Upper case | core | differential_pinned | exact | 20 |
+| `text.case.upper@1` | To Upper case | core | differential_pinned | exact | 46 |
 | `text.count@1` | Count occurrences | text | differential_pinned | exact | 14 |
 | `text.debruijn@1` | Generate De Bruijn Sequence | core | differential_pinned | exact | 9 |
 | `text.escape.unescape@1` | Unescape string | core | differential_pinned | exact | 11 |

@@ -176,7 +176,9 @@ pub use comment::Comment;
 pub use ctx1::{CitrixCtx1Decode, CitrixCtx1Encode};
 pub use decimal::{FromDecimal, ToDecimal};
 pub use float::{FromFloat, ToFloat};
-pub use flow::{Fork, Merge};
+#[cfg(feature = "text")]
+pub use flow::{ConditionalJump, Subsection};
+pub use flow::{Fork, Jump, Merge, Return};
 pub use generate::GenerateDeBruijnSequence;
 pub use head::Head;
 pub use hex::{FromHex, ToHex};

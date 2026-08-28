@@ -58,6 +58,32 @@ fn corpus_11_4() -> Vec<differential::Case> {
     differential::apply_overlay(&differential::load_corpus().cases, &overlay)
 }
 
+/// The 11.4 flow-control fixture, rebuilt the same way.
+fn flow_11_4() -> Vec<differential::Case> {
+    let overlay = differential::load_flow_overlay_11_4();
+    assert_eq!(overlay.reference.version, COMPARED.0);
+    assert_eq!(overlay.reference.commit, COMPARED.1);
+    assert_eq!(overlay.baseline.version, BASELINE.0);
+    assert_eq!(
+        overlay.baseline.commit, BASELINE.1,
+        "the overlay was built against a different baseline than this test replays"
+    );
+    differential::apply_overlay(&differential::load_flow().cases, &overlay)
+}
+
+#[test]
+fn flow_control_matches_reference_bytes_at_every_prefix() {
+    let cases = flow_11_4();
+    assert!(
+        cases.len() >= 30,
+        "the flow fixture must stay complete; found {} cases",
+        cases.len()
+    );
+    for case in &cases {
+        differential::assert_flow_case(CompatibilityProfile::CyberChefV11_4, case);
+    }
+}
+
 #[test]
 fn corpus_matches_reference_bytes_at_every_prefix() {
     let cases = corpus_11_4();
@@ -90,8 +116,12 @@ fn differential_suite_matches_reference_bytes_at_every_prefix() {
 /// or a documented exemption says why not.
 #[test]
 fn every_cyberchef_11_4_alias_is_covered_or_explicitly_exempt() {
+    // Both fixtures count. They are separate files because they are baked
+    // through different entry points -- the Node API refuses flow control --
+    // and not because one is weaker evidence than the other: both record the
+    // reference's own bytes at every prefix, and both are replayed above.
     let mut coverage: BTreeMap<String, usize> = BTreeMap::new();
-    for case in &corpus_11_4() {
+    for case in corpus_11_4().iter().chain(flow_11_4().iter()) {
         for operation in case.operations() {
             *coverage.entry(operation.to_string()).or_default() += 1;
         }

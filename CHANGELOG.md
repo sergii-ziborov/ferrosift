@@ -10,6 +10,37 @@ from `0.1.0` onward.
 
 ## [Unreleased]
 
+### Added
+
+- **Flow control is complete**, and the executor has a program counter rather
+  than a cursor. `Jump`, `Conditional Jump`, `Return` and `Subsection` join
+  `Fork`, `Merge`, `Label` and `Comment`, which is all seven of the reference's.
+  A step now answers a second question — where execution goes next — through
+  `FlowDirective`, which is what lets `Conditional Jump` evaluate its own
+  regular expression and `Subsection` report byte spans while `ferrosift-core`
+  compiles no pattern at all.
+- **The reference's own interpreter as an oracle.** CyberChef's Node API
+  refuses flow control outright and does not export `Label` or `Comment` as
+  functions, which is why `Fork`, `Merge`, `Label` and `Comment` were exempt
+  from the corpus rather than in it. That is the Node wrapper's restriction and
+  not the reference's: the oracle bakes through its `Recipe` class instead — the
+  code path the browser uses — so all seven are pinned against real reference
+  bytes at every recipe prefix, and the exemption list is four entries shorter.
+
+### Fixed
+
+- A step declaring `Any` on both sides is transparent to the cross-step type
+  check. It used to carry `Any` forward as "the next step might receive any
+  kind", and the check then demanded that *every* kind flow — including the
+  three with no byte form. `Identity`, `Comment` or `Label` in front of a step
+  that wanted text was refused before the first invocation: a legal recipe
+  rejected by a question that could not be answered yes. A genuine mismatch is
+  now caught at the step that received it.
+- `OperationRegistry` forwards every `Operation` method to the registered
+  implementation. It forwarded `execute` and nothing else, so a trait method
+  with a default silently answered for the operation — which is how a
+  registered `Jump` reported "continue with the next step".
+
 ## [0.1.0-alpha.1]
 
 The first published release, and a pre-release on purpose. The compatibility

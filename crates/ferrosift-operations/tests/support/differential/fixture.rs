@@ -6,6 +6,14 @@ use serde::Deserialize;
 const FIXTURE: &str = include_str!("../../fixtures/cyberchef-v11.3.0/differential.json");
 const CORPUS: &str = include_str!("../../fixtures/cyberchef-v11.3.0/corpus.json");
 
+/// Flow control, baked through the reference's own `Recipe` interpreter.
+///
+/// A separate file because it is produced a different way. The Node API the
+/// rest of the corpus goes through refuses these operations outright, so the
+/// generator drives `Recipe.execute` directly — the same code path the browser
+/// uses, from the same pinned commit.
+const FLOW: &str = include_str!("../../fixtures/cyberchef-v11.3.0/flow.json");
+
 /// Deltas that turn the baseline fixtures into a later profile's.
 ///
 /// A second profile that agrees everywhere would otherwise be a second
@@ -15,6 +23,7 @@ const CORPUS: &str = include_str!("../../fixtures/cyberchef-v11.3.0/corpus.json"
 const CORPUS_11_4: &str = include_str!("../../fixtures/cyberchef-v11.4.0/corpus.overlay.json");
 const FIXTURE_11_4: &str =
     include_str!("../../fixtures/cyberchef-v11.4.0/differential.overlay.json");
+const FLOW_11_4: &str = include_str!("../../fixtures/cyberchef-v11.4.0/flow.overlay.json");
 
 #[derive(Debug, Deserialize)]
 pub struct Suite {
@@ -110,9 +119,18 @@ pub fn load_corpus() -> CorpusSuite {
     serde_json::from_str(CORPUS).expect("corpus fixture must be valid")
 }
 
+pub fn load_flow() -> CorpusSuite {
+    serde_json::from_str(FLOW).expect("flow fixture must be valid")
+}
+
 /// The 11.4 corpus overlay.
 pub fn load_corpus_overlay_11_4() -> Overlay {
     serde_json::from_str(CORPUS_11_4).expect("11.4 corpus overlay must be valid")
+}
+
+/// The 11.4 flow-control overlay.
+pub fn load_flow_overlay_11_4() -> Overlay {
+    serde_json::from_str(FLOW_11_4).expect("11.4 flow overlay must be valid")
 }
 
 /// The 11.4 differential-suite overlay.

@@ -7,6 +7,7 @@ mod fixture;
 mod runner;
 
 pub use fixture::{
-    Case, apply_overlay, load_corpus, load_corpus_overlay_11_4, load_suite, load_suite_overlay_11_4,
+    Case, apply_overlay, load_corpus, load_corpus_overlay_11_4, load_flow, load_flow_overlay_11_4,
+    load_suite, load_suite_overlay_11_4,
 };
-pub use runner::{assert_supported_case, assert_unsupported_case};
+pub use runner::{assert_flow_case, assert_supported_case, assert_unsupported_case};

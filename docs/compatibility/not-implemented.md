@@ -1,11 +1,11 @@
 # Operations not implemented
 
-FerroSift covers 245 of CyberChef 11.3.0's 501 catalog operations. This page
-records what the other 256 are waiting on, so that "not done yet" is a list
+FerroSift covers 249 of CyberChef 11.3.0's 501 catalog operations. This page
+records what the other 252 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The catalog is larger than the coverage number twice over, and it is worth
-being exact about which number is which. FerroSift registers 250 operations;
+being exact about which number is which. FerroSift registers 254 operations;
 two of them — `core.identity@1` and `analysis.suggest@1` — are its own and have
 no reference alias, so they cover nothing here, and three more answer to names
 only 11.4.0 has. This sentence used to read 247
@@ -36,9 +36,9 @@ in [the corpus](cyberchef-v11.3.0.md).
 
 ## Why an equivalent library is not enough
 
-162 of the 256 are built on a JavaScript library, and 21 more reach one
+162 of the 252 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The three headings below
-partition the 256 exactly: 162 plus 21 plus 73. The obstacle is **not** that
+partition the 252 exactly: 162 plus 21 plus 69. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
@@ -204,7 +204,7 @@ column; checking the closure does not.
 
 ## Reachable without any port
 
-These 73 import nothing outside the reference's own source, transitively.
+These 69 import nothing outside the reference's own source, transitively.
 They are limited by effort, not by a dependency, and are where the catalog
 grows next.
 
@@ -232,12 +232,22 @@ claim that fails loudly the next time one of them drifts. It did its job
 immediately: `Label` was ported next and the check named all three places the
 page still said otherwise before anything was committed.
 
-`Label` is worth one line on why it was cheap. It is flow control that returns
-the state it was given, so the whole operation is a pass-through — and the
-reason it sat here is `Jump`, which is what a label is *for*. `Jump` needs a
-program counter the linear executor does not have; a `Label` with nothing
-jumping to it behaves identically in both, which is what the pin in
-`conformance_fork.rs` asserts. It is exempt from the corpus because the
-reference's Node build omits flow-control operations entirely.
+Four more left at once, and they left together because they were one thing.
+`Jump`, `Conditional Jump`, `Return` and `Subsection` were listed here for a
+reason that was true of the executor rather than of any of them: it walked a
+recipe forward one step at a time, so there was nowhere for a jump to go. It
+has a program counter now. `Label` had shipped ahead of them as a pass-through
+naming a destination nothing could reach; it names one that can.
 
-Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, Conditional Jump, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Jump, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Return, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Subsection, Tar, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20
+The claim that they are the reference's operations rests on evidence that did
+not exist either. The reference's Node API refuses flow control outright — it
+answers "flowControl operations like Return are not currently allowed", and
+does not export `Label` or `Comment` as functions at all — which is why `Fork`,
+`Merge`, `Label` and `Comment` were exempt from the corpus rather than in it.
+That is the Node wrapper's restriction and not the reference's: its `Recipe`
+class runs these operations, and the browser uses exactly that. The oracle now
+bakes through it, so all seven are pinned against the reference's own bytes at
+every recipe prefix (`tests/fixtures/cyberchef-v11.3.0/flow.json`), and the
+exemption list is four entries shorter than it was.
+
+Analyse hash, Ascon MAC, Automated Validation Test Op, Bombe, ChaCha, CipherSaber2 Decrypt, Colossus, CRC Checksum, CSV to JSON, Detect File Type, Disassemble x86, DNS over HTTPS, ELF Info, Enigma, Extract Audio Metadata, Extract dates, Extract Files, Extract ID3, File Tree, Flask Session Decode, Frequency distribution, Fuzzy Match, Generate all checksums, Generate all hashes, Generate Lorem Ipsum, Generic Code Beautify, Get Time, GOST Hash, Group IP addresses, Haversine distance, HTTP request, IPv6 Transition Addresses, Lorenz, Multiple Bombe, Numberwang, Parse Ethernet frame, Parse IP range, Parse IPv4 header, Parse SSH Host Key, PHP Deserialize, PHP Serialize, Play Media, P-list Viewer, PRESENT Decrypt, PRESENT Encrypt, Pseudo-Random Prime Generator, Rabbit, RAKE, RC6 Decrypt, RC6 Encrypt, Remove Diacritics, Remove EXIF, Render Image, Render PDF, Salsa20, Scan for Embedded Files, Show Base64 offsets, Shuffle, SIGABA, Sleep, SM4 Decrypt, SM4 Encrypt, Sort, Tar, Twofish Decrypt, Twofish Encrypt, Typex, Untar, XSalsa20

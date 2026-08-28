@@ -71,7 +71,7 @@ function delta(base, compared) {
 }
 
 const written = [];
-for (const name of ["corpus", "differential"]) {
+for (const name of ["corpus", "differential", "flow"]) {
     const base = await load(baseline, name);
     const compared = await load(profile, name);
     const {changed, added, removed} = delta(base, compared);

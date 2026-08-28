@@ -31,8 +31,17 @@ pub enum ExecutionFailure {
     OutputLimitExceeded,
     /// A produced value exceeds the configured per-step or total expansion ratio.
     ExpansionRatioExceeded,
-    /// A Fork produced more branches than the configured ceiling.
+    /// A Fork or Subsection produced more branches than the configured ceiling.
     BranchLimitExceeded,
+    /// A step asked for control the executor cannot grant where it stands.
+    ///
+    /// One case: [`FlowDirective::Sections`] from a step that does not open a
+    /// section region. There is no region to run there, and scoping the rest of
+    /// the recipe to a substring the recipe never named would be inventing
+    /// control flow rather than interpreting it.
+    ///
+    /// [`FlowDirective::Sections`]: crate::FlowDirective::Sections
+    FlowDirectiveRefused,
     /// Nested flow depth exceeded the configured ceiling.
     FlowDepthExceeded,
     /// Total operation invocations exceeded the configured ceiling.
@@ -56,6 +65,7 @@ impl ExecutionFailure {
             Self::OutputLimitExceeded => "core.executor.output_limit_exceeded",
             Self::ExpansionRatioExceeded => "core.executor.expansion_ratio_exceeded",
             Self::BranchLimitExceeded => "core.executor.branch_limit_exceeded",
+            Self::FlowDirectiveRefused => "core.executor.flow_directive_refused",
             Self::FlowDepthExceeded => "core.executor.flow_depth_exceeded",
             Self::InvocationLimitExceeded => "core.executor.invocation_limit_exceeded",
             Self::WorkLimitExceeded => "core.executor.work_limit_exceeded",

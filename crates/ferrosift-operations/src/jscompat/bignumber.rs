@@ -303,7 +303,7 @@ pub fn quotient_min_len(left: &DecimalValue, right: &DecimalValue) -> u64 {
 /// `Standard Deviation` over `1e+5000000` computed a five-million-digit answer
 /// and *then* had it refused by the output ceiling: the right verdict, reached
 /// after twenty-nine seconds of work the verdict says should not have
-/// happened. [`root`] gets there by building a radicand with `exponent + 40`
+/// happened. `root` gets there by building a radicand with `exponent + 40`
 /// digits, so the cost is set by the exponent and is invisible to every other
 /// limit.
 ///

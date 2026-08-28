@@ -25,8 +25,46 @@ pub fn assert_supported_case(profile: CompatibilityProfile, case: &Case) {
     );
 
     for prefix_length in 1..=case.recipe.len() {
-        assert_prefix(profile, case, prefix_length);
+        assert_prefix(profile, case, prefix_length, StepCount::MatchesRecipe);
     }
+}
+
+/// Replays one flow-control case, which cannot be held to a step count.
+///
+/// Everywhere else the number of completed steps equals the number of steps in
+/// the recipe, and asserting that is what catches a port that skipped one. A
+/// recipe with a jump in it runs some steps more than once and a recipe with a
+/// `Return` runs some of them not at all, so the count is a different number
+/// for a reason rather than a symptom — and the reference does not report one
+/// that could be compared against.
+///
+/// What is compared is the same thing every other case compares: the exact
+/// output bytes at every recipe prefix. A jump that fired when it should not
+/// have, or did not when it should have, changes those.
+pub fn assert_flow_case(profile: CompatibilityProfile, case: &Case) {
+    assert_eq!(
+        case.outputs_hex.len(),
+        case.recipe.len(),
+        "{} must observe every recipe prefix",
+        case.name
+    );
+    assert_eq!(
+        case.stopped_after,
+        case.recipe.len(),
+        "{} reference must complete the recipe",
+        case.name
+    );
+
+    for prefix_length in 1..=case.recipe.len() {
+        assert_prefix(profile, case, prefix_length, StepCount::Unconstrained);
+    }
+}
+
+/// Whether the trace's completed-step count is a fact the case can be held to.
+#[derive(Clone, Copy, Eq, PartialEq)]
+enum StepCount {
+    MatchesRecipe,
+    Unconstrained,
 }
 
 pub fn assert_unsupported_case(profile: CompatibilityProfile, case: &UnsupportedCase) {
@@ -56,7 +94,12 @@ pub fn assert_unsupported_case(profile: CompatibilityProfile, case: &Unsupported
     );
 }
 
-fn assert_prefix(profile: CompatibilityProfile, case: &Case, prefix_length: usize) {
+fn assert_prefix(
+    profile: CompatibilityProfile,
+    case: &Case,
+    prefix_length: usize,
+    steps: StepCount,
+) {
     let registry = ferrosift_operations::default_registry()
         .expect("built-in operation registry must validate");
     let source =
@@ -85,12 +128,14 @@ fn assert_prefix(profile: CompatibilityProfile, case: &Case, prefix_length: usiz
         "{} prefix {prefix_length} status",
         case.name
     );
-    assert_eq!(
-        completed_steps(&result.trace.events),
-        prefix_length,
-        "{} prefix {prefix_length} stopping position",
-        case.name
-    );
+    if steps == StepCount::MatchesRecipe {
+        assert_eq!(
+            completed_steps(&result.trace.events),
+            prefix_length,
+            "{} prefix {prefix_length} stopping position",
+            case.name
+        );
+    }
     assert_eq!(
         normalize(result.value),
         decode_hex(&case.outputs_hex[prefix_length - 1]),

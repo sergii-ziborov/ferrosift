@@ -6,15 +6,37 @@ use core::mem;
 use ferrosift_model::{ArgumentValue, CapabilitySet, Value, ValueConstraint, ValueKind};
 
 use crate::{
-    Cancellation, ExecutionBudget, ExecutionResult, ExecutionStatus, ExecutionTrace,
+    Cancellation, ExecutionBudget, ExecutionResult, ExecutionStatus, ExecutionTrace, FlowDirective,
     OperationContext, OperationError, StepLocation, TraceEvent, TraceEventKind, ValueSummary,
 };
 
 use super::{ExecutionError, ExecutionFailure, flow, limits, preflight::PreparedStep};
 
+/// What a whole region reports to whoever asked it to run.
 pub(super) enum StepControl {
     Continue,
-    Pause { step_index: usize },
+    Pause {
+        step_index: usize,
+    },
+    /// A `Return` ended this region early. The value in hand is the answer.
+    Stop,
+}
+
+/// What one step reports to the region running it.
+///
+/// Separate from [`StepControl`] because a jump is resolved by the region that
+/// owns the indices and never escapes it: a region returns `Continue`, `Pause`
+/// or `Stop`, and `Jump` exists only between a step and its own loop.
+pub(super) enum StepFlow {
+    Continue,
+    Pause {
+        step_index: usize,
+    },
+    Stop,
+    /// Resume this region at `target`.
+    Jump {
+        target: usize,
+    },
 }
 
 pub(super) struct Runner<'a> {
@@ -24,12 +46,20 @@ pub(super) struct Runner<'a> {
     pub(super) initial_input_size: u64,
     pub(super) cancellation: &'a dyn Cancellation,
     pub(super) capabilities: CapabilitySet,
-    /// Current nested Fork depth (0 at the top-level recipe).
+    /// Current nested Fork/Subsection depth (0 at the top-level recipe).
     pub(super) flow_depth: usize,
     /// Total operation invocations across the whole run (including every branch).
     pub(super) operation_invocations: u64,
     /// Total bytes processed (branch inputs + operation inputs).
     pub(super) total_bytes_processed: u64,
+    /// Jumps taken so far, shared by every jump site as the reference shares it.
+    ///
+    /// One counter for the recipe rather than one per site: `CyberChef` keeps
+    /// `numJumps` on the recipe's own execution state, so two jumps in the same
+    /// loop spend the same allowance. A Fork branch and a Subsection tranche
+    /// each run as their own recipe there, so each starts from zero — see
+    /// [`Runner::in_nested_recipe`].
+    pub(super) jumps_taken: u32,
 }
 
 pub(super) fn run(
@@ -50,12 +80,16 @@ pub(super) fn run(
         flow_depth: 0,
         operation_invocations: 0,
         total_bytes_processed: initial_input_size,
+        jumps_taken: 0,
     };
     match runner.execute_region(0, prepared.len(), prepared)? {
         StepControl::Pause { step_index } => {
             Ok(runner.finish(ExecutionStatus::Paused { step_index }))
         }
-        StepControl::Continue => Ok(runner.finish(ExecutionStatus::Completed)),
+        // A recipe that ran off the end and one a `Return` stopped are the same
+        // outcome: the value in hand, complete. The reference makes no
+        // distinction either — `Return` moves the counter past the last step.
+        StepControl::Continue | StepControl::Stop => Ok(runner.finish(ExecutionStatus::Completed)),
     }
 }
 
@@ -75,12 +109,57 @@ fn find_merge(fork_index: usize, prepared: &[PreparedStep<'_>]) -> Option<usize>
     flow::find_merge_index(fork_index, &ids, &merge_all, &disabled)
 }
 
+/// Where a region resumes once its Merge has been accounted for.
+///
+/// The Merge itself is not re-run: the region that closed already emitted its
+/// events. When no real Merge closes the region — the recipe simply ended —
+/// there is nothing to step past.
+pub(super) fn after_merge(merge_index: usize, end: usize, prepared: &[PreparedStep<'_>]) -> usize {
+    if merge_index < end
+        && !prepared[merge_index].disabled
+        && flow::is_merge(&prepared[merge_index].operation_id)
+    {
+        merge_index + 1
+    } else {
+        merge_index
+    }
+}
+
+/// The first `Label` named `label` inside `[start, end)`.
+///
+/// Scoped to the region rather than to the whole recipe, which is also what the
+/// reference does without saying so: a Fork body there is built into its own
+/// `Recipe`, so `getLabelIndex` can only see the body's own labels. A jump out
+/// of a branch is therefore not a jump at all — in both implementations.
+///
+/// A disabled Label is still a destination. The reference's search does not ask
+/// whether the step is enabled, and landing on one changes nothing anyway,
+/// since the step after it is where execution resumes.
+fn find_label(
+    label: &str,
+    start: usize,
+    end: usize,
+    prepared: &[PreparedStep<'_>],
+) -> Option<usize> {
+    (start..end).find(|&index| {
+        flow::is_label(&prepared[index].operation_id)
+            && matches!(
+                prepared[index].arguments.get("name"),
+                Some(ArgumentValue::Text(name)) if name == label,
+            )
+    })
+}
+
 impl Runner<'_> {
     /// Interpret steps in half-open range `[start, end)` against `self.value`.
     ///
-    /// This is the single recursive control-flow interpreter: normal ops,
-    /// Fork regions, and future conditionals/subsections should all go through
-    /// here so nested regions compose.
+    /// This is the single recursive control-flow interpreter: ordinary
+    /// operations, Fork and Subsection regions, and the jumps between them all
+    /// go through here so nested regions compose.
+    ///
+    /// `index` is a program counter and not a cursor. A step may send it
+    /// backwards, which is what makes a recipe able to loop and why every path
+    /// through here counts an invocation.
     pub(super) fn execute_region(
         &mut self,
         start: usize,
@@ -90,41 +169,68 @@ impl Runner<'_> {
         let mut index = start;
         while index < end {
             if !prepared[index].disabled
-                && flow::is_fork(&prepared[index].operation_id)
+                && flow::opens_region(&prepared[index].operation_id)
                 && prepared[index].operation.is_some()
             {
                 let merge_index = find_merge(index, prepared).unwrap_or(end).min(end);
-                if let StepControl::Pause { step_index } =
-                    self.run_fork(index, merge_index, end, prepared)?
-                {
-                    return Ok(StepControl::Pause { step_index });
-                }
-                index = if merge_index < end
-                    && !prepared[merge_index].disabled
-                    && flow::is_merge(&prepared[merge_index].operation_id)
-                {
-                    merge_index + 1
+                let opened = if flow::is_fork(&prepared[index].operation_id) {
+                    match self.run_fork(index, merge_index, end, prepared)? {
+                        StepControl::Continue => StepFlow::Jump {
+                            target: after_merge(merge_index, end, prepared),
+                        },
+                        StepControl::Pause { step_index } => StepFlow::Pause { step_index },
+                        StepControl::Stop => StepFlow::Stop,
+                    }
                 } else {
-                    merge_index
+                    self.run_subsection(index, merge_index, end, prepared)?
                 };
+                match opened {
+                    StepFlow::Pause { step_index } => {
+                        return Ok(StepControl::Pause { step_index });
+                    }
+                    StepFlow::Stop => return Ok(StepControl::Stop),
+                    StepFlow::Jump { target } => index = target,
+                    // Only a Subsection answers this: its pattern selected
+                    // nothing to scope, so the following steps run on the whole
+                    // value exactly as if it were not there.
+                    StepFlow::Continue => index += 1,
+                }
                 continue;
             }
 
-            match self.run_step(index, &prepared[index])? {
-                StepControl::Pause { step_index } => {
+            match self.run_step(index, start, end, prepared)? {
+                StepFlow::Pause { step_index } => {
                     return Ok(StepControl::Pause { step_index });
                 }
-                StepControl::Continue => index += 1,
+                StepFlow::Stop => return Ok(StepControl::Stop),
+                StepFlow::Jump { target } => index = target,
+                StepFlow::Continue => index += 1,
             }
         }
         Ok(StepControl::Continue)
     }
 
+    /// Runs a nested recipe with its own jump allowance, restoring the outer one.
+    ///
+    /// A Fork branch and a Subsection tranche are each a whole recipe in the
+    /// reference, and `numJumps` is local to a recipe's execution there. Left
+    /// shared, a loop inside one branch would spend the allowance of every
+    /// branch after it.
+    pub(super) fn in_nested_recipe<T>(&mut self, body: impl FnOnce(&mut Self) -> T) -> T {
+        let outer = core::mem::take(&mut self.jumps_taken);
+        let result = body(self);
+        self.jumps_taken = outer;
+        result
+    }
+
     fn run_step(
         &mut self,
         index: usize,
-        prepared: &PreparedStep<'_>,
-    ) -> Result<StepControl, ExecutionError> {
+        start: usize,
+        end: usize,
+        steps: &[PreparedStep<'_>],
+    ) -> Result<StepFlow, ExecutionError> {
+        let prepared = &steps[index];
         let location = prepared.location(index);
         if self.cancellation.is_cancelled() {
             return Err(self.fail(
@@ -139,7 +245,7 @@ impl Runner<'_> {
                     value: ValueSummary::from_value(&self.value),
                 },
             });
-            return Ok(StepControl::Continue);
+            return Ok(StepFlow::Continue);
         }
         if prepared.breakpoint {
             self.trace.events.push(TraceEvent {
@@ -148,10 +254,10 @@ impl Runner<'_> {
                     input: ValueSummary::from_value(&self.value),
                 },
             });
-            return Ok(StepControl::Pause { step_index: index });
+            return Ok(StepFlow::Pause { step_index: index });
         }
 
-        // Stray Merge is identity (join already happened in run_fork).
+        // Stray Merge is identity (the join already happened in the region).
         if flow::is_merge(&prepared.operation_id) {
             self.count_invocation(&location)?;
             let summary = ValueSummary::from_value(&self.value);
@@ -163,7 +269,7 @@ impl Runner<'_> {
                 location,
                 kind: TraceEventKind::StepCompleted { output: summary },
             });
-            return Ok(StepControl::Continue);
+            return Ok(StepFlow::Continue);
         }
 
         // Nested Fork is never handled here: execute_region intercepts it.
@@ -225,13 +331,67 @@ impl Runner<'_> {
         }
         self.account_bytes(output_summary.size_bytes, &location)?;
         self.trace.events.push(TraceEvent {
-            location,
+            location: location.clone(),
             kind: TraceEventKind::StepCompleted {
                 output: output_summary,
             },
         });
         self.value = output;
-        Ok(StepControl::Continue)
+        // Asked of every step, answered by four. The value is already stored,
+        // so a step that both transforms and directs -- none do today -- would
+        // have its output kept whichever way the counter then moves.
+        let directive = match operation.direct(&self.value, &prepared.arguments, &context) {
+            Ok(directive) => directive,
+            Err(error) => return Err(self.fail(ExecutionFailure::Operation(error), location)),
+        };
+        self.apply_directive(directive, start, end, steps, location)
+    }
+
+    /// Turns a step's answer about control into the next program counter.
+    fn apply_directive(
+        &mut self,
+        directive: FlowDirective,
+        start: usize,
+        end: usize,
+        prepared: &[PreparedStep<'_>],
+        location: StepLocation,
+    ) -> Result<StepFlow, ExecutionError> {
+        match directive {
+            FlowDirective::Next => Ok(StepFlow::Continue),
+            FlowDirective::NotTaken => {
+                self.jumps_taken = 0;
+                Ok(StepFlow::Continue)
+            }
+            FlowDirective::Stop => Ok(StepFlow::Stop),
+            FlowDirective::Jump { label, max_jumps } => {
+                match find_label(&label, start, end, prepared) {
+                    Some(label_index) if self.jumps_taken < max_jumps => {
+                        self.jumps_taken += 1;
+                        // Past the Label rather than onto it. The reference sets
+                        // its counter to the Label's index and then increments,
+                        // so the destination is the step after the marker.
+                        Ok(StepFlow::Jump {
+                            target: label_index + 1,
+                        })
+                    }
+                    // No such label, or the allowance is spent. Both continue
+                    // and both clear the counter, as the reference does -- a
+                    // recipe whose jump stopped firing gets its full allowance
+                    // back the next time round.
+                    _ => {
+                        self.jumps_taken = 0;
+                        Ok(StepFlow::Continue)
+                    }
+                }
+            }
+            // Only honoured for the operation that opens a section region,
+            // which `execute_region` intercepts before reaching here. Anywhere
+            // else there is no region to run, and inventing one would scope the
+            // rest of the recipe to a substring the recipe never asked for.
+            FlowDirective::Sections { .. } => {
+                Err(self.fail(ExecutionFailure::FlowDirectiveRefused, location))
+            }
+        }
     }
 
     pub(super) fn enter_flow(&mut self, location: &StepLocation) -> Result<(), ExecutionError> {

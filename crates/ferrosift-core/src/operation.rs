@@ -5,7 +5,7 @@ use core::fmt;
 
 use ferrosift_model::{Arguments, OperationSpec, Value};
 
-use crate::OperationContext;
+use crate::{FlowDirective, OperationContext};
 
 const MAX_FAILURE_CODE_BYTES: usize = 128;
 
@@ -92,6 +92,37 @@ pub trait Operation: Send + Sync {
         arguments: &Arguments,
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError>;
+
+    /// Where the executor goes after this step.
+    ///
+    /// Defaulted, and the default is the whole catalog: for an operation that
+    /// transforms a value the answer is the value and the next step is the next
+    /// step. The four flow-control operations override it, and they are the
+    /// only reason the executor has a program counter rather than a cursor.
+    ///
+    /// `value` is what the step leaves behind — its output for an ordinary
+    /// step, and the value in hand for a region-opening step the executor asks
+    /// before running the body. All four flow-control operations pass their
+    /// input through unchanged, so the two are the same value for every
+    /// implementation that returns anything but [`FlowDirective::Next`].
+    ///
+    /// Deciding here rather than in the executor is what keeps the regular
+    /// expression engine out of `ferrosift-core`: a conditional evaluates its
+    /// own condition and reports a destination, and the executor moves.
+    ///
+    /// # Errors
+    ///
+    /// Returns an [`OperationError`] when the arguments do not describe a
+    /// destination — a malformed pattern, a jump count that is not a count.
+    fn direct(
+        &self,
+        value: &Value,
+        arguments: &Arguments,
+        context: &OperationContext<'_>,
+    ) -> Result<FlowDirective, OperationError> {
+        let _ = (value, arguments, context);
+        Ok(FlowDirective::Next)
+    }
 }
 
 /// Stable failure surface shared by operation implementations and executors.

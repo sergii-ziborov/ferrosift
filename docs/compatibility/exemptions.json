@@ -10,7 +10,12 @@
     "scope 'elsewhere' means the operation is byte-pinned, just not by the",
     "automatic corpus. scope 'interoperable' means it is deliberately not",
     "byte-pinned at all, because the reference output is one valid encoding",
-    "among several rather than the only one."
+    "among several rather than the only one.",
+    "",
+    "The seven flow-control operations were listed here until the oracle",
+    "learned to bake through the reference's own Recipe rather than its Node",
+    "API, which refuses them. They are in flow.json now, pinned against the",
+    "reference's actual bytes at every recipe prefix."
   ],
   "exemptions": [
     {
@@ -37,26 +42,6 @@
       "alias": "Bzip2 Decompress",
       "scope": "elsewhere",
       "reason": "no Node bzip2 compressor to sample fresh inputs; pinned in differential.json"
-    },
-    {
-      "alias": "Fork",
-      "scope": "elsewhere",
-      "reason": "flow-control map; pinned in conformance_fork.rs"
-    },
-    {
-      "alias": "Merge",
-      "scope": "elsewhere",
-      "reason": "flow-control join; pinned in conformance_fork.rs"
-    },
-    {
-      "alias": "Comment",
-      "scope": "elsewhere",
-      "reason": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
-    },
-    {
-      "alias": "Label",
-      "scope": "elsewhere",
-      "reason": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
     }
   ]
 }

@@ -182,7 +182,7 @@ fn verify(profile: &Profile) -> ExitCode {
     // different test targets and running the baseline's for a later profile
     // would report on a version nobody asked about.
     let replays: &[&str] = if profile.version == DEFAULT_PROFILE {
-        &["corpus", "differential"]
+        &["corpus", "differential", "flow"]
     } else {
         &["profiles"]
     };
@@ -201,7 +201,7 @@ fn verify(profile: &Profile) -> ExitCode {
 
 /// Regenerates both pinned fixtures from the reference.
 fn generate(profile: &Profile) -> ExitCode {
-    for script in ["generate-suite.mjs", "generate-corpus.mjs"] {
+    for script in ["generate-suite.mjs", "generate-corpus.mjs", "generate-flow.mjs"] {
         let path = oracle_dir().join(script).to_string_lossy().to_string();
         // The scripts read the same flag, so the profile travels with the
         // request rather than being implied by an environment variable

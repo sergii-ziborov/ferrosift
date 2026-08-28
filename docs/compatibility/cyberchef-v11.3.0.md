@@ -527,25 +527,84 @@ suite. The refusals are in `tests/conformance_togglestring.rs` instead, because
 this corpus records reference *output* and a recipe the reference declines to
 run has none — the oracle cannot bake `XOR` with a key of `300` at all.
 
-### Flow control: Fork / Merge
+### Flow control is a program counter, not a cursor
 
-`Fork` / `Merge` are first-class map/join control (not jump soup). The executor
-uses a single recursive region interpreter (`execute_region`) so nested Fork
-bodies are real nested regions, not plain `operation.execute` calls. Each
-region understands normal ops and Fork (future conditionals/subsections share
-the same entry point). Missing Merge means the body runs to the end of the
-enclosing region. `ignore_errors` replaces a failing branch with an empty
-string.
+All seven of the reference's flow-control operations are implemented: `Fork`,
+`Merge`, `Label`, `Comment`, `Jump`, `Conditional Jump`, `Return`, and
+`Subsection`.
+
+The executor walks a recipe with a program counter rather than a cursor. A
+single recursive region interpreter (`execute_region`) drives everything —
+ordinary operations, `Fork` and `Subsection` regions, and the transfers between
+them — so nested regions compose. `Fork` maps its body over branches,
+`Subsection` over the spans a pattern selects, and both are closed by the same
+`Merge` with the same nesting rule. A missing `Merge` means the body runs to
+the end of the enclosing region.
+
+What an operation says about control travels as a `FlowDirective`, which is why
+`ferrosift-core` compiles no regular expression: `Conditional Jump` evaluates
+its own condition and reports a destination, `Subsection` reports byte ranges,
+and the executor moves a counter and slices a string. Everything else in the
+catalog says "the next step", which is the trait's default.
+
+Jump semantics follow the reference exactly, including the parts that are
+easier to get wrong than to read:
+
+- The destination is the step *after* the `Label`, because the reference sets
+  its counter to the label's index and then increments.
+- One jump allowance is shared by every jump in the recipe, and it is cleared
+  whenever a jump does not fire — so a loop that exits and is re-entered gets
+  its full allowance back.
+- A `Conditional Jump` with an empty pattern tests nothing and so neither
+  spends nor refunds the allowance; one whose condition fails clears it.
+- A missing label is not an error. The lookup finds nothing and execution
+  continues.
+- A disabled `Label` is still a destination: the reference's lookup does not
+  ask whether the step is enabled.
+- Label lookup is scoped to the enclosing region, so a jump out of a `Fork`
+  branch does not fire. That is the reference's behaviour too — it builds each
+  branch into its own recipe, which can only see its own labels.
+- A `Return` inside a branch or a section ends that piece, not the run.
 
 Flow work is bounded beyond plain output size via `ExecutionBudget`:
-`max_branches`, `max_flow_depth`, `max_operation_invocations`, and
-`max_total_bytes_processed`. Node CyberChef excludes Fork, so differential
-fixtures do not bake Fork recipes against the pinned oracle; conformance is
-native.
+`max_branches` (branches and sections alike), `max_flow_depth`,
+`max_operation_invocations`, and `max_total_bytes_processed`. The recipe's own
+`max_jumps` bounds a loop; the invocation ceiling is what stops a recipe that
+asks for a billion of them.
 
-Note: current Fork is still CyberChef-shaped (text split/join). A future
-native `flow.map` / `flow.join` over `Value::List` is the intended pure
-dataflow primitive without Unicode re-encoding.
+Node CyberChef refuses these operations — `chef.bake` answers "flowControl
+operations like Return are not currently allowed", and `Label` and `Comment`
+are not exported as functions at all — so the oracle bakes them through the
+reference's own `Recipe` interpreter instead, which is the code path the
+browser uses. All seven are pinned at every recipe prefix in
+`tests/fixtures/cyberchef-v11.3.0/flow.json` and replayed by `tests/flow.rs`.
+They were exempt from the corpus until that fixture existed.
+
+Note: `Fork` is still CyberChef-shaped (text split/join). A future native
+`flow.map` / `flow.join` over `Value::List` is the intended pure dataflow
+primitive without Unicode re-encoding.
+
+### Subsection differs where the reference indexes matched text
+
+Two places, both outside the pinned corpus.
+
+**A capture group is located by its offset, not by searching for its text.**
+With a capture group the region runs on the group rather than on the whole
+match. The reference finds the group by `m[0].indexOf(m[1])` — it searches the
+matched text for the *characters* of the group — so a pattern whose group text
+also occurs earlier in the match splices the wrong span. `/(?:ab)(a)/` against
+`aba` captures the second `a` and the reference rewrites the first. FerroSift
+uses the offset the engine reports. A group that did not participate has no
+offset and no text: FerroSift falls back to the whole match, where the
+reference substitutes `undefined` and operates on the six letters of that word.
+
+**A failing section under `ignore_errors` contributes nothing.** The reference
+splices the failing tranche's error *message* into the output. That is a
+debugging aid in a browser and would be an injection of unrelated English into
+the answer here, so a failing section contributes an empty string — which is
+what a failing `Fork` branch has always done in FerroSift, for the same reason.
+
+Both are pinned by `crates/ferrosift-operations/tests/conformance_flow.rs`.
 
 ### Magic-as-advisor (native only)
 

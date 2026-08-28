@@ -21,6 +21,13 @@
   ],
   "divergences": [
     {
+      "alias": "Subsection",
+      "domain": "a capture group whose text occurs earlier in the match, and a failing section under `ignore_errors`",
+      "reason": "the reference locates a capture group by searching the matched text for its characters rather than by its offset, and splices a failing section's error message into the output; the offset is used here, and a failing section contributes nothing exactly as a failing Fork branch does",
+      "section": "subsection-differs-where-the-reference-indexes-matched-text",
+      "pinned_by": "crates/ferrosift-operations/tests/conformance_flow.rs"
+    },
+    {
       "alias": "From Hex",
       "domain": "an odd number of hex digits, and text holding none",
       "reason": "the reference reads a trailing lone digit as a low nibble and decodes text with no digits to nothing; both are refused so a mistyped recipe complains instead of falling silent",

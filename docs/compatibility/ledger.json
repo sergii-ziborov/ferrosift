@@ -7,19 +7,19 @@
     ]
   },
   "totals": {
-    "operations": 250,
-    "aliased": 248,
-    "pinned_cases": 6730,
+    "operations": 254,
+    "aliased": 252,
+    "pinned_cases": 6867,
     "evidence": {
-      "differential_pinned": 240,
-      "pinned_elsewhere": 4,
+      "differential_pinned": 248,
+      "pinned_elsewhere": 0,
       "round_trip": 4,
       "none": 0,
       "not_applicable": 2
     },
     "parity": {
-      "exact": 227,
-      "documented_divergence": 17,
+      "exact": 230,
+      "documented_divergence": 18,
       "interoperable": 4,
       "native": 2
     }
@@ -1104,7 +1104,7 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 4,
+      "conformance_cases": 5,
       "evidence": "differential_pinned",
       "parity": "exact"
     },
@@ -1456,7 +1456,7 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 41,
+      "conformance_cases": 42,
       "evidence": "differential_pinned",
       "parity": "exact"
     },
@@ -1876,7 +1876,7 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 53,
+      "conformance_cases": 74,
       "evidence": "differential_pinned",
       "parity": "exact"
     },
@@ -2504,10 +2504,25 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 0,
-      "evidence": "pinned_elsewhere",
-      "parity": "exact",
-      "note": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
+      "conformance_cases": 2,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
+      "id": "flow.conditional_jump@1",
+      "display_name": "Conditional Jump",
+      "category": "Flow control",
+      "reference_alias": "Conditional Jump",
+      "reference_since": "11.3.0",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 7,
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "flow.fork@1",
@@ -2521,10 +2536,25 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 0,
-      "evidence": "pinned_elsewhere",
-      "parity": "exact",
-      "note": "flow-control map; pinned in conformance_fork.rs"
+      "conformance_cases": 7,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
+      "id": "flow.jump@1",
+      "display_name": "Jump",
+      "category": "Flow control",
+      "reference_alias": "Jump",
+      "reference_since": "11.3.0",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 11,
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "flow.label@1",
@@ -2538,10 +2568,9 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 0,
-      "evidence": "pinned_elsewhere",
-      "parity": "exact",
-      "note": "flow-control no-op the Node build omits; pinned in conformance_fork.rs"
+      "conformance_cases": 19,
+      "evidence": "differential_pinned",
+      "parity": "exact"
     },
     {
       "id": "flow.merge@1",
@@ -2555,10 +2584,45 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 0,
-      "evidence": "pinned_elsewhere",
-      "parity": "exact",
-      "note": "flow-control join; pinned in conformance_fork.rs"
+      "conformance_cases": 21,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
+      "id": "flow.return@1",
+      "display_name": "Return",
+      "category": "Flow control",
+      "reference_alias": "Return",
+      "reference_since": "11.3.0",
+      "feature": "core",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 5,
+      "evidence": "differential_pinned",
+      "parity": "exact"
+    },
+    {
+      "id": "flow.subsection@1",
+      "display_name": "Subsection",
+      "category": "Flow control",
+      "reference_alias": "Subsection",
+      "reference_since": "11.3.0",
+      "feature": "text",
+      "targets": [
+        "Native",
+        "Wasm32UnknownUnknown",
+        "Embedded"
+      ],
+      "conformance_cases": 16,
+      "evidence": "differential_pinned",
+      "parity": "documented_divergence",
+      "divergence": {
+        "domain": "a capture group whose text occurs earlier in the match, and a failing section under `ignore_errors`",
+        "reason": "the reference locates a capture group by searching the matched text for its characters rather than by its offset, and splices a failing section's error message into the output; the offset is used here, and a failing section contributes nothing exactly as a failing Fork branch does"
+      }
     },
     {
       "id": "hash.bcrypt.parse@1",
@@ -3772,7 +3836,7 @@
         "Wasm32UnknownUnknown",
         "Embedded"
       ],
-      "conformance_cases": 20,
+      "conformance_cases": 46,
       "evidence": "differential_pinned",
       "parity": "exact"
     },

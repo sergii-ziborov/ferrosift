@@ -122,8 +122,12 @@ impl Runner<'_> {
                 text: branch,
                 encoding: TextEncoding::Utf8,
             });
-            match self.execute_region(body_start, body_end, prepared) {
-                Ok(StepControl::Continue) => {
+            let outcome = self
+                .in_nested_recipe(|runner| runner.execute_region(body_start, body_end, prepared));
+            match outcome {
+                // A `Return` inside a branch ends that branch, not the run: the
+                // reference gives each branch its own recipe to return from.
+                Ok(StepControl::Continue | StepControl::Stop) => {
                     match value_as_text(mem::replace(&mut self.value, Value::Empty)) {
                         Ok(text) => {
                             self.account_bytes(text.len() as u64, location)?;
@@ -180,7 +184,7 @@ impl Runner<'_> {
         Ok(StepControl::Continue)
     }
 
-    fn emit_merge_events(
+    pub(super) fn emit_merge_events(
         &mut self,
         merge_index: usize,
         region_end: usize,
@@ -235,7 +239,9 @@ fn bool_arg(arguments: &ferrosift_model::Arguments, name: &str) -> bool {
     }
 }
 
-fn value_as_text(value: Value) -> Result<String, ExecutionFailure> {
+/// The reference's own string view of a dish: text as it stands, and bytes as
+/// one character per byte when they are not valid UTF-8.
+pub(super) fn value_as_text(value: Value) -> Result<String, ExecutionFailure> {
     match value {
         Value::Text(text) => Ok(text.text),
         Value::Bytes(bytes) => Ok(match String::from_utf8(bytes) {

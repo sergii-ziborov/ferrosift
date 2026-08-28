@@ -150,6 +150,51 @@ export async function loadChef(profile = selectedProfile()) {
     return chef;
 }
 
+/**
+ * Loads the pinned reference's own recipe interpreter.
+ *
+ * The Node API refuses flow control outright -- `chef.bake` answers
+ * "flowControl operations like Return are not currently allowed", and half of
+ * them are not even exported as functions. That is a restriction of the
+ * convenience wrapper, not of the reference: the browser runs these operations
+ * through `Recipe.execute`, and so does this. Same checkout, same commit, same
+ * code path the application uses.
+ *
+ * Returned as the two classes rather than a baking helper so the caller can see
+ * what it is holding, and so a future harness that needs a breakpoint or a
+ * partial run has somewhere to reach.
+ */
+export async function loadCore(profile = selectedProfile()) {
+    const checkout = verifyCheckout(profile);
+    const load = async name => {
+        const entry = path.join(checkout, "src/core", name);
+        const {default: value} = await import(pathToFileURL(entry).href);
+        return value;
+    };
+    return {Recipe: await load("Recipe.mjs"), Dish: await load("Dish.mjs")};
+}
+
+/**
+ * Runs one recipe through the reference's interpreter.
+ *
+ * Reports the output bytes and how far the recipe got. `Recipe.execute` returns
+ * the operation count when it completed and the index it stopped at when an
+ * operation failed, which is the same "stopped after" the rest of the fixtures
+ * record.
+ */
+export async function runRecipe({Recipe, Dish}, input, recipeConfig) {
+    const dish = new Dish();
+    if (input.kind === "bytes") {
+        dish.set(Array.from(Buffer.from(input.hex, "hex")), "byteArray");
+    } else {
+        dish.set(input.value, "string");
+    }
+    const recipe = new Recipe(recipeConfig);
+    const progress = await recipe.execute(dish, 0);
+    const bytes = await dish.get("byteArray");
+    return {hex: Buffer.from(bytes).toString("hex"), progress};
+}
+
 /** The dish type number the reference uses for HTML. */
 const HTML_DISH = 3;
 

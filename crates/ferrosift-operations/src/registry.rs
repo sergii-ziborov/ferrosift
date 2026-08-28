@@ -30,19 +30,19 @@ use crate::{
     FromBcd, FromBech32, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
     FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity, FromModhex,
     FromMorseCode, FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings,
-    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, Label,
+    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, Jump, Label,
     LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge,
     MicrosoftScriptDecoder, MurmurHash3, OffsetChecker, PadLines, ParityBit, ParseColourCode,
     ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes,
-    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Reverse, Ror13, Rot13, Rot13BruteForce,
-    Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split, StripHeader, StripHtmlTags,
-    StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes, TakeNthBytes, Tea,
-    ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBcd, ToBech32, ToBinary,
-    ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex, ToHexContent,
-    ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal, ToQuotedPrintable,
-    ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters, UnicodeTextFormat, Unique,
-    UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap, XkcdRandomNumber, Xor,
-    XpressDecompress, XpressHuffmanDecompress, Xxtea,
+    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Return, Reverse, Ror13, Rot13,
+    Rot13BruteForce, Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split, StripHeader,
+    StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes,
+    TakeNthBytes, Tea, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBcd, ToBech32,
+    ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
+    ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal,
+    ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters,
+    UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap,
+    XkcdRandomNumber, Xor, XpressDecompress, XpressHuffmanDecompress, Xxtea,
 };
 
 #[cfg(feature = "crypto")]
@@ -60,9 +60,9 @@ use crate::{
 use crate::{Bzip2Compress, Bzip2Decompress};
 #[cfg(feature = "text")]
 use crate::{
-    CountOccurrences, DefangIpAddresses, DefangUrl, ExtractDomains, ExtractEmailAddresses,
-    ExtractFilePaths, ExtractHashes, ExtractIpAddresses, ExtractMacAddresses, ExtractUrls, FangUrl,
-    FindReplace, Strings,
+    ConditionalJump, CountOccurrences, DefangIpAddresses, DefangUrl, ExtractDomains,
+    ExtractEmailAddresses, ExtractFilePaths, ExtractHashes, ExtractIpAddresses,
+    ExtractMacAddresses, ExtractUrls, FangUrl, FindReplace, Strings, Subsection,
 };
 #[cfg(feature = "bignum")]
 use crate::{
@@ -481,12 +481,22 @@ fn register_extractors(registry: &mut OperationRegistry) -> Result<(), RegistryE
     Ok(())
 }
 
-/// Splitting a recipe and rejoining it.
+/// Directing a recipe: splitting it, scoping it, looping it, ending it.
 fn register_flow(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(Fork::new())?;
     registry.register(Merge::new())?;
     registry.register(Comment::new())?;
     registry.register(Label::new())?;
+    registry.register(Jump::new())?;
+    registry.register(Return::new())?;
+
+    // The two that decide with a regular expression, which is where the engine
+    // is. The rest of flow control has no opinion about the value at all.
+    #[cfg(feature = "text")]
+    {
+        registry.register(ConditionalJump::new())?;
+        registry.register(Subsection::new())?;
+    }
     Ok(())
 }
 

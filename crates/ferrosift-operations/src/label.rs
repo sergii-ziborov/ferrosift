@@ -10,14 +10,16 @@ use crate::spec::{SpecDefinition, build};
 ///
 /// A marker rather than a transformation: the reference's own body is one
 /// line that returns the state it was given. Like [`crate::Comment`], it is
-/// marked flow control there and needs nothing from the executor here.
+/// marked flow control there and produces nothing the executor has to act on.
 ///
-/// What it names is a jump target, and `FerroSift` has no Jump. That does not
-/// make the operation incomplete: a recipe carrying a Label behaves exactly as
-/// the reference's does, because a Label with nothing jumping to it is a
-/// pass-through there too. What is missing is Jump, which is listed as missing
-/// -- and which would need a program counter the linear executor does not
-/// have, rather than another operation.
+/// What it names is a destination. [`crate::Jump`] and [`crate::ConditionalJump`]
+/// find it by the name in this argument, and the executor resumes at the step
+/// *after* it — so a Label with nothing jumping to it is still exactly a
+/// pass-through, which is what it was before either of them existed.
+///
+/// A disabled Label is still a destination. The reference's lookup does not ask
+/// whether the step is enabled, and landing on a step that is skipped changes
+/// nothing anyway.
 pub struct Label {
     spec: OperationSpec,
 }

@@ -65,7 +65,16 @@ function packMembership() {
     return membership;
 }
 
-/** Counts pinned cases per CyberChef alias across both fixtures. */
+/**
+ * Counts pinned cases per `CyberChef` alias across every fixture.
+ *
+ * Three files rather than two. `flow.json` is baked through the reference's own
+ * `Recipe` because its Node API refuses flow control outright, which is a fact
+ * about the wrapper and not about the evidence: it records the same reference's
+ * same bytes at every recipe prefix, and `tests/flow.rs` replays it the same
+ * way. Counting it here is what moved the seven flow-control operations out of
+ * the exemption list.
+ */
 function conformanceCases() {
     const fixtures = path.join(
         repoRoot,
@@ -73,7 +82,7 @@ function conformanceCases() {
         `cyberchef-v${REFERENCE.version}`,
     );
     const counts = new Map();
-    for (const file of ["differential.json", "corpus.json"]) {
+    for (const file of ["differential.json", "corpus.json", "flow.json"]) {
         const suite = JSON.parse(readFileSync(path.join(fixtures, file), "utf8"));
         for (const testCase of suite.cases) {
             for (const step of testCase.recipe) {
@@ -106,7 +115,7 @@ function addedCases() {
             "crates/ferrosift-operations/tests/fixtures",
             `cyberchef-v${version}`,
         );
-        for (const file of ["differential.overlay.json", "corpus.overlay.json"]) {
+        for (const file of ["differential.overlay.json", "corpus.overlay.json", "flow.overlay.json"]) {
             const overlay = JSON.parse(readFileSync(path.join(fixtures, file), "utf8"));
             for (const testCase of overlay.added) {
                 for (const step of testCase.recipe) {

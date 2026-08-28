@@ -97,7 +97,14 @@ fn resolve_steps<'registry>(
     let mut prepared = Vec::with_capacity(recipe.steps.len());
     for (index, step) in recipe.steps.iter().enumerate() {
         if step.disabled {
-            prepared.push(skeleton(step, None, Arguments::new()));
+            // The arguments are carried even though nothing will run them. A
+            // disabled `Label` is still a jump destination in the reference,
+            // whose search does not ask whether the step is enabled -- and a
+            // destination is found by name, so dropping the name here would
+            // silently turn a working recipe into one whose jump never fires.
+            // Nothing else reads them: the step is skipped before the arguments
+            // are resolved against any spec.
+            prepared.push(skeleton(step, None, step.arguments.clone()));
             continue;
         }
         let location = super::step_location(index, step);
@@ -161,12 +168,12 @@ fn check_type_flow(
             .expect("enabled steps are resolved");
         let location = prepared[index].location(index);
 
-        if flow::is_fork(&prepared[index].operation_id) {
+        if flow::opens_region(&prepared[index].operation_id) {
             if !output_satisfies_input(&previous_output, &operation.spec().input) {
                 return Err(mismatch(location));
             }
             let merge_index = find_merge_for_prepared(index, prepared).unwrap_or(prepared.len());
-            validate_fork_body(prepared, index + 1, merge_index)?;
+            validate_region_body(prepared, index + 1, merge_index)?;
             previous_output = ValueConstraint::Exact(ValueKind::Text);
             index = if merge_index < prepared.len() {
                 merge_index + 1
@@ -176,7 +183,7 @@ fn check_type_flow(
             continue;
         }
 
-        if flow::is_merge(&prepared[index].operation_id) {
+        if is_transparent(operation) {
             index += 1;
             continue;
         }
@@ -190,7 +197,38 @@ fn check_type_flow(
     Ok(())
 }
 
-fn validate_fork_body(
+/// Whether a step neither constrains what reaches it nor changes what leaves.
+///
+/// An operation declaring `Any` on both sides is the identity on the value:
+/// `Identity`, `Comment`, `Label`, `Merge`, and the three that only move the
+/// program counter. Carrying its declared output forward would say the next
+/// step might receive *any* kind, and `output_satisfies_input` demands that
+/// every one of them flow — including `Empty`, `Boolean` and `Files`, which
+/// have no byte form and so convert to nothing. A `Label` in front of a step
+/// that wants text was refused before the first invocation for that reason,
+/// and so was an `Identity`: a legal recipe rejected by a check that was
+/// asking an impossible question rather than a useful one.
+///
+/// Skipping the pair is an assumption about operations that declare `Any` and
+/// change the kind anyway. Nothing in the catalog does, and the per-step check
+/// in [`super::runner`] still refuses one at the step that received it — so the
+/// cost of being wrong here is a runtime failure instead of a preflight one,
+/// which is the right way round for a check whose purpose is to catch recipes
+/// that cannot work.
+fn is_transparent(operation: &dyn Operation) -> bool {
+    matches!(operation.spec().input, ValueConstraint::Any)
+        && matches!(operation.spec().output, ValueConstraint::Any)
+}
+
+/// Checks the body of a Fork or a Subsection, which both hand it text.
+///
+/// A Fork body sees one branch, a Subsection body sees one matched span, and
+/// both are strings. The check is the straight-line one: a backward jump inside
+/// the body can present a step with a kind the straight line did not, and that
+/// is caught at the step by [`super::runner`] rather than here. Preflight
+/// answers "does the recipe read", which is a question about the text of the
+/// recipe and not about which way a counter went.
+fn validate_region_body(
     prepared: &[PreparedStep<'_>],
     body_start: usize,
     merge_index: usize,
@@ -206,6 +244,9 @@ fn validate_fork_body(
             continue;
         }
         let body_op = step.operation.expect("enabled body steps are resolved");
+        if is_transparent(body_op) {
+            continue;
+        }
         if !output_satisfies_input(&body_prev, &body_op.spec().input) {
             return Err(mismatch(step.location(body_index)));
         }

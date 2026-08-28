@@ -14,10 +14,13 @@ mod fork;
 mod limits;
 mod preflight;
 mod runner;
+mod section;
 
 pub use error::{ExecutionError, ExecutionFailure};
 /// Flow-control operation identifiers used by the executor.
-pub use flow::{FORK_ID, MERGE_ID};
+pub use flow::{
+    CONDITIONAL_JUMP_ID, FORK_ID, JUMP_ID, LABEL_ID, MERGE_ID, RETURN_ID, SUBSECTION_ID,
+};
 
 /// Portable executor for validated linear recipes.
 pub struct Executor<'a> {

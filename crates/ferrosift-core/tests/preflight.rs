@@ -105,8 +105,21 @@ fn partially_overlapping_output_contract_fails_before_side_effects() {
     assert_eq!(second_calls.load(Ordering::SeqCst), 0);
 }
 
+/// A step that accepts and returns anything is transparent to the type check.
+///
+/// This used to be a preflight failure, and the failure was wrong. An `Any`
+/// output was carried forward as "the next step might receive any kind", and
+/// the check then demanded that *every* kind flow into that step — including
+/// `Empty`, `Boolean` and `Files`, which have no byte form and so convert to
+/// nothing. Nothing could ever follow such a step, which made `Identity`,
+/// `Comment` and `Label` unusable in front of a typed operation: a legal recipe
+/// refused before the first invocation by a question that could not be answered
+/// yes.
+///
+/// The pair is skipped instead. What the check gives up is an assumption it was
+/// never entitled to make; see the next test for what still catches it.
 #[test]
-fn unconstrained_output_requires_an_unconstrained_downstream_input() {
+fn an_unconstrained_step_is_transparent_to_the_type_check() {
     let first_calls = counter();
     let second_calls = counter();
     let first = operation("core.any@1", Behavior::Identity, first_calls.clone());
@@ -116,7 +129,7 @@ fn unconstrained_output_requires_an_unconstrained_downstream_input() {
     registry.register(first).expect("valid first operation");
     registry.register(second).expect("valid second operation");
 
-    let error = Executor::new(&registry)
+    let result = Executor::new(&registry)
         .execute(
             &recipe(vec![
                 step("any", "core.any@1"),
@@ -127,11 +140,48 @@ fn unconstrained_output_requires_an_unconstrained_downstream_input() {
             &NeverCancelled,
             CapabilitySet::new(),
         )
-        .expect_err("an unconstrained output cannot guarantee bytes");
+        .expect("a marker in front of a typed step must not refuse the recipe");
+
+    assert_eq!(result.value, Value::Bytes(vec![1]));
+    assert_eq!(first_calls.load(Ordering::SeqCst), 1);
+    assert_eq!(second_calls.load(Ordering::SeqCst), 1);
+}
+
+/// A transparent step that does change the kind fails at the step that got it.
+///
+/// The cost of the rule above, paid where it belongs. Preflight lets the recipe
+/// start because it cannot know; the per-step check refuses the value the
+/// moment it arrives, naming the step that could not take it — which is more
+/// than the old rule managed, because the old rule never let any recipe with a
+/// marker in it start at all.
+#[test]
+fn a_transparent_step_that_changes_the_kind_fails_at_the_step() {
+    let first_calls = counter();
+    let second_calls = counter();
+    let first = operation(
+        "core.any@1",
+        Behavior::Return(Value::Files(Vec::new())),
+        first_calls.clone(),
+    );
+    let mut second = operation("core.text@1", Behavior::Identity, second_calls.clone());
+    second.spec.input = ValueConstraint::Exact(ValueKind::Text);
+    let mut registry = OperationRegistry::new();
+    registry.register(first).expect("valid first operation");
+    registry.register(second).expect("valid second operation");
+
+    let error = Executor::new(&registry)
+        .execute(
+            &recipe(vec![step("any", "core.any@1"), step("text", "core.text@1")]),
+            Value::Bytes(vec![1]),
+            budget(),
+            &NeverCancelled,
+            CapabilitySet::new(),
+        )
+        .expect_err("a file list cannot reach a step that wants text");
 
     assert!(matches!(error.failure, ExecutionFailure::InputKindMismatch));
     assert_eq!(error.location.expect("step location").index, 1);
-    assert_eq!(first_calls.load(Ordering::SeqCst), 0);
+    assert_eq!(first_calls.load(Ordering::SeqCst), 1);
     assert_eq!(second_calls.load(Ordering::SeqCst), 0);
 }
 

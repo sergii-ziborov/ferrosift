@@ -4,7 +4,7 @@ use alloc::{boxed::Box, collections::BTreeMap, collections::BTreeSet, string::St
 
 use ferrosift_model::{Arguments, CompatibilityProfile, OperationId, OperationSpec, Value};
 
-use crate::{Operation, OperationContext, OperationError};
+use crate::{FlowDirective, Operation, OperationContext, OperationError};
 
 mod error;
 
@@ -13,6 +13,14 @@ pub use error::RegistryError;
 type ProfileAliases = BTreeMap<String, OperationId>;
 type AliasKey = (CompatibilityProfile, String);
 
+/// One catalog entry: the validated specification, and what implements it.
+///
+/// The specification is held here rather than fetched through the boxed
+/// implementation because it was validated at registration and must not change
+/// afterwards. Everything else is forwarded — and *every* method must be, or
+/// the trait's default answer silently replaces the implementation's. A `Jump`
+/// registered here reported "continue with the next step" for exactly that
+/// reason, because this wrapper had `execute` and nothing else.
 struct RegisteredOperation {
     spec: OperationSpec,
     implementation: Box<dyn Operation>,
@@ -30,6 +38,15 @@ impl Operation for RegisteredOperation {
         context: &mut OperationContext<'_>,
     ) -> Result<Value, OperationError> {
         self.implementation.execute(input, arguments, context)
+    }
+
+    fn direct(
+        &self,
+        value: &Value,
+        arguments: &Arguments,
+        context: &OperationContext<'_>,
+    ) -> Result<FlowDirective, OperationError> {
+        self.implementation.direct(value, arguments, context)
     }
 }
 

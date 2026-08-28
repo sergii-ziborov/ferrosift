@@ -14,7 +14,7 @@ them inferable from its name.
 
 | | |
 |---|---:|
-| Registered operations | 250 |
+| Registered operations | 254 |
 | Requiring any host capability | 0 |
 | Non-deterministic | 0 |
 | Carrying any review classification | 13 |
@@ -66,7 +66,7 @@ nothing.
 
 | Behaviour | Operations | What it means |
 |---|---:|---|
-| `input_proportional` | 217 | Output grows with input; the expansion ratio applies |
+| `input_proportional` | 221 | Output grows with input; the expansion ratio applies |
 | `reducer` | 31 | Output is a bounded summary; the ratio is not applied |
 | `input_independent` | 2 | Output comes from the arguments; the ratio is not applied |
 
@@ -81,7 +81,7 @@ holds whole — a disk image, a firmware dump — through
 [`Streamable`](https://docs.rs/ferrosift-core/latest/ferrosift_core/trait.Streamable.html).
 Everything else buffers, which is correct and merely needs the memory.
 
-**3 of 250**: `encoding.hex.encode@1`, `hash.sha2@1`, `logic.xor@1`.
+**3 of 254**: `encoding.hex.encode@1`, `hash.sha2@1`, `logic.xor@1`.
 
 The declaration and the implementation must agree, and
 `tests/streaming.rs` is what makes them: a streamed answer is compared
@@ -249,9 +249,13 @@ size someone tried by hand.
 | `extract.url@1` | — | — | `input_proportional` |
 | `filesystem.unix_permissions@1` | — | — | `input_proportional` |
 | `flow.comment@1` | — | — | `input_proportional` |
+| `flow.conditional_jump@1` | — | — | `input_proportional` |
 | `flow.fork@1` | — | — | `input_proportional` |
+| `flow.jump@1` | — | — | `input_proportional` |
 | `flow.label@1` | — | — | `input_proportional` |
 | `flow.merge@1` | — | — | `input_proportional` |
+| `flow.return@1` | — | — | `input_proportional` |
+| `flow.subsection@1` | — | — | `input_proportional` |
 | `hash.bcrypt.parse@1` | — | — | `input_proportional` |
 | `hash.blake2b@1` | — | — | `reducer` |
 | `hash.blake2s@1` | — | — | `reducer` |
