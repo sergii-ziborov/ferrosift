@@ -55,6 +55,11 @@ per-operation table and
 [docs/compatibility/cyberchef-v11.3.0.md](docs/compatibility/cyberchef-v11.3.0.md)
 for the argument behind each divergence.
 
+There is also a question this README cannot answer about itself, because
+everything on this page is one side of it: **should you use this instead of
+something else?** [docs/comparison.md](docs/comparison.md) is that page. It
+opens with the four cases where the answer is no.
+
 The value model reproduces the reference's *conversions*, not only its
 operations. A dish does not become bytes by printing itself: markup loses its
 tags and entities when a later step reads it, a number prints the way

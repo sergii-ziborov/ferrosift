@@ -5,6 +5,7 @@
 // silent refresh.
 import {readFileSync} from "node:fs";
 
+import {comparisonPath, renderComparison} from "./comparison.mjs";
 import {
     buildLedger,
     jsonPath,
@@ -24,12 +25,18 @@ function read(file) {
 
 const ledger = buildLedger();
 const readme = read(readmePath);
+// The comparison page is mostly prose with generated figures in it, so it is
+// re-rendered from its own current text the same way the README is. A number
+// that has stopped being true is the failure this catches; a rewritten
+// paragraph is not.
+const comparison = read(comparisonPath);
 
 let stale = false;
 for (const [file, expected] of [
     [jsonPath, `${JSON.stringify(ledger, null, 2)}\n`],
     [markdownPath, renderMarkdown(ledger)],
     [readmePath, readme === null ? null : renderReadme(ledger, readme)],
+    [comparisonPath, comparison === null ? null : renderComparison(comparison)],
 ]) {
     const actual = read(file);
     if (actual === null) {
