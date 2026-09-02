@@ -10,7 +10,33 @@ from `0.1.0` onward.
 
 ## [Unreleased]
 
-### Fixed — release blockers
+## [0.1.0-alpha.1] — 2026-09-02
+
+The first published release, and a pre-release on purpose. The compatibility
+claim is measured and pinned; what is not yet settled is the API a caller
+programs against, which is what `alpha` says in the one place a dependency
+resolver reads.
+
+### The claim
+
+| | |
+|---:|---|
+| **254** | registered operations |
+| **252** | with a CyberChef alias — 50.0% of the current 11.4.0 catalog |
+| **248** | differential-pinned against a reference checkout |
+| **230** | exact parity |
+| **6,867** | pinned cases, replayed at every recipe prefix |
+| **0** | aliased with no evidence |
+
+Eighteen operations carry a *documented divergence*: byte-pinned across their
+own corpus and differing over a stated domain outside it, each listed with its
+domain and reason in `docs/compatibility/divergences.json`. Four are
+compressors whose output is one valid encoding among several, checked through
+the inverse that is pinned. The last number is a build failure rather than a
+footnote — a coverage gate refuses an alias with neither corpus cases nor a
+documented exemption.
+
+### Fixed before release
 
 - **CI is green again.** Three separate breaks, none of them in the library.
   `cargo fmt --all` does not see a crate outside the workspace, so an `xtask`
@@ -119,33 +145,7 @@ from `0.1.0` onward.
   with a default silently answered for the operation — which is how a
   registered `Jump` reported "continue with the next step".
 
-## [0.1.0-alpha.1]
-
-The first published release, and a pre-release on purpose. The compatibility
-claim is measured and pinned; what is not yet settled is the API a caller
-programs against, which is what `alpha` says in the one place a dependency
-resolver reads.
-
-### The claim
-
-| | |
-|---:|---|
-| **250** | registered operations |
-| **248** | with a CyberChef alias |
-| **240** | differential-pinned against a reference checkout |
-| **227** | exact parity |
-| **6,730** | pinned cases, replayed at every recipe prefix |
-| **0** | aliased with no evidence |
-
-Seventeen operations carry a *documented divergence*: byte-pinned across their
-own corpus and differing over a stated domain outside it, each listed with its
-domain and reason in `docs/compatibility/divergences.json`. Four are
-compressors whose output is one valid encoding among several, checked through
-the inverse that is pinned. The last number is a build failure rather than a
-footnote — a coverage gate refuses an alias with neither corpus cases nor a
-documented exemption.
-
-### Added
+### What the release contains
 
 - **The operation catalog** (`ferrosift-operations`), divided into feature
   packs by what an operation *needs* rather than by what it does. Identity,
@@ -167,8 +167,9 @@ documented exemption.
   `toFixed`, and a structure through `JSON.stringify(value, null, 4)`.
 - **Explicit execution budgets** covering input, output, expansion ratio,
   steps, branches, flow depth, invocations, transient allocation and work
-  units — with complete preflight, so an invalid later step cannot leave a
-  partial effect behind.
+  units — with preflight before the first invocation, so an invalid later step
+  cannot leave a partial effect behind. See `docs/executor.md` for exactly
+  what each phase settles.
 - **The hex-pattern engine** (`ferrosift-pattern`): a `.hexpat` parser and
   evaluator that reports the exact offset and size of every field, with no
   third-party dependency at all. Measured against ImHex's own `plcli` from a
@@ -199,6 +200,10 @@ it says.
   reference still has the names the catalog claims, and whether regenerating
   the whole corpus from both checkouts reproduces the committed fixtures byte
   for byte.
+- Streaming for three operations, which is a beginning rather than a feature:
+  a digest of a disk image and an XOR over a memory capture read a chunk at a
+  time. Every streamed answer is checked against the buffered one at eight
+  chunk sizes.
 - Ten fuzz targets, four of which assert a property rather than only looking
   for a panic, with committed seed corpora where a mutator would not otherwise
   reach the interesting inputs.
@@ -207,10 +212,11 @@ it says.
 
 ### Known limitations
 
-- 256 of CyberChef 11.3.0's 501 operations are not implemented.
-  `docs/compatibility/not-implemented.md` groups them by what each is waiting
-  on and says why an equivalent Rust library is not a substitute for the one
-  the reference used.
+- 252 of CyberChef 11.3.0's 501 operations are not implemented, and 252 of
+  11.4.0's 504. `docs/compatibility/not-implemented.md` groups them by what
+  actually blocks each -- an external library, a rendering rather than bytes, a
+  random source, the network -- and says why an equivalent Rust library is not
+  a substitute for the one the reference used.
 - The pattern language is a documented *subset* of upstream's. The corpus
   covers constructs rather than patterns people wrote;
   `docs/pattern-language-subset.md` says what is missing.

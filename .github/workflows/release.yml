@@ -148,6 +148,24 @@ jobs:
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
+      # Cut from the changelog rather than written twice. The section ends at
+      # the next release heading or at the link definitions, whichever comes
+      # first — the newest release is the last section in the file, so stopping
+      # only at `## [` would put the link block in the notes.
+      - name: Cut the release notes
+        run: |
+          awk -v heading="## [${{ needs.verify.outputs.version }}]" '
+            index($0, heading) == 1 { inside = 1; next }
+            inside && /^## \[/ { exit }
+            inside && /^\[[^]]+\]: / { exit }
+            inside { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "CHANGELOG.md has no section for ${{ needs.verify.outputs.version }}" >&2
+            exit 1
+          fi
+          head -20 release-notes.md
+
       - name: Create the GitHub release
         if: github.ref_type == 'tag'
         env:
@@ -155,6 +173,6 @@ jobs:
         run: |
           gh release create "${GITHUB_REF_NAME}" \
             --title "${GITHUB_REF_NAME}" \
-            --notes-file <(sed -n "/^## \[${{ needs.verify.outputs.version }}\]/,/^## \[/p" CHANGELOG.md | sed '$d') \
+            --notes-file release-notes.md \
             --prerelease \
             build-attestation.json
