@@ -1,4 +1,4 @@
-//! `CyberChef` 11.3 compatibility limits.
+//! `CyberChef` interchange limits, shared by every supported profile.
 
 /// Maximum accepted serialized `CyberChef` recipe size.
 pub const MAX_RECIPE_BYTES: usize = 1_048_576;

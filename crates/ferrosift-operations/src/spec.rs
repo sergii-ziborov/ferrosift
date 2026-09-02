@@ -232,17 +232,17 @@ pub(crate) fn build_uniform(kind: ValueKind, definition: UniformSpec) -> Operati
 #[must_use]
 pub(crate) fn manifest() -> EvidenceManifest {
     EvidenceManifest {
-        provenance: passed("NOTICE"),
-        license: passed("LICENSE"),
-        conformance: passed("docs/compatibility/ledger.md"),
-        benchmark: passed("docs/benchmarks.md"),
+        provenance: enforced("NOTICE"),
+        license: enforced("LICENSE"),
+        conformance: enforced("docs/compatibility/ledger.md"),
+        benchmark: enforced("docs/benchmarks.md"),
         target_checks: BTreeMap::from([
-            (Target::Native, passed(".github/workflows/ci.yml")),
+            (Target::Native, enforced(".github/workflows/ci.yml")),
             (
                 Target::Wasm32UnknownUnknown,
-                passed(".github/workflows/ci.yml"),
+                enforced(".github/workflows/ci.yml"),
             ),
-            (Target::Embedded, passed(".github/workflows/ci.yml")),
+            (Target::Embedded, enforced(".github/workflows/ci.yml")),
         ]),
     }
 }
@@ -284,6 +284,6 @@ fn targets(portability: Portability) -> TargetSet {
     targets
 }
 
-fn passed(reference: &str) -> EvidenceRecord {
-    EvidenceRecord::passed(reference)
+fn enforced(reference: &str) -> EvidenceRecord {
+    EvidenceRecord::enforced(reference)
 }

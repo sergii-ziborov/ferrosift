@@ -1,8 +1,9 @@
 # FerroSift
 
-CyberChef-compatible transformations and binary patterns in a `no_std`-first
-Rust library. Native, `wasm32-unknown-unknown`, and bare metal, with no
-JavaScript runtime anywhere in the build.
+Reference-verified CyberChef transformations and ImHex-style binary patterns,
+under explicit resource limits, anywhere Rust runs. Native,
+`wasm32-unknown-unknown`, and bare metal, with no JavaScript runtime anywhere
+in the build.
 
 ```toml
 ferrosift = "0.1.0-alpha.1"
@@ -11,11 +12,22 @@ ferrosift = "0.1.0-alpha.1"
 An alpha because the API is not settled, not because the claim below is. See
 the [changelog](CHANGELOG.md) for what the first release contains.
 
-**Broad by design. Compatible by evidence.** Nothing here claims compatibility
-it has not measured: every claim is against a pinned CyberChef v11.3.0 or
-v11.4.0 checkout, every corpus case is replayed against both, and adding the
+Three words in that first sentence are doing the work, and each is checkable.
+
+**Reference-verified.** Nothing here claims compatibility it has not measured.
+Every claim is against a pinned CyberChef v11.3.0 or v11.4.0 checkout, every
+corpus case is replayed against both at every recipe prefix, and adding the
 newer profile did not retire the older — see
 [reference profiles](docs/compatibility/profiles.md).
+
+**Under explicit resource limits.** Every run carries ceilings on input,
+output, expansion, steps, branches, flow depth, invocations, transient
+allocation and work, and a recipe that cannot work is refused before the first
+operation runs. [docs/executor.md](docs/executor.md) says exactly what is
+settled before execution and what is not.
+
+**Anywhere Rust runs.** The catalog is `no_std` + `alloc` and forbids `unsafe`,
+and CI builds it for two bare-metal targets as well as for WASM and native.
 
 And what is *not* exact is counted rather than glossed. The table below reports
 two things a single word used to answer for: how much was checked, and how much
@@ -114,8 +126,13 @@ Rust library is not a substitute for the one the reference used.
 - Validated operation contracts covering input/output values, defaults,
   execution targets, capabilities, aliases, classifications, and evidence.
 - Deterministic operation registration and exact profile-scoped alias lookup.
-- Complete preflight before execution, preventing partial side effects when a
-  later step is invalid.
+- Preflight before execution, so an invalid later step cannot leave a partial
+  effect behind. Structure, operation lookup, capability grants, arguments and
+  budgets are settled before the first invocation, and so is the type flow
+  along the recipe as written. What preflight cannot settle is where a jump
+  sends the counter: a backward jump can present a step with a kind the
+  straight-line reading never saw, and that one is refused at the step that
+  received it. See [the executor's own note](docs/executor.md).
 - Explicit input, output, and expansion budgets.
 - Cooperative cancellation and preflight verification of declared capability
   grants; the portable core exposes no built-in host or network handles.
@@ -172,12 +189,14 @@ against the fastest available competitor rather than a convenient one, and
 ships the raw estimates so a reader can recompute every ratio. `cargo xtask
 bench all` reproduces it.
 
-It is faster than the reference it ports — at least 12× on every operation and
-size measured, and usually far more. That is the weaker of the two findings
-and the one worth less: beating a JavaScript implementation with a Rust one is
-the least a port should manage. Every figure there is a floor, computed by
-reading both sides as unfavourably as the data allows, and `cargo xtask bench
-reference` reproduces it against the pinned checkout.
+It is faster than the reference it ports, by more than an order of magnitude on
+every operation and size measured — [docs/comparison.md](docs/comparison.md)
+carries the range, generated from the same data rather than typed here. That is
+the weaker of the two findings and the one worth less: beating a JavaScript
+implementation with a Rust one is the least a port should manage. Every figure
+there is a floor, computed by reading both sides as unfavourably as the data
+allows, and `cargo xtask bench reference` reproduces it against the pinned
+checkout.
 
 Precision came first and it cost speed: the ports iterate characters where
 bytes would do, and carry validation the specialist crates do not. Those are
@@ -266,7 +285,7 @@ ferrosift = { version = "...", default-features = false, features = ["pattern"] 
 | `ferrosift-model` | Portable recipe IR, values, specs, schema version |
 | `ferrosift-core` | Operation trait, registry, executor, budgets, traces |
 | `ferrosift-operations` | Built-in pure-Rust operations and default registry |
-| `ferrosift-compat` | CyberChef 11.3 JSON import/export |
+| `ferrosift-compat` | CyberChef 11.3 and 11.4 JSON import/export |
 | `ferrosift-pattern` | Hex-pattern lexer, parser, and bounded evaluator |
 | `ferrosift` | Facade: engine, pipeline builder, unified error |
 | `ferrosift-cli` | Native CLI binary `ferrosift` |

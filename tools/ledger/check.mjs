@@ -6,6 +6,7 @@
 import {readFileSync} from "node:fs";
 
 import {comparisonPath, renderComparison} from "./comparison.mjs";
+import {profilesPath, renderProfiles} from "./profiles.mjs";
 import {
     buildLedger,
     jsonPath,
@@ -30,6 +31,7 @@ const readme = read(readmePath);
 // that has stopped being true is the failure this catches; a rewritten
 // paragraph is not.
 const comparison = read(comparisonPath);
+const profiles = read(profilesPath);
 
 let stale = false;
 for (const [file, expected] of [
@@ -37,6 +39,7 @@ for (const [file, expected] of [
     [markdownPath, renderMarkdown(ledger)],
     [readmePath, readme === null ? null : renderReadme(ledger, readme)],
     [comparisonPath, comparison === null ? null : renderComparison(comparison)],
+    [profilesPath, profiles === null ? null : renderProfiles(profiles)],
 ]) {
     const actual = read(file);
     if (actual === null) {

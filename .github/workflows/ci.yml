@@ -48,41 +48,51 @@ jobs:
 
   # Feature packs are a public contract, so every pack is built on its own.
   # An --all-features build hides a pack that forgets to declare what it needs.
+  #
+  # Each entry names the features for *each* crate separately, because the two
+  # do not have the same feature space: `pattern` belongs to the facade and the
+  # catalog has never heard of it. One shared string for both meant the
+  # difference had to be patched back out with `if:` conditions on the step —
+  # `portable-full,pattern` was special-cased and `full,pattern` was not, so
+  # that entry passed the catalog a feature it does not have and failed. An
+  # explicit mapping removes the whole class rather than the one instance.
+  #
+  # `operations: skip` is for the entries with nothing to check on that side.
   features:
-    name: Feature pack (${{ matrix.features }})
+    name: Feature pack (${{ matrix.name }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        features:
-          - ""
-          - pattern
-          - hash
-          - crypto
-          - compression-deflate
-          - compression-bzip2
-          - compression
-          - text
-          - analysis
-          - arithmetic
-          - bignum
-          - portable-full
-          - portable-full,pattern
-          - full
-          - full,pattern
+        include:
+          - {name: none, facade: "", operations: ""}
+          - {name: pattern, facade: pattern, operations: skip}
+          - {name: hash, facade: hash, operations: hash}
+          - {name: crypto, facade: crypto, operations: crypto}
+          - {name: compression-deflate, facade: compression-deflate, operations: compression-deflate}
+          - {name: compression-bzip2, facade: compression-bzip2, operations: compression-bzip2}
+          - {name: compression, facade: compression, operations: compression}
+          - {name: text, facade: text, operations: text}
+          - {name: analysis, facade: analysis, operations: analysis}
+          - {name: arithmetic, facade: arithmetic, operations: arithmetic}
+          - {name: bignum, facade: bignum, operations: bignum}
+          - {name: portable-full, facade: portable-full, operations: portable-full}
+          - {name: portable-full+pattern, facade: "portable-full,pattern", operations: portable-full}
+          - {name: full, facade: full, operations: full}
+          - {name: full+pattern, facade: "full,pattern", operations: full}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check the facade
         run: >
           cargo check -p ferrosift --no-default-features
-          ${{ matrix.features && format('--features {0}', matrix.features) || '' }}
+          ${{ matrix.facade && format('--features {0}', matrix.facade) || '' }}
         env:
           RUSTFLAGS: -D warnings
       - name: Check the operation catalog
-        if: matrix.features != 'pattern'
+        if: matrix.operations != 'skip'
         run: >
           cargo check -p ferrosift-operations --no-default-features
-          ${{ matrix.features && matrix.features != 'portable-full,pattern' && format('--features {0}', matrix.features) || '' }}
+          ${{ matrix.operations && format('--features {0}', matrix.operations) || '' }}
         env:
           RUSTFLAGS: -D warnings
 
@@ -217,14 +227,22 @@ jobs:
       # worth something — a mutator starting from nothing does not reach an
       # exponent extreme in that time, and starting from the seeds it begins
       # there.
+      #
+      # The corpus directory is created first. libFuzzer refuses to start when
+      # the *first* directory it is given does not exist — "the required
+      # directory corpus/bignumber does not exist" — and `corpus/` is generated
+      # output, so it is absent on a fresh checkout and on a cache miss. The
+      # build step passed and the run reported a failure that looked like a
+      # finding; it was a target that never started.
       - name: Smoke each target
         run: |
           for target in $(cargo +nightly fuzz list); do
             echo "::group::$target"
+            mkdir -p "corpus/$target"
             if [ -d "seeds/$target" ]; then
               cargo +nightly fuzz run "$target" "corpus/$target" "seeds/$target" -- -runs=2000 -max_total_time=20
             else
-              cargo +nightly fuzz run "$target" -- -runs=2000 -max_total_time=20
+              cargo +nightly fuzz run "$target" "corpus/$target" -- -runs=2000 -max_total_time=20
             fi
             echo "::endgroup::"
           done

@@ -71,7 +71,7 @@ impl OperationRegistry {
         Self {
             operations: BTreeMap::new(),
             aliases: BTreeMap::new(),
-            evidence: EvidenceManifest::unverified(),
+            evidence: EvidenceManifest::unbacked(),
         }
     }
 

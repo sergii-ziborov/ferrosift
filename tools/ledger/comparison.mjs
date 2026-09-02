@@ -38,11 +38,17 @@ const OTHERS = {
         operations: 478,
         source: "its own README",
     },
+    // The *current* release, not the ledger's baseline. Someone reading this
+    // page is asking how much of CyberChef they get if they install it today,
+    // and answering with the older catalog would understate the denominator and
+    // flatter the numerator at the same time. The ledger keeps 11.3.0 as its
+    // baseline because that is how the fixtures are stored; the two questions
+    // are different and get different numbers.
     cyberchef: {
-        name: "CyberChef 11.3.0",
-        revision: "d24ba1af",
-        operations: 501,
-        source: "`cargo xtask cyberchef gap`",
+        name: "CyberChef 11.4.0",
+        revision: "49d1a563",
+        operations: 504,
+        source: "`cargo xtask cyberchef gap --profile 11.4.0`",
     },
 };
 
@@ -64,6 +70,7 @@ function ratio(value) {
 /** The catalog sizes, side by side, each with where its number came from. */
 export function renderScale(ledger) {
     const {totals} = ledger;
+    const share = ((totals.aliased / OTHERS.cyberchef.operations) * 100).toFixed(1);
     return [
         "| Project | Operations | Counted from |",
         "|---|---:|---|",
@@ -73,24 +80,12 @@ export function renderScale(ledger) {
         `| ${OTHERS.cyberchef.name} | ${OTHERS.cyberchef.operations} | `
             + `${OTHERS.cyberchef.source}, at \`${OTHERS.cyberchef.revision}\` |`,
         "",
-        `Of the reference's ${OTHERS.cyberchef.operations}, FerroSift has `
-            + `${totals.aliased - nativeOnly(ledger)}; `
-            + "[not-implemented.md](compatibility/not-implemented.md) owns that number and "
-            + "groups the rest by what each is waiting on.",
+        `${totals.aliased} of FerroSift's ${totals.operations} answer to a `
+            + `${OTHERS.cyberchef.name} name — **${share}% of the current reference catalog**. `
+            + "The other two are its own and have no reference name to claim. "
+            + "[not-implemented.md](compatibility/not-implemented.md) groups everything "
+            + "missing by what actually blocks it.",
     ];
-}
-
-/**
- * Operations with a reference name the baseline profile never had.
- *
- * The alias total counts every reference name the catalog claims, including
- * three the newer profile introduced. Coverage of 11.3.0's catalog is the total
- * minus those, which is the same subtraction `not-implemented.mjs` makes.
- */
-function nativeOnly(ledger) {
-    return ledger.operations.filter(
-        operation => operation.reference_alias && operation.reference_since !== ledger.reference.version,
-    ).length;
 }
 
 /** The range of the floors measured against the reference. */

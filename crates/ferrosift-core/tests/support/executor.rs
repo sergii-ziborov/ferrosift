@@ -123,14 +123,14 @@ pub fn spec(id: &str) -> OperationSpec {
 /// once is both shorter and truer than saying it two hundred times.
 pub fn manifest() -> EvidenceManifest {
     EvidenceManifest {
-        provenance: verified("fixtures/provenance"),
-        license: verified("fixtures/license"),
-        conformance: verified("fixtures/conformance"),
+        provenance: enforced("fixtures/provenance"),
+        license: enforced("fixtures/license"),
+        conformance: enforced("fixtures/conformance"),
         benchmark: EvidenceRecord {
             state: EvidenceState::Planned,
             reference: None,
         },
-        target_checks: BTreeMap::from([(Target::Native, verified("fixtures/native"))]),
+        target_checks: BTreeMap::from([(Target::Native, enforced("fixtures/native"))]),
     }
 }
 
@@ -143,9 +143,9 @@ pub fn registry() -> OperationRegistry {
     registry
 }
 
-fn verified(reference: &str) -> EvidenceRecord {
+fn enforced(reference: &str) -> EvidenceRecord {
     EvidenceRecord {
-        state: EvidenceState::Passed,
+        state: EvidenceState::Enforced,
         reference: Some(reference.into()),
     }
 }

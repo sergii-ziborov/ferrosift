@@ -52,9 +52,12 @@ fn the_catalog_publishes_the_evidence_it_stands_on() {
         serde_json::from_slice(&output.stdout).expect("catalog must be JSON");
     let evidence = &document["evidence"];
     for dimension in ["provenance", "license", "conformance", "benchmark"] {
+        // `enforced`, not `passed`. The manifest is committed source and says
+        // which gate a claim is held to; whether a particular run cleared it is
+        // a fact about that run and lives in the repository's Actions history.
         assert_eq!(
-            evidence[dimension]["state"], "passed",
-            "{dimension} must be backed by something"
+            evidence[dimension]["state"], "enforced",
+            "{dimension} must name the gate it is held to"
         );
         assert!(
             evidence[dimension]["reference"].is_string(),

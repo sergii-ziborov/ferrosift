@@ -10,6 +10,39 @@ from `0.1.0` onward.
 
 ## [Unreleased]
 
+### Fixed — release blockers
+
+- **CI is green again.** Three separate breaks, none of them in the library.
+  `cargo fmt --all` does not see a crate outside the workspace, so an `xtask`
+  formatting break reached the default branch. The feature matrix passed one
+  string to two crates with different feature spaces, so `full,pattern` handed
+  the catalog a feature it does not have. And the fuzz smoke run named a corpus
+  directory that a fresh checkout does not have, so libFuzzer refused to start
+  and the failure read like a crash in `bignumber` — the target never ran.
+- **`cargo xtask ci check`** runs every cheap deterministic gate locally,
+  including the three manifests outside the workspace. All three failures above
+  are the kind it catches, and the first two of them existed because there was
+  no way to ask.
+- **Evidence says `enforced`, not `passed`.** The manifest is committed source
+  and names the gate a claim is held to; it cannot know whether the build
+  reading it passed anything, and a working tree with a red CI run was
+  producing a manifest that said every check had passed. `EvidenceState::Failed`
+  is gone with it: a static policy has no failed state.
+- **The preflight claim is accurate.** The README said "complete preflight",
+  which stopped being true when `Jump` arrived: a backward jump can present a
+  step with a kind the straight-line reading never saw, and that is refused at
+  the step rather than before the run. [docs/executor.md](docs/executor.md) is
+  the new home for exactly what each phase settles, and for the control-flow
+  analysis that would close the gap.
+- Stale documentation that outlived the code it described: the compat crate is
+  no longer 11.3-only in its own module docs, `docs/compatibility/profiles.md`
+  no longer states case counts from three revisions ago (they are generated
+  now, and a stale one fails), and the model's `Object` is documented as the
+  insertion-ordered value it became rather than the sorted map it was.
+- `docs/comparison.md` counts against **CyberChef 11.4.0**, the current
+  release, rather than the ledger's storage baseline. A reader asking how much
+  of CyberChef they get today was being answered about an older catalog.
+
 ### Added
 
 - **Flow control is complete**, and the executor has a program counter rather

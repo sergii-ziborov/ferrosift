@@ -9,7 +9,12 @@ pub fn run(arguments: &[&str]) -> ExitCode {
     match arguments {
         // `comparison.mjs` runs after `generate.mjs`, because it reads the
         // ledger that one writes.
-        ["generate"] => scripts(&[&["generate.mjs"], &["safety.mjs"], &["comparison.mjs"]]),
+        ["generate"] => scripts(&[
+            &["generate.mjs"],
+            &["safety.mjs"],
+            &["comparison.mjs"],
+            &["profiles.mjs"],
+        ]),
         // Three checks rather than one. The first regenerates the ledger and
         // refuses a stale copy; the second holds the not-implemented page to
         // the same standard, which nothing did until two operations stayed

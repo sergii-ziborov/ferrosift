@@ -142,7 +142,10 @@ fuzz_target!(|data: &[u8]| {
             &bignumber::plus(&right, &left),
         )
     {
-        assert!(same, "addition of {first:?} and {second:?} depends on order");
+        assert!(
+            same,
+            "addition of {first:?} and {second:?} depends on order"
+        );
     }
     if let Some(same) = agree(
         &bignumber::times(&left, &right),

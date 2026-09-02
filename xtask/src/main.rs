@@ -8,6 +8,7 @@
 use std::process::{Command, ExitCode};
 
 mod bench;
+mod ci;
 mod coverage;
 mod cyberchef;
 mod encoding;
@@ -19,6 +20,7 @@ const USAGE: &str = "\
 FerroSift development tasks
 
 Usage:
+  cargo xtask ci check             Run every cheap gate CI runs, locally
   cargo xtask cyberchef setup      Clone the pinned reference checkout
   cargo xtask cyberchef generate   Regenerate the pinned fixtures
   cargo xtask cyberchef verify     Check the pin, then replay the fixtures
@@ -41,6 +43,7 @@ fn main() -> ExitCode {
     let parts: Vec<&str> = arguments.iter().map(String::as_str).collect();
     match parts.as_slice() {
         ["bench", rest @ ..] => bench::run(rest),
+        ["ci", rest @ ..] => ci::run(rest),
         ["coverage", rest @ ..] => coverage::run(rest),
         ["cyberchef", rest @ ..] => cyberchef::run(rest),
         ["encoding", rest @ ..] => encoding::run(rest),

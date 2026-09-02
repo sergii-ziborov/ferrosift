@@ -55,6 +55,14 @@ jobs:
         run: rustup toolchain install nightly --profile minimal
       - name: Install cargo-fuzz
         run: cargo install cargo-fuzz --locked
+      # Recorded rather than pinned. A dated nightly would be reproducible and
+      # would also break the night it is withdrawn; printing the version puts
+      # the exact compiler in the log beside the result, which is what a
+      # reader of a crash actually needs.
+      - name: Record the toolchain
+        run: |
+          rustc +nightly --version
+          cargo +nightly fuzz --version
 
       # The corpus libFuzzer writes to is not committed — it is a cache of
       # whatever reached new coverage, machine-generated and unbounded. Caching
@@ -72,22 +80,43 @@ jobs:
       # an exponent at the edge of the range — and a mutator starting from
       # nothing spends its night finding the front door instead of what is
       # behind it.
+      #
+      # The corpus directory is created first, because a cache *miss* does not
+      # create one and libFuzzer refuses to start when the first directory it is
+      # given is absent. The night would then report a failure that reads like a
+      # finding and is a target that never ran.
       - name: Search
         run: |
           seconds="${{ github.event.inputs.seconds || '600' }}"
+          mkdir -p "corpus/${{ matrix.target }}"
           if [ -d "seeds/${{ matrix.target }}" ]; then
             cargo +nightly fuzz run "${{ matrix.target }}" \
               "corpus/${{ matrix.target }}" "seeds/${{ matrix.target }}" \
-              -- -max_total_time="$seconds" -print_final_stats=1
+              -- -max_total_time="$seconds" -print_final_stats=1 2>&1 | tee "run-${{ matrix.target }}.log"
           else
             cargo +nightly fuzz run "${{ matrix.target }}" \
-              -- -max_total_time="$seconds" -print_final_stats=1
+              "corpus/${{ matrix.target }}" \
+              -- -max_total_time="$seconds" -print_final_stats=1 2>&1 | tee "run-${{ matrix.target }}.log"
           fi
+          exit "${PIPESTATUS[0]}"
         working-directory: fuzz
 
-      # Only on failure, and it is the whole point of running unattended: a
-      # crash nobody can reproduce is a crash that comes back. `fuzz/README.md`
-      # says what to do with one — fix it, then pin it as a case.
+      # Kept whatever happened, because the two failures that have actually
+      # occurred here look nothing alike and only one leaves an artifact. A
+      # crash leaves the input; a target that could not start leaves a line of
+      # libFuzzer output and an empty artifacts directory, and a run that
+      # uploaded only on a crash left nothing at all to read.
+      - name: Keep the run log
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: fuzz-log-${{ matrix.target }}
+          path: fuzz/run-${{ matrix.target }}.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      # A crash nobody can reproduce is a crash that comes back.
+      # `fuzz/README.md` says what to do with one — fix it, then pin it as a case.
       - name: Keep the input that crashed
         if: failure()
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0

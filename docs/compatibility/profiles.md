@@ -1,8 +1,10 @@
 # Reference profiles
 
 FerroSift's compatibility claim is against a *version*, not against a project.
+<!-- profiles:headline:begin -->
 "Compatible with CyberChef" is not a statement anyone can check; "produces
-CyberChef 11.3.0's exact output bytes for these 2544 recipes" is.
+CyberChef 11.3.0's exact output bytes for these 6,181 recipes" is.
+<!-- profiles:headline:end -->
 
 Two versions are currently replayed:
 
@@ -17,21 +19,36 @@ replaying 11.3 and `tests/profiles.rs` replays 11.4 alongside it.
 
 ## Why 11.4 is stored as a delta
 
-11.4 changed nothing this corpus can see. All 2544 corpus cases and all 65
-differential cases produce byte-identical output under both references.
+<!-- profiles:delta:begin -->
+11.4.0 changed nothing this corpus can see: every one of the
+6,341 cases it was replayed against produces byte-identical output under
+both references. What it contributed is cases that could not have existed
+in 11.3.0 at all, because the operations they exercise were introduced later.
+
+| Fixture | Baseline | Compared | Changed | Added | Removed |
+|---|---:|---:|---:|---:|---:|
+| `corpus` | 6,063 | 6,223 | 0 | 160 | 0 |
+| `differential` | 79 | 79 | 0 | 0 | 0 |
+| `flow` | 39 | 39 | 0 | 0 | 0 |
+
+0 changed and 0 removed, across every fixture. The 160 added are
+the ones the baseline reference refuses to bake at all.
+<!-- profiles:delta:end -->
 
 Committing that as a second `corpus.json` would have added a megabyte of bytes
 identical to the megabyte already there, and a third profile would add another.
 So a non-baseline profile is stored as an overlay recording only what differs:
 
+<!-- profiles:shape:begin -->
 ```json
 {
   "reference": {"name": "CyberChef", "version": "11.4.0", "commit": "49d1a56…"},
   "baseline":  {"version": "11.3.0", "commit": "d24ba1a…"},
-  "compared_cases": 2544,
-  "changed": [], "added": [], "removed": []
+  "compared_cases": 6223,
+  "changed": [], "added": [ … ], "removed": []
 }
 ```
+<!-- profiles:shape:end -->
 
 This is a storage decision, not an evidential one, and the difference matters.
 The test does not assert "11.4 equals 11.3, therefore FerroSift matches 11.4".

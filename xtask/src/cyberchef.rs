@@ -201,7 +201,11 @@ fn verify(profile: &Profile) -> ExitCode {
 
 /// Regenerates both pinned fixtures from the reference.
 fn generate(profile: &Profile) -> ExitCode {
-    for script in ["generate-suite.mjs", "generate-corpus.mjs", "generate-flow.mjs"] {
+    for script in [
+        "generate-suite.mjs",
+        "generate-corpus.mjs",
+        "generate-flow.mjs",
+    ] {
         let path = oracle_dir().join(script).to_string_lossy().to_string();
         // The scripts read the same flag, so the profile travels with the
         // request rather than being implied by an environment variable

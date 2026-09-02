@@ -9,25 +9,25 @@ use ferrosift_model::{
     ValueConstraint, ValueKind,
 };
 
-fn passed(reference: &str) -> EvidenceRecord {
+fn enforced(reference: &str) -> EvidenceRecord {
     EvidenceRecord {
-        state: EvidenceState::Passed,
+        state: EvidenceState::Enforced,
         reference: Some(reference.into()),
     }
 }
 
 fn valid_manifest() -> EvidenceManifest {
     EvidenceManifest {
-        provenance: passed("CyberChef-11.3.0/FromBase64.mjs"),
-        license: passed("Apache-2.0"),
-        conformance: passed("fixtures/base64.json"),
+        provenance: enforced("CyberChef-11.3.0/FromBase64.mjs"),
+        license: enforced("Apache-2.0"),
+        conformance: enforced("fixtures/base64.json"),
         benchmark: EvidenceRecord {
             state: EvidenceState::Planned,
             reference: Some("benchmark/base64".into()),
         },
         target_checks: BTreeMap::from([
-            (Target::Native, passed("ci/native")),
-            (Target::Wasm32UnknownUnknown, passed("ci/wasm")),
+            (Target::Native, enforced("ci/native")),
+            (Target::Wasm32UnknownUnknown, enforced("ci/wasm")),
         ]),
     }
 }
@@ -90,9 +90,9 @@ fn a_manifest_round_trips_with_independent_evidence() {
     assert_eq!(restored, manifest);
     // Five dimensions that are not collapsed into a score, which is the whole
     // reason they are separate records.
-    assert_eq!(restored.provenance.state, EvidenceState::Passed);
-    assert_eq!(restored.license.state, EvidenceState::Passed);
-    assert_eq!(restored.conformance.state, EvidenceState::Passed);
+    assert_eq!(restored.provenance.state, EvidenceState::Enforced);
+    assert_eq!(restored.license.state, EvidenceState::Enforced);
+    assert_eq!(restored.conformance.state, EvidenceState::Enforced);
     assert_eq!(restored.benchmark.state, EvidenceState::Planned);
     assert_eq!(restored.target_checks.len(), 2);
 }
@@ -119,7 +119,7 @@ fn argument_default_must_match_its_declared_kind() {
 /// now, and the question is the one worth asking: did this build compile and
 /// run the target this operation says it runs on?
 #[test]
-fn every_declared_target_requires_verified_evidence() {
+fn every_declared_target_requires_an_enforced_gate() {
     let spec = valid_spec();
     let mut manifest = valid_manifest();
     manifest.target_checks.remove(&Target::Wasm32UnknownUnknown);
@@ -173,10 +173,10 @@ fn a_manifest_may_say_it_has_measured_nothing() {
         .expect("an unmeasured build must still be describable");
 }
 
-/// An empty manifest covers no target, so it backs no operation.
+/// A manifest with nothing behind it covers no target, so it backs nothing.
 #[test]
-fn an_unverified_manifest_covers_nothing() {
-    let manifest = EvidenceManifest::unverified();
+fn a_manifest_with_nothing_behind_it_covers_nothing() {
+    let manifest = EvidenceManifest::unbacked();
     assert!(!manifest.covers(Target::Native));
     assert_eq!(
         valid_spec()
@@ -197,13 +197,13 @@ fn duplicate_argument_names_are_rejected() {
 }
 
 #[test]
-fn passed_evidence_requires_a_non_empty_reference() {
+fn an_enforced_record_requires_a_non_empty_reference() {
     let mut manifest = valid_manifest();
     manifest.license.reference = None;
 
     let error = manifest
         .validate()
-        .expect_err("passed evidence without a reference should fail");
+        .expect_err("an enforced record without a reference should fail");
     assert_eq!(error.code(), "model.operation_spec.evidence_invalid");
 }
 

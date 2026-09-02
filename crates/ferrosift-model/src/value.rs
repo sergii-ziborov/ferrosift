@@ -581,13 +581,13 @@ impl fmt::Display for ValueKind {
 /// JSON dish converts with that indent, so a recipe reading the output of one
 /// sees them.
 ///
-/// **Key order is a known divergence.** `StructuredValue::Object` is a sorted
-/// map and `JSON.stringify` writes keys in insertion order, so the two agree
-/// only where a value's keys happen to sort into the order they were added.
-/// They do for every operation that uses this today, and an operation whose
-/// keys do not would need an order-preserving map before it could claim
-/// compatibility. That is recorded in `docs/value-model.md` rather than left
-/// to be discovered.
+/// **Key order follows the reference's enumeration, not the alphabet.**
+/// `StructuredValue::Object` holds its members in the order they were added and
+/// [`StructuredValue::enumeration_order`] applies JavaScript's rule on top:
+/// integer-like keys first in numeric order, everything else in insertion
+/// order. It was a sorted map once, and this comment said so long after it had
+/// stopped being true — a sorted map puts `10` before `2` and `a` before `b`,
+/// neither of which is what the reference writes.
 fn render_structured(value: &StructuredValue, indent: usize) -> String {
     let inner = indent + 4;
     match value {

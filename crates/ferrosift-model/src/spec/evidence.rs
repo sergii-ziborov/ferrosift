@@ -21,26 +21,35 @@ use serde::{Deserialize, Serialize};
 
 use super::{SpecError, Target};
 
-/// Lifecycle state of one evidence claim.
+/// What stands behind one evidence claim.
+///
+/// A *policy*, not a result. These values are committed source: they travel
+/// inside the crate and say which gate a claim is held to, and a file that
+/// ships with the library cannot know whether the build reading it passed
+/// anything. It said `Passed` until it was noticed that a working tree with a
+/// red CI run produced a manifest claiming every check had passed — the string
+/// was a path to a workflow, and a path is not a result.
+///
+/// Whether a particular revision cleared its gates is a fact about a *run*, and
+/// lives where runs live: the repository's Actions history and the release it
+/// produced. See `docs/releasing.md`.
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub enum EvidenceState {
-    /// No evidence has been collected.
+    /// Nothing stands behind the claim.
     Missing,
-    /// Evidence collection is explicitly planned.
+    /// A gate is intended for this claim and does not exist yet.
     Planned,
-    /// The referenced evidence passed its gate.
-    Passed,
-    /// The referenced evidence failed its gate.
-    Failed,
+    /// A gate exists and every build is held to it.
+    Enforced,
 }
 
-/// One evidence state and its optional stable reference.
+/// One evidence state and the gate it names.
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct EvidenceRecord {
-    /// Current evidence state.
+    /// What stands behind the claim.
     pub state: EvidenceState,
-    /// Repository-relative fixture, report, license, or provenance reference.
+    /// Repository-relative gate: a workflow, a fixture, a licence, a notice.
     pub reference: Option<String>,
 }
 
@@ -54,11 +63,11 @@ impl EvidenceRecord {
         }
     }
 
-    /// A record whose gate passed, naming what to read.
+    /// A record naming the gate every build of this claim is held to.
     #[must_use]
-    pub fn passed(reference: impl Into<String>) -> Self {
+    pub fn enforced(reference: impl Into<String>) -> Self {
         Self {
-            state: EvidenceState::Passed,
+            state: EvidenceState::Enforced,
             reference: Some(reference.into()),
         }
     }
@@ -69,16 +78,18 @@ impl EvidenceRecord {
         match self.state {
             EvidenceState::Missing => self.reference.is_none(),
             EvidenceState::Planned => self.reference.as_deref().is_none_or(is_non_empty),
-            EvidenceState::Passed | EvidenceState::Failed => {
-                self.reference.as_deref().is_some_and(is_non_empty)
-            }
+            EvidenceState::Enforced => self.reference.as_deref().is_some_and(is_non_empty),
         }
     }
 
-    /// Returns whether the record proves its claim.
+    /// Returns whether a gate stands behind the claim and says where it is.
+    ///
+    /// Named for what it can answer. It used to be `is_verified`, which read as
+    /// "this was checked and it passed" — a claim about a run that committed
+    /// source cannot make about itself.
     #[must_use]
-    pub fn is_verified(&self) -> bool {
-        self.state == EvidenceState::Passed && self.reference.as_deref().is_some_and(is_non_empty)
+    pub fn is_enforced(&self) -> bool {
+        self.state == EvidenceState::Enforced && self.reference.as_deref().is_some_and(is_non_empty)
     }
 }
 
@@ -111,14 +122,14 @@ pub struct EvidenceManifest {
 }
 
 impl EvidenceManifest {
-    /// A manifest that claims nothing.
+    /// A manifest with nothing behind it.
     ///
     /// What an empty registry holds. Registering an operation against it is
     /// refused for every target the operation declares, which is the honest
-    /// answer: a target claim with nothing behind it is the thing this type
+    /// answer: a target claim with no gate behind it is the thing this type
     /// exists to prevent.
     #[must_use]
-    pub fn unverified() -> Self {
+    pub fn unbacked() -> Self {
         Self {
             provenance: EvidenceRecord::missing(),
             license: EvidenceRecord::missing(),
@@ -128,21 +139,21 @@ impl EvidenceManifest {
         }
     }
 
-    /// Whether this build checked `target` and the check passed.
+    /// Whether a gate stands behind this build's claim to run on `target`.
     #[must_use]
     pub fn covers(&self, target: Target) -> bool {
         self.target_checks
             .get(&target)
-            .is_some_and(EvidenceRecord::is_verified)
+            .is_some_and(EvidenceRecord::is_enforced)
     }
 
     /// Validates the manifest's own records.
     ///
-    /// Provenance, licence and conformance must be verified; a benchmark record
+    /// Provenance, licence and conformance must name a gate; a benchmark record
     /// may be absent, because a build that has measured nothing yet is a state
     /// this can describe rather than one it should refuse. Every record must be
-    /// structurally consistent — a passed record without a reference is a claim
-    /// with nowhere to check it.
+    /// structurally consistent — an enforced record without a reference is a
+    /// claim with nowhere to check it.
     ///
     /// # Errors
     ///
@@ -160,7 +171,7 @@ impl EvidenceManifest {
             ("evidence.license", &self.license),
             ("evidence.conformance", &self.conformance),
         ] {
-            if !record.is_verified() {
+            if !record.is_enforced() {
                 return Err(SpecError::MissingEvidence { field });
             }
         }

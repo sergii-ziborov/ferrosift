@@ -194,20 +194,27 @@ out of that which reading the documentation would not have given:
   The dish catches and substitutes, so what a recipe observes is the
   substitution -- and that is what `DecimalValue::parse` reproduces.
 
-## The one limit left in the JSON projection
+## Key order in the JSON projection
 
-`StructuredValue::Object` is a **sorted** map, and `JSON.stringify` writes keys
-in **insertion order**. The two agree only where a value's keys happen to sort
-into the order they were added.
+`StructuredValue::Object` holds its members in the order they were added, and
+`StructuredValue::enumeration_order` applies JavaScript's rule on top: keys that
+look like array indices come first in numeric order, and every other key follows
+in insertion order. That is what `JSON.stringify` writes and what a later step
+reading the object sees.
 
-They do for Parse TLV -- `key`, `length`, `value` is both -- so nothing shipped
-today is wrong. An operation whose keys do not sort that way would need an
-order-preserving map before it could claim compatibility, and that is a change
-to the model rather than to the operation.
+It was a **sorted** map, and this page recorded the divergence that produced:
+the two agreed only where a value's keys happened to sort into the order they
+were added, which they did for Parse TLV — `key`, `length`, `value` is both —
+so nothing shipped was wrong and the next operation with unsorted keys would
+have been. The map was replaced rather than the limitation lived with, and
+`crates/ferrosift-model/tests/dish.rs` pins the enumeration against cases a
+sorted map answers wrongly: `10` before `2`, `a` before `b`.
 
-This is recorded rather than fixed because no operation needs it yet, and
-because a limitation nobody has written down is the kind that gets discovered
-by a user.
+The paragraph that described the old behaviour outlived it by several
+revisions, here and in the model's own doc comment. That is the ordinary way a
+rationale goes stale — the code moved and the sentence explaining why it was
+that way did not — and it is why the numbers on these pages are generated
+wherever they can be.
 
 ## What the rewrite found
 
