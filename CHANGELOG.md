@@ -27,6 +27,27 @@ from `0.1.0` onward.
   code path the browser uses — so all seven are pinned against real reference
   bytes at every recipe prefix, and the exemption list is four entries shorter.
 
+- **`docs/comparison.md`** — what FerroSift is an alternative *to*, opening with
+  the four cases where the answer is to use something else. Its figures are
+  generated from the committed fixtures and a stale one fails CI; facts about
+  the other projects are constants with the revision they were read at, and
+  nothing else is graded on axes this repository has not measured for it.
+- **Clusters.** `OperationId::cluster` names the grouping the identifiers
+  already carried — the namespace an encoder shares with its decoder — and
+  `tests/clusters.rs` holds it to rules nothing checked before: a declared
+  inverse must exist, must be declared back, and must live in the same cluster.
+  The first run found the catalog's one asymmetric inverse. The cluster is a
+  column in the ledger, a summary above it, and a field in the catalog JSON,
+  which also gains `inverse`.
+- **Blocker classes in the backlog.** `cargo xtask cyberchef gap` now says what
+  actually stands in the way of each missing operation rather than which import
+  stands in for it, grouped so the fifteen blocked by nothing but work are not
+  buried among two hundred and fifty-two. Two answers the import grouping could
+  not give: nine operations can never be byte-pinned by anyone, because their
+  output embeds a random value or the current time, and fifty-six answer with a
+  rendering rather than with bytes. The counts are published on
+  `not-implemented.md` and `gap --check` refuses a stale one.
+
 ### Changed
 
 - **Evidence is a property of the build, and there is one of it.**

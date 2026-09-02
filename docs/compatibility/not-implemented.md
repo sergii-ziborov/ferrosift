@@ -34,6 +34,41 @@ on: a compatibility claim must be backed by a pinned differential corpus. An
 operation ships only when its bytes match the reference's bytes on every case
 in [the corpus](cyberchef-v11.3.0.md).
 
+## What is actually in the way
+
+The three headings below group by import. This table groups by *blocker* — the
+thing that has to change before the operation can ship — and it is derived from
+the reference's own source at the pinned commit by
+`cargo xtask cyberchef gap`, which prints the operations under each and names
+the signal it read.
+
+| Blocker | Count | What it means |
+|---|---:|---|
+| `external-library` | 121 | byte-exactness is against a specific JavaScript library |
+| `not-a-byte-answer` | 56 | answers with a rendering or a file list, so matching it is not matching bytes |
+| `reference-internal` | 48 | byte-exactness is against the reference's own internal library |
+| `effort` | 15 | nothing stands in the way but the work |
+| `nondeterministic` | 9 | output is not a function of input, so no corpus can record it |
+| `host-capability` | 3 | needs something outside the process: the network, or time to pass |
+
+Two rows say something the import grouping cannot.
+
+**Nine operations can never be byte-pinned, by anyone.** `Numberwang`,
+`Shuffle` and the three pseudo-random generators draw on a random source;
+`Tar`, `Flask Session Sign`, `Multiple Bombe` and `Randomize Colour Palette`
+put the current time or a random value into their output. There is no answer
+for a corpus to record, so shipping one of these means deciding what
+*non*-identical output is acceptable — a different decision from the one this
+project has been making, and not one that more work resolves.
+
+**Fifty-six answer with something other than bytes.** Their output type is
+markup, an image, or a list of files. Porting the transformation is the smaller
+half; agreeing what "the same answer" means is the larger.
+
+The classification is a first cut read from imports, output types and a handful
+of source patterns. It is exactly as reliable as the paragraph above says the
+import grouping is: where it and the code disagree, the code is right.
+
 ## Why an equivalent library is not enough
 
 162 of the 252 are built on a JavaScript library, and 21 more reach one
