@@ -1,0 +1,160 @@
+name: Release
+
+# Publishing is irreversible: a crates.io version can be yanked but never
+# reused, and never truly withdrawn. So the trigger is a tag — a deliberate act
+# by a person — and everything after it is a machine following a checklist that
+# cannot skip a step because it was in a hurry.
+#
+# The token lives here rather than on a laptop. That is a change from the older
+# arrangement, which said an irreversible act belongs to a person with a token
+# and not to a workflow; the tag is still the person's act, and putting the
+# token in one place with an audit trail is strictly better than putting it in
+# several places with none.
+#
+# Nothing publishes until every gate this repository has passes on the tagged
+# commit, in this run, with the results recorded in the attestation the release
+# carries. The catalog's own evidence manifest says which gates a claim is held
+# to; this is where a particular revision says it cleared them.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Verify everything and stop before uploading
+        type: boolean
+        required: false
+        default: true
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  verify:
+    name: Verify the tagged commit
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # The tag and the manifest must agree before anything else runs. A tag
+      # that names a version the workspace does not carry would publish the
+      # wrong thing under the right name, and no later gate would notice.
+      - name: The tag must be the workspace version
+        id: version
+        run: |
+          version="$(grep -m1 '^version = ' Cargo.toml | cut -d'"' -f2)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            tag="${GITHUB_REF_NAME#v}"
+            if [ "$tag" != "$version" ]; then
+              echo "tag v$tag does not match the workspace version $version" >&2
+              exit 1
+            fi
+          fi
+          echo "publishing $version"
+
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Format the manifests outside the workspace
+        run: |
+          for manifest in xtask bench fuzz; do
+            cargo fmt --manifest-path "$manifest/Cargo.toml" -- --check
+          done
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --all-features -- -D warnings
+      - name: Tests
+        run: cargo test --workspace --all-features
+        env:
+          RUSTFLAGS: -D warnings
+      - name: Documentation
+        run: cargo doc --workspace --no-deps
+        env:
+          RUSTDOCFLAGS: -D warnings
+      - name: The generated documents are current
+        run: cargo xtask ledger check
+      - name: Add the portable target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Portable build
+        run: cargo check --workspace --target wasm32-unknown-unknown
+      - name: Add the bare-metal targets
+        run: rustup target add thumbv7em-none-eabihf riscv32imac-unknown-none-elf
+      - name: Bare-metal build
+        run: |
+          for target in thumbv7em-none-eabihf riscv32imac-unknown-none-elf; do
+            cargo check -p ferrosift --target "$target" --no-default-features --features portable-full,pattern
+          done
+      - name: Packaging
+        run: cargo package --workspace
+
+      # What the evidence manifest cannot say about itself. The manifest inside
+      # the crate names the gates a claim is held to; this says that *this*
+      # revision cleared them, in this run, and travels with the release rather
+      # than inside the library.
+      - name: Record what this revision cleared
+        run: |
+          cat > build-attestation.json <<JSON
+          {
+            "revision": "${{ github.sha }}",
+            "version": "${{ steps.version.outputs.version }}",
+            "workflow_run": "${{ github.run_id }}",
+            "repository": "${{ github.repository }}",
+            "gates": {
+              "format": "passed",
+              "clippy": "passed",
+              "tests": "passed",
+              "documentation": "passed",
+              "generated_documents": "passed",
+              "wasm32_unknown_unknown": "passed",
+              "thumbv7em_none_eabihf": "passed",
+              "riscv32imac_unknown_none_elf": "passed",
+              "packaging": "passed"
+            }
+          }
+          JSON
+          cat build-attestation.json
+      - name: Keep the attestation
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: build-attestation
+          path: build-attestation.json
+          retention-days: 90
+
+  publish:
+    name: Publish to crates.io
+    needs: verify
+    runs-on: ubuntu-latest
+    # A dispatch defaults to verifying and stopping. Only a tag publishes
+    # without being asked twice.
+    if: github.ref_type == 'tag' || inputs.dry_run == false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Download the attestation
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: build-attestation
+
+      # One command for all seven. Cargo works out the order and waits for the
+      # index between them, which is what makes "all seven or none" achievable
+      # rather than aspirational — the crates reference each other by exact
+      # version, so a partial publish is a combination nothing has ever built.
+      - name: Publish
+        run: cargo publish --workspace
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+      - name: Create the GitHub release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            --title "${GITHUB_REF_NAME}" \
+            --notes-file <(sed -n "/^## \[${{ needs.verify.outputs.version }}\]/,/^## \[/p" CHANGELOG.md | sed '$d') \
+            --prerelease \
+            build-attestation.json
