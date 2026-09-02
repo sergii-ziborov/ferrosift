@@ -27,6 +27,7 @@
   "operations": [
     {
       "id": "analysis.chi_square@1",
+      "cluster": "analysis",
       "display_name": "Chi Square",
       "category": "Analysis",
       "reference_alias": "Chi Square",
@@ -43,6 +44,7 @@
     },
     {
       "id": "analysis.index_of_coincidence@1",
+      "cluster": "analysis",
       "display_name": "Index of Coincidence",
       "category": "Analysis",
       "reference_alias": "Index of Coincidence",
@@ -59,6 +61,7 @@
     },
     {
       "id": "analysis.offset_checker@1",
+      "cluster": "analysis",
       "display_name": "Offset checker",
       "category": "Analysis",
       "reference_alias": "Offset checker",
@@ -75,6 +78,7 @@
     },
     {
       "id": "analysis.suggest@1",
+      "cluster": "analysis",
       "display_name": "Suggest recipe",
       "category": "Analysis",
       "reference_alias": null,
@@ -91,6 +95,7 @@
     },
     {
       "id": "asn1.oid.decode@1",
+      "cluster": "asn1.oid",
       "display_name": "Hex to Object Identifier",
       "category": "Parsing",
       "reference_alias": "Hex to Object Identifier",
@@ -111,6 +116,7 @@
     },
     {
       "id": "asn1.oid.encode@1",
+      "cluster": "asn1.oid",
       "display_name": "Object Identifier to Hex",
       "category": "Parsing",
       "reference_alias": "Object Identifier to Hex",
@@ -131,6 +137,7 @@
     },
     {
       "id": "asn1.pem.decode@1",
+      "cluster": "asn1.pem",
       "display_name": "PEM to Hex",
       "category": "Parsing",
       "reference_alias": "PEM to Hex",
@@ -147,6 +154,7 @@
     },
     {
       "id": "asn1.pem.encode@1",
+      "cluster": "asn1.pem",
       "display_name": "Hex to PEM",
       "category": "Parsing",
       "reference_alias": "Hex to PEM",
@@ -163,6 +171,7 @@
     },
     {
       "id": "checksum.adler32@1",
+      "cluster": "checksum",
       "display_name": "Adler-32 Checksum",
       "category": "Checksums",
       "reference_alias": "Adler-32 Checksum",
@@ -179,6 +188,7 @@
     },
     {
       "id": "checksum.fletcher16@1",
+      "cluster": "checksum",
       "display_name": "Fletcher-16 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-16 Checksum",
@@ -195,6 +205,7 @@
     },
     {
       "id": "checksum.fletcher32@1",
+      "cluster": "checksum",
       "display_name": "Fletcher-32 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-32 Checksum",
@@ -211,6 +222,7 @@
     },
     {
       "id": "checksum.fletcher64@1",
+      "cluster": "checksum",
       "display_name": "Fletcher-64 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-64 Checksum",
@@ -227,6 +239,7 @@
     },
     {
       "id": "checksum.fletcher8@1",
+      "cluster": "checksum",
       "display_name": "Fletcher-8 Checksum",
       "category": "Checksums",
       "reference_alias": "Fletcher-8 Checksum",
@@ -243,6 +256,7 @@
     },
     {
       "id": "checksum.luhn@1",
+      "cluster": "checksum",
       "display_name": "Luhn Checksum",
       "category": "Checksums",
       "reference_alias": "Luhn Checksum",
@@ -259,6 +273,7 @@
     },
     {
       "id": "checksum.tcp_ip@1",
+      "cluster": "checksum",
       "display_name": "TCP/IP Checksum",
       "category": "Checksums",
       "reference_alias": "TCP/IP Checksum",
@@ -275,6 +290,7 @@
     },
     {
       "id": "checksum.xor@1",
+      "cluster": "checksum",
       "display_name": "XOR Checksum",
       "category": "Checksums",
       "reference_alias": "XOR Checksum",
@@ -291,6 +307,7 @@
     },
     {
       "id": "cipher.a1z26.decode@1",
+      "cluster": "cipher.a1z26",
       "display_name": "A1Z26 Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "A1Z26 Cipher Decode",
@@ -307,6 +324,7 @@
     },
     {
       "id": "cipher.a1z26.encode@1",
+      "cluster": "cipher.a1z26",
       "display_name": "A1Z26 Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "A1Z26 Cipher Encode",
@@ -323,6 +341,7 @@
     },
     {
       "id": "cipher.affine.decode@1",
+      "cluster": "cipher.affine",
       "display_name": "Affine Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Affine Cipher Decode",
@@ -339,6 +358,7 @@
     },
     {
       "id": "cipher.affine.encode@1",
+      "cluster": "cipher.affine",
       "display_name": "Affine Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Affine Cipher Encode",
@@ -355,6 +375,7 @@
     },
     {
       "id": "cipher.atbash@1",
+      "cluster": "cipher",
       "display_name": "Atbash Cipher",
       "category": "Ciphers",
       "reference_alias": "Atbash Cipher",
@@ -371,6 +392,7 @@
     },
     {
       "id": "cipher.bacon.decode@1",
+      "cluster": "cipher.bacon",
       "display_name": "Bacon Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Bacon Cipher Decode",
@@ -387,6 +409,7 @@
     },
     {
       "id": "cipher.bacon.encode@1",
+      "cluster": "cipher.bacon",
       "display_name": "Bacon Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Bacon Cipher Encode",
@@ -403,6 +426,7 @@
     },
     {
       "id": "cipher.bifid.decode@1",
+      "cluster": "cipher.bifid",
       "display_name": "Bifid Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Bifid Cipher Decode",
@@ -419,6 +443,7 @@
     },
     {
       "id": "cipher.bifid.encode@1",
+      "cluster": "cipher.bifid",
       "display_name": "Bifid Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Bifid Cipher Encode",
@@ -435,6 +460,7 @@
     },
     {
       "id": "cipher.caesar_box@1",
+      "cluster": "cipher",
       "display_name": "Caesar Box Cipher",
       "category": "Ciphers",
       "reference_alias": "Caesar Box Cipher",
@@ -451,6 +477,7 @@
     },
     {
       "id": "cipher.cetacean.decode@1",
+      "cluster": "cipher.cetacean",
       "display_name": "Cetacean Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Cetacean Cipher Decode",
@@ -467,6 +494,7 @@
     },
     {
       "id": "cipher.cetacean.encode@1",
+      "cluster": "cipher.cetacean",
       "display_name": "Cetacean Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Cetacean Cipher Encode",
@@ -483,6 +511,7 @@
     },
     {
       "id": "cipher.rail_fence.decode@1",
+      "cluster": "cipher.rail_fence",
       "display_name": "Rail Fence Cipher Decode",
       "category": "Ciphers",
       "reference_alias": "Rail Fence Cipher Decode",
@@ -499,6 +528,7 @@
     },
     {
       "id": "cipher.rail_fence.encode@1",
+      "cluster": "cipher.rail_fence",
       "display_name": "Rail Fence Cipher Encode",
       "category": "Ciphers",
       "reference_alias": "Rail Fence Cipher Encode",
@@ -515,6 +545,7 @@
     },
     {
       "id": "cipher.rot13.brute@1",
+      "cluster": "cipher.rot13",
       "display_name": "ROT13 Brute Force",
       "category": "Ciphers",
       "reference_alias": "ROT13 Brute Force",
@@ -531,6 +562,7 @@
     },
     {
       "id": "cipher.rot47.brute@1",
+      "cluster": "cipher.rot47",
       "display_name": "ROT47 Brute Force",
       "category": "Ciphers",
       "reference_alias": "ROT47 Brute Force",
@@ -547,6 +579,7 @@
     },
     {
       "id": "cipher.rot47@1",
+      "cluster": "cipher",
       "display_name": "ROT47",
       "category": "Ciphers",
       "reference_alias": "ROT47",
@@ -563,6 +596,7 @@
     },
     {
       "id": "cipher.rot8000@1",
+      "cluster": "cipher",
       "display_name": "ROT8000",
       "category": "Ciphers",
       "reference_alias": "ROT8000",
@@ -579,6 +613,7 @@
     },
     {
       "id": "cipher.substitute@1",
+      "cluster": "cipher",
       "display_name": "Substitute",
       "category": "Ciphers",
       "reference_alias": "Substitute",
@@ -595,6 +630,7 @@
     },
     {
       "id": "cipher.vigenere.decode@1",
+      "cluster": "cipher.vigenere",
       "display_name": "Vigenère Decode",
       "category": "Ciphers",
       "reference_alias": "Vigenère Decode",
@@ -611,6 +647,7 @@
     },
     {
       "id": "cipher.vigenere.encode@1",
+      "cluster": "cipher.vigenere",
       "display_name": "Vigenère Encode",
       "category": "Ciphers",
       "reference_alias": "Vigenère Encode",
@@ -627,6 +664,7 @@
     },
     {
       "id": "compression.bzip2.compress@1",
+      "cluster": "compression.bzip2",
       "display_name": "Bzip2 Compress",
       "category": "Compression",
       "reference_alias": "Bzip2 Compress",
@@ -643,6 +681,7 @@
     },
     {
       "id": "compression.bzip2.decompress@1",
+      "cluster": "compression.bzip2",
       "display_name": "Bzip2 Decompress",
       "category": "Compression",
       "reference_alias": "Bzip2 Decompress",
@@ -659,6 +698,7 @@
     },
     {
       "id": "compression.gunzip@1",
+      "cluster": "compression",
       "display_name": "Gunzip",
       "category": "Compression",
       "reference_alias": "Gunzip",
@@ -675,6 +715,7 @@
     },
     {
       "id": "compression.gzip@1",
+      "cluster": "compression",
       "display_name": "Gzip",
       "category": "Compression",
       "reference_alias": "Gzip",
@@ -692,6 +733,7 @@
     },
     {
       "id": "compression.lznt1.decompress@1",
+      "cluster": "compression.lznt1",
       "display_name": "LZNT1 Decompress",
       "category": "Compression",
       "reference_alias": "LZNT1 Decompress",
@@ -708,6 +750,7 @@
     },
     {
       "id": "compression.raw.deflate@1",
+      "cluster": "compression.raw",
       "display_name": "Raw Deflate",
       "category": "Compression",
       "reference_alias": "Raw Deflate",
@@ -725,6 +768,7 @@
     },
     {
       "id": "compression.raw.inflate@1",
+      "cluster": "compression.raw",
       "display_name": "Raw Inflate",
       "category": "Compression",
       "reference_alias": "Raw Inflate",
@@ -741,6 +785,7 @@
     },
     {
       "id": "compression.xpress.decompress@1",
+      "cluster": "compression.xpress",
       "display_name": "XPRESS Decompress",
       "category": "Compression",
       "reference_alias": "XPRESS Decompress",
@@ -757,6 +802,7 @@
     },
     {
       "id": "compression.xpress.huffman.decompress@1",
+      "cluster": "compression.xpress.huffman",
       "display_name": "XPRESS LZ77+Huffman Decompress",
       "category": "Compression",
       "reference_alias": "XPRESS LZ77+Huffman Decompress",
@@ -773,6 +819,7 @@
     },
     {
       "id": "compression.zlib.deflate@1",
+      "cluster": "compression.zlib",
       "display_name": "Zlib Deflate",
       "category": "Compression",
       "reference_alias": "Zlib Deflate",
@@ -790,6 +837,7 @@
     },
     {
       "id": "compression.zlib.inflate@1",
+      "cluster": "compression.zlib",
       "display_name": "Zlib Inflate",
       "category": "Compression",
       "reference_alias": "Zlib Inflate",
@@ -806,6 +854,7 @@
     },
     {
       "id": "core.identity@1",
+      "cluster": "core",
       "display_name": "Identity",
       "category": "Core",
       "reference_alias": null,
@@ -822,6 +871,7 @@
     },
     {
       "id": "crypto.aes.decrypt@1",
+      "cluster": "crypto.aes",
       "display_name": "AES Decrypt",
       "category": "Ciphers",
       "reference_alias": "AES Decrypt",
@@ -838,6 +888,7 @@
     },
     {
       "id": "crypto.aes.encrypt@1",
+      "cluster": "crypto.aes",
       "display_name": "AES Encrypt",
       "category": "Ciphers",
       "reference_alias": "AES Encrypt",
@@ -854,6 +905,7 @@
     },
     {
       "id": "crypto.aes_kw.unwrap@1",
+      "cluster": "crypto.aes_kw",
       "display_name": "AES Key Unwrap",
       "category": "Ciphers",
       "reference_alias": "AES Key Unwrap",
@@ -870,6 +922,7 @@
     },
     {
       "id": "crypto.aes_kw.wrap@1",
+      "cluster": "crypto.aes_kw",
       "display_name": "AES Key Wrap",
       "category": "Ciphers",
       "reference_alias": "AES Key Wrap",
@@ -886,6 +939,7 @@
     },
     {
       "id": "crypto.ls47.decrypt@1",
+      "cluster": "crypto.ls47",
       "display_name": "LS47 Decrypt",
       "category": "Ciphers",
       "reference_alias": "LS47 Decrypt",
@@ -902,6 +956,7 @@
     },
     {
       "id": "crypto.ls47.encrypt@1",
+      "cluster": "crypto.ls47",
       "display_name": "LS47 Encrypt",
       "category": "Ciphers",
       "reference_alias": "LS47 Encrypt",
@@ -918,6 +973,7 @@
     },
     {
       "id": "crypto.pbkdf2@1",
+      "cluster": "crypto",
       "display_name": "Derive PBKDF2 key",
       "category": "KDF",
       "reference_alias": "Derive PBKDF2 key",
@@ -934,6 +990,7 @@
     },
     {
       "id": "crypto.rc4@1",
+      "cluster": "crypto",
       "display_name": "RC4",
       "category": "Ciphers",
       "reference_alias": "RC4",
@@ -950,6 +1007,7 @@
     },
     {
       "id": "crypto.rc4_drop@1",
+      "cluster": "crypto",
       "display_name": "RC4 Drop",
       "category": "Ciphers",
       "reference_alias": "RC4 Drop",
@@ -966,6 +1024,7 @@
     },
     {
       "id": "crypto.scrypt@1",
+      "cluster": "crypto",
       "display_name": "Scrypt",
       "category": "KDF",
       "reference_alias": "Scrypt",
@@ -982,6 +1041,7 @@
     },
     {
       "id": "crypto.tea.decrypt@1",
+      "cluster": "crypto.tea",
       "display_name": "TEA Decrypt",
       "category": "Ciphers",
       "reference_alias": "TEA Decrypt",
@@ -1002,6 +1062,7 @@
     },
     {
       "id": "crypto.tea.encrypt@1",
+      "cluster": "crypto.tea",
       "display_name": "TEA Encrypt",
       "category": "Ciphers",
       "reference_alias": "TEA Encrypt",
@@ -1022,6 +1083,7 @@
     },
     {
       "id": "crypto.xtea.decrypt@1",
+      "cluster": "crypto.xtea",
       "display_name": "XTEA Decrypt",
       "category": "Ciphers",
       "reference_alias": "XTEA Decrypt",
@@ -1042,6 +1104,7 @@
     },
     {
       "id": "crypto.xtea.encrypt@1",
+      "cluster": "crypto.xtea",
       "display_name": "XTEA Encrypt",
       "category": "Ciphers",
       "reference_alias": "XTEA Encrypt",
@@ -1062,6 +1125,7 @@
     },
     {
       "id": "crypto.xxtea.decrypt@1",
+      "cluster": "crypto.xxtea",
       "display_name": "XXTEA Decrypt",
       "category": "Ciphers",
       "reference_alias": "XXTEA Decrypt",
@@ -1078,6 +1142,7 @@
     },
     {
       "id": "crypto.xxtea.encrypt@1",
+      "cluster": "crypto.xxtea",
       "display_name": "XXTEA Encrypt",
       "category": "Ciphers",
       "reference_alias": "XXTEA Encrypt",
@@ -1094,6 +1159,7 @@
     },
     {
       "id": "data.drop_bytes@1",
+      "cluster": "data",
       "display_name": "Drop bytes",
       "category": "Data",
       "reference_alias": "Drop bytes",
@@ -1110,6 +1176,7 @@
     },
     {
       "id": "data.head@1",
+      "cluster": "data",
       "display_name": "Head",
       "category": "Data",
       "reference_alias": "Head",
@@ -1126,6 +1193,7 @@
     },
     {
       "id": "data.nth_bytes.drop@1",
+      "cluster": "data.nth_bytes",
       "display_name": "Drop nth bytes",
       "category": "Data",
       "reference_alias": "Drop nth bytes",
@@ -1142,6 +1210,7 @@
     },
     {
       "id": "data.nth_bytes.take@1",
+      "cluster": "data.nth_bytes",
       "display_name": "Take nth bytes",
       "category": "Data",
       "reference_alias": "Take nth bytes",
@@ -1158,6 +1227,7 @@
     },
     {
       "id": "data.remove_null_bytes@1",
+      "cluster": "data",
       "display_name": "Remove null bytes",
       "category": "Data",
       "reference_alias": "Remove null bytes",
@@ -1174,6 +1244,7 @@
     },
     {
       "id": "data.reverse@1",
+      "cluster": "data",
       "display_name": "Reverse",
       "category": "Data",
       "reference_alias": "Reverse",
@@ -1190,6 +1261,7 @@
     },
     {
       "id": "data.swap_endianness@1",
+      "cluster": "data",
       "display_name": "Swap endianness",
       "category": "Data",
       "reference_alias": "Swap endianness",
@@ -1206,6 +1278,7 @@
     },
     {
       "id": "data.tail@1",
+      "cluster": "data",
       "display_name": "Tail",
       "category": "Text",
       "reference_alias": "Tail",
@@ -1222,6 +1295,7 @@
     },
     {
       "id": "data.take_bytes@1",
+      "cluster": "data",
       "display_name": "Take bytes",
       "category": "Data",
       "reference_alias": "Take bytes",
@@ -1238,6 +1312,7 @@
     },
     {
       "id": "defang.fang_url@1",
+      "cluster": "defang",
       "display_name": "Fang URL",
       "category": "Defang",
       "reference_alias": "Fang URL",
@@ -1254,6 +1329,7 @@
     },
     {
       "id": "defang.ip@1",
+      "cluster": "defang",
       "display_name": "Defang IP Addresses",
       "category": "Defang",
       "reference_alias": "Defang IP Addresses",
@@ -1270,6 +1346,7 @@
     },
     {
       "id": "defang.url@1",
+      "cluster": "defang",
       "display_name": "Defang URL",
       "category": "Defang",
       "reference_alias": "Defang URL",
@@ -1286,6 +1363,7 @@
     },
     {
       "id": "distance.hamming@1",
+      "cluster": "distance",
       "display_name": "Hamming Distance",
       "category": "Distance",
       "reference_alias": "Hamming Distance",
@@ -1302,6 +1380,7 @@
     },
     {
       "id": "distance.levenshtein@1",
+      "cluster": "distance",
       "display_name": "Levenshtein Distance",
       "category": "Distance",
       "reference_alias": "Levenshtein Distance",
@@ -1318,6 +1397,7 @@
     },
     {
       "id": "encoding.base32.decode@1",
+      "cluster": "encoding.base32",
       "display_name": "From Base32",
       "category": "Encoding",
       "reference_alias": "From Base32",
@@ -1334,6 +1414,7 @@
     },
     {
       "id": "encoding.base32.encode@1",
+      "cluster": "encoding.base32",
       "display_name": "To Base32",
       "category": "Encoding",
       "reference_alias": "To Base32",
@@ -1350,6 +1431,7 @@
     },
     {
       "id": "encoding.base45.decode@1",
+      "cluster": "encoding.base45",
       "display_name": "From Base45",
       "category": "Encoding",
       "reference_alias": "From Base45",
@@ -1366,6 +1448,7 @@
     },
     {
       "id": "encoding.base45.encode@1",
+      "cluster": "encoding.base45",
       "display_name": "To Base45",
       "category": "Encoding",
       "reference_alias": "To Base45",
@@ -1382,6 +1465,7 @@
     },
     {
       "id": "encoding.base58.decode@1",
+      "cluster": "encoding.base58",
       "display_name": "From Base58",
       "category": "Encoding",
       "reference_alias": "From Base58",
@@ -1398,6 +1482,7 @@
     },
     {
       "id": "encoding.base58.encode@1",
+      "cluster": "encoding.base58",
       "display_name": "To Base58",
       "category": "Encoding",
       "reference_alias": "To Base58",
@@ -1414,6 +1499,7 @@
     },
     {
       "id": "encoding.base62.decode@1",
+      "cluster": "encoding.base62",
       "display_name": "From Base62",
       "category": "Encoding",
       "reference_alias": "From Base62",
@@ -1430,6 +1516,7 @@
     },
     {
       "id": "encoding.base62.encode@1",
+      "cluster": "encoding.base62",
       "display_name": "To Base62",
       "category": "Encoding",
       "reference_alias": "To Base62",
@@ -1446,6 +1533,7 @@
     },
     {
       "id": "encoding.base64.decode@1",
+      "cluster": "encoding.base64",
       "display_name": "From Base64",
       "category": "Encoding",
       "reference_alias": "From Base64",
@@ -1462,6 +1550,7 @@
     },
     {
       "id": "encoding.base64.encode@1",
+      "cluster": "encoding.base64",
       "display_name": "To Base64",
       "category": "Encoding",
       "reference_alias": "To Base64",
@@ -1478,6 +1567,7 @@
     },
     {
       "id": "encoding.base85.decode@1",
+      "cluster": "encoding.base85",
       "display_name": "From Base85",
       "category": "Encoding",
       "reference_alias": "From Base85",
@@ -1494,6 +1584,7 @@
     },
     {
       "id": "encoding.base85.encode@1",
+      "cluster": "encoding.base85",
       "display_name": "To Base85",
       "category": "Encoding",
       "reference_alias": "To Base85",
@@ -1510,6 +1601,7 @@
     },
     {
       "id": "encoding.base92.decode@1",
+      "cluster": "encoding.base92",
       "display_name": "From Base92",
       "category": "Encoding",
       "reference_alias": "From Base92",
@@ -1526,6 +1618,7 @@
     },
     {
       "id": "encoding.base92.encode@1",
+      "cluster": "encoding.base92",
       "display_name": "To Base92",
       "category": "Encoding",
       "reference_alias": "To Base92",
@@ -1542,6 +1635,7 @@
     },
     {
       "id": "encoding.bcd.decode@1",
+      "cluster": "encoding.bcd",
       "display_name": "From BCD",
       "category": "Encoding",
       "reference_alias": "From BCD",
@@ -1558,6 +1652,7 @@
     },
     {
       "id": "encoding.bcd.encode@1",
+      "cluster": "encoding.bcd",
       "display_name": "To BCD",
       "category": "Encoding",
       "reference_alias": "To BCD",
@@ -1574,6 +1669,7 @@
     },
     {
       "id": "encoding.bech32.decode@1",
+      "cluster": "encoding.bech32",
       "display_name": "From Bech32",
       "category": "Encoding",
       "reference_alias": "From Bech32",
@@ -1590,6 +1686,7 @@
     },
     {
       "id": "encoding.bech32.encode@1",
+      "cluster": "encoding.bech32",
       "display_name": "To Bech32",
       "category": "Encoding",
       "reference_alias": "To Bech32",
@@ -1606,6 +1703,7 @@
     },
     {
       "id": "encoding.binary.decode@1",
+      "cluster": "encoding.binary",
       "display_name": "From Binary",
       "category": "Encoding",
       "reference_alias": "From Binary",
@@ -1622,6 +1720,7 @@
     },
     {
       "id": "encoding.binary.encode@1",
+      "cluster": "encoding.binary",
       "display_name": "To Binary",
       "category": "Encoding",
       "reference_alias": "To Binary",
@@ -1638,6 +1737,7 @@
     },
     {
       "id": "encoding.braille.decode@1",
+      "cluster": "encoding.braille",
       "display_name": "From Braille",
       "category": "Encoding",
       "reference_alias": "From Braille",
@@ -1654,6 +1754,7 @@
     },
     {
       "id": "encoding.braille.encode@1",
+      "cluster": "encoding.braille",
       "display_name": "To Braille",
       "category": "Encoding",
       "reference_alias": "To Braille",
@@ -1670,6 +1771,7 @@
     },
     {
       "id": "encoding.caret_m.decode@1",
+      "cluster": "encoding.caret_m",
       "display_name": "Caret/M-decode",
       "category": "Encoding",
       "reference_alias": "Caret/M-decode",
@@ -1686,6 +1788,7 @@
     },
     {
       "id": "encoding.charcode.decode@1",
+      "cluster": "encoding.charcode",
       "display_name": "From Charcode",
       "category": "Encoding",
       "reference_alias": "From Charcode",
@@ -1702,6 +1805,7 @@
     },
     {
       "id": "encoding.charcode.encode@1",
+      "cluster": "encoding.charcode",
       "display_name": "To Charcode",
       "category": "Encoding",
       "reference_alias": "To Charcode",
@@ -1718,6 +1822,7 @@
     },
     {
       "id": "encoding.cobs.decode@1",
+      "cluster": "encoding.cobs",
       "display_name": "From COBS",
       "category": "Encoding",
       "reference_alias": "From COBS",
@@ -1734,6 +1839,7 @@
     },
     {
       "id": "encoding.cobs.encode@1",
+      "cluster": "encoding.cobs",
       "display_name": "To COBS",
       "category": "Encoding",
       "reference_alias": "To COBS",
@@ -1750,6 +1856,7 @@
     },
     {
       "id": "encoding.ctx1.decode@1",
+      "cluster": "encoding.ctx1",
       "display_name": "Citrix CTX1 Decode",
       "category": "Encoding",
       "reference_alias": "Citrix CTX1 Decode",
@@ -1766,6 +1873,7 @@
     },
     {
       "id": "encoding.ctx1.encode@1",
+      "cluster": "encoding.ctx1",
       "display_name": "Citrix CTX1 Encode",
       "category": "Encoding",
       "reference_alias": "Citrix CTX1 Encode",
@@ -1782,6 +1890,7 @@
     },
     {
       "id": "encoding.decimal.decode@1",
+      "cluster": "encoding.decimal",
       "display_name": "From Decimal",
       "category": "Encoding",
       "reference_alias": "From Decimal",
@@ -1798,6 +1907,7 @@
     },
     {
       "id": "encoding.decimal.encode@1",
+      "cluster": "encoding.decimal",
       "display_name": "To Decimal",
       "category": "Encoding",
       "reference_alias": "To Decimal",
@@ -1814,6 +1924,7 @@
     },
     {
       "id": "encoding.float.decode@1",
+      "cluster": "encoding.float",
       "display_name": "From Float",
       "category": "Encoding",
       "reference_alias": "From Float",
@@ -1830,6 +1941,7 @@
     },
     {
       "id": "encoding.float.encode@1",
+      "cluster": "encoding.float",
       "display_name": "To Float",
       "category": "Encoding",
       "reference_alias": "To Float",
@@ -1846,6 +1958,7 @@
     },
     {
       "id": "encoding.hex.decode@1",
+      "cluster": "encoding.hex",
       "display_name": "From Hex",
       "category": "Encoding",
       "reference_alias": "From Hex",
@@ -1866,6 +1979,7 @@
     },
     {
       "id": "encoding.hex.encode@1",
+      "cluster": "encoding.hex",
       "display_name": "To Hex",
       "category": "Encoding",
       "reference_alias": "To Hex",
@@ -1882,6 +1996,7 @@
     },
     {
       "id": "encoding.hex_content.decode@1",
+      "cluster": "encoding.hex_content",
       "display_name": "From Hex Content",
       "category": "Encoding",
       "reference_alias": "From Hex Content",
@@ -1898,6 +2013,7 @@
     },
     {
       "id": "encoding.hex_content.encode@1",
+      "cluster": "encoding.hex_content",
       "display_name": "To Hex Content",
       "category": "Encoding",
       "reference_alias": "To Hex Content",
@@ -1914,6 +2030,7 @@
     },
     {
       "id": "encoding.hexdump.decode@1",
+      "cluster": "encoding.hexdump",
       "display_name": "From Hexdump",
       "category": "Encoding",
       "reference_alias": "From Hexdump",
@@ -1930,6 +2047,7 @@
     },
     {
       "id": "encoding.hexdump.encode@1",
+      "cluster": "encoding.hexdump",
       "display_name": "To Hexdump",
       "category": "Encoding",
       "reference_alias": "To Hexdump",
@@ -1946,6 +2064,7 @@
     },
     {
       "id": "encoding.html.decode@1",
+      "cluster": "encoding.html",
       "display_name": "From HTML Entity",
       "category": "Encoding",
       "reference_alias": "From HTML Entity",
@@ -1962,6 +2081,7 @@
     },
     {
       "id": "encoding.html.encode@1",
+      "cluster": "encoding.html",
       "display_name": "To HTML Entity",
       "category": "Encoding",
       "reference_alias": "To HTML Entity",
@@ -1978,6 +2098,7 @@
     },
     {
       "id": "encoding.microsoft_script.decode@1",
+      "cluster": "encoding.microsoft_script",
       "display_name": "Microsoft Script Decoder",
       "category": "Encoding",
       "reference_alias": "Microsoft Script Decoder",
@@ -1994,6 +2115,7 @@
     },
     {
       "id": "encoding.modhex.decode@1",
+      "cluster": "encoding.modhex",
       "display_name": "From Modhex",
       "category": "Encoding",
       "reference_alias": "From Modhex",
@@ -2010,6 +2132,7 @@
     },
     {
       "id": "encoding.modhex.encode@1",
+      "cluster": "encoding.modhex",
       "display_name": "To Modhex",
       "category": "Encoding",
       "reference_alias": "To Modhex",
@@ -2026,6 +2149,7 @@
     },
     {
       "id": "encoding.morse.decode@1",
+      "cluster": "encoding.morse",
       "display_name": "From Morse Code",
       "category": "Encoding",
       "reference_alias": "From Morse Code",
@@ -2042,6 +2166,7 @@
     },
     {
       "id": "encoding.morse.encode@1",
+      "cluster": "encoding.morse",
       "display_name": "To Morse Code",
       "category": "Encoding",
       "reference_alias": "To Morse Code",
@@ -2058,6 +2183,7 @@
     },
     {
       "id": "encoding.netbios.decode@1",
+      "cluster": "encoding.netbios",
       "display_name": "Decode NetBIOS Name",
       "category": "Encoding",
       "reference_alias": "Decode NetBIOS Name",
@@ -2074,6 +2200,7 @@
     },
     {
       "id": "encoding.netbios.encode@1",
+      "cluster": "encoding.netbios",
       "display_name": "Encode NetBIOS Name",
       "category": "Encoding",
       "reference_alias": "Encode NetBIOS Name",
@@ -2090,6 +2217,7 @@
     },
     {
       "id": "encoding.octal.decode@1",
+      "cluster": "encoding.octal",
       "display_name": "From Octal",
       "category": "Encoding",
       "reference_alias": "From Octal",
@@ -2106,6 +2234,7 @@
     },
     {
       "id": "encoding.octal.encode@1",
+      "cluster": "encoding.octal",
       "display_name": "To Octal",
       "category": "Encoding",
       "reference_alias": "To Octal",
@@ -2122,6 +2251,7 @@
     },
     {
       "id": "encoding.punycode.decode@1",
+      "cluster": "encoding.punycode",
       "display_name": "From Punycode",
       "category": "Encoding",
       "reference_alias": "From Punycode",
@@ -2138,6 +2268,7 @@
     },
     {
       "id": "encoding.punycode.encode@1",
+      "cluster": "encoding.punycode",
       "display_name": "To Punycode",
       "category": "Encoding",
       "reference_alias": "To Punycode",
@@ -2154,6 +2285,7 @@
     },
     {
       "id": "encoding.quoted_printable.decode@1",
+      "cluster": "encoding.quoted_printable",
       "display_name": "From Quoted Printable",
       "category": "Encoding",
       "reference_alias": "From Quoted Printable",
@@ -2170,6 +2302,7 @@
     },
     {
       "id": "encoding.quoted_printable.encode@1",
+      "cluster": "encoding.quoted_printable",
       "display_name": "To Quoted Printable",
       "category": "Encoding",
       "reference_alias": "To Quoted Printable",
@@ -2186,6 +2319,7 @@
     },
     {
       "id": "encoding.radix.decode@1",
+      "cluster": "encoding.radix",
       "display_name": "From Base",
       "category": "Encoding",
       "reference_alias": "From Base",
@@ -2202,6 +2336,7 @@
     },
     {
       "id": "encoding.radix.encode@1",
+      "cluster": "encoding.radix",
       "display_name": "To Base",
       "category": "Encoding",
       "reference_alias": "To Base",
@@ -2218,6 +2353,7 @@
     },
     {
       "id": "encoding.rot13@1",
+      "cluster": "encoding",
       "display_name": "ROT13",
       "category": "Encoding",
       "reference_alias": "ROT13",
@@ -2234,6 +2370,7 @@
     },
     {
       "id": "encoding.text_integer@1",
+      "cluster": "encoding",
       "display_name": "Text-Integer Conversion",
       "category": "Encoding",
       "reference_alias": "Text-Integer Conversion",
@@ -2250,6 +2387,7 @@
     },
     {
       "id": "encoding.unicode.escape@1",
+      "cluster": "encoding.unicode",
       "display_name": "Escape Unicode Characters",
       "category": "Encoding",
       "reference_alias": "Escape Unicode Characters",
@@ -2266,6 +2404,7 @@
     },
     {
       "id": "encoding.unicode.unescape@1",
+      "cluster": "encoding.unicode",
       "display_name": "Unescape Unicode Characters",
       "category": "Encoding",
       "reference_alias": "Unescape Unicode Characters",
@@ -2282,6 +2421,7 @@
     },
     {
       "id": "encoding.url.decode@1",
+      "cluster": "encoding.url",
       "display_name": "URL Decode",
       "category": "Encoding",
       "reference_alias": "URL Decode",
@@ -2298,6 +2438,7 @@
     },
     {
       "id": "encoding.url.encode@1",
+      "cluster": "encoding.url",
       "display_name": "URL Encode",
       "category": "Encoding",
       "reference_alias": "URL Encode",
@@ -2314,6 +2455,7 @@
     },
     {
       "id": "encoding.varint.decode@1",
+      "cluster": "encoding.varint",
       "display_name": "VarInt Decode",
       "category": "Encoding",
       "reference_alias": "VarInt Decode",
@@ -2330,6 +2472,7 @@
     },
     {
       "id": "encoding.varint.encode@1",
+      "cluster": "encoding.varint",
       "display_name": "VarInt Encode",
       "category": "Encoding",
       "reference_alias": "VarInt Encode",
@@ -2346,6 +2489,7 @@
     },
     {
       "id": "extract.domain@1",
+      "cluster": "extract",
       "display_name": "Extract domains",
       "category": "Extractors",
       "reference_alias": "Extract domains",
@@ -2366,6 +2510,7 @@
     },
     {
       "id": "extract.email@1",
+      "cluster": "extract",
       "display_name": "Extract email addresses",
       "category": "Extractors",
       "reference_alias": "Extract email addresses",
@@ -2382,6 +2527,7 @@
     },
     {
       "id": "extract.file_paths@1",
+      "cluster": "extract",
       "display_name": "Extract file paths",
       "category": "Extractors",
       "reference_alias": "Extract file paths",
@@ -2398,6 +2544,7 @@
     },
     {
       "id": "extract.hashes@1",
+      "cluster": "extract",
       "display_name": "Extract hashes",
       "category": "Extractors",
       "reference_alias": "Extract hashes",
@@ -2414,6 +2561,7 @@
     },
     {
       "id": "extract.ip@1",
+      "cluster": "extract",
       "display_name": "Extract IP addresses",
       "category": "Extractors",
       "reference_alias": "Extract IP addresses",
@@ -2430,6 +2578,7 @@
     },
     {
       "id": "extract.mac@1",
+      "cluster": "extract",
       "display_name": "Extract MAC addresses",
       "category": "Extractors",
       "reference_alias": "Extract MAC addresses",
@@ -2446,6 +2595,7 @@
     },
     {
       "id": "extract.strings@1",
+      "cluster": "extract",
       "display_name": "Strings",
       "category": "Extractors",
       "reference_alias": "Strings",
@@ -2462,6 +2612,7 @@
     },
     {
       "id": "extract.url@1",
+      "cluster": "extract",
       "display_name": "Extract URLs",
       "category": "Extractors",
       "reference_alias": "Extract URLs",
@@ -2478,6 +2629,7 @@
     },
     {
       "id": "filesystem.unix_permissions@1",
+      "cluster": "filesystem",
       "display_name": "Parse UNIX file permissions",
       "category": "Parsing",
       "reference_alias": "Parse UNIX file permissions",
@@ -2494,6 +2646,7 @@
     },
     {
       "id": "flow.comment@1",
+      "cluster": "flow",
       "display_name": "Comment",
       "category": "Flow control",
       "reference_alias": "Comment",
@@ -2510,6 +2663,7 @@
     },
     {
       "id": "flow.conditional_jump@1",
+      "cluster": "flow",
       "display_name": "Conditional Jump",
       "category": "Flow control",
       "reference_alias": "Conditional Jump",
@@ -2526,6 +2680,7 @@
     },
     {
       "id": "flow.fork@1",
+      "cluster": "flow",
       "display_name": "Fork",
       "category": "Flow control",
       "reference_alias": "Fork",
@@ -2542,6 +2697,7 @@
     },
     {
       "id": "flow.jump@1",
+      "cluster": "flow",
       "display_name": "Jump",
       "category": "Flow control",
       "reference_alias": "Jump",
@@ -2558,6 +2714,7 @@
     },
     {
       "id": "flow.label@1",
+      "cluster": "flow",
       "display_name": "Label",
       "category": "Flow control",
       "reference_alias": "Label",
@@ -2574,6 +2731,7 @@
     },
     {
       "id": "flow.merge@1",
+      "cluster": "flow",
       "display_name": "Merge",
       "category": "Flow control",
       "reference_alias": "Merge",
@@ -2590,6 +2748,7 @@
     },
     {
       "id": "flow.return@1",
+      "cluster": "flow",
       "display_name": "Return",
       "category": "Flow control",
       "reference_alias": "Return",
@@ -2606,6 +2765,7 @@
     },
     {
       "id": "flow.subsection@1",
+      "cluster": "flow",
       "display_name": "Subsection",
       "category": "Flow control",
       "reference_alias": "Subsection",
@@ -2626,6 +2786,7 @@
     },
     {
       "id": "hash.bcrypt.parse@1",
+      "cluster": "hash.bcrypt",
       "display_name": "Bcrypt parse",
       "category": "Hashing",
       "reference_alias": "Bcrypt parse",
@@ -2642,6 +2803,7 @@
     },
     {
       "id": "hash.blake2b@1",
+      "cluster": "hash",
       "display_name": "BLAKE2b",
       "category": "Hashing",
       "reference_alias": "BLAKE2b",
@@ -2658,6 +2820,7 @@
     },
     {
       "id": "hash.blake2s@1",
+      "cluster": "hash",
       "display_name": "BLAKE2s",
       "category": "Hashing",
       "reference_alias": "BLAKE2s",
@@ -2674,6 +2837,7 @@
     },
     {
       "id": "hash.blake3@1",
+      "cluster": "hash",
       "display_name": "BLAKE3",
       "category": "Hashing",
       "reference_alias": "BLAKE3",
@@ -2690,6 +2854,7 @@
     },
     {
       "id": "hash.hmac@1",
+      "cluster": "hash",
       "display_name": "HMAC",
       "category": "Hashing",
       "reference_alias": "HMAC",
@@ -2710,6 +2875,7 @@
     },
     {
       "id": "hash.keccak@1",
+      "cluster": "hash",
       "display_name": "Keccak",
       "category": "Hashing",
       "reference_alias": "Keccak",
@@ -2726,6 +2892,7 @@
     },
     {
       "id": "hash.md2@1",
+      "cluster": "hash",
       "display_name": "MD2",
       "category": "Hashing",
       "reference_alias": "MD2",
@@ -2746,6 +2913,7 @@
     },
     {
       "id": "hash.md4@1",
+      "cluster": "hash",
       "display_name": "MD4",
       "category": "Hashing",
       "reference_alias": "MD4",
@@ -2762,6 +2930,7 @@
     },
     {
       "id": "hash.md5@1",
+      "cluster": "hash",
       "display_name": "MD5",
       "category": "Hashing",
       "reference_alias": "MD5",
@@ -2778,6 +2947,7 @@
     },
     {
       "id": "hash.murmur3@1",
+      "cluster": "hash",
       "display_name": "MurmurHash3",
       "category": "Hashing",
       "reference_alias": "MurmurHash3",
@@ -2794,6 +2964,7 @@
     },
     {
       "id": "hash.nt@1",
+      "cluster": "hash",
       "display_name": "NT Hash",
       "category": "Hashing",
       "reference_alias": "NT Hash",
@@ -2810,6 +2981,7 @@
     },
     {
       "id": "hash.ripemd@1",
+      "cluster": "hash",
       "display_name": "RIPEMD",
       "category": "Hashing",
       "reference_alias": "RIPEMD",
@@ -2826,6 +2998,7 @@
     },
     {
       "id": "hash.sha0@1",
+      "cluster": "hash",
       "display_name": "SHA0",
       "category": "Hashing",
       "reference_alias": "SHA0",
@@ -2846,6 +3019,7 @@
     },
     {
       "id": "hash.sha1@1",
+      "cluster": "hash",
       "display_name": "SHA1",
       "category": "Hashing",
       "reference_alias": "SHA1",
@@ -2866,6 +3040,7 @@
     },
     {
       "id": "hash.sha2@1",
+      "cluster": "hash",
       "display_name": "SHA2",
       "category": "Hashing",
       "reference_alias": "SHA2",
@@ -2886,6 +3061,7 @@
     },
     {
       "id": "hash.sha3@1",
+      "cluster": "hash",
       "display_name": "SHA3",
       "category": "Hashing",
       "reference_alias": "SHA3",
@@ -2906,6 +3082,7 @@
     },
     {
       "id": "hash.shake@1",
+      "cluster": "hash",
       "display_name": "Shake",
       "category": "Hashing",
       "reference_alias": "Shake",
@@ -2922,6 +3099,7 @@
     },
     {
       "id": "hash.sm3@1",
+      "cluster": "hash",
       "display_name": "SM3",
       "category": "Hashing",
       "reference_alias": "SM3",
@@ -2942,6 +3120,7 @@
     },
     {
       "id": "hash.streebog@1",
+      "cluster": "hash",
       "display_name": "Streebog",
       "category": "Hashing",
       "reference_alias": "Streebog",
@@ -2958,6 +3137,7 @@
     },
     {
       "id": "hash.whirlpool@1",
+      "cluster": "hash",
       "display_name": "Whirlpool",
       "category": "Hashing",
       "reference_alias": "Whirlpool",
@@ -2978,6 +3158,7 @@
     },
     {
       "id": "http.dechunk@1",
+      "cluster": "http",
       "display_name": "Dechunk HTTP response",
       "category": "Text",
       "reference_alias": "Dechunk HTTP response",
@@ -2994,6 +3175,7 @@
     },
     {
       "id": "http.headers.strip@1",
+      "cluster": "http.headers",
       "display_name": "Strip HTTP headers",
       "category": "Text",
       "reference_alias": "Strip HTTP headers",
@@ -3010,6 +3192,7 @@
     },
     {
       "id": "list.split@1",
+      "cluster": "list",
       "display_name": "Split",
       "category": "Shaping",
       "reference_alias": "Split",
@@ -3026,6 +3209,7 @@
     },
     {
       "id": "list.unique@1",
+      "cluster": "list",
       "display_name": "Unique",
       "category": "Shaping",
       "reference_alias": "Unique",
@@ -3042,6 +3226,7 @@
     },
     {
       "id": "logic.add@1",
+      "cluster": "logic",
       "display_name": "ADD",
       "category": "Logic",
       "reference_alias": "ADD",
@@ -3058,6 +3243,7 @@
     },
     {
       "id": "logic.and@1",
+      "cluster": "logic",
       "display_name": "AND",
       "category": "Logic",
       "reference_alias": "AND",
@@ -3074,6 +3260,7 @@
     },
     {
       "id": "logic.not@1",
+      "cluster": "logic",
       "display_name": "NOT",
       "category": "Logic",
       "reference_alias": "NOT",
@@ -3090,6 +3277,7 @@
     },
     {
       "id": "logic.or@1",
+      "cluster": "logic",
       "display_name": "OR",
       "category": "Logic",
       "reference_alias": "OR",
@@ -3106,6 +3294,7 @@
     },
     {
       "id": "logic.parity@1",
+      "cluster": "logic",
       "display_name": "Parity Bit",
       "category": "Logic",
       "reference_alias": "Parity Bit",
@@ -3122,6 +3311,7 @@
     },
     {
       "id": "logic.ror13@1",
+      "cluster": "logic",
       "display_name": "ROR13",
       "category": "Logic",
       "reference_alias": "ROR13",
@@ -3138,6 +3328,7 @@
     },
     {
       "id": "logic.rotate.left@1",
+      "cluster": "logic.rotate",
       "display_name": "Rotate left",
       "category": "Logic",
       "reference_alias": "Rotate left",
@@ -3154,6 +3345,7 @@
     },
     {
       "id": "logic.rotate.right@1",
+      "cluster": "logic.rotate",
       "display_name": "Rotate right",
       "category": "Logic",
       "reference_alias": "Rotate right",
@@ -3170,6 +3362,7 @@
     },
     {
       "id": "logic.shift.left@1",
+      "cluster": "logic.shift",
       "display_name": "Bit shift left",
       "category": "Logic",
       "reference_alias": "Bit shift left",
@@ -3186,6 +3379,7 @@
     },
     {
       "id": "logic.shift.right@1",
+      "cluster": "logic.shift",
       "display_name": "Bit shift right",
       "category": "Logic",
       "reference_alias": "Bit shift right",
@@ -3202,6 +3396,7 @@
     },
     {
       "id": "logic.sub@1",
+      "cluster": "logic",
       "display_name": "SUB",
       "category": "Logic",
       "reference_alias": "SUB",
@@ -3218,6 +3413,7 @@
     },
     {
       "id": "logic.xor@1",
+      "cluster": "logic",
       "display_name": "XOR",
       "category": "Logic",
       "reference_alias": "XOR",
@@ -3234,6 +3430,7 @@
     },
     {
       "id": "logic.xor_brute@1",
+      "cluster": "logic",
       "display_name": "XOR Brute Force",
       "category": "Logic",
       "reference_alias": "XOR Brute Force",
@@ -3250,6 +3447,7 @@
     },
     {
       "id": "math.convert.area@1",
+      "cluster": "math.convert",
       "display_name": "Convert area",
       "category": "Arithmetic",
       "reference_alias": "Convert area",
@@ -3266,6 +3464,7 @@
     },
     {
       "id": "math.convert.data@1",
+      "cluster": "math.convert",
       "display_name": "Convert data units",
       "category": "Arithmetic",
       "reference_alias": "Convert data units",
@@ -3282,6 +3481,7 @@
     },
     {
       "id": "math.convert.distance@1",
+      "cluster": "math.convert",
       "display_name": "Convert distance",
       "category": "Arithmetic",
       "reference_alias": "Convert distance",
@@ -3298,6 +3498,7 @@
     },
     {
       "id": "math.convert.mass@1",
+      "cluster": "math.convert",
       "display_name": "Convert mass",
       "category": "Arithmetic",
       "reference_alias": "Convert mass",
@@ -3314,6 +3515,7 @@
     },
     {
       "id": "math.convert.speed@1",
+      "cluster": "math.convert",
       "display_name": "Convert speed",
       "category": "Arithmetic",
       "reference_alias": "Convert speed",
@@ -3330,6 +3532,7 @@
     },
     {
       "id": "math.divide@1",
+      "cluster": "math",
       "display_name": "Divide",
       "category": "Arithmetic",
       "reference_alias": "Divide",
@@ -3346,6 +3549,7 @@
     },
     {
       "id": "math.egcd@1",
+      "cluster": "math",
       "display_name": "Extended GCD",
       "category": "Arithmetic",
       "reference_alias": "Extended GCD",
@@ -3362,6 +3566,7 @@
     },
     {
       "id": "math.mean@1",
+      "cluster": "math",
       "display_name": "Mean",
       "category": "Arithmetic",
       "reference_alias": "Mean",
@@ -3378,6 +3583,7 @@
     },
     {
       "id": "math.median@1",
+      "cluster": "math",
       "display_name": "Median",
       "category": "Arithmetic",
       "reference_alias": "Median",
@@ -3394,6 +3600,7 @@
     },
     {
       "id": "math.mod@1",
+      "cluster": "math",
       "display_name": "MOD",
       "category": "Arithmetic",
       "reference_alias": "MOD",
@@ -3410,6 +3617,7 @@
     },
     {
       "id": "math.modexp@1",
+      "cluster": "math",
       "display_name": "Modular Exponentiation",
       "category": "Arithmetic",
       "reference_alias": "Modular Exponentiation",
@@ -3426,6 +3634,7 @@
     },
     {
       "id": "math.modinv@1",
+      "cluster": "math",
       "display_name": "Modular Inverse",
       "category": "Arithmetic",
       "reference_alias": "Modular Inverse",
@@ -3442,6 +3651,7 @@
     },
     {
       "id": "math.multiply@1",
+      "cluster": "math",
       "display_name": "Multiply",
       "category": "Arithmetic",
       "reference_alias": "Multiply",
@@ -3458,6 +3668,7 @@
     },
     {
       "id": "math.stddev@1",
+      "cluster": "math",
       "display_name": "Standard Deviation",
       "category": "Arithmetic",
       "reference_alias": "Standard Deviation",
@@ -3474,6 +3685,7 @@
     },
     {
       "id": "math.subtract@1",
+      "cluster": "math",
       "display_name": "Subtract",
       "category": "Arithmetic",
       "reference_alias": "Subtract",
@@ -3490,6 +3702,7 @@
     },
     {
       "id": "math.sum@1",
+      "cluster": "math",
       "display_name": "Sum",
       "category": "Arithmetic",
       "reference_alias": "Sum",
@@ -3506,6 +3719,7 @@
     },
     {
       "id": "network.ip.format@1",
+      "cluster": "network.ip",
       "display_name": "Change IP format",
       "category": "Networking",
       "reference_alias": "Change IP format",
@@ -3522,6 +3736,7 @@
     },
     {
       "id": "network.mac.format@1",
+      "cluster": "network.mac",
       "display_name": "Format MAC addresses",
       "category": "Networking",
       "reference_alias": "Format MAC addresses",
@@ -3538,6 +3753,7 @@
     },
     {
       "id": "network.strip.ipv4@1",
+      "cluster": "network.strip",
       "display_name": "Strip IPv4 header",
       "category": "Networking",
       "reference_alias": "Strip IPv4 header",
@@ -3554,6 +3770,7 @@
     },
     {
       "id": "network.strip.tcp@1",
+      "cluster": "network.strip",
       "display_name": "Strip TCP header",
       "category": "Networking",
       "reference_alias": "Strip TCP header",
@@ -3570,6 +3787,7 @@
     },
     {
       "id": "network.strip.udp@1",
+      "cluster": "network.strip",
       "display_name": "Strip UDP header",
       "category": "Networking",
       "reference_alias": "Strip UDP header",
@@ -3586,6 +3804,7 @@
     },
     {
       "id": "parsing.colour_code@1",
+      "cluster": "parsing",
       "display_name": "Parse colour code",
       "category": "Parsing",
       "reference_alias": "Parse colour code",
@@ -3602,6 +3821,7 @@
     },
     {
       "id": "parsing.tlv@1",
+      "cluster": "parsing",
       "display_name": "Parse TLV",
       "category": "Parsing",
       "reference_alias": "Parse TLV",
@@ -3618,6 +3838,7 @@
     },
     {
       "id": "sets.cartesian_product@1",
+      "cluster": "sets",
       "display_name": "Cartesian Product",
       "category": "Sets",
       "reference_alias": "Cartesian Product",
@@ -3634,6 +3855,7 @@
     },
     {
       "id": "sets.difference@1",
+      "cluster": "sets",
       "display_name": "Set Difference",
       "category": "Sets",
       "reference_alias": "Set Difference",
@@ -3650,6 +3872,7 @@
     },
     {
       "id": "sets.intersection@1",
+      "cluster": "sets",
       "display_name": "Set Intersection",
       "category": "Sets",
       "reference_alias": "Set Intersection",
@@ -3666,6 +3889,7 @@
     },
     {
       "id": "sets.power@1",
+      "cluster": "sets",
       "display_name": "Power Set",
       "category": "Sets",
       "reference_alias": "Power Set",
@@ -3682,6 +3906,7 @@
     },
     {
       "id": "sets.symmetric_difference@1",
+      "cluster": "sets",
       "display_name": "Symmetric Difference",
       "category": "Sets",
       "reference_alias": "Symmetric Difference",
@@ -3698,6 +3923,7 @@
     },
     {
       "id": "sets.union@1",
+      "cluster": "sets",
       "display_name": "Set Union",
       "category": "Sets",
       "reference_alias": "Set Union",
@@ -3714,6 +3940,7 @@
     },
     {
       "id": "shaping.to_table@1",
+      "cluster": "shaping",
       "display_name": "To Table",
       "category": "Shaping",
       "reference_alias": "To Table",
@@ -3730,6 +3957,7 @@
     },
     {
       "id": "text.alphabet.expand@1",
+      "cluster": "text.alphabet",
       "display_name": "Expand alphabet range",
       "category": "Text",
       "reference_alias": "Expand alphabet range",
@@ -3746,6 +3974,7 @@
     },
     {
       "id": "text.ansi.strip@1",
+      "cluster": "text.ansi",
       "display_name": "Remove ANSI Escape Codes",
       "category": "Text",
       "reference_alias": "Remove ANSI Escape Codes",
@@ -3762,6 +3991,7 @@
     },
     {
       "id": "text.case.all@1",
+      "cluster": "text.case",
       "display_name": "Get All Casings",
       "category": "Text",
       "reference_alias": "Get All Casings",
@@ -3778,6 +4008,7 @@
     },
     {
       "id": "text.case.alternating@1",
+      "cluster": "text.case",
       "display_name": "Alternating Caps",
       "category": "Text",
       "reference_alias": "Alternating Caps",
@@ -3794,6 +4025,7 @@
     },
     {
       "id": "text.case.lower@1",
+      "cluster": "text.case",
       "display_name": "To Lower case",
       "category": "Text",
       "reference_alias": "To Lower case",
@@ -3810,6 +4042,7 @@
     },
     {
       "id": "text.case.swap@1",
+      "cluster": "text.case",
       "display_name": "Swap case",
       "category": "Text",
       "reference_alias": "Swap case",
@@ -3826,6 +4059,7 @@
     },
     {
       "id": "text.case.upper@1",
+      "cluster": "text.case",
       "display_name": "To Upper case",
       "category": "Text",
       "reference_alias": "To Upper case",
@@ -3842,6 +4076,7 @@
     },
     {
       "id": "text.count@1",
+      "cluster": "text",
       "display_name": "Count occurrences",
       "category": "Text",
       "reference_alias": "Count occurrences",
@@ -3858,6 +4093,7 @@
     },
     {
       "id": "text.debruijn@1",
+      "cluster": "text",
       "display_name": "Generate De Bruijn Sequence",
       "category": "Text",
       "reference_alias": "Generate De Bruijn Sequence",
@@ -3874,6 +4110,7 @@
     },
     {
       "id": "text.escape.unescape@1",
+      "cluster": "text.escape",
       "display_name": "Unescape string",
       "category": "Text",
       "reference_alias": "Unescape string",
@@ -3890,6 +4127,7 @@
     },
     {
       "id": "text.find_replace@1",
+      "cluster": "text",
       "display_name": "Find / Replace",
       "category": "Text",
       "reference_alias": "Find / Replace",
@@ -3910,6 +4148,7 @@
     },
     {
       "id": "text.html.strip_tags@1",
+      "cluster": "text.html",
       "display_name": "Strip HTML tags",
       "category": "Text",
       "reference_alias": "Strip HTML tags",
@@ -3926,6 +4165,7 @@
     },
     {
       "id": "text.html.to_text@1",
+      "cluster": "text.html",
       "display_name": "HTML To Text",
       "category": "Text",
       "reference_alias": "HTML To Text",
@@ -3942,6 +4182,7 @@
     },
     {
       "id": "text.leet@1",
+      "cluster": "text",
       "display_name": "Convert Leet Speak",
       "category": "Ciphers",
       "reference_alias": "Convert Leet Speak",
@@ -3958,6 +4199,7 @@
     },
     {
       "id": "text.line_numbers.add@1",
+      "cluster": "text.line_numbers",
       "display_name": "Add line numbers",
       "category": "Text",
       "reference_alias": "Add line numbers",
@@ -3974,6 +4216,7 @@
     },
     {
       "id": "text.line_numbers.remove@1",
+      "cluster": "text.line_numbers",
       "display_name": "Remove line numbers",
       "category": "Text",
       "reference_alias": "Remove line numbers",
@@ -3990,6 +4233,7 @@
     },
     {
       "id": "text.nato@1",
+      "cluster": "text",
       "display_name": "Convert to NATO alphabet",
       "category": "Ciphers",
       "reference_alias": "Convert to NATO alphabet",
@@ -4006,6 +4250,7 @@
     },
     {
       "id": "text.pad_lines@1",
+      "cluster": "text",
       "display_name": "Pad lines",
       "category": "Text",
       "reference_alias": "Pad lines",
@@ -4022,6 +4267,7 @@
     },
     {
       "id": "text.regex.case_fold@1",
+      "cluster": "text.regex",
       "display_name": "From Case Insensitive Regex",
       "category": "Text",
       "reference_alias": "From Case Insensitive Regex",
@@ -4038,6 +4284,7 @@
     },
     {
       "id": "text.regex.case_widen@1",
+      "cluster": "text.regex",
       "display_name": "To Case Insensitive Regex",
       "category": "Text",
       "reference_alias": "To Case Insensitive Regex",
@@ -4054,6 +4301,7 @@
     },
     {
       "id": "text.remove_whitespace@1",
+      "cluster": "text",
       "display_name": "Remove whitespace",
       "category": "Text",
       "reference_alias": "Remove whitespace",
@@ -4070,6 +4318,7 @@
     },
     {
       "id": "text.smart.escape@1",
+      "cluster": "text.smart",
       "display_name": "Escape Smart Characters",
       "category": "Text",
       "reference_alias": "Escape Smart Characters",
@@ -4086,6 +4335,7 @@
     },
     {
       "id": "text.unicode.format@1",
+      "cluster": "text.unicode",
       "display_name": "Unicode Text Format",
       "category": "Encoding",
       "reference_alias": "Unicode Text Format",
@@ -4102,6 +4352,7 @@
     },
     {
       "id": "text.wrap@1",
+      "cluster": "text",
       "display_name": "Wrap",
       "category": "Text",
       "reference_alias": "Wrap",
@@ -4118,6 +4369,7 @@
     },
     {
       "id": "text.xkcd_random@1",
+      "cluster": "text",
       "display_name": "XKCD Random Number",
       "category": "Text",
       "reference_alias": "XKCD Random Number",
@@ -4134,6 +4386,7 @@
     },
     {
       "id": "time.filetime.decode@1",
+      "cluster": "time.filetime",
       "display_name": "Windows Filetime to UNIX Timestamp",
       "category": "Time",
       "reference_alias": "Windows Filetime to UNIX Timestamp",
@@ -4150,6 +4403,7 @@
     },
     {
       "id": "time.filetime.encode@1",
+      "cluster": "time.filetime",
       "display_name": "UNIX Timestamp to Windows Filetime",
       "category": "Time",
       "reference_alias": "UNIX Timestamp to Windows Filetime",

@@ -47,6 +47,35 @@ impl OperationId {
     pub fn as_str(&self) -> &str {
         &self.0
     }
+
+    /// The namespace this operation shares with its siblings.
+    ///
+    /// Everything before the last segment and the version, so
+    /// `encoding.base64.decode@1` and `encoding.base64.encode@1` are both
+    /// `encoding.base64`, and `hash.sha2@1` is `hash`. A *cluster* is the set
+    /// of operations that answer to one namespace.
+    ///
+    /// This is a reading of the id rather than a new field, because the
+    /// grouping is already there: whoever named the operations put the couples
+    /// and the families next to each other, and the sort order of a catalog
+    /// listing shows it. Naming the reading is what lets it be checked —
+    /// `tests/clusters.rs` requires an operation's declared inverse to live in
+    /// its own cluster, which turns the convention into something a new
+    /// operation cannot quietly break.
+    ///
+    /// The grouping is coarse at the top level on purpose. An operation named
+    /// directly under its family, like `logic.xor@1`, clusters with every other
+    /// `logic.*`, and that is the honest answer: the id says they are siblings
+    /// and nothing finer was recorded.
+    #[must_use]
+    pub fn cluster(&self) -> &str {
+        let bare = self
+            .as_str()
+            .split_once('@')
+            .map_or_else(|| self.as_str(), |(name, _)| name);
+        bare.rsplit_once('.')
+            .map_or(bare, |(namespace, _)| namespace)
+    }
 }
 
 impl AsRef<str> for OperationId {

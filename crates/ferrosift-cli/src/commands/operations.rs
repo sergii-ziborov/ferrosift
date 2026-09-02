@@ -76,6 +76,12 @@ fn entry(specification: &OperationSpec) -> serde_json::Value {
     let classifications: Vec<_> = specification.classifications.iter().collect();
     serde_json::json!({
         "id": specification.id.as_str(),
+        // The namespace the id already carries, named so a reader does not
+        // have to re-derive the rule. `category` says what kind of thing an
+        // operation is; `cluster` says which other operations it was built
+        // alongside, which is the grouping that puts an encoder next to its
+        // decoder.
+        "cluster": specification.id.cluster(),
         "display_name": specification.display_name,
         "category": specification.category,
         "aliases": aliases,
@@ -85,5 +91,9 @@ fn entry(specification: &OperationSpec) -> serde_json::Value {
         "classifications": classifications,
         "output_behavior": specification.output_behavior,
         "streaming": specification.streaming,
+        // What undoes this one, where anything does. The catalog is full of
+        // encoder/decoder couples and this is the only field that says which
+        // two are a couple; without it a reader has to guess from the names.
+        "inverse": specification.inverse.as_ref().map(ferrosift_model::OperationId::as_str),
     })
 }

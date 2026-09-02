@@ -88,15 +88,22 @@ impl FromCaseInsensitiveRegex {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: spec_for(
-                "text.regex.case_fold@1",
-                "From Case Insensitive Regex",
-                "Text",
-                "Folds [aA]-style character classes back to a single letter.",
-                "From Case Insensitive Regex",
-                ValueConstraint::Exact(ValueKind::Text),
-                vec![],
-            ),
+            // Named here rather than in `spec_for`, which three operations
+            // share and only this one has an inverse. The other half of the
+            // couple has always pointed at this one; this direction was
+            // missing, which made the catalog's one asymmetric inverse.
+            spec: OperationSpec {
+                inverse: Some(crate::spec::operation_id("text.regex.case_widen@1")),
+                ..spec_for(
+                    "text.regex.case_fold@1",
+                    "From Case Insensitive Regex",
+                    "Text",
+                    "Folds [aA]-style character classes back to a single letter.",
+                    "From Case Insensitive Regex",
+                    ValueConstraint::Exact(ValueKind::Text),
+                    vec![],
+                )
+            },
         }
     }
 }

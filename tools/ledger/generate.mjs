@@ -238,6 +238,9 @@ export function buildLedger() {
         const divergence = alias ? (diverge.get(alias) ?? null) : null;
         const entry = {
             id: operation.id,
+            // Derived in the catalog rather than here, so the rule that says
+            // what a cluster is has one owner. See `OperationId::cluster`.
+            cluster: operation.cluster,
             display_name: operation.display_name,
             category: operation.category,
             reference_alias: alias,
@@ -334,6 +337,54 @@ function headingAnchor(page, anchor) {
 }
 
 /** Renders the human-readable table from the same data. */
+/**
+ * How the catalog groups itself, above the per-operation table.
+ *
+ * A *cluster* is the namespace an id already carries: `encoding.base64.decode@1`
+ * and `encoding.base64.encode@1` are both `encoding.base64`. It answers a
+ * question `category` cannot — not "what kind of thing is this" but "what else
+ * was built alongside it" — and it is a reading of the id rather than a field
+ * anyone maintains, so it cannot disagree with the catalog.
+ *
+ * The largest are named because they are where the catalog is deepest, and the
+ * count of operations standing alone is named because a rising one usually
+ * means a family was started and not finished.
+ * `crates/ferrosift-operations/tests/clusters.rs` holds the rules this grouping
+ * has to keep.
+ */
+function renderClusters(ledger) {
+    const sizes = new Map();
+    for (const entry of ledger.operations) {
+        sizes.set(entry.cluster, (sizes.get(entry.cluster) ?? 0) + 1);
+    }
+    const singletons = [...sizes.values()].filter(count => count === 1).length;
+    const largest = [...sizes.entries()]
+        .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
+        .slice(0, 8)
+        .map(([cluster, count]) => `\`${cluster}\` (${count})`);
+
+    return [
+        "## Clusters",
+        "",
+        "What an operation's id says about its neighbours. A cluster is the",
+        "namespace before the last segment, so an encoder and its decoder share",
+        "one — a grouping by what was built together, where `category` groups by",
+        "what a thing is.",
+        "",
+        "| | |",
+        "|---|---:|",
+        `| Clusters | ${sizes.size} |`,
+        `| Operations standing alone in theirs | ${singletons} |`,
+        "",
+        `Deepest: ${largest.join(", ")}.`,
+        "",
+        "Nothing here is maintained by hand. The rule is `OperationId::cluster`",
+        "and the invariants it has to keep — a declared inverse must exist, must",
+        "be declared back, and must live in the same cluster — are checked by",
+        "`crates/ferrosift-operations/tests/clusters.rs`.",
+    ];
+}
+
 export function renderMarkdown(ledger) {
     const {totals, reference} = ledger;
     const lines = [
@@ -391,8 +442,12 @@ export function renderMarkdown(ledger) {
         "argues it. Every one of them is byte-pinned over the inputs it covers;",
         "the divergence is what lies outside those inputs.",
         "",
-        "| Operation | Alias | Pack | Evidence | Parity | Cases |",
-        "|---|---|---|---|---|---:|",
+        ...renderClusters(ledger),
+        "",
+        "The table below is sorted by id, so a cluster's members are adjacent.",
+        "",
+        "| Operation | Cluster | Alias | Pack | Evidence | Parity | Cases |",
+        "|---|---|---|---|---|---|---:|",
     ];
     for (const entry of ledger.operations) {
         // An operation the baseline never had says so next to its name, rather
@@ -409,8 +464,8 @@ export function renderMarkdown(ledger) {
               ? ` (${entry.note})`
               : "";
         lines.push(
-            `| \`${entry.id}\` | ${alias} | ${entry.feature} | ${entry.evidence} `
-                + `| ${entry.parity}${detail} | ${entry.conformance_cases} |`,
+            `| \`${entry.id}\` | \`${entry.cluster}\` | ${alias} | ${entry.feature} `
+                + `| ${entry.evidence} | ${entry.parity}${detail} | ${entry.conformance_cases} |`,
         );
     }
     lines.push("");

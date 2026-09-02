@@ -14,6 +14,31 @@ fn canonical_operation_id_preserves_its_wire_value() {
     );
 }
 
+/// An id says who its siblings are, and this is the reading of it.
+///
+/// The version goes first, then the last segment. Everything left is what a
+/// couple shares — which is why `encoding.base64.encode@1` and
+/// `encoding.base64.decode@1` land in the same place, and why an operation
+/// named directly under its family lands in the family.
+#[test]
+fn an_operation_id_names_the_cluster_it_belongs_to() {
+    for (id, cluster) in [
+        ("encoding.base64.decode@1", "encoding.base64"),
+        ("encoding.base64.encode@1", "encoding.base64"),
+        ("hash.sha2@1", "hash"),
+        ("logic.xor@1", "logic"),
+        // Four segments: the deepest the catalog goes, and the rule does not
+        // care how deep it is.
+        ("compression.zlib.raw.inflate@1", "compression.zlib.raw"),
+        // The version is not part of the namespace, so two majors of one
+        // operation stay siblings.
+        ("encoding.hex.encode@2", "encoding.hex"),
+    ] {
+        let parsed = OperationId::new(id).expect("valid operation ID");
+        assert_eq!(parsed.cluster(), cluster, "cluster of {id}");
+    }
+}
+
 #[test]
 fn static_operation_id_uses_the_same_canonical_value() {
     assert_eq!(STATIC_OPERATION_ID.as_str(), "encoding.hex.encode@1");

@@ -62,6 +62,21 @@ fn the_catalog_publishes_the_evidence_it_stands_on() {
         );
     }
 
+    // Every operation says which cluster it is in, and the cluster is a prefix
+    // of its own id. A field that had drifted from the id it is derived from
+    // would be worse than no field at all.
+    for operation in document["operations"]
+        .as_array()
+        .expect("catalog must list operations")
+    {
+        let id = operation["id"].as_str().expect("ids are strings");
+        let cluster = operation["cluster"].as_str().expect("clusters are strings");
+        assert!(
+            id.starts_with(cluster) && id.len() > cluster.len(),
+            "{id} reports cluster {cluster}, which is not a prefix of it"
+        );
+    }
+
     let checked = evidence["target_checks"]
         .as_object()
         .expect("the manifest must list the targets this build ran");
