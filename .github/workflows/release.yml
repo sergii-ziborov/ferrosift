@@ -139,14 +139,70 @@ jobs:
         with:
           name: build-attestation
 
-      # One command for all seven. Cargo works out the order and waits for the
-      # index between them, which is what makes "all seven or none" achievable
-      # rather than aspirational — the crates reference each other by exact
-      # version, so a partial publish is a combination nothing has ever built.
+      # One at a time, in dependency order, skipping what is already there and
+      # waiting out the rate limit.
+      #
+      # `cargo publish --workspace` was the first attempt and it is the wrong
+      # tool for a *first* release. crates.io limits how many **new** crates one
+      # account may create in a window, and a workspace of seven trips it
+      # part-way through: four went up, the fifth got `429 Too Many Requests`,
+      # and the command stopped. Re-running it then failed differently —
+      # `crate ferrosift-core@… already exists on crates.io index` — because
+      # `--workspace` has no notion of resuming.
+      #
+      # So the loop asks the registry what is already published rather than
+      # assuming, and treats a rate limit as something to wait out rather than
+      # as a failure. Any *other* error stops it immediately: the point is to
+      # survive a limit, not to retry a real problem until it looks like one.
       - name: Publish
-        run: cargo publish --workspace
+        timeout-minutes: 180
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          VERSION: ${{ needs.verify.outputs.version }}
+        run: |
+          set -uo pipefail
+          agent="ferrosift-release (https://github.com/${{ github.repository }})"
+
+          already_published() {
+            local status
+            status="$(curl -s -o /dev/null -w '%{http_code}' \
+              -H "User-Agent: $agent" \
+              "https://crates.io/api/v1/crates/$1/$VERSION")"
+            [ "$status" = "200" ]
+          }
+
+          publish_one() {
+            local crate="$1" attempt log
+            log="$(mktemp)"
+            for attempt in 1 2 3 4 5 6 7 8; do
+              if cargo publish -p "$crate" 2>&1 | tee "$log"; then
+                return 0
+              fi
+              if [ "${PIPESTATUS[0]}" = "0" ]; then
+                return 0
+              fi
+              if grep -q "Too Many Requests" "$log"; then
+                echo "::notice::rate limited on $crate, waiting 11 minutes (attempt $attempt)"
+                sleep 660
+                continue
+              fi
+              echo "::error::$crate failed for a reason that is not a rate limit"
+              return 1
+            done
+            echo "::error::$crate still rate limited after 8 attempts"
+            return 1
+          }
+
+          for crate in ferrosift-model ferrosift-core ferrosift-compat \
+                       ferrosift-operations ferrosift-pattern ferrosift ferrosift-cli; do
+            if already_published "$crate"; then
+              echo "$crate $VERSION is already on crates.io, skipping"
+              continue
+            fi
+            echo "::group::publish $crate"
+            publish_one "$crate" || exit 1
+            echo "::endgroup::"
+          done
 
       # Cut from the changelog rather than written twice. The section ends at
       # the next release heading or at the link definitions, whichever comes
