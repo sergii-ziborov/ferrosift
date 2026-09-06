@@ -167,10 +167,10 @@ impl Pipeline {
     }
 
     #[cfg(feature = "pattern")]
-    /// Runs the pipeline, then evaluates a hex pattern over the result.
+    /// Parses a hex pattern, runs the transforms, then evaluates the pattern.
     ///
-    /// This is the transform-then-parse path: decode, decompress, or decrypt
-    /// a buffer and describe the bytes that come out, in one call.
+    /// The pattern source is checked first so an invalid pattern never starts
+    /// transforms. Evaluation then describes the bytes the recipe produced.
     ///
     /// # Errors
     ///
@@ -192,8 +192,8 @@ impl Pipeline {
         input: &[u8],
         options: &EvalOptions,
     ) -> Result<Vec<Node>, Error> {
-        let bytes = self.run_bytes(input)?;
         let pattern = ferrosift_pattern::parse(source)?;
+        let bytes = self.run_bytes(input)?;
         Ok(ferrosift_pattern::evaluate(&pattern, &bytes, options)?)
     }
 

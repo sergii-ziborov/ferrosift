@@ -1,4 +1,4 @@
-//! Bounded recipe execution and raw output.
+//! Bounded recipe execution and typed or raw output.
 
 use std::{
     io::{Read, Write},
@@ -9,9 +9,9 @@ use ferrosift_core::{ExecutionStatus, Executor, NeverCancelled, OperationRegistr
 use ferrosift_model::CapabilitySet;
 
 use crate::{
-    args::{InputKind, RecipeFormat},
+    args::{InputKind, RecipeFormat, ResultFormat},
     error::CliError,
-    io, limits, recipe, value,
+    io, limits, recipe, result, value,
 };
 
 pub struct Request<'a> {
@@ -20,6 +20,7 @@ pub struct Request<'a> {
     pub recipe_path: &'a Path,
     pub input_path: &'a Path,
     pub output_path: &'a Path,
+    pub result_format: ResultFormat,
 }
 
 pub fn run(
@@ -49,7 +50,7 @@ pub fn run(
         "cli.input.too_large",
     )?;
     let input = value::input(input_bytes, request.input_kind)?;
-    let result = Executor::new(registry)
+    let execution = Executor::new(registry)
         .execute(
             &recipe,
             input,
@@ -58,12 +59,34 @@ pub fn run(
             CapabilitySet::new(),
         )
         .map_err(|error| CliError::execution(&error))?;
-    if let ExecutionStatus::Paused { step_index } = result.status {
-        return Err(CliError::new(
-            "cli.execution.paused",
-            format!("step={step_index}"),
-        ));
+
+    match request.result_format {
+        ResultFormat::Raw => {
+            if let ExecutionStatus::Paused { step_index } = execution.status {
+                return Err(CliError::new(
+                    "cli.execution.paused",
+                    format!("step={step_index}"),
+                ));
+            }
+            let bytes = value::output(execution.value)?;
+            io::write_output(request.output_path, standard_output, &bytes)
+        }
+        ResultFormat::Json => {
+            let paused_step = match execution.status {
+                ExecutionStatus::Paused { step_index } => Some(step_index),
+                ExecutionStatus::Completed => None,
+            };
+            let report = result::ExecutionReport::from_execution(&execution);
+            let bytes = serde_json::to_vec_pretty(&report)
+                .map_err(|error| CliError::new("cli.output.serialization", error.to_string()))?;
+            io::write_output(request.output_path, standard_output, &bytes)?;
+            if let Some(step_index) = paused_step {
+                return Err(CliError::new(
+                    "cli.execution.paused",
+                    format!("step={step_index}"),
+                ));
+            }
+            Ok(())
+        }
     }
-    let bytes = value::output(result.value)?;
-    io::write_output(request.output_path, standard_output, &bytes)
 }

@@ -169,7 +169,7 @@ fn transform_then_parse_reads_the_decoded_bytes() {
              Head head @ 0x00;",
             b"Q0FGRQ==",
         )
-        .expect("transform then parse succeeds");
+        .expect("validated pattern over transformed bytes succeeds");
 
     let head = &nodes[0];
     assert_eq!(

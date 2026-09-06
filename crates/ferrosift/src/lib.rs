@@ -5,8 +5,9 @@
 //! single error type with stable codes, so callers do not glue several error
 //! models together.
 //!
-//! The signature move is transform-then-parse: decode, decompress, or decrypt
-//! a buffer and describe the bytes that come out, in one call.
+//! The signature move is a validated pattern over transformed bytes: decode,
+//! decompress, or decrypt a buffer and describe what comes out, in one call.
+//! The pattern source is parsed before transforms run.
 //!
 //! That path lives on [`CompiledPipeline::run_pattern`], whose documentation
 //! carries the worked example. It needs the `pattern` feature, so the example
@@ -40,7 +41,8 @@ pub use error::Error;
 pub use pipeline::{Pipeline, default_budget, pipeline, registry};
 
 pub use ferrosift_core::{
-    ExecutionBudget, ExecutionError, Operation, OperationRegistry, PreparedRecipe,
+    Cancellation, ExecutionBudget, ExecutionError, ExecutionResult, ExecutionStatus,
+    FlagCancellation, NeverCancelled, Operation, OperationRegistry, PreparedRecipe,
 };
 pub use ferrosift_model::{
     ArgumentValue, Arguments, Recipe, StructuredValue, TextEncoding, TextValue, Value,

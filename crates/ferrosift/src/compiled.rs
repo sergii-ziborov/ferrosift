@@ -1,7 +1,9 @@
 use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 
-use ferrosift_core::{ExecutionBudget, NeverCancelled, PreparedRecipe};
+use ferrosift_core::{
+    Cancellation, ExecutionBudget, ExecutionResult, NeverCancelled, PreparedRecipe,
+};
 use ferrosift_model::{TextEncoding, TextValue, Value, ValueConstraint};
 #[cfg(feature = "pattern")]
 use ferrosift_pattern::{EvalOptions, Node, Pattern};
@@ -50,16 +52,42 @@ impl<'a> CompiledPipeline<'a> {
 
     /// Runs the compiled pipeline and returns the final value.
     ///
+    /// This is the convenience path: only the value is returned. A recipe that
+    /// pauses at a breakpoint still yields [`Ok`] with the value reached so
+    /// far — use [`CompiledPipeline::execute`] when status and trace matter.
+    ///
     /// # Errors
     ///
     /// Returns [`Error::Execution`] when a step fails or a budget is exceeded.
     pub fn run(&self, input: Value) -> Result<Value, Error> {
+        Ok(self.execute(input)?.value)
+    }
+
+    /// Runs the compiled pipeline and returns status, value, and bounded trace.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`Error::Execution`] when a step fails or a budget is exceeded.
+    pub fn execute(&self, input: Value) -> Result<ExecutionResult, Error> {
+        self.execute_with(input, &NeverCancelled)
+    }
+
+    /// [`CompiledPipeline::execute`] with a caller-supplied cancellation signal.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`Error::Execution`] when a step fails, a budget is exceeded, or
+    /// cancellation is observed between steps.
+    pub fn execute_with<C: Cancellation>(
+        &self,
+        input: Value,
+        cancellation: &C,
+    ) -> Result<ExecutionResult, Error> {
         let input = match &self.first_input {
             Some(constraint) => adapt::to_accepted(input, constraint),
             None => input,
         };
-        let result = self.prepared.execute(input, self.budget, &NeverCancelled)?;
-        Ok(result.value)
+        Ok(self.prepared.execute(input, self.budget, cancellation)?)
     }
 
     /// Runs over bytes and returns bytes.
@@ -94,10 +122,10 @@ impl<'a> CompiledPipeline<'a> {
     }
 
     #[cfg(feature = "pattern")]
-    /// Runs the transforms, then evaluates a hex pattern over the result.
+    /// Parses a hex pattern, runs the transforms, then evaluates the pattern.
     ///
-    /// This parses `source` on every call. When the same pattern is applied
-    /// repeatedly, parse it once with [`crate::parse_pattern`] and use
+    /// This parses `source` before any transform runs. When the same pattern is
+    /// applied repeatedly, parse it once with [`crate::parse_pattern`] and use
     /// [`CompiledPipeline::run_parsed`] instead.
     ///
     /// ```
@@ -177,9 +205,10 @@ impl<'a> CompiledPipeline<'a> {
         input: &[u8],
         options: &EvalOptions,
     ) -> Result<Vec<Node>, Error> {
-        let bytes = self.run_bytes(input)?;
+        // Parse before transforms so a syntax error never pays for decode,
+        // decompress, or crypto work that cannot be applied.
         let pattern = ferrosift_pattern::parse(source)?;
-        Ok(ferrosift_pattern::evaluate(&pattern, &bytes, options)?)
+        self.run_parsed_with(&pattern, input, options)
     }
 
     /// The resolved steps, for inspection.

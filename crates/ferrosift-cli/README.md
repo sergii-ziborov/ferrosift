@@ -12,12 +12,25 @@ ferrosift operations
 ferrosift describe encoding.hex.encode@1
 ferrosift validate --format cyberchef-v11.3 --input-kind bytes --recipe recipe.json
 ferrosift run --format cyberchef-v11.4 --input-kind bytes --recipe recipe.json --input -
+ferrosift run --format ferrosift --input-kind bytes --recipe recipe.json --input payload.bin \
+  --result-format json
+ferrosift pattern validate --pattern header.hexpat
+ferrosift pattern run --pattern header.hexpat --input payload.bin
 ```
 
 `--format` takes `ferrosift`, `cyberchef-v11.3`, or `cyberchef-v11.4`. The two
 CyberChef formats parse identically — the reference's recipe model is unchanged
 between those releases — and differ in which operation *names* resolve, so a
 recipe using an operation 11.4 introduced loads as 11.4 and not as 11.3.
+
+`--result-format raw` (default) writes bytes or UTF-8 text for shell pipelines.
+`--result-format json` writes a tagged `ferrosift.execution.v1` envelope with
+status, value, and a bounded trace, including non-byte results such as numbers
+and structures. A paused breakpoint still exits non-zero after writing that
+envelope.
+
+`pattern validate` parses source only. `pattern run` evaluates against subject
+bytes and writes a `ferrosift.pattern.v1` JSON tree with absolute field offsets.
 
 Every recipe is fully validated before its first step runs, so an invalid later
 step cannot leave a partial effect behind. Unknown operations fail closed with

@@ -82,7 +82,7 @@ fn compiled_pipelines_reach_the_pattern_engine() {
 
     let nodes = compiled
         .run_pattern("be u16 magic @ 0x00;", b"Q0FGRQ==")
-        .expect("transform then parse");
+        .expect("validated pattern over transformed bytes");
     assert_eq!(nodes[0].value, NodeValue::Unsigned(0x4341));
 
     let options = EvalOptions {
@@ -139,6 +139,28 @@ fn a_compiled_pipeline_reports_its_resolved_steps() {
 
     let empty = engine.pipeline().compile(&engine).expect("compiles");
     assert!(empty.is_empty());
+}
+
+#[test]
+fn execute_returns_status_alongside_the_value() {
+    let engine = engine();
+    let compiled = engine
+        .pipeline()
+        .to_hex()
+        .compile(&engine)
+        .expect("compiles");
+    let result = compiled
+        .execute(Value::Bytes(b"Hi".to_vec()))
+        .expect("runs");
+    assert_eq!(result.status, ferrosift::ExecutionStatus::Completed);
+    assert_eq!(
+        result.value,
+        Value::Text(ferrosift::TextValue {
+            text: "48 69".into(),
+            encoding: ferrosift::TextEncoding::Utf8,
+        })
+    );
+    assert!(!result.trace.events.is_empty());
 }
 
 #[test]

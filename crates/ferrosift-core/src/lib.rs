@@ -17,7 +17,7 @@ mod trace;
 mod value_size;
 
 pub use budget::ExecutionBudget;
-pub use cancellation::{Cancellation, NeverCancelled};
+pub use cancellation::{Cancellation, FlagCancellation, NeverCancelled};
 pub use context::OperationContext;
 pub use executor::{
     CONDITIONAL_JUMP_ID, ExecutionError, ExecutionFailure, Executor, FORK_ID, JUMP_ID, LABEL_ID,

@@ -289,6 +289,8 @@ ferrosift = { version = "...", default-features = false, features = ["pattern"] 
 | `ferrosift-pattern` | Hex-pattern lexer, parser, and bounded evaluator |
 | `ferrosift` | Facade: engine, pipeline builder, unified error |
 | `ferrosift-cli` | Native CLI binary `ferrosift` |
+| `ferrosift-host` | Allowlisted I/O, artifact handles, shared job reports |
+| `ferrosift-mcp` | Local stdio MCP adapter (native only; excluded from WASM checks) |
 
 Library crates are `no_std` + `alloc` and forbid `unsafe`. That claim is built
 on two real bare-metal targets in CI — `thumbv7em-none-eabihf` and

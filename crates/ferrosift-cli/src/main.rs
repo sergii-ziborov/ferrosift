@@ -12,7 +12,9 @@ mod commands;
 mod error;
 mod io;
 mod limits;
+mod pattern_value;
 mod recipe;
+mod result;
 mod value;
 
 fn main() -> ExitCode {

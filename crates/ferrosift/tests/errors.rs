@@ -64,6 +64,18 @@ fn pattern_failures_keep_the_pattern_code() {
 }
 
 #[test]
+fn an_invalid_pattern_is_rejected_before_any_transform_runs() {
+    // Invalid Base64 would fail the decode step if transforms ran first.
+    let error = pipeline()
+        .from_base64()
+        .run_pattern("struct Broken {", b"!!!")
+        .expect_err("pattern syntax must fail before transforms");
+
+    assert_eq!(error.code(), "pattern.parse.unexpected_token");
+    assert!(matches!(error, Error::Pattern(_)), "{error:?}");
+}
+
+#[test]
 fn pattern_evaluation_failures_surface_through_the_facade() {
     let error = pipeline()
         .run_pattern("u32 value @ 0;", &[1, 2])

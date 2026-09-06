@@ -57,6 +57,37 @@ pub enum Command {
         /// Output path, or '-' for standard output.
         #[arg(long, default_value = "-")]
         output: PathBuf,
+        /// How the final value is written.
+        #[arg(long, value_enum, default_value_t = ResultFormat::Raw)]
+        result_format: ResultFormat,
+    },
+    /// Validate or evaluate a hex pattern.
+    Pattern {
+        #[command(subcommand)]
+        command: PatternCommand,
+    },
+}
+
+/// Pattern-language subcommands.
+#[derive(Debug, Subcommand)]
+pub enum PatternCommand {
+    /// Parse a pattern without reading subject bytes.
+    Validate {
+        /// Pattern path, or '-' for standard input.
+        #[arg(long)]
+        pattern: PathBuf,
+    },
+    /// Evaluate a pattern against subject bytes.
+    Run {
+        /// Pattern path, or '-' for standard input.
+        #[arg(long)]
+        pattern: PathBuf,
+        /// Subject bytes path, or '-' for standard input.
+        #[arg(long)]
+        input: PathBuf,
+        /// Output path, or '-' for standard output.
+        #[arg(long, default_value = "-")]
+        output: PathBuf,
     },
 }
 
@@ -67,6 +98,16 @@ pub enum CatalogFormat {
     #[default]
     Plain,
     /// One JSON object per operation, with compatibility aliases.
+    Json,
+}
+
+/// How `run` writes a completed value.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, ValueEnum)]
+pub enum ResultFormat {
+    /// Bytes or UTF-8 text only, for shell pipelines.
+    #[default]
+    Raw,
+    /// Tagged JSON envelope with status, value, and bounded trace.
     Json,
 }
 

@@ -81,7 +81,7 @@ jobs:
       - name: Add the portable target
         run: rustup target add wasm32-unknown-unknown
       - name: Portable build
-        run: cargo check --workspace --target wasm32-unknown-unknown
+        run: cargo check --workspace --exclude ferrosift-mcp --target wasm32-unknown-unknown
       - name: Add the bare-metal targets
         run: rustup target add thumbv7em-none-eabihf riscv32imac-unknown-none-elf
       - name: Bare-metal build
@@ -194,7 +194,8 @@ jobs:
           }
 
           for crate in ferrosift-model ferrosift-core ferrosift-compat \
-                       ferrosift-operations ferrosift-pattern ferrosift ferrosift-cli; do
+                       ferrosift-operations ferrosift-pattern ferrosift \
+                       ferrosift-host ferrosift-cli ferrosift-mcp; do
             if already_published "$crate"; then
               echo "$crate $VERSION is already on crates.io, skipping"
               continue

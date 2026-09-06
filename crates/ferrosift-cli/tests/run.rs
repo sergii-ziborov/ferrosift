@@ -174,3 +174,87 @@ fn run_does_not_create_output_when_a_breakpoint_pauses_execution() {
     );
     assert!(!result.exists());
 }
+
+#[test]
+fn run_writes_a_json_envelope_for_typed_results() {
+    let directory = support::TempDir::new("run-json");
+    let recipe = directory.write(
+        "recipe.json",
+        r#"[{"op":"To Hex","args":["Space",0]}]"#,
+    );
+    let output = support::run(
+        &[
+            "run",
+            "--format",
+            "cyberchef-v11.3",
+            "--input-kind",
+            "bytes",
+            "--recipe",
+            support::path_text(&recipe),
+            "--input",
+            "-",
+            "--result-format",
+            "json",
+        ],
+        b"Hi",
+    );
+
+    assert!(output.status.success(), "{}", support::stderr(&output));
+    let report: serde_json::Value =
+        serde_json::from_slice(&output.stdout).expect("json envelope");
+    assert_eq!(report["schema"], "ferrosift.execution.v1");
+    assert_eq!(report["status"], "completed");
+    assert_eq!(report["value_kind"], "text");
+    assert_eq!(report["value"]["kind"], "text");
+    assert_eq!(report["value"]["value"]["text"], "48 69");
+}
+
+#[test]
+fn run_json_keeps_paused_status_distinct_from_completed() {
+    let directory = support::TempDir::new("run-json-pause");
+    let recipe = directory.write(
+        "recipe.json",
+        r#"{
+          "schema_version": 1,
+          "steps": [{
+            "id": "pause",
+            "operation": "encoding.hex.encode@1",
+            "arguments": {},
+            "disabled": false,
+            "breakpoint": true
+          }],
+          "metadata": {}
+        }"#,
+    );
+    let result = directory.path("paused.json");
+    let output = support::run(
+        &[
+            "run",
+            "--format",
+            "ferrosift",
+            "--input-kind",
+            "bytes",
+            "--recipe",
+            support::path_text(&recipe),
+            "--input",
+            "-",
+            "--output",
+            support::path_text(&result),
+            "--result-format",
+            "json",
+        ],
+        b"data",
+    );
+
+    assert!(!output.status.success());
+    assert!(
+        support::stderr(&output).contains("cli.execution.paused"),
+        "{}",
+        support::stderr(&output)
+    );
+    let report: serde_json::Value =
+        serde_json::from_slice(&fs::read(&result).expect("paused report"))
+            .expect("json envelope");
+    assert_eq!(report["schema"], "ferrosift.execution.v1");
+    assert_eq!(report["status"]["paused"]["step_index"], 0);
+}

@@ -4,6 +4,8 @@ members = [
     "crates/ferrosift-cli",
     "crates/ferrosift-compat",
     "crates/ferrosift-core",
+    "crates/ferrosift-host",
+    "crates/ferrosift-mcp",
     "crates/ferrosift-model",
     "crates/ferrosift-operations",
     "crates/ferrosift-pattern",
@@ -41,6 +43,7 @@ authors = ["Sergii Ziborov <sergii@edgehawk.io>"]
 [workspace.dependencies]
 ferrosift-compat = { path = "crates/ferrosift-compat", version = "0.1.0-alpha.1" }
 ferrosift-core = { path = "crates/ferrosift-core", version = "0.1.0-alpha.1" }
+ferrosift-host = { path = "crates/ferrosift-host", version = "0.1.0-alpha.1" }
 ferrosift-model = { path = "crates/ferrosift-model", version = "0.1.0-alpha.1" }
 # Defaults off here rather than at each use: a member may add features to an
 # inherited dependency and may not take them away, and every dependent of the

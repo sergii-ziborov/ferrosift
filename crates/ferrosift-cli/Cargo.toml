@@ -46,6 +46,8 @@ ferrosift-compat = { workspace = true }
 ferrosift-core = { workspace = true }
 ferrosift-model = { workspace = true }
 ferrosift-operations = { workspace = true }
+ferrosift-pattern = { workspace = true }
+serde = { version = "1.0.229", default-features = false, features = ["derive", "std"] }
 serde_json = "1.0.151"
 
 [lints]
