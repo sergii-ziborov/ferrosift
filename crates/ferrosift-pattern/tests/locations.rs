@@ -126,7 +126,11 @@ fn an_unknown_position_renders_as_unknown_rather_than_as_line_zero() {
     assert!(!position.is_known());
     assert_eq!(position.to_string(), "?:?");
 
-    let known = ferrosift_pattern::Position { line: 4, column: 9 };
+    let known = ferrosift_pattern::Position {
+        line: 4,
+        column: 9,
+        source: ferrosift_pattern::SourceId::ROOT,
+    };
     assert!(known.is_known());
     assert_eq!(known.to_string(), "4:9");
 }

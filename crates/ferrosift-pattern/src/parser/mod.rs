@@ -1,12 +1,19 @@
 mod cursor;
 mod expression;
 mod grammar;
+mod resolve;
 
 use crate::ast::Pattern;
 use crate::error::PatternError;
 use crate::lexer;
 
+pub use resolve::parse_with;
+
 /// Parses pattern source into its declarations.
+///
+/// Single-source entry point: `import` / `#include` are refused with
+/// `pattern.parse.unsupported_directive`. Use [`parse_with`] and a
+/// [`crate::PatternResolver`] to expand them.
 ///
 /// # Errors
 ///

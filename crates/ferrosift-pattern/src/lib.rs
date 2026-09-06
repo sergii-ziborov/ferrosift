@@ -22,7 +22,9 @@
 //! What that does *not* say is how much of the real `.hexpat` ecosystem parses
 //! here — the corpus separates constructs rather than sampling patterns people
 //! wrote. `docs/pattern-language-subset.md` has the grammar, the case list, and
-//! what is still missing.
+//! what is still missing. `import` / `#include` need a caller-supplied
+//! [`PatternResolver`] via [`parse_with`]; single-source [`parse`] still refuses
+//! them under a stable code so the ecosystem survey baseline stays honest.
 //!
 //! # Bytes that are not a buffer
 //!
@@ -94,15 +96,21 @@ mod error;
 mod eval;
 mod lexer;
 mod parser;
+mod source;
 
 pub use ast::{
     AliasDeclaration, ArrayLength, BinaryOperator, BitfieldDeclaration, BitfieldMember, Builtin,
     Declaration, Endian, EnumDeclaration, EnumEntry, Expression, Field, Member, Pattern, Placement,
-    SizeOfTarget, StructDeclaration, TypeKind, TypeReference, UnaryOperator, UnionDeclaration,
+    SizeOfTarget, SourceEntry, SourceOrigin, StructDeclaration, TypeKind, TypeReference,
+    UnaryOperator, UnionDeclaration,
 };
-pub use error::{PatternError, Position};
+pub use error::{PatternError, Position, SourceId};
 pub use eval::{
     ByteSource, EvalOptions, MAX_SCALAR_BYTES, Node, NodeValue, ScalarArray, SourceError, evaluate,
     evaluate_with,
 };
-pub use parser::parse;
+pub use parser::{parse, parse_with};
+pub use source::{
+    ImportKind, MapResolver, PatternResolver, ResolveError, ResolveLimits, ResolveRequest,
+    ResolvedSource,
+};

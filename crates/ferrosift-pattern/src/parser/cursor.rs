@@ -2,7 +2,7 @@ use alloc::format;
 use alloc::string::String;
 use alloc::vec::Vec;
 
-use crate::error::{PatternError, Position};
+use crate::error::{PatternError, Position, SourceId};
 use crate::lexer::{Keyword, Symbol, Token, TokenKind};
 
 pub(super) const UNEXPECTED_TOKEN: &str = "pattern.parse.unexpected_token";
@@ -38,9 +38,14 @@ impl Cursor {
     }
 
     pub(super) fn position(&self) -> Position {
-        self.tokens
-            .get(self.index)
-            .map_or(Position { line: 1, column: 1 }, |token| token.position)
+        self.tokens.get(self.index).map_or(
+            Position {
+                line: 1,
+                column: 1,
+                source: SourceId::ROOT,
+            },
+            |token| token.position,
+        )
     }
 
     pub(super) fn at_end(&self) -> bool {

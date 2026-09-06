@@ -10,6 +10,13 @@ from `0.1.0` onward.
 
 ## [Unreleased]
 
+### Added
+
+- Pattern `SourceId` / source-aware positions, caller-supplied `PatternResolver`,
+  and `parse_with` for bounded `import` / `#include` expansion (flat namespace
+  experiment; origins recorded separately). CLI `--source SPEC=PATH` feeds an
+  in-memory map without giving the portable crate a filesystem.
+
 ## [0.1.0-alpha.1] — 2026-09-02
 
 The first published release, and a pre-release on purpose. The compatibility

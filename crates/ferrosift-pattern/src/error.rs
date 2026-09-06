@@ -1,13 +1,45 @@
 use alloc::string::String;
 use core::fmt;
 
-/// Position of a byte inside the pattern source, for diagnostics.
+/// Opaque handle naming one loaded pattern source in a resolve graph.
+///
+/// Index `0` is the root passed to [`crate::parse`] / [`crate::parse_with`].
+/// Additional sources allocated by a resolver receive successive indices.
+#[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
+pub struct SourceId(u32);
+
+impl SourceId {
+    /// The root pattern source.
+    pub const ROOT: Self = Self(0);
+
+    /// Builds an id from a zero-based source table index.
+    #[must_use]
+    pub const fn from_index(index: u32) -> Self {
+        Self(index)
+    }
+
+    /// Zero-based index into [`crate::Pattern::sources`].
+    #[must_use]
+    pub const fn index(self) -> u32 {
+        self.0
+    }
+}
+
+impl fmt::Display for SourceId {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(formatter, "#{}", self.0)
+    }
+}
+
+/// Position of a byte inside a pattern source, for diagnostics.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Position {
     /// One-based line number.
     pub line: u32,
     /// One-based column number, counted in characters.
     pub column: u32,
+    /// Which loaded source this position belongs to.
+    pub source: SourceId,
 }
 
 impl Position {
@@ -18,7 +50,11 @@ impl Position {
     /// `Option` on every error and every declaration. It is rendered as `?:?`
     /// rather than as `0:0`, because a reader who saw `0:0` would go looking
     /// for a line zero.
-    pub const UNKNOWN: Self = Self { line: 0, column: 0 };
+    pub const UNKNOWN: Self = Self {
+        line: 0,
+        column: 0,
+        source: SourceId::ROOT,
+    };
 
     /// Whether this position names a place in the source.
     #[must_use]
@@ -29,10 +65,17 @@ impl Position {
 
 impl fmt::Display for Position {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
-        if self.is_known() {
+        if !self.is_known() {
+            return formatter.write_str("?:?");
+        }
+        if self.source.index() == 0 {
             write!(formatter, "{}:{}", self.line, self.column)
         } else {
-            formatter.write_str("?:?")
+            write!(
+                formatter,
+                "{}:{}:{}",
+                self.source, self.line, self.column
+            )
         }
     }
 }

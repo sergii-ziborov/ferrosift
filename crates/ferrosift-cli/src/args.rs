@@ -93,6 +93,9 @@ pub enum PatternCommand {
         /// Pattern path, or '-' for standard input.
         #[arg(long)]
         pattern: PathBuf,
+        /// Extra sources as `specifier=path` (repeatable) for import/include.
+        #[arg(long = "source", value_name = "SPEC=PATH")]
+        sources: Vec<String>,
     },
     /// Evaluate a pattern against subject bytes.
     Run {
@@ -105,6 +108,9 @@ pub enum PatternCommand {
         /// Output path, or '-' for standard output.
         #[arg(long, default_value = "-")]
         output: PathBuf,
+        /// Extra sources as `specifier=path` (repeatable) for import/include.
+        #[arg(long = "source", value_name = "SPEC=PATH")]
+        sources: Vec<String>,
     },
 }
 

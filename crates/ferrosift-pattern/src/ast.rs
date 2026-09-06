@@ -2,7 +2,7 @@ use alloc::boxed::Box;
 use alloc::string::String;
 use alloc::vec::Vec;
 
-use crate::error::Position;
+use crate::error::{Position, SourceId};
 
 /// A value computed from literals and fields already read.
 ///
@@ -159,7 +159,7 @@ pub enum ArrayLength {
 /// A parsed pattern source: every declaration in the order it was written.
 #[derive(Clone, Debug, PartialEq, Eq, Default)]
 pub struct Pattern {
-    /// Declarations in source order.
+    /// Declarations in source order, including those pulled in by imports.
     pub declarations: Vec<Declaration>,
     /// `#pragma` lines, in source order, as written.
     ///
@@ -175,6 +175,43 @@ pub struct Pattern {
     /// pattern is a statement about the format and the option is a default for
     /// patterns that make no such statement.
     pub endian: Option<Endian>,
+    /// Sources that contributed to this pattern when loaded through a resolver.
+    ///
+    /// Empty after a single-source [`crate::parse`]. Index `0` is the root when
+    /// present; [`Position::source`](crate::Position::source) indexes this table.
+    pub sources: Vec<SourceEntry>,
+}
+
+/// One loaded pattern text in a resolve graph.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct SourceEntry {
+    /// Handle stamped onto positions from this text.
+    pub id: SourceId,
+    /// Stable label from the resolver (or `"<input>"` for a single-source parse).
+    pub label: String,
+    /// How this source entered the graph.
+    pub origin: SourceOrigin,
+}
+
+/// Provenance of one loaded source.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum SourceOrigin {
+    /// The root text passed to parse / parse_with.
+    Root,
+    /// Pulled in by `#include`.
+    Include {
+        /// Parent source.
+        from: SourceId,
+        /// Specifier as normalised from the directive argument.
+        specifier: String,
+    },
+    /// Pulled in by `import`.
+    Import {
+        /// Parent source.
+        from: SourceId,
+        /// Dotted module path as written.
+        specifier: String,
+    },
 }
 
 impl Pattern {

@@ -16,6 +16,7 @@ ferrosift run --format ferrosift --input-kind bytes --recipe recipe.json --input
   --result-format json
 ferrosift pattern validate --pattern header.hexpat
 ferrosift pattern run --pattern header.hexpat --input payload.bin
+ferrosift pattern validate --pattern main.hexpat --source std.io=libs/io.pat
 ferrosift repro export --format cyberchef-v11.3 --input-kind bytes \
   --recipe recipe.json --input sample.bin --out-dir payload-case
 ferrosift repro check --case payload-case
@@ -35,6 +36,8 @@ envelope.
 
 `pattern validate` parses source only. `pattern run` evaluates against subject
 bytes and writes a `ferrosift.pattern.v1` JSON tree with absolute field offsets.
+Repeatable `--source SPEC=PATH` entries feed a resolver for `import` /
+`#include` without an ambient filesystem in the portable crate.
 
 `repro export` runs the recipe and writes `input.bin`, `recipe.json`,
 `expected.json`, `manifest.json`, and `README.md`. The default expected origin

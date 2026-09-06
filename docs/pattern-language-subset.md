@@ -287,17 +287,25 @@ variables, and the `parent` and `this` scopes. Sources using them are rejected
 with a stable code, never partially accepted.
 
 **Another source is the one that costs the most.** `import` and `#include` both
-name a second file, and this crate reads one — it has no filesystem, by
-design, since it builds for targets that have none. The survey above puts a
-number on what that costs: 87% of published patterns. Closing it is not a
-grammar change but an interface one, a resolver the caller supplies, in the
-same shape as [`ByteSource`]; until then both spellings are refused under
-`pattern.parse.unsupported_directive` rather than as a syntax error, so the
-reason is legible.
+name a second file. The portable crate still has no ambient filesystem — that
+stays a host concern — but it now accepts a caller-supplied
+[`PatternResolver`](https://docs.rs/ferrosift-pattern/latest/ferrosift_pattern/trait.PatternResolver.html)
+through [`parse_with`](https://docs.rs/ferrosift-pattern/latest/ferrosift_pattern/fn.parse_with.html).
+Ceilings cover depth, source count, and total text bytes. Positions carry a
+[`SourceId`](https://docs.rs/ferrosift-pattern/latest/ferrosift_pattern/struct.SourceId.html)
+so diagnostics name which loaded text failed.
+
+Single-source [`parse`](https://docs.rs/ferrosift-pattern/latest/ferrosift_pattern/fn.parse.html)
+still refuses both spellings under `pattern.parse.unsupported_directive`, so
+the survey keeps a clear baseline. With a resolver, `import` and `#include`
+merge declarations into one flat namespace and record distinct
+`SourceOrigin::{Import,Include}` entries — measured separately, not assumed to
+be identical textual substitution. Full ImHex namespaces remain future work.
 
 `#pragma` **is** implemented: the lines are parsed, kept on `Pattern`, and
 handed to the caller. Only `endian` is acted on, being the one that changes
 what a read produces; the rest describe the pattern rather than the data.
+`#pragma once` skips a source already loaded under the same resolver label.
 
 [`ByteSource`]: https://docs.rs/ferrosift-pattern/latest/ferrosift_pattern/trait.ByteSource.html
 
@@ -330,7 +338,12 @@ bytes carries no offset at all.
 | `pattern.parse.invalid_array_length` | Array length is not positive |
 | `pattern.parse.invalid_bit_width` | Bitfield width is outside 1..=64 |
 | `pattern.parse.duplicate_declaration` | A name is declared more than once |
-| `pattern.parse.unsupported_directive` | `import` or `#include` names another source |
+| `pattern.parse.unsupported_directive` | `import` / `#include` without a resolver, or an unknown `#` directive |
+| `pattern.resolve.not_found` | Resolver could not supply the requested specifier |
+| `pattern.resolve.cycle` | Import/include graph re-enters an active source |
+| `pattern.resolve.depth_exceeded` | Nesting exceeded `ResolveLimits::max_depth` |
+| `pattern.resolve.too_many_sources` | Distinct sources exceeded `ResolveLimits::max_sources` |
+| `pattern.resolve.too_large` | Total loaded text exceeded `ResolveLimits::max_total_bytes` |
 | `pattern.eval.out_of_bounds` | A read extends past the end of the data |
 | `pattern.eval.source_failed` | The byte source declined a read that was in range |
 | `pattern.eval.unknown_type` | A referenced type is not declared in the pattern |

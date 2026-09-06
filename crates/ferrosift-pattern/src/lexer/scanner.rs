@@ -2,7 +2,7 @@ use alloc::string::String;
 use alloc::vec::Vec;
 
 use super::token::{Keyword, Symbol, Token, TokenKind};
-use crate::error::{PatternError, Position};
+use crate::error::{PatternError, Position, SourceId};
 
 const UNTERMINATED_COMMENT: &str = "pattern.lex.unterminated_comment";
 const UNTERMINATED_TEXT: &str = "pattern.lex.unterminated_text";
@@ -19,7 +19,16 @@ const UNEXPECTED_CHARACTER: &str = "pattern.lex.unexpected_character";
 /// source contains an unterminated comment or literal, a malformed escape or
 /// number, or a character outside the supported subset.
 pub fn scan(source: &str) -> Result<Vec<Token>, PatternError> {
-    Scanner::new(source).run()
+    scan_with(source, SourceId::ROOT)
+}
+
+/// Like [`scan`], stamping every token position with `source_id`.
+///
+/// # Errors
+///
+/// Same as [`scan`].
+pub fn scan_with(source: &str, source_id: SourceId) -> Result<Vec<Token>, PatternError> {
+    Scanner::new(source, source_id).run()
 }
 
 struct Scanner {
@@ -27,15 +36,17 @@ struct Scanner {
     index: usize,
     line: u32,
     column: u32,
+    source_id: SourceId,
 }
 
 impl Scanner {
-    fn new(source: &str) -> Self {
+    fn new(source: &str, source_id: SourceId) -> Self {
         Self {
             source: source.chars().collect(),
             index: 0,
             line: 1,
             column: 1,
+            source_id,
         }
     }
 
@@ -354,6 +365,7 @@ impl Scanner {
         Position {
             line: self.line,
             column: self.column,
+            source: self.source_id,
         }
     }
 

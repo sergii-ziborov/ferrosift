@@ -1,4 +1,3 @@
-use alloc::collections::BTreeSet;
 use alloc::format;
 use alloc::string::String;
 use alloc::vec;
@@ -9,25 +8,62 @@ use super::cursor::{
     INVALID_BIT_WIDTH, UNEXPECTED_TOKEN, UNSUPPORTED_DIRECTIVE,
 };
 use super::expression::expression;
+use super::resolve::Loader;
 use crate::ast::{
     AliasDeclaration, ArrayLength, BitfieldDeclaration, BitfieldMember, Builtin, Declaration,
     Endian, EnumDeclaration, EnumEntry, Expression, Field, Member, Pattern, Placement,
     StructDeclaration, TypeKind, TypeReference, UnionDeclaration,
 };
-use crate::error::PatternError;
+use crate::error::{PatternError, SourceId};
 use crate::lexer::{Keyword, Symbol, TokenKind};
+use crate::source::{ImportKind, include_specifier, merge_child};
 
 pub(super) fn pattern(cursor: &mut Cursor) -> Result<Pattern, PatternError> {
-    let mut declarations = Vec::new();
-    let mut directives = Vec::new();
-    let mut endian = None;
-    let mut names = BTreeSet::new();
+    pattern_inner(cursor, None)
+}
+
+pub(super) fn pattern_resolving(
+    cursor: &mut Cursor,
+    loader: &mut Loader<'_>,
+    source_id: SourceId,
+    depth: usize,
+) -> Result<Pattern, PatternError> {
+    pattern_inner(
+        cursor,
+        Some(ResolveCtx {
+            loader,
+            source_id,
+            depth,
+        }),
+    )
+}
+
+struct ResolveCtx<'a, 'b> {
+    loader: &'a mut Loader<'b>,
+    source_id: SourceId,
+    depth: usize,
+}
+
+fn pattern_inner(
+    cursor: &mut Cursor,
+    mut resolve: Option<ResolveCtx<'_, '_>>,
+) -> Result<Pattern, PatternError> {
+    let mut pattern = Pattern::default();
+    let mut names = alloc::collections::BTreeSet::new();
     while !cursor.at_end() {
-        if let Some(directive) = self::directive(cursor)? {
+        if let Some(handled) = try_include(cursor, &mut resolve)? {
+            merge_child(&mut pattern, handled, cursor.position())?;
+            continue;
+        }
+        if let Some(handled) = try_import(cursor, &mut resolve)? {
+            merge_child(&mut pattern, handled, cursor.position())?;
+            continue;
+        }
+        if let Some(directive) = self::directive(cursor, resolve.is_some())? {
             if let Some(declared) = pragma_endian(&directive) {
-                endian = Some(declared);
+                pattern.endian = Some(declared);
             }
-            directives.push(directive);
+            pattern.directives.push(directive);
             continue;
         }
         let declaration = self::declaration(cursor)?;
@@ -35,42 +71,118 @@ pub(super) fn pattern(cursor: &mut Cursor) -> Result<Pattern, PatternError> {
         if !names.insert(name.clone()) {
             return Err(cursor.fail(
                 DUPLICATE_DECLARATION,
-                format!("`{name}` is declared more than once"),
+                alloc::format!("`{name}` is declared more than once"),
             ));
         }
-        declarations.push(declaration);
+        pattern.declarations.push(declaration);
     }
-    Ok(Pattern {
-        declarations,
-        directives,
-        endian,
-    })
+    Ok(pattern)
+}
+
+fn try_include(
+    cursor: &mut Cursor,
+    resolve: &mut Option<ResolveCtx<'_, '_>>,
+) -> Result<Option<Pattern>, PatternError> {
+    let position = cursor.position();
+    let TokenKind::Directive { name, argument } = cursor.peek() else {
+        return Ok(None);
+    };
+    if name != "include" {
+        return Ok(None);
+    }
+    let Some(ctx) = resolve.as_mut() else {
+        return Err(cursor.fail(
+            UNSUPPORTED_DIRECTIVE,
+            "`#include` is not supported without a pattern resolver",
+        ));
+    };
+    let argument = argument.clone();
+    cursor.advance();
+    let specifier = include_specifier(&argument)
+        .map_err(|detail| PatternError::new(UNSUPPORTED_DIRECTIVE, position, detail))?;
+    let child = ctx.loader.include(
+        ImportKind::Include,
+        &specifier,
+        ctx.source_id,
+        position,
+        ctx.depth,
+    )?;
+    Ok(Some(child))
+}
+
+fn try_import(
+    cursor: &mut Cursor,
+    resolve: &mut Option<ResolveCtx<'_, '_>>,
+) -> Result<Option<Pattern>, PatternError> {
+    if let TokenKind::Identifier(word) = cursor.peek()
+        && word == "import"
+    {
+        let position = cursor.position();
+        let Some(ctx) = resolve.as_mut() else {
+            return Err(PatternError::new(
+                UNSUPPORTED_DIRECTIVE,
+                position,
+                "`import` is not supported without a pattern resolver",
+            ));
+        };
+        cursor.advance();
+        let specifier = import_specifier(cursor)?;
+        cursor.expect(Symbol::Semicolon)?;
+        let child = ctx.loader.include(
+            ImportKind::Import,
+            &specifier,
+            ctx.source_id,
+            position,
+            ctx.depth,
+        )?;
+        return Ok(Some(child));
+    }
+    Ok(None)
+}
+
+fn import_specifier(cursor: &mut Cursor) -> Result<alloc::string::String, PatternError> {
+    let mut parts = alloc::vec::Vec::new();
+    parts.push(cursor.expect_identifier()?);
+    while cursor.eat(Symbol::Dot) {
+        parts.push(cursor.expect_identifier()?);
+    }
+    Ok(parts.join("."))
 }
 
 /// One `#`-line, or nothing when the next token is not one.
 ///
-/// `#pragma` is kept and handed on. `#include` is refused with a code of its
-/// own: it names another file, and this crate has no filesystem to fetch one
-/// from — a fact about where it runs rather than about the language. Saying so
-/// under its own name is worth more than a generic parse failure, because the
-/// survey in `tests/ecosystem.rs` then reports it as a named limit and counts
-/// how many real patterns it costs.
-fn directive(cursor: &mut Cursor) -> Result<Option<crate::ast::Directive>, PatternError> {
+/// `#pragma` is kept and handed on. `#include` is handled by [`try_include`]
+/// when a resolver is present; without one it is refused under
+/// [`UNSUPPORTED_DIRECTIVE`].
+fn directive(
+    cursor: &mut Cursor,
+    resolving: bool,
+) -> Result<Option<crate::ast::Directive>, PatternError> {
     let position = cursor.position();
     let TokenKind::Directive { name, argument } = cursor.peek() else {
         return Ok(None);
     };
     let (name, argument) = (name.clone(), argument.clone());
+    if name == "include" {
+        // Left for try_include; should not reach here when resolving.
+        if resolving {
+            return Ok(None);
+        }
+        return Err(cursor.fail(
+            UNSUPPORTED_DIRECTIVE,
+            "`#include` is not supported: this crate reads one source and no others",
+        ));
+    }
     if name != "pragma" {
         return Err(cursor.fail(
             UNSUPPORTED_DIRECTIVE,
-            format!("`#{name}` is not supported: this crate reads one source and no others"),
+            alloc::format!("`#{name}` is not supported"),
         ));
     }
     cursor.advance();
     Ok(Some(crate::ast::Directive {
         name: first_word(&argument),
-        argument: String::from(rest_after_first_word(&argument)),
+        argument: alloc::string::String::from(rest_after_first_word(&argument)),
         position,
     }))
 }
@@ -114,20 +226,6 @@ fn declared_name(declaration: &Declaration) -> String {
 }
 
 fn declaration(cursor: &mut Cursor) -> Result<Declaration, PatternError> {
-    // `import std.io;` is the same limit `#include` is, written as a statement
-    // rather than as a directive: it names another source, and this crate
-    // reads one. Refusing it under the directive's own code is worth more than
-    // "expected `;`, found `.`" — which is what two hundred and twelve of the
-    // published patterns used to answer, and which describes the punctuation
-    // rather than the reason.
-    if let TokenKind::Identifier(word) = cursor.peek()
-        && word == "import"
-    {
-        return Err(cursor.fail(
-            UNSUPPORTED_DIRECTIVE,
-            "`import` is not supported: this crate reads one source and no others",
-        ));
-    }
     if cursor.eat_keyword(Keyword::Struct) {
         return structure(cursor).map(Declaration::Struct);
     }

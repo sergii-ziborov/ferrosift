@@ -13,14 +13,22 @@ use crate::{
 pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Result<(), CliError> {
     match arguments.command {
         Command::Pattern { command } => match command {
-            PatternCommand::Validate { pattern } => {
-                commands::pattern::validate(&pattern, input, output)
+            PatternCommand::Validate { pattern, sources } => {
+                commands::pattern::validate(&pattern, &sources, input, output)
             }
             PatternCommand::Run {
                 pattern,
                 input: input_path,
                 output: output_path,
-            } => commands::pattern::run(&pattern, &input_path, &output_path, input, output),
+                sources,
+            } => commands::pattern::run(
+                &pattern,
+                &input_path,
+                &output_path,
+                &sources,
+                input,
+                output,
+            ),
         },
         Command::Repro { command } => match command {
             ReproCommand::Export {
