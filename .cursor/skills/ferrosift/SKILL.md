@@ -55,6 +55,15 @@ JSON mode. `paused` is not `completed`.
 4. Read only the fields or short previews you need.
 5. Keep the recipe + input as a regression case; replay with CLI, not the model.
 
+```bash
+ferrosift repro export --format cyberchef-v11.3 --input-kind bytes \
+  --recipe recipe.json --input sample.bin --out-dir payload-case
+ferrosift repro check --case payload-case
+```
+
+Default `expected_origin` is `observed_only`. Do not treat that as independent
+verification of FerroSift itself.
+
 Successful decode ≠ correct hypothesis. Confirm with magic, length, checksum,
 independent parser, or the failing production test.
 

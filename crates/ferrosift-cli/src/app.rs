@@ -5,7 +5,7 @@ use std::io::{Read, Write};
 use ferrosift_operations::default_registry;
 
 use crate::{
-    args::{Args, Command, PatternCommand},
+    args::{Args, Command, PatternCommand, ReproCommand},
     commands,
     error::CliError,
 };
@@ -21,6 +21,34 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
                 input: input_path,
                 output: output_path,
             } => commands::pattern::run(&pattern, &input_path, &output_path, input, output),
+        },
+        Command::Repro { command } => match command {
+            ReproCommand::Export {
+                format,
+                input_kind,
+                recipe,
+                input: input_path,
+                out_dir,
+                pattern,
+                origin,
+                include_secrets,
+                overwrite,
+            } => commands::repro::export(
+                &commands::repro::ExportRequest {
+                    format,
+                    input_kind,
+                    recipe_path: &recipe,
+                    input_path: &input_path,
+                    out_dir: &out_dir,
+                    pattern_path: pattern.as_deref(),
+                    origin,
+                    include_secrets,
+                    overwrite,
+                },
+                input,
+                output,
+            ),
+            ReproCommand::Check { case } => commands::repro::check(&case, output),
         },
         command => {
             let registry = default_registry()
@@ -57,7 +85,9 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
                     };
                     commands::run::run(&registry, &request, input, output)
                 }
-                Command::Pattern { .. } => unreachable!("pattern commands are handled above"),
+                Command::Pattern { .. } | Command::Repro { .. } => {
+                    unreachable!("pattern/repro commands are handled above")
+                }
             }
         }
     }

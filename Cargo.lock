@@ -380,6 +380,7 @@ dependencies = [
  "clap",
  "ferrosift-compat",
  "ferrosift-core",
+ "ferrosift-host",
  "ferrosift-model",
  "ferrosift-operations",
  "ferrosift-pattern",

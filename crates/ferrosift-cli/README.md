@@ -16,6 +16,9 @@ ferrosift run --format ferrosift --input-kind bytes --recipe recipe.json --input
   --result-format json
 ferrosift pattern validate --pattern header.hexpat
 ferrosift pattern run --pattern header.hexpat --input payload.bin
+ferrosift repro export --format cyberchef-v11.3 --input-kind bytes \
+  --recipe recipe.json --input sample.bin --out-dir payload-case
+ferrosift repro check --case payload-case
 ```
 
 `--format` takes `ferrosift`, `cyberchef-v11.3`, or `cyberchef-v11.4`. The two
@@ -31,6 +34,12 @@ envelope.
 
 `pattern validate` parses source only. `pattern run` evaluates against subject
 bytes and writes a `ferrosift.pattern.v1` JSON tree with absolute field offsets.
+
+`repro export` runs the recipe and writes `input.bin`, `recipe.json`,
+`expected.json`, `manifest.json`, and `README.md`. The default expected origin
+is `observed_only` — a regression snapshot, not independent proof. Secret-like
+argument names are refused unless `--include-secrets` is set. `repro check`
+replays the case in a fresh process.
 
 Every recipe is fully validated before its first step runs, so an invalid later
 step cannot leave a partial effect behind. Unknown operations fail closed with

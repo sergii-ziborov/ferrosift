@@ -11,6 +11,7 @@ mod allowlist;
 mod artifact;
 mod error;
 mod report;
+mod repro;
 mod service;
 
 pub use allowlist::PathAllowlist;
@@ -20,6 +21,12 @@ pub use report::{
     ExecutionReport, InspectReport, ReportStatus, SearchHit, StepLocationReport, TraceEventReport,
     ValueSummaryReport,
 };
+pub use repro::{
+    BuildPackageRequest, ExpectedOrigin, ReproCheckReport, ReproManifest, ReproPackage,
+    build_package, compare_observation, ensure_export_allowed, parse_input_kind,
+    parse_recipe_format, read_package, write_package,
+};
 pub use service::{
-    HostConfig, HostService, InputKind, InspectRequest, OpenRequest, RecipeFormat, RunRequest,
+    ExportReproRequest, HostConfig, HostService, InputKind, InspectRequest, OpenRequest,
+    RecipeFormat, RunRequest,
 };

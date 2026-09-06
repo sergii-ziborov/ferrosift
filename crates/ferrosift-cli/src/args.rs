@@ -66,6 +66,11 @@ pub enum Command {
         #[command(subcommand)]
         command: PatternCommand,
     },
+    /// Export or replay a reproducible case package.
+    Repro {
+        #[command(subcommand)]
+        command: ReproCommand,
+    },
 }
 
 /// Pattern-language subcommands.
@@ -89,6 +94,61 @@ pub enum PatternCommand {
         #[arg(long, default_value = "-")]
         output: PathBuf,
     },
+}
+
+/// Reproducible case subcommands.
+#[derive(Debug, Subcommand)]
+pub enum ReproCommand {
+    /// Run a recipe and write a case directory for CI replay.
+    Export {
+        /// Serialized recipe format.
+        #[arg(long, value_enum)]
+        format: RecipeFormat,
+        /// Representation supplied to the first recipe step.
+        #[arg(long, value_enum)]
+        input_kind: InputKind,
+        /// Recipe path, or '-' for standard input.
+        #[arg(long)]
+        recipe: PathBuf,
+        /// Input path, or '-' for standard input.
+        #[arg(long)]
+        input: PathBuf,
+        /// Destination case directory.
+        #[arg(long)]
+        out_dir: PathBuf,
+        /// Optional pattern source to store beside the recipe.
+        #[arg(long)]
+        pattern: Option<PathBuf>,
+        /// Provenance of the recorded expectation.
+        #[arg(long, value_enum, default_value_t = ExpectedOriginArg::ObservedOnly)]
+        origin: ExpectedOriginArg,
+        /// Allow exporting recipes with secret-like argument names.
+        #[arg(long, default_value_t = false)]
+        include_secrets: bool,
+        /// Replace an existing case directory.
+        #[arg(long, default_value_t = false)]
+        overwrite: bool,
+    },
+    /// Replay a case directory and compare against its expected result.
+    Check {
+        /// Case directory written by `repro export`.
+        #[arg(long)]
+        case: PathBuf,
+    },
+}
+
+/// Provenance labels accepted by `repro export`.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, ValueEnum)]
+pub enum ExpectedOriginArg {
+    /// Snapshot of this runtime's own output.
+    #[default]
+    ObservedOnly,
+    /// Human-reviewed expectation.
+    UserApproved,
+    /// Checked against an independent implementation.
+    IndependentlyVerified,
+    /// Produced by a pinned reference runtime.
+    ReferenceRuntime,
 }
 
 /// How `operations` renders the catalog.

@@ -44,6 +44,7 @@ text = ["ferrosift-operations/text"]
 clap = { version = "4.6.6", default-features = false, features = ["derive", "error-context", "help", "std", "suggestions", "usage"] }
 ferrosift-compat = { workspace = true }
 ferrosift-core = { workspace = true }
+ferrosift-host = { workspace = true }
 ferrosift-model = { workspace = true }
 ferrosift-operations = { workspace = true }
 ferrosift-pattern = { workspace = true }

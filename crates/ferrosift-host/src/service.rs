@@ -114,6 +114,29 @@ pub struct RunRequest<'a> {
     pub input_artifact_id: &'a str,
 }
 
+/// Options for exporting a reproducible case.
+#[derive(Clone, Debug)]
+pub struct ExportReproRequest<'a> {
+    /// Recipe bytes.
+    pub recipe: &'a [u8],
+    /// Recipe dialect.
+    pub format: RecipeFormat,
+    /// Raw input bytes.
+    pub input: Vec<u8>,
+    /// Input representation.
+    pub input_kind: InputKind,
+    /// Destination directory.
+    pub directory: &'a Path,
+    /// Provenance of the recorded expectation.
+    pub expected_origin: crate::ExpectedOrigin,
+    /// Optional pattern source stored beside the recipe.
+    pub pattern: Option<String>,
+    /// Whether secret-like argument names may be written.
+    pub include_secrets: bool,
+    /// Whether an existing directory may be replaced.
+    pub overwrite: bool,
+}
+
 /// Shared hosted runtime for adapters.
 pub struct HostService {
     registry: OperationRegistry,
@@ -305,6 +328,69 @@ impl HostService {
             .unwrap_or_else(std::sync::PoisonError::into_inner)
             .insert(execution.value.clone())?;
         Ok(ExecutionReport::from_execution(&execution, &meta))
+    }
+
+    /// Runs a recipe on raw input and writes a reproducible case package.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`HostError`] for recipe, execution, secret-policy, or write failures.
+    pub fn export_repro(&self, request: &ExportReproRequest<'_>) -> HostResult<crate::ReproPackage> {
+        let recipe = self.load_recipe(request.recipe, request.format)?;
+        crate::repro::ensure_export_allowed(&recipe, request.include_secrets)?;
+        let value = value_from_bytes(request.input.clone(), request.input_kind)?;
+        let execution = Executor::new(&self.registry)
+            .execute(
+                &recipe,
+                value,
+                self.budget,
+                &NeverCancelled,
+                CapabilitySet::new(),
+            )
+            .map_err(|error| map_execution(&error))?;
+        let package = crate::repro::build_package(&crate::repro::BuildPackageRequest {
+            recipe_bytes: request.recipe,
+            recipe_format: request.format,
+            recipe: &recipe,
+            input: &request.input,
+            input_kind: request.input_kind,
+            status: execution.status,
+            expected: execution.value,
+            budget: self.budget,
+            expected_origin: request.expected_origin,
+            pattern: request.pattern.clone(),
+            include_secrets: request.include_secrets,
+        })?;
+        crate::repro::write_package(&package, request.directory, request.overwrite)?;
+        Ok(package)
+    }
+
+    /// Replays a case package and compares against its expected result.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`HostError`] when the package cannot be loaded or execution fails.
+    pub fn check_repro(&self, directory: &Path) -> HostResult<crate::ReproCheckReport> {
+        let package = crate::repro::read_package(directory)?;
+        let format = crate::repro::parse_recipe_format(&package.manifest.recipe_format)?;
+        let input_kind = crate::repro::parse_input_kind(&package.manifest.input_kind)?;
+        let recipe = self.load_recipe(&package.recipe, format)?;
+        let value = value_from_bytes(package.input.clone(), input_kind)?;
+        let budget = package.manifest.budget.to_budget();
+        let execution = Executor::new(&self.registry)
+            .execute(
+                &recipe,
+                value,
+                budget,
+                &NeverCancelled,
+                CapabilitySet::new(),
+            )
+            .map_err(|error| map_execution(&error))?;
+        Ok(crate::repro::compare_observation(
+            &package,
+            execution.status,
+            &execution.value,
+        ))
     }
 
     fn load_recipe(&self, bytes: &[u8], format: RecipeFormat) -> HostResult<Recipe> {

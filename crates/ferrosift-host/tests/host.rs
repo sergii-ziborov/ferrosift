@@ -7,8 +7,8 @@ use std::{
 };
 
 use ferrosift_host::{
-    ArtifactStore, HostConfig, HostService, InputKind, InspectRequest, OpenRequest, PathAllowlist,
-    RecipeFormat, RunRequest, StoreConfig,
+    ArtifactStore, ExpectedOrigin, ExportReproRequest, HostConfig, HostService, InputKind,
+    InspectRequest, OpenRequest, PathAllowlist, RecipeFormat, RunRequest, StoreConfig,
 };
 use ferrosift_model::Value;
 
@@ -156,4 +156,78 @@ fn host_open_rejects_unconfigured_paths() {
         })
         .expect_err("no roots");
     assert_eq!(error.code(), "host.path.access_denied");
+}
+
+#[test]
+fn repro_export_round_trips_through_check() {
+    let root = tempfile::tempdir().expect("case");
+    let case_dir = root.path().join("payload-case");
+    let service = HostService::new(HostConfig::default()).expect("host");
+    let package = service
+        .export_repro(&ExportReproRequest {
+            recipe: br#"[{"op":"To Hex","args":["Space",0]}]"#,
+            format: RecipeFormat::CyberChefV11_3,
+            input: b"Hi".to_vec(),
+            input_kind: InputKind::Bytes,
+            directory: &case_dir,
+            expected_origin: ExpectedOrigin::ObservedOnly,
+            pattern: None,
+            include_secrets: false,
+            overwrite: false,
+        })
+        .expect("export");
+    assert_eq!(package.manifest.schema, "ferrosift.repro.v1");
+    assert!(case_dir.join("manifest.json").exists());
+    assert!(case_dir.join("input.bin").exists());
+    assert!(case_dir.join("expected.json").exists());
+
+    let report = service.check_repro(&case_dir).expect("check");
+    assert!(report.passed, "{}", report.detail);
+
+    let error = service
+        .export_repro(&ExportReproRequest {
+            recipe: br#"[{"op":"To Hex","args":["Space",0]}]"#,
+            format: RecipeFormat::CyberChefV11_3,
+            input: b"Hi".to_vec(),
+            input_kind: InputKind::Bytes,
+            directory: &case_dir,
+            expected_origin: ExpectedOrigin::ObservedOnly,
+            pattern: None,
+            include_secrets: false,
+            overwrite: false,
+        })
+        .expect_err("no overwrite");
+    assert_eq!(error.code(), "host.repro.exists");
+}
+
+#[test]
+fn repro_export_blocks_secret_argument_names_by_default() {
+    let root = tempfile::tempdir().expect("case");
+    let case_dir = root.path().join("secret-case");
+    let service = HostService::new(HostConfig::default()).expect("host");
+    let recipe = br#"{
+      "schema_version": 1,
+      "steps": [{
+        "id": "xor",
+        "operation": "logic.xor@1",
+        "arguments": { "key": { "kind": "bytes", "value": [1] } },
+        "disabled": false,
+        "breakpoint": false
+      }],
+      "metadata": {}
+    }"#;
+    let error = service
+        .export_repro(&ExportReproRequest {
+            recipe,
+            format: RecipeFormat::FerroSift,
+            input: b"Hi".to_vec(),
+            input_kind: InputKind::Bytes,
+            directory: &case_dir,
+            expected_origin: ExpectedOrigin::ObservedOnly,
+            pattern: None,
+            include_secrets: false,
+            overwrite: false,
+        })
+        .expect_err("secrets blocked");
+    assert_eq!(error.code(), "host.repro.secrets_blocked");
 }
