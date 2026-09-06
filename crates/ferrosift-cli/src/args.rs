@@ -71,6 +71,18 @@ pub enum Command {
         #[command(subcommand)]
         command: ReproCommand,
     },
+    /// Evaluate up to eight explicit recipe hypotheses on one input.
+    Candidates {
+        /// Representation supplied to every candidate.
+        #[arg(long, value_enum)]
+        input_kind: InputKind,
+        /// Input path, or '-' for standard input.
+        #[arg(long)]
+        input: PathBuf,
+        /// Candidate batch JSON path, or '-' for standard input.
+        #[arg(long)]
+        candidates: PathBuf,
+    },
 }
 
 /// Pattern-language subcommands.

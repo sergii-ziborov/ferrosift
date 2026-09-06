@@ -1,0 +1,20 @@
+{
+  "schema": "ferrosift.agent_benchmark.task.v1",
+  "id": "T02-repro-handoff",
+  "group": "handoff",
+  "title": "Export a clean-process replay package",
+  "prompt": "Transform input.bin to space-separated hex matching expected/output.txt, then save a package that a fresh process can replay without the agent.",
+  "input": "input.bin",
+  "input_kind": "bytes",
+  "success": {
+    "kind": "repro_package_matches_file",
+    "path": "expected/output.txt"
+  },
+  "offline_ferrosift": {
+    "kind": "repro_export_check",
+    "format": "cyberchef-v11.3",
+    "recipe": [{"op": "To Hex", "args": ["Space", 0]}]
+  },
+  "variants": ["C", "D"],
+  "ground_truth_origin": "manual_ascii_hex"
+}

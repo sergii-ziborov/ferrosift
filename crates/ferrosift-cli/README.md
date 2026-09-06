@@ -19,6 +19,7 @@ ferrosift pattern run --pattern header.hexpat --input payload.bin
 ferrosift repro export --format cyberchef-v11.3 --input-kind bytes \
   --recipe recipe.json --input sample.bin --out-dir payload-case
 ferrosift repro check --case payload-case
+ferrosift candidates --input-kind bytes --input sample.bin --candidates hypotheses.json
 ```
 
 `--format` takes `ferrosift`, `cyberchef-v11.3`, or `cyberchef-v11.4`. The two
@@ -40,6 +41,10 @@ bytes and writes a `ferrosift.pattern.v1` JSON tree with absolute field offsets.
 is `observed_only` — a regression snapshot, not independent proof. Secret-like
 argument names are refused unless `--include-secrets` is set. `repro check`
 replays the case in a fresh process.
+
+`candidates` evaluates up to eight explicit recipe hypotheses on one input and
+prints a `ferrosift.candidates.v1` observation table. Check counts are not
+calibrated probabilities.
 
 Every recipe is fully validated before its first step runs, so an invalid later
 step cannot leave a partial effect behind. Unknown operations fail closed with

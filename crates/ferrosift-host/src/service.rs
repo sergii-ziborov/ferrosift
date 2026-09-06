@@ -15,6 +15,9 @@ use ferrosift_model::{
 use crate::{
     allowlist::PathAllowlist,
     artifact::{ArtifactMeta, ArtifactStore, StoreConfig},
+    candidates::{
+        self, CandidateResult, CandidatesReport, CandidatesRequest, failed_result, observed_result,
+    },
     error::{HostError, HostResult},
     report::{ExecutionReport, InspectReport, SearchHit},
 };
@@ -365,6 +368,42 @@ impl HostService {
         Ok(package)
     }
 
+    /// Evaluates an explicit candidate-recipe batch against one retained artifact.
+    ///
+    /// Candidates do not re-open or re-upload the input. Each row is an observation
+    /// table entry; check counts are never presented as calibrated probabilities.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`HostError`] when the batch is empty/too large, the input handle is
+    /// missing, or retaining an output exceeds the artifact quota.
+    pub fn evaluate_candidates(
+        &self,
+        request: &CandidatesRequest<'_>,
+    ) -> HostResult<CandidatesReport> {
+        candidates::validate_batch(request.candidates)?;
+        let input_id = ArtifactStore::parse_id(request.input_artifact_id)?;
+        let input = self
+            .store
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner)
+            .get_value(&input_id)?;
+
+        let mut results = Vec::with_capacity(request.candidates.len());
+        for candidate in request.candidates {
+            results.push(self.evaluate_one_candidate(candidate, &input)?);
+        }
+
+        Ok(CandidatesReport {
+            schema: "ferrosift.candidates.v1",
+            input_artifact_id: request.input_artifact_id.to_owned(),
+            results,
+            warnings: vec![
+                "checks_passed counts are observations, not calibrated probabilities",
+            ],
+        })
+    }
+
     /// Replays a case package and compares against its expected result.
     ///
     /// # Errors
@@ -390,6 +429,61 @@ impl HostService {
             &package,
             execution.status,
             &execution.value,
+        ))
+    }
+
+    fn evaluate_one_candidate(
+        &self,
+        candidate: &crate::CandidateRecipe,
+        input: &Value,
+    ) -> HostResult<CandidateResult> {
+        let format = match candidates::parse_candidate_format(&candidate.format) {
+            Ok(format) => format,
+            Err(error) => {
+                return Ok(failed_result(
+                    candidate.id.clone(),
+                    error.code(),
+                    error.detail(),
+                ));
+            }
+        };
+        let recipe = match self.load_recipe(candidate.recipe_json.as_bytes(), format) {
+            Ok(recipe) => recipe,
+            Err(error) => {
+                return Ok(failed_result(
+                    candidate.id.clone(),
+                    error.code(),
+                    error.detail(),
+                ));
+            }
+        };
+        let execution = match Executor::new(&self.registry).execute(
+            &recipe,
+            input.clone(),
+            self.budget,
+            &NeverCancelled,
+            CapabilitySet::new(),
+        ) {
+            Ok(execution) => execution,
+            Err(error) => {
+                return Ok(failed_result(
+                    candidate.id.clone(),
+                    error.code(),
+                    error.to_string(),
+                ));
+            }
+        };
+        let checks = candidates::evaluate_checks(&execution.value, &candidate.checks);
+        let meta = self
+            .store
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner)
+            .insert(execution.value.clone())?;
+        Ok(observed_result(
+            candidate.id.clone(),
+            execution.status,
+            &meta,
+            checks,
         ))
     }
 

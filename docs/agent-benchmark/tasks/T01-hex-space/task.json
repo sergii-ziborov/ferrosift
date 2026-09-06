@@ -1,0 +1,20 @@
+{
+  "schema": "ferrosift.agent_benchmark.task.v1",
+  "id": "T01-hex-space",
+  "group": "encoding",
+  "title": "Encode ASCII bytes as space-separated hex",
+  "prompt": "The file input.bin contains two ASCII bytes. Produce space-separated lowercase hex identical to expected/output.txt, and leave a command or recipe that can replay the transform without the chat.",
+  "input": "input.bin",
+  "input_kind": "bytes",
+  "success": {
+    "kind": "bytes_or_utf8_equals_file",
+    "path": "expected/output.txt"
+  },
+  "offline_ferrosift": {
+    "kind": "run_recipe",
+    "format": "cyberchef-v11.3",
+    "recipe": [{"op": "To Hex", "args": ["Space", 0]}]
+  },
+  "variants": ["A", "B", "C", "D"],
+  "ground_truth_origin": "manual_ascii_hex"
+}

@@ -231,3 +231,72 @@ fn repro_export_blocks_secret_argument_names_by_default() {
         .expect_err("secrets blocked");
     assert_eq!(error.code(), "host.repro.secrets_blocked");
 }
+
+#[test]
+fn candidates_batch_returns_observation_table_without_probabilities() {
+    let service = HostService::new(HostConfig::default()).expect("host");
+    let opened = service
+        .open(OpenRequest::Bytes {
+            bytes: b"Hi".to_vec(),
+            kind: InputKind::Bytes,
+        })
+        .expect("open");
+
+    let candidates = vec![
+        ferrosift_host::CandidateRecipe {
+            id: "to-hex".into(),
+            format: "cyberchef-v11.3".into(),
+            recipe_json: r#"[{"op":"To Hex","args":["Space",0]}]"#.into(),
+            checks: vec![
+                ferrosift_host::CandidateCheck::Utf8Text,
+                ferrosift_host::CandidateCheck::PrefixHex {
+                    hex: "3438".into(), // "48"
+                },
+            ],
+        },
+        ferrosift_host::CandidateRecipe {
+            id: "from-base64".into(),
+            format: "cyberchef-v11.3".into(),
+            recipe_json: r#"[{"op":"From Base64"}]"#.into(),
+            checks: vec![ferrosift_host::CandidateCheck::SizeMin { bytes: 1 }],
+        },
+        ferrosift_host::CandidateRecipe {
+            id: "bad-format".into(),
+            format: "nope".into(),
+            recipe_json: "[]".into(),
+            checks: Vec::new(),
+        },
+    ];
+
+    let report = service
+        .evaluate_candidates(&ferrosift_host::CandidatesRequest {
+            input_artifact_id: opened.id.as_str(),
+            candidates: &candidates,
+        })
+        .expect("candidates");
+    assert_eq!(report.schema, "ferrosift.candidates.v1");
+    assert_eq!(report.results.len(), 3);
+    assert!(report.warnings.iter().any(|w| w.contains("not calibrated")));
+
+    let hex = &report.results[0];
+    assert_eq!(hex.id, "to-hex");
+    assert!(hex.artifact_id.is_some());
+    assert_eq!(hex.checks_passed, 2);
+    assert_eq!(hex.checks_total, 2);
+    assert!(hex.error_code.is_none());
+
+    let bad = &report.results[2];
+    assert_eq!(
+        bad.error_code.as_deref(),
+        Some("host.candidates.format_unknown")
+    );
+    assert!(bad.artifact_id.is_none());
+
+    let error = service
+        .evaluate_candidates(&ferrosift_host::CandidatesRequest {
+            input_artifact_id: opened.id.as_str(),
+            candidates: &[],
+        })
+        .expect_err("empty");
+    assert_eq!(error.code(), "host.candidates.empty");
+}

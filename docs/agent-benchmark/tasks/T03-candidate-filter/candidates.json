@@ -1,0 +1,23 @@
+{
+  "candidates": [
+    {
+      "id": "to-hex",
+      "format": "cyberchef-v11.3",
+      "recipe": [{"op": "To Hex", "args": ["Space", 0]}],
+      "checks": [
+        {"kind": "utf8_text"},
+        {"kind": "prefix_hex", "hex": "3438"},
+        {"kind": "size_eq", "bytes": 5}
+      ]
+    },
+    {
+      "id": "from-base64",
+      "format": "cyberchef-v11.3",
+      "recipe": [{"op": "From Base64"}],
+      "checks": [
+        {"kind": "utf8_text"},
+        {"kind": "size_eq", "bytes": 5}
+      ]
+    }
+  ]
+}

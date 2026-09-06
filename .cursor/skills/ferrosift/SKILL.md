@@ -41,11 +41,16 @@ ferrosift run --format cyberchef-v11.3 --input-kind bytes --recipe recipe.json -
 ferrosift run ... --result-format json
 ferrosift pattern validate --pattern header.hexpat
 ferrosift pattern run --pattern header.hexpat --input sample.bin
+ferrosift candidates --input-kind bytes --input sample.bin --candidates hypotheses.json
 ```
 
 `--result-format json` returns `ferrosift.execution.v1` with status, tagged
 value, and bounded trace. Non-byte results (numbers, structures, files) require
 JSON mode. `paused` is not `completed`.
+
+`candidates` evaluates up to eight explicit recipes on one input and prints
+`ferrosift.candidates.v1` (status, size, checks, error, handle). Check counts
+are observations, not calibrated probabilities.
 
 ## Agent workflow
 
@@ -77,6 +82,7 @@ independent parser, or the failing production test.
 | `ferrosift_inspect` | Summary; preview only if needed |
 | `ferrosift_validate` | Preflight recipe |
 | `ferrosift_run` | Execute on a handle → new handle + report |
+| `ferrosift_candidates` | Up to 8 explicit recipes on one handle → observation table |
 
 Start MCP with explicit roots only:
 

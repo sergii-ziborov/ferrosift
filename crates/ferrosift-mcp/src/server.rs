@@ -3,7 +3,8 @@
 use std::{path::PathBuf, sync::Arc};
 
 use ferrosift_host::{
-    HostService, InputKind, InspectRequest, OpenRequest, RecipeFormat, RunRequest,
+    CandidateCheck, CandidateRecipe, CandidatesRequest, HostService, InputKind, InspectRequest,
+    OpenRequest, RecipeFormat, RunRequest,
 };
 use rmcp::{
     ErrorData as McpError, ServerHandler,
@@ -76,6 +77,44 @@ struct RunParams {
     format: String,
     /// Opaque input artifact handle.
     input_artifact_id: String,
+}
+
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+struct CandidatesParams {
+    /// Opaque input artifact handle shared by every candidate.
+    input_artifact_id: String,
+    /// Explicit hypotheses, at most eight.
+    candidates: Vec<CandidateParams>,
+}
+
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+struct CandidateParams {
+    /// Caller-chosen label for this hypothesis.
+    id: String,
+    /// `ferrosift`, `cyberchef-v11.3`, or `cyberchef-v11.4`.
+    format: String,
+    /// Recipe JSON text.
+    recipe_json: String,
+    /// Optional deterministic observations on a successful output.
+    #[serde(default)]
+    checks: Vec<CheckParams>,
+}
+
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+#[serde(tag = "kind", rename_all = "snake_case")]
+enum CheckParams {
+    /// Output representation must match (`bytes`, `text`, …).
+    ValueKind { expected: String },
+    /// Exact logical payload size.
+    SizeEq { bytes: u64 },
+    /// Inclusive lower bound on logical size.
+    SizeMin { bytes: u64 },
+    /// Inclusive upper bound on logical size.
+    SizeMax { bytes: u64 },
+    /// Leading bytes of bytes/UTF-8 text, as hex.
+    PrefixHex { hex: String },
+    /// Value must be UTF-8 text (or UTF-8 bytes).
+    Utf8Text,
 }
 
 #[tool_router]
@@ -187,12 +226,44 @@ impl FerroSiftMcp {
             .map_err(|error| host_error(&error))?;
         json_result(&report)
     }
+
+    #[tool(
+        name = "ferrosift_candidates",
+        description = "Evaluate up to eight explicit recipe hypotheses on one retained artifact. Returns a ferrosift.candidates.v1 observation table (status, size, checks, error, handle). Check counts are not calibrated probabilities."
+    )]
+    fn candidates(
+        &self,
+        Parameters(params): Parameters<CandidatesParams>,
+    ) -> Result<CallToolResult, McpError> {
+        let recipes: Vec<CandidateRecipe> = params
+            .candidates
+            .into_iter()
+            .map(|candidate| CandidateRecipe {
+                id: candidate.id,
+                format: candidate.format,
+                recipe_json: candidate.recipe_json,
+                checks: candidate
+                    .checks
+                    .into_iter()
+                    .map(map_check)
+                    .collect(),
+            })
+            .collect();
+        let report = self
+            .host
+            .evaluate_candidates(&CandidatesRequest {
+                input_artifact_id: &params.input_artifact_id,
+                candidates: &recipes,
+            })
+            .map_err(|error| host_error(&error))?;
+        json_result(&report)
+    }
 }
 
 #[tool_handler(
     name = "ferrosift",
     version = "0.1.0-alpha.1",
-    instructions = "FerroSift turns unknown payloads into reproducible transforms. Prefer ferrosift_search then ferrosift_describe, open samples with ferrosift_open, keep bytes behind artifact handles, and use ferrosift_run. Do not treat a successful decode as proof the hypothesis is correct."
+    instructions = "FerroSift turns unknown payloads into reproducible transforms. Prefer ferrosift_search then ferrosift_describe, open samples with ferrosift_open, keep bytes behind artifact handles, and use ferrosift_run or ferrosift_candidates. Do not treat a successful decode as proof the hypothesis is correct. Candidate check counts are observations, not probabilities."
 )]
 impl ServerHandler for FerroSiftMcp {}
 
@@ -242,6 +313,17 @@ fn parse_format(raw: &str) -> Result<RecipeFormat, McpError> {
         "cyberchef-v11.3" => Ok(RecipeFormat::CyberChefV11_3),
         "cyberchef-v11.4" => Ok(RecipeFormat::CyberChefV11_4),
         other => Err(invalid(format!("unknown recipe format: {other}"))),
+    }
+}
+
+fn map_check(check: CheckParams) -> CandidateCheck {
+    match check {
+        CheckParams::ValueKind { expected } => CandidateCheck::ValueKind { expected },
+        CheckParams::SizeEq { bytes } => CandidateCheck::SizeEq { bytes },
+        CheckParams::SizeMin { bytes } => CandidateCheck::SizeMin { bytes },
+        CheckParams::SizeMax { bytes } => CandidateCheck::SizeMax { bytes },
+        CheckParams::PrefixHex { hex } => CandidateCheck::PrefixHex { hex },
+        CheckParams::Utf8Text => CandidateCheck::Utf8Text,
     }
 }
 

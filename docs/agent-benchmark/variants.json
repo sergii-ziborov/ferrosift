@@ -1,0 +1,25 @@
+{
+  "schema": "ferrosift.agent_benchmark.variants.v1",
+  "variants": [
+    {
+      "id": "A",
+      "label": "ordinary_dev",
+      "description": "Shell, Python/stdlib, and documentation only."
+    },
+    {
+      "id": "B",
+      "label": "cyberchef_mcp",
+      "description": "Configured CyberChef MCP with its recommended discovery and batching."
+    },
+    {
+      "id": "C",
+      "label": "ferrosift_cli_skill",
+      "description": "FerroSift CLI plus the repository skill instructions."
+    },
+    {
+      "id": "D",
+      "label": "ferrosift_mcp",
+      "description": "FerroSift MCP with artifact handles and structured tool results."
+    }
+  ]
+}

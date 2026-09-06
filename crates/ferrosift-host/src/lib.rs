@@ -9,6 +9,7 @@
 
 mod allowlist;
 mod artifact;
+mod candidates;
 mod error;
 mod report;
 mod repro;
@@ -16,6 +17,10 @@ mod service;
 
 pub use allowlist::PathAllowlist;
 pub use artifact::{ArtifactId, ArtifactMeta, ArtifactStore, StoreConfig};
+pub use candidates::{
+    MAX_CANDIDATES, CandidateCheck, CandidateRecipe, CandidateResult, CandidatesReport,
+    CandidatesRequest, CheckOutcome, evaluate_checks, parse_candidate_format, validate_batch,
+};
 pub use error::{HostError, HostResult};
 pub use report::{
     ExecutionReport, InspectReport, ReportStatus, SearchHit, StepLocationReport, TraceEventReport,

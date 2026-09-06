@@ -1,0 +1,20 @@
+{
+  "schema": "ferrosift.agent_benchmark.task.v1",
+  "id": "T03-candidate-filter",
+  "group": "multilayer",
+  "title": "Pick the hypothesis that passes explicit checks",
+  "prompt": "input.bin is opaque. Use at most eight explicit recipe candidates. Select the candidate whose checks all pass; the winning id must match expected/winning_id.txt. Do not invent calibrated probabilities.",
+  "input": "input.bin",
+  "input_kind": "bytes",
+  "success": {
+    "kind": "winning_candidate_id",
+    "path": "expected/winning_id.txt"
+  },
+  "offline_ferrosift": {
+    "kind": "candidates_file",
+    "candidates": "candidates.json",
+    "winning_id_file": "expected/winning_id.txt"
+  },
+  "variants": ["C", "D"],
+  "ground_truth_origin": "manual_ascii_hex_checks"
+}

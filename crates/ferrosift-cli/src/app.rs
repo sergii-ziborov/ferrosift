@@ -50,6 +50,11 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
             ),
             ReproCommand::Check { case } => commands::repro::check(&case, output),
         },
+        Command::Candidates {
+            input_kind,
+            input: input_path,
+            candidates,
+        } => commands::candidates::run(input_kind, &input_path, &candidates, input, output),
         command => {
             let registry = default_registry()
                 .map_err(|error| CliError::new("cli.registry.invalid", error.to_string()))?;
@@ -85,8 +90,10 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
                     };
                     commands::run::run(&registry, &request, input, output)
                 }
-                Command::Pattern { .. } | Command::Repro { .. } => {
-                    unreachable!("pattern/repro commands are handled above")
+                Command::Pattern { .. }
+                | Command::Repro { .. }
+                | Command::Candidates { .. } => {
+                    unreachable!("pattern/repro/candidates commands are handled above")
                 }
             }
         }
