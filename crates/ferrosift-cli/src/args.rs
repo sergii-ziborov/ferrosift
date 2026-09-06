@@ -83,6 +83,8 @@ pub enum Command {
         #[arg(long)]
         candidates: PathBuf,
     },
+    /// Run local install smoke checks (no network).
+    Doctor,
 }
 
 /// Pattern-language subcommands.

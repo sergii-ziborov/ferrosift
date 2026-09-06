@@ -43,6 +43,7 @@ ferrosift pattern validate --pattern header.hexpat
 ferrosift pattern run --pattern header.hexpat --input sample.bin
 ferrosift pattern validate --pattern main.hexpat \
   --source std.io=libs/std_io.pat --source helpers.pat=libs/helpers.pat
+ferrosift doctor
 ```
 
 `--result-format json` returns `ferrosift.execution.v1` with status, tagged
@@ -52,6 +53,10 @@ JSON mode. `paused` is not `completed`.
 `candidates` evaluates up to eight explicit recipes on one input and prints
 `ferrosift.candidates.v1` (status, size, checks, error, handle). Check counts
 are observations, not calibrated probabilities.
+
+`doctor` prints `ferrosift.doctor.v1` after offline install smoke checks
+(version, registry, fixed To Hex recipe, tiny pattern). Prefer this over
+hand-rolling a “does it work?” probe after install.
 
 Pattern `--source SPEC=PATH` feeds a caller-controlled resolver for `import` /
 `#include` without giving the portable crate a filesystem.

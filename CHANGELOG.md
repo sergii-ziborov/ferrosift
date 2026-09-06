@@ -19,6 +19,8 @@ from `0.1.0` onward.
 - Incremental `encoding.base64.decode@1` (non-strict) and `StreamPipeline` for
   chaining streamed sessions. Demo coverage: Base64 → Gunzip (materialisation
   barrier) → SHA-256, plus a fully incremental Base64 → SHA-256 pipeline.
+- `ferrosift doctor` offline install smoke checks (`ferrosift.doctor.v1`), and
+  tagged-release CLI binaries with SHA-256 checksums for common targets.
 
 ## [0.1.0-alpha.1] — 2026-09-02
 

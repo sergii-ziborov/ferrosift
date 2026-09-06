@@ -21,14 +21,9 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
                 input: input_path,
                 output: output_path,
                 sources,
-            } => commands::pattern::run(
-                &pattern,
-                &input_path,
-                &output_path,
-                &sources,
-                input,
-                output,
-            ),
+            } => {
+                commands::pattern::run(&pattern, &input_path, &output_path, &sources, input, output)
+            }
         },
         Command::Repro { command } => match command {
             ReproCommand::Export {
@@ -63,6 +58,7 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
             input: input_path,
             candidates,
         } => commands::candidates::run(input_kind, &input_path, &candidates, input, output),
+        Command::Doctor => commands::doctor::run(output),
         command => {
             let registry = default_registry()
                 .map_err(|error| CliError::new("cli.registry.invalid", error.to_string()))?;
@@ -77,9 +73,7 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
                     format,
                     input_kind,
                     recipe,
-                } => {
-                    commands::validate::run(&registry, format, input_kind, &recipe, input, output)
-                }
+                } => commands::validate::run(&registry, format, input_kind, &recipe, input, output),
                 Command::Run {
                     format,
                     input_kind,
@@ -100,8 +94,9 @@ pub fn run(arguments: Args, input: &mut dyn Read, output: &mut dyn Write) -> Res
                 }
                 Command::Pattern { .. }
                 | Command::Repro { .. }
-                | Command::Candidates { .. } => {
-                    unreachable!("pattern/repro/candidates commands are handled above")
+                | Command::Candidates { .. }
+                | Command::Doctor => {
+                    unreachable!("pattern/repro/candidates/doctor commands are handled above")
                 }
             }
         }

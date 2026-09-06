@@ -5,8 +5,11 @@ JavaScript runtime and no network access.
 
 ```bash
 cargo install ferrosift-cli
+ferrosift doctor
 ```
 
+Tagged GitHub releases also publish platform CLI binaries with `.sha256`
+checksums. Prefer those over an unverified remote install script.
 ```bash
 ferrosift operations
 ferrosift describe encoding.hex.encode@1
@@ -21,6 +24,7 @@ ferrosift repro export --format cyberchef-v11.3 --input-kind bytes \
   --recipe recipe.json --input sample.bin --out-dir payload-case
 ferrosift repro check --case payload-case
 ferrosift candidates --input-kind bytes --input sample.bin --candidates hypotheses.json
+ferrosift doctor
 ```
 
 `--format` takes `ferrosift`, `cyberchef-v11.3`, or `cyberchef-v11.4`. The two
@@ -48,6 +52,10 @@ replays the case in a fresh process.
 `candidates` evaluates up to eight explicit recipe hypotheses on one input and
 prints a `ferrosift.candidates.v1` observation table. Check counts are not
 calibrated probabilities.
+
+`doctor` runs offline install smoke checks (version, registry load, a fixed
+To Hex recipe, a tiny pattern) and prints `ferrosift.doctor.v1`. Exit status is
+non-zero when any check fails; the JSON report is still written first.
 
 Every recipe is fully validated before its first step runs, so an invalid later
 step cannot leave a partial effect behind. Unknown operations fail closed with
