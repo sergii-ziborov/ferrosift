@@ -2,6 +2,7 @@ use ferrosift_core::OperationError;
 
 pub(super) use crate::failure::failed;
 
+#[derive(Clone)]
 pub(super) struct Alphabet {
     padding: Option<char>,
     /// Reverse lookup, indexed by ASCII code point.

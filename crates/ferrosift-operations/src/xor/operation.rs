@@ -86,7 +86,7 @@ impl Streamable for Xor {
         &self,
         arguments: &Arguments,
         _context: &OperationContext<'_>,
-    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError> {
+    ) -> Result<Option<Box<dyn StreamSession>>, OperationError> {
         // Only the plain scheme, and only without null-preservation. The other
         // schemes carry the previous byte's *output* into the next key, and
         // null-preservation skips a byte without advancing — both are still

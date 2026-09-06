@@ -21,7 +21,7 @@ use ferrosift_core::{
 use ferrosift_model::{
     ArgumentValue, Arguments, CapabilitySet, OperationSpec, StreamingSupport, Value,
 };
-use ferrosift_operations::{Sha2, ToHex, Xor};
+use ferrosift_operations::{FromBase64, Sha2, ToHex, Xor};
 
 /// Sizes that break an implementation in different ways.
 ///
@@ -41,8 +41,17 @@ fn context() -> OperationContext<'static> {
 /// The buffered answer, as bytes.
 fn buffered(operation: &dyn Operation, arguments: &Arguments, input: &[u8]) -> Vec<u8> {
     let mut context = context();
+    let value_input = if operation.spec().id.as_str() == "encoding.base64.decode@1" {
+        let text = core::str::from_utf8(input).expect("base64 text input");
+        Value::Text(ferrosift_model::TextValue {
+            text: text.to_owned(),
+            encoding: ferrosift_model::TextEncoding::Utf8,
+        })
+    } else {
+        Value::Bytes(input.to_vec())
+    };
     let value = operation
-        .execute(Value::Bytes(input.to_vec()), arguments, &mut context)
+        .execute(value_input, arguments, &mut context)
         .expect("the buffered path answers");
     match value {
         Value::Bytes(bytes) => bytes,
@@ -163,6 +172,28 @@ fn a_streamed_xor_is_the_buffered_one() {
     }
 }
 
+#[test]
+fn a_streamed_base64_decode_is_the_buffered_one() {
+    let operation = FromBase64::new();
+    let decode_args = arguments(&[
+        ("alphabet", ArgumentValue::Text("A-Za-z0-9+/=".to_owned())),
+        ("remove_non_alphabet", ArgumentValue::Boolean(true)),
+        ("strict", ArgumentValue::Boolean(false)),
+    ]);
+    let encoder = ferrosift_operations::ToBase64::new();
+    let encode_args = arguments(&[("alphabet", ArgumentValue::Text("A-Za-z0-9+/=".to_owned()))]);
+    for raw in inputs() {
+        let mut context = context();
+        let encoded = encoder
+            .execute(Value::Bytes(raw), &encode_args, &mut context)
+            .expect("encode");
+        let Value::Text(text) = encoded else {
+            panic!("expected text");
+        };
+        agrees(&operation, &decode_args, text.text.as_bytes());
+    }
+}
+
 /// Arguments an operation cannot stream answer `None`, and say so cleanly.
 ///
 /// The alternative is worse than not streaming: a session that streamed the
@@ -241,7 +272,12 @@ fn every_declared_incremental_operation_offers_a_session() {
     let ids: Vec<&str> = declared.iter().map(|spec| spec.id.as_str()).collect();
     assert_eq!(
         ids,
-        ["encoding.hex.encode@1", "hash.sha2@1", "logic.xor@1"],
+        [
+            "encoding.base64.decode@1",
+            "encoding.hex.encode@1",
+            "hash.sha2@1",
+            "logic.xor@1"
+        ],
         "every operation declaring incremental streaming should be named here"
     );
 
@@ -259,6 +295,9 @@ fn every_declared_incremental_operation_offers_a_session() {
             })
             .collect();
         let offered = match spec.id.as_str() {
+            "encoding.base64.decode@1" => FromBase64::new()
+                .start(&defaults, &context)
+                .map(|s| s.is_some()),
             "encoding.hex.encode@1" => {
                 // The default delimiter is `Space`, which is the form that
                 // declines — so this asks with the one it streams.

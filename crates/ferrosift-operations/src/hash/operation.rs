@@ -251,7 +251,7 @@ impl Streamable for Sha2 {
         &self,
         arguments: &Arguments,
         _context: &OperationContext<'_>,
-    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError> {
+    ) -> Result<Option<Box<dyn StreamSession>>, OperationError> {
         // The reduced-round variants are refused by the buffered path too, and
         // for the same reason: they are a different function. `None` here
         // would be a session that silently declined; the error is the answer.

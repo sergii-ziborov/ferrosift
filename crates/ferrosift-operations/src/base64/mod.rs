@@ -1,6 +1,7 @@
 mod alphabet;
 mod codec;
 mod operation;
+mod session;
 
 pub use operation::{FromBase64, ToBase64};
 

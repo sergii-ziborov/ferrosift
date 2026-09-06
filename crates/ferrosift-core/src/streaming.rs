@@ -10,15 +10,12 @@
 //! and nothing declared it, because there was nothing to declare. This is the
 //! contract that makes it mean something.
 //!
-//! # What is deliberately not here
+//! # Pipelines
 //!
-//! A streaming *executor*. Chaining incremental operations is a real thing to
-//! want and a different problem — back-pressure, a chunk boundary that is not
-//! the next operation's boundary, an operation in the middle of the chain that
-//! cannot stream at all. One operation at a time is what a caller can use
-//! today and what can be proven correct today: the property below says a
-//! streamed answer *is* the buffered answer, and it is checked at every chunk
-//! size rather than argued for.
+//! [`StreamPipeline`] chains several sessions so the bytes leaving one stage
+//! enter the next without a full intermediate buffer owned by the caller. An
+//! operation that cannot stream is still a materialisation barrier outside
+//! this type: the host buffers, then continues.
 //!
 //! # Example
 //!
@@ -148,7 +145,7 @@ pub trait Streamable {
         &self,
         arguments: &Arguments,
         context: &OperationContext<'_>,
-    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError>;
+    ) -> Result<Option<Box<dyn StreamSession>>, OperationError>;
 }
 
 /// Runs `session` over `chunks`, writing the answer to `sink`.
@@ -169,4 +166,115 @@ pub fn drive<'a>(
         session.push(chunk, sink)?;
     }
     session.finish(sink)
+}
+
+/// Runs several incremental sessions as a pipeline.
+///
+/// Output of stage *n* is pushed into stage *n + 1*; the last stage writes to
+/// `sink`. Stages are taken out of the vector while they run so nested pushes
+/// do not fight the borrow checker.
+#[derive(Default)]
+pub struct StreamPipeline {
+    stages: Vec<Option<Box<dyn StreamSession>>>,
+}
+
+impl StreamPipeline {
+    /// Empty pipeline; [`Self::push_stage`] adds sessions in order.
+    #[must_use]
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Appends one incremental session.
+    pub fn push_stage(&mut self, session: Box<dyn StreamSession>) {
+        self.stages.push(Some(session));
+    }
+
+    /// Feeds `chunks` through every stage into `sink`.
+    ///
+    /// # Errors
+    ///
+    /// Whatever a session or the sink refused.
+    pub fn drive<'a>(
+        &mut self,
+        chunks: impl IntoIterator<Item = &'a [u8]>,
+        sink: &mut dyn StreamSink,
+    ) -> Result<(), OperationError> {
+        for chunk in chunks {
+            self.feed(0, chunk, sink)?;
+        }
+        self.finish_from(0, sink)
+    }
+
+    fn feed(
+        &mut self,
+        index: usize,
+        chunk: &[u8],
+        sink: &mut dyn StreamSink,
+    ) -> Result<(), OperationError> {
+        if index >= self.stages.len() {
+            return sink.write(chunk);
+        }
+        let mut session = self.stages[index]
+            .take()
+            .expect("pipeline stage should be present");
+        let result = {
+            let mut bridge = PipelineBridge {
+                pipeline: self,
+                next: index + 1,
+                sink,
+            };
+            session.push(chunk, &mut bridge)
+        };
+        self.stages[index] = Some(session);
+        result
+    }
+
+    fn finish_from(
+        &mut self,
+        index: usize,
+        sink: &mut dyn StreamSink,
+    ) -> Result<(), OperationError> {
+        if index >= self.stages.len() {
+            return Ok(());
+        }
+        let session = self.stages[index]
+            .take()
+            .expect("pipeline stage should be present");
+        {
+            let mut bridge = PipelineBridge {
+                pipeline: self,
+                next: index + 1,
+                sink,
+            };
+            session.finish(&mut bridge)?;
+        }
+        self.finish_from(index + 1, sink)
+    }
+}
+
+struct PipelineBridge<'a> {
+    pipeline: &'a mut StreamPipeline,
+    next: usize,
+    sink: &'a mut dyn StreamSink,
+}
+
+impl StreamSink for PipelineBridge<'_> {
+    fn write(&mut self, bytes: &[u8]) -> Result<(), OperationError> {
+        self.pipeline.feed(self.next, bytes, self.sink)
+    }
+}
+
+/// Convenience: drive a pipeline and collect the answer.
+///
+/// # Errors
+///
+/// Whatever [`StreamPipeline::drive`] refused.
+pub fn drive_pipeline_collect<'a>(
+    pipeline: &mut StreamPipeline,
+    chunks: impl IntoIterator<Item = &'a [u8]>,
+) -> Result<Vec<u8>, OperationError> {
+    let mut sink = CollectSink::new();
+    pipeline.drive(chunks, &mut sink)?;
+    Ok(sink.take())
 }

@@ -26,7 +26,10 @@ pub use executor::{
 pub use flow::{FlowDirective, Section};
 pub use operation::{InvalidOperationFailureCode, Operation, OperationError, OperationFailureCode};
 pub use registry::{OperationRegistry, RegistryError};
-pub use streaming::{CollectSink, StreamSession, StreamSink, Streamable, drive};
+pub use streaming::{
+    CollectSink, StreamPipeline, StreamSession, StreamSink, Streamable, drive,
+    drive_pipeline_collect,
+};
 pub use trace::{
     ExecutionResult, ExecutionStatus, ExecutionTrace, StepLocation, TraceEvent, TraceEventKind,
     ValueSummary,

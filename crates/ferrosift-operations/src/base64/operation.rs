@@ -1,14 +1,15 @@
+use alloc::boxed::Box;
 use alloc::vec;
 
-use ferrosift_core::{Operation, OperationContext, OperationError};
+use ferrosift_core::{Operation, OperationContext, OperationError, StreamSession, Streamable};
 use ferrosift_model::{
     Arguments, OperationSpec, TextEncoding, TextValue, Value, ValueConstraint, ValueKind,
 };
 
 use crate::args::{boolean_argument, boolean_value, text_argument, text_value};
-use crate::spec::{SpecDefinition, build};
+use crate::spec::{SpecDefinition, build, incremental};
 
-use super::{alphabet::Alphabet, codec};
+use super::{alphabet::Alphabet, codec, session::Base64DecodeSession};
 
 const STANDARD_ALPHABET: &str = "A-Za-z0-9+/=";
 
@@ -80,7 +81,7 @@ impl FromBase64 {
     #[must_use]
     pub fn new() -> Self {
         Self {
-            spec: build(SpecDefinition {
+            spec: incremental(build(SpecDefinition {
                 id: "encoding.base64.decode@1",
                 display_name: "From Base64",
                 category: "Encoding",
@@ -103,7 +104,7 @@ impl FromBase64 {
                 ],
                 inverse: Some("encoding.base64.encode@1"),
                 classifications: None,
-            }),
+            })),
         }
     }
 }
@@ -136,5 +137,25 @@ impl Operation for FromBase64 {
             context,
         )
         .map(Value::Bytes)
+    }
+}
+
+impl Streamable for FromBase64 {
+    fn start(
+        &self,
+        arguments: &Arguments,
+        _context: &OperationContext<'_>,
+    ) -> Result<Option<Box<dyn StreamSession>>, OperationError> {
+        // Strict mode inspects leftover bits across the whole symbol stream;
+        // decline rather than approximate.
+        if boolean_value(arguments, "strict")? {
+            return Ok(None);
+        }
+        let alphabet = Alphabet::parse(text_value(arguments, "alphabet")?)?;
+        let remove_non_alphabet = boolean_value(arguments, "remove_non_alphabet")?;
+        Ok(Some(Box::new(Base64DecodeSession::new(
+            alphabet,
+            remove_non_alphabet,
+        ))))
     }
 }

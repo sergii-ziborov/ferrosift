@@ -76,7 +76,7 @@ impl Streamable for ToHex {
         &self,
         arguments: &Arguments,
         _context: &OperationContext<'_>,
-    ) -> Result<Option<Box<dyn StreamSession + '_>>, OperationError> {
+    ) -> Result<Option<Box<dyn StreamSession>>, OperationError> {
         // Only the contiguous form. A delimiter or a line width makes the
         // output depend on *where* the last byte is, and a session does not
         // know that until it ends — it would have to hold a byte back and

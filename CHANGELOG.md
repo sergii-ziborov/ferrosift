@@ -16,6 +16,9 @@ from `0.1.0` onward.
   and `parse_with` for bounded `import` / `#include` expansion (flat namespace
   experiment; origins recorded separately). CLI `--source SPEC=PATH` feeds an
   in-memory map without giving the portable crate a filesystem.
+- Incremental `encoding.base64.decode@1` (non-strict) and `StreamPipeline` for
+  chaining streamed sessions. Demo coverage: Base64 → Gunzip (materialisation
+  barrier) → SHA-256, plus a fully incremental Base64 → SHA-256 pipeline.
 
 ## [0.1.0-alpha.1] — 2026-09-02
 
