@@ -13,8 +13,8 @@ and `docs/compatibility/profiles.md` for why it is stored that way.
 
 | | |
 |---|---:|
-| Registered operations | 254 |
-| Reference-aliased | 252 |
+| Registered operations | 256 |
+| Reference-aliased | 254 |
 | Pinned cases | 6867 |
 
 Two questions, asked separately, because one word was answering both
@@ -27,14 +27,14 @@ cannot speak for the ones it does not.
 | Evidence | |
 |---|---:|
 | Differential-pinned against the reference | 248 |
-| Pinned by a named test instead of the corpus | 0 |
+| Pinned by a named test instead of the corpus | 2 |
 | Checked through a pinned inverse | 4 |
 | No reference claim to evidence | 2 |
 | Aliased with no evidence | 0 |
 
 | Parity | |
 |---|---:|
-| Exact | 230 |
+| Exact | 232 |
 | Documented divergence | 18 |
 | Interoperable rather than byte-identical | 4 |
 | FerroSift-native, no reference to match | 2 |
@@ -60,8 +60,8 @@ what a thing is.
 
 | | |
 |---|---:|
-| Clusters | 96 |
-| Operations standing alone in theirs | 20 |
+| Clusters | 98 |
+| Operations standing alone in theirs | 22 |
 
 Deepest: `hash` (19), `math` (11), `logic` (9), `text` (9), `checksum` (8), `extract` (8), `flow` (8), `data` (7).
 
@@ -293,6 +293,7 @@ The table below is sorted by id, so a cluster's members are adjacent.
 | `network.strip.tcp@1` | `network.strip` | Strip TCP header | core | differential_pinned | exact | 2 |
 | `network.strip.udp@1` | `network.strip` | Strip UDP header | core | differential_pinned | exact | 2 |
 | `parsing.colour_code@1` | `parsing` | Parse colour code | core | differential_pinned | exact | 26 |
+| `parsing.jwt.decode@1` | `parsing.jwt` | JWT Decode | core | pinned_elsewhere | exact (curated conformance vectors in tests/jwt_json.rs; automatic corpus bake deferred until the jsonwebtoken oracle path is wired) | 0 |
 | `parsing.tlv@1` | `parsing` | Parse TLV | core | differential_pinned | exact | 17 |
 | `sets.cartesian_product@1` | `sets` | Cartesian Product | core | differential_pinned | exact | 10 |
 | `sets.difference@1` | `sets` | Set Difference | core | differential_pinned | exact | 9 |
@@ -314,6 +315,7 @@ The table below is sorted by id, so a cluster's members are adjacent.
 | `text.find_replace@1` | `text` | Find / Replace | text | differential_pinned | documented_divergence (regex mode with exotic Unicode property classes) | 4 |
 | `text.html.strip_tags@1` | `text.html` | Strip HTML tags | core | differential_pinned | exact | 44 |
 | `text.html.to_text@1` | `text.html` | HTML To Text | core | differential_pinned | exact | 6 |
+| `text.json.minify@1` | `text.json` | JSON Minify | core | pinned_elsewhere | exact (string-aware whitespace strip pinned in tests/jwt_json.rs; vkbeautify corpus bake deferred) | 0 |
 | `text.leet@1` | `text` | Convert Leet Speak | core | differential_pinned | exact | 28 |
 | `text.line_numbers.add@1` | `text.line_numbers` | Add line numbers | core | differential_pinned | exact | 24 |
 | `text.line_numbers.remove@1` | `text.line_numbers` | Remove line numbers | core | differential_pinned | exact | 16 |

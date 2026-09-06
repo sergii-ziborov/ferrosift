@@ -30,17 +30,17 @@ use crate::{
     FromBcd, FromBech32, FromBinary, FromBraille, FromCaseInsensitiveRegex, FromCharcode, FromCobs,
     FromDecimal, FromFloat, FromHex, FromHexContent, FromHexdump, FromHtmlEntity, FromModhex,
     FromMorseCode, FromOctal, FromQuotedPrintable, GenerateDeBruijnSequence, GetAllCasings,
-    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, Jump, Label,
-    LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Lznt1Decompress, Merge,
-    MicrosoftScriptDecoder, MurmurHash3, OffsetChecker, PadLines, ParityBit, ParseColourCode,
-    ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet, Punycode, RemoveAnsiEscapeCodes,
-    RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Return, Reverse, Ror13, Rot13,
-    Rot13BruteForce, Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split, StripHeader,
-    StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail, TakeBytes,
-    TakeNthBytes, Tea, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92, ToBcd, ToBech32,
-    ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal, ToFloat, ToHex,
-    ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode, ToOctal,
-    ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters,
+    HammingDistance, Head, HexToPem, HtmlToText, Identity, IndexOfCoincidence, JsonMinify, Jump,
+    JwtDecode, Label, LevenshteinDistance, Ls47Decrypt, Ls47Encrypt, LuhnChecksum, Lznt1Decompress,
+    Merge, MicrosoftScriptDecoder, MurmurHash3, OffsetChecker, PadLines, ParityBit,
+    ParseColourCode, ParseTlv, ParseUnixFilePermissions, PemToHex, PowerSet, Punycode,
+    RemoveAnsiEscapeCodes, RemoveLineNumbers, RemoveNullBytes, RemoveWhitespace, Return, Reverse,
+    Ror13, Rot13, Rot13BruteForce, Rot47, Rot47BruteForce, Rotate, SetOperation, Sha0, Split,
+    StripHeader, StripHtmlTags, StripHttpHeaders, Substitute, SwapCase, SwapEndianness, Tail,
+    TakeBytes, TakeNthBytes, Tea, ToBase32, ToBase45, ToBase58, ToBase64, ToBase85, ToBase92,
+    ToBcd, ToBech32, ToBinary, ToBraille, ToCaseInsensitiveRegex, ToCharcode, ToCobs, ToDecimal,
+    ToFloat, ToHex, ToHexContent, ToHexdump, ToHtmlEntity, ToLowerCase, ToModhex, ToMorseCode,
+    ToOctal, ToQuotedPrintable, ToTable, ToUpperCase, UnescapeString, UnescapeUnicodeCharacters,
     UnicodeTextFormat, Unique, UrlDecode, UrlEncode, VarIntDecode, VarIntEncode, Wrap,
     XkcdRandomNumber, Xor, XpressDecompress, XpressHuffmanDecompress, Xxtea,
 };
@@ -572,6 +572,7 @@ fn register_logic(registry: &mut OperationRegistry) -> Result<(), RegistryError>
 fn register_parsing(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(ParseColourCode::new())?;
     registry.register(ParseTlv::new())?;
+    registry.register(JwtDecode::new())?;
     registry.register(HexToPem::new())?;
     registry.register(PemToHex::new())?;
     registry.register(ChangeIpFormat::new())?;
@@ -607,6 +608,7 @@ fn register_sets(registry: &mut OperationRegistry) -> Result<(), RegistryError> 
 /// Reading, reshaping, and re-casing text.
 fn register_text(registry: &mut OperationRegistry) -> Result<(), RegistryError> {
     registry.register(ToTable::new())?;
+    registry.register(JsonMinify::new())?;
     registry.register(ToLowerCase::new())?;
     registry.register(ToUpperCase::new())?;
     registry.register(SwapCase::new())?;

@@ -85,11 +85,11 @@ is, and [the safety matrix](safety-matrix.md) says what each operation can do.
 <!-- comparison:scale:begin -->
 | Project | Operations | Counted from |
 |---|---:|---|
-| FerroSift | 254 | this repository's catalog, on every CI run |
+| FerroSift | 256 | this repository's catalog, on every CI run |
 | rx-chef | 478 | its own README, at `99e26de96e28` |
 | CyberChef 11.4.0 | 504 | `cargo xtask cyberchef gap --profile 11.4.0`, at `49d1a563` |
 
-252 of FerroSift's 254 answer to a CyberChef 11.4.0 name — **50.0% of the current reference catalog**. The other two are its own and have no reference name to claim. [not-implemented.md](compatibility/not-implemented.md) groups everything missing by what actually blocks it.
+254 of FerroSift's 256 answer to a CyberChef 11.4.0 name — **50.4% of the current reference catalog**. The other two are its own and have no reference name to claim. [not-implemented.md](compatibility/not-implemented.md) groups everything missing by what actually blocks it.
 <!-- comparison:scale:end -->
 
 Two cautions about that table. Operation counts are not comparable across

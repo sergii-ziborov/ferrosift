@@ -1,11 +1,11 @@
 # Operations not implemented
 
-FerroSift covers 249 of CyberChef 11.3.0's 501 catalog operations. This page
-records what the other 252 are waiting on, so that "not done yet" is a list
+FerroSift covers 251 of CyberChef 11.3.0's 501 catalog operations. This page
+records what the other 250 are waiting on, so that "not done yet" is a list
 with reasons rather than a number.
 
 The catalog is larger than the coverage number twice over, and it is worth
-being exact about which number is which. FerroSift registers 254 operations;
+being exact about which number is which. FerroSift registers 256 operations;
 two of them — `core.identity@1` and `analysis.suggest@1` — are its own and have
 no reference alias, so they cover nothing here, and three more answer to names
 only 11.4.0 has. This sentence used to read 247
@@ -44,7 +44,7 @@ the signal it read.
 
 | Blocker | Count | What it means |
 |---|---:|---|
-| `external-library` | 121 | byte-exactness is against a specific JavaScript library |
+| `external-library` | 119 | byte-exactness is against a specific JavaScript library |
 | `not-a-byte-answer` | 56 | answers with a rendering or a file list, so matching it is not matching bytes |
 | `reference-internal` | 48 | byte-exactness is against the reference's own internal library |
 | `effort` | 15 | nothing stands in the way but the work |
@@ -71,9 +71,9 @@ import grouping is: where it and the code disagree, the code is right.
 
 ## Why an equivalent library is not enough
 
-162 of the 252 are built on a JavaScript library, and 21 more reach one
+160 of the 250 are built on a JavaScript library, and 21 more reach one
 through an internal library of the reference's own. The three headings below
-partition the 252 exactly: 162 plus 21 plus 69. The obstacle is **not** that
+partition the 250 exactly: 160 plus 21 plus 69. The obstacle is **not** that
 Rust lacks equivalents -- it usually has good ones. It is that byte-exactness
 is against *that* library, not against a library that does the same job.
 
@@ -129,7 +129,7 @@ only ordering that matters when choosing what to do next.
 | `node-forge` | 15 | `rsa`, `x509-cert` | PKI structure is standardised; the text rendering is not. |
 | `jsrsasign` | 12 | `x509-parser` | As above. |
 | `es6-promisify` | 7 | none needed | A promise shim; the operations behind it may be portable once read. |
-| `vkbeautify` | 6 | hand-written | Pretty-printing rules are short and fully determined by the source. |
+| `vkbeautify` | 5 | hand-written | Pretty-printing rules are short and fully determined by the source. |
 | `@wavesenterprise/crypto-gost-js` | 6 | `gost-crypto` crates exist | GOST is standardised; the binding is not. |
 | `d3` | 5 | none | Chart layout is the library. A port is a port of d3. |
 | `moment-timezone` | 5 | `chrono-tz` | The IANA database matches; the formatting grammar does not. |
@@ -144,7 +144,7 @@ list rather than a search.
 | `node-forge` | 15 | Blowfish Decrypt, Blowfish Encrypt, CMAC, DES Decrypt, DES Encrypt, Generate RSA Key Pair, Pseudo-Random Integer Generator, RC2 Decrypt, RC2 Encrypt, RSA Decrypt, RSA Encrypt, RSA Sign, RSA Verify, Triple DES Decrypt, Triple DES Encrypt |
 | `jsrsasign` | 12 | ECDSA Sign, ECDSA Signature Conversion, ECDSA Verify, Generate ECDSA Key Pair, JWK to PEM, Parse ASN.1 hex string, Parse CSR, Parse X.509 certificate, Parse X.509 CRL, PEM to JWK, Public Key from Certificate, Public Key from Private Key |
 | `es6-promisify` | 7 | Generate PGP Key Pair, PGP Decrypt, PGP Decrypt and Verify, PGP Encrypt, PGP Encrypt and Sign, PGP Sign, PGP Verify |
-| `vkbeautify` | 6 | CSS Beautify, CSS Minify, JSON Minify, SQL Minify, XML Beautify, XML Minify |
+| `vkbeautify` | 5 | CSS Beautify, CSS Minify, SQL Minify, XML Beautify, XML Minify |
 | `@wavesenterprise/crypto-gost-js/index.js` | 6 | GOST Decrypt, GOST Encrypt, GOST Key Unwrap, GOST Key Wrap, GOST Sign, GOST Verify |
 | `d3` | 5 | Entropy, Heatmap chart, Hex Density chart, Scatter chart, Series chart |
 | `moment-timezone` | 5 | DateTime Delta, From UNIX Timestamp, Parse DateTime, To UNIX Timestamp, Translate DateTime Format |
@@ -153,7 +153,7 @@ list rather than a search.
 | `bcryptjs` | 2 | Bcrypt, Bcrypt compare |
 | `crypto-api/src/crypto-api.mjs` | 3 | Derive HKDF key, Flask Session Sign, Flask Session Verify |
 | `xregexp` | 3 | Filter, Register, Regular expression |
-| `jsonwebtoken` | 3 | JWT Decode, JWT Sign, JWT Verify |
+| `jsonwebtoken` | 2 | JWT Sign, JWT Verify |
 | `js-ascon` | 3 | Ascon Decrypt, Ascon Encrypt, Ascon Hash |
 | `rison` | 2 | Rison Decode, Rison Encode |
 | `uuid` | 2 | Analyse UUID, Generate UUID |

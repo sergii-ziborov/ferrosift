@@ -42,6 +42,16 @@
       "alias": "Bzip2 Decompress",
       "scope": "elsewhere",
       "reason": "no Node bzip2 compressor to sample fresh inputs; pinned in differential.json"
+    },
+    {
+      "alias": "JWT Decode",
+      "scope": "elsewhere",
+      "reason": "curated conformance vectors in tests/jwt_json.rs; automatic corpus bake deferred until the jsonwebtoken oracle path is wired"
+    },
+    {
+      "alias": "JSON Minify",
+      "scope": "elsewhere",
+      "reason": "string-aware whitespace strip pinned in tests/jwt_json.rs; vkbeautify corpus bake deferred"
     }
   ]
 }

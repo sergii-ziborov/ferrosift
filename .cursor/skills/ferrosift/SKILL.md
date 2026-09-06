@@ -58,6 +58,9 @@ are observations, not calibrated probabilities.
 (version, registry, fixed To Hex recipe, tiny pattern). Prefer this over
 hand-rolling a “does it work?” probe after install.
 
+`JWT Decode` returns the payload object only and does **not** verify
+signatures. `JSON Minify` strips whitespace outside strings.
+
 Pattern `--source SPEC=PATH` feeds a caller-controlled resolver for `import` /
 `#include` without giving the portable crate a filesystem.
 

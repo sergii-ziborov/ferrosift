@@ -29,6 +29,7 @@ avoid that. Do not weaken variant `A`.
 
 Full design target is 24 tasks (4 per group). The seed below starts with a
 cheap pilot of a few tasks and an offline checker for the FerroSift paths.
+`T04-json-minify` exercises the FS-A13 JSON Minify cluster.
 
 ## Ground truth
 

@@ -7,18 +7,18 @@
     ]
   },
   "totals": {
-    "operations": 254,
-    "aliased": 252,
+    "operations": 256,
+    "aliased": 254,
     "pinned_cases": 6867,
     "evidence": {
       "differential_pinned": 248,
-      "pinned_elsewhere": 0,
+      "pinned_elsewhere": 2,
       "round_trip": 4,
       "none": 0,
       "not_applicable": 2
     },
     "parity": {
-      "exact": 230,
+      "exact": 232,
       "documented_divergence": 18,
       "interoperable": 4,
       "native": 2
@@ -3820,6 +3820,24 @@
       "parity": "exact"
     },
     {
+      "id": "parsing.jwt.decode@1",
+      "cluster": "parsing.jwt",
+      "display_name": "JWT Decode",
+      "category": "Parsing",
+      "reference_alias": "JWT Decode",
+      "reference_since": "11.3.0",
+      "feature": "core",
+      "targets": [
+        "native",
+        "wasm32_unknown_unknown",
+        "embedded"
+      ],
+      "conformance_cases": 0,
+      "evidence": "pinned_elsewhere",
+      "parity": "exact",
+      "note": "curated conformance vectors in tests/jwt_json.rs; automatic corpus bake deferred until the jsonwebtoken oracle path is wired"
+    },
+    {
       "id": "parsing.tlv@1",
       "cluster": "parsing",
       "display_name": "Parse TLV",
@@ -4179,6 +4197,24 @@
       "conformance_cases": 6,
       "evidence": "differential_pinned",
       "parity": "exact"
+    },
+    {
+      "id": "text.json.minify@1",
+      "cluster": "text.json",
+      "display_name": "JSON Minify",
+      "category": "Text",
+      "reference_alias": "JSON Minify",
+      "reference_since": "11.3.0",
+      "feature": "core",
+      "targets": [
+        "native",
+        "wasm32_unknown_unknown",
+        "embedded"
+      ],
+      "conformance_cases": 0,
+      "evidence": "pinned_elsewhere",
+      "parity": "exact",
+      "note": "string-aware whitespace strip pinned in tests/jwt_json.rs; vkbeautify corpus bake deferred"
     },
     {
       "id": "text.leet@1",

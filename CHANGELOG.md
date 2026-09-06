@@ -21,6 +21,8 @@ from `0.1.0` onward.
   barrier) → SHA-256, plus a fully incremental Base64 → SHA-256 pipeline.
 - `ferrosift doctor` offline install smoke checks (`ferrosift.doctor.v1`), and
   tagged-release CLI binaries with SHA-256 checksums for common targets.
+- Pilot catalog cluster: `JWT Decode` (payload only, no verify) and
+  `JSON Minify`, with curated vectors and benchmark task `T04-json-minify`.
 
 ## [0.1.0-alpha.1] — 2026-09-02
 

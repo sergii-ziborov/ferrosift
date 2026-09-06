@@ -36,7 +36,7 @@ matched.
 <!-- ledger:begin -->
 | Registered operations | CyberChef-aliased | Differential-pinned | Exact parity | Pinned cases |
 |---:|---:|---:|---:|---:|
-| 254 | 252 | 248 | **230** | **6867** |
+| 256 | 254 | 248 | **232** | **6867** |
 <!-- ledger:end -->
 
 These numbers are generated, not typed: `cargo xtask ledger check` regenerates
@@ -319,10 +319,10 @@ has a `std`. One pack does not yet reach bare metal;
 | KDF | Derive PBKDF2 key, Scrypt |
 | Logic | ADD, AND, Bit shift left, Bit shift right, NOT, OR, Parity Bit, ROR13, Rotate left, Rotate right, SUB, XOR, XOR Brute Force |
 | Networking | Change IP format, Format MAC addresses, Strip IPv4 header, Strip TCP header, Strip UDP header |
-| Parsing | Hex to Object Identifier, Hex to PEM, Object Identifier to Hex, PEM to Hex, Parse TLV, Parse UNIX file permissions, Parse colour code |
+| Parsing | Hex to Object Identifier, Hex to PEM, JWT Decode, Object Identifier to Hex, PEM to Hex, Parse TLV, Parse UNIX file permissions, Parse colour code |
 | Sets | Cartesian Product, Power Set, Set Difference, Set Intersection, Set Union, Symmetric Difference |
 | Shaping | Split, To Table, Unique |
-| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Case Insensitive Regex, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
+| Text | Add line numbers, Alternating Caps, Count occurrences, Dechunk HTTP response, Escape Smart Characters, Expand alphabet range, Find / Replace, From Case Insensitive Regex, Generate De Bruijn Sequence, Get All Casings, HTML To Text, JSON Minify, Pad lines, Remove ANSI Escape Codes, Remove line numbers, Remove whitespace, Strip HTML tags, Strip HTTP headers, Swap case, Tail, To Case Insensitive Regex, To Lower case, To Upper case, Unescape string, Wrap, XKCD Random Number |
 | Time | UNIX Timestamp to Windows Filetime, Windows Filetime to UNIX Timestamp |
 <!-- catalog:end -->
 

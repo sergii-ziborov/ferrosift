@@ -14,7 +14,7 @@ them inferable from its name.
 
 | | |
 |---|---:|
-| Registered operations | 254 |
+| Registered operations | 256 |
 | Requiring any host capability | 0 |
 | Non-deterministic | 0 |
 | Carrying any review classification | 13 |
@@ -66,7 +66,7 @@ nothing.
 
 | Behaviour | Operations | What it means |
 |---|---:|---|
-| `input_proportional` | 221 | Output grows with input; the expansion ratio applies |
+| `input_proportional` | 223 | Output grows with input; the expansion ratio applies |
 | `reducer` | 31 | Output is a bounded summary; the ratio is not applied |
 | `input_independent` | 2 | Output comes from the arguments; the ratio is not applied |
 
@@ -81,20 +81,14 @@ holds whole — a disk image, a firmware dump — through
 [`Streamable`](https://docs.rs/ferrosift-core/latest/ferrosift_core/trait.Streamable.html).
 Everything else buffers, which is correct and merely needs the memory.
 
-**4 of 254**: `encoding.base64.decode@1`, `encoding.hex.encode@1`,
-`hash.sha2@1`, `logic.xor@1`.
-
-[`StreamPipeline`](https://docs.rs/ferrosift-core/latest/ferrosift_core/struct.StreamPipeline.html)
-chains incremental sessions without a caller-owned intermediate buffer.
-An operation that cannot stream (today: Gunzip in the Base64 → Gunzip →
-SHA-256 demo) remains a materialisation barrier outside the pipeline.
+**4 of 256**: `encoding.base64.decode@1`, `encoding.hex.encode@1`, `hash.sha2@1`, `logic.xor@1`.
 
 The declaration and the implementation must agree, and
-`tests/streaming.rs` / `tests/stream_pipeline.rs` are what make them: a
-streamed answer is compared against the buffered one at eight chunk sizes
-over six input lengths, because an implementation that flushed a partial
-group twice or reset a key position at a boundary would look correct at
-whichever single chunk size someone tried by hand.
+`tests/streaming.rs` is what makes them: a streamed answer is compared
+against the buffered one at eight chunk sizes over six input lengths,
+because an implementation that flushed a partial group twice or reset a
+key position at a boundary would look correct at whichever single chunk
+size someone tried by hand.
 
 ## Every operation
 
@@ -321,6 +315,7 @@ whichever single chunk size someone tried by hand.
 | `network.strip.tcp@1` | — | — | `input_proportional` |
 | `network.strip.udp@1` | — | — | `input_proportional` |
 | `parsing.colour_code@1` | — | — | `input_proportional` |
+| `parsing.jwt.decode@1` | — | — | `input_proportional` |
 | `parsing.tlv@1` | — | — | `input_proportional` |
 | `sets.cartesian_product@1` | — | — | `input_proportional` |
 | `sets.difference@1` | — | — | `input_proportional` |
@@ -342,6 +337,7 @@ whichever single chunk size someone tried by hand.
 | `text.find_replace@1` | — | — | `input_proportional` |
 | `text.html.strip_tags@1` | — | — | `input_proportional` |
 | `text.html.to_text@1` | — | — | `input_proportional` |
+| `text.json.minify@1` | — | — | `input_proportional` |
 | `text.leet@1` | — | — | `input_proportional` |
 | `text.line_numbers.add@1` | — | — | `input_proportional` |
 | `text.line_numbers.remove@1` | — | — | `input_proportional` |

@@ -1,0 +1,20 @@
+{
+  "schema": "ferrosift.agent_benchmark.task.v1",
+  "id": "T04-json-minify",
+  "group": "encoding",
+  "title": "Minify a pretty-printed JSON object",
+  "prompt": "input.bin is UTF-8 pretty-printed JSON. Produce the compact form identical to expected/output.txt (whitespace outside strings removed, spaces inside strings kept), and leave a replayable FerroSift or CyberChef recipe.",
+  "input": "input.bin",
+  "input_kind": "text",
+  "success": {
+    "kind": "bytes_or_utf8_equals_file",
+    "path": "expected/output.txt"
+  },
+  "offline_ferrosift": {
+    "kind": "run_recipe",
+    "format": "cyberchef-v11.3",
+    "recipe": [{"op": "JSON Minify", "args": []}]
+  },
+  "variants": ["A", "B", "C", "D"],
+  "ground_truth_origin": "manual_json_minify"
+}
